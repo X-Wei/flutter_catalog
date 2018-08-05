@@ -45,14 +45,12 @@ class _TextFieldDemoState extends State<_TextFieldDemo> {
       ),
       onSubmitted: (String val) {
         Fluttertoast.showToast(
-          msg: 'You entered: ${int.parse(val)}, $_inputIsValid',
+          msg: 'You entered: ${int.parse(val)}',
         );
       },
       onChanged: (String val) {
         int.parse(val, onError: (val) {
-          setState(() {
-            _inputIsValid = false;
-          });
+          setState(() => _inputIsValid = false);
         });
       },
     ));
