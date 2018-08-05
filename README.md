@@ -7,10 +7,10 @@ An app showcasing Flutter components, with side-by-side source code view.
 
 ## Screenshots
 
-![drawer](screenshots/Screenshot_1533458321.png)
-![preview](screenshots/Screenshot_1533458310.png)
-![code view](screenshots/Screenshot_1533458312.png)
-![doc action](screenshots/Screenshot_1533458314.png)
+<img src="screenshots/Screenshot_1533458321.png" width="240px" />
+<img src="screenshots/Screenshot_1533458310.png" width="240px" />
+<img src="screenshots/Screenshot_1533458312.png" width="240px" />
+<img src="screenshots/Screenshot_1533458314.png" width="240px" />
 
 ## Adding a new example page
 
