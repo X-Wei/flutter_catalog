@@ -42,13 +42,12 @@ class MyAboutRoute extends MyRoute {
         Divider(),
         ListTile(
           leading: Icon(Icons.shop),
-          title: Text('View on Google Play'),
+          title: Text('Rate on Google Play'),
           onTap: () => url_launcher.launch(GOOGLEPLAY_URL),
         ),
         ListTile(
           leading: Icon(Icons.code),
           title: Text('View source code on GitHub'),
-          // TODO: publish code on GitHub.
           onTap: () {},
         ),
         ListTile(
