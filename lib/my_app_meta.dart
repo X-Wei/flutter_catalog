@@ -104,7 +104,6 @@ const kMyAppRoutesStructure = <_ItemGroup>[
       BasicAppbarExample(),
       BottomAppbarExample(),
       SliverAppBarExample(),
-      // TODO AppbarBottomExample(),
       // TODO BackDropExample(),
     ],
   ),
