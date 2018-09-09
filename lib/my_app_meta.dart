@@ -16,6 +16,7 @@ import './routes/layouts_expanded_ex.dart';
 import './routes/layouts_row_col_ex.dart';
 import './routes/layouts_stack_ex.dart';
 import './routes/lists_expansion_tile_ex.dart';
+import './routes/lists_grid_list_ex.dart';
 import './routes/lists_list_tile_ex.dart';
 import './routes/lists_listview_builder_ex.dart';
 import './routes/lists_swipe_to_dismiss_ex.dart';
@@ -93,9 +94,9 @@ const kMyAppRoutesStructure = <_ItemGroup>[
     <MyRoute>[
       ListTileExample(),
       ListViewBuilderExample(),
+      GridListExample(),
       ExpansionTileExample(),
       ListSwipeToDismissExample(),
-      // TODO GridExample(),
     ],
   ),
   _ItemGroup(
