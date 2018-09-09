@@ -16,7 +16,7 @@ class ListTileExample extends MyRoute {
 
   @override
   Widget buildMyRouteContent(BuildContext context) {
-    final listTiles = <Widget>[
+    const listTiles = <Widget>[
       ListTile(
         title: Text('Tile 0: basic'),
       ),
