@@ -8,7 +8,7 @@ class ContainerBasicsExample extends MyRoute {
       : super(sourceFile);
 
   @override
-  get title => 'Container, Padding, Center';
+  get title => 'Container';
 
   @override
   get description => 'Basic widgets for layout.';
@@ -44,6 +44,8 @@ class ContainerBasicsExample extends MyRoute {
               color: Colors.red,
               // EdgeInsets.symmetric: specify vertical/horizontal padding.
               padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+              // Rotation.
+              transform: new Matrix4.rotationZ(-0.1),
               child: Container(
                 decoration: BoxDecoration(
                   color: Colors.green,
@@ -52,6 +54,8 @@ class ContainerBasicsExample extends MyRoute {
                     right: Radius.circular(30.0),
                   ),
                 ),
+                alignment: Alignment.topLeft,
+                child: Text("hello"),
               ),
             ),
           ),
