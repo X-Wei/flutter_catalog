@@ -11,7 +11,7 @@ class ListSwipeToDismissExample extends MyRoute {
 
   @override
   get links => {
-        'Doc': 'https://flutter.io/cookbook/gestures/dismissible',
+        'Cookbook': 'https://flutter.io/cookbook/gestures/dismissible',
       };
 
   @override

@@ -15,6 +15,7 @@ import './routes/layouts_container_padding_center_ex.dart';
 import './routes/layouts_expanded_ex.dart';
 import './routes/layouts_row_col_ex.dart';
 import './routes/layouts_stack_ex.dart';
+import './routes/layouts_wrap_ex.dart';
 import './routes/lists_expansion_tile_ex.dart';
 import './routes/lists_grid_list_ex.dart';
 import './routes/lists_list_tile_ex.dart';
@@ -85,6 +86,7 @@ const kMyAppRoutesStructure = <_ItemGroup>[
     <MyRoute>[
       ContainerBasicsExample(),
       RowColExample(),
+      WrapExample(),
       ExpandedExample(),
       StackExample(),
     ],
@@ -105,7 +107,6 @@ const kMyAppRoutesStructure = <_ItemGroup>[
       BasicAppbarExample(),
       BottomAppbarExample(),
       SliverAppBarExample(),
-      // TODO BackDropExample(),
     ],
   ),
   _ItemGroup(
@@ -118,6 +119,7 @@ const kMyAppRoutesStructure = <_ItemGroup>[
       NavDrawerExample(),
     ],
   )
+  // TODO _ItemGroup('Animation', [BackDropExample(),])
   // TODO _ItemGroup('Misc', [SnackBarExample(), DialogExample()])
 ];
 

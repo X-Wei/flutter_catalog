@@ -11,7 +11,7 @@ class GridListExample extends MyRoute {
 
   @override
   get links => {
-        'Doc': 'https://flutter.io/cookbook/lists/grid-lists/',
+        'Cookbook': 'https://flutter.io/cookbook/lists/grid-lists/',
       };
 
   @override
