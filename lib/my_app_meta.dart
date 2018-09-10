@@ -34,6 +34,7 @@ import './routes/widgets_image_ex.dart';
 import './routes/widgets_stateful_widgets_ex.dart';
 import './routes/widgets_text_ex.dart';
 import './routes/widgets_textfield_ex.dart';
+import './routes/widgets_textformfield_ex.dart';
 
 // Metadatas about this app:
 // When APP_VERSION is changed, remember to update android/app/build.gradle too.
@@ -74,6 +75,7 @@ const kMyAppRoutesStructure = <_ItemGroup>[
       IconExample(),
       TextExample(),
       TextFieldExample(),
+      TextFormFieldExample(),
       ImageExample(),
       ButtonsExample(),
       DropdownButtonExample(),
