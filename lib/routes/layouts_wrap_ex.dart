@@ -20,30 +20,25 @@ class WrapExample extends MyRoute {
   @override
   Widget buildMyRouteContent(BuildContext context) {
     return Wrap(
-      spacing: 8.0, // gap between adjacent chips
-      runSpacing: 4.0, // gap between lines
-      children: <Widget>[
-        Chip(
-          avatar: CircleAvatar(
-              backgroundColor: Colors.blue.shade900, child: Text('AH')),
-          label: Text('Hamilton'),
-        ),
-        Chip(
-          avatar: CircleAvatar(
-              backgroundColor: Colors.blue.shade900, child: Text('ML')),
-          label: Text('Lafayette'),
-        ),
-        Chip(
-          avatar: CircleAvatar(
-              backgroundColor: Colors.blue.shade900, child: Text('HM')),
-          label: Text('Mulligan'),
-        ),
-        Chip(
-          avatar: CircleAvatar(
-              backgroundColor: Colors.blue.shade900, child: Text('JL')),
-          label: Text('Laurens'),
-        ),
-      ],
+      // Gap between adjacent chips.
+      spacing: 8.0,
+      // Gap between lines.
+      runSpacing: 4.0,
+      direction: Axis.horizontal,
+      children: [
+        'Cauchy',
+        'Fourrier',
+        'Lagrange',
+        'Lebesgue',
+        'Levy',
+        'Poisson',
+        'Pointcare',
+      ]
+          .map((String name) => Chip(
+                avatar: CircleAvatar(child: Text(name.substring(0, 1))),
+                label: Text(name),
+              ))
+          .toList(),
     );
   }
 }
