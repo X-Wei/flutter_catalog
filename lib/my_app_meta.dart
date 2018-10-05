@@ -13,6 +13,7 @@ import './routes/appbar_bottom_appbar_ex.dart';
 import './routes/appbar_sliver_appbar_ex.dart';
 import './routes/layouts_container_padding_center_ex.dart';
 import './routes/layouts_expanded_ex.dart';
+import './routes/layouts_opacity_ex.dart';
 import './routes/layouts_row_col_ex.dart';
 import './routes/layouts_stack_ex.dart';
 import './routes/layouts_wrap_ex.dart';
@@ -82,6 +83,7 @@ const kMyAppRoutesStructure = <_ItemGroup>[
       DropdownButtonExample(),
       StatefulWidgetsExample(),
       CardExample(),
+      // TODO InkWellExample(),
     ],
   ),
   _ItemGroup(
@@ -92,6 +94,7 @@ const kMyAppRoutesStructure = <_ItemGroup>[
       WrapExample(),
       ExpandedExample(),
       StackExample(),
+      OpacityExample(),
     ],
   ),
   _ItemGroup(
