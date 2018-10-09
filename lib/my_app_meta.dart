@@ -83,7 +83,6 @@ const kMyAppRoutesStructure = <_ItemGroup>[
       DropdownButtonExample(),
       StatefulWidgetsExample(),
       CardExample(),
-      // TODO InkWellExample(),
     ],
   ),
   _ItemGroup(
@@ -123,6 +122,7 @@ const kMyAppRoutesStructure = <_ItemGroup>[
       BottomNavigationBarExample(),
       RoutesExample(),
       NavDrawerExample(),
+      // TODO NavigationReturnValueExample(),
     ],
   )
   // TODO _ItemGroup('Animation', [BackDropExample(),])
@@ -158,7 +158,6 @@ ListView getNavDrawerItems(State state, BuildContext context) {
     ),
   );
 
-  // TODO: add drawer for all routes ?
   ListTile _getNavItem(String navItemTitle, String routeName,
       {IconData icon, String description}) {
     return ListTile(
