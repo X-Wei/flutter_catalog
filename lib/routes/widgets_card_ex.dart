@@ -6,14 +6,16 @@ class CardExample extends MyRoute {
       : super(sourceFile);
 
   @override
-  get title => 'Card';
+  get title => 'Card, Inkwell';
 
   @override
-  get description => 'Container with corner and shadow.';
+  get description => 'Container with corner and shadow; inkwell (ripple) effects';
 
   @override
-  get links =>
-      {'Doc': 'https://docs.flutter.io/flutter/material/Card-class.html'};
+  get links => {
+        'Doc': 'https://docs.flutter.io/flutter/material/Card-class.html',
+        'Inkwell': 'https://flutter.io/cookbook/gestures/ripples/',
+      };
 
   @override
   Widget buildMyRouteContent(BuildContext context) {
@@ -24,14 +26,15 @@ class CardExample extends MyRoute {
           // The elevation determines shade.
           elevation: 10.0,
           child: Container(
-              height: 100.0,
-              child: Row(
-                children: <Widget>[
-                  Expanded(
-                    child: Text('Card 1'),
-                  ),
-                ],
-              )),
+            height: 100.0,
+            child: Row(
+              children: <Widget>[
+                Expanded(
+                  child: Text('Card 1'),
+                ),
+              ],
+            ),
+          ),
         ),
         Card(
           color: Colors.green,
@@ -39,12 +42,16 @@ class CardExample extends MyRoute {
           elevation: 0.0,
           child: Container(
             height: 100.0,
-            child: Row(
-              children: <Widget>[
-                Expanded(
-                  child: Text('Card 2'),
-                ),
-              ],
+            child: InkWell(
+              splashColor: Colors.deepOrange,
+              onTap: () {},
+              child: Row(
+                children: <Widget>[
+                  Expanded(
+                    child: Text('Card 2 (with Inkwell effect on tap)'),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
