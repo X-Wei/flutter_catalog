@@ -80,10 +80,10 @@ const kMyAppRoutesStructure = <_ItemGroup>[
       TextFieldExample(),
       TextFormFieldExample(),
       ImageExample(),
+      CardExample(),
       ButtonsExample(),
       DropdownButtonExample(),
       StatefulWidgetsExample(),
-      CardExample(),
     ],
   ),
   _ItemGroup(
@@ -127,7 +127,6 @@ const kMyAppRoutesStructure = <_ItemGroup>[
     ],
   )
   // TODO _ItemGroup('Animation', [BackDropExample(),])
-  // TODO _ItemGroup('Misc', [SnackBarExample(), DialogExample()])
 ];
 
 // Returns the app's root-level routing table.
