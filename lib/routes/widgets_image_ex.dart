@@ -14,14 +14,29 @@ class ImageExample extends MyRoute {
 
   @override
   Widget buildMyRouteContent(BuildContext context) {
-    return Column(
+    return ListView(
       children: <Widget>[
+        ListTile(
+          title: Text('Image from asset:'),
+        ),
         Card(
           child: Image.asset('res/images/material_design_2.jpg'),
+        ),
+        Divider(),
+        ListTile(
+          title: Text('Image from url:'),
         ),
         Card(
           child: Image.network(
               'https://images.freeimages.com/images/large-previews/4ad/coloured-pencils-1427682.jpg'),
+        ),
+        Divider(),
+        ListTile(
+          title: Text('GIF from asset:'),
+        ),
+        Image.asset(
+          'res/images/animated_flutter_lgtm.gif',
+          scale: 1.0,
         ),
       ],
     );

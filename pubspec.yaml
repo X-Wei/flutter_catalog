@@ -4,8 +4,8 @@ description: A Flutter catalog app with source code.
 dependencies:
   flutter:
     sdk: flutter
-  url_launcher: "^3.0.3"
-  tuple: "^1.0.1"
+  url_launcher: ^3.0.3
+  tuple: ^1.0.1
   fluttertoast: ^2.0.7
 
   # The following adds the Cupertino Icons font to your application.
