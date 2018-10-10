@@ -119,12 +119,11 @@ const kMyAppRoutesStructure = <_ItemGroup>[
     'Navigation',
     <MyRoute>[
       TabsExample(),
-      BottomTabbarExample(),
-      BottomNavigationBarExample(),
+      DialogsExample(),
       RoutesExample(),
       NavDrawerExample(),
-      DialogsExample(),
-      // TODO NavigationReturnValueExample(),
+      BottomTabbarExample(),
+      BottomNavigationBarExample(),
     ],
   )
   // TODO _ItemGroup('Animation', [BackDropExample(),])

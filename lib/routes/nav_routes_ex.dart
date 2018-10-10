@@ -53,19 +53,37 @@ class _PageTwo extends MaterialPageRoute<Null> {
               title: Text('Page 2'),
               elevation: 1.0,
             ),
-            body: Center(
-              child: RaisedButton(
-                child: Text('Go to page 3'),
-                onPressed: () {
-                  Navigator.push(context, _PageThree());
-                },
-              ),
+            // *Note*: use a Builder instead of directly giving the body, so
+            // that Scaffold.of(context) won't throw exception, c.f.
+            // https://stackoverflow.com/a/51304732.
+            body: Builder(
+              builder: (BuildContext context) => Center(
+                    child: RaisedButton(
+                      child: Text('Go to page 3'),
+                      onPressed: () {
+                        // Navigator.push<T> returns a Future<T>, which is the
+                        // return value of the pushed route when it's popped.
+                        Navigator.push<String>(context, _PageThree())
+                          ..then<String>((returnVal) {
+                            if (returnVal != null) {
+                              Scaffold.of(context)
+                                ..showSnackBar(
+                                  SnackBar(
+                                    content: Text('You clicked: $returnVal'),
+                                  ),
+                                );
+                            }
+                          });
+                      },
+                    ),
+                  ),
             ),
           );
         });
 }
 
-class _PageThree extends MaterialPageRoute<Null> {
+// MaterialPageRoute<String> returns a Future<String>.
+class _PageThree extends MaterialPageRoute<String> {
   _PageThree()
       : super(builder: (BuildContext context) {
           return Scaffold(
@@ -81,16 +99,37 @@ class _PageThree extends MaterialPageRoute<Null> {
                 ),
               ],
             ),
-            body: Center(
-              child: MaterialButton(
-                child: Text('Go home'),
-                onPressed: () {
-                  // Pops until reaching a route with that route name.
-                  Navigator.popUntil(
-                    context,
-                    ModalRoute.withName(RoutesExample.kRouteName),
-                  );
-                },
+            body: Padding(
+              padding: EdgeInsets.all(32.0),
+              child: ListView(
+                children: <Widget>[
+                  ListTile(
+                    leading: CircleAvatar(child: Text('1')),
+                    title: Text('user1@example.com'),
+                    onTap: () => Navigator.pop(context, 'user1@example.com'),
+                  ),
+                  ListTile(
+                    leading: CircleAvatar(child: Text('2')),
+                    title: Text('user2@example.com'),
+                    onTap: () => Navigator.pop(context, 'user2@example.com'),
+                  ),
+                  ListTile(
+                    leading: CircleAvatar(child: Text('3')),
+                    title: Text('user3@example.com'),
+                    onTap: () => Navigator.pop(context, 'user3@example.com'),
+                  ),
+                  Divider(),
+                  MaterialButton(
+                    child: Text('Go home'),
+                    onPressed: () {
+                      // Pops until reaching a route with that route name.
+                      Navigator.popUntil(
+                        context,
+                        ModalRoute.withName(RoutesExample.kRouteName),
+                      );
+                    },
+                  ),
+                ],
               ),
             ),
           );
