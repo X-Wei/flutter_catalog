@@ -26,23 +26,25 @@ class ButtonsExample extends MyRoute {
           msg: 'Button tapped',
           toastLength: Toast.LENGTH_SHORT,
         );
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    final _showSnack = () => Scaffold.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Button tapped'),
+            duration: Duration(milliseconds: 500),
+          ),
+        );
+    return ListView(
+      padding: EdgeInsets.all(16.0),
       children: <Widget>[
         Column(
           children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                  'Raised buttons add dimension to mostly flat layouts. They '
-                  'emphasize functions on busy or wide spaces.'),
-            ),
+            Text('Raised buttons add dimension to mostly flat layouts. They '
+                'emphasize functions on busy or wide spaces.'),
             ButtonBar(
               alignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 RaisedButton(
                   child: Text('RaisedButton'),
-                  onPressed: _showToast,
+                  onPressed: _showSnack,
                 ),
                 RaisedButton(
                   child: Text('disabled-RaisedButton'),
@@ -52,14 +54,12 @@ class ButtonsExample extends MyRoute {
             ),
           ],
         ),
+        Divider(),
         Column(
           children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text('A flat button displays an ink splash on press '
-                  'but does not lift. Use flat buttons on toolbars, in dialogs '
-                  'and inline with padding'),
-            ),
+            Text('A flat button displays an ink splash on press '
+                'but does not lift. Use flat buttons on toolbars, in dialogs '
+                'and inline with padding'),
             ButtonBar(
               alignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
@@ -75,15 +75,12 @@ class ButtonsExample extends MyRoute {
             ),
           ],
         ),
+        Divider(),
         Column(
           children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                  'Outline buttons become opaque and elevate when pressed. They '
-                  'are often paired with raised buttons to indicate an '
-                  'alternative, secondary action.'),
-            ),
+            Text('Outline buttons become opaque and elevate when pressed. They '
+                'are often paired with raised buttons to indicate an '
+                'alternative, secondary action.'),
             ButtonBar(
               alignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
@@ -97,6 +94,23 @@ class ButtonsExample extends MyRoute {
                 )
               ],
             ),
+          ],
+        ),
+        Divider(),
+        Column(
+          children: <Widget>[
+            Text('Tooltips are short identifying messages that briefly appear '
+                'in response to a long press. Tooltip messages are also used '
+                'by services that make Flutter apps accessible, like screen '
+                'readers.'),
+            Center(
+              child: IconButton(
+                iconSize: 32.0,
+                icon: Icon(Icons.call),
+                tooltip: 'Place a phone call',
+                onPressed: _showSnack,
+              ),
+            )
           ],
         ),
       ],
