@@ -70,6 +70,10 @@ class _PageTwo extends MaterialPageRoute<Null> {
                                 ..showSnackBar(
                                   SnackBar(
                                     content: Text('You clicked: $returnVal'),
+                                    action: SnackBarAction(
+                                      label: 'OK',
+                                      onPressed: () {},
+                                    ),
                                   ),
                                 );
                             }

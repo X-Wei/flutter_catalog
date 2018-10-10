@@ -44,7 +44,10 @@ class DialogsExample extends MyRoute {
                 if (returnVal != null) {
                   Scaffold.of(context)
                     ..showSnackBar(
-                      SnackBar(content: Text('You clicked: $returnVal')),
+                      SnackBar(
+                        content: Text('You clicked: $returnVal'),
+                        action: SnackBarAction(label: 'OK', onPressed: () {}),
+                      ),
                     );
                 }
               });
@@ -80,7 +83,10 @@ class DialogsExample extends MyRoute {
               if (returnVal != null) {
                 Scaffold.of(context)
                   ..showSnackBar(
-                    SnackBar(content: Text('You clicked: $returnVal')),
+                    SnackBar(
+                      content: Text('You clicked: $returnVal'),
+                      action: SnackBarAction(label: 'OK', onPressed: () {}),
+                    ),
                   );
               }
             });
@@ -99,7 +105,10 @@ class DialogsExample extends MyRoute {
               if (value != null) {
                 Scaffold.of(context)
                   ..showSnackBar(
-                    SnackBar(content: Text('${value.format(context)}')),
+                    SnackBar(
+                      content: Text('${value.format(context)}'),
+                      action: SnackBarAction(label: 'OK', onPressed: () {}),
+                    ),
                   );
               }
             });
