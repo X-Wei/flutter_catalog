@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import '../my_route.dart';
 
-// Adapted from Tensor Programming's multi-page app tutorial:
-// https://github.com/tensor-programming/dart_flutter_multi_page_app.
+// Adapted from Eajy's flutter demo app:
+// https://github.com/Eajy/flutter_demo/blob/master/lib/route/homeDialogs.dart.
 class DialogsExample extends MyRoute {
   const DialogsExample([String sourceFile = 'lib/routes/nav_dialogs_ex.dart'])
       : super(sourceFile);
@@ -15,7 +15,7 @@ class DialogsExample extends MyRoute {
     return ListView(
       padding: EdgeInsets.all(32.0),
       children: <Widget>[
-        ////// Simple alert dialog.
+        ////// Alert dialog.
         RaisedButton(
             color: Colors.red,
             child: Text('Alert Dialog'),
@@ -49,6 +49,43 @@ class DialogsExample extends MyRoute {
                 }
               });
             }),
+        ////// Simple Dialog.
+        RaisedButton(
+          color: Colors.yellow,
+          child: Text('Simple dialog'),
+          onPressed: () {
+            showDialog<String>(
+              context: context,
+              builder: (BuildContext context) => SimpleDialog(
+                    title: Text('Dialog Title'),
+                    children: <Widget>[
+                      ListTile(
+                        leading: Icon(Icons.account_circle),
+                        title: Text('user@example.com'),
+                        onTap: () => Navigator.pop(context, 'user@example.com'),
+                      ),
+                      ListTile(
+                        leading: Icon(Icons.account_circle),
+                        title: Text('user2@gmail.com'),
+                        onTap: () => Navigator.pop(context, 'user2@gmail.com'),
+                      ),
+                      ListTile(
+                        leading: Icon(Icons.add_circle),
+                        title: Text('Add account'),
+                        onTap: () => Navigator.pop(context, 'Add account'),
+                      ),
+                    ],
+                  ),
+            ).then<String>((returnVal) {
+              if (returnVal != null) {
+                Scaffold.of(context)
+                  ..showSnackBar(
+                    SnackBar(content: Text('You clicked: $returnVal')),
+                  );
+              }
+            });
+          },
+        ),
         ////// Time Picker Dialog.
         RaisedButton(
           color: Colors.green,
@@ -132,7 +169,14 @@ class DialogsExample extends MyRoute {
             );
           },
         ),
-      ],
+      ]
+          .map(
+            (Widget button) => Container(
+                  padding: EdgeInsets.symmetric(vertical: 8.0),
+                  child: button,
+                ),
+          )
+          .toList(),
     );
   }
 }
