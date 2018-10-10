@@ -24,6 +24,7 @@ import './routes/lists_listview_builder_ex.dart';
 import './routes/lists_swipe_to_dismiss_ex.dart';
 import './routes/nav_bottom_navbar_ex.dart';
 import './routes/nav_bottom_tabbar_ex.dart';
+import './routes/nav_dialogs_ex.dart';
 import './routes/nav_nav_drawer_header_ex.dart';
 import './routes/nav_routes_ex.dart';
 import './routes/nav_tabs_ex.dart';
@@ -122,6 +123,7 @@ const kMyAppRoutesStructure = <_ItemGroup>[
       BottomNavigationBarExample(),
       RoutesExample(),
       NavDrawerExample(),
+      DialogsExample(),
       // TODO NavigationReturnValueExample(),
     ],
   )
