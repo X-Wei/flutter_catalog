@@ -38,6 +38,16 @@ class ImageExample extends MyRoute {
           'res/images/animated_flutter_lgtm.gif',
           scale: 1.0,
         ),
+        Divider(),
+        ListTile(
+          title: Text('WEBP from package in assets:'),
+        ),
+        // In pubspec.yaml, remember to add asset:
+        // 'packages/flutter_gallery_assets/animated_images/animated_flutter_stickers.webp'
+        Image.asset(
+          'animated_images/animated_flutter_stickers.webp',
+          package: 'flutter_gallery_assets',
+        ),
       ],
     );
   }

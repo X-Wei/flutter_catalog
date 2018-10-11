@@ -8,6 +8,7 @@ dependencies:
   tuple: ^1.0.1
   fluttertoast: ^2.0.7
   english_words: ^3.1.3
+  flutter_gallery_assets: ^0.1.6
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -35,6 +36,7 @@ flutter:
     # c.f. https://github.com/flutter/flutter/issues/4890#issuecomment-407327749
     - lib/routes/
     - res/images/
+    - packages/flutter_gallery_assets/animated_images/animated_flutter_stickers.webp
 
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
