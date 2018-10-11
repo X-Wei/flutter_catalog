@@ -10,6 +10,7 @@ import './routes/home.dart';
 
 import './routes/appbar_basic_appbar_ex.dart';
 import './routes/appbar_bottom_appbar_ex.dart';
+import './routes/appbar_search_ex.dart';
 import './routes/appbar_sliver_appbar_ex.dart';
 import './routes/layouts_container_padding_center_ex.dart';
 import './routes/layouts_expanded_ex.dart';
@@ -118,6 +119,7 @@ const kMyAppRoutesStructure = <_ItemGroup>[
       BasicAppbarExample(),
       BottomAppbarExample(),
       SliverAppBarExample(),
+      AppbarSearchExample(),
     ],
   ),
   _ItemGroup(
