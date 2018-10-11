@@ -7,7 +7,7 @@ class DropdownButtonExample extends MyRoute {
       : super(sourceFile);
 
   @override
-  get title => 'DropdownButton';
+  get title => 'DropdownButton, MenuButton';
 
   @override
   get links => {
@@ -29,19 +29,33 @@ class _DropdowButtonDemo extends StatefulWidget {
 }
 
 class _DropdowButtonDemoState extends State<_DropdowButtonDemo> {
-  final List<DropdownMenuItem<String>> _dropDownMenuItems = <String>[
+  static const menuItems = <String>[
     'One',
     'Two',
     'Three',
     'Four',
-  ].map((String value) {
-    return DropdownMenuItem<String>(
-      value: value,
-      child: Text(value),
-    );
-  }).toList();
+  ];
+  final List<DropdownMenuItem<String>> _dropDownMenuItems = menuItems
+      .map(
+        (String value) => DropdownMenuItem<String>(
+              value: value,
+              child: Text(value),
+            ),
+      )
+      .toList();
+  final List<PopupMenuItem<String>> _popUpMenuItems = menuItems
+      .map(
+        (String value) => PopupMenuItem<String>(
+              value: value,
+              child: Text(value),
+            ),
+      )
+      .toList();
+
   String _btn1SelectedVal = 'One';
   String _btn2SelectedVal;
+  String _btn3SelectedVal;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -70,6 +84,20 @@ class _DropdowButtonDemoState extends State<_DropdowButtonDemo> {
               });
             }),
             items: _dropDownMenuItems,
+          ),
+        ),
+        ListTile(
+          title: const Text('Popup menu button:'),
+          trailing: new PopupMenuButton<String>(
+            onSelected: (String newValue) {
+              _btn3SelectedVal = newValue;
+              Scaffold.of(context).showSnackBar(
+                SnackBar(
+                  content: Text('$_btn3SelectedVal'),
+                ),
+              );
+            },
+            itemBuilder: (BuildContext context) => _popUpMenuItems,
           ),
         ),
       ],
