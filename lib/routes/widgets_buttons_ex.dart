@@ -11,7 +11,8 @@ class ButtonsExample extends MyRoute {
   get title => 'Buttons';
 
   @override
-  get description => 'RaisedButton, FlatButton, OutlineButton';
+  get description =>
+      'RaisedButton, FlatButton, OutlineButton, IconButton&Tooltips';
 
   @override
   get links => {
