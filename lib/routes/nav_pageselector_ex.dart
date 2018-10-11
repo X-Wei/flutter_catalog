@@ -31,7 +31,7 @@ class PageSelectorExample extends MyRoute {
       // Use a Builder here, otherwise `DefaultTabController.of(context)` below
       // returns null.
       child: Builder(
-        builder: (BuildContext text) => Padding(
+        builder: (BuildContext context) => Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: <Widget>[
