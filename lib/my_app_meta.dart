@@ -28,6 +28,7 @@ import './routes/nav_bottom_navbar_ex.dart';
 import './routes/nav_bottom_tabbar_ex.dart';
 import './routes/nav_dialogs_ex.dart';
 import './routes/nav_nav_drawer_header_ex.dart';
+import './routes/nav_pageselector_ex.dart';
 import './routes/nav_routes_ex.dart';
 import './routes/nav_tabs_ex.dart';
 import './routes/widgets_buttons_ex.dart';
@@ -128,6 +129,7 @@ const kMyAppRoutesStructure = <_ItemGroup>[
       NavDrawerExample(),
       BottomTabbarExample(),
       BottomNavigationBarExample(),
+      PageSelectorExample(),
     ],
   )
   // TODO _ItemGroup('Animation', [BackDropExample(),])
