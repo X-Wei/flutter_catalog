@@ -48,11 +48,11 @@ class MyAboutRoute extends MyRoute {
         ListTile(
           leading: Icon(Icons.code),
           title: Text('Source code on GitHub'),
-          onTap: () {},
+          onTap: () => url_launcher.launch(GITHUB_URL),
         ),
         ListTile(
           leading: Icon(Icons.open_in_new),
-          title: Text('My website'),
+          title: Text('Visite my website'),
           onTap: () => url_launcher.launch(AUTHOR_SITE),
         ),
       ],
