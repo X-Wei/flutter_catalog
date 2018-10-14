@@ -42,13 +42,12 @@ class DialogsExample extends MyRoute {
                     ),
               ).then<String>((returnVal) {
                 if (returnVal != null) {
-                  Scaffold.of(context)
-                    ..showSnackBar(
-                      SnackBar(
-                        content: Text('You clicked: $returnVal'),
-                        action: SnackBarAction(label: 'OK', onPressed: () {}),
-                      ),
-                    );
+                  Scaffold.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text('You clicked: $returnVal'),
+                      action: SnackBarAction(label: 'OK', onPressed: () {}),
+                    ),
+                  );
                 }
               });
             }),
@@ -81,13 +80,12 @@ class DialogsExample extends MyRoute {
                   ),
             ).then<String>((returnVal) {
               if (returnVal != null) {
-                Scaffold.of(context)
-                  ..showSnackBar(
-                    SnackBar(
-                      content: Text('You clicked: $returnVal'),
-                      action: SnackBarAction(label: 'OK', onPressed: () {}),
-                    ),
-                  );
+                Scaffold.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text('You clicked: $returnVal'),
+                    action: SnackBarAction(label: 'OK', onPressed: () {}),
+                  ),
+                );
               }
             });
           },
@@ -103,13 +101,12 @@ class DialogsExample extends MyRoute {
               initialTime: TimeOfDay(hour: now.hour, minute: now.minute),
             ).then<TimeOfDay>((TimeOfDay value) {
               if (value != null) {
-                Scaffold.of(context)
-                  ..showSnackBar(
-                    SnackBar(
-                      content: Text('${value.format(context)}'),
-                      action: SnackBarAction(label: 'OK', onPressed: () {}),
-                    ),
-                  );
+                Scaffold.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text('${value.format(context)}'),
+                    action: SnackBarAction(label: 'OK', onPressed: () {}),
+                  ),
+                );
               }
             });
           },
@@ -126,10 +123,9 @@ class DialogsExample extends MyRoute {
               lastDate: DateTime(2019),
             ).then<DateTime>((DateTime value) {
               if (value != null) {
-                Scaffold.of(context)
-                  ..showSnackBar(
-                    SnackBar(content: Text('Selected datetime: $value')),
-                  );
+                Scaffold.of(context).showSnackBar(
+                  SnackBar(content: Text('Selected datetime: $value')),
+                );
               }
             });
           },

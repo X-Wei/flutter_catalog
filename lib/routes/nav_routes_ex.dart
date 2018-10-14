@@ -66,16 +66,15 @@ class _PageTwo extends MaterialPageRoute<Null> {
                         Navigator.push<String>(context, _PageThree())
                           ..then<String>((returnVal) {
                             if (returnVal != null) {
-                              Scaffold.of(context)
-                                ..showSnackBar(
-                                  SnackBar(
-                                    content: Text('You clicked: $returnVal'),
-                                    action: SnackBarAction(
-                                      label: 'OK',
-                                      onPressed: () {},
-                                    ),
+                              Scaffold.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text('You clicked: $returnVal'),
+                                  action: SnackBarAction(
+                                    label: 'OK',
+                                    onPressed: () {},
                                   ),
-                                );
+                                ),
+                              );
                             }
                           });
                       },
