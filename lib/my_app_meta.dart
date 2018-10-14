@@ -45,7 +45,7 @@ import './routes/widgets_textformfield_ex.dart';
 // Metadatas about this app:
 // *Note*: when APP_VERSION is changed, remember to also update 
 // android/app/build.gradle.
-const APP_VERSION = '1.0.1';
+const APP_VERSION = '1.0.2';
 const APP_NAME = 'Flutter Catalog';
 const APP_LOGO = FlutterLogo();
 const APP_DESCRIPTION = 'An app showcasing Flutter components, with '
