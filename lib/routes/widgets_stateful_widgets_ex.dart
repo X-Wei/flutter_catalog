@@ -31,8 +31,7 @@ class _WidgetsPageState extends State<_WidgetsPage> {
   int _radioVal = 0;
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    return ListView(
       children: <Widget>[
         Text('Switch'),
         Switch(
@@ -84,7 +83,7 @@ class _WidgetsPageState extends State<_WidgetsPage> {
         LinearProgressIndicator(),
         Divider(),
         Text('CircularProgressIndicator'),
-        CircularProgressIndicator(),
+        Center(child: CircularProgressIndicator()),
         Divider(),
         Text('Radio'),
         Row(
