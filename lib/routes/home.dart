@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../my_route.dart';
-import '../my_app_meta.dart' show kMyAppRoutesStructure, MyRouteGroup;
+import '../my_app_meta.dart'
+    show kMyAppRoutesStructure, MyRouteGroup, kAboutRoute;
 
 class MyHomeRoute extends MyRoute {
   const MyHomeRoute([String sourceFile = 'lib/routes/home.dart'])
@@ -15,10 +16,18 @@ class MyHomeRoute extends MyRoute {
 
   @override
   Widget buildMyRouteContent(BuildContext context) {
-    ListTile _myRouteToListTile(MyRoute myRoute) {
+    ListTile _myRouteToListTile(MyRoute myRoute,
+        {IconData leading, IconData trialing: Icons.keyboard_arrow_right}) {
       return ListTile(
-        trailing: Icon(Icons.keyboard_arrow_right),
-        title: Text(myRoute.title),
+        leading: leading == null ? null : Icon(leading),
+        title: Text(
+          myRoute.title,
+          style: Theme.of(context)
+              .textTheme
+              .body1
+              .copyWith(fontWeight: FontWeight.bold),
+        ),
+        trailing: trialing == null ? null : Icon(trialing),
         subtitle:
             myRoute.description == null ? null : Text(myRoute.description),
         onTap: () => Navigator.of(context).pushNamed(myRoute.routeName),
@@ -39,8 +48,14 @@ class MyHomeRoute extends MyRoute {
     }
 
     return ListView(
-      children:
-          kMyAppRoutesStructure.map(_myRouteGroupToExpansionTile).toList(),
+      children: kMyAppRoutesStructure.map(_myRouteGroupToExpansionTile).toList()
+        ..add(
+          _myRouteToListTile(
+            kAboutRoute,
+            leading: Icons.info,
+            trialing: null,
+          ),
+        ),
     );
   }
 }

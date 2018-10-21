@@ -147,12 +147,14 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
   // TODO MyRouteGroup('Animation', [BackDropExample(),])
 ];
 
+const kAboutRoute = MyAboutRoute();
+
 // Returns the app's root-level routing table.
 Map<String, WidgetBuilder> getRoutingTable() {
   final routingTable = <String, WidgetBuilder>{
     // By default go to home screen. (Navigator.defaultRouteName is just '/')
     Navigator.defaultRouteName: (context) => MyHomeRoute(),
-    '/AboutRoute': (context) => MyAboutRoute(),
+    kAboutRoute.routeName: (context) => kAboutRoute,
   };
   kMyAppRoutesStructure.forEach((myRouteGroup) {
     List<MyRoute> routes = myRouteGroup.routes;
@@ -168,53 +170,26 @@ Map<String, WidgetBuilder> getRoutingTable() {
 ListView getNavDrawerItems(State state, BuildContext context) {
   final drawerHeader = DrawerHeader(
     decoration: BoxDecoration(color: Theme.of(context).primaryColor),
-    child: Center(
-      child: Text(
-        'Fultter Catalog',
-        style: Theme.of(context).textTheme.title,
-      ),
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: <Widget>[
+        CircleAvatar(
+            backgroundColor: Colors.white,
+            child: APP_LOGO,
+          ),
+        Text(
+            APP_NAME,
+            style: Theme.of(context).textTheme.title,
+          ),
+      ],
     ),
   );
 
-  ListTile _getNavItem(String navItemTitle, String routeName,
-      {IconData icon, String description}) {
-    return ListTile(
-      leading: icon == null ? null : Icon(icon),
-      title: Text(navItemTitle),
-      subtitle: description == null ? null : Text(description),
-      onTap: () {
-        state.setState(() {
-          Navigator.of(context).pop();
-          Navigator.of(context).pushNamed(routeName);
-        });
-      },
-    );
-  }
-
-  ExpansionTile _getNavGroup(String groupName, List<MyRoute> routes) {
-    return ExpansionTile(
-      key: PageStorageKey<String>(groupName),
-      title: Text(groupName),
-      children: routes
-          .map((route) => _getNavItem(route.title, route.routeName,
-              description: route.description))
-          .toList(),
-    );
-  }
-
   List<Widget> drawerNavItems = [
     drawerHeader,
-    _getNavItem('Home', Navigator.defaultRouteName, icon: Icons.home),
-  ];
-  kMyAppRoutesStructure.forEach((myRouteGroup) {
-    drawerNavItems
-        .add(_getNavGroup(myRouteGroup.groupName, myRouteGroup.routes));
-  });
-  drawerNavItems.add(
-    _getNavItem('About', '/AboutRoute', icon: Icons.info),
-  );
-
+  ]..addAll(kAboutRoute.aboutListTiles(context));
   return ListView(
     children: drawerNavItems,
   );
+  // return kAboutRoute.buildMyRouteContent(context);
 }

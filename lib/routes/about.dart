@@ -16,46 +16,51 @@ class MyAboutRoute extends MyRoute {
   get links =>
       {'Doc': 'https://docs.flutter.io/flutter/material/showAboutDialog.html'};
 
+  // These tiles are also used as drawer nav items in home route.
+  List<Widget> aboutListTiles(BuildContext context) {
+    return <Widget>[
+      ListTile(
+        title: Text(APP_DESCRIPTION),
+      ),
+      Divider(),
+      ListTile(
+        leading: Icon(Icons.shop),
+        title: Text('Rate on Google Play'),
+        onTap: () => url_launcher.launch(GOOGLEPLAY_URL),
+      ),
+      ListTile(
+        leading: Icon(Icons.code),
+        title: Text('Source code on GitHub'),
+        onTap: () => url_launcher.launch(GITHUB_URL),
+      ),
+      ListTile(
+        leading: Icon(Icons.open_in_new),
+        title: Text('Visite my website'),
+        onTap: () => url_launcher.launch(AUTHOR_SITE),
+      ),
+    ];
+  }
+
   @override
   Widget buildMyRouteContent(BuildContext context) {
+    final header = ListTile(
+      leading: APP_LOGO,
+      title: Text(APP_NAME),
+      subtitle: Text(APP_VERSION),
+      trailing: IconButton(
+        icon: Icon(Icons.info),
+        onPressed: () {
+          showAboutDialog(
+              context: context,
+              applicationName: APP_NAME,
+              applicationVersion: APP_VERSION,
+              applicationIcon: APP_LOGO,
+              children: <Widget>[Text(APP_DESCRIPTION)]);
+        },
+      ),
+    );
     return ListView(
-      children: <Widget>[
-        ListTile(
-          leading: APP_LOGO,
-          title: Text(APP_NAME),
-          subtitle: Text(APP_VERSION),
-          trailing: IconButton(
-            icon: Icon(Icons.info),
-            onPressed: () {
-              showAboutDialog(
-                  context: context,
-                  applicationName: APP_NAME,
-                  applicationVersion: APP_VERSION,
-                  applicationIcon: APP_LOGO,
-                  children: <Widget>[Text(APP_DESCRIPTION)]);
-            },
-          ),
-        ),
-        ListTile(
-          title: Text(APP_DESCRIPTION),
-        ),
-        Divider(),
-        ListTile(
-          leading: Icon(Icons.shop),
-          title: Text('Rate on Google Play'),
-          onTap: () => url_launcher.launch(GOOGLEPLAY_URL),
-        ),
-        ListTile(
-          leading: Icon(Icons.code),
-          title: Text('Source code on GitHub'),
-          onTap: () => url_launcher.launch(GITHUB_URL),
-        ),
-        ListTile(
-          leading: Icon(Icons.open_in_new),
-          title: Text('Visite my website'),
-          onTap: () => url_launcher.launch(AUTHOR_SITE),
-        ),
-      ],
+      children: <Widget>[header]..addAll(aboutListTiles(context)),
     );
   }
 }
