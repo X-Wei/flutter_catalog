@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../my_route.dart';
+import '../my_app_meta.dart' show kMyAppRoutesStructure, MyRouteGroup;
 
 class MyHomeRoute extends MyRoute {
   const MyHomeRoute([String sourceFile = 'lib/routes/home.dart'])
@@ -14,75 +15,32 @@ class MyHomeRoute extends MyRoute {
 
   @override
   Widget buildMyRouteContent(BuildContext context) {
-    // TODO: populate listview from kMyAppRoutesStructure.
+    ListTile _myRouteToListTile(MyRoute myRoute) {
+      return ListTile(
+        trailing: Icon(Icons.keyboard_arrow_right),
+        title: Text(myRoute.title),
+        subtitle:
+            myRoute.description == null ? null : Text(myRoute.description),
+        onTap: () => Navigator.of(context).pushNamed(myRoute.routeName),
+      );
+    }
+
+    Widget _myRouteGroupToExpansionTile(MyRouteGroup myRouteGroup) {
+      return Card(
+        child: ExpansionTile(
+          leading: myRouteGroup.icon,
+          title: Text(
+            myRouteGroup.groupName,
+            style: Theme.of(context).textTheme.title,
+          ),
+          children: myRouteGroup.routes.map(_myRouteToListTile).toList(),
+        ),
+      );
+    }
+
     return ListView(
-      children: <Widget>[
-        Card(
-          child: ExpansionTile(
-            leading: Icon(Icons.widgets),
-            title: Text(
-              'Widgets',
-              style: Theme.of(context).textTheme.title,
-            ),
-            children: <Widget>[
-              ListTile(
-                trailing: Icon(Icons.keyboard_arrow_right),
-                title: Text('IconExample'),
-                onTap: () => Navigator.of(context).pushNamed('/IconExample'),
-              ),
-              ListTile(
-                trailing: Icon(Icons.keyboard_arrow_right),
-                title: Text('TextExample'),
-                onTap: () => Navigator.of(context).pushNamed('/TextExample'),
-              ),
-            ],
-          ),
-        ),
-        Card(
-          child: ExpansionTile(
-            leading: Icon(Icons.layers),
-            title: Text(
-              'Layout',
-              style: Theme.of(context).textTheme.title,
-            ),
-          ),
-        ),
-        Card(
-          child: ExpansionTile(
-            leading: Icon(Icons.list),
-            title: Text(
-              'Lists',
-              style: Theme.of(context).textTheme.title,
-            ),
-          ),
-        ),
-        Card(
-          child: ExpansionTile(
-            leading: Icon(Icons.menu),
-            title: Text(
-              'AppBar',
-              style: Theme.of(context).textTheme.title,
-            ),
-            children: <Widget>[
-              ListTile(
-                trailing: Icon(Icons.keyboard_arrow_right),
-                title: Text('SliverAppBarExample'),
-                onTap: () =>
-                    Navigator.of(context).pushNamed('/SliverAppBarExample'),
-              ),
-            ],
-          ),
-        ),
-        Card(
-          child: ExpansionTile(
-            leading: Icon(Icons.view_carousel),
-            title: Text(
-              'Navigation',
-              style: Theme.of(context).textTheme.title,
-            ),
-          ),
-        ),
-      ],
+      children:
+          kMyAppRoutesStructure.map(_myRouteGroupToExpansionTile).toList(),
     );
   }
 }

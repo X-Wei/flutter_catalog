@@ -2,7 +2,6 @@
 // List<Tuple2> object. And it provides fuctions to get app's routing table or
 // app's navigation drawer menu items from the declared metadata.
 import 'package:flutter/material.dart';
-import 'package:tuple/tuple.dart';
 
 import './my_route.dart';
 import './routes/about.dart';
@@ -43,7 +42,7 @@ import './routes/widgets_textfield_ex.dart';
 import './routes/widgets_textformfield_ex.dart';
 
 // Metadatas about this app:
-// *Note*: when APP_VERSION is changed, remember to also update 
+// *Note*: when APP_VERSION is changed, remember to also update
 // android/app/build.gradle.
 const APP_VERSION = '1.0.2';
 const APP_NAME = 'Flutter Catalog';
@@ -58,27 +57,31 @@ const AUTHOR_SITE = 'http://x-wei.github.io';
 
 // The structure of app's navigation drawer items is a 2-level menu, its schema
 // is the following:
-// [ Tuple{group1_name,
-//        [route1, route2, ...]
+// [ MyRouteGroup{
+//        groupName: group1_name,
+//        icon: group1_icon,
+//        routes: [route1, route2, ...]
 //   },
-//   Tuple{group2_name,
-//        [route1, route2, ...]
+//   MyRouteGroup{
+//        groupName: group2_name,
+//        icon: group2_icon,
+//        routes: [route1, route2, ...]
 //   },
 //   ...
 // ]
-
-// *Note*: To make the declaration more readable, we want to use type alias. But
-// dart doesn't yet support type alias
-// (https://github.com/dart-lang/sdk/issues/2626). As a workaround, we create
-// _ItemGroup class that extends the Tupel2<xxx> class.
-class _ItemGroup extends Tuple2<String, List<MyRoute>> {
-  const _ItemGroup(String item1, List<MyRoute> item2) : super(item1, item2);
+class MyRouteGroup {
+  const MyRouteGroup(
+      {@required this.groupName, @required this.icon, @required this.routes});
+  final String groupName;
+  final Widget icon;
+  final List<MyRoute> routes;
 }
 
-const kMyAppRoutesStructure = <_ItemGroup>[
-  _ItemGroup(
-    'Widgets',
-    <MyRoute>[
+const kMyAppRoutesStructure = <MyRouteGroup>[
+  MyRouteGroup(
+    groupName: 'Widgets',
+    icon: Icon(Icons.widgets),
+    routes: <MyRoute>[
       IconExample(),
       TextExample(),
       TextFieldExample(),
@@ -90,9 +93,10 @@ const kMyAppRoutesStructure = <_ItemGroup>[
       StatefulWidgetsExample(),
     ],
   ),
-  _ItemGroup(
-    'Layouts',
-    <MyRoute>[
+  MyRouteGroup(
+    groupName: 'Layouts',
+    icon: Icon(Icons.dashboard),
+    routes: <MyRoute>[
       ContainerBasicsExample(),
       RowColExample(),
       WrapExample(),
@@ -101,9 +105,10 @@ const kMyAppRoutesStructure = <_ItemGroup>[
       OpacityExample(),
     ],
   ),
-  _ItemGroup(
-    'Lists',
-    <MyRoute>[
+  MyRouteGroup(
+    groupName: 'Lists',
+    icon: Icon(Icons.format_list_numbered),
+    routes: <MyRoute>[
       ListTileExample(),
       ListViewBuilderExample(),
       GridListExample(),
@@ -113,18 +118,23 @@ const kMyAppRoutesStructure = <_ItemGroup>[
       DataTableExample(),
     ],
   ),
-  _ItemGroup(
-    'Appbar',
-    <MyRoute>[
+  MyRouteGroup(
+    groupName: 'Appbar',
+    icon: RotatedBox(
+      child: Icon(Icons.video_label),
+      quarterTurns: 2,
+    ),
+    routes: <MyRoute>[
       BasicAppbarExample(),
       BottomAppbarExample(),
       SliverAppBarExample(),
       AppbarSearchExample(),
     ],
   ),
-  _ItemGroup(
-    'Navigation',
-    <MyRoute>[
+  MyRouteGroup(
+    groupName: 'Navigation',
+    icon: Icon(Icons.view_carousel),
+    routes: <MyRoute>[
       TabsExample(),
       DialogsExample(),
       RoutesExample(),
@@ -133,8 +143,8 @@ const kMyAppRoutesStructure = <_ItemGroup>[
       BottomNavigationBarExample(),
       PageSelectorExample(),
     ],
-  )
-  // TODO _ItemGroup('Animation', [BackDropExample(),])
+  ),
+  // TODO MyRouteGroup('Animation', [BackDropExample(),])
 ];
 
 // Returns the app's root-level routing table.
@@ -144,8 +154,8 @@ Map<String, WidgetBuilder> getRoutingTable() {
     Navigator.defaultRouteName: (context) => MyHomeRoute(),
     '/AboutRoute': (context) => MyAboutRoute(),
   };
-  kMyAppRoutesStructure.forEach((itemGroup) {
-    List<MyRoute> routes = itemGroup.item2;
+  kMyAppRoutesStructure.forEach((myRouteGroup) {
+    List<MyRoute> routes = myRouteGroup.routes;
     routes.forEach((MyRoute route) {
       final widgetBuilder = (BuildContext context) => route;
       routingTable[route.routeName] = widgetBuilder;
@@ -196,8 +206,9 @@ ListView getNavDrawerItems(State state, BuildContext context) {
     drawerHeader,
     _getNavItem('Home', Navigator.defaultRouteName, icon: Icons.home),
   ];
-  kMyAppRoutesStructure.forEach((nameAndRoutes) {
-    drawerNavItems.add(_getNavGroup(nameAndRoutes.item1, nameAndRoutes.item2));
+  kMyAppRoutesStructure.forEach((myRouteGroup) {
+    drawerNavItems
+        .add(_getNavGroup(myRouteGroup.groupName, myRouteGroup.routes));
   });
   drawerNavItems.add(
     _getNavItem('About', '/AboutRoute', icon: Icons.info),
