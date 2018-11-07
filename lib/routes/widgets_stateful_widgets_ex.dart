@@ -34,16 +34,20 @@ class _WidgetsPageState extends State<_WidgetsPage> {
     return ListView(
       children: <Widget>[
         Text('Switch'),
-        Switch(
-          onChanged: (bool value) {
-            setState(() => this._switchVal = value);
-          },
-          value: this._switchVal,
+        Center(
+          child: Switch(
+            onChanged: (bool value) {
+              setState(() => this._switchVal = value);
+            },
+            value: this._switchVal,
+          ),
         ),
         Text('Disabled Switch'),
-        Switch(
-          onChanged: null,
-          value: false,
+        Center(
+          child: Switch(
+            onChanged: null,
+            value: false,
+          ),
         ),
         Divider(),
         Text('Checkbox'),
