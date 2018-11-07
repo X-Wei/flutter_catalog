@@ -72,7 +72,7 @@ class _RowColumnPageState extends State<_RowColumnPage> {
   Widget _getBottomBar() {
     return Material(
       color: Theme.of(context).primaryColorLight,
-          child: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
+      child: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
         Row(
           children: <Widget>[
             Row(
@@ -111,8 +111,8 @@ class _RowColumnPageState extends State<_RowColumnPage> {
             items: MainAxisSize.values
                 .map((MainAxisSize val) => DropdownMenuItem(
                       value: val,
-                      child:
-                          Text(val.toString().substring('MainAxisSize.'.length)),
+                      child: Text(
+                          val.toString().substring('MainAxisSize.'.length)),
                     ))
                 .toList(),
           ),
@@ -129,8 +129,9 @@ class _RowColumnPageState extends State<_RowColumnPage> {
             items: MainAxisAlignment.values
                 .map((MainAxisAlignment val) => DropdownMenuItem(
                       value: val,
-                      child: Text(
-                          val.toString().substring('MainAxisAlignment.'.length)),
+                      child: Text(val
+                          .toString()
+                          .substring('MainAxisAlignment.'.length)),
                     ))
                 .toList(),
           ),
@@ -147,8 +148,9 @@ class _RowColumnPageState extends State<_RowColumnPage> {
             items: CrossAxisAlignment.values
                 .map((CrossAxisAlignment val) => DropdownMenuItem(
                       value: val,
-                      child: Text(
-                          val.toString().substring('CrossAxisAlignment.'.length)),
+                      child: Text(val
+                          .toString()
+                          .substring('CrossAxisAlignment.'.length)),
                     ))
                 .toList(),
           ),

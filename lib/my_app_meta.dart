@@ -174,13 +174,13 @@ ListView getNavDrawerItems(State state, BuildContext context) {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
         CircleAvatar(
-            backgroundColor: Colors.white,
-            child: APP_LOGO,
-          ),
+          backgroundColor: Colors.white,
+          child: APP_LOGO,
+        ),
         Text(
-            APP_NAME,
-            style: Theme.of(context).textTheme.title,
-          ),
+          APP_NAME,
+          style: Theme.of(context).textTheme.title,
+        ),
       ],
     ),
   );

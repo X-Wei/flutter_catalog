@@ -50,14 +50,15 @@ class MyHomeRoute extends MyRoute {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: ListView(
-        children: kMyAppRoutesStructure.map(_myRouteGroupToExpansionTile).toList()
-          ..add(
-            _myRouteToListTile(
-              kAboutRoute,
-              leading: Icons.info,
-              trialing: null,
-            ),
-          ),
+        children:
+            kMyAppRoutesStructure.map(_myRouteGroupToExpansionTile).toList()
+              ..add(
+                _myRouteToListTile(
+                  kAboutRoute,
+                  leading: Icons.info,
+                  trialing: null,
+                ),
+              ),
       ),
     );
   }
