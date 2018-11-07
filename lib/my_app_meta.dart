@@ -44,9 +44,9 @@ import './routes/widgets_textformfield_ex.dart';
 // Metadatas about this app:
 // *Note*: when APP_VERSION is changed, remember to also update
 // android/app/build.gradle.
-const APP_VERSION = '1.0.2';
+const APP_VERSION = 'v1.1.0';
 const APP_NAME = 'Flutter Catalog';
-const APP_LOGO = FlutterLogo();
+const APP_LOGO = FlutterLogo(size: 32.0);
 const APP_DESCRIPTION = 'An app showcasing Flutter components, with '
     'side-by-side source code view.'
     '\n\nDevelopped by X.Wei.';
@@ -180,6 +180,10 @@ ListView getNavDrawerItems(State state, BuildContext context) {
         Text(
           APP_NAME,
           style: Theme.of(context).textTheme.title,
+        ),
+        Text(
+          '$APP_VERSION',
+          style: Theme.of(context).textTheme.caption,
         ),
       ],
     ),

@@ -7,12 +7,12 @@ An app showcasing Flutter components, with side-by-side source code view.
 
 ## Screenshots
 
-<img src="screenshots/Screenshot_1533458321.png" width="240px" />
-<img src="screenshots/Screenshot_1533458310.png" width="240px" />
-<img src="screenshots/Screenshot_1533458312.png" width="240px" />
-<img src="screenshots/Screenshot_1533458314.png" width="240px" />
+<img src="screenshots/Screenshot_1541613099.png" width="240px" />
+<img src="screenshots/Screenshot_1541613187.png" width="240px" />
+<img src="screenshots/Screenshot_1541613193.png" width="240px" />
+<img src="screenshots/Screenshot_1541613197.png" width="240px" />
 
-## Adding a new example page
+## How to contribute by adding a new example page
 
 1. Create a dart file under `lib/route/` (or just duplicate a file, e.g. `cp widgets_icon_ex.dart new_example.dart`);
 2. In the new file, create a class that extends MyRoute;
