@@ -28,10 +28,10 @@ class ImageExample extends MyRoute {
           title: Text('Image from url:'),
         ),
         Card(
-          // FadeInImage is better than Image.network because it can show a 
-          // placeholder when image is loading. C.f. 
-          // https://flutter.io/docs/cookbook/images/fading-in-images
-          child: FadeInImage.memoryNetwork(
+            // FadeInImage is better than Image.network because it can show a
+            // placeholder when image is loading. C.f.
+            // https://flutter.io/docs/cookbook/images/fading-in-images
+            child: FadeInImage.memoryNetwork(
           placeholder: kTransparentImage,
           image:
               'https://images.freeimages.com/images/large-previews/4ad/coloured-pencils-1427682.jpg',
