@@ -35,21 +35,19 @@ class _DataTableDemoState extends State<_DataTableDemo> {
   int _rowsPerPage = PaginatedDataTable.defaultRowsPerPage;
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: <Widget>[
-        PaginatedDataTable(
-          header: Text('Nutrition'),
-          rowsPerPage: _rowsPerPage,
-          availableRowsPerPage: <int>[5, 10, 20],
-          onRowsPerPageChanged: (int value) {
-            setState(() {
-              _rowsPerPage = value;
-            });
-          },
-          columns: kTableColumns,
-          source: DessertDataSource(),
-        ),
-      ],
+    return SingleChildScrollView(
+      child: PaginatedDataTable(
+        header: Text('Nutrition'),
+        rowsPerPage: _rowsPerPage,
+        availableRowsPerPage: <int>[5, 10, 20],
+        onRowsPerPageChanged: (int value) {
+          setState(() {
+            _rowsPerPage = value;
+          });
+        },
+        columns: kTableColumns,
+        source: DessertDataSource(),
+      ),
     );
   }
 }
