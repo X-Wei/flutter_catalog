@@ -49,7 +49,7 @@ class _LoginPageState extends State<LoginPage> {
     );
     final anonymousLoginBtn = MaterialButton(
       color: Colors.deepOrange,
-      child: Text('log in anonymously'),
+      child: Text('Log in anonymously'),
       onPressed: () {
         this._anonymousSignIn()
           ..then(this._showUserProfilePage)
