@@ -7,7 +7,7 @@ description: An app showcasing Flutter components, with side-by-side source code
 # Both the version and the builder number may be overridden in flutter
 # build by specifying --build-name and --build-number, respectively.
 # Read more about versioning at semver.org.
-version: 1.1.1+6
+version: 1.2.0+7
 
 dependencies:
   flutter:
