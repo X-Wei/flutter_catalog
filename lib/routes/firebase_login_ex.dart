@@ -84,6 +84,7 @@ class _LoginPageState extends State<LoginPage> {
       accessToken: googleAuth.accessToken,
       idToken: googleAuth.idToken,
     );
+    kFirebaseAnalytics.logLogin();
     // Note: user.providerData[0].photoUrl == googleUser.photoUrl.
     return user;
   }
@@ -103,6 +104,7 @@ class _LoginPageState extends State<LoginPage> {
     await anonyUser.updateProfile(userInfo);
     await anonyUser.reload();
     final user = await kFirebaseAuth.currentUser();
+    kFirebaseAnalytics.logLogin();
     return user;
   }
 

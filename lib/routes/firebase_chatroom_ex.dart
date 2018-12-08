@@ -6,7 +6,6 @@ import 'dart:async';
 import './firebase_constants.dart';
 import '../my_route.dart';
 
-
 // NOTE: to add firebase support, first go to firebase console, generate the
 // firebase json file, and add configuration lines in the gradle files.
 // C.f. this commit: https://github.com/X-Wei/flutter_catalog/commit/48792cbc0de62fc47e0e9ba2cd3718117f4d73d1.
@@ -212,5 +211,6 @@ class _ChatPageState extends State<ChatPage> {
       'text': text,
       'timestamp': DateTime.now().millisecondsSinceEpoch,
     });
+    kFirebaseAnalytics.logEvent(name: 'send_message');
   }
 }
