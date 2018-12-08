@@ -2,13 +2,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'dart:async';
 import './firebase_constants.dart';
 import '../my_route.dart';
 
-final kFirebaseAuth = FirebaseAuth.instance;
-final kGoogleSignIn = GoogleSignIn();
 
 // NOTE: to add firebase support, first go to firebase console, generate the
 // firebase json file, and add configuration lines in the gradle files.
