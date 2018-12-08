@@ -11,6 +11,7 @@ import './routes/appbar_basic_appbar_ex.dart';
 import './routes/appbar_bottom_appbar_ex.dart';
 import './routes/appbar_search_ex.dart';
 import './routes/appbar_sliver_appbar_ex.dart';
+import './routes/firebase_login_ex.dart';
 import './routes/layouts_container_padding_center_ex.dart';
 import './routes/layouts_expanded_ex.dart';
 import './routes/layouts_opacity_ex.dart';
@@ -141,6 +142,14 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
       BottomTabbarExample(),
       BottomNavigationBarExample(),
       PageSelectorExample(),
+    ],
+  ),
+
+  MyRouteGroup(
+    groupName: 'Firebase',
+    icon: Icon(Icons.cloud),
+    routes: <MyRoute>[
+      FirebaseLoginExample(),
     ],
   ),
   // TODO MyRouteGroup('Animation', [BackDropExample(),])
