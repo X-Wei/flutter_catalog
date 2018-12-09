@@ -4,7 +4,6 @@ import 'dart:async';
 import './firebase_constants.dart';
 import '../my_route.dart';
 
-
 // NOTE: to add firebase support, first go to firebase console, generate the
 // firebase json file, and add configuration lines in the gradle files.
 // C.f. this commit: https://github.com/X-Wei/flutter_catalog/commit/48792cbc0de62fc47e0e9ba2cd3718117f4d73d1.
@@ -36,8 +35,26 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  FirebaseUser _user;
+
+  @override
+  void initState() {
+    super.initState();
+    kFirebaseAuth.currentUser().then(
+          (user) => setState(() {
+                this._user = user;
+              }),
+        );
+  }
+
   @override
   Widget build(BuildContext context) {
+    final statusText = Padding(
+      padding: EdgeInsets.symmetric(vertical: 10.0),
+      child: Text(_user == null
+          ? 'You are not logged in.'
+          : 'You are logged in as "${_user.displayName}".'),
+    );
     final googleLoginBtn = MaterialButton(
       color: Colors.blueAccent,
       child: Text('Log in with Google'),
@@ -64,6 +81,7 @@ class _LoginPageState extends State<LoginPage> {
       child: ListView(
         padding: EdgeInsets.symmetric(vertical: 100.0, horizontal: 50.0),
         children: <Widget>[
+          statusText,
           googleLoginBtn,
           anonymousLoginBtn,
           signOutBtn,
@@ -74,24 +92,25 @@ class _LoginPageState extends State<LoginPage> {
 
   // Sign in with Google.
   Future<FirebaseUser> _googleSignIn() async {
-    final curUser = await kFirebaseAuth.currentUser();
+    final curUser = this._user ?? await kFirebaseAuth.currentUser();
     if (curUser != null && !curUser.isAnonymous) {
       return curUser;
     }
     final googleUser = await kGoogleSignIn.signIn();
     final googleAuth = await googleUser.authentication;
+    // Note: user.providerData[0].photoUrl == googleUser.photoUrl.
     final user = await kFirebaseAuth.signInWithGoogle(
       accessToken: googleAuth.accessToken,
       idToken: googleAuth.idToken,
     );
     kFirebaseAnalytics.logLogin();
-    // Note: user.providerData[0].photoUrl == googleUser.photoUrl.
+    setState(() => this._user = user);
     return user;
   }
 
   // Sign in Anonymously.
   Future<FirebaseUser> _anonymousSignIn() async {
-    final curUser = await kFirebaseAuth.currentUser();
+    final curUser = this._user ?? await kFirebaseAuth.currentUser();
     if (curUser != null && curUser.isAnonymous) {
       return curUser;
     }
@@ -105,6 +124,7 @@ class _LoginPageState extends State<LoginPage> {
     await anonyUser.reload();
     final user = await kFirebaseAuth.currentUser();
     kFirebaseAnalytics.logLogin();
+    setState(() => this._user = user);
     return user;
   }
 
@@ -118,6 +138,7 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
     kFirebaseAuth.signOut();
+    setState(() => this._user = null);
   }
 
   // Show user's profile in a new screen.
