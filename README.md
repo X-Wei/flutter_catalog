@@ -7,7 +7,7 @@ An app showcasing Flutter components, with side-by-side source code view.
 
 ## Screenshots
 
-<img src="screenshots/Screenshot_1541613099.png" width="240px" />
+<img src="screenshots/Screenshot_1544389051.png" width="240px" />
 <img src="screenshots/Screenshot_1541613187.png" width="240px" />
 <img src="screenshots/Screenshot_1541613193.png" width="240px" />
 <img src="screenshots/Screenshot_1541613197.png" width="240px" />
