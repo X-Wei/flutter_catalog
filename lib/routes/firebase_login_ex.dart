@@ -118,10 +118,10 @@ class _LoginPageState extends State<LoginPage> {
     final anonyUser = await kFirebaseAuth.signInAnonymously(); // final
     final userInfo = UserUpdateInfo();
     userInfo.displayName = '${anonyUser.uid.substring(0, 5)}_Guest';
-    // Have to re-call kFirebaseAuth.currentUser() to make `updateProfile` work.
-    // C.f. https://stackoverflow.com/questions/50986191/flutter-firebase-auth-updateprofile-method-is-not-working.
     await anonyUser.updateProfile(userInfo);
     await anonyUser.reload();
+    // Have to re-call kFirebaseAuth.currentUser() to make `updateProfile` work.
+    // C.f. https://stackoverflow.com/questions/50986191/flutter-firebase-auth-updateprofile-method-is-not-working.
     final user = await kFirebaseAuth.currentUser();
     kFirebaseAnalytics.logLogin();
     setState(() => this._user = user);

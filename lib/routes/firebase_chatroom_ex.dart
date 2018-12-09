@@ -45,6 +45,16 @@ class _ChatPageState extends State<ChatPage> {
   bool _isComposing = false;
 
   @override
+  void initState() {
+    super.initState();
+    kFirebaseAuth.currentUser().then(
+          (user) => setState(() {
+                this._user = user;
+              }),
+        );
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomPadding: false,
@@ -59,7 +69,9 @@ class _ChatPageState extends State<ChatPage> {
                       content: Text(
                           'This chat room is only for demo purpose.\n\n'
                           'The chat messages are publicly available, and they '
-                          'can be deleted at any time by the firebase admin.'),
+                          'can be deleted at any time by the firebase admin.\n\n'
+                          'You must log in (in the "Firebase login" demo) to '
+                          'send messages.'),
                       actions: <Widget>[
                         FlatButton(
                           child: Text('OK'),
@@ -69,7 +81,8 @@ class _ChatPageState extends State<ChatPage> {
                     ),
               ),
         ),
-        title: Text('Chat room'),
+        title: Text(
+            _user == null ? 'Chatting' : 'Chatting as "${_user.displayName}"'),
       ),
       body: Center(
         child: Column(
@@ -86,14 +99,16 @@ class _ChatPageState extends State<ChatPage> {
   // Builds the list of chat messages.
   Widget _buildMessagesList() {
     return Flexible(
-      child: FirebaseAnimatedList(
-        query: _firebaseMsgDbRef,
-        sort: (a, b) => b.key.compareTo(a.key),
-        padding: EdgeInsets.all(8.0),
-        reverse: true,
-        itemBuilder: (BuildContext ctx, DataSnapshot snapshot,
-                Animation<double> animation, int idx) =>
-            _messageFromSnapshot(snapshot, animation),
+      child: Scrollbar(
+        child: FirebaseAnimatedList(
+          query: _firebaseMsgDbRef,
+          sort: (a, b) => b.key.compareTo(a.key),
+          padding: EdgeInsets.all(8.0),
+          reverse: true,
+          itemBuilder: (BuildContext ctx, DataSnapshot snapshot,
+                  Animation<double> animation, int idx) =>
+              _messageFromSnapshot(snapshot, animation),
+        ),
       ),
     );
   }
@@ -187,7 +202,7 @@ class _ChatPageState extends State<ChatPage> {
               title: Text('Login required'),
               content: Text('To send messages you need to first log in.\n\n'
                   'Go to the "Firebase login" example, and log in from there. '
-                  'Then you will then be able to send messages.'),
+                  'You will then be able to send messages.'),
               actions: <Widget>[
                 FlatButton(
                   child: Text('OK'),
