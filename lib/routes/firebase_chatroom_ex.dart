@@ -81,8 +81,12 @@ class _ChatPageState extends State<ChatPage> {
                     ),
               ),
         ),
-        title: Text(
-            _user == null ? 'Chatting' : 'Chatting as "${_user.displayName}"'),
+        title: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Text(_user == null
+              ? 'Chatting'
+              : 'Chatting as "${_user.displayName}"'),
+        ),
       ),
       body: Center(
         child: Column(
@@ -116,13 +120,14 @@ class _ChatPageState extends State<ChatPage> {
   // Returns the UI of one message from a data snapshot.
   Widget _messageFromSnapshot(
       DataSnapshot snapshot, Animation<double> animation) {
-    final String senderName = snapshot.value['senderName'];
-    final String msgText = snapshot.value['text'];
-    final sentTime = snapshot.value['timestamp'];
+    final String senderName = snapshot.value['senderName'] ?? '?? <unknown>';
+    final String msgText = snapshot.value['text'] ?? '??';
+    final sentTime = snapshot.value['timestamp'] ?? '<unknown timestamp>';
     final String senderPhotoUrl = snapshot.value['senderPhotoUrl'];
     final messageUI = Padding(
       padding: EdgeInsets.symmetric(vertical: 10.0),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Padding(
             padding: EdgeInsets.only(right: 8.0),
@@ -170,7 +175,8 @@ class _ChatPageState extends State<ChatPage> {
           Flexible(
             child: TextField(
               keyboardType: TextInputType.multiline,
-              maxLines: 3,
+              maxLines: 2,
+              maxLength: 200,
               decoration: InputDecoration.collapsed(hintText: "Send a message"),
               controller: _textController,
               onChanged: (String text) =>
