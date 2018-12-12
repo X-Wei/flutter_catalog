@@ -44,6 +44,9 @@ android {
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        // Add this line to resolve "unable to merge dex" error, c.f. 
+        // https://github.com/flutter/flutter/issues/14874.
+        multiDexEnabled true
     }
 
     signingConfigs {
