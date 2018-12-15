@@ -36,6 +36,7 @@ import './routes/nav_pageselector_ex.dart';
 import './routes/nav_routes_ex.dart';
 import './routes/nav_tabs_ex.dart';
 import './routes/persistence_file_rw_ex.dart';
+import './routes/persistence_preference_ex.dart';
 import './routes/widgets_buttons_ex.dart';
 import './routes/widgets_card_ex.dart';
 import './routes/widgets_dropdown_button_ex.dart';
@@ -152,6 +153,7 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
       groupName: 'Persistence',
       icon: Icon(Icons.save),
       routes: <MyRoute>[
+        SharedPreferenceExample(),
         FileReadWriteExample(),
       ]),
   MyRouteGroup(
