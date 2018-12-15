@@ -38,7 +38,8 @@ class ChatPage extends StatefulWidget {
 }
 
 class _ChatPageState extends State<ChatPage> {
-  static final _firebaseMsgDbRef = kFirebaseDbRef.child('messages');
+  final _firebaseMsgDbRef = kFirebaseDbRef
+      .child('messages/${DateTime.now().year}-${DateTime.now().month}');
 
   FirebaseUser _user;
   final TextEditingController _textController = TextEditingController();
@@ -171,11 +172,14 @@ class _ChatPageState extends State<ChatPage> {
       margin: EdgeInsets.symmetric(horizontal: 4.0),
       decoration: BoxDecoration(color: Theme.of(context).cardColor),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.end,
         children: <Widget>[
           Flexible(
             child: TextField(
               keyboardType: TextInputType.multiline,
-              maxLines: 2,
+              // Setting maxLines=null makes the text field auto-expand when one
+              // line is filled up.
+              maxLines: null,
               maxLength: 200,
               decoration: InputDecoration.collapsed(hintText: "Send a message"),
               controller: _textController,
