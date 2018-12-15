@@ -59,6 +59,10 @@ android {
     }
     buildTypes {
         release {
+            // Add multidex-config.pro and this line to void multidex problem
+            // for API version <21. 
+            // C.f. https://developer.android.com/studio/build/multidex#keep.
+            multiDexKeepProguard file('multidex-config.pro')
             signingConfig signingConfigs.release
         }
     }
@@ -69,6 +73,7 @@ flutter {
 }
 
 dependencies {
+    implementation 'com.android.support:multidex:1.0.3'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
