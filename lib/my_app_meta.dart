@@ -8,6 +8,7 @@ import './routes/about.dart';
 import './routes/home.dart';
 
 import './routes/animation_hero_ex.dart';
+import './routes/animation_opacity_ex.dart';
 import './routes/appbar_basic_appbar_ex.dart';
 import './routes/appbar_bottom_appbar_ex.dart';
 import './routes/appbar_search_ex.dart';
@@ -17,7 +18,6 @@ import './routes/firebase_login_ex.dart';
 import './routes/firebase_vote_ex.dart';
 import './routes/layouts_container_padding_center_ex.dart';
 import './routes/layouts_expanded_ex.dart';
-import './routes/layouts_opacity_ex.dart';
 import './routes/layouts_row_col_ex.dart';
 import './routes/layouts_stack_ex.dart';
 import './routes/layouts_wrap_ex.dart';
@@ -108,7 +108,6 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
       ExpandedExample(),
       StackExample(),
       // TODO TableExample(),
-      OpacityExample(),
     ],
   ),
   MyRouteGroup(
@@ -161,6 +160,7 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
       groupName: 'Animation',
       icon: Icon(Icons.movie_filter),
       routes: <MyRoute>[
+        OpacityExample(),
         HeroExample(),
         // TODO BackDropExample(),
       ]),
