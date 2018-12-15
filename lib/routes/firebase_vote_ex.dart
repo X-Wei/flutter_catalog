@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../my_route.dart';
 
 // NOTE: to add firebase support, first go to firebase console, generate the
@@ -37,6 +38,19 @@ class VotePage extends StatefulWidget {
 }
 
 class _VotePageState extends State<VotePage> {
+  // We use SharedPreferences to keep track of which languages are voted.
+  SharedPreferences _preferences;
+  static const kVotedPreferenceKeyPrefx = 'AlreadyVotedFor_';
+
+  @override
+  void initState() {
+    super.initState();
+    SharedPreferences.getInstance()
+      ..then((prefs) {
+        setState(() => this._preferences = prefs);
+      });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -58,9 +72,19 @@ class _VotePageState extends State<VotePage> {
     );
   }
 
+  // Returns whether you already voted for lang.
+  bool _isVoted(String lang) {
+    return this._preferences.getBool('$kVotedPreferenceKeyPrefx$lang') ?? false;
+  }
+
+  // Mark a language as voted or not-voted.
+  Future<Null> _markVotedStatus(String lang, bool voted) async {
+    this._preferences.setBool('$kVotedPreferenceKeyPrefx$lang', voted);
+  }
+
   // Build one list item given a data snapshot.
   Widget _buildListItem(BuildContext context, DocumentSnapshot data) {
-    final record = Record.fromSnapshot(data);
+    final record = _LangaugeVotingRecord.fromSnapshot(data);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
       child: Container(
@@ -69,13 +93,18 @@ class _VotePageState extends State<VotePage> {
           borderRadius: BorderRadius.circular(5.0),
         ),
         child: ListTile(
-          title: Text(record.name),
+          title: Text(record.language),
           trailing: Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               IconButton(
-                icon: Icon(Icons.thumb_up),
-                onPressed: () => this._upvote(record),
+                icon: Icon(
+                  Icons.thumb_up,
+                  color: this._isVoted(record.language)
+                      ? Colors.blue
+                      : Colors.grey,
+                ),
+                onPressed: () => this._toggleVoted(record),
               ),
               Text(record.votes.toString()),
             ],
@@ -85,37 +114,39 @@ class _VotePageState extends State<VotePage> {
     );
   }
 
-  // Upvote one record.
-  void _upvote(Record record) {
-    // Doing upvotes via transaction makes each update atomic, there'll be no
-    // race conditions.
+  // Toggle the voted status of one record.
+  void _toggleVoted(_LangaugeVotingRecord record) {
+    final lang = record.language;
+    int deltaVotes = this._isVoted(lang) ? -1 : 1;
+    // Update votes via transactions are atomic: no race condition.
     Firestore.instance.runTransaction((transaction) async {
       final freshSnapshot = await transaction.get(record.firestoreDocReference);
       // Get the most fresh record.
-      final freshRecord = Record.fromSnapshot(freshSnapshot);
-      await transaction.update(
-          record.firestoreDocReference, {'votes': freshRecord.votes + 1});
+      final freshRecord = _LangaugeVotingRecord.fromSnapshot(freshSnapshot);
+      await transaction.update(record.firestoreDocReference,
+          {'votes': freshRecord.votes + deltaVotes});
     });
+    this._markVotedStatus(lang, !this._isVoted(lang));
   }
 }
 
-// Custom data class for holding "{name,vote}" records.
-class Record {
-  final String name;
+// Custom data class for holding "{language,vote}" records.
+class _LangaugeVotingRecord {
+  final String language;
   final int votes;
   // Reference to this record as a firestore document.
   final DocumentReference firestoreDocReference;
 
-  Record.fromMap(Map<String, dynamic> map,
+  _LangaugeVotingRecord.fromMap(Map<String, dynamic> map,
       {@required this.firestoreDocReference})
       : assert(map['language'] != null),
         assert(map['votes'] != null),
-        name = map['language'],
+        language = map['language'],
         votes = map['votes'];
 
-  Record.fromSnapshot(DocumentSnapshot snapshot)
+  _LangaugeVotingRecord.fromSnapshot(DocumentSnapshot snapshot)
       : this.fromMap(snapshot.data, firestoreDocReference: snapshot.reference);
 
   @override
-  String toString() => "Record<$name:$votes>";
+  String toString() => "Record<$language:$votes>";
 }
