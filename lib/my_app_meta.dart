@@ -7,6 +7,7 @@ import './my_route.dart';
 import './routes/about.dart';
 import './routes/home.dart';
 
+import './routes/animation_hero_ex.dart';
 import './routes/appbar_basic_appbar_ex.dart';
 import './routes/appbar_bottom_appbar_ex.dart';
 import './routes/appbar_search_ex.dart';
@@ -146,7 +147,12 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
       PageSelectorExample(),
     ],
   ),
-
+  MyRouteGroup(
+      groupName: 'Animation',
+      icon: Icon(Icons.movie_filter),
+      routes: <MyRoute>[
+        HeroExample(),
+      ]),
   MyRouteGroup(
     groupName: 'Firebase',
     icon: Icon(Icons.cloud),
