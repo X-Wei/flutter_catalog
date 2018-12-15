@@ -37,6 +37,7 @@ class _PreferenceDemo extends StatefulWidget {
 }
 
 class _PreferenceDemoState extends State<_PreferenceDemo> {
+  SharedPreferences _prefs;
   static const String kDemoNumberPrefKey = 'demo_number_pref';
   static const String kDemoBooleanPrefKey = 'demo_boolean_pref';
   int _numberPref = 0;
@@ -45,8 +46,12 @@ class _PreferenceDemoState extends State<_PreferenceDemo> {
   @override
   void initState() {
     super.initState();
-    _loadNumberPref();
-    _loadBooleanPref();
+    SharedPreferences.getInstance()
+      ..then((prefs) {
+        setState(() => this._prefs = prefs);
+        _loadNumberPref();
+        _loadBooleanPref();
+      });
   }
 
   @override
@@ -79,30 +84,26 @@ class _PreferenceDemoState extends State<_PreferenceDemo> {
   }
 
   // Loads number preference into this._numberPref.
-  Future<Null> _loadNumberPref() async {
-    final prefs = await SharedPreferences.getInstance();
+  void _loadNumberPref() {
     setState(() {
-      this._numberPref = prefs.getInt(kDemoNumberPrefKey) ?? 0;
+      this._numberPref = this._prefs.getInt(kDemoNumberPrefKey) ?? 0;
     });
   }
 
   // Loads boolean preference into this._numberPref.
-  Future<Null> _loadBooleanPref() async {
-    final prefs = await SharedPreferences.getInstance();
+  void _loadBooleanPref() {
     setState(() {
-      this._boolPref = prefs.getBool(kDemoBooleanPrefKey) ?? false;
+      this._boolPref = this._prefs.getBool(kDemoBooleanPrefKey) ?? false;
     });
   }
 
   Future<Null> _setNumberPref(int val) async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setInt(kDemoNumberPrefKey, val);
-    await _loadNumberPref();
+    await this._prefs.setInt(kDemoNumberPrefKey, val);
+    _loadNumberPref();
   }
 
   Future<Null> _setBooleanPref(bool val) async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setBool(kDemoBooleanPrefKey, val);
-    await _loadBooleanPref();
+    await this._prefs.setBool(kDemoBooleanPrefKey, val);
+    _loadBooleanPref();
   }
 }
