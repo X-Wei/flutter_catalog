@@ -45,7 +45,7 @@ class _FileRwDemoState extends State<_FileRwDemo> {
   @override
   void initState() {
     super.initState();
-    this._readTextFromLocalFile();
+    this._loadTextFromLocalFile();
     this._getLocalFile()
       ..then((file) => setState(() => this._localFilePath = file.path));
   }
@@ -67,7 +67,7 @@ class _FileRwDemoState extends State<_FileRwDemo> {
             MaterialButton(
               child: Text('Load'),
               onPressed: () async {
-                this._readTextFromLocalFile();
+                this._loadTextFromLocalFile();
                 this._textController.text = this._localFileContent;
                 _showSnackBar('String successfully loaded from local file.');
                 // Focus on text field (bring keyboard up).
@@ -80,7 +80,7 @@ class _FileRwDemoState extends State<_FileRwDemo> {
                 await this._writeTextToLocalFile(this._textController.text);
                 this._textController.clear();
                 _showSnackBar('String successfully written to local file".');
-                this._readTextFromLocalFile();
+                await this._loadTextFromLocalFile();
               },
             ),
           ],
@@ -106,8 +106,8 @@ class _FileRwDemoState extends State<_FileRwDemo> {
     return file.writeAsString(text);
   }
 
-  // Reads local file into this._localFileContent.
-  Future<Null> _readTextFromLocalFile() async {
+  // Loads local file into this._localFileContent.
+  Future<Null> _loadTextFromLocalFile() async {
     String content;
     try {
       final file = await _getLocalFile();
