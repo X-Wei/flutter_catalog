@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart' as url_launcher;
 import './my_code_view.dart';
 import './my_app_meta.dart' as my_app_meta;
@@ -7,6 +8,8 @@ abstract class MyRoute extends StatefulWidget {
   // Path of source file (relative to project root). The file's content will be
   // shown in the "Code" tab.
   final String _sourceFile;
+  // Preference key's prefix for storing whether you have stared a route or not.
+  static const kStaredPreferenceKeyPrefx = 'StaredFor_';
 
   const MyRoute(this._sourceFile);
 
@@ -30,6 +33,24 @@ abstract class MyRoute extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() => _MyRouteState();
+
+  // Returns whether this widget is stared.
+  bool isStared(SharedPreferences prefs) {
+    if (prefs==null) {
+      return false;
+    }
+    return prefs.getBool(
+          '$kStaredPreferenceKeyPrefx${this.routeName}',
+        ) ??
+        false;
+  }
+
+  // Toggles the stared/not-stated status of the route.
+  toggleStared(SharedPreferences prefs) {
+    assert(prefs != null);
+    bool stared = isStared(prefs);
+    prefs.setBool('$kStaredPreferenceKeyPrefx${this.routeName}', !stared);
+  }
 }
 
 // Each MyRoute contains two tabs: "Preview" and "Code".
@@ -66,6 +87,7 @@ const _TABS = <Widget>[
 
 class _MyRouteState extends State<MyRoute> with SingleTickerProviderStateMixin {
   TabController _tabController;
+  SharedPreferences _preferences;
 
   @override
   void initState() {
@@ -74,6 +96,10 @@ class _MyRouteState extends State<MyRoute> with SingleTickerProviderStateMixin {
       length: _TABS.length,
       vsync: this,
     );
+    SharedPreferences.getInstance()
+      ..then((prefs) {
+        setState(() => this._preferences = prefs);
+      });
   }
 
   @override
@@ -84,39 +110,13 @@ class _MyRouteState extends State<MyRoute> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    final appbarActions = <Widget>[];
-    if (this.widget.links.isNotEmpty) {
-      final popMenu = PopupMenuButton(
-        itemBuilder: (context) {
-          var menuItems = <PopupMenuItem>[];
-          this.widget.links.forEach((title, link) {
-            menuItems.add(
-              PopupMenuItem(
-                child: ListTile(
-                  title: Text(title),
-                  trailing: IconButton(
-                    icon: Icon(Icons.open_in_new),
-                    tooltip: '$link',
-                    onPressed: () => url_launcher.launch(link),
-                  ),
-                  onTap: () => url_launcher.launch(link),
-                ),
-              ),
-            );
-          });
-          return menuItems;
-        },
-      );
-      appbarActions.add(popMenu);
-    }
-
     return Scaffold(
       appBar: AppBar(
         title: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Text(this.widget.title),
         ),
-        actions: appbarActions,
+        actions: _getAppbarActions(),
         bottom: TabBar(
           tabs: _TABS,
           controller: this._tabController,
@@ -145,5 +145,43 @@ class _MyRouteState extends State<MyRoute> with SingleTickerProviderStateMixin {
             )
           : null,
     );
+  }
+
+  List<Widget> _getAppbarActions() {
+    final appbarActions = <Widget>[
+      IconButton(
+        icon: Icon(
+          this.widget.isStared(this._preferences)
+              ? Icons.star
+              : Icons.star_border,
+        ),
+        onPressed: () =>
+            setState(() => this.widget.toggleStared(this._preferences)),
+      ),
+    ];
+    if (this.widget.links.isNotEmpty) {
+      final popMenu = PopupMenuButton(
+        itemBuilder: (context) {
+          var menuItems = <PopupMenuItem>[];
+          this.widget.links.forEach((title, link) {
+            menuItems.add(
+              PopupMenuItem(
+                child: ListTile(
+                  title: Text(title),
+                  trailing: IconButton(
+                    icon: Icon(Icons.open_in_new),
+                    tooltip: '$link',
+                    onPressed: () => url_launcher.launch(link),
+                  ),
+                  onTap: () => url_launcher.launch(link),
+                ),
+              ),
+            );
+          });
+          return menuItems;
+        },
+      );
+      appbarActions.add(popMenu);
+    }
   }
 }
