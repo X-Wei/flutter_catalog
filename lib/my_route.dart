@@ -183,5 +183,6 @@ class _MyRouteState extends State<MyRoute> with SingleTickerProviderStateMixin {
       );
       appbarActions.add(popMenu);
     }
+    return appbarActions;
   }
 }
