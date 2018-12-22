@@ -61,9 +61,13 @@ class _VotePageState extends State<VotePage> {
           if (!snapshot.hasData) {
             return LinearProgressIndicator();
           } else {
+            final List<_LangaugeVotingRecord> records = snapshot.data.documents
+                .map((snapshot) => _LangaugeVotingRecord.fromSnapshot(snapshot))
+                .toList()
+                  ..sort((record1, record2) => record2.votes - record1.votes);
             return ListView(
-              children: snapshot.data.documents
-                  .map((data) => _buildListItem(context, data))
+              children: records
+                  .map((record) => _buildListItem(context, record))
                   .toList(),
             );
           }
@@ -82,9 +86,8 @@ class _VotePageState extends State<VotePage> {
     this._preferences.setBool('$kVotedPreferenceKeyPrefx$lang', voted);
   }
 
-  // Build one list item given a data snapshot.
-  Widget _buildListItem(BuildContext context, DocumentSnapshot data) {
-    final record = _LangaugeVotingRecord.fromSnapshot(data);
+  // Build a list item corresponding to a _LanguageVotingRecord.
+  Widget _buildListItem(BuildContext context, _LangaugeVotingRecord record) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
       child: Container(
