@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import './syntax_highlighter.dart';
@@ -9,7 +11,7 @@ class MyCodeView extends StatefulWidget {
 
   @override
   MyCodeViewState createState() {
-    return new MyCodeViewState();
+    return MyCodeViewState();
   }
 }
 
@@ -22,27 +24,44 @@ class MyCodeViewState extends State<MyCodeView> {
             ? SyntaxHighlighterStyle.darkThemeStyle()
             : SyntaxHighlighterStyle.lightThemeStyle();
     // TODO: try out CustomScrollView and SliverAppbar (appbar auto hides when scroll).
-    return Scrollbar(
-      child: Padding(
-        padding: EdgeInsets.all(8.0),
-        child: SingleChildScrollView(
+    return Stack(
+      alignment: AlignmentDirectional.bottomEnd,
+      children: <Widget>[
+        Scrollbar(
           child: SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: GestureDetector(
-              onScaleUpdate: (ScaleUpdateDetails details) {
-                setState(() => this._textScaleFactor = details.scale);
-              },
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
               child: RichText(
-                  textScaleFactor: this._textScaleFactor,
-                  text: TextSpan(
-                      style: TextStyle(fontFamily: 'monospace', fontSize: 12.0),
-                      children: <TextSpan>[
-                        DartSyntaxHighlighter(style).format(codeContent)
-                      ])),
+                textScaleFactor: this._textScaleFactor,
+                text: TextSpan(
+                  style: TextStyle(fontFamily: 'monospace', fontSize: 12.0),
+                  children: <TextSpan>[
+                    DartSyntaxHighlighter(style).format(codeContent)
+                  ],
+                ),
+              ),
             ),
           ),
         ),
-      ),
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            IconButton(
+              icon: Icon(Icons.zoom_out),
+              onPressed: () => setState(() {
+                    this._textScaleFactor =
+                        max(0.8, this._textScaleFactor - 0.1);
+                  }),
+            ),
+            IconButton(
+              icon: Icon(Icons.zoom_in),
+              onPressed: () => setState(() {
+                    this._textScaleFactor += 0.1;
+                  }),
+            ),
+          ],
+        ),
+      ],
     );
   }
 
@@ -55,7 +74,10 @@ class MyCodeViewState extends State<MyCodeView> {
           'Error loading source code from $this.filePath',
       builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
         if (snapshot.hasData) {
-          return _getCodeView(snapshot.data, context);
+          return Padding(
+            padding: EdgeInsets.all(4.0),
+            child: _getCodeView(snapshot.data, context),
+          );
         } else {
           return Center(child: CircularProgressIndicator());
         }
