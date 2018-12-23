@@ -61,9 +61,13 @@ class _VotePageState extends State<VotePage> {
           if (!snapshot.hasData) {
             return LinearProgressIndicator();
           } else {
+            final List<_LangaugeVotingRecord> records = snapshot.data.documents
+                .map((snapshot) => _LangaugeVotingRecord.fromSnapshot(snapshot))
+                .toList()
+                  ..sort((record1, record2) => record2.votes - record1.votes);
             return ListView(
-              children: snapshot.data.documents
-                  .map((data) => _buildListItem(context, data))
+              children: records
+                  .map((record) => _buildListItem(context, record))
                   .toList(),
             );
           }
@@ -82,9 +86,8 @@ class _VotePageState extends State<VotePage> {
     this._preferences.setBool('$kVotedPreferenceKeyPrefx$lang', voted);
   }
 
-  // Build one list item given a data snapshot.
-  Widget _buildListItem(BuildContext context, DocumentSnapshot data) {
-    final record = _LangaugeVotingRecord.fromSnapshot(data);
+  // Build a list item corresponding to a _LanguageVotingRecord.
+  Widget _buildListItem(BuildContext context, _LangaugeVotingRecord record) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
       child: Container(
@@ -115,18 +118,31 @@ class _VotePageState extends State<VotePage> {
   }
 
   // Toggle the voted status of one record.
-  void _toggleVoted(_LangaugeVotingRecord record) {
+  void _toggleVoted(_LangaugeVotingRecord record) async {
     final lang = record.language;
     int deltaVotes = this._isVoted(lang) ? -1 : 1;
-    // Update votes via transactions are atomic: no race condition.
-    Firestore.instance.runTransaction((transaction) async {
-      final freshSnapshot = await transaction.get(record.firestoreDocReference);
-      // Get the most fresh record.
-      final freshRecord = _LangaugeVotingRecord.fromSnapshot(freshSnapshot);
-      await transaction.update(record.firestoreDocReference,
-          {'votes': freshRecord.votes + deltaVotes});
-    });
-    this._markVotedStatus(lang, !this._isVoted(lang));
+    try {
+      // Update votes via transactions are atomic: no race condition.
+      await Firestore.instance.runTransaction(
+        (transaction) async {
+          final freshSnapshot =
+              await transaction.get(record.firestoreDocReference);
+          // Get the most fresh record.
+          final freshRecord = _LangaugeVotingRecord.fromSnapshot(freshSnapshot);
+          await transaction.update(record.firestoreDocReference,
+              {'votes': freshRecord.votes + deltaVotes});
+        },
+        timeout: Duration(seconds: 3),
+      );
+      // Update local voted status only after transaction is successful.
+      this._markVotedStatus(lang, !this._isVoted(lang));
+    } catch (e) {
+      Scaffold.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Error doing firebase transaction: $e'),
+        ),
+      );
+    }
   }
 }
 
