@@ -150,19 +150,19 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
     ],
   ),
   MyRouteGroup(
-      groupName: 'Persistence',
-      icon: Icon(Icons.save),
-      routes: <MyRoute>[
-        SharedPreferenceExample(),
-        FileReadWriteExample(),
-      ]),
-  MyRouteGroup(
       groupName: 'Animation',
       icon: Icon(Icons.movie_filter),
       routes: <MyRoute>[
         OpacityExample(),
         HeroExample(),
         // TODO BackDropExample(),
+      ]),
+  MyRouteGroup(
+      groupName: 'Persistence',
+      icon: Icon(Icons.save),
+      routes: <MyRoute>[
+        SharedPreferenceExample(),
+        FileReadWriteExample(),
       ]),
   MyRouteGroup(
     groupName: 'Firebase',
