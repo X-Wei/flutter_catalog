@@ -1,5 +1,8 @@
+import 'dart:math';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart' as url_launcher;
 import './my_code_view.dart';
@@ -9,15 +12,9 @@ abstract class MyRoute extends StatefulWidget {
   // Path of source file (relative to project root). The file's content will be
   // shown in the "Code" tab.
   final String _sourceFile;
-  // Preference key's prefix for storing whether you have stared a route or not.
-  static const kStaredPreferenceKeyPrefx = 'StaredFor_';
 
-  static of(BuildContext context) {
-    final ret =
-        context.rootAncestorStateOfType(const TypeMatcher<_MyRouteState>());
-    print('MyRouteState.of returned: ${ret.runtimeType.toString()}');
-    return ret;
-  }
+  static of(BuildContext context) =>
+      context.rootAncestorStateOfType(const TypeMatcher<_MyRouteState>());
 
   const MyRoute(this._sourceFile);
 
@@ -82,26 +79,7 @@ class _MyRouteState extends State<MyRoute> with SingleTickerProviderStateMixin {
   SharedPreferences _preferences;
   // Maps route names to the corresponding _DemoStarsRecord, this map serves as
   // a local cache of the cloud firestore snapshot.
-  final Map<String, _DemoStarsRecord> demoStars = {};
-
-  // Returns whether routeName (defaults to this.widget.routeName) is stared.
-  bool isStared([String routeName]) {
-    print('isStared: ${routeName ?? this.widget.routeName}');
-    return this._preferences.getBool(
-              '$kStaredPreferenceKeyPrefx${routeName ?? this.widget.routeName}',
-            ) ??
-        false;
-  }
-
-  // Toggles the stared/not-stated status of routeName (defaults to
-  // this.widget.routeName).
-  toggleStared([String routeName]) {
-    print('toggleStared: ${routeName ?? this.widget.routeName}');
-    bool stared = this.isStared();
-    this._preferences.setBool(
-        '$kStaredPreferenceKeyPrefx${routeName ?? this.widget.routeName}',
-        !stared);
-  }
+  final Map<String, _DemoStarsRecord> _demoStars = {};
 
   @override
   void initState() {
@@ -159,7 +137,7 @@ class _MyRouteState extends State<MyRoute> with SingleTickerProviderStateMixin {
               );
             }),
             // Only home route has drawer:
-            drawer: this.widget.routeName == Navigator.defaultRouteName
+            drawer: this.widget.routeName == 'Home'
                 ? Drawer(
                     child: my_app_meta.getNavDrawerItems(this, context),
                   )
@@ -168,15 +146,29 @@ class _MyRouteState extends State<MyRoute> with SingleTickerProviderStateMixin {
         });
   }
 
+  // Returns a widget showing the star status of one demo route: a star icon
+  // with counts.
+  Widget starStatusOfRoute(MyRoute route) {
+    return Stack(
+      alignment: AlignmentDirectional.bottomCenter,
+      children: <Widget>[
+        IconButton(
+          icon: Icon(
+              this._isStared(route.routeName) ? Icons.star : Icons.star_border),
+          onPressed: () => this._toggleStaredAndUpdateStarCounts(route),
+        ),
+        Text(
+          '${this._demoStars[route.routeName]?.stars ?? 0}',
+          style: Theme.of(context).textTheme.caption,
+        ),
+      ],
+    );
+  }
+
   List<Widget> _getAppbarActions() {
     // final state = MyRouteState.of(context);
     final appbarActions = <Widget>[
-      IconButton(
-        icon: Icon(
-          this.isStared() ? Icons.star : Icons.star_border,
-        ),
-        onPressed: () => setState(() => this.toggleStared()),
-      ),
+      starStatusOfRoute(this.widget),
     ];
     if (this.widget.links.isNotEmpty) {
       final popMenu = PopupMenuButton(
@@ -205,11 +197,28 @@ class _MyRouteState extends State<MyRoute> with SingleTickerProviderStateMixin {
     return appbarActions;
   }
 
+  // Returns whether routeName (defaults to this.widget.routeName) is stared.
+  bool _isStared([String routeName]) {
+    routeName ??= this.widget.routeName;
+    print('isStared: $routeName');
+    return this._preferences.getBool('$kStaredPreferenceKeyPrefx$routeName') ??
+        false;
+  }
+
+  // Toggles the local stared/not-stated status of routeName (defaults to
+  // this.widget.routeName).
+  _toggleStared([String routeName]) {
+    routeName ??= this.widget.routeName;
+    print('toggleStared: $routeName');
+    bool stared = this._isStared(routeName);
+    this._preferences.setBool('$kStaredPreferenceKeyPrefx$routeName', !stared);
+  }
+
   // Caches the value of demo stars from snapshot into this._demoStars.
   void _loadDemoStarsFromSnapshot(AsyncSnapshot<QuerySnapshot> snapshot) {
     for (DocumentSnapshot doc in snapshot.data.documents) {
       final demoStarsRecord = _DemoStarsRecord.fromSnapshot(doc);
-      this.demoStars[demoStarsRecord.routeName] = demoStarsRecord;
+      this._demoStars[demoStarsRecord.routeName] = demoStarsRecord;
     }
   }
 
@@ -226,45 +235,38 @@ class _MyRouteState extends State<MyRoute> with SingleTickerProviderStateMixin {
   // cloud firestore.
   // If the corresponding document is not yet created on firestore, create it
   // first, then re-call this function after 1 second.
-  Future<Null> toggleStaredAsync(MyRoute route) async {
-    _DemoStarsRecord record = this.demoStars[route.routeName];
+  Future<Null> _toggleStaredAndUpdateStarCounts(MyRoute route) async {
+    _DemoStarsRecord record = this._demoStars[route.routeName];
     if (record == null) {
-      print('creating record for ${route.routeName}');
-      _createDemoStarsFirestoreDocument(route.routeName)
-        ..then((_) async {
-          // After the document is created, wait for the firestore update to be
-          // synced back -- 1 second should be more than enough.
-          await Future.delayed(Duration(seconds: 1));
-          // Next time this function is called, the record will not be null.
-          toggleStaredAsync(route);
-        });
+      print('Creating record for ${route.routeName}');
+      await _createDemoStarsFirestoreDocument(route.routeName);
+      // After the document is created, wait for the firestore update to be
+      // synced back -- 1 second should be more than enough.
+      await Future.delayed(Duration(seconds: 1));
+      // Next time this function is called, the record will not be null.
+      _toggleStaredAndUpdateStarCounts(route);
       return;
     }
-    int deltaStars = this.isStared(route.routeName) ? -1 : 1;
+    int deltaStars = this._isStared(route.routeName) ? -1 : 1;
     try {
-      await Firestore.instance.runTransaction((transaction) async {
-        final freshSnapshot =
-            await transaction.get(record.firestoreDocReference);
-        final freshRecord = _DemoStarsRecord.fromSnapshot(freshSnapshot);
-        await transaction.update(record.firestoreDocReference,
-            {'stars': freshRecord.stars + deltaStars});
-      });
+      await Firestore.instance.runTransaction(
+        (transaction) async {
+          final freshSnapshot =
+              await transaction.get(record.firestoreDocReference);
+          final freshRecord = _DemoStarsRecord.fromSnapshot(freshSnapshot);
+          await transaction.update(record.firestoreDocReference,
+              {'stars': max(0, freshRecord.stars + deltaStars)});
+        },
+        timeout: Duration(seconds: 3),
+      );
       setState(() {
-        this.toggleStared(route.routeName);
+        this._toggleStared(route.routeName);
       });
     } catch (e) {
       print('Error doing firebase transaction: $e');
-      Scaffold.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Error doing firebase transaction: $e'),
-        ),
-      );
+      Fluttertoast.showToast(msg: 'Error doing firebase transaction: $e');
     }
   }
-}
-
-class DemoStarsManager {
-  // static DemoStarsManager of(BuildContext contexFt) =>
 }
 
 // Custom data class for holding "{routeName,stars}" records.

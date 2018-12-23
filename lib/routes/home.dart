@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import '../my_route.dart';
 import '../my_app_meta.dart'
@@ -12,8 +11,7 @@ class MyHomeRoute extends MyRoute {
   get title => 'Flutter Catalog';
 
   @override
-  get routeName =>
-      Navigator.defaultRouteName; // Navigator.defaultRouteName is just "/".
+  get routeName => 'Home';
 
   @override
   Widget buildMyRouteContent(BuildContext context) {
@@ -35,19 +33,6 @@ class _HomePageState extends State<HomePage> {
             _myRouteToListTile(kAboutRoute, leading: Icon(Icons.info)),
           );
     return ListView(children: listTiles);
-    // return StreamBuilder<QuerySnapshot>(
-    //     stream: Firestore.instance.collection('demo_stars').snapshots(),
-    //     builder: (context, snapshot) {
-    //       if (snapshot.hasData) {
-    //         _loadDemoStarsFromSnapshot(snapshot);
-    //       }
-    //       final listTiles =
-    //           kMyAppRoutesStructure.map(_myRouteGroupToExpansionTile).toList()
-    //             ..add(
-    //               _myRouteToListTile(kAboutRoute, leading: Icon(Icons.info)),
-    //             );
-    //       return ListView(children: listTiles);
-    //     });
   }
 
   Widget _myRouteGroupToExpansionTile(MyRouteGroup myRouteGroup) {
@@ -68,7 +53,7 @@ class _HomePageState extends State<HomePage> {
     final routeTitleTextStyle =
         Theme.of(context).textTheme.body1.copyWith(fontWeight: FontWeight.bold);
     return ListTile(
-      leading: leading ?? _getDefaultLeadingWidget(myRoute),
+      leading: leading ?? MyRoute.of(context).starStatusOfRoute(myRoute),
       title: GestureDetector(
         child: Text(myRoute.title, style: routeTitleTextStyle),
       ),
@@ -78,24 +63,4 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  // Returns the default leading widget of a ListTile: star icon with counts.
-  Widget _getDefaultLeadingWidget(MyRoute route) {
-    // return null;
-    final state = MyRoute.of(context);
-    return Stack(
-      alignment: AlignmentDirectional.bottomCenter,
-      children: <Widget>[
-        IconButton(
-          icon: state.isStared(route.routeName)
-              ? Icon(Icons.star, color: Theme.of(context).primaryColor)
-              : Icon(Icons.star_border),
-          onPressed: () async => await state.toggleStaredAsync(route),
-        ),
-        Text(
-          '${state.demoStars[route.routeName] != null ? state.demoStars[route.routeName].stars : 0}',
-          style: Theme.of(context).textTheme.caption,
-        ),
-      ],
-    );
-  }
 }
