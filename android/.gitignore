@@ -1,10 +1,12 @@
 *.iml
 *.class
 .gradle
+.project
 /local.properties
 /.idea/workspace.xml
 /.idea/libraries
 .DS_Store
 /build
 /captures
+app/bin
 GeneratedPluginRegistrant.java
