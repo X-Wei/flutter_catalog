@@ -5,7 +5,8 @@ void main() => runApp(
       MaterialApp(
         title: 'Flutter Catalog',
         theme: ThemeData(primarySwatch: Colors.blue),
-        // No need to set `home` because `routes` is set, in which
+        initialRoute: my_app_meta.kHomeRouteName,
+        // No need to set `home` because `routes` is set, in whictoggleStaredAsynch
         // Navigator.defaultRouteName has an entry.
         routes: my_app_meta.getRoutingTable(),
       ),

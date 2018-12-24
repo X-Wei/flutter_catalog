@@ -60,6 +60,10 @@ const GOOGLEPLAY_URL =
 const GITHUB_URL = 'https://github.com/X-Wei/flutter_catalog';
 const AUTHOR_SITE = 'http://x-wei.github.io';
 
+const kHomeRouteName = '/Home';
+const kHomeRoute = MyHomeRoute();
+const kAboutRoute = MyAboutRoute();
+
 // The structure of app's navigation drawer items is a 2-level menu, its schema
 // is the following:
 // [ MyRouteGroup{
@@ -175,13 +179,12 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
   ),
 ];
 
-const kAboutRoute = MyAboutRoute();
-
 // Returns the app's root-level routing table.
 Map<String, WidgetBuilder> getRoutingTable() {
   final routingTable = <String, WidgetBuilder>{
     // By default go to home screen. (Navigator.defaultRouteName is just '/')
-    Navigator.defaultRouteName: (context) => MyHomeRoute(),
+    Navigator.defaultRouteName: (context) => kHomeRoute,
+    kHomeRouteName: (context) => kHomeRoute,
     kAboutRoute.routeName: (context) => kAboutRoute,
   };
   kMyAppRoutesStructure.forEach((myRouteGroup) {

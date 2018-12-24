@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../my_route.dart';
 import '../my_app_meta.dart'
-    show kMyAppRoutesStructure, MyRouteGroup, kAboutRoute;
+    show kMyAppRoutesStructure, MyRouteGroup, kAboutRoute, kHomeRouteName;
 
 class MyHomeRoute extends MyRoute {
   const MyHomeRoute([String sourceFile = 'lib/routes/home.dart'])
@@ -11,7 +11,7 @@ class MyHomeRoute extends MyRoute {
   get title => 'Flutter Catalog';
 
   @override
-  get routeName => 'Home';
+  get routeName => kHomeRouteName;
 
   @override
   Widget buildMyRouteContent(BuildContext context) {

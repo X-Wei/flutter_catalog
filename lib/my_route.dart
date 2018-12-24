@@ -19,8 +19,7 @@ abstract class MyRoute extends StatefulWidget {
   const MyRoute(this._sourceFile);
 
   // Subclasses can return routeName accordingly (polymorphism).
-  String get routeName => this.runtimeType.toString();
-  // String get routeName => '/${this.runtimeType.toString()}';
+  String get routeName => '/${this.runtimeType.toString()}';
 
   // Title shown in the route's appbar and in the app's navigation drawer item.
   // By default just returns routeName.
@@ -137,7 +136,7 @@ class _MyRouteState extends State<MyRoute> with SingleTickerProviderStateMixin {
               );
             }),
             // Only home route has drawer:
-            drawer: this.widget.routeName == 'Home'
+            drawer: this.widget.routeName == my_app_meta.kHomeRouteName
                 ? Drawer(
                     child: my_app_meta.getNavDrawerItems(this, context),
                   )
@@ -200,7 +199,6 @@ class _MyRouteState extends State<MyRoute> with SingleTickerProviderStateMixin {
   // Returns whether routeName (defaults to this.widget.routeName) is stared.
   bool _isStared([String routeName]) {
     routeName ??= this.widget.routeName;
-    print('isStared: $routeName');
     return this._preferences.getBool('$kStaredPreferenceKeyPrefx$routeName') ??
         false;
   }
@@ -209,7 +207,6 @@ class _MyRouteState extends State<MyRoute> with SingleTickerProviderStateMixin {
   // this.widget.routeName).
   _toggleStared([String routeName]) {
     routeName ??= this.widget.routeName;
-    print('toggleStared: $routeName');
     bool stared = this._isStared(routeName);
     this._preferences.setBool('$kStaredPreferenceKeyPrefx$routeName', !stared);
   }
@@ -224,10 +221,12 @@ class _MyRouteState extends State<MyRoute> with SingleTickerProviderStateMixin {
 
   // Creates a document corresponding to routeName on cloud firestore.
   Future<Null> _createDemoStarsFirestoreDocument(String routeName) async {
-    // In firestore, the documents are keyed by corresponding route names.
+    // In firestore, the documents are keyed by corresponding route names
+    // (without the leading "/")
+    final documentKey = routeName.replaceAll('/', '');
     await Firestore.instance
         .collection('demo_stars')
-        .document(routeName)
+        .document(documentKey)
         .setData({'routeName': routeName, 'stars': 0}, merge: true);
   }
 
@@ -263,7 +262,6 @@ class _MyRouteState extends State<MyRoute> with SingleTickerProviderStateMixin {
         this._toggleStared(route.routeName);
       });
     } catch (e) {
-      print('Error doing firebase transaction: $e');
       Fluttertoast.showToast(msg: 'Error doing firebase transaction: $e');
     }
   }
