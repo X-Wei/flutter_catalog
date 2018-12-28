@@ -35,7 +35,7 @@ class MyAboutRoute extends MyRoute {
       ),
       ListTile(
         leading: Icon(Icons.open_in_new),
-        title: Text('Visite my website'),
+        title: Text('Visit my website'),
         onTap: () => url_launcher.launch(AUTHOR_SITE),
       ),
     ];
