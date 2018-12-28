@@ -127,9 +127,10 @@ class _MyRouteState extends State<MyRoute> with SingleTickerProviderStateMixin {
       body: Builder(builder: (BuildContext context) {
         final myTabPages = <Widget>[
           // "Preview" tab:
-          this.widget.buildMyRouteContent(context),
+          AlwaysAliveWidget(child: this.widget.buildMyRouteContent(context)),
           // "Code" tab:
-          MyCodeView(filePath: this.widget._sourceFile),
+          AlwaysAliveWidget(
+              child: MyCodeView(filePath: this.widget._sourceFile)),
         ];
         assert(myTabPages.length == _TABS.length);
         // Body of MyRoute is two-tabs ("Preview" and "Code").
@@ -146,4 +147,25 @@ class _MyRouteState extends State<MyRoute> with SingleTickerProviderStateMixin {
           : null,
     );
   }
+}
+
+// This widget is always kept alive, so that when tab is switched back, its
+// child's state is still preserved.
+class AlwaysAliveWidget extends StatefulWidget {
+  final Widget child;
+
+  const AlwaysAliveWidget({Key key, @required this.child}) : super(key: key);
+  @override
+  _AlwaysAliveWidgetState createState() => _AlwaysAliveWidgetState();
+}
+
+class _AlwaysAliveWidgetState extends State<AlwaysAliveWidget>
+    with AutomaticKeepAliveClientMixin<AlwaysAliveWidget> {
+  @override
+  Widget build(BuildContext context) {
+    return this.widget.child;
+  }
+
+  @override
+  bool get wantKeepAlive => true;
 }
