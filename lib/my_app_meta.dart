@@ -15,6 +15,7 @@ import './routes/appbar_search_ex.dart';
 import './routes/appbar_sliver_appbar_ex.dart';
 import './routes/firebase_chatroom_ex.dart';
 import './routes/firebase_login_ex.dart';
+import './routes/firebase_mlkit_ex.dart';
 import './routes/firebase_vote_ex.dart';
 import './routes/layouts_container_padding_center_ex.dart';
 import './routes/layouts_expanded_ex.dart';
@@ -37,6 +38,8 @@ import './routes/nav_routes_ex.dart';
 import './routes/nav_tabs_ex.dart';
 import './routes/persistence_file_rw_ex.dart';
 import './routes/persistence_preference_ex.dart';
+import './routes/plugins_image_picker_ex.dart';
+import './routes/plugins_webview_ex.dart';
 import './routes/widgets_buttons_ex.dart';
 import './routes/widgets_card_ex.dart';
 import './routes/widgets_dropdown_button_ex.dart';
@@ -54,7 +57,7 @@ const APP_NAME = 'Flutter Catalog';
 const APP_LOGO = FlutterLogo(size: 32.0);
 const APP_DESCRIPTION = 'An app showcasing Flutter components, with '
     'side-by-side source code view.'
-    '\n\nDevelopped by X.Wei.';
+    '\n\nDeveloped by X.Wei.';
 const GOOGLEPLAY_URL =
     'https://play.google.com/store/apps/details?id=io.github.x_wei.flutter_catalog';
 const GITHUB_URL = 'https://github.com/X-Wei/flutter_catalog';
@@ -154,20 +157,30 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
     ],
   ),
   MyRouteGroup(
-      groupName: 'Animation',
-      icon: Icon(Icons.movie_filter),
-      routes: <MyRoute>[
-        OpacityExample(),
-        HeroExample(),
-        // TODO BackDropExample(),
-      ]),
+    groupName: 'Animation',
+    icon: Icon(Icons.movie_filter),
+    routes: <MyRoute>[
+      OpacityExample(),
+      HeroExample(),
+      // TODO BackDropExample(),
+    ],
+  ),
   MyRouteGroup(
-      groupName: 'Persistence',
-      icon: Icon(Icons.save),
-      routes: <MyRoute>[
-        SharedPreferenceExample(),
-        FileReadWriteExample(),
-      ]),
+    groupName: 'Persistence',
+    icon: Icon(Icons.sd_storage),
+    routes: <MyRoute>[
+      SharedPreferenceExample(),
+      FileReadWriteExample(),
+    ],
+  ),
+  MyRouteGroup(
+    groupName: 'Plugins',
+    icon: Icon(Icons.power),
+    routes: <MyRoute>[
+      ImagePickerExample(),
+      WebViewExample(),
+    ],
+  ),
   MyRouteGroup(
     groupName: 'Firebase',
     icon: Icon(Icons.cloud),
@@ -175,6 +188,7 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
       FirebaseLoginExample(),
       FirebaseVoteExample(),
       FirebaseChatroomExample(),
+      FirebaseMLKitExample(),
     ],
   ),
 ];
@@ -226,5 +240,4 @@ ListView getNavDrawerItems(State state, BuildContext context) {
   return ListView(
     children: drawerNavItems,
   );
-  // return kAboutRoute.buildMyRouteContent(context);
 }
