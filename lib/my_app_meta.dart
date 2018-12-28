@@ -161,19 +161,19 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
     ],
   ),
   MyRouteGroup(
-    groupName: 'Plugins',
-    icon: Icon(Icons.power),
-    routes: <MyRoute>[
-      ImagePickerExample(),
-      WebViewExample(),
-    ],
-  ),
-  MyRouteGroup(
     groupName: 'Persistence',
     icon: Icon(Icons.sd_storage),
     routes: <MyRoute>[
       SharedPreferenceExample(),
       FileReadWriteExample(),
+    ],
+  ),
+  MyRouteGroup(
+    groupName: 'Plugins',
+    icon: Icon(Icons.power),
+    routes: <MyRoute>[
+      ImagePickerExample(),
+      WebViewExample(),
     ],
   ),
   MyRouteGroup(
