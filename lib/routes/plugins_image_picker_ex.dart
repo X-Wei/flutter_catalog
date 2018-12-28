@@ -13,6 +13,9 @@ class ImagePickerExample extends MyRoute {
   get title => 'Image Picker';
 
   @override
+  get description => 'Pick image from gallery or from camera.';
+
+  @override
   Widget buildMyRouteContent(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
