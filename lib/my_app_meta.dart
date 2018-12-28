@@ -37,6 +37,7 @@ import './routes/nav_routes_ex.dart';
 import './routes/nav_tabs_ex.dart';
 import './routes/persistence_file_rw_ex.dart';
 import './routes/persistence_preference_ex.dart';
+import './routes/plugins_image_picker_ex.dart';
 import './routes/widgets_buttons_ex.dart';
 import './routes/widgets_card_ex.dart';
 import './routes/widgets_dropdown_button_ex.dart';
@@ -150,20 +151,29 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
     ],
   ),
   MyRouteGroup(
-      groupName: 'Animation',
-      icon: Icon(Icons.movie_filter),
-      routes: <MyRoute>[
-        OpacityExample(),
-        HeroExample(),
-        // TODO BackDropExample(),
-      ]),
+    groupName: 'Animation',
+    icon: Icon(Icons.movie_filter),
+    routes: <MyRoute>[
+      OpacityExample(),
+      HeroExample(),
+      // TODO BackDropExample(),
+    ],
+  ),
   MyRouteGroup(
-      groupName: 'Persistence',
-      icon: Icon(Icons.save),
-      routes: <MyRoute>[
-        SharedPreferenceExample(),
-        FileReadWriteExample(),
-      ]),
+    groupName: 'Plugins',
+    icon: Icon(Icons.power),
+    routes: <MyRoute>[
+      ImagePickerExample(),
+    ],
+  ),
+  MyRouteGroup(
+    groupName: 'Persistence',
+    icon: Icon(Icons.sd_storage),
+    routes: <MyRoute>[
+      SharedPreferenceExample(),
+      FileReadWriteExample(),
+    ],
+  ),
   MyRouteGroup(
     groupName: 'Firebase',
     icon: Icon(Icons.cloud),
@@ -223,5 +233,4 @@ ListView getNavDrawerItems(State state, BuildContext context) {
   return ListView(
     children: drawerNavItems,
   );
-  // return kAboutRoute.buildMyRouteContent(context);
 }
