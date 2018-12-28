@@ -232,7 +232,7 @@ class _MLKitDemoPageState extends State<MLKitDemoPage> {
                 onPressed: this._barcodeScan,
               ),
               RaisedButton(
-                child: Text('Face'),
+                child: Text('Face Detection'),
                 onPressed: this._faceDetect,
               ),
             ],
@@ -243,8 +243,12 @@ class _MLKitDemoPageState extends State<MLKitDemoPage> {
         SizedBox(
           height: 150.0,
           child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: SingleChildScrollView(child: Text(this._mlVisionResult))),
+            scrollDirection: Axis.horizontal,
+            child: SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              child: Text(this._mlVisionResult),
+            ),
+          ),
         ),
         Divider(),
         this._imageFile == null
