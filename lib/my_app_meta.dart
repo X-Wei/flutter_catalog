@@ -52,7 +52,7 @@ import './routes/widgets_textformfield_ex.dart';
 
 // Metadatas about this app:
 // *Note*: when APP_VERSION is changed, remember to also update pubspec.yaml.
-const APP_VERSION = 'v1.3.3';
+const APP_VERSION = 'v1.4.0-beta.2';
 const APP_NAME = 'Flutter Catalog';
 const APP_LOGO = FlutterLogo(size: 32.0);
 const APP_DESCRIPTION = 'An app showcasing Flutter components, with '
@@ -62,6 +62,10 @@ const GOOGLEPLAY_URL =
     'https://play.google.com/store/apps/details?id=io.github.x_wei.flutter_catalog';
 const GITHUB_URL = 'https://github.com/X-Wei/flutter_catalog';
 const AUTHOR_SITE = 'http://x-wei.github.io';
+
+const kHomeRouteName = '/Home';
+const kHomeRoute = MyHomeRoute();
+const kAboutRoute = MyAboutRoute();
 
 // The structure of app's navigation drawer items is a 2-level menu, its schema
 // is the following:
@@ -189,13 +193,12 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
   ),
 ];
 
-const kAboutRoute = MyAboutRoute();
-
 // Returns the app's root-level routing table.
 Map<String, WidgetBuilder> getRoutingTable() {
   final routingTable = <String, WidgetBuilder>{
     // By default go to home screen. (Navigator.defaultRouteName is just '/')
-    Navigator.defaultRouteName: (context) => MyHomeRoute(),
+    Navigator.defaultRouteName: (context) => kHomeRoute,
+    kHomeRouteName: (context) => kHomeRoute,
     kAboutRoute.routeName: (context) => kAboutRoute,
   };
   kMyAppRoutesStructure.forEach((myRouteGroup) {
