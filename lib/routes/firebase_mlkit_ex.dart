@@ -18,7 +18,7 @@ class FirebaseMLKitExample extends MyRoute {
   get title => 'Firebase ML Kit';
 
   @override
-  get description => 'On-device ML (vision) inference !';
+  get description => 'Image labelling, text OCR, barcode scan, face detection.';
 
   @override
   get links => {
@@ -43,24 +43,27 @@ class MLKitDemoPage extends StatefulWidget {
 
 class _MLKitDemoPageState extends State<MLKitDemoPage> {
   File _imageFile;
-  String _mlVisionResult = '<no result>';
+  String _mlResult = '<no result>';
+
+  Future<Null> _pickImageFromCamera() async {
+    final File imageFile =
+        await ImagePicker.pickImage(source: ImageSource.camera);
+    setState(() => this._imageFile = imageFile);
+  }
 
   Future<bool> _pickImageFromGallery() async {
     final File imageFile =
         await ImagePicker.pickImage(source: ImageSource.gallery);
-    if (imageFile == null) {
-      Scaffold.of(context).showSnackBar(
-        SnackBar(content: Text('Please pick one image first.')),
-      );
-      return false;
-    }
     setState(() => this._imageFile = imageFile);
     return true;
   }
 
   Future<Null> _imageLabelling() async {
-    setState(() => this._mlVisionResult = '<no result>');
-    if (await _pickImageFromGallery() == false) {
+    setState(() => this._mlResult = '<no result>');
+    if (this._imageFile == null) {
+      Scaffold.of(context).showSnackBar(
+        SnackBar(content: Text('Please pick one image first.')),
+      );
       return;
     }
     String result = '';
@@ -77,13 +80,16 @@ class _MLKitDemoPageState extends State<MLKitDemoPage> {
           '\n#Label: $text($entityId), confidence=${confidence.toStringAsFixed(3)}';
     }
     if (result.length > 0) {
-      setState(() => this._mlVisionResult = result);
+      setState(() => this._mlResult = result);
     }
   }
 
   Future<Null> _textOcr() async {
-    setState(() => this._mlVisionResult = '<no result>');
-    if (await _pickImageFromGallery() == false) {
+    setState(() => this._mlResult = '<no result>');
+    if (this._imageFile == null) {
+      Scaffold.of(context).showSnackBar(
+        SnackBar(content: Text('Please pick one image first.')),
+      );
       return;
     }
     String result = '';
@@ -112,13 +118,16 @@ class _MLKitDemoPageState extends State<MLKitDemoPage> {
       // }
     }
     if (result.length > 0) {
-      setState(() => this._mlVisionResult = result);
+      setState(() => this._mlResult = result);
     }
   }
 
   Future<Null> _barcodeScan() async {
-    setState(() => this._mlVisionResult = '<no result>');
-    if (await _pickImageFromGallery() == false) {
+    setState(() => this._mlResult = '<no result>');
+    if (this._imageFile == null) {
+      Scaffold.of(context).showSnackBar(
+        SnackBar(content: Text('Please pick one image first.')),
+      );
       return;
     }
     String result = '';
@@ -157,13 +166,16 @@ class _MLKitDemoPageState extends State<MLKitDemoPage> {
       // }
     }
     if (result.length > 0) {
-      setState(() => this._mlVisionResult = result);
+      setState(() => this._mlResult = result);
     }
   }
 
   Future<Null> _faceDetect() async {
-    setState(() => this._mlVisionResult = '<no result>');
-    if (await _pickImageFromGallery() == false) {
+    setState(() => this._mlResult = '<no result>');
+    if (this._imageFile == null) {
+      Scaffold.of(context).showSnackBar(
+        SnackBar(content: Text('Please pick one image first.')),
+      );
       return;
     }
     String result = '';
@@ -207,7 +219,7 @@ class _MLKitDemoPageState extends State<MLKitDemoPage> {
       }
     }
     if (result.length > 0) {
-      setState(() => this._mlVisionResult = result);
+      setState(() => this._mlResult = result);
     }
   }
 
@@ -215,6 +227,26 @@ class _MLKitDemoPageState extends State<MLKitDemoPage> {
   Widget build(BuildContext context) {
     return ListView(
       children: <Widget>[
+        this._imageFile == null
+            ? Placeholder(
+                fallbackHeight: 200.0,
+              )
+            : Image.file(this._imageFile),
+        Divider(),
+        ButtonBar(
+          children: <Widget>[
+            IconButton(
+              icon: Icon(Icons.photo_camera),
+              onPressed: () async => await _pickImageFromCamera(),
+              tooltip: 'Shoot picture',
+            ),
+            IconButton(
+              icon: Icon(Icons.photo),
+              onPressed: () async => await _pickImageFromGallery(),
+              tooltip: 'Pick from gallery',
+            ),
+          ],
+        ),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: ButtonBar(
@@ -240,20 +272,10 @@ class _MLKitDemoPageState extends State<MLKitDemoPage> {
         ),
         Divider(),
         Text('Result:', style: Theme.of(context).textTheme.subtitle),
-        SizedBox(
-          height: 150.0,
-          child: SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: SingleChildScrollView(
-              scrollDirection: Axis.vertical,
-              child: Text(this._mlVisionResult),
-            ),
-          ),
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Text(this._mlResult),
         ),
-        Divider(),
-        this._imageFile == null
-            ? Placeholder()
-            : Image.file(this._imageFile, fit: BoxFit.contain),
       ],
     );
   }
