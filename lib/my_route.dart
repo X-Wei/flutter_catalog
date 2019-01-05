@@ -155,7 +155,9 @@ class _MyRouteState extends State<MyRoute> with SingleTickerProviderStateMixin {
       children: <Widget>[
         IconButton(
           icon: Icon(
-              this._isStared(route.routeName) ? Icons.star : Icons.star_border),
+            this._isStared(route.routeName) ? Icons.star : Icons.star_border,
+            color: this._isStared(route.routeName) ? Colors.yellow : Colors.grey,
+          ),
           onPressed: () => this._toggleStaredAndUpdateStarCounts(route),
         ),
         Text(
