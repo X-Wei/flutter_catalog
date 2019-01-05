@@ -34,7 +34,7 @@ class _ImagePickerDemoState extends State<_ImagePickerDemo> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return ListView(
       children: <Widget>[
         ButtonBar(
           children: <Widget>[
@@ -50,11 +50,9 @@ class _ImagePickerDemoState extends State<_ImagePickerDemo> {
             ),
           ],
         ),
-        Expanded(
-          child: this._imageFile == null
-              ? Placeholder()
-              : Image.file(this._imageFile, fit: BoxFit.contain),
-        ),
+        this._imageFile == null
+            ? Placeholder()
+            : Image.file(this._imageFile),
       ],
     );
   }
