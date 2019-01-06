@@ -156,7 +156,8 @@ class _MyRouteState extends State<MyRoute> with SingleTickerProviderStateMixin {
         IconButton(
           icon: Icon(
             this._isStared(route.routeName) ? Icons.star : Icons.star_border,
-            color: this._isStared(route.routeName) ? Colors.yellow : Colors.grey,
+            color:
+                this._isStared(route.routeName) ? Colors.yellow : Colors.grey,
           ),
           onPressed: () => this._toggleStaredAndUpdateStarCounts(route),
         ),
@@ -254,17 +255,19 @@ class _MyRouteState extends State<MyRoute> with SingleTickerProviderStateMixin {
     try {
       await Firestore.instance.runTransaction(
         (transaction) async {
-          final freshSnapshot =
-              await transaction.get(record.firestoreDocReference);
-          final freshRecord = _DemoStarsRecord.fromSnapshot(freshSnapshot);
-          await transaction.update(record.firestoreDocReference,
-              {'stars': max(0, freshRecord.stars + deltaStars)});
+          try {
+            final freshSnapshot =
+                await transaction.get(record.firestoreDocReference);
+            final freshRecord = _DemoStarsRecord.fromSnapshot(freshSnapshot);
+            await transaction.update(record.firestoreDocReference,
+                {'stars': max(0, freshRecord.stars + deltaStars)});
+          } catch (e) {
+            Fluttertoast.showToast(msg: 'Error doing firebase transaction: $e');
+          }
         },
         timeout: Duration(seconds: 3),
       );
-      setState(() {
-        this._toggleStared(route.routeName);
-      });
+      setState(() => this._toggleStared(route.routeName));
     } catch (e) {
       Fluttertoast.showToast(msg: 'Error doing firebase transaction: $e');
     }
