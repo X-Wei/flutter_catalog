@@ -39,6 +39,7 @@ import './routes/nav_tabs_ex.dart';
 import './routes/persistence_file_rw_ex.dart';
 import './routes/persistence_preference_ex.dart';
 import './routes/plugins_image_picker_ex.dart';
+import './routes/plugins_markdown_ex.dart';
 import './routes/plugins_webview_ex.dart';
 import './routes/widgets_buttons_ex.dart';
 import './routes/widgets_card_ex.dart';
@@ -179,6 +180,7 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
     routes: <MyRoute>[
       ImagePickerExample(),
       WebViewExample(),
+      MarkdownExample(),
     ],
   ),
   MyRouteGroup(
