@@ -50,9 +50,7 @@ class _ImagePickerDemoState extends State<_ImagePickerDemo> {
             ),
           ],
         ),
-        this._imageFile == null
-            ? Placeholder()
-            : Image.file(this._imageFile),
+        this._imageFile == null ? Placeholder() : Image.file(this._imageFile),
       ],
     );
   }
