@@ -3,6 +3,8 @@ import 'dart:math';
 
 import 'package:firebase_ml_vision/firebase_ml_vision.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:transparent_image/transparent_image.dart'
+    show kTransparentImage;
 import 'package:flutter/material.dart';
 import '../my_route.dart';
 
@@ -45,25 +47,52 @@ class _MLKitDemoPageState extends State<MLKitDemoPage> {
   File _imageFile;
   String _mlResult = '<no result>';
 
-  Future<Null> _pickImageFromCamera() async {
-    final File imageFile =
-        await ImagePicker.pickImage(source: ImageSource.camera);
+  Future<bool> _pickImage() async {
+    setState(() => this._imageFile = null);
+    final File imageFile = await showDialog<File>(
+      context: context,
+      builder: (ctx) => SimpleDialog(
+            children: <Widget>[
+              ListTile(
+                leading: Icon(Icons.camera_alt),
+                title: Text('Take picture'),
+                onTap: () async {
+                  final File imageFile =
+                      await ImagePicker.pickImage(source: ImageSource.camera);
+                  Navigator.pop(ctx, imageFile);
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.image),
+                title: Text('Pick from gallery'),
+                onTap: () async {
+                  try {
+                    final File imageFile = await ImagePicker.pickImage(
+                        source: ImageSource.gallery);
+                    Navigator.pop(ctx, imageFile);
+                  } catch (e) {
+                    print(e);
+                    Navigator.pop(ctx, null);
+                  }
+                },
+              ),
+            ],
+          ),
+    );
+    if (imageFile == null) {
+      Scaffold.of(context).showSnackBar(
+        SnackBar(content: Text('Please pick one image first.')),
+      );
+      return false;
+    }
     setState(() => this._imageFile = imageFile);
-  }
-
-  Future<bool> _pickImageFromGallery() async {
-    final File imageFile =
-        await ImagePicker.pickImage(source: ImageSource.gallery);
-    setState(() => this._imageFile = imageFile);
+    print('picked image: ${this._imageFile}');
     return true;
   }
 
   Future<Null> _imageLabelling() async {
     setState(() => this._mlResult = '<no result>');
-    if (this._imageFile == null) {
-      Scaffold.of(context).showSnackBar(
-        SnackBar(content: Text('Please pick one image first.')),
-      );
+    if (await _pickImage() == false) {
       return;
     }
     String result = '';
@@ -86,10 +115,7 @@ class _MLKitDemoPageState extends State<MLKitDemoPage> {
 
   Future<Null> _textOcr() async {
     setState(() => this._mlResult = '<no result>');
-    if (this._imageFile == null) {
-      Scaffold.of(context).showSnackBar(
-        SnackBar(content: Text('Please pick one image first.')),
-      );
+    if (await _pickImage() == false) {
       return;
     }
     String result = '';
@@ -124,10 +150,7 @@ class _MLKitDemoPageState extends State<MLKitDemoPage> {
 
   Future<Null> _barcodeScan() async {
     setState(() => this._mlResult = '<no result>');
-    if (this._imageFile == null) {
-      Scaffold.of(context).showSnackBar(
-        SnackBar(content: Text('Please pick one image first.')),
-      );
+    if (await _pickImage() == false) {
       return;
     }
     String result = '';
@@ -172,10 +195,7 @@ class _MLKitDemoPageState extends State<MLKitDemoPage> {
 
   Future<Null> _faceDetect() async {
     setState(() => this._mlResult = '<no result>');
-    if (this._imageFile == null) {
-      Scaffold.of(context).showSnackBar(
-        SnackBar(content: Text('Please pick one image first.')),
-      );
+    if (await _pickImage() == false) {
       return;
     }
     String result = '';
@@ -231,22 +251,11 @@ class _MLKitDemoPageState extends State<MLKitDemoPage> {
             ? Placeholder(
                 fallbackHeight: 200.0,
               )
-            : Image.file(this._imageFile),
-        Divider(),
-        ButtonBar(
-          children: <Widget>[
-            IconButton(
-              icon: Icon(Icons.photo_camera),
-              onPressed: () async => await _pickImageFromCamera(),
-              tooltip: 'Shoot picture',
-            ),
-            IconButton(
-              icon: Icon(Icons.photo),
-              onPressed: () async => await _pickImageFromGallery(),
-              tooltip: 'Pick from gallery',
-            ),
-          ],
-        ),
+            : FadeInImage(
+                placeholder: MemoryImage(kTransparentImage),
+                image: FileImage(this._imageFile),
+                // Image.file(, fit: BoxFit.contain),
+              ),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: ButtonBar(
