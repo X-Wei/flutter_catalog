@@ -25,6 +25,7 @@ dependencies:
   fluttertoast: ^2.1.0
   google_sign_in: ^3.2.4
   image_picker: ^0.4.12
+  local_auth: ^0.3.1
   path_provider: ^0.4.1
   shared_preferences: ^0.4.3
   transparent_image:
