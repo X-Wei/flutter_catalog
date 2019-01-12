@@ -13,7 +13,7 @@ class LocalAuthExample extends MyRoute {
   get title => 'Local auth';
 
   @override
-  get description => 'Authenticate';
+  get description => 'Authenticate with biometrics(fingerprint)';
 
   @override
   Widget buildMyRouteContent(BuildContext context) {
