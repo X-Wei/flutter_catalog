@@ -208,7 +208,7 @@ class _MyRouteState extends State<MyRoute> with SingleTickerProviderStateMixin {
         false;
   }
 
-  // Toggles the local stared/not-stated status of routeName (defaults to
+  // Toggles the local stared/not-stared status of routeName (defaults to
   // this.widget.routeName).
   void _toggleStared([String routeName]) {
     routeName ??= this.widget.routeName;
