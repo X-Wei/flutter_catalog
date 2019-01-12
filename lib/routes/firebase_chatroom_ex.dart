@@ -49,7 +49,7 @@ class _ChatPageState extends State<ChatPage> {
     super.initState();
     final now = DateTime.now().toUtc();
     this._firebaseMsgDbRef =
-        kFirebaseDbRef.child('messages/${now.year}-${now.month}/${now.day}');
+        kFirebaseDbRef.child('messages/${now.year}/${now.month}/${now.day}');
     kFirebaseAuth.currentUser().then(
           (user) => setState(() {
                 this._user = user;
