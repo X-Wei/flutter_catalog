@@ -283,7 +283,10 @@ class _MLKitDemoPageState extends State<MLKitDemoPage> {
         Text('Result:', style: Theme.of(context).textTheme.subtitle),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
-          child: Text(this._mlResult),
+          child: Text(
+            this._mlResult,
+            style: TextStyle(fontFamily: 'monospace'),
+          ),
         ),
       ],
     );
