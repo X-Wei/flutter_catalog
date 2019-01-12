@@ -38,8 +38,7 @@ class ChatPage extends StatefulWidget {
 }
 
 class _ChatPageState extends State<ChatPage> {
-  final _firebaseMsgDbRef = kFirebaseDbRef
-      .child('messages/${DateTime.now().year}-${DateTime.now().month}');
+  DatabaseReference _firebaseMsgDbRef;
 
   FirebaseUser _user;
   final TextEditingController _textController = TextEditingController();
@@ -48,6 +47,9 @@ class _ChatPageState extends State<ChatPage> {
   @override
   void initState() {
     super.initState();
+    final now = DateTime.now().toUtc();
+    this._firebaseMsgDbRef =
+        kFirebaseDbRef.child('messages/${now.year}-${now.month}/${now.day}');
     kFirebaseAuth.currentUser().then(
           (user) => setState(() {
                 this._user = user;
@@ -60,27 +62,10 @@ class _ChatPageState extends State<ChatPage> {
     return Scaffold(
       resizeToAvoidBottomPadding: false,
       appBar: AppBar(
-        backgroundColor: Colors.orangeAccent,
+        backgroundColor: Colors.red,
         leading: IconButton(
           icon: Icon(Icons.info),
-          onPressed: () => showDialog(
-                context: context,
-                builder: (ctx) => AlertDialog(
-                      title: Text('Note'),
-                      content: Text(
-                          'This chat room is only for demo purpose.\n\n'
-                          'The chat messages are publicly available, and they '
-                          'can be deleted at any time by the firebase admin.\n\n'
-                          'You must log in (in the "Firebase login" demo) to '
-                          'send messages.'),
-                      actions: <Widget>[
-                        FlatButton(
-                          child: Text('OK'),
-                          onPressed: () => Navigator.of(ctx).pop(),
-                        )
-                      ],
-                    ),
-              ),
+          onPressed: () => _showNoteDialog(context),
         ),
         title: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
@@ -98,6 +83,26 @@ class _ChatPageState extends State<ChatPage> {
           ],
         ),
       ),
+    );
+  }
+
+  void _showNoteDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+            title: Text('Note'),
+            content: Text('This chat room is only for demo purposes.\n\n'
+                'The chat messages are publicly available, and they '
+                'can be deleted at any time by the firebase admin.\n\n'
+                'To send messages, you must log in '
+                'in the "Firebase login" demo.'),
+            actions: <Widget>[
+              FlatButton(
+                child: Text('OK'),
+                onPressed: () => Navigator.of(ctx).pop(),
+              )
+            ],
+          ),
     );
   }
 
