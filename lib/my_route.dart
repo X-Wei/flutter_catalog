@@ -118,7 +118,7 @@ class _MyRouteState extends State<MyRoute> with SingleTickerProviderStateMixin {
         );
       }),
       // Only home route has drawer:
-      drawer: this.widget.routeName == my_app_meta.kHomeRouteName
+      drawer: this.widget.routeName == Navigator.defaultRouteName
           ? Drawer(
               child: my_app_meta.getNavDrawerItems(this, context),
             )
@@ -142,7 +142,7 @@ class _MyRouteState extends State<MyRoute> with SingleTickerProviderStateMixin {
   List<Widget> _getAppbarActions() {
     // final state = MyRouteState.of(context);
     final appbarActions = <Widget>[];
-    if (this.widget.routeName != my_app_meta.kHomeRouteName) {
+    if (this.widget.routeName != Navigator.defaultRouteName) {
       appbarActions.add(starStatusOfRoute(this.widget));
     }
     if (this.widget.links.isNotEmpty) {

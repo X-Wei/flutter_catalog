@@ -67,7 +67,6 @@ const GOOGLEPLAY_URL =
 const GITHUB_URL = 'https://github.com/X-Wei/flutter_catalog';
 const AUTHOR_SITE = 'http://x-wei.github.io';
 
-const kHomeRouteName = '/Home';
 const kHomeRoute = MyHomeRoute();
 const kAboutRoute = MyAboutRoute();
 
@@ -247,7 +246,6 @@ final kRoutenameToRouteMap = Map<String, MyRoute>.fromIterable(
     {
       // By default go to home screen. (Navigator.defaultRouteName is just '/')
       Navigator.defaultRouteName: kHomeRoute,
-      kHomeRouteName: kHomeRoute,
       kAboutRoute.routeName: kAboutRoute,
     },
   );

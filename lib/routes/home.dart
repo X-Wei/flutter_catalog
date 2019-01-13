@@ -5,7 +5,6 @@ import '../my_app_meta.dart'
     show
         BookmarkManager,
         kAboutRoute,
-        kHomeRouteName,
         kMyAppRoutesStructure,
         kRoutenameToRouteMap,
         kSharedPreferences,
@@ -19,7 +18,7 @@ class MyHomeRoute extends MyRoute {
   get title => 'Flutter Catalog';
 
   @override
-  get routeName => kHomeRouteName;
+  get routeName => Navigator.defaultRouteName;
 
   @override
   Widget buildMyRouteContent(BuildContext context) {

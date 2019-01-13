@@ -5,9 +5,8 @@ void main() => runApp(
       MaterialApp(
         title: 'Flutter Catalog',
         theme: ThemeData(primarySwatch: Colors.blue),
-        initialRoute: my_app_meta.kHomeRouteName,
-        // No need to set `home` because `routes` is set, in which initialRoute
-        // and Navigator.defaultRouteName has an entry.
+        // No need to set `home` because `routes` is set to a routing table, and
+        // Navigator.defaultRouteName ('/') has an entry in it.
         routes: my_app_meta.kRoutingTable,
       ),
     );
