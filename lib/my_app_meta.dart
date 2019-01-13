@@ -71,6 +71,11 @@ const kHomeRouteName = '/Home';
 const kHomeRoute = MyHomeRoute();
 const kAboutRoute = MyAboutRoute();
 
+// All routes should use this same preference instance, to avoid unexpected
+// states-not-updated issues.
+final Future<SharedPreferences> kSharedPreferences =
+    SharedPreferences.getInstance();
+
 // A class to manage the bookmark status of routes.
 class BookmarkManager {
   static const kBookmarkedRoutesPreferenceKey = 'BOOKMARKED_ROUTES';
@@ -82,26 +87,23 @@ class BookmarkManager {
 
   // Toggles the local stared/not-stared status of a route.
   static void toggleStared(String routeName, SharedPreferences preferences) {
-    final bool stared = isStared(routeName, preferences);
-    final prefKey = kBookmarkedRoutesPreferenceKey;
-    if (stared) {
-      final staredRoutes = preferences.getStringList(prefKey) ?? [];
+    final staredRoutes = bookmarkedRoutenames(preferences);
+    if (isStared(routeName, preferences)) {
       staredRoutes.remove(routeName);
-      preferences.setStringList(prefKey, staredRoutes);
     } else {
-      final staredRoutes =
-          Set<String>.from(preferences.getStringList(prefKey) ?? []);
       staredRoutes.add(routeName);
-      preferences.setStringList(prefKey, staredRoutes.toList());
     }
+    final dedupedStaredRoutes = Set<String>.from(staredRoutes).toList();
+    preferences?.setStringList(
+        kBookmarkedRoutesPreferenceKey, dedupedStaredRoutes);
   }
 
   static List<String> bookmarkedRoutenames(SharedPreferences preferences) {
-    return preferences.getStringList(kBookmarkedRoutesPreferenceKey) ?? [];
+    return preferences?.getStringList(kBookmarkedRoutesPreferenceKey) ?? [];
   }
 
   static Future<List<String>> bookmarkedRoutenamesAsync() async {
-    final preferences = await SharedPreferences.getInstance();
+    final preferences = await kSharedPreferences;
     return bookmarkedRoutenames(preferences);
   }
 }

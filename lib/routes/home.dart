@@ -3,12 +3,13 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../my_route.dart';
 import '../my_app_meta.dart'
     show
-        kMyAppRoutesStructure,
-        MyRouteGroup,
+        BookmarkManager,
         kAboutRoute,
         kHomeRouteName,
-        BookmarkManager,
-        kRoutenameToRouteMap;
+        kMyAppRoutesStructure,
+        kRoutenameToRouteMap,
+        kSharedPreferences,
+        MyRouteGroup;
 
 class MyHomeRoute extends MyRoute {
   const MyHomeRoute([String sourceFile = 'lib/routes/home.dart'])
@@ -37,7 +38,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    SharedPreferences.getInstance()
+    kSharedPreferences
       ..then((prefs) => setState(() => this._preferences = prefs));
   }
 
@@ -51,12 +52,11 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _buildBookmarksExpansionTile() {
-    final List<MyRoute> routes = this._preferences != null
-        ? BookmarkManager.bookmarkedRoutenames(this._preferences)
+    final List<Widget> routes =
+        BookmarkManager.bookmarkedRoutenames(this._preferences)
             .map((routename) => kRoutenameToRouteMap[routename])
             .where((route) => route != null)
-            .toList()
-        : [];
+            .toList();
     MyRouteGroup staredGroup = MyRouteGroup(
       groupName: 'Bookmarks',
       icon: Icon(Icons.stars),

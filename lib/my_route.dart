@@ -75,14 +75,9 @@ class _MyRouteState extends State<MyRoute> with SingleTickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(
-      length: _TABS.length,
-      vsync: this,
-    );
-    SharedPreferences.getInstance()
-      ..then((prefs) {
-        setState(() => this._preferences = prefs);
-      });
+    _tabController = TabController(length: _TABS.length, vsync: this);
+    my_app_meta.kSharedPreferences
+      ..then((prefs) => setState(() => this._preferences = prefs));
   }
 
   @override
