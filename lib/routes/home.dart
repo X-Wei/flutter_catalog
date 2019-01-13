@@ -51,11 +51,12 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _buildBookmarksExpansionTile() {
-    final List<MyRoute> routes =
-        BookmarkManager.bookmarkedRoutenames(this._preferences)
+    final List<MyRoute> routes = this._preferences != null
+        ? BookmarkManager.bookmarkedRoutenames(this._preferences)
             .map((routename) => kRoutenameToRouteMap[routename])
             .where((route) => route != null)
-            .toList();
+            .toList()
+        : [];
     MyRouteGroup staredGroup = MyRouteGroup(
       groupName: 'Bookmarks',
       icon: Icon(Icons.stars),
