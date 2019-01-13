@@ -19,7 +19,7 @@ allprojects {
     // (https://github.com/X-Wei/flutter_catalog/issues/4).
     // C.f. https://stackoverflow.com/a/50578320.
     configurations.all {
-        resolutionStrategy.force "com.android.support:support-v4:26.1.0"
+        resolutionStrategy.force "com.android.support:support-v4:27.1.1"
     }
 }
 
