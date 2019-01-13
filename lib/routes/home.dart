@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../my_route.dart';
 import '../my_app_meta.dart'
-    show kMyAppRoutesStructure, MyRouteGroup, kAboutRoute, kHomeRouteName;
+    show
+        kMyAppRoutesStructure,
+        MyRouteGroup,
+        kAboutRoute,
+        kHomeRouteName,
+        BookmarkManager,
+        kRoutenameToRouteMap;
 
 class MyHomeRoute extends MyRoute {
   const MyHomeRoute([String sourceFile = 'lib/routes/home.dart'])
@@ -25,14 +32,36 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  SharedPreferences _preferences;
+
+  @override
+  void initState() {
+    super.initState();
+    SharedPreferences.getInstance()
+      ..then((prefs) => setState(() => this._preferences = prefs));
+  }
+
   @override
   Widget build(BuildContext context) {
-    final listTiles =
-        kMyAppRoutesStructure.map(_myRouteGroupToExpansionTile).toList()
-          ..add(
-            _myRouteToListTile(kAboutRoute, leading: Icon(Icons.info)),
-          );
+    final listTiles = <Widget>[]
+      ..add(_buildBookmarksExpansionTile())
+      ..addAll(kMyAppRoutesStructure.map(_myRouteGroupToExpansionTile))
+      ..add(_myRouteToListTile(kAboutRoute, leading: Icon(Icons.info)));
     return ListView(children: listTiles);
+  }
+
+  Widget _buildBookmarksExpansionTile() {
+    final List<MyRoute> routes =
+        BookmarkManager.bookmarkedRoutenames(this._preferences)
+            .map((routename) => kRoutenameToRouteMap[routename])
+            .where((route) => route != null)
+            .toList();
+    MyRouteGroup staredGroup = MyRouteGroup(
+      groupName: 'Bookmarks',
+      icon: Icon(Icons.stars),
+      routes: routes,
+    );
+    return _myRouteGroupToExpansionTile(staredGroup);
   }
 
   Widget _myRouteGroupToExpansionTile(MyRouteGroup myRouteGroup) {
