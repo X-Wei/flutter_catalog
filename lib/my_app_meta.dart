@@ -57,7 +57,8 @@ import './routes/widgets_textformfield_ex.dart';
 // *Note*: when APP_VERSION is changed, remember to also update pubspec.yaml.
 const APP_VERSION = 'v1.4.1';
 const APP_NAME = 'Flutter Catalog';
-const APP_LOGO = FlutterLogo(size: 32.0);
+final kAppIcon =
+    Image.asset('res/images/launcher_icon.png', height: 64.0, width: 64.0);
 const APP_DESCRIPTION = 'An app showcasing Flutter components, with '
     'side-by-side source code view.'
     '\n\nDeveloped by X.Wei.';
@@ -264,25 +265,16 @@ ListView getNavDrawerItems(State state, BuildContext context) {
     child: Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
-        CircleAvatar(
-          backgroundColor: Colors.white,
-          child: APP_LOGO,
-        ),
-        Text(
-          APP_NAME,
-          style: Theme.of(context).textTheme.title,
-        ),
-        Text(
-          '$APP_VERSION',
-          style: Theme.of(context).textTheme.caption,
-        ),
+        kAppIcon,
+        Text(APP_NAME, style: Theme.of(context).textTheme.title),
+        Text('$APP_VERSION', style: Theme.of(context).textTheme.caption),
       ],
     ),
   );
 
-  List<Widget> drawerNavItems = [
-    drawerHeader,
-  ]..addAll(kAboutRoute.aboutListTiles(context));
+  List<Widget> drawerNavItems = []
+    ..add(drawerHeader)
+    ..addAll(kAboutRoute.aboutListTiles(context));
   return ListView(
     children: drawerNavItems,
   );

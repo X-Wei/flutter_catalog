@@ -44,7 +44,7 @@ class MyAboutRoute extends MyRoute {
   @override
   Widget buildMyRouteContent(BuildContext context) {
     final header = ListTile(
-      leading: APP_LOGO,
+      leading: kAppIcon,
       title: Text(APP_NAME),
       subtitle: Text(APP_VERSION),
       trailing: IconButton(
@@ -54,7 +54,7 @@ class MyAboutRoute extends MyRoute {
               context: context,
               applicationName: APP_NAME,
               applicationVersion: APP_VERSION,
-              applicationIcon: APP_LOGO,
+              applicationIcon: kAppIcon,
               children: <Widget>[Text(APP_DESCRIPTION)]);
         },
       ),
