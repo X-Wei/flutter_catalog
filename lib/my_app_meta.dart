@@ -233,23 +233,29 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
   ),
 ];
 
-// Returns the app's root-level routing table.
-Map<String, WidgetBuilder> getRoutingTable() {
-  final routingTable = <String, WidgetBuilder>{
-    // By default go to home screen. (Navigator.defaultRouteName is just '/')
-    Navigator.defaultRouteName: (context) => kHomeRoute,
-    kHomeRouteName: (context) => kHomeRoute,
-    kAboutRoute.routeName: (context) => kAboutRoute,
-  };
-  kMyAppRoutesStructure.forEach((myRouteGroup) {
-    List<MyRoute> routes = myRouteGroup.routes;
-    routes.forEach((MyRoute route) {
-      final widgetBuilder = (BuildContext context) => route;
-      routingTable[route.routeName] = widgetBuilder;
-    });
-  });
-  return routingTable;
-}
+final _allRoutes = kMyAppRoutesStructure.expand((group) => group.routes);
+
+// Mapping route names to routes.
+final kRoutenameToRouteMap = Map<String, MyRoute>.fromIterable(
+  _allRoutes,
+  key: (route) => route.routeName,
+  value: (route) => route,
+);
+
+// The app's root-level routing table.
+Map<String, WidgetBuilder> kRoutingTable = kRoutenameToRouteMap.map(
+  (routeName, route) {
+    final widgetBuilder = (BuildContext context) => route;
+    return MapEntry<String, WidgetBuilder>(routeName, widgetBuilder);
+  },
+)..addAll(
+    {
+      // By default go to home screen. (Navigator.defaultRouteName is just '/')
+      Navigator.defaultRouteName: (context) => kHomeRoute,
+      kHomeRouteName: (context) => kHomeRoute,
+      kAboutRoute.routeName: (context) => kAboutRoute,
+    },
+  );
 
 // Returns the app's navigation drawer menu items.
 ListView getNavDrawerItems(State state, BuildContext context) {
