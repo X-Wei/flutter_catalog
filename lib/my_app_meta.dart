@@ -243,7 +243,14 @@ final kRoutenameToRouteMap = Map<String, MyRoute>.fromIterable(
   _allRoutes,
   key: (route) => route.routeName,
   value: (route) => route,
-);
+)..addAll(
+    {
+      // By default go to home screen. (Navigator.defaultRouteName is just '/')
+      Navigator.defaultRouteName: kHomeRoute,
+      kHomeRouteName: kHomeRoute,
+      kAboutRoute.routeName: kAboutRoute,
+    },
+  );
 
 // The app's root-level routing table.
 Map<String, WidgetBuilder> kRoutingTable = kRoutenameToRouteMap.map(
@@ -251,14 +258,7 @@ Map<String, WidgetBuilder> kRoutingTable = kRoutenameToRouteMap.map(
     final widgetBuilder = (BuildContext context) => route;
     return MapEntry<String, WidgetBuilder>(routeName, widgetBuilder);
   },
-)..addAll(
-    {
-      // By default go to home screen. (Navigator.defaultRouteName is just '/')
-      Navigator.defaultRouteName: (context) => kHomeRoute,
-      kHomeRouteName: (context) => kHomeRoute,
-      kAboutRoute.routeName: (context) => kAboutRoute,
-    },
-  );
+);
 
 // Returns the app's navigation drawer menu items.
 ListView getNavDrawerItems(State state, BuildContext context) {
