@@ -27,17 +27,20 @@ class MyCodeViewState extends State<MyCodeView> {
     return Stack(
       alignment: AlignmentDirectional.bottomEnd,
       children: <Widget>[
-        Scrollbar(
-          child: SingleChildScrollView(
+        Container(
+          constraints: BoxConstraints.expand(),
+          child: Scrollbar(
             child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: RichText(
-                textScaleFactor: this._textScaleFactor,
-                text: TextSpan(
-                  style: TextStyle(fontFamily: 'monospace', fontSize: 12.0),
-                  children: <TextSpan>[
-                    DartSyntaxHighlighter(style).format(codeContent)
-                  ],
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: RichText(
+                  textScaleFactor: this._textScaleFactor,
+                  text: TextSpan(
+                    style: TextStyle(fontFamily: 'monospace', fontSize: 12.0),
+                    children: <TextSpan>[
+                      DartSyntaxHighlighter(style).format(codeContent)
+                    ],
+                  ),
                 ),
               ),
             ),
