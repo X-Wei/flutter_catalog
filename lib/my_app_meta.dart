@@ -2,6 +2,7 @@
 // List<Tuple2> object. And it provides fuctions to get app's routing table or
 // app's navigation drawer menu items from the declared metadata.
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import './my_route.dart';
 import './routes/about.dart';
@@ -68,6 +69,41 @@ const AUTHOR_SITE = 'http://x-wei.github.io';
 const kHomeRouteName = '/Home';
 const kHomeRoute = MyHomeRoute();
 const kAboutRoute = MyAboutRoute();
+
+// A class to manage the bookmark status of routes.
+class BookmarkManager {
+  static const kBookmarkedRoutesPreferenceKey = 'BOOKMARKED_ROUTES';
+
+  // Returns if a route is stared or not.
+  static bool isStared(String routeName, SharedPreferences preferences) {
+    return bookmarkedRoutenames(preferences).contains(routeName) ?? false;
+  }
+
+  // Toggles the local stared/not-stared status of a route.
+  static void toggleStared(String routeName, SharedPreferences preferences) {
+    final bool stared = isStared(routeName, preferences);
+    final prefKey = kBookmarkedRoutesPreferenceKey;
+    if (stared) {
+      final staredRoutes = preferences.getStringList(prefKey) ?? [];
+      staredRoutes.remove(routeName);
+      preferences.setStringList(prefKey, staredRoutes);
+    } else {
+      final staredRoutes =
+          Set<String>.from(preferences.getStringList(prefKey) ?? []);
+      staredRoutes.add(routeName);
+      preferences.setStringList(prefKey, staredRoutes.toList());
+    }
+  }
+
+  static List<String> bookmarkedRoutenames(SharedPreferences preferences) {
+    return preferences.getStringList(kBookmarkedRoutesPreferenceKey) ?? [];
+  }
+
+  static Future<List<String>> bookmarkedRoutenamesAsync() async {
+    final preferences = await SharedPreferences.getInstance();
+    return bookmarkedRoutenames(preferences);
+  }
+}
 
 // The structure of app's navigation drawer items is a 2-level menu, its schema
 // is the following:

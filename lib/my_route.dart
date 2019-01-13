@@ -69,7 +69,6 @@ const _TABS = <Widget>[
 ];
 
 class _MyRouteState extends State<MyRoute> with SingleTickerProviderStateMixin {
-  static const kStaredPreferenceKeyPrefx = 'StaredFor_';
   TabController _tabController;
   SharedPreferences _preferences;
 
@@ -181,16 +180,14 @@ class _MyRouteState extends State<MyRoute> with SingleTickerProviderStateMixin {
   // Returns whether routeName (defaults to this.widget.routeName) is stared.
   bool _isStared([String routeName]) {
     routeName ??= this.widget.routeName;
-    return this._preferences.getBool('$kStaredPreferenceKeyPrefx$routeName') ??
-        false;
+    return my_app_meta.BookmarkManager.isStared(routeName, this._preferences);
   }
 
   // Toggles the local stared/not-stared status of routeName (defaults to
   // this.widget.routeName).
   void _toggleStared([String routeName]) {
     routeName ??= this.widget.routeName;
-    bool stared = this._isStared(routeName);
-    this._preferences.setBool('$kStaredPreferenceKeyPrefx$routeName', !stared);
+    my_app_meta.BookmarkManager.toggleStared(routeName, this._preferences);
   }
 }
 
