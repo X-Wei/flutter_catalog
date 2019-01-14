@@ -36,14 +36,15 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   FirebaseUser _user;
+  // If this._busy=true, the buttons are not clickable. This is to avoid
+  // clicking buttons while a previous onTap function is not finished.
+  bool _busy = false;
 
   @override
   void initState() {
     super.initState();
     kFirebaseAuth.currentUser().then(
-          (user) => setState(() {
-                this._user = user;
-              }),
+          (user) => setState(() => this._user = user),
         );
   }
 
@@ -58,24 +59,36 @@ class _LoginPageState extends State<LoginPage> {
     final googleLoginBtn = MaterialButton(
       color: Colors.blueAccent,
       child: Text('Log in with Google'),
-      onPressed: () {
-        this._googleSignIn()
-          ..then(this._showUserProfilePage)
-          ..catchError((e) => print(e));
-      },
+      onPressed: this._busy
+          ? null
+          : () async {
+              setState(() => this._busy = true);
+              final user = await this._googleSignIn();
+              this._showUserProfilePage(user);
+              setState(() => this._busy = false);
+            },
     );
     final anonymousLoginBtn = MaterialButton(
       color: Colors.deepOrange,
       child: Text('Log in anonymously'),
-      onPressed: () {
-        this._anonymousSignIn()
-          ..then(this._showUserProfilePage)
-          ..catchError((e) => print(e));
-      },
+      onPressed: this._busy
+          ? null
+          : () async {
+              setState(() => this._busy = true);
+              final user = await this._anonymousSignIn();
+              this._showUserProfilePage(user);
+              setState(() => this._busy = false);
+            },
     );
     final signOutBtn = FlatButton(
       child: Text('Log out'),
-      onPressed: () => this._signOut(),
+      onPressed: this._busy
+          ? null
+          : () async {
+              setState(() => this._busy = true);
+              await this._signOut();
+              setState(() => this._busy = false);
+            },
     );
     return Center(
       child: ListView(
