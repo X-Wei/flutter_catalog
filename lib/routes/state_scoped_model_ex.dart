@@ -93,8 +93,8 @@ class CounterAndButton extends StatelessWidget {
     // ###3. Wrap children widgets ScopedModelDescendant widget to access the
     // associated state model.
     return ScopedModelDescendant<MyStateModel>(
-      // Note: Set `rebuildOnChange` to false if the current widget doesn't 
-      // need updating. E.g. When "add-to-cart" button is pressed, the app's 
+      // Note: Set `rebuildOnChange` to false if the current widget doesn't
+      // need updating. E.g. When "add-to-cart" button is pressed, the app's
       // state is updated, but "product-details" page doesn't need updating.
       rebuildOnChange: true,
       builder: (context, child, model) => Card(

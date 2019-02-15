@@ -65,7 +65,6 @@ class _StreamControllerDemoState extends State<_StreamControllerDemo> {
       title: Text(data.message),
       subtitle: Text(data.timestamp.toString()),
     );
-    print('new widget output');
     _outputStreamController.sink.add(widgetToRender);
   }
 
