@@ -46,6 +46,7 @@ import './routes/plugins_webview_ex.dart';
 import './routes/state_inherited_widget_ex.dart';
 import './routes/state_scoped_model_ex.dart';
 import './routes/state_streambuilder_ex.dart';
+import './routes/state_streamcontroller_ex.dart';
 import './routes/widgets_buttons_ex.dart';
 import './routes/widgets_card_ex.dart';
 import './routes/widgets_dropdown_button_ex.dart';
@@ -223,7 +224,7 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
       InheritedWidgetExample(),
       ScopedModelExample(),
       StreamBuilderExample(),
-      // TODO StreamControllerExample(),
+      StreamControllerExample(),
       // TODO BlocExample(),
       // TODO ReduxExample(),
     ],
