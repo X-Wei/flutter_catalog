@@ -27,6 +27,7 @@ dependencies:
   image_picker: ^0.4.12
   local_auth: ^0.3.1
   path_provider: ^0.4.1
+  scoped_model: ^1.0.1
   shared_preferences: ^0.4.3
   transparent_image:
   url_launcher: ^3.0.3
