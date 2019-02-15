@@ -43,6 +43,7 @@ import './routes/plugins_image_picker_ex.dart';
 import './routes/plugins_local_auth_ex.dart';
 import './routes/plugins_markdown_ex.dart';
 import './routes/plugins_webview_ex.dart';
+import './routes/state_inherited_widget_ex.dart';
 import './routes/widgets_buttons_ex.dart';
 import './routes/widgets_card_ex.dart';
 import './routes/widgets_dropdown_button_ex.dart';
@@ -132,7 +133,7 @@ class MyRouteGroup {
 const kMyAppRoutesStructure = <MyRouteGroup>[
   MyRouteGroup(
     groupName: 'Widgets',
-    icon: Icon(Icons.widgets),
+    icon: Icon(Icons.extension),
     routes: <MyRoute>[
       IconExample(),
       TextExample(),
@@ -211,6 +212,18 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
     routes: <MyRoute>[
       SharedPreferenceExample(),
       FileReadWriteExample(),
+    ],
+  ),
+  MyRouteGroup(
+    groupName: 'State Management',
+    icon: Icon(Icons.developer_mode),
+    routes: <MyRoute>[
+      InheritedWidgetExample(),
+      // TODO ScopedModelExample(),
+      // TODO StreamBuilderExample(),
+      // TODO StreamControllerExample(),
+      // TODO BlocExample(),
+      // TODO ReduxExample(),
     ],
   ),
   MyRouteGroup(
