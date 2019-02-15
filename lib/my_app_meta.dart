@@ -1,5 +1,5 @@
 // This file declares "metadata" (or "structure") of the app, in a const
-// List<Tuple2> object. And it provides fuctions to get app's routing table or
+// List<Tuple2> object. And it provides functions to get app's routing table or
 // app's navigation drawer menu items from the declared metadata.
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -132,7 +132,7 @@ class MyRouteGroup {
 const kMyAppRoutesStructure = <MyRouteGroup>[
   MyRouteGroup(
     groupName: 'Widgets',
-    icon: Icon(Icons.widgets),
+    icon: Icon(Icons.extension),
     routes: <MyRoute>[
       IconExample(),
       TextExample(),
