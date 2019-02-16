@@ -44,6 +44,7 @@ import './routes/plugins_local_auth_ex.dart';
 import './routes/plugins_markdown_ex.dart';
 import './routes/plugins_webview_ex.dart';
 import './routes/state_bloc_ex.dart';
+import './routes/state_bloc_lib_ex.dart';
 import './routes/state_inherited_widget_ex.dart';
 import './routes/state_scoped_model_ex.dart';
 import './routes/state_streambuilder_ex.dart';
@@ -227,7 +228,7 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
       InheritedWidgetExample(),
       ScopedModelExample(),
       BlocExample(),
-      // TODO BlocLibExample(),
+      BlocLibExample(),
       // TODO ReduxExample(),
     ],
   ),
