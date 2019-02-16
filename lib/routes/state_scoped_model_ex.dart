@@ -24,13 +24,13 @@ class ScopedModelExample extends MyRoute {
   Widget buildMyRouteContent(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: MyDemo(),
+      child: _MyDemoApp(),
     );
   }
 }
 
 // ###1. Define a state class, extending from scoped_model.Model.
-class MyStateModel extends Model {
+class _MyState extends Model {
   int _counter = 0;
 
   get counterValue => _counter;
@@ -48,30 +48,33 @@ class MyStateModel extends Model {
   }
 }
 
-class MyDemo extends StatelessWidget {
+class _MyDemoApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // ###2. Put the ScopedModel at the root of the widget tree, so that all
-    // children widget can access the state.
-    return ScopedModel<MyStateModel>(
-      model: MyStateModel(),
-      child: ListView(
-        children: <Widget>[
-          Text(
-              "ScopedModel allows efficient sharing/updating of app's state from "
-              "children widgets down the widgets tree.\n\n"
-              "In this example, the app's root widget is a ScopedModel, "
-              "so it's state is shared to the two 'CounterAndButtons' children"
-              " widgets below. \n\n"
-              "Clicking on child widget's button would update the MyStateModel "
-              "of root widget.\n"),
-          _buildRootWidget(context),
-        ],
-      ),
+    return ListView(
+      children: <Widget>[
+        Text(
+            "ScopedModel allows efficient sharing/updating of app's state from "
+            "children widgets down the widgets tree.\n\n"
+            "In this example, the app's root widget is a ScopedModel, "
+            "so it's state is shared to the two 'CounterAndButtons' children"
+            " widgets below. \n\n"
+            "Clicking on child widget's button would update the MyStateModel "
+            "of root widget.\n"),
+        // ###2. Put the ScopedModel at the root of the widget tree, so that all
+        // children widget can access the state.
+        ScopedModel<_MyState>(
+          model: _MyState(),
+          child: _AppRootWidget(),
+        ),
+      ],
     );
   }
+}
 
-  Widget _buildRootWidget(BuildContext context) {
+class _AppRootWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
     return Card(
       elevation: 4.0,
       child: Column(
@@ -79,7 +82,10 @@ class MyDemo extends StatelessWidget {
           Text('(root widget)'),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[CounterAndButton(), CounterAndButton()],
+            children: <Widget>[
+              _CounterAndButton(),
+              _CounterAndButton(),
+            ],
           ),
         ],
       ),
@@ -87,12 +93,12 @@ class MyDemo extends StatelessWidget {
   }
 }
 
-class CounterAndButton extends StatelessWidget {
+class _CounterAndButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // ###3. Wrap children widgets ScopedModelDescendant widget to access the
     // associated state model.
-    return ScopedModelDescendant<MyStateModel>(
+    return ScopedModelDescendant<_MyState>(
       // Note: Set `rebuildOnChange` to false if the current widget doesn't
       // need updating. E.g. When "add-to-cart" button is pressed, the app's
       // state is updated, but "product-details" page doesn't need updating.
