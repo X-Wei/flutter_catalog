@@ -14,12 +14,12 @@ class BlocLibExample extends MyRoute {
   get title => 'Easier BLoC pattern';
 
   @override
-  get description =>
-      'Simpler BLoC implementation with flutter_bloc package.';
+  get description => 'Simpler BLoC implementation with flutter_bloc package.';
 
   @override
   get links => {
         'Video by Reso Coder': 'https://youtu.be/LeLrsnHeCZY',
+        'flutter_bloc doc': 'https://felangel.github.io/bloc/#/coreconcepts',
       };
 
   @override
@@ -42,13 +42,12 @@ class _MyEvent {
 }
 
 // ###2. Define a State class that represents our app's state. MyBloc's output
-// would be such a state.
+// would be such a state. Note the state must be IMMUTABLE in flutter_bloc from
+// v0.6.0. Instead of mutating the state, create a new state instance.
 class _MyState {
-  int _counter = 0;
+  final int counter;
 
-  int get counterValue => _counter;
-  void incrementCounter() => _counter++;
-  void decrementCounter() => _counter--;
+  const _MyState(this.counter);
 }
 
 // ###3. Define a MyBloc class which extends Bloc<_MyEvent, _MyState> from the
@@ -56,17 +55,22 @@ class _MyState {
 // controllers.
 class MyBloc extends Bloc<_MyEvent, _MyState> {
   @override
-  _MyState get initialState => _MyState();
+  _MyState get initialState => _MyState(0);
 
   @override
   // The business logic is in this mapEventToState function.
+  // Note: in flutter_bloc from v0.6.0 on, states are enforced IMMUTABLE,
+  // mutating currentState and yielding the it won't update on UI.
+  // C.f. https://github.com/felangel/bloc/issues/103.
   Stream<_MyState> mapEventToState(
       _MyState currentState, _MyEvent event) async* {
+    _MyState newState;
     if (event.isIncrement) {
-      yield currentState..incrementCounter();
+      newState = _MyState(currentState.counter + 1);
     } else {
-      yield currentState..decrementCounter();
+      newState = _MyState(currentState.counter - 1);
     }
+    yield newState;
   }
 
   // Instead of doing bloc.sink.add(), we do bloc.dispatch().
@@ -93,7 +97,7 @@ class _MyDemoAppState extends State<_MyDemoApp> {
             "BLoC implementation has too much boilerplate code. \n\n"
             "With the flutter_bloc package, we can get rid of managing Streams "
             "and implementing our own BlocProvider.\n"),
-        // ###4. Use the BlocProvider from flutter_bloc package, we don't need 
+        // ###4. Use the BlocProvider from flutter_bloc package, we don't need
         // to write our own InheritedWidget.
         BlocProvider<MyBloc>(
           bloc: this._bloc,
@@ -146,7 +150,7 @@ class _CounterAndButton extends StatelessWidget {
             bloc: BlocProvider.of<MyBloc>(context),
             builder: (context, _MyState state) {
               return Text(
-                '${state.counterValue}',
+                '${state.counter}',
                 style: Theme.of(context).textTheme.display1,
               );
             },
@@ -155,7 +159,7 @@ class _CounterAndButton extends StatelessWidget {
             children: <Widget>[
               IconButton(
                 icon: Icon(Icons.add),
-                // ###6. Post new event by calling functions in bloc or by 
+                // ###6. Post new event by calling functions in bloc or by
                 // bloc.dispatch(newEvent);
                 onPressed: () => BlocProvider.of<MyBloc>(context).increment(),
               ),
