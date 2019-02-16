@@ -19,6 +19,9 @@ dependencies:
   firebase_database: ^1.0.5
   firebase_ml_vision: ^0.2.1
   firebase_storage: ^1.0.4
+  # TODO: The version 0.6.0 doesn't seem to work? C.f.
+  # https://github.com/felangel/bloc/issues/103.
+  flutter_bloc: ^0.5.4
   flutter_gallery_assets: ^0.1.6
   flutter_markdown: ^0.2.0
   flutter_webview_plugin: ^0.3.0
@@ -27,6 +30,7 @@ dependencies:
   image_picker: ^0.4.12
   local_auth: ^0.3.1
   path_provider: ^0.4.1
+  scoped_model: ^1.0.1
   shared_preferences: ^0.4.3
   transparent_image:
   url_launcher: ^3.0.3

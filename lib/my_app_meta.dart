@@ -43,6 +43,12 @@ import './routes/plugins_image_picker_ex.dart';
 import './routes/plugins_local_auth_ex.dart';
 import './routes/plugins_markdown_ex.dart';
 import './routes/plugins_webview_ex.dart';
+import './routes/state_bloc_ex.dart';
+import './routes/state_bloc_lib_ex.dart';
+import './routes/state_inherited_widget_ex.dart';
+import './routes/state_scoped_model_ex.dart';
+import './routes/state_streambuilder_ex.dart';
+import './routes/state_streamcontroller_ex.dart';
 import './routes/widgets_buttons_ex.dart';
 import './routes/widgets_card_ex.dart';
 import './routes/widgets_dropdown_button_ex.dart';
@@ -211,6 +217,19 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
     routes: <MyRoute>[
       SharedPreferenceExample(),
       FileReadWriteExample(),
+    ],
+  ),
+  MyRouteGroup(
+    groupName: 'State Management',
+    icon: Icon(Icons.developer_mode),
+    routes: <MyRoute>[
+      StreamBuilderExample(),
+      StreamControllerExample(),
+      InheritedWidgetExample(),
+      ScopedModelExample(),
+      BlocExample(),
+      BlocLibExample(),
+      // TODO ReduxExample(),
     ],
   ),
   MyRouteGroup(
