@@ -176,18 +176,19 @@ class _CounterAndButton extends StatelessWidget {
           // ###6. Access the state from child widget by wrapping the widget by
           // a StreamBuilder.
           StreamBuilder<_MyState>(
-              stream: bloc.outputStream,
-              builder: (context, AsyncSnapshot<_MyState> snapshot) {
-                if (!snapshot.hasData) {
-                  return Center(child: CircularProgressIndicator());
-                }
-                print(snapshot.data);
-                final state = snapshot.data;
-                return Text(
-                  '${state.counterValue}',
-                  style: Theme.of(context).textTheme.display1,
-                );
-              }),
+            stream: bloc.outputStream,
+            builder: (context, AsyncSnapshot<_MyState> snapshot) {
+              if (!snapshot.hasData) {
+                return Center(child: CircularProgressIndicator());
+              }
+              print(snapshot.data);
+              final state = snapshot.data;
+              return Text(
+                '${state.counterValue}',
+                style: Theme.of(context).textTheme.display1,
+              );
+            },
+          ),
           ButtonBar(
             children: <Widget>[
               IconButton(
