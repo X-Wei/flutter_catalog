@@ -30,7 +30,7 @@ class InheritedWidgetDemo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: MyDemo(),
+      child: _MyDemoApp(),
     );
   }
 }
@@ -41,7 +41,7 @@ class InheritedWidgetDemo extends StatelessWidget {
 // final stateOfParent = MyInheritedWidget.of(context).myState;
 // NOTE: InheritedWidget are *stateless*.
 class MyInheritedWidget extends InheritedWidget {
-  final MyDemoState myState;
+  final _MyDemoAppState myState;
 
   MyInheritedWidget({Key key, Widget child, @required this.myState})
       : super(key: key, child: child);
@@ -59,57 +59,64 @@ class MyInheritedWidget extends InheritedWidget {
 
 // ###2. Define a stateFUL widget where the corresponding State<MyDemo> is to be
 // fetched by children widgets.
-class MyDemo extends StatefulWidget {
+class _MyDemoApp extends StatefulWidget {
   @override
-  MyDemoState createState() => MyDemoState();
+  _MyDemoAppState createState() => _MyDemoAppState();
 }
 
-class MyDemoState extends State<MyDemo> {
+class _MyDemoAppState extends State<_MyDemoApp> {
   // In this demo the state is just _counter.
   int _counter = 0;
 
   int get counterValue => _counter;
 
-  // Note: these state-mutating functions must be wrapped by setState.
+  // Note: these state-mutating functions must be wrapped by setState().
   void incrementCounter() => setState(() => _counter++);
   void decrementCounter() => setState(() => _counter--);
 
   @override
   Widget build(BuildContext context) {
-    // ###3. Put the inherited widget at the root of the widget tree, so that
-    // all children widgets can access the state.
-    return MyInheritedWidget(
-      myState: this,
-      child: ListView(
-        children: <Widget>[
-          Text("InheritedWidget allows efficient sharing of app's state down "
-              "the widgets tree.\n\n"
-              "In this example, the app's root widget is an InheritedWidget, "
-              "so it's state is shared to the two `CounterAndButtons` widgets "
-              "below. \n\n"
-              "Clicking on child widget's button would update the root "
-              "widget's counter.\n\n"
-              "Note: Recommend using ScopedModel for CHANGING parent's state "
-              "from child widget*.\n"),
-          _buildRootWidget(),
-        ],
-      ),
+    return ListView(
+      children: <Widget>[
+        Text("InheritedWidget allows efficient sharing of app's state down "
+            "the widgets tree.\n\n"
+            "In this example, the app's root widget is an InheritedWidget, "
+            "so it's state is shared to the two `CounterAndButtons` widgets "
+            "below. \n\n"
+            "Clicking on child widget's button would update the root "
+            "widget's counter.\n\n"
+            "*Note*: Recommend using ScopedModel or BLoC for CHANGING parent's "
+            "state from child widget.\n"),
+        // ###3. Put the inherited widget at the root of the widget tree, so that
+        // all children widgets can access the state.
+        MyInheritedWidget(
+          myState: this,
+          child: _AppRootWidget(),
+        ),
+      ],
     );
   }
+}
 
-  Widget _buildRootWidget() {
+class _AppRootWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final rootWidgetsState = MyInheritedWidget.of(context).myState;
     return Card(
       elevation: 4.0,
       child: Column(
         children: <Widget>[
           Text('(root widget)'),
           Text(
-            '${this.counterValue}',
+            '${rootWidgetsState.counterValue}',
             style: Theme.of(context).textTheme.display1,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[CounterAndButton(), CounterAndButton()],
+            children: <Widget>[
+              _CounterAndButton(),
+              _CounterAndButton(),
+            ],
           ),
         ],
       ),
@@ -117,10 +124,10 @@ class MyDemoState extends State<MyDemo> {
   }
 }
 
-class CounterAndButton extends StatelessWidget {
+class _CounterAndButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // 3. Retrieve parent widget's state.
+    // ###4. Retrieve parent widget's state using the static of() function.
     final rootWidgetsState = MyInheritedWidget.of(context).myState;
     return Card(
       margin: EdgeInsets.all(4.0).copyWith(bottom: 32.0),
