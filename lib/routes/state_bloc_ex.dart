@@ -44,7 +44,7 @@ class _MyEvent {
 class _MyState {
   int _counter = 0;
 
-  get counterValue => _counter;
+  int get counterValue => _counter;
   void incrementCounter() => _counter++;
   void decrementCounter() => _counter--;
 }
