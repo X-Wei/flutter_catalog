@@ -55,17 +55,17 @@ class _StreamControllerDemoState extends State<_StreamControllerDemo> {
   @override
   void initState() {
     super.initState();
-    _inputStreamController.stream.listen(_onData);
-  }
+    // This function connects the input and output stream controller, and does
+    // the transformation (business logic) in between.
+    void _onData(_Data data) {
+      final widgetToRender = ListTile(
+        title: Text(data.message),
+        subtitle: Text(data.timestamp.toString()),
+      );
+      _outputStreamController.sink.add(widgetToRender);
+    }
 
-  // This function connects the input and output stream controller, and does the
-  // transformation in between.
-  void _onData(_Data data) {
-    final widgetToRender = ListTile(
-      title: Text(data.message),
-      subtitle: Text(data.timestamp.toString()),
-    );
-    _outputStreamController.sink.add(widgetToRender);
+    _inputStreamController.stream.listen(_onData);
   }
 
   @override
