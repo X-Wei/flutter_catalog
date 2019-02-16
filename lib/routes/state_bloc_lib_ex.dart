@@ -95,8 +95,9 @@ class _MyDemoAppState extends State<_MyDemoApp> {
         Text("BLoC pattern is great for accessing/mutating app's state and "
             "updating UI without rebuilding the whole widget tree. But the vanilla "
             "BLoC implementation has too much boilerplate code. \n\n"
-            "With the flutter_bloc package, we can get rid of managing Streams "
-            "and implementing our own BlocProvider.\n"),
+            "With the flutter_bloc package, we don't need to manage Streams "
+            "or implement our own BlocProvider/InheritedWidget. We only need to "
+            "implement the core business logic in the `mapEventToState` function.\n"),
         // ###4. Use the BlocProvider from flutter_bloc package, we don't need
         // to write our own InheritedWidget.
         BlocProvider<MyBloc>(
