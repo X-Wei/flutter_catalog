@@ -7,7 +7,7 @@ description: An app showcasing Flutter components, with side-by-side source code
 # Both the version and the builder number may be overridden in flutter
 # build by specifying --build-name and --build-number, respectively.
 # Read more about versioning at semver.org.
-version: 1.5.2+30
+version: 1.5.3+31
 
 dependencies:
   flutter:
@@ -19,9 +19,7 @@ dependencies:
   firebase_database: ^1.0.5
   firebase_ml_vision: ^0.2.1
   firebase_storage: ^1.0.4
-  # TODO: The version 0.6.0 doesn't seem to work? C.f.
-  # https://github.com/felangel/bloc/issues/103.
-  flutter_bloc: ^0.5.4
+  flutter_bloc: ^0.6.0
   flutter_gallery_assets: ^0.1.6
   flutter_markdown: ^0.2.0
   flutter_webview_plugin: ^0.3.0
