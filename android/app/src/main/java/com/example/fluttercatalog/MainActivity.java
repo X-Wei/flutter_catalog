@@ -10,7 +10,7 @@ public class MainActivity extends FlutterActivity {
   @Override
   protected void attachBaseContext(android.content.Context base) {
     super.attachBaseContext(base);
-    android.support.multidex.MultiDex.install(this);
+    androidx.multidex.MultiDex.install(this);
   }
   @Override
   protected void onCreate(Bundle savedInstanceState) {

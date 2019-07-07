@@ -31,7 +31,7 @@ if (keystorePropertiesFile.exists()) {
 }
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 28
 
     lintOptions {
         disable 'InvalidPackage'
@@ -40,10 +40,10 @@ android {
     defaultConfig {
         applicationId "io.github.x_wei.flutter_catalog"
         minSdkVersion 16
-        targetSdkVersion 27
+        targetSdkVersion 28
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         // Add this line to resolve "unable to merge dex" error, c.f. 
         // https://github.com/flutter/flutter/issues/14874.
         multiDexEnabled true
@@ -52,6 +52,9 @@ android {
         ndk {
             abiFilters "armeabi", "x86", "armeabi-v7a"
         }
+    }
+    dexOptions {
+        preDexLibraries = false
     }
 
     signingConfigs {
@@ -78,10 +81,10 @@ flutter {
 }
 
 dependencies {
-    implementation 'com.android.support:multidex:1.0.3'
+    implementation 'androidx.multidex:multidex:2.0.0'
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
     implementation 'com.google.firebase:firebase-core:16.0.1'
 }
 
