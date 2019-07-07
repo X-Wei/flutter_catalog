@@ -13,6 +13,7 @@ dependencies:
   flutter:
     sdk: flutter
   animated_floatactionbuttons: '0.1.0'
+  clipboard_manager: '0.0.4'
   cloud_firestore: '0.12.6'
   english_words: '3.1.5'
   firebase_analytics: '3.0.3'

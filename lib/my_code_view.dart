@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:animated_floatactionbuttons/animated_floatactionbuttons.dart';
+import 'package:clipboard_manager/clipboard_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart' as url_launcher;
@@ -11,6 +12,8 @@ class MyCodeView extends StatefulWidget {
   final String filePath;
 
   MyCodeView({@required this.filePath});
+
+  String get githubPath => '$GITHUB_URL/blob/master/${this.filePath}';
 
   @override
   MyCodeViewState createState() {
@@ -51,10 +54,19 @@ class MyCodeViewState extends State<MyCodeView> {
   List<Widget> _buildFloatingButtons() {
     return <Widget>[
       FloatingActionButton(
+        child: Icon(Icons.content_copy),
+        tooltip: 'Copy code link to clipboard',
+        onPressed: () {
+          ClipboardManager.copyToClipBoard(this.widget.githubPath);
+          Scaffold.of(context).showSnackBar(SnackBar(
+            content: Text('Code link copied to Clipboard!'),
+          ));
+        },
+      ),
+      FloatingActionButton(
         child: Icon(Icons.open_in_new),
-        tooltip: 'View the code on github',
-        onPressed: () => url_launcher
-            .launch('$GITHUB_URL/blob/master/${this.widget.filePath}'),
+        tooltip: 'View code on github',
+        onPressed: () => url_launcher.launch(this.widget.githubPath),
       ),
       FloatingActionButton(
         child: Icon(Icons.zoom_out),
