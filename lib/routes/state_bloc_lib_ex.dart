@@ -57,13 +57,12 @@ class MyBloc extends Bloc<_MyEvent, _MyState> {
   @override
   _MyState get initialState => _MyState(0);
 
-  @override
   // The business logic is in this mapEventToState function.
   // Note: in flutter_bloc from v0.6.0 on, states are enforced IMMUTABLE,
   // mutating currentState and yielding the it won't update on UI.
   // C.f. https://github.com/felangel/bloc/issues/103.
-  Stream<_MyState> mapEventToState(
-      _MyState currentState, _MyEvent event) async* {
+  @override
+  Stream<_MyState> mapEventToState(_MyEvent event) async* {
     _MyState newState;
     if (event.isIncrement) {
       newState = _MyState(currentState.counter + 1);
@@ -101,7 +100,7 @@ class _MyDemoAppState extends State<_MyDemoApp> {
         // ###4. Use the BlocProvider from flutter_bloc package, we don't need
         // to write our own InheritedWidget.
         BlocProvider<MyBloc>(
-          bloc: this._bloc,
+          builder: (BuildContext context) => this._bloc,
           child: _AppRootWidget(),
         ),
       ],
