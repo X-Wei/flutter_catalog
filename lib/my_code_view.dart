@@ -1,7 +1,10 @@
 import 'dart:math';
 
+import 'package:animated_floatactionbuttons/animated_floatactionbuttons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:url_launcher/url_launcher.dart' as url_launcher;
+import './my_app_meta.dart' show GITHUB_URL;
 import './syntax_highlighter.dart';
 
 class MyCodeView extends StatefulWidget {
@@ -24,47 +27,50 @@ class MyCodeViewState extends State<MyCodeView> {
             ? SyntaxHighlighterStyle.darkThemeStyle()
             : SyntaxHighlighterStyle.lightThemeStyle();
     // TODO: try out CustomScrollView and SliverAppbar (appbar auto hides when scroll).
-    return Stack(
-      alignment: AlignmentDirectional.bottomEnd,
-      children: <Widget>[
-        Container(
-          constraints: BoxConstraints.expand(),
-          child: Scrollbar(
-            child: SingleChildScrollView(
-              child: SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: RichText(
-                  textScaleFactor: this._textScaleFactor,
-                  text: TextSpan(
-                    style: TextStyle(fontFamily: 'monospace', fontSize: 12.0),
-                    children: <TextSpan>[
-                      DartSyntaxHighlighter(style).format(codeContent)
-                    ],
-                  ),
-                ),
+    return Container(
+      constraints: BoxConstraints.expand(),
+      child: Scrollbar(
+        child: SingleChildScrollView(
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: RichText(
+              textScaleFactor: this._textScaleFactor,
+              text: TextSpan(
+                style: TextStyle(fontFamily: 'monospace', fontSize: 12.0),
+                children: <TextSpan>[
+                  DartSyntaxHighlighter(style).format(codeContent)
+                ],
               ),
             ),
           ),
         ),
-        Row(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            IconButton(
-              icon: Icon(Icons.zoom_out),
-              onPressed: () => setState(() {
-                this._textScaleFactor = max(0.8, this._textScaleFactor - 0.1);
-              }),
-            ),
-            IconButton(
-              icon: Icon(Icons.zoom_in),
-              onPressed: () => setState(() {
-                this._textScaleFactor += 0.1;
-              }),
-            ),
-          ],
-        ),
-      ],
+      ),
     );
+  }
+
+  List<Widget> _buildFloatingButtons() {
+    return <Widget>[
+      FloatingActionButton(
+        child: Icon(Icons.open_in_new),
+        tooltip: 'View the code on github',
+        onPressed: () => url_launcher
+            .launch('$GITHUB_URL/blob/master/${this.widget.filePath}'),
+      ),
+      FloatingActionButton(
+        child: Icon(Icons.zoom_out),
+        tooltip: 'Zoom out',
+        onPressed: () => setState(() {
+          this._textScaleFactor = max(0.8, this._textScaleFactor - 0.1);
+        }),
+      ),
+      FloatingActionButton(
+        child: Icon(Icons.zoom_in),
+        tooltip: 'Zoom in',
+        onPressed: () => setState(() {
+          this._textScaleFactor += 0.1;
+        }),
+      ),
+    ];
   }
 
   @override
@@ -76,9 +82,17 @@ class MyCodeViewState extends State<MyCodeView> {
           'Error loading source code from $this.filePath',
       builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
         if (snapshot.hasData) {
-          return Padding(
-            padding: EdgeInsets.all(4.0),
-            child: _getCodeView(snapshot.data, context),
+          return Scaffold(
+            body: Padding(
+              padding: EdgeInsets.all(4.0),
+              child: _getCodeView(snapshot.data, context),
+            ),
+            floatingActionButton: AnimatedFloatingActionButton(
+              fabButtons: _buildFloatingButtons(),
+              colorStartAnimation: Colors.blue,
+              colorEndAnimation: Colors.red,
+              animatedIconData: AnimatedIcons.menu_close,
+            ),
           );
         } else {
           return Center(child: CircularProgressIndicator());
