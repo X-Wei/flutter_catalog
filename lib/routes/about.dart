@@ -34,6 +34,11 @@ class MyAboutRoute extends MyRoute {
         onTap: () => url_launcher.launch(GITHUB_URL),
       ),
       ListTile(
+        leading: Icon(Icons.bug_report),
+        title: Text('Report issue on GitHub'),
+        onTap: () => url_launcher.launch('$GITHUB_URL/issues'),
+      ),
+      ListTile(
         leading: Icon(Icons.open_in_new),
         title: Text('Visit my website'),
         onTap: () => url_launcher.launch(AUTHOR_SITE),
