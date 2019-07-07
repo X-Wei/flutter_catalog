@@ -111,11 +111,12 @@ class _LoginPageState extends State<LoginPage> {
     }
     final googleUser = await kGoogleSignIn.signIn();
     final googleAuth = await googleUser.authentication;
-    // Note: user.providerData[0].photoUrl == googleUser.photoUrl.
-    final user = await kFirebaseAuth.signInWithGoogle(
+    final AuthCredential credential = GoogleAuthProvider.getCredential(
       accessToken: googleAuth.accessToken,
       idToken: googleAuth.idToken,
     );
+    // Note: user.providerData[0].photoUrl == googleUser.photoUrl.
+    final user = await kFirebaseAuth.signInWithCredential(credential);
     kFirebaseAnalytics.logLogin();
     setState(() => this._user = user);
     return user;
