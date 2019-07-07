@@ -5,7 +5,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.6.0-alpha03'
+        classpath 'com.android.tools.build:gradle:3.2.1'
         classpath 'com.google.gms:google-services:4.0.1'
     }
 }
@@ -15,11 +15,11 @@ allprojects {
         google()
         jcenter()
     }
-    // Add the "force" resulation strategy to fix problems building the app
-    // (https://github.com/X-Wei/flutter_catalog/issues/4).
-    // C.f. https://stackoverflow.com/a/50578320.
+    // Add the "force" resulation strategy to fix problems building the app.
+    // Cf. https://stackoverflow.com/a/52962449.
     configurations.all {
-        resolutionStrategy.force "com.android.support:support-v4:27.1.1"
+        resolutionStrategy.force 'androidx.exifinterface:exifinterface:1.0.0'
+
     }
 }
 
