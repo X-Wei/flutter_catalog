@@ -96,11 +96,11 @@ class StreamBuilderDemoState extends State<StreamBuilderDemo> {
             IconButton(
               icon: Icon(Icons.stop),
               onPressed: () => setState(
-                    () {
-                      this._timerValue = 0;
-                      this._paused = true;
-                    },
-                  ),
+                () {
+                  this._timerValue = 0;
+                  this._paused = true;
+                },
+              ),
             ),
           ],
         ),

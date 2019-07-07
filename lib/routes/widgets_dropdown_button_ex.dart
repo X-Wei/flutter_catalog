@@ -38,17 +38,17 @@ class _DropdowButtonDemoState extends State<_DropdowButtonDemo> {
   final List<DropdownMenuItem<String>> _dropDownMenuItems = menuItems
       .map(
         (String value) => DropdownMenuItem<String>(
-              value: value,
-              child: Text(value),
-            ),
+          value: value,
+          child: Text(value),
+        ),
       )
       .toList();
   final List<PopupMenuItem<String>> _popUpMenuItems = menuItems
       .map(
         (String value) => PopupMenuItem<String>(
-              value: value,
-              child: Text(value),
-            ),
+          value: value,
+          child: Text(value),
+        ),
       )
       .toList();
 

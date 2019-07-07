@@ -58,28 +58,28 @@ class _PageTwo extends MaterialPageRoute<Null> {
             // https://stackoverflow.com/a/51304732.
             body: Builder(
               builder: (BuildContext context) => Center(
-                    child: RaisedButton(
-                      child: Text('Go to page 3'),
-                      onPressed: () {
-                        // Navigator.push<T> returns a Future<T>, which is the
-                        // return value of the pushed route when it's popped.
-                        Navigator.push<String>(context, _PageThree())
-                          ..then<String>((returnVal) {
-                            if (returnVal != null) {
-                              Scaffold.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text('You clicked: $returnVal'),
-                                  action: SnackBarAction(
-                                    label: 'OK',
-                                    onPressed: () {},
-                                  ),
-                                ),
-                              );
-                            }
-                          });
-                      },
-                    ),
-                  ),
+                child: RaisedButton(
+                  child: Text('Go to page 3'),
+                  onPressed: () {
+                    // Navigator.push<T> returns a Future<T>, which is the
+                    // return value of the pushed route when it's popped.
+                    Navigator.push<String>(context, _PageThree())
+                      ..then<String>((returnVal) {
+                        if (returnVal != null) {
+                          Scaffold.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text('You clicked: $returnVal'),
+                              action: SnackBarAction(
+                                label: 'OK',
+                                onPressed: () {},
+                              ),
+                            ),
+                          );
+                        }
+                      });
+                  },
+                ),
+              ),
             ),
           );
         });

@@ -76,8 +76,8 @@ class _AppbarSearchDemoState extends State<_AppbarSearchDemo> {
         child: ListView.builder(
           itemCount: kEnglishWords.length,
           itemBuilder: (context, idx) => ListTile(
-                title: Text(kEnglishWords[idx]),
-              ),
+            title: Text(kEnglishWords[idx]),
+          ),
         ),
       ),
     );

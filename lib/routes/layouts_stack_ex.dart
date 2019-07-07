@@ -79,9 +79,9 @@ class _StackPageState extends State<_StackPage> {
               items: kAlignmentDirectionalVals
                   .map(
                     (String name, AlignmentDirectional val) => MapEntry(
-                          name,
-                          DropdownMenuItem(value: val, child: Text(name)),
-                        ),
+                      name,
+                      DropdownMenuItem(value: val, child: Text(name)),
+                    ),
                   )
                   .values
                   .toList(),

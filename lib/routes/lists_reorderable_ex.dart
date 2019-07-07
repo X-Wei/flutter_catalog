@@ -93,16 +93,16 @@ class __ReorderableListDemoState extends State<_ReorderableListDemo> {
     final _listTiles = _items
         .map(
           (item) => CheckboxListTile(
-                key: Key(item.value),
-                value: item.checked ?? false,
-                onChanged: (bool newValue) {
-                  setState(() => item.checked = newValue);
-                },
-                title: Text('This item represents ${item.value}.'),
-                isThreeLine: true,
-                subtitle: Text('Item ${item.value}, checked=${item.checked}'),
-                secondary: Icon(Icons.drag_handle),
-              ),
+            key: Key(item.value),
+            value: item.checked ?? false,
+            onChanged: (bool newValue) {
+              setState(() => item.checked = newValue);
+            },
+            title: Text('This item represents ${item.value}.'),
+            isThreeLine: true,
+            subtitle: Text('Item ${item.value}, checked=${item.checked}'),
+            secondary: Icon(Icons.drag_handle),
+          ),
         )
         .toList();
     return Scaffold(

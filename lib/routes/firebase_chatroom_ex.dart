@@ -52,8 +52,8 @@ class _ChatPageState extends State<ChatPage> {
         kFirebaseDbRef.child('messages/${now.year}/${now.month}/${now.day}');
     kFirebaseAuth.currentUser().then(
           (user) => setState(() {
-                this._user = user;
-              }),
+            this._user = user;
+          }),
         );
   }
 
@@ -90,19 +90,19 @@ class _ChatPageState extends State<ChatPage> {
     showDialog(
       context: context,
       builder: (ctx) => AlertDialog(
-            title: Text('Note'),
-            content: Text('This chat room is only for demo purposes.\n\n'
-                'The chat messages are publicly available, and they '
-                'can be deleted at any time by the firebase admin.\n\n'
-                'To send messages, you must log in '
-                'in the "Firebase login" demo.'),
-            actions: <Widget>[
-              FlatButton(
-                child: Text('OK'),
-                onPressed: () => Navigator.of(ctx).pop(),
-              )
-            ],
-          ),
+        title: Text('Note'),
+        content: Text('This chat room is only for demo purposes.\n\n'
+            'The chat messages are publicly available, and they '
+            'can be deleted at any time by the firebase admin.\n\n'
+            'To send messages, you must log in '
+            'in the "Firebase login" demo.'),
+        actions: <Widget>[
+          FlatButton(
+            child: Text('OK'),
+            onPressed: () => Navigator.of(ctx).pop(),
+          )
+        ],
+      ),
     );
   }
 
@@ -214,17 +214,17 @@ class _ChatPageState extends State<ChatPage> {
       showDialog(
         context: context,
         builder: (ctx) => AlertDialog(
-              title: Text('Login required'),
-              content: Text('To send messages you need to first log in.\n\n'
-                  'Go to the "Firebase login" example, and log in from there. '
-                  'You will then be able to send messages.'),
-              actions: <Widget>[
-                FlatButton(
-                  child: Text('OK'),
-                  onPressed: () => Navigator.of(ctx).pop(),
-                )
-              ],
-            ),
+          title: Text('Login required'),
+          content: Text('To send messages you need to first log in.\n\n'
+              'Go to the "Firebase login" example, and log in from there. '
+              'You will then be able to send messages.'),
+          actions: <Widget>[
+            FlatButton(
+              child: Text('OK'),
+              onPressed: () => Navigator.of(ctx).pop(),
+            )
+          ],
+        ),
       );
       return;
     }

@@ -32,32 +32,32 @@ class PageSelectorExample extends MyRoute {
       // returns null.
       child: Builder(
         builder: (BuildContext context) => Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                children: <Widget>[
-                  TabPageSelector(),
-                  Expanded(
-                    child: IconTheme(
-                      data: IconThemeData(
-                        size: 128.0,
-                        color: Theme.of(context).accentColor,
-                      ),
-                      child: TabBarView(children: kIcons),
-                    ),
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: <Widget>[
+              TabPageSelector(),
+              Expanded(
+                child: IconTheme(
+                  data: IconThemeData(
+                    size: 128.0,
+                    color: Theme.of(context).accentColor,
                   ),
-                  RaisedButton(
-                    child: Text('SKIP'),
-                    onPressed: () {
-                      final TabController controller =
-                          DefaultTabController.of(context);
-                      if (!controller.indexIsChanging) {
-                        controller.animateTo(kIcons.length - 1);
-                      }
-                    },
-                  )
-                ],
+                  child: TabBarView(children: kIcons),
+                ),
               ),
-            ),
+              RaisedButton(
+                child: Text('SKIP'),
+                onPressed: () {
+                  final TabController controller =
+                      DefaultTabController.of(context);
+                  if (!controller.indexIsChanging) {
+                    controller.animateTo(kIcons.length - 1);
+                  }
+                },
+              )
+            ],
+          ),
+        ),
       ),
     );
   }

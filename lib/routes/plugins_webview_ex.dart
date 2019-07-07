@@ -74,10 +74,10 @@ class _WebviewDemoState extends State<_WebviewDemo> {
       Navigator.of(context).push(
         MaterialPageRoute(
           builder: (ctx) => WebviewScaffold(
-                initialChild: Center(child: CircularProgressIndicator()),
-                url: url,
-                appBar: AppBar(title: Text(url)),
-              ),
+            initialChild: Center(child: CircularProgressIndicator()),
+            url: url,
+            appBar: AppBar(title: Text(url)),
+          ),
         ),
       );
     } else {

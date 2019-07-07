@@ -52,15 +52,14 @@ class MyCodeViewState extends State<MyCodeView> {
             IconButton(
               icon: Icon(Icons.zoom_out),
               onPressed: () => setState(() {
-                    this._textScaleFactor =
-                        max(0.8, this._textScaleFactor - 0.1);
-                  }),
+                this._textScaleFactor = max(0.8, this._textScaleFactor - 0.1);
+              }),
             ),
             IconButton(
               icon: Icon(Icons.zoom_in),
               onPressed: () => setState(() {
-                    this._textScaleFactor += 0.1;
-                  }),
+                this._textScaleFactor += 0.1;
+              }),
             ),
           ],
         ),

@@ -25,21 +25,21 @@ class DialogsExample extends MyRoute {
               showDialog<String>(
                 context: context,
                 builder: (BuildContext context) => AlertDialog(
-                      title: const Text('Dialog title'),
-                      content: Text(
-                        'Sample alert',
-                      ),
-                      actions: <Widget>[
-                        FlatButton(
-                          child: Text('Cancel'),
-                          onPressed: () => Navigator.pop(context, 'Cancel'),
-                        ),
-                        FlatButton(
-                          child: Text('OK'),
-                          onPressed: () => Navigator.pop(context, 'OK'),
-                        ),
-                      ],
+                  title: const Text('Dialog title'),
+                  content: Text(
+                    'Sample alert',
+                  ),
+                  actions: <Widget>[
+                    FlatButton(
+                      child: Text('Cancel'),
+                      onPressed: () => Navigator.pop(context, 'Cancel'),
                     ),
+                    FlatButton(
+                      child: Text('OK'),
+                      onPressed: () => Navigator.pop(context, 'OK'),
+                    ),
+                  ],
+                ),
               ).then<String>((returnVal) {
                 if (returnVal != null) {
                   Scaffold.of(context).showSnackBar(
@@ -59,25 +59,25 @@ class DialogsExample extends MyRoute {
             showDialog<String>(
               context: context,
               builder: (BuildContext context) => SimpleDialog(
-                    title: Text('Dialog Title'),
-                    children: <Widget>[
-                      ListTile(
-                        leading: Icon(Icons.account_circle),
-                        title: Text('user@example.com'),
-                        onTap: () => Navigator.pop(context, 'user@example.com'),
-                      ),
-                      ListTile(
-                        leading: Icon(Icons.account_circle),
-                        title: Text('user2@gmail.com'),
-                        onTap: () => Navigator.pop(context, 'user2@gmail.com'),
-                      ),
-                      ListTile(
-                        leading: Icon(Icons.add_circle),
-                        title: Text('Add account'),
-                        onTap: () => Navigator.pop(context, 'Add account'),
-                      ),
-                    ],
+                title: Text('Dialog Title'),
+                children: <Widget>[
+                  ListTile(
+                    leading: Icon(Icons.account_circle),
+                    title: Text('user@example.com'),
+                    onTap: () => Navigator.pop(context, 'user@example.com'),
                   ),
+                  ListTile(
+                    leading: Icon(Icons.account_circle),
+                    title: Text('user2@gmail.com'),
+                    onTap: () => Navigator.pop(context, 'user2@gmail.com'),
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.add_circle),
+                    title: Text('Add account'),
+                    onTap: () => Navigator.pop(context, 'Add account'),
+                  ),
+                ],
+              ),
             ).then<String>((returnVal) {
               if (returnVal != null) {
                 Scaffold.of(context).showSnackBar(
@@ -140,46 +140,46 @@ class DialogsExample extends MyRoute {
             showBottomSheet<String>(
               context: context,
               builder: (BuildContext context) => Container(
-                    decoration: BoxDecoration(
-                      border: Border(top: BorderSide(color: Colors.black12)),
+                decoration: BoxDecoration(
+                  border: Border(top: BorderSide(color: Colors.black12)),
+                ),
+                child: ListView(
+                  shrinkWrap: true,
+                  primary: false,
+                  children: <Widget>[
+                    ListTile(
+                      dense: true,
+                      title: Text('This is a bottom sheet'),
                     ),
-                    child: ListView(
-                      shrinkWrap: true,
-                      primary: false,
-                      children: <Widget>[
-                        ListTile(
-                          dense: true,
-                          title: Text('This is a bottom sheet'),
-                        ),
-                        ListTile(
-                          dense: true,
-                          title: Text('Click OK to dismiss'),
-                        ),
-                        ButtonTheme.bar(
-                          // make buttons use the appropriate styles for cards
-                          child: ButtonBar(
-                            children: <Widget>[
-                              FlatButton(
-                                child: const Text('OK'),
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                },
-                              ),
-                            ],
+                    ListTile(
+                      dense: true,
+                      title: Text('Click OK to dismiss'),
+                    ),
+                    ButtonTheme.bar(
+                      // make buttons use the appropriate styles for cards
+                      child: ButtonBar(
+                        children: <Widget>[
+                          FlatButton(
+                            child: const Text('OK'),
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
+                  ],
+                ),
+              ),
             );
           },
         ),
       ]
           .map(
             (Widget button) => Container(
-                  padding: EdgeInsets.symmetric(vertical: 8.0),
-                  child: button,
-                ),
+              padding: EdgeInsets.symmetric(vertical: 8.0),
+              child: button,
+            ),
           )
           .toList(),
     );

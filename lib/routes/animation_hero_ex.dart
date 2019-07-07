@@ -49,13 +49,13 @@ class HeroExample extends MyRoute {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (ctx) => Scaffold(
-              body: Center(
-                child: Hero(
-                  tag: 'my-hero-animation-tag',
-                  child: Image.asset('res/images/material_design_3.png'),
-                ),
-              ),
+          body: Center(
+            child: Hero(
+              tag: 'my-hero-animation-tag',
+              child: Image.asset('res/images/material_design_3.png'),
             ),
+          ),
+        ),
       ),
     );
   }
