@@ -46,6 +46,7 @@ import './routes/plugins_webview_ex.dart';
 import './routes/state_bloc_ex.dart';
 import './routes/state_bloc_lib_ex.dart';
 import './routes/state_inherited_widget_ex.dart';
+import './routes/state_provider_ex.dart';
 import './routes/state_scoped_model_ex.dart';
 import './routes/state_streambuilder_ex.dart';
 import './routes/state_streamcontroller_ex.dart';
@@ -229,7 +230,7 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
       ScopedModelExample(),
       BlocExample(),
       BlocLibExample(),
-      // TODO ReduxExample(),
+      ProviderExample(),
     ],
   ),
   MyRouteGroup(
