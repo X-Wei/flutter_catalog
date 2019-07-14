@@ -2,6 +2,8 @@
 // List<Tuple2> object. And it provides functions to get app's routing table or
 // app's navigation drawer menu items from the declared metadata.
 import 'package:flutter/material.dart';
+import 'package:flutter_catalog/my_app_settings.dart';
+import 'package:provider/provider.dart';
 
 import './my_route.dart';
 import './routes/about.dart';
@@ -234,6 +236,20 @@ ListView getNavDrawerItems(BuildContext context) {
     children: <Widget>[
       drawerHeader,
       ...MyAboutRoute.kAboutListTiles,
+      Consumer<MyAppSettings>(
+        builder: (context, MyAppSettings settings, _) {
+          return Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Text('Dark mode', style: Theme.of(context).textTheme.button,),
+              Switch(
+                onChanged: (bool value) => settings.setDartMode(value),
+                value: settings.isDarkMode,
+              ),
+            ],
+          );
+        },
+      ),
     ],
   );
 }

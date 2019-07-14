@@ -17,8 +17,8 @@ class MyAppSettings extends ChangeNotifier {
 
   bool get isDarkMode => _pref?.getBool(_kDarkModePreferenceKey) ?? false;
 
-  void toggleDartMode() {
-    _pref?.setBool(_kDarkModePreferenceKey, !this.isDarkMode);
+  void setDartMode(bool val) {
+    _pref?.setBool(_kDarkModePreferenceKey, val);
     notifyListeners();
   }
 
