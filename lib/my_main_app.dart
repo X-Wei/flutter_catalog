@@ -21,13 +21,28 @@ class MyMainApp extends StatelessWidget {
       builder:
           (BuildContext context, AsyncSnapshot<SharedPreferences> snapshot) {
         if (!snapshot.hasData) {
-          return Center(child: FlutterLogo());
+          return _MySplashScreen();
         }
         return ChangeNotifierProvider<MyAppSettings>.value(
           value: MyAppSettings(snapshot.data),
           child: _MyMainApp(),
         );
       },
+    );
+  }
+}
+
+class _MySplashScreen extends StatelessWidget {
+  const _MySplashScreen({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      constraints: BoxConstraints.expand(),
+      color: Colors.white,
+      child: Center(
+        child: Card(elevation: 8.0, child: FlutterLogo(size: 64.0)),
+      ),
     );
   }
 }
