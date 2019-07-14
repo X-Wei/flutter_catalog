@@ -13,10 +13,10 @@ Style text as _italic_, __bold__, or `inline code`.
 - To better clarify
 - Your points
 ## Links
-You can use [hyperlinks](https://flutter.io) in markdown
+You can use [hyperlinks](https://flutter.dev) in markdown
 ## Images
 You can include images:
-![Flutter logo](https://flutter.io/images/flutter-mark-square-100.png#100x100)
+![Flutter logo](https://upload.wikimedia.org/wikipedia/commons/1/17/Google-flutter-logo.png)
 ## Markdown widget
 This is an example of how to create your own Markdown widget:
     new Markdown(data: 'Hello _world_!');
