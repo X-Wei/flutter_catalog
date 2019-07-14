@@ -10,6 +10,7 @@ import './routes/home.dart';
 
 import './routes/animation_hero_ex.dart';
 import './routes/animation_opacity_ex.dart';
+import './routes/appbar_backdrop_ex.dart';
 import './routes/appbar_basic_appbar_ex.dart';
 import './routes/appbar_bottom_appbar_ex.dart';
 import './routes/appbar_search_ex.dart';
@@ -188,6 +189,7 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
       BottomAppbarExample(),
       SliverAppBarExample(),
       AppbarSearchExample(),
+      BackdropExample(),
     ],
   ),
   MyRouteGroup(
@@ -209,7 +211,6 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
     routes: <MyRoute>[
       OpacityExample(),
       HeroExample(),
-      // TODO BackDropExample(),
     ],
   ),
   MyRouteGroup(
