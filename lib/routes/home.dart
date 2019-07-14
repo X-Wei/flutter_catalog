@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import './about.dart';
 import '../my_route.dart';
 import '../my_app_meta.dart'
     show
         BookmarkManager,
-        kAboutRoute,
         kMyAppRoutesStructure,
         kRoutenameToRouteMap,
         kSharedPreferences,
@@ -46,7 +46,7 @@ class _HomePageState extends State<HomePage> {
     final listTiles = <Widget>[
       _buildBookmarksExpansionTile(),
       ...kMyAppRoutesStructure.map(_myRouteGroupToExpansionTile),
-      _myRouteToListTile(kAboutRoute, leading: Icon(Icons.info)),
+      _myRouteToListTile(MyAboutRoute(), leading: Icon(Icons.info)),
     ];
     return ListView(children: listTiles);
   }

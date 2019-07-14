@@ -120,7 +120,7 @@ class _MyRouteState extends State<MyRoute> with SingleTickerProviderStateMixin {
       // Only home route has drawer:
       drawer: this.widget.routeName == Navigator.defaultRouteName
           ? Drawer(
-              child: my_app_meta.getNavDrawerItems(this, context),
+              child: my_app_meta.getNavDrawerItems(context),
             )
           : null,
     );

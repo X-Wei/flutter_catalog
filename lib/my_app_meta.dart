@@ -253,8 +253,14 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
   ),
 ];
 
+final kAllRoutes = kMyAppRoutesStructure.expand((group) => group.routes);
+
+final kRoutenameToRouteMap = {
+  for (MyRoute route in kAllRoutes) route.routeName: route
+};
+
 // Returns the app's navigation drawer menu items.
-ListView getNavDrawerItems(State state, BuildContext context) {
+ListView getNavDrawerItems(BuildContext context) {
   final drawerHeader = DrawerHeader(
     decoration: BoxDecoration(color: Theme.of(context).primaryColor),
     child: Column(
@@ -262,7 +268,7 @@ ListView getNavDrawerItems(State state, BuildContext context) {
       children: <Widget>[
         kAppIcon,
         Text(APP_NAME, style: Theme.of(context).textTheme.title),
-        Text('$APP_VERSION', style: Theme.of(context).textTheme.caption),
+        Text(APP_VERSION, style: Theme.of(context).textTheme.caption),
       ],
     ),
   );

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import './my_app_meta.dart' as my_app_meta;
-import './my_route.dart';
 import './themes.dart';
 import './routes/about.dart';
 import './routes/home.dart';
@@ -15,39 +14,30 @@ class MyMainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _allRoutes = my_app_meta.kMyAppRoutesStructure.expand((group) => group.routes);
-    // Mapping route names to routes.
-    final Map<String, MyRoute> kRoutenameToRouteMap = {
-      Navigator.defaultRouteName: _kHomeRoute,
-      _kAboutRoute.routeName: _kAboutRoute,
-      for (var route in _allRoutes) route.routeName: route
-    };
-
-    // The app's root-level routing table.
-    Map<String, WidgetBuilder> _routingTable = kRoutenameToRouteMap.map(
-      (routeName, route) {
-        final widgetBuilder = (BuildContext context) => route;
-        return MapEntry<String, WidgetBuilder>(routeName, widgetBuilder);
+    return FutureBuilder<SharedPreferences>(
+      future: SharedPreferences.getInstance(),
+      builder:
+          (BuildContext context, AsyncSnapshot<SharedPreferences> snapshot) {
+        if (!snapshot.hasData) {
+          return Center(child: FlutterLogo());
+        }
+        final SharedPreferences preferences = snapshot.data;
+        final darkTheme = preferences.getBool('DARK_THEME') ?? false;
+        // The app's root-level routing table.
+        final Map<String, WidgetBuilder> _routingTable = {
+          Navigator.defaultRouteName: (context) => _kHomeRoute,
+          _kAboutRoute.routeName: (context) => _kAboutRoute,
+          for (var route in my_app_meta.kAllRoutes)
+            route.routeName: (context) => route
+        };
+        return MaterialApp(
+          title: 'Flutter Catalog',
+          theme: darkTheme ? kDartTheme : kLightTheme,
+          // No need to set `home` because `routes` is set to a routing table, and
+          // Navigator.defaultRouteName ('/') has an entry in it.
+          routes: _routingTable,
+        );
       },
     );
-    
-    return FutureBuilder<SharedPreferences>(
-        future: SharedPreferences.getInstance(),
-        builder:
-            (BuildContext context, AsyncSnapshot<SharedPreferences> snapshot) {
-          if (!snapshot.hasData) {
-            return Center(child: FlutterLogo());
-          }
-          final SharedPreferences preferences = snapshot.data;
-          final darkTheme = preferences.getBool('DARK_THEME') ?? false;
-          return MaterialApp(
-            title: 'Flutter Catalog',
-            theme: darkTheme ? kDartTheme : kLightTheme,
-            // No need to set `home` because `routes` is set to a routing table, and
-            // Navigator.defaultRouteName ('/') has an entry in it.
-            routes: _routingTable,
-          );
-        },
-      );
   }
 }
