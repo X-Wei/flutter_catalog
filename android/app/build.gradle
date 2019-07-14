@@ -47,11 +47,7 @@ android {
         // Add this line to resolve "unable to merge dex" error, c.f. 
         // https://github.com/flutter/flutter/issues/14874.
         multiDexEnabled true
-        // Add this to resolve the "couldn't find libflutter.so" error, c.f. 
-        // https://github.com/flutter/flutter/issues/18939#issuecomment-402447315.
-        ndk {
-            abiFilters "armeabi", "x86", "armeabi-v7a"
-        }
+        ndk.abiFilters 'armeabi-v7a','arm64-v8a','x86','x86_64'
     }
     dexOptions {
         preDexLibraries = false
