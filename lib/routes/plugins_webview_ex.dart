@@ -73,6 +73,9 @@ class _WebviewDemoState extends State<_WebviewDemo> {
     if (await url_launcher.canLaunch(url)) {
       Navigator.of(context).push(
         MaterialPageRoute(
+          // **Note**: if got "ERR_CLEARTEXT_NOT_PERMITTED", modify
+          // AndroidManifest.xml.
+          // Cf. https://github.com/flutter/flutter/issues/30368#issuecomment-480300618
           builder: (ctx) => WebviewScaffold(
             initialChild: Center(child: CircularProgressIndicator()),
             url: url,
