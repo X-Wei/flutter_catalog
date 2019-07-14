@@ -43,10 +43,11 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final listTiles = <Widget>[]
-      ..add(_buildBookmarksExpansionTile())
-      ..addAll(kMyAppRoutesStructure.map(_myRouteGroupToExpansionTile))
-      ..add(_myRouteToListTile(kAboutRoute, leading: Icon(Icons.info)));
+    final listTiles = <Widget>[
+      _buildBookmarksExpansionTile(),
+      ...kMyAppRoutesStructure.map(_myRouteGroupToExpansionTile),
+      _myRouteToListTile(kAboutRoute, leading: Icon(Icons.info)),
+    ];
     return ListView(children: listTiles);
   }
 

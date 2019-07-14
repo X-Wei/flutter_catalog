@@ -9,6 +9,9 @@ description: An app showcasing Flutter components, with side-by-side source code
 # Read more about versioning at semver.org.
 version: 2.0.1+35
 
+environment:
+  sdk: ">=2.3.0 <3.0.0"
+
 dependencies:
   flutter:
     sdk: flutter

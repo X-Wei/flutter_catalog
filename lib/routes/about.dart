@@ -65,7 +65,10 @@ class MyAboutRoute extends MyRoute {
       ),
     );
     return ListView(
-      children: <Widget>[header]..addAll(aboutListTiles(context)),
+      children: <Widget>[
+        header,
+        ...aboutListTiles(context),
+      ],
     );
   }
 }

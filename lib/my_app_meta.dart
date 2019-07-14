@@ -259,17 +259,11 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
 final _allRoutes = kMyAppRoutesStructure.expand((group) => group.routes);
 
 // Mapping route names to routes.
-final kRoutenameToRouteMap = Map<String, MyRoute>.fromIterable(
-  _allRoutes,
-  key: (route) => route.routeName,
-  value: (route) => route,
-)..addAll(
-    {
-      // By default go to home screen. (Navigator.defaultRouteName is just '/')
-      Navigator.defaultRouteName: kHomeRoute,
-      kAboutRoute.routeName: kAboutRoute,
-    },
-  );
+final Map<String, MyRoute> kRoutenameToRouteMap = {
+  Navigator.defaultRouteName: kHomeRoute,
+  kAboutRoute.routeName: kAboutRoute,
+  for (var route in _allRoutes) route.routeName: route
+};
 
 // The app's root-level routing table.
 Map<String, WidgetBuilder> kRoutingTable = kRoutenameToRouteMap.map(
@@ -293,10 +287,10 @@ ListView getNavDrawerItems(State state, BuildContext context) {
     ),
   );
 
-  List<Widget> drawerNavItems = []
-    ..add(drawerHeader)
-    ..addAll(kAboutRoute.aboutListTiles(context));
   return ListView(
-    children: drawerNavItems,
+    children: <Widget>[
+      drawerHeader,
+      ...kAboutRoute.aboutListTiles(context),
+    ],
   );
 }
