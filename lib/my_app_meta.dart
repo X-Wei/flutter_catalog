@@ -232,24 +232,29 @@ ListView getNavDrawerItems(BuildContext context) {
     ),
   );
 
+  final toggleDarkModeBtn = Consumer<MyAppSettings>(
+    builder: (context, MyAppSettings settings, _) {
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          Text(
+            'Dark mode',
+            style: Theme.of(context).textTheme.button,
+          ),
+          Switch(
+            onChanged: (bool value) => settings.setDartMode(value),
+            value: settings.isDarkMode,
+          ),
+        ],
+      );
+    },
+  );
+
   return ListView(
     children: <Widget>[
       drawerHeader,
       ...MyAboutRoute.kAboutListTiles,
-      Consumer<MyAppSettings>(
-        builder: (context, MyAppSettings settings, _) {
-          return Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              Text('Dark mode', style: Theme.of(context).textTheme.button,),
-              Switch(
-                onChanged: (bool value) => settings.setDartMode(value),
-                value: settings.isDarkMode,
-              ),
-            ],
-          );
-        },
-      ),
+      toggleDarkModeBtn
     ],
   );
 }
