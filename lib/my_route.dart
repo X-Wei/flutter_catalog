@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart' as url_launcher;
 
+import './my_app_meta.dart' as my_app_meta;
 import './my_app_settings.dart';
 import './my_code_view.dart';
-import './my_app_meta.dart' as my_app_meta;
 
 abstract class MyRoute extends StatefulWidget {
   // Path of source file (relative to project root). The file's content will be
@@ -172,7 +172,6 @@ class _MyRouteState extends State<MyRoute> with SingleTickerProviderStateMixin {
     }
     return appbarActions;
   }
-
 }
 
 // This widget is always kept alive, so that when tab is switched back, its

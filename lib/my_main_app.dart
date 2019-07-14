@@ -4,9 +4,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import './my_app_meta.dart' show kAllRoutes, kAppIcon;
 import './my_app_settings.dart';
-import './themes.dart';
 import './routes/about.dart';
 import './routes/home.dart';
+import './themes.dart';
 
 const _kHomeRoute = MyHomeRoute();
 const _kAboutRoute = MyAboutRoute();
