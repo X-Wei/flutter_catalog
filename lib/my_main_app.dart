@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import './my_app_meta.dart' as my_app_meta;
+import './my_app_meta.dart' show kAllRoutes, kAppIcon;
 import './my_app_settings.dart';
 import './themes.dart';
 import './routes/about.dart';
@@ -40,9 +40,7 @@ class _MySplashScreen extends StatelessWidget {
     return Container(
       constraints: BoxConstraints.expand(),
       color: Colors.white,
-      child: Center(
-        child: Card(elevation: 8.0, child: FlutterLogo(size: 64.0)),
-      ),
+      child: Center(child: kAppIcon),
     );
   }
 }
@@ -56,8 +54,7 @@ class _MyMainApp extends StatelessWidget {
     final Map<String, WidgetBuilder> _routingTable = {
       Navigator.defaultRouteName: (context) => _kHomeRoute,
       _kAboutRoute.routeName: (context) => _kAboutRoute,
-      for (var route in my_app_meta.kAllRoutes)
-        route.routeName: (context) => route
+      for (var route in kAllRoutes) route.routeName: (context) => route
     };
     return MaterialApp(
       title: 'Flutter Catalog',
