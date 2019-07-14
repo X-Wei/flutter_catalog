@@ -290,7 +290,7 @@ ListView getNavDrawerItems(State state, BuildContext context) {
   return ListView(
     children: <Widget>[
       drawerHeader,
-      ...kAboutRoute.aboutListTiles(context),
+      ...MyAboutRoute.kAboutListTiles,
     ],
   );
 }

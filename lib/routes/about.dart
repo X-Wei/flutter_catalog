@@ -17,34 +17,32 @@ class MyAboutRoute extends MyRoute {
       {'Doc': 'https://docs.flutter.io/flutter/material/showAboutDialog.html'};
 
   // These tiles are also used as drawer nav items in home route.
-  List<Widget> aboutListTiles(BuildContext context) {
-    return <Widget>[
-      ListTile(
-        title: Text(APP_DESCRIPTION),
-      ),
-      Divider(),
-      ListTile(
-        leading: Icon(Icons.shop),
-        title: Text('Rate on Google Play'),
-        onTap: () => url_launcher.launch(GOOGLEPLAY_URL),
-      ),
-      ListTile(
-        leading: Icon(Icons.code),
-        title: Text('Source code on GitHub'),
-        onTap: () => url_launcher.launch(GITHUB_URL),
-      ),
-      ListTile(
-        leading: Icon(Icons.bug_report),
-        title: Text('Report issue on GitHub'),
-        onTap: () => url_launcher.launch('$GITHUB_URL/issues'),
-      ),
-      ListTile(
-        leading: Icon(Icons.open_in_new),
-        title: Text('Visit my website'),
-        onTap: () => url_launcher.launch(AUTHOR_SITE),
-      ),
-    ];
-  }
+  static final List<Widget> kAboutListTiles = <Widget>[
+    ListTile(
+      title: Text(APP_DESCRIPTION),
+    ),
+    Divider(),
+    ListTile(
+      leading: Icon(Icons.shop),
+      title: Text('Rate on Google Play'),
+      onTap: () => url_launcher.launch(GOOGLEPLAY_URL),
+    ),
+    ListTile(
+      leading: Icon(Icons.code),
+      title: Text('Source code on GitHub'),
+      onTap: () => url_launcher.launch(GITHUB_URL),
+    ),
+    ListTile(
+      leading: Icon(Icons.bug_report),
+      title: Text('Report issue on GitHub'),
+      onTap: () => url_launcher.launch('$GITHUB_URL/issues'),
+    ),
+    ListTile(
+      leading: Icon(Icons.open_in_new),
+      title: Text('Visit my website'),
+      onTap: () => url_launcher.launch(AUTHOR_SITE),
+    ),
+  ];
 
   @override
   Widget buildMyRouteContent(BuildContext context) {
@@ -67,7 +65,7 @@ class MyAboutRoute extends MyRoute {
     return ListView(
       children: <Widget>[
         header,
-        ...aboutListTiles(context),
+        ...kAboutListTiles,
       ],
     );
   }
