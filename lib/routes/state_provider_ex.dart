@@ -123,7 +123,7 @@ class _CounterAndButton extends StatelessWidget {
                 icon: Icon(Icons.add),
                 onPressed: () => state.incrementCounter(),
               ),
-              // Way 1 to get state up the tree: wrap a Consumer widget.
+              // Way 2 to get state up the tree: wrap a Consumer widget.
               Consumer<_MyCounterState>(
                 builder: (BuildContext context, _MyCounterState value,
                     Widget child) {
