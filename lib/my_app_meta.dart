@@ -75,9 +75,6 @@ const GOOGLEPLAY_URL =
 const GITHUB_URL = 'https://github.com/X-Wei/flutter_catalog';
 const AUTHOR_SITE = 'http://x-wei.github.io';
 
-const kHomeRoute = MyHomeRoute();
-const kAboutRoute = MyAboutRoute();
-
 // All routes should use this same preference instance, to avoid unexpected
 // states-not-updated issues.
 final Future<SharedPreferences> kSharedPreferences =
@@ -255,23 +252,6 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
     ],
   ),
 ];
-
-final _allRoutes = kMyAppRoutesStructure.expand((group) => group.routes);
-
-// Mapping route names to routes.
-final Map<String, MyRoute> kRoutenameToRouteMap = {
-  Navigator.defaultRouteName: kHomeRoute,
-  kAboutRoute.routeName: kAboutRoute,
-  for (var route in _allRoutes) route.routeName: route
-};
-
-// The app's root-level routing table.
-Map<String, WidgetBuilder> kRoutingTable = kRoutenameToRouteMap.map(
-  (routeName, route) {
-    final widgetBuilder = (BuildContext context) => route;
-    return MapEntry<String, WidgetBuilder>(routeName, widgetBuilder);
-  },
-);
 
 // Returns the app's navigation drawer menu items.
 ListView getNavDrawerItems(State state, BuildContext context) {
