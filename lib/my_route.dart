@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart' as url_launcher;
+
+import './my_app_settings.dart';
 import './my_code_view.dart';
 import './my_app_meta.dart' as my_app_meta;
 
@@ -70,14 +72,11 @@ const _TABS = <Widget>[
 
 class _MyRouteState extends State<MyRoute> with SingleTickerProviderStateMixin {
   TabController _tabController;
-  SharedPreferences _preferences;
 
   @override
   void initState() {
     super.initState();
     _tabController = TabController(length: _TABS.length, vsync: this);
-    my_app_meta.kSharedPreferences
-      ..then((prefs) => setState(() => this._preferences = prefs));
   }
 
   @override
@@ -129,13 +128,15 @@ class _MyRouteState extends State<MyRoute> with SingleTickerProviderStateMixin {
   // Returns a widget showing the star status of one demo route: a star icon
   // with counts.
   Widget starStatusOfRoute(MyRoute route) {
+    final settings = Provider.of<MyAppSettings>(context);
     return IconButton(
       tooltip: 'Bookmark',
       icon: Icon(
-        this._isStared(route.routeName) ? Icons.star : Icons.star_border,
-        color: this._isStared(route.routeName) ? Colors.yellow : Colors.grey,
+        settings.isStarred(route.routeName) ? Icons.star : Icons.star_border,
+        color:
+            settings.isStarred(route.routeName) ? Colors.yellow : Colors.grey,
       ),
-      onPressed: () => setState(() => this._toggleStared(route.routeName)),
+      onPressed: () => setState(() => settings.toggleStarred(route.routeName)),
     );
   }
 
@@ -172,18 +173,6 @@ class _MyRouteState extends State<MyRoute> with SingleTickerProviderStateMixin {
     return appbarActions;
   }
 
-  // Returns whether routeName (defaults to this.widget.routeName) is stared.
-  bool _isStared([String routeName]) {
-    routeName ??= this.widget.routeName;
-    return my_app_meta.BookmarkManager.isStared(routeName, this._preferences);
-  }
-
-  // Toggles the local stared/not-stared status of routeName (defaults to
-  // this.widget.routeName).
-  void _toggleStared([String routeName]) {
-    routeName ??= this.widget.routeName;
-    my_app_meta.BookmarkManager.toggleStared(routeName, this._preferences);
-  }
 }
 
 // This widget is always kept alive, so that when tab is switched back, its
