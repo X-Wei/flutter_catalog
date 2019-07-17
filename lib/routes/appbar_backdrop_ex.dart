@@ -4,7 +4,7 @@ import '../my_route.dart';
 
 class BackdropExample extends MyRoute {
   const BackdropExample(
-      [String sourceFile = 'lib/routes/appbar_bottom_appbar_ex.dart'])
+      [String sourceFile = 'lib/routes/appbar_backdrop_ex.dart'])
       : super(sourceFile);
 
   @override
@@ -28,7 +28,7 @@ class BackdropExample extends MyRoute {
       headerHeight: 120.0,
       frontLayer: Center(
           child: Text(
-              '(front layer) \n Click top-right button to show back layer.\n\nn'
+              '(front layer) \n Click top-right button to show back layer.\n\n'
               "There's no flutter official backdrop widget, this demo uses the "
               "'backdrop' package.")),
       backLayer: Center(child: Text('(back layer)')),
