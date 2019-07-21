@@ -8,6 +8,7 @@ import 'package:provider/provider.dart';
 import './my_route.dart';
 import './routes/about.dart';
 
+import './routes/animation_basic_ex.dart';
 import './routes/animation_hero_ex.dart';
 import './routes/animation_opacity_ex.dart';
 import './routes/appbar_backdrop_ex.dart';
@@ -171,6 +172,7 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
     routes: <MyRoute>[
       OpacityExample(),
       HeroExample(),
+      BasicAnimationExample(),
     ],
   ),
   MyRouteGroup(
