@@ -125,8 +125,7 @@ class _MyRouteState extends State<MyRoute> with SingleTickerProviderStateMixin {
     );
   }
 
-  // Returns a widget showing the star status of one demo route: a star icon
-  // with counts.
+  // Returns a widget showing the star status of one demo route.
   Widget starStatusOfRoute(MyRoute route) {
     final settings = Provider.of<MyAppSettings>(context);
     return IconButton(

@@ -32,9 +32,7 @@ class HomePage extends StatelessWidget {
           .copyWith(fontWeight: FontWeight.bold);
       return ListTile(
         leading: leading ?? MyRoute.of(context).starStatusOfRoute(myRoute),
-        title: GestureDetector(
-          child: Text(myRoute.title, style: routeTitleTextStyle),
-        ),
+        title: Text(myRoute.title, style: routeTitleTextStyle),
         trailing: trialing == null ? null : Icon(trialing),
         subtitle:
             myRoute.description == null ? null : Text(myRoute.description),
