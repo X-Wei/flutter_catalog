@@ -97,6 +97,22 @@ class _BasicAnimationDemoState extends State<_BasicAnimationDemo>
           onPressed:
               this._controller.isDismissed ? null : () => _controller.reverse(),
         ),
+        RaisedButton(
+          child: Text('Loop animation'),
+          onPressed: () {
+            // Use addStatusListener() for notifications of changes to the
+            // animation’s state, such as starting, stopping, or reversing
+            // direction.
+            this._controller.addStatusListener((status) {
+              if (status == AnimationStatus.completed) {
+                this._controller.reverse();
+              } else if (status == AnimationStatus.dismissed) {
+                this._controller.forward();
+              }
+            });
+            this._controller.forward();
+          },
+        ),
       ],
     );
   }
