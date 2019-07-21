@@ -9,6 +9,7 @@ import './my_route.dart';
 import './routes/about.dart';
 
 import './routes/animation_animated_builder_ex.dart';
+import './routes/animation_animated_container_ex.dart';
 import './routes/animation_animated_widget_ex.dart';
 import './routes/animation_basic_ex.dart';
 import './routes/animation_hero_ex.dart';
@@ -177,6 +178,7 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
       BasicAnimationExample(),
       AnimatedWidgetExample(),
       AnimatedBuilderExample(),
+      AnimatedContainerExample(),
     ],
   ),
   MyRouteGroup(
