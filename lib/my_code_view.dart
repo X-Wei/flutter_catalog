@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:animated_floatactionbuttons/animated_floatactionbuttons.dart';
-import 'package:clipboard_manager/clipboard_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart' as url_launcher;
@@ -57,9 +56,9 @@ class MyCodeViewState extends State<MyCodeView> {
         child: Icon(Icons.content_copy),
         tooltip: 'Copy code link to clipboard',
         onPressed: () {
-          ClipboardManager.copyToClipBoard(this.widget.githubPath);
+          Clipboard.setData(ClipboardData(text: this.widget.githubPath));
           Scaffold.of(context).showSnackBar(SnackBar(
-            content: Text('Code link copied to Clipboard!'),
+            content: Text('Code link copied to clipboard!'),
           ));
         },
       ),
