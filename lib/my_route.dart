@@ -141,36 +141,30 @@ class _MyRouteState extends State<MyRoute> with SingleTickerProviderStateMixin {
   }
 
   List<Widget> _getAppbarActions() {
-    // final state = MyRouteState.of(context);
-    final appbarActions = <Widget>[];
-    if (this.widget.routeName != Navigator.defaultRouteName) {
-      appbarActions.add(starStatusOfRoute(this.widget));
-    }
-    if (this.widget.links.isNotEmpty) {
-      final popMenu = PopupMenuButton(
-        itemBuilder: (context) {
-          var menuItems = <PopupMenuItem>[];
-          this.widget.links.forEach((title, link) {
-            menuItems.add(
-              PopupMenuItem(
-                child: ListTile(
-                  title: Text(title),
-                  trailing: IconButton(
-                    icon: Icon(Icons.open_in_new),
-                    tooltip: '$link',
-                    onPressed: () => url_launcher.launch(link),
+    return <Widget>[
+      if (this.widget.routeName != Navigator.defaultRouteName)
+        starStatusOfRoute(this.widget),
+      if (this.widget.links.isNotEmpty)
+        PopupMenuButton(
+          itemBuilder: (context) {
+            return <PopupMenuItem>[
+              for (MapEntry<String, String> titleAndLink
+                  in this.widget.links.entries)
+                PopupMenuItem(
+                  child: ListTile(
+                    title: Text(titleAndLink.key),
+                    trailing: IconButton(
+                      icon: Icon(Icons.open_in_new),
+                      tooltip: '${titleAndLink.value}',
+                      onPressed: () => url_launcher.launch(titleAndLink.value),
+                    ),
+                    onTap: () => url_launcher.launch(titleAndLink.value),
                   ),
-                  onTap: () => url_launcher.launch(link),
-                ),
-              ),
-            );
-          });
-          return menuItems;
-        },
-      );
-      appbarActions.add(popMenu);
-    }
-    return appbarActions;
+                )
+            ];
+          },
+        ),
+    ];
   }
 }
 
