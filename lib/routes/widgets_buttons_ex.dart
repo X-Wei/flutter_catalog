@@ -69,7 +69,7 @@ class ButtonsExample extends MyRoute {
                   onPressed: _showToast,
                 ),
                 FlatButton(
-                  child: Text('dsiabled-FlatButton'),
+                  child: Text('disabled-FlatButton'),
                   onPressed: null,
                 ),
               ],
