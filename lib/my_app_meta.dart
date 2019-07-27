@@ -357,13 +357,61 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
     groupName: 'Navigation',
     icon: Icon(Icons.view_carousel),
     routes: <MyRoute>[
-      TabsExample(),
-      DialogsExample(),
-      RoutesExample(),
-      NavDrawerExample(),
-      BottomTabbarExample(),
-      BottomNavigationBarExample(),
-      PageSelectorExample(),
+      MyRoute2(
+        child: TabsExample(),
+        sourceFilePath: 'lib/routes/nav_tabs_ex.dart',
+        title: 'Tabs',
+        links: {
+          'Doc': 'https://docs.flutter.io/flutter/material/TabBar-class.html'
+        },
+      ),
+      MyRoute2(
+        child: DialogsExample(),
+        sourceFilePath: 'lib/routes/nav_dialogs_ex.dart',
+        title: 'Dialogs',
+      ),
+      MyRoute2(
+        child: RoutesExample(),
+        sourceFilePath: 'lib/routes/nav_routes_ex.dart',
+        title: 'Routes',
+        description: 'Jumping between pages.',
+        links: {
+          'Doc': 'https://docs.flutter.io/flutter/widgets/Navigator-class.html',
+          'Youtube video':
+              'https://youtu.be/b2fgMCeSNpY?list=PLJbE2Yu2zumDqr_-hqpAN0nIr6m14TAsd',
+        },
+      ),
+      MyRoute2(
+        child: NavDrawerExample(),
+        sourceFilePath: 'lib/routes/nav_nav_drawer_header_ex.dart',
+        title: 'Navigation Drawer',
+        links: {
+          'Doc': 'https://docs.flutter.io/flutter/material/Drawer-class.html',
+        },
+      ),
+      MyRoute2(
+        child: BottomTabbarExample(),
+        sourceFilePath: 'lib/routes/nav_bottom_tabbar_ex.dart',
+        title: 'Bottom tab bar',
+      ),
+      MyRoute2(
+        child: BottomNavigationBarExample(),
+        sourceFilePath: 'lib/routes/nav_bottom_navbar_ex.dart',
+        title: 'Bottom navigation bar',
+        links: {
+          'Doc':
+              'https://docs.flutter.io/flutter/material/BottomNavigationBar-class.html',
+        },
+      ),
+      MyRoute2(
+        child: PageSelectorExample(),
+        sourceFilePath: 'lib/routes/nav_pageselector_ex.dart',
+        title: 'Page selector',
+        links: {
+          'Doc':
+              'https://docs.flutter.io/flutter/material/TabPageSelector-class.html'
+        },
+      ),
     ],
   ),
   MyRouteGroup(

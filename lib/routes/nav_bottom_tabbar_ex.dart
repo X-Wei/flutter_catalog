@@ -1,26 +1,13 @@
 import 'package:flutter/material.dart';
-import '../my_route.dart';
 
-class BottomTabbarExample extends MyRoute {
-  const BottomTabbarExample(
-      [String sourceFile = 'lib/routes/nav_bottom_tabbar_ex.dart'])
-      : super(sourceFile);
+class BottomTabbarExample extends StatefulWidget {
+  const BottomTabbarExample({Key key}) : super(key: key);
 
   @override
-  get title => 'Bottom tab bar';
-
-  @override
-  Widget buildMyRouteContent(BuildContext context) {
-    return _BottomTabbarPage();
-  }
+  State<StatefulWidget> createState() => _BottomTabbarExampleState();
 }
 
-class _BottomTabbarPage extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() => _BottomTabbarPageState();
-}
-
-class _BottomTabbarPageState extends State<_BottomTabbarPage>
+class _BottomTabbarExampleState extends State<BottomTabbarExample>
     with SingleTickerProviderStateMixin {
   TabController _tabController;
 

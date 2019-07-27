@@ -1,32 +1,14 @@
 import 'package:flutter/material.dart';
-import '../my_route.dart';
 
-class BottomNavigationBarExample extends MyRoute {
-  const BottomNavigationBarExample(
-      [String sourceFile = 'lib/routes/nav_bottom_navbar_ex.dart'])
-      : super(sourceFile);
+class BottomNavigationBarExample extends StatefulWidget {
+  const BottomNavigationBarExample({Key key}) : super(key: key);
 
   @override
-  get title => 'Bottom navigation bar';
-
-  @override
-  get links => {
-        'Doc':
-            'https://docs.flutter.io/flutter/material/BottomNavigationBar-class.html',
-      };
-
-  @override
-  Widget buildMyRouteContent(BuildContext context) {
-    return _BottomNavDemo();
-  }
+  State<StatefulWidget> createState() => _BottomNavigationBarExampleState();
 }
 
-class _BottomNavDemo extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() => _BottomNavDemoState();
-}
-
-class _BottomNavDemoState extends State<_BottomNavDemo> {
+class _BottomNavigationBarExampleState
+    extends State<BottomNavigationBarExample> {
   int _currentTabIndex = 0;
 
   @override

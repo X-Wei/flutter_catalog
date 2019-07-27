@@ -3,28 +3,14 @@ import '../my_route.dart';
 
 // Adapted from Tensor Programming's multi-page app tutorial:
 // https://github.com/tensor-programming/dart_flutter_multi_page_app.
-class RoutesExample extends MyRoute {
-  const RoutesExample([String sourceFile = 'lib/routes/nav_routes_ex.dart'])
-      : super(sourceFile);
-
-  @override
-  get title => 'Routes';
+class RoutesExample extends StatelessWidget {
+  const RoutesExample({Key key}) : super(key: key);
 
   // Route name is useful for navigating between routes.
   static const kRouteName = '/RoutesExample';
 
   @override
-  get description => 'Jumping between pages.';
-
-  @override
-  get links => {
-        'Doc': 'https://docs.flutter.io/flutter/widgets/Navigator-class.html',
-        'Youtube video':
-            'https://youtu.be/b2fgMCeSNpY?list=PLJbE2Yu2zumDqr_-hqpAN0nIr6m14TAsd',
-      };
-
-  @override
-  Widget buildMyRouteContent(BuildContext context) {
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,

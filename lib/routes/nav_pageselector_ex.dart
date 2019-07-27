@@ -1,19 +1,7 @@
 import 'package:flutter/material.dart';
-import '../my_route.dart';
 
-class PageSelectorExample extends MyRoute {
-  const PageSelectorExample(
-      [String sourceFile = 'lib/routes/nav_pageselector_ex.dart'])
-      : super(sourceFile);
-
-  @override
-  get title => 'Page selector';
-
-  @override
-  get links => {
-        'Doc':
-            'https://docs.flutter.io/flutter/material/TabPageSelector-class.html'
-      };
+class PageSelectorExample extends StatelessWidget {
+  const PageSelectorExample({Key key}) : super(key: key);
 
   static const kIcons = <Icon>[
     Icon(Icons.event),
@@ -25,7 +13,7 @@ class PageSelectorExample extends MyRoute {
   ];
 
   @override
-  Widget buildMyRouteContent(BuildContext context) {
+  Widget build(BuildContext context) {
     return DefaultTabController(
       length: kIcons.length,
       // Use a Builder here, otherwise `DefaultTabController.of(context)` below

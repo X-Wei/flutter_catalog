@@ -1,21 +1,10 @@
 import 'package:flutter/material.dart';
-import '../my_route.dart';
 
-class NavDrawerExample extends MyRoute {
-  const NavDrawerExample(
-      [String sourceFile = 'lib/routes/nav_nav_drawer_header_ex.dart'])
-      : super(sourceFile);
+class NavDrawerExample extends StatelessWidget {
+  const NavDrawerExample({Key key}) : super(key: key);
 
   @override
-  get title => 'Navigation Drawer';
-
-  @override
-  get links => {
-        'Doc': 'https://docs.flutter.io/flutter/material/Drawer-class.html',
-      };
-
-  @override
-  Widget buildMyRouteContent(BuildContext context) {
+  Widget build(BuildContext context) {
     final drawerHeader = UserAccountsDrawerHeader(
       accountName: Text('User Name'),
       accountEmail: Text('user.name@email.com'),

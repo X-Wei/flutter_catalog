@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
-import '../my_route.dart';
 
 // Adapted from Eajy's flutter demo app:
 // https://github.com/Eajy/flutter_demo/blob/master/lib/route/homeDialogs.dart.
-class DialogsExample extends MyRoute {
-  const DialogsExample([String sourceFile = 'lib/routes/nav_dialogs_ex.dart'])
-      : super(sourceFile);
+class DialogsExample extends StatelessWidget {
+  const DialogsExample({Key key}) : super(key: key);
 
   @override
-  get title => 'Dialogs';
-
-  @override
-  Widget buildMyRouteContent(BuildContext context) {
+  Widget build(BuildContext context) {
     return ListView(
       padding: EdgeInsets.all(32.0),
       children: <Widget>[
@@ -120,7 +115,7 @@ class DialogsExample extends MyRoute {
               context: context,
               initialDate: DateTime.now(),
               firstDate: DateTime(2018),
-              lastDate: DateTime(2019),
+              lastDate: DateTime(2025),
             ).then<DateTime>((DateTime value) {
               if (value != null) {
                 Scaffold.of(context).showSnackBar(

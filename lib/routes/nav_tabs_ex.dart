@@ -1,19 +1,10 @@
 import 'package:flutter/material.dart';
-import '../my_route.dart';
 
-class TabsExample extends MyRoute {
-  const TabsExample([String sourceFile = 'lib/routes/nav_tabs_ex.dart'])
-      : super(sourceFile);
+class TabsExample extends StatelessWidget {
+  const TabsExample({Key key}) : super(key: key);
 
   @override
-  get title => 'Tabs';
-
-  @override
-  get links =>
-      {'Doc': 'https://docs.flutter.io/flutter/material/TabBar-class.html'};
-
-  @override
-  Widget buildMyRouteContent(BuildContext context) {
+  Widget build(BuildContext context) {
     final _kTabPages = <Widget>[
       Center(child: Icon(Icons.cloud, size: 64.0, color: Colors.teal)),
       Center(child: Icon(Icons.alarm, size: 64.0, color: Colors.cyan)),
