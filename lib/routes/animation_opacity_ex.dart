@@ -1,36 +1,13 @@
 import 'package:flutter/material.dart';
-import '../my_route.dart';
 
-class OpacityExample extends MyRoute {
-  const OpacityExample(
-      [String sourceFile = 'lib/routes/animation_opacity_ex.dart'])
-      : super(sourceFile);
+class OpacityExample extends StatefulWidget {
+  const OpacityExample({Key key}) : super(key: key);
 
   @override
-  get title => 'Opacity';
-
-  @override
-  get description => 'Making a widget transparent/visible.';
-
-  @override
-  get links => {
-        'Doc': 'https://docs.flutter.io/flutter/widgets/Opacity-class.html',
-        'Youtube video':
-            'https://www.youtube.com/watch?v=9hltevOHQBw&index=5&list=PLOU2XLYxmsIL0pH0zWe_ZOHgGhZ7UasUE',
-      };
-
-  @override
-  Widget buildMyRouteContent(BuildContext context) {
-    return _OpacityExPage();
-  }
+  State<StatefulWidget> createState() => _OpacityExampleState();
 }
 
-class _OpacityExPage extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() => _OpacityExPageState();
-}
-
-class _OpacityExPageState extends State<_OpacityExPage> {
+class _OpacityExampleState extends State<OpacityExample> {
   double _opacity1 = 1.0, _opacity2 = 1.0, _opacity3 = 1.0;
 
   Widget _coloredSquare(Color color) {

@@ -1,25 +1,10 @@
 import 'package:flutter/material.dart';
-import '../my_route.dart';
 
-class HeroExample extends MyRoute {
-  const HeroExample([String sourceFile = 'lib/routes/animation_hero_ex.dart'])
-      : super(sourceFile);
+class HeroExample extends StatelessWidget {
+  const HeroExample({Key key}) : super(key: key);
 
   @override
-  get title => 'Hero';
-
-  @override
-  get description => 'Hero animation between routes.';
-
-  @override
-  get links => {
-        'cookbook':
-            'https://flutter.io/docs/development/ui/animations/hero-animations',
-        'Youtube video': 'https://www.youtube.com/watch?v=Be9UH1kXFDw',
-      };
-
-  @override
-  Widget buildMyRouteContent(BuildContext context) {
+  Widget build(BuildContext context) {
     return Center(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

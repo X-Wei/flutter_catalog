@@ -1,39 +1,15 @@
 import 'package:flutter/material.dart';
-import '../my_route.dart';
 
-class BasicAnimationExample extends MyRoute {
-  const BasicAnimationExample(
-      [String sourceFile = 'lib/routes/animation_basic_ex.dart'])
-      : super(sourceFile);
+class BasicAnimationExample extends StatefulWidget {
+  const BasicAnimationExample({Key key}) : super(key: key);
 
   @override
-  get title => 'Basic animation';
-
-  @override
-  get description =>
-      'Implement animation using low-level Animations, AnimationControllers and Tweens.';
-
-  @override
-  get links => {
-        'Tutorial':
-            'https://flutter.dev/docs/development/ui/animations/tutorial',
-        'Youtube video': 'https://www.youtube.com/watch?v=mdhoIQqS2z0',
-      };
-
-  @override
-  Widget buildMyRouteContent(BuildContext context) {
-    return new _BasicAnimationDemo();
-  }
-}
-
-class _BasicAnimationDemo extends StatefulWidget {
-  @override
-  _BasicAnimationDemoState createState() => _BasicAnimationDemoState();
+  _BasicAnimationExampleState createState() => _BasicAnimationExampleState();
 }
 
 // Define the State as with SingleTickerProviderStateMixin to be able to set
 // `vsync=this`.
-class _BasicAnimationDemoState extends State<_BasicAnimationDemo>
+class _BasicAnimationExampleState extends State<BasicAnimationExample>
     with SingleTickerProviderStateMixin {
   // An Animation object knows the current state of an animation (for example,
   // whether it’s started, stopped, or moving forward or in reverse), but

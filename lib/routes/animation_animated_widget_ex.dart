@@ -1,29 +1,4 @@
 import 'package:flutter/material.dart';
-import '../my_route.dart';
-
-class AnimatedWidgetExample extends MyRoute {
-  const AnimatedWidgetExample(
-      [String sourceFile = 'lib/routes/animation_animated_widget_ex.dart'])
-      : super(sourceFile);
-
-  @override
-  get title => 'AnimatedWidget';
-
-  @override
-  get description => 'Easier animtation without addListener() and setState()';
-
-  @override
-  get links => {
-        'Tutorial':
-            'https://flutter.dev/docs/development/ui/animations/tutorial#simplifying-with-animatedwidget',
-        'Youtube video': 'https://www.youtube.com/watch?v=mdhoIQqS2z0',
-      };
-
-  @override
-  Widget buildMyRouteContent(BuildContext context) {
-    return new _AnimatedWidgetDemo();
-  }
-}
 
 // The AnimatedWidget base class allows you to separate out the core widget code
 // from the animation code.
@@ -44,12 +19,13 @@ class _AnimatedLogo extends AnimatedWidget {
   }
 }
 
-class _AnimatedWidgetDemo extends StatefulWidget {
+class AnimatedWidgetExample extends StatefulWidget {
+  const AnimatedWidgetExample({Key key}) : super(key: key);
   @override
-  _AnimatedWidgetDemoState createState() => _AnimatedWidgetDemoState();
+  _AnimatedWidgetExampleState createState() => _AnimatedWidgetExampleState();
 }
 
-class _AnimatedWidgetDemoState extends State<_AnimatedWidgetDemo>
+class _AnimatedWidgetExampleState extends State<AnimatedWidgetExample>
     with SingleTickerProviderStateMixin {
   Animation<double> _sizeAnimation;
   AnimationController _controller;
