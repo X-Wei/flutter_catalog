@@ -1,36 +1,15 @@
 import 'package:flutter/material.dart';
-import '../my_route.dart';
-
-class StackExample extends MyRoute {
-  const StackExample([String sourceFile = 'lib/routes/layouts_stack_ex.dart'])
-      : super(sourceFile);
-
-  @override
-  get title => 'Stack';
-
-  @override
-  get description => 'Putting widget on top of another.';
-
-  @override
-  get links => {
-        "Youtube video": "https://www.youtube.com/watch?v=RJEnTRBxaSg&t=1072s",
-        'Doc': 'https://docs.flutter.io/flutter/widgets/Stack-class.html',
-      };
-
-  @override
-  Widget buildMyRouteContent(BuildContext context) {
-    return _StackPage();
-  }
-}
 
 // Inspired by bizz84's layout demo:
 // https://github.com/bizz84/layout-demo-flutter
-class _StackPage extends StatefulWidget {
+class StackExample extends StatefulWidget {
+  const StackExample({Key key}) : super(key: key);
+
   @override
-  _StackPageState createState() => new _StackPageState();
+  _StackExampleState createState() => new _StackExampleState();
 }
 
-class _StackPageState extends State<_StackPage> {
+class _StackExampleState extends State<StackExample> {
   AlignmentDirectional _alignmentDirectional = AlignmentDirectional.topStart;
 
   @override

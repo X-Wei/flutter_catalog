@@ -1,30 +1,13 @@
 import 'package:flutter/material.dart';
-import '../my_route.dart';
 
-// Inspired by bizz84's flutter layout demo:
-// https://github.com/bizz84/layout-demo-flutter.
-class ExpandedExample extends MyRoute {
-  const ExpandedExample(
-      [String sourceFile = 'lib/routes/layouts_expanded_ex.dart'])
-      : super(sourceFile);
+class ExpandedExample extends StatelessWidget {
+  const ExpandedExample({Key key}) : super(key: key);
 
   @override
-  get title => 'Expanded';
-
-  @override
-  get description => 'Dividing space by "weights" (flex).';
-  // Expanded() objects takes all available space, and each Expanded gets the
-  // portion of space according to it's flex.
-  // SizedBox() instead has fixed height/width.
-
-  @override
-  get links => {
-        'Doc': 'https://docs.flutter.io/flutter/widgets/Expanded-class.html',
-        'Youtube video': 'https://www.youtube.com/watch?v=RJEnTRBxaSg&t=1072s',
-      };
-
-  @override
-  Widget buildMyRouteContent(BuildContext context) {
+  Widget build(BuildContext context) {
+    // Expanded() objects takes all available space, and each Expanded gets the
+    // portion of space according to it's flex.
+    // SizedBox() instead has fixed height/width.
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[

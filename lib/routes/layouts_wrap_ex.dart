@@ -1,24 +1,10 @@
 import 'package:flutter/material.dart';
-import '../my_route.dart';
 
-class WrapExample extends MyRoute {
-  const WrapExample([String sourceFile = 'lib/routes/layouts_wrap_ex.dart'])
-      : super(sourceFile);
+class WrapExample extends StatelessWidget {
+  const WrapExample({Key key}) : super(key: key);
 
   @override
-  get title => 'Wrap';
-
-  @override
-  get description => 'Wrap to the next row/column when run out of room.';
-
-  @override
-  get links => {
-        "Youtube video": "https://www.youtube.com/watch?v=z5iw2SeFx2M",
-        'Doc': 'https://docs.flutter.io/flutter/widgets/Wrap-class.html',
-      };
-
-  @override
-  Widget buildMyRouteContent(BuildContext context) {
+  Widget build(BuildContext context) {
     return Wrap(
       // Gap between adjacent chips.
       spacing: 8.0,

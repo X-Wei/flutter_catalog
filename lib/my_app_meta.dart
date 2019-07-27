@@ -175,11 +175,57 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
     groupName: 'Layouts',
     icon: Icon(Icons.dashboard),
     routes: <MyRoute>[
-      ContainerBasicsExample(),
-      RowColExample(),
-      WrapExample(),
-      ExpandedExample(),
-      StackExample(),
+      MyRoute2(
+        child: ContainerExample(),
+        sourceFilePath: 'lib/routes/layouts_container_padding_center_ex.dart',
+        title: 'Container',
+        description: 'Basic widgets for layout.',
+        links: {
+          'Doc': 'https://docs.flutter.io/flutter/widgets/Container-class.html',
+        },
+      ),
+      MyRoute2(
+        child: RowColExample(),
+        sourceFilePath: 'lib/routes/layouts_row_col_ex.dart',
+        title: 'Row, Column',
+        description: 'Align chidren widgets linearly.',
+        links: {
+          "Youtube video": "https://www.youtube.com/watch?v=RJEnTRBxaSg&t=75s",
+          'Doc': 'https://docs.flutter.io/flutter/widgets/Row-class.html',
+        },
+      ),
+      MyRoute2(
+        child: WrapExample(),
+        sourceFilePath: 'lib/routes/layouts_wrap_ex.dart',
+        title: 'Wrap',
+        description: 'Wrap to the next row/column when run out of room.',
+        links: {
+          "Youtube video": "https://www.youtube.com/watch?v=z5iw2SeFx2M",
+          'Doc': 'https://docs.flutter.io/flutter/widgets/Wrap-class.html',
+        },
+      ),
+      MyRoute2(
+        child: ExpandedExample(),
+        sourceFilePath: 'lib/routes/layouts_expanded_ex.dart',
+        title: 'Expanded, SizedBox',
+        description: 'Dividing space by "weights" (flex).',
+        links: {
+          'Doc': 'https://docs.flutter.io/flutter/widgets/Expanded-class.html',
+          'Youtube video':
+              'https://www.youtube.com/watch?v=RJEnTRBxaSg&t=1072s',
+        },
+      ),
+      MyRoute2(
+        child: StackExample(),
+        sourceFilePath: 'lib/routes/layouts_stack_ex.dart',
+        title: 'Stack',
+        description: 'Putting widget on top of another.',
+        links: {
+          "Youtube video":
+              "https://www.youtube.com/watch?v=RJEnTRBxaSg&t=1072s",
+          'Doc': 'https://docs.flutter.io/flutter/widgets/Stack-class.html',
+        },
+      ),
       // TODO TableExample(),
     ],
   ),

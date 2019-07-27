@@ -1,37 +1,14 @@
 import 'package:flutter/material.dart';
-import '../my_route.dart';
-
-class RowColExample extends MyRoute {
-  const RowColExample(
-      [String sourceFile = 'lib/routes/layouts_row_col_ex.dart'])
-      : super(sourceFile);
-
-  @override
-  get title => 'Row, Column';
-
-  @override
-  get description => 'Align chidren widgets linearly.';
-
-  @override
-  get links => {
-        "Youtube video": "https://www.youtube.com/watch?v=RJEnTRBxaSg&t=75s",
-        'Doc': 'https://docs.flutter.io/flutter/widgets/Row-class.html',
-      };
-
-  @override
-  Widget buildMyRouteContent(BuildContext context) {
-    return _RowColumnPage();
-  }
-}
 
 // Inspired by bizz84's layout demo:
 // https://github.com/bizz84/layout-demo-flutter
-class _RowColumnPage extends StatefulWidget {
+class RowColExample extends StatefulWidget {
+  const RowColExample({Key key}) : super(key: key);
   @override
-  _RowColumnPageState createState() => new _RowColumnPageState();
+  _RowColExampleState createState() => new _RowColExampleState();
 }
 
-class _RowColumnPageState extends State<_RowColumnPage> {
+class _RowColExampleState extends State<RowColExample> {
   static const kElements = <Widget>[
     Icon(Icons.stars, size: 50.0),
     Icon(Icons.stars, size: 100.0),

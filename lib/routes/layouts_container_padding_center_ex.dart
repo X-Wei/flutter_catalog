@@ -1,25 +1,10 @@
 import 'package:flutter/material.dart';
-import '../my_route.dart';
 
-class ContainerBasicsExample extends MyRoute {
-  const ContainerBasicsExample(
-      [String sourceFile =
-          'lib/routes/layouts_container_padding_center_ex.dart'])
-      : super(sourceFile);
+class ContainerExample extends StatelessWidget {
+  const ContainerExample({Key key}) : super(key: key);
 
   @override
-  get title => 'Container';
-
-  @override
-  get description => 'Basic widgets for layout.';
-
-  @override
-  get links => {
-        'Doc': 'https://docs.flutter.io/flutter/widgets/Container-class.html',
-      };
-
-  @override
-  Widget buildMyRouteContent(BuildContext context) {
+  Widget build(BuildContext context) {
     // Tip: VSCode have suggestions for widget (e.g. "Center widget", "Add
     // padding", "Remove widget"), which is handy.
     return Center(
