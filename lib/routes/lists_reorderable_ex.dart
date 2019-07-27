@@ -1,32 +1,13 @@
 import 'package:flutter/material.dart';
-import '../my_route.dart';
-
-class ReorderableListExample extends MyRoute {
-  const ReorderableListExample(
-      [String sourceFile = 'lib/routes/lists_reorderable_ex.dart'])
-      : super(sourceFile);
-
-  @override
-  get title => 'Reorderable list';
-
-  @override
-  get links => {
-        'Doc':
-            'https://docs.flutter.io/flutter/material/ReorderableListView-class.html'
-      };
-
-  @override
-  Widget buildMyRouteContent(BuildContext context) {
-    return _ReorderableListDemo();
-  }
-}
 
 // Adapted from reorderable list demo in offical flutter gallery:
 // https://github.com/flutter/flutter/blob/master/examples/flutter_gallery/lib/demo/material/reorderable_list_demo.dart
-class _ReorderableListDemo extends StatefulWidget {
+class ReorderableListExample extends StatefulWidget {
+  const ReorderableListExample({Key key}) : super(key: key);
+
   @override
   State<StatefulWidget> createState() {
-    return __ReorderableListDemoState();
+    return _ReorderableListExampleState();
   }
 }
 
@@ -36,7 +17,7 @@ class _ListItem {
   bool checked;
 }
 
-class __ReorderableListDemoState extends State<_ReorderableListDemo> {
+class _ReorderableListExampleState extends State<ReorderableListExample> {
   bool _reverseSort = false;
   static final _items = <String>[
     'A',

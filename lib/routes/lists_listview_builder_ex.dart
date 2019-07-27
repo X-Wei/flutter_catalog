@@ -1,24 +1,10 @@
 import 'package:flutter/material.dart';
-import '../my_route.dart';
 
-class ListViewBuilderExample extends MyRoute {
-  const ListViewBuilderExample(
-      [String sourceFile = 'lib/routes/lists_listview_builder_ex.dart'])
-      : super(sourceFile);
+class ListViewBuilderExample extends StatelessWidget {
+  const ListViewBuilderExample({Key key}) : super(key: key);
 
   @override
-  get title => 'ListView.builder';
-
-  @override
-  get description => 'Building list items with a builder.';
-
-  @override
-  get links => {
-        'Doc': 'https://docs.flutter.io/flutter/widgets/ListView-class.html',
-      };
-
-  @override
-  Widget buildMyRouteContent(BuildContext context) {
+  Widget build(BuildContext context) {
     final numItems = 20;
     final _biggerFont = const TextStyle(fontSize: 18.0);
 

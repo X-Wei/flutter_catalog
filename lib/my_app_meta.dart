@@ -233,13 +233,67 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
     groupName: 'Lists',
     icon: Icon(Icons.format_list_numbered),
     routes: <MyRoute>[
-      ListTileExample(),
-      ListViewBuilderExample(),
-      GridListExample(),
-      ExpansionTileExample(),
-      ListSwipeToDismissExample(),
-      ReorderableListExample(),
-      DataTableExample(),
+      MyRoute2(
+        child: ListTileExample(),
+        sourceFilePath: 'lib/routes/lists_list_tile_ex.dart',
+        title: 'ListTile',
+        links: {
+          'Doc': 'https://docs.flutter.io/flutter/material/ListTile-class.html',
+        },
+      ),
+      MyRoute2(
+        child: ListViewBuilderExample(),
+        sourceFilePath: 'lib/routes/lists_listview_builder_ex.dart',
+        title: 'ListView.builder',
+        description: 'Building list items with a builder.',
+        links: {
+          'Doc': 'https://docs.flutter.io/flutter/widgets/ListView-class.html',
+        },
+      ),
+      MyRoute2(
+        child: GridListExample(),
+        sourceFilePath: 'lib/routes/lists_grid_list_ex.dart',
+        title: 'GridList',
+        links: {
+          'Cookbook': 'https://flutter.io/cookbook/lists/grid-lists/',
+        },
+      ),
+      MyRoute2(
+        child: ExpansionTileExample(),
+        sourceFilePath: 'lib/routes/lists_expansion_tile_ex.dart',
+        title: 'ExpansionTile',
+        links: {
+          'Doc':
+              'https://docs.flutter.io/flutter/material/ExpansionTile-class.html',
+        },
+      ),
+      MyRoute2(
+        child: ListSwipeToDismissExample(),
+        sourceFilePath: 'lib/routes/lists_swipe_to_dismiss_ex.dart',
+        title: 'Swipe to dismiss',
+        links: {
+          'Cookbook': 'https://flutter.io/cookbook/gestures/dismissible',
+        },
+      ),
+      MyRoute2(
+        child: ReorderableListExample(),
+        sourceFilePath: 'lib/routes/lists_reorderable_ex.dart',
+        title: 'Reorderable list',
+        links: {
+          'Doc':
+              'https://docs.flutter.io/flutter/material/ReorderableListView-class.html'
+        },
+      ),
+      MyRoute2(
+        child: DataTableExample(),
+        sourceFilePath: 'lib/routes/lists_datatable_ex.dart',
+        title: 'DataTable',
+        description: 'Showing data in a table.',
+        links: {
+        'Docs':
+            'https://docs.flutter.io/flutter/material/PaginatedDataTable-class.html'
+      },
+      ),
     ],
   ),
   MyRouteGroup(

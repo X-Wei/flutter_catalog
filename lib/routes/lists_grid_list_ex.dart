@@ -1,21 +1,10 @@
 import 'package:flutter/material.dart';
-import '../my_route.dart';
 
-class GridListExample extends MyRoute {
-  const GridListExample(
-      [String sourceFile = 'lib/routes/lists_grid_list_ex.dart'])
-      : super(sourceFile);
+class GridListExample extends StatelessWidget {
+  const GridListExample({Key key}) : super(key: key);
 
   @override
-  get title => 'GridList';
-
-  @override
-  get links => {
-        'Cookbook': 'https://flutter.io/cookbook/lists/grid-lists/',
-      };
-
-  @override
-  Widget buildMyRouteContent(BuildContext context) {
+  Widget build(BuildContext context) {
     return GridView.count(
       // Create a grid with 2 columns. If you change the scrollDirection to
       // horizontal, this would produce 2 rows.

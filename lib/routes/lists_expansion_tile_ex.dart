@@ -1,5 +1,16 @@
 import 'package:flutter/material.dart';
-import '../my_route.dart';
+
+class ExpansionTileExample extends StatelessWidget {
+  const ExpansionTileExample({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      itemBuilder: (BuildContext context, int index) => EntryItem(data[index]),
+      itemCount: data.length,
+    );
+  }
+}
 
 // One entry in the multilevel list displayed by this app.
 class Entry {
@@ -32,29 +43,6 @@ const List<Entry> data = <Entry>[
     ],
   ),
 ];
-
-class ExpansionTileExample extends MyRoute {
-  const ExpansionTileExample(
-      [String sourceFile = 'lib/routes/lists_expansion_tile_ex.dart'])
-      : super(sourceFile);
-
-  @override
-  get title => 'ExpansionTile';
-
-  @override
-  get links => {
-        'Doc':
-            'https://docs.flutter.io/flutter/material/ExpansionTile-class.html',
-      };
-
-  @override
-  Widget buildMyRouteContent(BuildContext context) {
-    return ListView.builder(
-      itemBuilder: (BuildContext context, int index) => EntryItem(data[index]),
-      itemCount: data.length,
-    );
-  }
-}
 
 // Displays one Entry. If the entry has children then it's displayed
 // with an ExpansionTile.

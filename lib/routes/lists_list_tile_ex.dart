@@ -1,21 +1,10 @@
 import 'package:flutter/material.dart';
-import '../my_route.dart';
 
-class ListTileExample extends MyRoute {
-  const ListTileExample(
-      [String sourceFile = 'lib/routes/lists_list_tile_ex.dart'])
-      : super(sourceFile);
+class ListTileExample extends StatelessWidget {
+  const ListTileExample({Key key}) : super(key: key);
 
   @override
-  get title => 'ListTile';
-
-  @override
-  get links => {
-        'Doc': 'https://docs.flutter.io/flutter/material/ListTile-class.html',
-      };
-
-  @override
-  Widget buildMyRouteContent(BuildContext context) {
+  Widget build(BuildContext context) {
     const listTiles = <Widget>[
       ListTile(
         title: Text('Tile 0: basic'),

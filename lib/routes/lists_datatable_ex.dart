@@ -1,37 +1,15 @@
 import 'package:flutter/material.dart';
-import '../my_route.dart';
-
-class DataTableExample extends MyRoute {
-  const DataTableExample(
-      [String sourceFile = 'lib/routes/lists_datatable_ex.dart'])
-      : super(sourceFile);
-
-  @override
-  get title => 'DataTable';
-
-  @override
-  get description => 'Showing data in a table.';
-
-  @override
-  get links => {
-        'Docs':
-            'https://docs.flutter.io/flutter/material/PaginatedDataTable-class.html'
-      };
-
-  @override
-  Widget buildMyRouteContent(BuildContext context) {
-    return _DataTableDemo();
-  }
-}
 
 // Adapted from the data table demo in offical flutter gallery:
 // https://github.com/flutter/flutter/blob/master/examples/flutter_gallery/lib/demo/material/data_table_demo.dart
-class _DataTableDemo extends StatefulWidget {
+class DataTableExample extends StatefulWidget {
+  const DataTableExample({Key key}) : super(key: key);
+
   @override
-  _DataTableDemoState createState() => _DataTableDemoState();
+  _DataTableExampleState createState() => _DataTableExampleState();
 }
 
-class _DataTableDemoState extends State<_DataTableDemo> {
+class _DataTableExampleState extends State<DataTableExample> {
   int _rowsPerPage = PaginatedDataTable.defaultRowsPerPage;
   @override
   Widget build(BuildContext context) {

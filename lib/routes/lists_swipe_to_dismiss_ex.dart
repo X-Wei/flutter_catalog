@@ -1,33 +1,15 @@
 import 'package:flutter/material.dart';
-import '../my_route.dart';
 
-class ListSwipeToDismissExample extends MyRoute {
-  const ListSwipeToDismissExample(
-      [String sourceFile = 'lib/routes/lists_swipe_to_dismiss_ex.dart'])
-      : super(sourceFile);
+class ListSwipeToDismissExample extends StatefulWidget {
+  const ListSwipeToDismissExample({Key key}) : super(key: key);
 
-  @override
-  get title => 'Swipe to dismiss';
-
-  @override
-  get links => {
-        'Cookbook': 'https://flutter.io/cookbook/gestures/dismissible',
-      };
-
-  @override
-  Widget buildMyRouteContent(BuildContext context) {
-    return _SwipeToDismissList();
-  }
-}
-
-class _SwipeToDismissList extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return _SwipeToDismissListState();
+    return _ListSwipeToDismissExampleState();
   }
 }
 
-class _SwipeToDismissListState extends State<_SwipeToDismissList> {
+class _ListSwipeToDismissExampleState extends State<ListSwipeToDismissExample> {
   final _items = List<String>.generate(20, (i) => "Item ${i + 1}");
 
   @override
