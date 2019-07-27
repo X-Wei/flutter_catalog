@@ -120,6 +120,9 @@ class MyRoute2 extends MyRoute {
 
   @override
   Widget buildMyRouteContent(BuildContext context) {
-    return this.child;
+    return Padding(
+      padding: EdgeInsets.all(8.0),
+      child: this.child,
+    );
   }
 }
