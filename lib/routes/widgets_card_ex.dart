@@ -1,25 +1,10 @@
 import 'package:flutter/material.dart';
-import '../my_route.dart';
 
-class CardExample extends MyRoute {
-  const CardExample([String sourceFile = 'lib/routes/widgets_card_ex.dart'])
-      : super(sourceFile);
+class CardExample extends StatelessWidget {
+  const CardExample({Key key}) : super(key: key);
 
   @override
-  get title => 'Card, Inkwell';
-
-  @override
-  get description =>
-      'Container with corner and shadow; inkwell (ripple) effects';
-
-  @override
-  get links => {
-        'Doc': 'https://docs.flutter.io/flutter/material/Card-class.html',
-        'Inkwell': 'https://flutter.io/cookbook/gestures/ripples/',
-      };
-
-  @override
-  Widget buildMyRouteContent(BuildContext context) {
+  Widget build(BuildContext context) {
     return ListView(
       padding: EdgeInsets.all(8.0),
       children: <Widget>[

@@ -1,21 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:transparent_image/transparent_image.dart'
     show kTransparentImage;
-import '../my_route.dart';
 
-class ImageExample extends MyRoute {
-  const ImageExample([String sourceFile = 'lib/routes/widgets_image_ex.dart'])
-      : super(sourceFile);
+class ImageExample extends StatelessWidget {
+  const ImageExample({Key key}) : super(key: key);
 
   @override
-  get title => 'Image';
-
-  @override
-  get links =>
-      {'Doc': 'https://docs.flutter.io/flutter/widgets/Image-class.html'};
-
-  @override
-  Widget buildMyRouteContent(BuildContext context) {
+  Widget build(BuildContext context) {
     return ListView(
       children: <Widget>[
         ListTile(

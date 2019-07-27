@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
-import '../my_route.dart';
 
-class IconExample extends MyRoute {
-  const IconExample([String sourceFile = 'lib/routes/widgets_icon_ex.dart'])
-      : super(sourceFile);
-
+class IconExample extends StatelessWidget {
+  const IconExample({Key key}) : super(key: key);
+  
   @override
-  get title => 'Icon';
-
-  @override
-  Widget buildMyRouteContent(BuildContext context) {
+  Widget build(BuildContext context) {
     return Center(
       child: Icon(
         Icons.image,

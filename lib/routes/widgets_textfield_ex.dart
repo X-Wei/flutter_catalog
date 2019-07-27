@@ -1,34 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import '../my_route.dart';
 
-class TextFieldExample extends MyRoute {
-  const TextFieldExample(
-      [String sourceFile = 'lib/routes/widgets_textfield_ex.dart'])
-      : super(sourceFile);
+class TextFieldExample extends StatefulWidget {
+  const TextFieldExample({Key key}) : super(key: key);
 
   @override
-  get title => 'TextField';
-
-  @override
-  get description => 'Text input.';
-
-  @override
-  get links =>
-      {'Doc': 'https://docs.flutter.io/flutter/material/TextField-class.html'};
-
-  @override
-  Widget buildMyRouteContent(BuildContext context) {
-    return _TextFieldDemo();
-  }
+  State<StatefulWidget> createState() => _TextFieldExampleState();
 }
 
-class _TextFieldDemo extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() => _TextFieldDemoState();
-}
-
-class _TextFieldDemoState extends State<_TextFieldDemo> {
+class _TextFieldExampleState extends State<TextFieldExample> {
   bool _inputIsValid = true;
   @override
   Widget build(BuildContext context) {

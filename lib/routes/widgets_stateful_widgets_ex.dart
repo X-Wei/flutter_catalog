@@ -1,29 +1,13 @@
 import 'package:flutter/material.dart';
-import '../my_route.dart';
 
-class StatefulWidgetsExample extends MyRoute {
-  const StatefulWidgetsExample(
-      [String sourceFile = 'lib/routes/widgets_stateful_widgets_ex.dart'])
-      : super(sourceFile);
+class StatefulWidgetsExample extends StatefulWidget {
+  const StatefulWidgetsExample({Key key}) : super(key: key);
 
   @override
-  get title => 'Other stateful widgets';
-
-  @override
-  get description => 'Switch, CheckBox, Slider, etc.';
-
-  @override
-  Widget buildMyRouteContent(BuildContext context) {
-    return _WidgetsPage();
-  }
+  State<StatefulWidget> createState() => _StatefulWidgetsExampleState();
 }
 
-class _WidgetsPage extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() => _WidgetsPageState();
-}
-
-class _WidgetsPageState extends State<_WidgetsPage> {
+class _StatefulWidgetsExampleState extends State<StatefulWidgetsExample> {
   bool _switchVal = true;
   bool _checkBoxVal = true;
   double _slider1Val = 0.5;

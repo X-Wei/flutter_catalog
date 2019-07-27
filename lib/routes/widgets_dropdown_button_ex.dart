@@ -1,34 +1,15 @@
 import 'package:flutter/material.dart';
-import '../my_route.dart';
-
-class DropdownButtonExample extends MyRoute {
-  const DropdownButtonExample(
-      [String sourceFile = 'lib/routes/widgets_dropdown_button_ex.dart'])
-      : super(sourceFile);
-
-  @override
-  get title => 'DropdownButton, MenuButton';
-
-  @override
-  get links => {
-        'Doc':
-            'https://docs.flutter.io/flutter/material/DropdownButton-class.html'
-      };
-
-  @override
-  Widget buildMyRouteContent(BuildContext context) {
-    return _DropdowButtonDemo();
-  }
-}
 
 // Inspired by dropdown buttons demo in offical flutter gallery:
 // https://github.com/flutter/flutter/blob/master/examples/flutter_gallery/lib/demo/material/buttons_demo.dart
-class _DropdowButtonDemo extends StatefulWidget {
+class DropdownButtonExample extends StatefulWidget {
+  const DropdownButtonExample({Key key}) : super(key: key);
+
   @override
-  State<StatefulWidget> createState() => _DropdowButtonDemoState();
+  State<StatefulWidget> createState() => _DropdownButtonExampleState();
 }
 
-class _DropdowButtonDemoState extends State<_DropdowButtonDemo> {
+class _DropdownButtonExampleState extends State<DropdownButtonExample> {
   static const menuItems = <String>[
     'One',
     'Two',

@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
-import '../my_route.dart';
 
-class TextExample extends MyRoute {
-  const TextExample([String sourceFile = 'lib/routes/widgets_text_ex.dart'])
-      : super(sourceFile);
+class TextExample extends StatelessWidget {
+  const TextExample({Key key}) : super(key: key);
 
   @override
-  get title => 'Text';
-
-  @override
-  Widget buildMyRouteContent(BuildContext context) {
+  Widget build(BuildContext context) {
     return Text(
       'Simple text demo.',
       // Optional params to try:

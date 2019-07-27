@@ -1,32 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import '../my_route.dart';
 
-class ButtonsExample extends MyRoute {
-  const ButtonsExample(
-      [String sourceFile = 'lib/routes/widgets_buttons_ex.dart'])
-      : super(sourceFile);
+class ButtonsExample extends StatelessWidget {
+  const ButtonsExample({Key key}) : super(key: key);
 
   @override
-  get title => 'Buttons';
-
-  @override
-  get description =>
-      'RaisedButton, FlatButton, OutlineButton, IconButton&Tooltips';
-
-  @override
-  get links => {
-        'Doc': 'https://docs.flutter.io/flutter/material/ButtonBar-class.html',
-        'Gallery button demo code':
-            'https://github.com/flutter/flutter/blob/master/examples/flutter_gallery/lib/demo/material/buttons_demo.dart'
-      };
-
-  @override
-  Widget buildMyRouteContent(BuildContext context) {
+  Widget build(BuildContext context) {
     final _showToast = () => Fluttertoast.showToast(
           msg: 'Button tapped',
           toastLength: Toast.LENGTH_SHORT,
         );
+
     final _showSnack = () => Scaffold.of(context).showSnackBar(
           SnackBar(
             content: Text('Button tapped'),

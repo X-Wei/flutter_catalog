@@ -93,15 +93,82 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
     groupName: 'Widgets',
     icon: Icon(Icons.extension),
     routes: <MyRoute>[
-      IconExample(),
-      TextExample(),
-      TextFieldExample(),
-      TextFormFieldExample(),
-      ImageExample(),
-      CardExample(),
-      ButtonsExample(),
-      DropdownButtonExample(),
-      StatefulWidgetsExample(),
+      MyRoute2(
+        child: IconExample(),
+        sourceFilePath: 'lib/routes/widgets_icon_ex.dart',
+        title: 'Icon',
+      ),
+      MyRoute2(
+        child: TextExample(),
+        sourceFilePath: 'lib/routes/widgets_text_ex.dart',
+        title: 'Text',
+      ),
+      MyRoute2(
+        child: TextFieldExample(),
+        sourceFilePath: 'lib/routes/widgets_textfield_ex.dart',
+        title: 'TextField',
+        description: 'Text input.',
+        links: {
+          'Doc': 'https://docs.flutter.io/flutter/material/TextField-class.html'
+        },
+      ),
+      MyRoute2(
+        child: TextFormFieldExample(),
+        sourceFilePath: 'lib/routes/widgets_textformfield_ex.dart',
+        title: 'TextFormField',
+        description: 'Convenience widget wrapping a TextField in a FormField.',
+        links: {
+          'Doc':
+              'https://docs.flutter.io/flutter/material/TextFormField-class.html'
+        },
+      ),
+      MyRoute2(
+        child: ImageExample(),
+        sourceFilePath: 'lib/routes/widgets_image_ex.dart',
+        title: 'Image',
+        links: {
+          'Doc': 'https://docs.flutter.io/flutter/widgets/Image-class.html'
+        },
+      ),
+      MyRoute2(
+        child: CardExample(),
+        sourceFilePath: 'lib/routes/widgets_card_ex.dart',
+        title: 'Card, Inkwell',
+        description:
+            'Container with corner and shadow; inkwell (ripple) effects',
+        links: {
+          'Doc': 'https://docs.flutter.io/flutter/material/Card-class.html',
+          'Inkwell': 'https://flutter.io/cookbook/gestures/ripples/',
+        },
+      ),
+      MyRoute2(
+        child: ButtonsExample(),
+        sourceFilePath: 'lib/routes/widgets_buttons_ex.dart',
+        title: 'Buttons',
+        description:
+            'RaisedButton, FlatButton, OutlineButton, IconButton&Tooltips',
+        links: {
+          'Doc':
+              'https://docs.flutter.io/flutter/material/ButtonBar-class.html',
+          'Gallery button demo code':
+              'https://github.com/flutter/flutter/blob/master/examples/flutter_gallery/lib/demo/material/buttons_demo.dart'
+        },
+      ),
+      MyRoute2(
+        child: DropdownButtonExample(),
+        sourceFilePath: 'lib/routes/widgets_dropdown_button_ex.dart',
+        title: 'DropdownButton, MenuButton',
+        links: {
+          'Doc':
+              'https://docs.flutter.io/flutter/material/DropdownButton-class.html'
+        },
+      ),
+      MyRoute2(
+        child: StatefulWidgetsExample(),
+        sourceFilePath: 'lib/routes/widgets_stateful_widgets_ex.dart',
+        title: 'Other stateful widgets',
+        description: 'Switch, CheckBox, Slider, etc.',
+      ),
     ],
   ),
   MyRouteGroup(

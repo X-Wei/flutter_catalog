@@ -1,38 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '../my_route.dart';
 
-class TextFormFieldExample extends MyRoute {
-  const TextFormFieldExample(
-      [String sourceFile = 'lib/routes/widgets_textformfield_ex.dart'])
-      : super(sourceFile);
+class TextFormFieldExample extends StatefulWidget {
+  const TextFormFieldExample({Key key}) : super(key: key);
 
   @override
-  get title => 'TextFormField';
-
-  @override
-  get description => 'Convenience widget wrapping a TextField in a FormField.';
-
-  @override
-  get links => {
-        'Doc':
-            'https://docs.flutter.io/flutter/material/TextFormField-class.html'
-      };
-
-  @override
-  Widget buildMyRouteContent(BuildContext context) {
-    return _TextFormFieldDemo();
-  }
-}
-
-class _TextFormFieldDemo extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() => _TextFormFieldDemoState();
+  State<StatefulWidget> createState() => _TextFormFieldExampleState();
 }
 
 // Adapted from the text form demo in official gallery app:
 // https://github.com/flutter/flutter/blob/master/examples/flutter_gallery/lib/demo/material/text_form_field_demo.dart
-class _TextFormFieldDemoState extends State<_TextFormFieldDemo> {
+class _TextFormFieldExampleState extends State<TextFormFieldExample> {
   final GlobalKey<FormFieldState<String>> _passwordFieldKey =
       new GlobalKey<FormFieldState<String>>();
 
