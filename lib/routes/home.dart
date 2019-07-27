@@ -31,7 +31,9 @@ class HomePage extends StatelessWidget {
           .body1
           .copyWith(fontWeight: FontWeight.bold);
       return ListTile(
-        leading: leading ?? MyRoute.of(context).starStatusOfRoute(myRoute),
+        leading: leading ??
+            Provider.of<MyAppSettings>(context)
+                .starStatusOfRoute(myRoute.routeName),
         title: Text(myRoute.title, style: routeTitleTextStyle),
         trailing: trialing == null ? null : Icon(trialing),
         subtitle:

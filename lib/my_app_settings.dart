@@ -31,6 +31,18 @@ class MyAppSettings extends ChangeNotifier {
             _kRoutenameToRouteMap[routename]
       ];
 
+  // Returns a widget showing the star status of one demo route.
+  Widget starStatusOfRoute(String routeName) {
+    return IconButton(
+      tooltip: 'Bookmark',
+      icon: Icon(
+        this.isStarred(routeName) ? Icons.star : Icons.star_border,
+        color: this.isStarred(routeName) ? Colors.yellow : Colors.grey,
+      ),
+      onPressed: () => this.toggleStarred(routeName),
+    );
+  }
+
   bool isStarred(String routeName) =>
       starredRoutenames.contains(routeName) ?? false;
 
