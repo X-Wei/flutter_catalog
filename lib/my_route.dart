@@ -31,7 +31,7 @@ abstract class MyRoute extends StatelessWidget {
 
   // Returns a set of links {title:link} that are relative to the route. Can put
   // documention links or reference video/article links here.
-  Map<String, String> get links => {};
+  Map<String, String> get links => null;
 
   // Returns the widget that will be shown in the "Preview" tab.
   Widget buildMyRouteContent(BuildContext context);
@@ -73,7 +73,7 @@ abstract class MyRoute extends StatelessWidget {
     return <Widget>[
       if (this.routeName != Navigator.defaultRouteName)
         settings.starStatusOfRoute(this.routeName),
-      if (this.links.isNotEmpty)
+      if (this.links?.isNotEmpty ?? false)
         PopupMenuButton(
           itemBuilder: (context) {
             return <PopupMenuItem>[
@@ -93,5 +93,33 @@ abstract class MyRoute extends StatelessWidget {
           },
         ),
     ];
+  }
+}
+
+class MyRoute2 extends MyRoute {
+  final String sourceFilePath;
+  final Widget child;
+  final String _title;
+  final String description;
+  final Map<String, String> links;
+
+  const MyRoute2(
+      {@required this.sourceFilePath,
+      @required this.child,
+      String title,
+      this.description,
+      this.links})
+      : _title = title,
+        super(sourceFilePath);
+
+  @override
+  String get routeName => '/${this.child.runtimeType.toString()}';
+
+  @override
+  String get title => _title ?? this.routeName;
+
+  @override
+  Widget buildMyRouteContent(BuildContext context) {
+    return this.child;
   }
 }
