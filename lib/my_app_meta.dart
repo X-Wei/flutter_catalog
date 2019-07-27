@@ -2,10 +2,8 @@
 // List<Tuple2> object. And it provides functions to get app's routing table or
 // app's navigation drawer menu items from the declared metadata.
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import './constants.dart';
-import './my_app_settings.dart';
 import './my_route.dart';
 import './routes/home.dart';
 import './routes/about.dart';

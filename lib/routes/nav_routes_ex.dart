@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../my_route.dart';
 
 // Adapted from Tensor Programming's multi-page app tutorial:
 // https://github.com/tensor-programming/dart_flutter_multi_page_app.
