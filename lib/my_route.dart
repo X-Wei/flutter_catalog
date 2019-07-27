@@ -1,3 +1,4 @@
+import 'package:backdrop/backdrop.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart' as url_launcher;
@@ -37,30 +38,35 @@ abstract class MyRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Text(this.title),
-        ),
-        actions: _getAppbarActions(context),
-        elevation: 0,
+    final double headerHeight = 128.0;
+    final double appbarHeight = kToolbarHeight;
+    final double backLayerHeight =
+        MediaQuery.of(context).size.height - headerHeight - appbarHeight;
+    return BackdropScaffold(
+      title: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Text(this.title),
       ),
-      // Use a Builder so that Scaffold.of(context) uses correct context, c.f.
-      // https://stackoverflow.com/a/45948913
-      body: Builder(
+      actions: _getAppbarActions(context),
+      iconPosition: BackdropIconPosition.action,
+      headerHeight: headerHeight,
+      frontLayer: Builder(
         builder: (BuildContext context) => WidgetWithCodeView(
           child: this.buildMyRouteContent(context),
           sourceFilePath: this._sourceFile,
           codeLinkPrefix: '$GITHUB_URL/blob/master',
         ),
       ),
-      // Only home route has drawer:
-      drawer: this.routeName == Navigator.defaultRouteName
-          ? Drawer(
-              child: my_app_meta.getNavDrawerItems(context),
-            )
-          : null,
+      // To make the listview in backlayer scrollable, had to calculate the
+      // height of backlayer, and wrap inside a Column. This is due to the
+      // implementation of BackdropScaffold ('backdrop' package, v0.1.8).
+      backLayer: Column(
+        children: <Widget>[
+          SizedBox(
+              height: backLayerHeight,
+              child: my_app_meta.getNavDrawerItems(context))
+        ],
+      ),
     );
   }
 
