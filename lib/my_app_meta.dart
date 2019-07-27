@@ -213,43 +213,26 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
 
 final kAllRoutes = kMyAppRoutesStructure.expand((group) => group.routes);
 
-// Returns the app's navigation drawer menu items.
-ListView getNavDrawerItems(BuildContext context) {
-  final drawerHeader = DrawerHeader(
-    decoration: BoxDecoration(color: Theme.of(context).primaryColor),
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: <Widget>[
-        kAppIcon,
-        Text(APP_NAME, style: Theme.of(context).textTheme.title),
-        Text(APP_VERSION, style: Theme.of(context).textTheme.caption),
-      ],
+final ListView kBackdropListTiles = ListView(
+  padding: EdgeInsets.only(bottom: 32.0),
+  children: <Widget>[
+    ListTile(
+      leading: kAppIcon,
+      title: Text(APP_NAME),
+      subtitle: Text(APP_VERSION),
     ),
-  );
-
-  final toggleDarkModeBtn = Consumer<MyAppSettings>(
-    builder: (context, MyAppSettings settings, _) {
-      return Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
-          Text(
-            'Dark mode',
-            style: Theme.of(context).textTheme.button,
-          ),
-          Switch(
-            onChanged: (bool value) => settings.setDartMode(value),
-            value: settings.isDarkMode,
-          ),
-        ],
+    ...MyAboutRoute.kAboutListTiles,
+    Consumer<MyAppSettings>(builder: (context, MyAppSettings settings, _) {
+      return ListTile(
+        onTap: () {},
+        leading:
+            Icon(settings.isDarkMode ? Icons.brightness_4 : Icons.brightness_7),
+        title: Text('Dark mode'),
+        trailing: Switch(
+          onChanged: (bool value) => settings.setDartMode(value),
+          value: settings.isDarkMode,
+        ),
       );
-    },
-  );
-
-  return ListView(
-    children: <Widget>[
-      drawerHeader,
-      ...MyAboutRoute.kAboutListTiles,
-      toggleDarkModeBtn
-    ],
-  );
-}
+    }),
+  ],
+);

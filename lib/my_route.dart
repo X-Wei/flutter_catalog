@@ -5,7 +5,7 @@ import 'package:url_launcher/url_launcher.dart' as url_launcher;
 import 'package:widget_with_codeview/widget_with_codeview.dart';
 
 import './constants.dart' show GITHUB_URL;
-import './my_app_meta.dart' as my_app_meta;
+import './my_app_meta.dart' show kBackdropListTiles;
 import './my_app_settings.dart';
 
 abstract class MyRoute extends StatelessWidget {
@@ -62,9 +62,7 @@ abstract class MyRoute extends StatelessWidget {
       // implementation of BackdropScaffold ('backdrop' package, v0.1.8).
       backLayer: Column(
         children: <Widget>[
-          SizedBox(
-              height: backLayerHeight,
-              child: my_app_meta.getNavDrawerItems(context))
+          SizedBox(height: backLayerHeight, child: kBackdropListTiles)
         ],
       ),
     );
