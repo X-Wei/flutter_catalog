@@ -2,11 +2,12 @@
 // List<Tuple2> object. And it provides functions to get app's routing table or
 // app's navigation drawer menu items from the declared metadata.
 import 'package:flutter/material.dart';
-import 'package:flutter_catalog/my_app_settings.dart';
 import 'package:provider/provider.dart';
 
 import './constants.dart';
+import './my_app_settings.dart';
 import './my_route.dart';
+import './routes/home.dart';
 import './routes/about.dart';
 
 import './routes/animation_animated_builder_ex.dart';
@@ -671,6 +672,21 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
     ],
   ),
 ];
+
+const kAboutRoute = MyRoute2(
+  child: MyAboutRoute(),
+  sourceFilePath: 'lib/routes/about.dart',
+  title: 'About',
+  links: {
+    'Doc': 'https://docs.flutter.io/flutter/material/showAboutDialog.html'
+  },
+);
+
+const kHomeRoute = MyRoute2(
+  child: MyHomePage(),
+  sourceFilePath: 'lib/routes/home.dart',
+  title: APP_NAME,
+);
 
 final kAllRoutes = kMyAppRoutesStructure.expand((group) => group.routes);
 

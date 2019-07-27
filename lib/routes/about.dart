@@ -1,20 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart' as url_launcher;
 import '../constants.dart';
-import '../my_route.dart';
 
 // Inspired by the about page in Eajy's flutter demo:
 // https://github.com/Eajy/flutter_demo/blob/master/lib/route/about.dart
-class MyAboutRoute extends MyRoute {
-  const MyAboutRoute([String sourceFile = 'lib/routes/about.dart'])
-      : super(sourceFile);
-
-  @override
-  get title => 'About';
-
-  @override
-  get links =>
-      {'Doc': 'https://docs.flutter.io/flutter/material/showAboutDialog.html'};
+class MyAboutRoute extends StatelessWidget {
+  const MyAboutRoute({Key key}) : super(key: key);
 
   // These tiles are also used as drawer nav items in home route.
   static final List<Widget> kAboutListTiles = <Widget>[
@@ -45,7 +36,7 @@ class MyAboutRoute extends MyRoute {
   ];
 
   @override
-  Widget buildMyRouteContent(BuildContext context) {
+  Widget build(BuildContext context) {
     final header = ListTile(
       leading: kAppIcon,
       title: Text(APP_NAME),

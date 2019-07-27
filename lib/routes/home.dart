@@ -1,27 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../my_app_settings.dart';
-import './about.dart';
 import '../my_route.dart';
-import '../my_app_meta.dart' show kMyAppRoutesStructure, MyRouteGroup;
+import '../my_app_meta.dart' show MyRouteGroup, kAboutRoute, kMyAppRoutesStructure;
 
-class MyHomeRoute extends MyRoute {
-  const MyHomeRoute([String sourceFile = 'lib/routes/home.dart'])
-      : super(sourceFile);
+class MyHomePage extends StatelessWidget {
+  const MyHomePage({Key key}) : super(key: key);
 
-  @override
-  get title => 'Flutter Catalog';
-
-  @override
-  get routeName => Navigator.defaultRouteName;
-
-  @override
-  Widget buildMyRouteContent(BuildContext context) {
-    return HomePage();
-  }
-}
-
-class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ListTile _myRouteToListTile(MyRoute myRoute,
@@ -69,7 +54,7 @@ class HomePage extends StatelessWidget {
       children: <Widget>[
         _buildBookmarksExpansionTile(),
         ...kMyAppRoutesStructure.map(_myRouteGroupToExpansionTile),
-        _myRouteToListTile(MyAboutRoute(), leading: Icon(Icons.info)),
+        _myRouteToListTile(kAboutRoute, leading: Icon(Icons.info)),
       ],
     );
   }
