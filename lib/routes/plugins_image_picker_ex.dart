@@ -2,34 +2,15 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import '../my_route.dart';
 
-class ImagePickerExample extends MyRoute {
-  const ImagePickerExample(
-      [String sourceFile = 'lib/routes/plugins_image_picker_ex.dart'])
-      : super(sourceFile);
+class ImagePickerExample extends StatefulWidget {
+  const ImagePickerExample({Key key}) : super(key: key);
 
   @override
-  get title => 'Image Picker';
-
-  @override
-  get description => 'Pick image from gallery or from camera.';
-
-  @override
-  Widget buildMyRouteContent(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: _ImagePickerDemo(),
-    );
-  }
+  _ImagePickerExampleState createState() => _ImagePickerExampleState();
 }
 
-class _ImagePickerDemo extends StatefulWidget {
-  @override
-  _ImagePickerDemoState createState() => _ImagePickerDemoState();
-}
-
-class _ImagePickerDemoState extends State<_ImagePickerDemo> {
+class _ImagePickerExampleState extends State<ImagePickerExample> {
   File _imageFile;
 
   @override

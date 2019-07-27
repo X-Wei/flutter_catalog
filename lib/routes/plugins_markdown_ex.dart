@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../my_route.dart';
 
 const String _markdownData = '''
 # Markdown Example
@@ -34,16 +33,11 @@ void main() {
 Enjoy!
 ''';
 
-class MarkdownExample extends MyRoute {
-  const MarkdownExample(
-      [String sourceFile = 'lib/routes/plugins_markdown_ex.dart'])
-      : super(sourceFile);
+class MarkdownExample extends StatelessWidget {
+  const MarkdownExample({Key key}) : super(key: key);
 
   @override
-  get title => 'Markdown rendering';
-
-  @override
-  Widget buildMyRouteContent(BuildContext context) {
+  Widget build(BuildContext context) {
     void _onTapLink(href) async {
       if (await canLaunch(href)) {
         launch(href);

@@ -1,34 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:url_launcher/url_launcher.dart' as url_launcher;
-import '../my_route.dart';
 
-class WebViewExample extends MyRoute {
-  const WebViewExample(
-      [String sourceFile = 'lib/routes/plugins_webview_ex.dart'])
-      : super(sourceFile);
+class WebViewExample extends StatefulWidget {
+  const WebViewExample({Key key}) : super(key: key);
 
   @override
-  get title => 'Web View';
-
-  @override
-  get description => 'Open web page inside Flutter.';
-
-  @override
-  Widget buildMyRouteContent(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: _WebviewDemo(),
-    );
-  }
+  _WebViewExampleState createState() => _WebViewExampleState();
 }
 
-class _WebviewDemo extends StatefulWidget {
-  @override
-  _WebviewDemoState createState() => _WebviewDemoState();
-}
-
-class _WebviewDemoState extends State<_WebviewDemo> {
+class _WebViewExampleState extends State<WebViewExample> {
   TextEditingController _controller;
 
   @override

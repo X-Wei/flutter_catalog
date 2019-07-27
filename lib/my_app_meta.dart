@@ -598,10 +598,30 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
     groupName: 'Plugins',
     icon: Icon(Icons.power),
     routes: <MyRoute>[
-      ImagePickerExample(),
-      WebViewExample(),
-      MarkdownExample(),
-      LocalAuthExample(),
+      MyRoute2(
+        child: ImagePickerExample(),
+        sourceFilePath: 'lib/routes/plugins_image_picker_ex.dart',
+        title: 'Image Picker',
+        description: 'Pick image from gallery or from camera.',
+      ),
+      MyRoute2(
+        child: WebViewExample(),
+        sourceFilePath: 'lib/routes/plugins_webview_ex.dart',
+        title: 'Web View',
+        description: 'Open web page inside Flutter app.',
+      ),
+      MyRoute2(
+        child: MarkdownExample(),
+        sourceFilePath: 'lib/routes/plugins_markdown_ex.dart',
+        title: 'Markdown rendering',
+      ),
+      MyRoute2(
+        child: LocalAuthExample(),
+        sourceFilePath: 'lib/routes/plugins_local_auth_ex.dart',
+        title: 'Local auth',
+        description: 'Authenticate with biometrics(fingerprint).',
+        links: {},
+      ),
     ],
   ),
   MyRouteGroup(

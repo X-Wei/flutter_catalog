@@ -2,34 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:local_auth/local_auth.dart';
 import 'package:transparent_image/transparent_image.dart'
     show kTransparentImage;
-import '../my_route.dart';
 
-class LocalAuthExample extends MyRoute {
-  const LocalAuthExample(
-      [String sourceFile = 'lib/routes/plugins_local_auth_ex.dart'])
-      : super(sourceFile);
+class LocalAuthExample extends StatefulWidget {
+  const LocalAuthExample({Key key}) : super(key: key);
 
   @override
-  get title => 'Local auth';
-
-  @override
-  get description => 'Authenticate with biometrics(fingerprint)';
-
-  @override
-  Widget buildMyRouteContent(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: _LocalAuthDemo(),
-    );
-  }
+  _LocalAuthExampleState createState() => _LocalAuthExampleState();
 }
 
-class _LocalAuthDemo extends StatefulWidget {
-  @override
-  _LocalAuthDemoState createState() => _LocalAuthDemoState();
-}
-
-class _LocalAuthDemoState extends State<_LocalAuthDemo> {
+class _LocalAuthExampleState extends State<LocalAuthExample> {
   bool _authSuccess = false;
   LocalAuthentication _localAuth;
 
