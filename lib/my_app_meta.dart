@@ -492,8 +492,21 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
     groupName: 'Persistence',
     icon: Icon(Icons.sd_storage),
     routes: <MyRoute>[
-      SharedPreferenceExample(),
-      FileReadWriteExample(),
+      MyRoute2(
+        child: SharedPreferenceExample(),
+        sourceFilePath: 'lib/routes/persistence_preference_ex.dart',
+        title: 'Shared preference',
+        description: 'Key-value pairs stored locally using shared_preference.',
+        links: {'Cookbook': 'https://flutter.io/docs/cookbook/persistence/key-value',},
+      ),
+      MyRoute2(
+        child: FileReadWriteExample(),
+        sourceFilePath: 'lib/routes/persistence_file_rw_ex.dart',
+        title: 'Local file read/write',
+        description: 'Read and write local file using path_provider.',
+        links: {'Cookbook':
+            'https://flutter.io/docs/cookbook/persistence/reading-writing-files',},
+      ),
     ],
   ),
   MyRouteGroup(

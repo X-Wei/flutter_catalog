@@ -1,42 +1,15 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
-import '../my_route.dart';
 
-class FileReadWriteExample extends MyRoute {
-  const FileReadWriteExample(
-      [String sourceFile = 'lib/routes/persistence_file_rw_ex.dart'])
-      : super(sourceFile);
+class FileReadWriteExample extends StatefulWidget {
+  const FileReadWriteExample({Key key}) : super(key: key);
 
   @override
-  get title => 'Local file read/write';
-
-  @override
-  get description => 'Read and write local file using path_provider.';
-
-  @override
-  get links => {
-        'Cookbook':
-            'https://flutter.io/docs/cookbook/persistence/reading-writing-files',
-      };
-
-  @override
-  Widget buildMyRouteContent(BuildContext context) {
-    return Center(
-      child: _FileRwDemo(),
-    );
-  }
+  _FileReadWriteExampleState createState() => _FileReadWriteExampleState();
 }
 
-class _FileRwDemo extends StatefulWidget {
-  @override
-  _FileRwDemoState createState() {
-    return new _FileRwDemoState();
-  }
-}
-
-class _FileRwDemoState extends State<_FileRwDemo> {
+class _FileReadWriteExampleState extends State<FileReadWriteExample> {
   static const String kLocalFileName = 'file_rw_demo_localfile.txt';
   final TextEditingController _textController = TextEditingController();
   String _localFileContent = '';

@@ -1,42 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../my_route.dart';
 
-class SharedPreferenceExample extends MyRoute {
-  const SharedPreferenceExample(
-      [String sourceFile = 'lib/routes/persistence_preference_ex.dart'])
-      : super(sourceFile);
+class SharedPreferenceExample extends StatefulWidget {
+  const SharedPreferenceExample({Key key}) : super(key: key);
 
   @override
-  get title => 'Shared preference';
-
-  @override
-  get description => 'Key-value pairs stored locally using shared_preference.';
-
-  @override
-  get links => {
-        'Cookbook': 'https://flutter.io/docs/cookbook/persistence/key-value',
-      };
-
-  @override
-  Widget buildMyRouteContent(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(20.0),
-      child: Center(
-        child: _PreferenceDemo(),
-      ),
-    );
-  }
+  _SharedPreferenceExampleState createState() =>
+      _SharedPreferenceExampleState();
 }
 
-class _PreferenceDemo extends StatefulWidget {
-  @override
-  _PreferenceDemoState createState() {
-    return new _PreferenceDemoState();
-  }
-}
-
-class _PreferenceDemoState extends State<_PreferenceDemo> {
+class _SharedPreferenceExampleState extends State<SharedPreferenceExample> {
   SharedPreferences _prefs;
   static const String kDemoNumberPrefKey = 'demo_number_pref';
   static const String kDemoBooleanPrefKey = 'demo_boolean_pref';
