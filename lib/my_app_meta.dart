@@ -229,7 +229,7 @@ final ListView kBackdropListTiles = ListView(
             Icon(settings.isDarkMode ? Icons.brightness_4 : Icons.brightness_7),
         title: Text('Dark mode'),
         trailing: Switch(
-          onChanged: (bool value) => settings.setDartMode(value),
+          onChanged: (bool value) => settings.setDarkMode(value),
           value: settings.isDarkMode,
         ),
       );
