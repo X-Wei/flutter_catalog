@@ -1,26 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../my_route.dart';
 
-class ProviderExample extends MyRoute {
-  const ProviderExample(
-      [String sourceFile = 'lib/routes/state_provider_ex.dart'])
-      : super(sourceFile);
+class ProviderExample extends StatelessWidget {
+  const ProviderExample({Key key}) : super(key: key);
 
   @override
-  get title => 'Provider';
-
-  @override
-  get description => 'Officially recommended state management solution.';
-
-  @override
-  get links => {
-        "I/O'19 talk": 'https://www.youtube.com/watch?v=d_m5csmrf7I',
-        'pub.dev': 'https://pub.dev/packages/provider',
-      };
-
-  @override
-  Widget buildMyRouteContent(BuildContext context) {
+  Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
         // This is a stream that shows how many seconds have elapsed.

@@ -1,27 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
-import '../my_route.dart';
 
-class ScopedModelExample extends MyRoute {
-  const ScopedModelExample(
-      [String sourceFile = 'lib/routes/state_scoped_model_ex.dart'])
-      : super(sourceFile);
+class ScopedModelExample extends StatelessWidget {
+  const ScopedModelExample({Key key}) : super(key: key);
 
   @override
-  get title => 'ScopedModel';
-
-  @override
-  get description =>
-      'Another (simpler) way to access&mutate state of widgets up the tree.';
-
-  @override
-  get links => {
-        "I/O'18 talk": 'https://youtu.be/RS36gBEp8OI?t=680',
-        'Youtube': 'https://www.youtube.com/watch?v=-MCeWP3rgI0',
-      };
-
-  @override
-  Widget buildMyRouteContent(BuildContext context) {
+  Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: _MyDemoApp(),

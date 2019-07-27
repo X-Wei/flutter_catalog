@@ -1,29 +1,13 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../my_route.dart';
 
-class BlocLibExample extends MyRoute {
-  const BlocLibExample(
-      [String sourceFile = 'lib/routes/state_bloc_lib_ex.dart'])
-      : super(sourceFile);
+class BlocLibExample extends StatelessWidget {
+  const BlocLibExample({Key key}) : super(key: key);
 
   @override
-  get title => 'Easier BLoC pattern';
-
-  @override
-  get description => 'Simpler BLoC implementation with flutter_bloc package.';
-
-  @override
-  get links => {
-        'Video by Reso Coder': 'https://youtu.be/LeLrsnHeCZY',
-        'flutter_bloc doc': 'https://felangel.github.io/bloc/#/coreconcepts',
-      };
-
-  @override
-  Widget buildMyRouteContent(BuildContext context) {
+  Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: _MyDemoApp(),

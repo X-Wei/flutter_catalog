@@ -1,31 +1,8 @@
 import 'package:flutter/material.dart';
-import '../my_route.dart';
 
-class InheritedWidgetExample extends MyRoute {
-  const InheritedWidgetExample(
-      [String sourceFile = 'lib/routes/state_inherited_widget_ex.dart'])
-      : super(sourceFile);
+class InheritedWidgetExample extends StatelessWidget {
+  const InheritedWidgetExample({Key key}) : super(key: key);
 
-  @override
-  get title => 'InheritedWidget';
-
-  @override
-  get description => 'Access state of widgets up the tree.';
-
-  @override
-  get links => {
-        'Doc':
-            'https://docs.flutter.io/flutter/widgets/InheritedWidget-class.html',
-        'Youtube': 'https://www.youtube.com/watch?v=4I68ilX0Y24',
-      };
-
-  @override
-  Widget buildMyRouteContent(BuildContext context) {
-    return InheritedWidgetDemo();
-  }
-}
-
-class InheritedWidgetDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(

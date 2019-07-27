@@ -1,40 +1,13 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart' as english_words;
-import '../my_route.dart';
 
-class StreamControllerExample extends MyRoute {
-  const StreamControllerExample(
-      [String sourceFile = 'lib/routes/state_streamcontroller_ex.dart'])
-      : super(sourceFile);
+class StreamControllerExample extends StatefulWidget {
+  const StreamControllerExample({Key key}) : super(key: key);
 
   @override
-  get title => 'StreamController';
-
-  @override
-  get description =>
-      'Receive data from sink and output at stream, two StreamControllers can make a "Bloc".';
-
-  @override
-  get links => {
-        'Doc':
-            'https://api.dartlang.org/stable/2.1.1/dart-async/StreamController-class.html',
-      };
-
-  @override
-  Widget buildMyRouteContent(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.all(8.0),
-      child: _StreamControllerDemo(),
-    );
-  }
-}
-
-class _StreamControllerDemo extends StatefulWidget {
-  @override
-  _StreamControllerDemoState createState() {
-    return new _StreamControllerDemoState();
-  }
+  _StreamControllerExampleState createState() =>
+      _StreamControllerExampleState();
 }
 
 // The data class in our demo stream, contains just a message string and a
@@ -46,7 +19,7 @@ class _Data {
   _Data({@required this.message, @required this.timestamp});
 }
 
-class _StreamControllerDemoState extends State<_StreamControllerDemo> {
+class _StreamControllerExampleState extends State<StreamControllerExample> {
   // The app puts value to _inputStreamController.sink, and renders widget from
   // _outputStreamController.stream.
   final _inputStreamController = StreamController<_Data>();

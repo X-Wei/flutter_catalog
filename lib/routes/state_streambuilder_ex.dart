@@ -1,43 +1,14 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import '../my_route.dart';
 
-class StreamBuilderExample extends MyRoute {
-  const StreamBuilderExample(
-      [String sourceFile = 'lib/routes/state_streambuilder_ex.dart'])
-      : super(sourceFile);
+class StreamBuilderExample extends StatefulWidget {
+  const StreamBuilderExample({Key key}) : super(key: key);
 
   @override
-  get title => 'StreamBuilder (timer app)';
-
-  @override
-  get description => 'Update UI according to the latest stream value.';
-
-  @override
-  get links => {
-        'Doc':
-            'https://docs.flutter.io/flutter/widgets/StreamBuilder-class.html',
-        'Youtube': 'https://www.youtube.com/watch?v=MkKEWHfy99Y',
-      };
-
-  @override
-  Widget buildMyRouteContent(BuildContext context) {
-    return Container(
-      alignment: Alignment.center,
-      padding: EdgeInsets.all(8.0),
-      child: StreamBuilderDemo(),
-    );
-  }
+  StreamBuilderExampleState createState() => StreamBuilderExampleState();
 }
 
-class StreamBuilderDemo extends StatefulWidget {
-  @override
-  StreamBuilderDemoState createState() {
-    return new StreamBuilderDemoState();
-  }
-}
-
-class StreamBuilderDemoState extends State<StreamBuilderDemo> {
+class StreamBuilderExampleState extends State<StreamBuilderExample> {
   // The timer's value shown on app's UI.
   int _timerValue = 0;
   bool _paused = true;
@@ -53,29 +24,33 @@ class StreamBuilderDemoState extends State<StreamBuilderDemo> {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder(
-      stream: this._periodicStream,
-      builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
-        if (snapshot.hasData) {
-          if (snapshot.data != this._previousStreamValue) {
-            print('Latest snapshot from stream: ${snapshot.data}');
-            this._previousStreamValue = snapshot.data;
-            if (!_paused) {
-              this._timerValue++;
+    return Container(
+      alignment: Alignment.center,
+      margin: EdgeInsets.all(8),
+      child: StreamBuilder(
+        stream: this._periodicStream,
+        builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
+          if (snapshot.hasData) {
+            if (snapshot.data != this._previousStreamValue) {
+              print('Latest snapshot from stream: ${snapshot.data}');
+              this._previousStreamValue = snapshot.data;
+              if (!_paused) {
+                this._timerValue++;
+              }
             }
           }
-        }
-        return Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            Text("StreamBuilders can listen to a stream, and update UI "
-                "according to the stream's latest snapshot value.\n\n"
-                "In this demo we build a simple timer app by listening to a "
-                "stream that updates every second.\n"),
-            Card(child: _buildTimerUI()),
-          ],
-        );
-      },
+          return Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Text("StreamBuilders can listen to a stream, and update UI "
+                  "according to the stream's latest snapshot value.\n\n"
+                  "In this demo we build a simple timer app by listening to a "
+                  "stream that updates every second.\n"),
+              Card(child: _buildTimerUI()),
+            ],
+          );
+        },
+      ),
     );
   }
 

@@ -497,15 +497,19 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
         sourceFilePath: 'lib/routes/persistence_preference_ex.dart',
         title: 'Shared preference',
         description: 'Key-value pairs stored locally using shared_preference.',
-        links: {'Cookbook': 'https://flutter.io/docs/cookbook/persistence/key-value',},
+        links: {
+          'Cookbook': 'https://flutter.io/docs/cookbook/persistence/key-value',
+        },
       ),
       MyRoute2(
         child: FileReadWriteExample(),
         sourceFilePath: 'lib/routes/persistence_file_rw_ex.dart',
         title: 'Local file read/write',
         description: 'Read and write local file using path_provider.',
-        links: {'Cookbook':
-            'https://flutter.io/docs/cookbook/persistence/reading-writing-files',},
+        links: {
+          'Cookbook':
+              'https://flutter.io/docs/cookbook/persistence/reading-writing-files',
+        },
       ),
     ],
   ),
@@ -513,13 +517,81 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
     groupName: 'State Management',
     icon: Icon(Icons.developer_mode),
     routes: <MyRoute>[
-      StreamBuilderExample(),
-      StreamControllerExample(),
-      InheritedWidgetExample(),
-      ScopedModelExample(),
-      BlocExample(),
-      BlocLibExample(),
-      ProviderExample(),
+      MyRoute2(
+        child: StreamBuilderExample(),
+        sourceFilePath: 'lib/routes/state_streambuilder_ex.dart',
+        title: 'StreamBuilder (timer app)',
+        description: 'Update UI according to the latest stream value.',
+        links: {
+          'Doc':
+              'https://docs.flutter.io/flutter/widgets/StreamBuilder-class.html',
+          'Youtube': 'https://www.youtube.com/watch?v=MkKEWHfy99Y',
+        },
+      ),
+      MyRoute2(
+        child: StreamControllerExample(),
+        sourceFilePath: 'lib/routes/state_streamcontroller_ex.dart',
+        title: 'StreamController',
+        description:
+            'Receive data from sink and output at stream, two StreamControllers can make a "Bloc".',
+        links: {
+          'Doc':
+              'https://api.dartlang.org/stable/2.1.1/dart-async/StreamController-class.html',
+        },
+      ),
+      MyRoute2(
+        child: InheritedWidgetExample(),
+        sourceFilePath: 'lib/routes/state_inherited_widget_ex.dart',
+        title: 'InheritedWidget',
+        description: 'Access state of widgets up the tree.',
+        links: {
+          'Doc':
+              'https://docs.flutter.io/flutter/widgets/InheritedWidget-class.html',
+          'Youtube': 'https://www.youtube.com/watch?v=4I68ilX0Y24',
+        },
+      ),
+      MyRoute2(
+        child: ScopedModelExample(),
+        sourceFilePath: 'lib/routes/state_scoped_model_ex.dart',
+        title: 'ScopedModel',
+        description:
+            'Another (simpler) way to access&mutate state of widgets up the tree.',
+        links: {
+          "I/O'18 talk": 'https://youtu.be/RS36gBEp8OI?t=680',
+          'Youtube': 'https://www.youtube.com/watch?v=-MCeWP3rgI0',
+        },
+      ),
+      MyRoute2(
+        child: BlocExample(),
+        sourceFilePath: 'lib/routes/state_bloc_ex.dart',
+        title: 'BLoC pattern',
+        description:
+            'Combining StreamBuilder, StreamController, and InheritedWidget.',
+        links: {
+          "I/O'18 talk": 'https://youtu.be/RS36gBEp8OI?t=1090',
+          'Video by Reso Coder': 'https://youtu.be/oxeYeMHVLII',
+        },
+      ),
+      MyRoute2(
+        child: BlocLibExample(),
+        sourceFilePath: 'lib/routes/state_bloc_lib_ex.dart',
+        title: 'Easier BLoC pattern',
+        description: 'Simpler BLoC implementation with flutter_bloc package.',
+        links: {
+          'Video by Reso Coder': 'https://youtu.be/LeLrsnHeCZY',
+          'flutter_bloc doc': 'https://felangel.github.io/bloc/#/coreconcepts',
+        },
+      ),
+      MyRoute2(
+        child: ProviderExample(),
+        sourceFilePath: 'lib/routes/state_provider_ex.dart',
+        title: 'Provider',
+        description: 'Officially recommended state management solution.',
+        links: {
+          "I/O'19 talk": 'https://www.youtube.com/watch?v=d_m5csmrf7I',
+          'pub.dev': 'https://pub.dev/packages/provider',
+        },
+      ),
     ],
   ),
   MyRouteGroup(

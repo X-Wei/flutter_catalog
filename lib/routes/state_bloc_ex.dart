@@ -1,27 +1,11 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
-import '../my_route.dart';
 
-class BlocExample extends MyRoute {
-  const BlocExample([String sourceFile = 'lib/routes/state_bloc_ex.dart'])
-      : super(sourceFile);
+class BlocExample extends StatelessWidget {
+  const BlocExample({Key key}) : super(key: key);
 
   @override
-  get title => 'BLoC pattern';
-
-  @override
-  get description =>
-      'Combining StreamBuilder, StreamController, and InheritedWidget.';
-
-  @override
-  get links => {
-        "I/O'18 talk": 'https://youtu.be/RS36gBEp8OI?t=1090',
-        'Video by Reso Coder': 'https://youtu.be/oxeYeMHVLII',
-      };
-
-  @override
-  Widget buildMyRouteContent(BuildContext context) {
+  Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: _MyDemoApp(),
