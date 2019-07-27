@@ -5,44 +5,21 @@ import 'package:image_picker/image_picker.dart';
 import 'package:transparent_image/transparent_image.dart'
     show kTransparentImage;
 import 'package:flutter/material.dart';
-import '../my_route.dart';
 
 // NOTE: to add firebase support, first go to firebase console, generate the
 // firebase json file, and add configuration lines in the gradle files.
 // C.f. this commit: https://github.com/X-Wei/flutter_catalog/commit/48792cbc0de62fc47e0e9ba2cd3718117f4d73d1.
-class FirebaseMLKitExample extends MyRoute {
-  const FirebaseMLKitExample(
-      [String sourceFile = 'lib/routes/firebase_mlkit_ex.dart'])
-      : super(sourceFile);
-
-  @override
-  get title => 'Firebase ML Kit';
-
-  @override
-  get description => 'Image labelling, text OCR, barcode scan, face detection.';
-
-  @override
-  get links => {
-        'Doc': 'https://pub.dartlang.org/packages/firebase_ml_vision',
-      };
-
-  @override
-  Widget buildMyRouteContent(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: MLKitDemoPage(),
-    );
-  }
-}
 
 // Adapted from the flutter firestore "babyname voter" codelab:
 // https://codelabs.developers.google.com/codelabs/flutter-firebase/#0
-class MLKitDemoPage extends StatefulWidget {
+class FirebaseMLKitExample extends StatefulWidget {
+  const FirebaseMLKitExample({Key key}) : super(key: key);
+
   @override
-  _MLKitDemoPageState createState() => _MLKitDemoPageState();
+  _FirebaseMLKitExampleState createState() => _FirebaseMLKitExampleState();
 }
 
-class _MLKitDemoPageState extends State<MLKitDemoPage> {
+class _FirebaseMLKitExampleState extends State<FirebaseMLKitExample> {
   File _imageFile;
   String _mlResult = '<no result>';
 

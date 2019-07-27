@@ -2,39 +2,18 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import './firebase_constants.dart';
-import '../my_route.dart';
 
 // NOTE: to add firebase support, first go to firebase console, generate the
 // firebase json file, and add configuration lines in the gradle files.
 // C.f. this commit: https://github.com/X-Wei/flutter_catalog/commit/48792cbc0de62fc47e0e9ba2cd3718117f4d73d1.
-class FirebaseLoginExample extends MyRoute {
-  const FirebaseLoginExample(
-      [String sourceFile = 'lib/routes/firebase_login_ex.dart'])
-      : super(sourceFile);
+class FirebaseLoginExample extends StatefulWidget {
+  const FirebaseLoginExample({Key key}) : super(key: key);
 
   @override
-  get title => 'Firebase login';
-
-  @override
-  get description => 'Google/Anonymous sign in';
-
-  @override
-  get links => {
-        'Youtube video': 'https://www.youtube.com/watch?v=JYCNvWKF7vw',
-      };
-
-  @override
-  Widget buildMyRouteContent(BuildContext context) {
-    return LoginPage();
-  }
+  _FirebaseLoginExampleState createState() => _FirebaseLoginExampleState();
 }
 
-class LoginPage extends StatefulWidget {
-  @override
-  _LoginPageState createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage> {
+class _FirebaseLoginExampleState extends State<FirebaseLoginExample> {
   FirebaseUser _user;
   // If this._busy=true, the buttons are not clickable. This is to avoid
   // clicking buttons while a previous onTap function is not finished.

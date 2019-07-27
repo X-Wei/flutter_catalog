@@ -628,10 +628,46 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
     groupName: 'Firebase',
     icon: Icon(Icons.cloud),
     routes: <MyRoute>[
-      FirebaseLoginExample(),
-      FirebaseVoteExample(),
-      FirebaseChatroomExample(),
-      FirebaseMLKitExample(),
+      MyRoute2(
+        child: FirebaseLoginExample(),
+        sourceFilePath: 'lib/routes/firebase_login_ex.dart',
+        title: 'Firebase login',
+        description: 'Google/Anonymous sign in.',
+        links: {
+          'Youtube video': 'https://www.youtube.com/watch?v=JYCNvWKF7vw',
+        },
+      ),
+      MyRoute2(
+        child: FirebaseVoteExample(),
+        sourceFilePath: 'lib/routes/firebase_vote_ex.dart',
+        title: 'Firestore voting app',
+        description: 'Vote for your favorite programming language!',
+        links: {
+          'Youtube video': 'https://www.youtube.com/watch?v=DqJ_KjFzL9I',
+          'Codelab':
+              'https://codelabs.developers.google.com/codelabs/flutter-firebase/#0',
+        },
+      ),
+      MyRoute2(
+        child: FirebaseChatroomExample(),
+        sourceFilePath: 'lib/routes/firebase_chatroom_ex.dart',
+        title: 'Chat room',
+        description: 'Chat room with firebase realtime db.',
+        links: {
+          'FriendlyChat codelab':
+              'https://github.com/flutter/friendlychat-steps',
+          "Google I/O'17 video": 'https://www.youtube.com/watch?v=w2TcYP8qiRI',
+        },
+      ),
+      MyRoute2(
+        child: FirebaseMLKitExample(),
+        sourceFilePath: 'lib/routes/firebase_mlkit_ex.dart',
+        title: 'Firebase ML Kit',
+        description: 'Image labelling, text OCR, barcode scan, face detection.',
+        links: {
+          'Doc': 'https://pub.dartlang.org/packages/firebase_ml_vision',
+        },
+      ),
     ],
   ),
 ];

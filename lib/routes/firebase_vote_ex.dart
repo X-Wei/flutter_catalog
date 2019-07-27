@@ -1,43 +1,20 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../my_route.dart';
 
 // NOTE: to add firebase support, first go to firebase console, generate the
 // firebase json file, and add configuration lines in the gradle files.
 // C.f. this commit: https://github.com/X-Wei/flutter_catalog/commit/48792cbc0de62fc47e0e9ba2cd3718117f4d73d1.
-class FirebaseVoteExample extends MyRoute {
-  const FirebaseVoteExample(
-      [String sourceFile = 'lib/routes/firebase_vote_ex.dart'])
-      : super(sourceFile);
-
-  @override
-  get title => 'Firestore voting app';
-
-  @override
-  get description => 'Vote for your favorite programming language';
-
-  @override
-  get links => {
-        'Youtube video': 'https://www.youtube.com/watch?v=DqJ_KjFzL9I',
-        'Codelab':
-            'https://codelabs.developers.google.com/codelabs/flutter-firebase/#0',
-      };
-
-  @override
-  Widget buildMyRouteContent(BuildContext context) {
-    return VotePage();
-  }
-}
 
 // Adapted from the flutter firestore "babyname voter" codelab:
 // https://codelabs.developers.google.com/codelabs/flutter-firebase/#0
-class VotePage extends StatefulWidget {
+class FirebaseVoteExample extends StatefulWidget {
+  const FirebaseVoteExample({Key key}) : super(key: key);
   @override
-  _VotePageState createState() => _VotePageState();
+  _FirebaseVoteExampleState createState() => _FirebaseVoteExampleState();
 }
 
-class _VotePageState extends State<VotePage> {
+class _FirebaseVoteExampleState extends State<FirebaseVoteExample> {
   // We use SharedPreferences to keep track of which languages are voted.
   SharedPreferences _preferences;
   static const kVotedPreferenceKeyPrefx = 'AlreadyVotedFor_';

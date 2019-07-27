@@ -4,40 +4,18 @@ import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import './firebase_constants.dart';
-import '../my_route.dart';
 
 // NOTE: to add firebase support, first go to firebase console, generate the
 // firebase json file, and add configuration lines in the gradle files.
 // C.f. this commit: https://github.com/X-Wei/flutter_catalog/commit/48792cbc0de62fc47e0e9ba2cd3718117f4d73d1.
-class FirebaseChatroomExample extends MyRoute {
-  const FirebaseChatroomExample(
-      [String sourceFile = 'lib/routes/firebase_chatroom_ex.dart'])
-      : super(sourceFile);
+class FirebaseChatroomExample extends StatefulWidget {
+  const FirebaseChatroomExample({Key key}) : super(key: key);
 
   @override
-  get title => 'Chat room';
-
-  @override
-  get description => 'Chat room with firebase realtime db';
-
-  @override
-  get links => {
-        'FriendlyChat codelab': 'https://github.com/flutter/friendlychat-steps',
-        "Google I/O'17 video": 'https://www.youtube.com/watch?v=w2TcYP8qiRI',
-      };
-
-  @override
-  Widget buildMyRouteContent(BuildContext context) {
-    return ChatPage();
-  }
+  _FirebaseChatroomExampleState createState() => _FirebaseChatroomExampleState();
 }
 
-class ChatPage extends StatefulWidget {
-  @override
-  _ChatPageState createState() => _ChatPageState();
-}
-
-class _ChatPageState extends State<ChatPage> {
+class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
   DatabaseReference _firebaseMsgDbRef;
 
   FirebaseUser _user;
