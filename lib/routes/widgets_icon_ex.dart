@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class IconExample extends StatelessWidget {
   const IconExample({Key key}) : super(key: key);
-  
+
   @override
   Widget build(BuildContext context) {
     return Center(

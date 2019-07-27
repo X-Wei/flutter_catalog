@@ -12,7 +12,8 @@ class FirebaseChatroomExample extends StatefulWidget {
   const FirebaseChatroomExample({Key key}) : super(key: key);
 
   @override
-  _FirebaseChatroomExampleState createState() => _FirebaseChatroomExampleState();
+  _FirebaseChatroomExampleState createState() =>
+      _FirebaseChatroomExampleState();
 }
 
 class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
