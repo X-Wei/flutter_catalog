@@ -1,21 +1,10 @@
 import 'package:flutter/material.dart';
-import '../my_route.dart';
 
-class BasicAppbarExample extends MyRoute {
-  const BasicAppbarExample(
-      [String sourceFile = 'lib/routes/appbar_basic_appbar_ex.dart'])
-      : super(sourceFile);
+class BasicAppbarExample extends StatelessWidget {
+  const BasicAppbarExample({Key key}) : super(key: key);
 
   @override
-  get title => 'Basic AppBar';
-
-  @override
-  get links => {
-        'Doc': 'https://docs.flutter.io/flutter/material/AppBar-class.html',
-      };
-
-  @override
-  Widget buildMyRouteContent(BuildContext context) {
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.redAccent,

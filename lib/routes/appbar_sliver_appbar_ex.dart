@@ -1,39 +1,15 @@
 import 'package:flutter/material.dart';
-import '../my_route.dart';
 
 // Adapted from offical flutter gallery:
 // https://github.com/flutter/flutter/blob/master/examples/flutter_gallery/lib/demo/material/bottom_app_bar_demo.dart
-class SliverAppBarExample extends MyRoute {
-  const SliverAppBarExample(
-      [String sourceFile = 'lib/routes/appbar_sliver_appbar_ex.dart'])
-      : super(sourceFile);
+class SliverAppBarExample extends StatefulWidget {
+  const SliverAppBarExample({Key key}) : super(key: key);
 
   @override
-  get title => 'Sliver AppBar';
-
-  @override
-  get description => 'Appbar that auto-hides.';
-
-  @override
-  get links => {
-        'Doc':
-            'https://docs.flutter.io/flutter/material/SliverAppBar-class.html',
-        'Medium article':
-            'https://flutterdoc.com/animating-app-bars-in-flutter-cf034cd6c68b',
-      };
-
-  @override
-  Widget buildMyRouteContent(BuildContext context) {
-    return _SliverAppbarPage();
-  }
+  State<StatefulWidget> createState() => _SliverAppBarExampleState();
 }
 
-class _SliverAppbarPage extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() => _SliverAppbarPageState();
-}
-
-class _SliverAppbarPageState extends State<_SliverAppbarPage> {
+class _SliverAppBarExampleState extends State<SliverAppBarExample> {
   bool _pinned = true;
   bool _snap = false;
   bool _floating = false;

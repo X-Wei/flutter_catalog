@@ -4,22 +4,11 @@ import '../my_route.dart';
 
 // Adapted from offical flutter gallery:
 // https://github.com/flutter/flutter/blob/master/examples/flutter_gallery/lib/demo/material/bottom_app_bar_demo.dart
-class BottomAppbarExample extends MyRoute {
-  const BottomAppbarExample(
-      [String sourceFile = 'lib/routes/appbar_bottom_appbar_ex.dart'])
-      : super(sourceFile);
+class BottomAppbarExample extends StatelessWidget {
+  const BottomAppbarExample({Key key}) : super(key: key);
 
   @override
-  get title => 'Bottom AppBar';
-
-  @override
-  get links => {
-        'Doc':
-            'https://docs.flutter.io/flutter/material/BottomNavigationBar-class.html'
-      };
-
-  @override
-  Widget buildMyRouteContent(BuildContext context) {
+  Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
         child: Text('Bottom appbar demo'),

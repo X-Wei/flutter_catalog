@@ -290,9 +290,9 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
         title: 'DataTable',
         description: 'Showing data in a table.',
         links: {
-        'Docs':
-            'https://docs.flutter.io/flutter/material/PaginatedDataTable-class.html'
-      },
+          'Docs':
+              'https://docs.flutter.io/flutter/material/PaginatedDataTable-class.html'
+        },
       ),
     ],
   ),
@@ -303,11 +303,54 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
       quarterTurns: 2,
     ),
     routes: <MyRoute>[
-      BasicAppbarExample(),
-      BottomAppbarExample(),
-      SliverAppBarExample(),
-      AppbarSearchExample(),
-      BackdropExample(),
+      MyRoute2(
+        child: BasicAppbarExample(),
+        sourceFilePath: 'lib/routes/appbar_basic_appbar_ex.dart',
+        title: 'Basic AppBar',
+        links: {
+          'Doc': 'https://docs.flutter.io/flutter/material/AppBar-class.html',
+        },
+      ),
+      MyRoute2(
+        child: BottomAppbarExample(),
+        sourceFilePath: 'lib/routes/appbar_bottom_appbar_ex.dart',
+        title: 'Bottom AppBar',
+        links: {
+          'Doc':
+              'https://docs.flutter.io/flutter/material/BottomNavigationBar-class.html'
+        },
+      ),
+      MyRoute2(
+        child: SliverAppBarExample(),
+        sourceFilePath: 'lib/routes/appbar_sliver_appbar_ex.dart',
+        title: 'Sliver AppBar',
+        description: 'Appbar that auto-hides.',
+        links: {
+          'Doc':
+              'https://docs.flutter.io/flutter/material/SliverAppBar-class.html',
+          'Medium article':
+              'https://flutterdoc.com/animating-app-bars-in-flutter-cf034cd6c68b',
+        },
+      ),
+      MyRoute2(
+        child: AppBarSearchExample(),
+        sourceFilePath: 'lib/routes/appbar_search_ex.dart',
+        title: 'Search',
+        links: {
+          'Doc':
+              'https://docs.flutter.io/flutter/material/SearchDelegate-class.html'
+        },
+      ),
+      MyRoute2(
+        child: BackdropExample(),
+        sourceFilePath: 'lib/routes/appbar_backdrop_ex.dart',
+        title: 'Backdrop',
+        description: 'Switching between front and back layer.',
+        links: {
+          'Medium article':
+              'https://medium.com/flutter/decomposing-widgets-backdrop-b5c664fb9cf4'
+        },
+      ),
     ],
   ),
   MyRouteGroup(

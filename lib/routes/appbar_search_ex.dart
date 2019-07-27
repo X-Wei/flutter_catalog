@@ -1,39 +1,20 @@
 import 'package:flutter/material.dart';
-import '../my_route.dart';
 import 'package:english_words/english_words.dart' as english_words;
-
-class AppbarSearchExample extends MyRoute {
-  const AppbarSearchExample(
-      [String sourceFile = 'lib/routes/appbar_search_ex.dart'])
-      : super(sourceFile);
-
-  @override
-  get title => 'Search';
-
-  @override
-  get links => {
-        'Doc':
-            'https://docs.flutter.io/flutter/material/SearchDelegate-class.html'
-      };
-
-  @override
-  Widget buildMyRouteContent(BuildContext context) {
-    return _AppbarSearchDemo();
-  }
-}
 
 // Adapted from search demo in offical flutter gallery:
 // https://github.com/flutter/flutter/blob/master/examples/flutter_gallery/lib/demo/material/search_demo.dart
-class _AppbarSearchDemo extends StatefulWidget {
+class AppBarSearchExample extends StatefulWidget {
+  const AppBarSearchExample({Key key}) : super(key: key);
+
   @override
-  _AppbarSearchDemoState createState() => _AppbarSearchDemoState();
+  _AppBarSearchExampleState createState() => _AppBarSearchExampleState();
 }
 
-class _AppbarSearchDemoState extends State<_AppbarSearchDemo> {
+class _AppBarSearchExampleState extends State<AppBarSearchExample> {
   final List<String> kEnglishWords;
   _MySearchDelegate _delegate;
 
-  _AppbarSearchDemoState()
+  _AppBarSearchExampleState()
       : kEnglishWords = List.from(Set.from(english_words.all))
           ..sort(
             (w1, w2) => w1.toLowerCase().compareTo(w2.toLowerCase()),
