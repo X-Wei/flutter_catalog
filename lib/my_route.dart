@@ -4,9 +4,9 @@ import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart' as url_launcher;
 import 'package:widget_with_codeview/widget_with_codeview.dart';
 
-import './constants.dart' show GITHUB_URL;
-import './my_app_meta.dart' show kBackdropListTiles;
+import './constants.dart' show APP_NAME, APP_VERSION, GITHUB_URL, kAppIcon;
 import './my_app_settings.dart';
+import './routes/about.dart';
 
 abstract class MyRoute extends StatelessWidget {
   // Path of source file (relative to project root). The file's content will be
@@ -62,7 +62,7 @@ abstract class MyRoute extends StatelessWidget {
       // implementation of BackdropScaffold ('backdrop' package, v0.1.8).
       backLayer: Column(
         children: <Widget>[
-          SizedBox(height: backLayerHeight, child: kBackdropListTiles)
+          SizedBox(height: backLayerHeight, child: _getBackdropListTiles())
         ],
       ),
     );
@@ -93,6 +93,32 @@ abstract class MyRoute extends StatelessWidget {
           },
         ),
     ];
+  }
+
+  ListView _getBackdropListTiles() {
+    return ListView(
+      padding: EdgeInsets.only(bottom: 32.0),
+      children: <Widget>[
+        ListTile(
+          leading: kAppIcon,
+          title: Text(APP_NAME),
+          subtitle: Text(APP_VERSION),
+        ),
+        ...MyAboutRoute.kAboutListTiles,
+        Consumer<MyAppSettings>(builder: (context, MyAppSettings settings, _) {
+          return ListTile(
+            onTap: () {},
+            leading: Icon(
+                settings.isDarkMode ? Icons.brightness_4 : Icons.brightness_7),
+            title: Text('Dark mode'),
+            trailing: Switch(
+              onChanged: (bool value) => settings.setDarkMode(value),
+              value: settings.isDarkMode,
+            ),
+          );
+        }),
+      ],
+    );
   }
 }
 

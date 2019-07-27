@@ -673,6 +673,8 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
   ),
 ];
 
+final kAllRoutes = kMyAppRoutesStructure.expand((group) => group.routes);
+
 const kAboutRoute = MyRoute2(
   child: MyAboutRoute(),
   sourceFilePath: 'lib/routes/about.dart',
@@ -686,30 +688,4 @@ const kHomeRoute = MyRoute2(
   child: MyHomePage(),
   sourceFilePath: 'lib/routes/home.dart',
   title: APP_NAME,
-);
-
-final kAllRoutes = kMyAppRoutesStructure.expand((group) => group.routes);
-
-final ListView kBackdropListTiles = ListView(
-  padding: EdgeInsets.only(bottom: 32.0),
-  children: <Widget>[
-    ListTile(
-      leading: kAppIcon,
-      title: Text(APP_NAME),
-      subtitle: Text(APP_VERSION),
-    ),
-    ...MyAboutRoute.kAboutListTiles,
-    Consumer<MyAppSettings>(builder: (context, MyAppSettings settings, _) {
-      return ListTile(
-        onTap: () {},
-        leading:
-            Icon(settings.isDarkMode ? Icons.brightness_4 : Icons.brightness_7),
-        title: Text('Dark mode'),
-        trailing: Switch(
-          onChanged: (bool value) => settings.setDarkMode(value),
-          value: settings.isDarkMode,
-        ),
-      );
-    }),
-  ],
 );
