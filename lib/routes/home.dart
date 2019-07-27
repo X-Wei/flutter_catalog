@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../my_app_settings.dart';
 import '../my_route.dart';
-import '../my_app_meta.dart' show MyRouteGroup, kAboutRoute, kMyAppRoutesStructure;
+import '../my_app_meta.dart'
+    show MyRouteGroup, kAboutRoute, kMyAppRoutesStructure;
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({Key key}) : super(key: key);

@@ -8,33 +8,39 @@ import './constants.dart' show APP_NAME, APP_VERSION, GITHUB_URL, kAppIcon;
 import './my_app_settings.dart';
 import './routes/about.dart';
 
-abstract class MyRoute extends StatelessWidget {
+class MyRoute extends StatelessWidget {
   // Path of source file (relative to project root). The file's content will be
   // shown in the "Code" tab.
-  final String _sourceFile;
-
-  static of(BuildContext context) =>
-      context.rootAncestorStateOfType(const TypeMatcher<MyRoute>());
-
-  const MyRoute(this._sourceFile);
-
-  // Subclasses can return routeName accordingly (polymorphism).
-  String get routeName => '/${this.runtimeType.toString()}';
-
-  // Title shown in the route's appbar and in the app's navigation drawer item.
-  // By default just returns routeName.
-  String get title => this.routeName;
-
+  final String sourceFilePath;
+  // Actual content of the example.
+  final Widget child;
+  // Title shown in the route's appbar. By default just returns routeName.
+  final String _title;
   // A short description of the route. If not null, will be shown as subtitle in
-  // app's navigation drawer.
-  String get description => null;
-
+  // the home page list tile.
+  final String description;
   // Returns a set of links {title:link} that are relative to the route. Can put
   // documention links or reference video/article links here.
-  Map<String, String> get links => null;
+  final Map<String, String> links;
+  // Route name of a page.
+  final String _routeName;
 
-  // Returns the widget that will be shown in the "Preview" tab.
-  Widget buildMyRouteContent(BuildContext context);
+  const MyRoute({
+    Key key,
+    @required this.sourceFilePath,
+    @required this.child,
+    String title,
+    this.description,
+    this.links,
+    String routeName,
+  })  : _title = title,
+        _routeName = routeName,
+        super(key: key);
+
+  String get routeName =>
+      this._routeName ?? '/${this.child.runtimeType.toString()}';
+
+  String get title => _title ?? this.routeName;
 
   @override
   Widget build(BuildContext context) {
@@ -52,8 +58,11 @@ abstract class MyRoute extends StatelessWidget {
       headerHeight: headerHeight,
       frontLayer: Builder(
         builder: (BuildContext context) => WidgetWithCodeView(
-          child: this.buildMyRouteContent(context),
-          sourceFilePath: this._sourceFile,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: this.child,
+          ),
+          sourceFilePath: this.sourceFilePath,
           codeLinkPrefix: '$GITHUB_URL/blob/master',
         ),
       ),
@@ -118,37 +127,6 @@ abstract class MyRoute extends StatelessWidget {
           );
         }),
       ],
-    );
-  }
-}
-
-class MyRoute2 extends MyRoute {
-  final String sourceFilePath;
-  final Widget child;
-  final String _title;
-  final String description;
-  final Map<String, String> links;
-
-  const MyRoute2(
-      {@required this.sourceFilePath,
-      @required this.child,
-      String title,
-      this.description,
-      this.links})
-      : _title = title,
-        super(sourceFilePath);
-
-  @override
-  String get routeName => '/${this.child.runtimeType.toString()}';
-
-  @override
-  String get title => _title ?? this.routeName;
-
-  @override
-  Widget buildMyRouteContent(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.all(8.0),
-      child: this.child,
     );
   }
 }

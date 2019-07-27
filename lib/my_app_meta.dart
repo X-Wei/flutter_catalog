@@ -94,17 +94,17 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
     groupName: 'Widgets',
     icon: Icon(Icons.extension),
     routes: <MyRoute>[
-      MyRoute2(
+      MyRoute(
         child: IconExample(),
         sourceFilePath: 'lib/routes/widgets_icon_ex.dart',
         title: 'Icon',
       ),
-      MyRoute2(
+      MyRoute(
         child: TextExample(),
         sourceFilePath: 'lib/routes/widgets_text_ex.dart',
         title: 'Text',
       ),
-      MyRoute2(
+      MyRoute(
         child: TextFieldExample(),
         sourceFilePath: 'lib/routes/widgets_textfield_ex.dart',
         title: 'TextField',
@@ -113,7 +113,7 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
           'Doc': 'https://docs.flutter.io/flutter/material/TextField-class.html'
         },
       ),
-      MyRoute2(
+      MyRoute(
         child: TextFormFieldExample(),
         sourceFilePath: 'lib/routes/widgets_textformfield_ex.dart',
         title: 'TextFormField',
@@ -123,7 +123,7 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
               'https://docs.flutter.io/flutter/material/TextFormField-class.html'
         },
       ),
-      MyRoute2(
+      MyRoute(
         child: ImageExample(),
         sourceFilePath: 'lib/routes/widgets_image_ex.dart',
         title: 'Image',
@@ -131,7 +131,7 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
           'Doc': 'https://docs.flutter.io/flutter/widgets/Image-class.html'
         },
       ),
-      MyRoute2(
+      MyRoute(
         child: CardExample(),
         sourceFilePath: 'lib/routes/widgets_card_ex.dart',
         title: 'Card, Inkwell',
@@ -142,7 +142,7 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
           'Inkwell': 'https://flutter.io/cookbook/gestures/ripples/',
         },
       ),
-      MyRoute2(
+      MyRoute(
         child: ButtonsExample(),
         sourceFilePath: 'lib/routes/widgets_buttons_ex.dart',
         title: 'Buttons',
@@ -155,7 +155,7 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
               'https://github.com/flutter/flutter/blob/master/examples/flutter_gallery/lib/demo/material/buttons_demo.dart'
         },
       ),
-      MyRoute2(
+      MyRoute(
         child: DropdownButtonExample(),
         sourceFilePath: 'lib/routes/widgets_dropdown_button_ex.dart',
         title: 'DropdownButton, MenuButton',
@@ -164,7 +164,7 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
               'https://docs.flutter.io/flutter/material/DropdownButton-class.html'
         },
       ),
-      MyRoute2(
+      MyRoute(
         child: StatefulWidgetsExample(),
         sourceFilePath: 'lib/routes/widgets_stateful_widgets_ex.dart',
         title: 'Other stateful widgets',
@@ -176,7 +176,7 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
     groupName: 'Layouts',
     icon: Icon(Icons.dashboard),
     routes: <MyRoute>[
-      MyRoute2(
+      MyRoute(
         child: ContainerExample(),
         sourceFilePath: 'lib/routes/layouts_container_padding_center_ex.dart',
         title: 'Container',
@@ -185,7 +185,7 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
           'Doc': 'https://docs.flutter.io/flutter/widgets/Container-class.html',
         },
       ),
-      MyRoute2(
+      MyRoute(
         child: RowColExample(),
         sourceFilePath: 'lib/routes/layouts_row_col_ex.dart',
         title: 'Row, Column',
@@ -195,7 +195,7 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
           'Doc': 'https://docs.flutter.io/flutter/widgets/Row-class.html',
         },
       ),
-      MyRoute2(
+      MyRoute(
         child: WrapExample(),
         sourceFilePath: 'lib/routes/layouts_wrap_ex.dart',
         title: 'Wrap',
@@ -205,7 +205,7 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
           'Doc': 'https://docs.flutter.io/flutter/widgets/Wrap-class.html',
         },
       ),
-      MyRoute2(
+      MyRoute(
         child: ExpandedExample(),
         sourceFilePath: 'lib/routes/layouts_expanded_ex.dart',
         title: 'Expanded, SizedBox',
@@ -216,7 +216,7 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
               'https://www.youtube.com/watch?v=RJEnTRBxaSg&t=1072s',
         },
       ),
-      MyRoute2(
+      MyRoute(
         child: StackExample(),
         sourceFilePath: 'lib/routes/layouts_stack_ex.dart',
         title: 'Stack',
@@ -234,7 +234,7 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
     groupName: 'Lists',
     icon: Icon(Icons.format_list_numbered),
     routes: <MyRoute>[
-      MyRoute2(
+      MyRoute(
         child: ListTileExample(),
         sourceFilePath: 'lib/routes/lists_list_tile_ex.dart',
         title: 'ListTile',
@@ -242,7 +242,7 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
           'Doc': 'https://docs.flutter.io/flutter/material/ListTile-class.html',
         },
       ),
-      MyRoute2(
+      MyRoute(
         child: ListViewBuilderExample(),
         sourceFilePath: 'lib/routes/lists_listview_builder_ex.dart',
         title: 'ListView.builder',
@@ -251,7 +251,7 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
           'Doc': 'https://docs.flutter.io/flutter/widgets/ListView-class.html',
         },
       ),
-      MyRoute2(
+      MyRoute(
         child: GridListExample(),
         sourceFilePath: 'lib/routes/lists_grid_list_ex.dart',
         title: 'GridList',
@@ -259,7 +259,7 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
           'Cookbook': 'https://flutter.io/cookbook/lists/grid-lists/',
         },
       ),
-      MyRoute2(
+      MyRoute(
         child: ExpansionTileExample(),
         sourceFilePath: 'lib/routes/lists_expansion_tile_ex.dart',
         title: 'ExpansionTile',
@@ -268,7 +268,7 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
               'https://docs.flutter.io/flutter/material/ExpansionTile-class.html',
         },
       ),
-      MyRoute2(
+      MyRoute(
         child: ListSwipeToDismissExample(),
         sourceFilePath: 'lib/routes/lists_swipe_to_dismiss_ex.dart',
         title: 'Swipe to dismiss',
@@ -276,7 +276,7 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
           'Cookbook': 'https://flutter.io/cookbook/gestures/dismissible',
         },
       ),
-      MyRoute2(
+      MyRoute(
         child: ReorderableListExample(),
         sourceFilePath: 'lib/routes/lists_reorderable_ex.dart',
         title: 'Reorderable list',
@@ -285,7 +285,7 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
               'https://docs.flutter.io/flutter/material/ReorderableListView-class.html'
         },
       ),
-      MyRoute2(
+      MyRoute(
         child: DataTableExample(),
         sourceFilePath: 'lib/routes/lists_datatable_ex.dart',
         title: 'DataTable',
@@ -304,7 +304,7 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
       quarterTurns: 2,
     ),
     routes: <MyRoute>[
-      MyRoute2(
+      MyRoute(
         child: BasicAppbarExample(),
         sourceFilePath: 'lib/routes/appbar_basic_appbar_ex.dart',
         title: 'Basic AppBar',
@@ -312,7 +312,7 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
           'Doc': 'https://docs.flutter.io/flutter/material/AppBar-class.html',
         },
       ),
-      MyRoute2(
+      MyRoute(
         child: BottomAppbarExample(),
         sourceFilePath: 'lib/routes/appbar_bottom_appbar_ex.dart',
         title: 'Bottom AppBar',
@@ -321,7 +321,7 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
               'https://docs.flutter.io/flutter/material/BottomNavigationBar-class.html'
         },
       ),
-      MyRoute2(
+      MyRoute(
         child: SliverAppBarExample(),
         sourceFilePath: 'lib/routes/appbar_sliver_appbar_ex.dart',
         title: 'Sliver AppBar',
@@ -333,7 +333,7 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
               'https://flutterdoc.com/animating-app-bars-in-flutter-cf034cd6c68b',
         },
       ),
-      MyRoute2(
+      MyRoute(
         child: AppBarSearchExample(),
         sourceFilePath: 'lib/routes/appbar_search_ex.dart',
         title: 'Search',
@@ -342,7 +342,7 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
               'https://docs.flutter.io/flutter/material/SearchDelegate-class.html'
         },
       ),
-      MyRoute2(
+      MyRoute(
         child: BackdropExample(),
         sourceFilePath: 'lib/routes/appbar_backdrop_ex.dart',
         title: 'Backdrop',
@@ -358,7 +358,7 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
     groupName: 'Navigation',
     icon: Icon(Icons.view_carousel),
     routes: <MyRoute>[
-      MyRoute2(
+      MyRoute(
         child: TabsExample(),
         sourceFilePath: 'lib/routes/nav_tabs_ex.dart',
         title: 'Tabs',
@@ -366,12 +366,12 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
           'Doc': 'https://docs.flutter.io/flutter/material/TabBar-class.html'
         },
       ),
-      MyRoute2(
+      MyRoute(
         child: DialogsExample(),
         sourceFilePath: 'lib/routes/nav_dialogs_ex.dart',
         title: 'Dialogs',
       ),
-      MyRoute2(
+      MyRoute(
         child: RoutesExample(),
         sourceFilePath: 'lib/routes/nav_routes_ex.dart',
         title: 'Routes',
@@ -382,7 +382,7 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
               'https://youtu.be/b2fgMCeSNpY?list=PLJbE2Yu2zumDqr_-hqpAN0nIr6m14TAsd',
         },
       ),
-      MyRoute2(
+      MyRoute(
         child: NavDrawerExample(),
         sourceFilePath: 'lib/routes/nav_nav_drawer_header_ex.dart',
         title: 'Navigation Drawer',
@@ -390,12 +390,12 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
           'Doc': 'https://docs.flutter.io/flutter/material/Drawer-class.html',
         },
       ),
-      MyRoute2(
+      MyRoute(
         child: BottomTabbarExample(),
         sourceFilePath: 'lib/routes/nav_bottom_tabbar_ex.dart',
         title: 'Bottom tab bar',
       ),
-      MyRoute2(
+      MyRoute(
         child: BottomNavigationBarExample(),
         sourceFilePath: 'lib/routes/nav_bottom_navbar_ex.dart',
         title: 'Bottom navigation bar',
@@ -404,7 +404,7 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
               'https://docs.flutter.io/flutter/material/BottomNavigationBar-class.html',
         },
       ),
-      MyRoute2(
+      MyRoute(
         child: PageSelectorExample(),
         sourceFilePath: 'lib/routes/nav_pageselector_ex.dart',
         title: 'Page selector',
@@ -419,7 +419,7 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
     groupName: 'Animation',
     icon: Icon(Icons.movie_filter),
     routes: <MyRoute>[
-      MyRoute2(
+      MyRoute(
         child: OpacityExample(),
         sourceFilePath: 'lib/routes/animation_opacity_ex.dart',
         title: 'Opacity',
@@ -430,7 +430,7 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
               'https://www.youtube.com/watch?v=9hltevOHQBw&index=5&list=PLOU2XLYxmsIL0pH0zWe_ZOHgGhZ7UasUE',
         },
       ),
-      MyRoute2(
+      MyRoute(
         child: HeroExample(),
         sourceFilePath: 'lib/routes/animation_hero_ex.dart',
         title: 'Hero',
@@ -441,7 +441,7 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
           'Youtube video': 'https://www.youtube.com/watch?v=Be9UH1kXFDw',
         },
       ),
-      MyRoute2(
+      MyRoute(
         child: BasicAnimationExample(),
         sourceFilePath: 'lib/routes/animation_basic_ex.dart',
         title: 'Basic animation',
@@ -453,7 +453,7 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
           'Youtube video': 'https://www.youtube.com/watch?v=mdhoIQqS2z0',
         },
       ),
-      MyRoute2(
+      MyRoute(
         child: AnimatedWidgetExample(),
         sourceFilePath: 'lib/routes/animation_animated_widget_ex.dart',
         title: 'AnimatedWidget',
@@ -464,7 +464,7 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
           'Youtube video': 'https://www.youtube.com/watch?v=mdhoIQqS2z0',
         },
       ),
-      MyRoute2(
+      MyRoute(
         child: AnimatedBuilderExample(),
         sourceFilePath: 'lib/routes/animation_animated_builder_ex.dart',
         title: 'AnimatedBuilder',
@@ -475,7 +475,7 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
           'Widget of the Week (YouTube)': 'https://youtu.be/N-RiyZlv8v8',
         },
       ),
-      MyRoute2(
+      MyRoute(
         child: AnimatedContainerExample(),
         sourceFilePath: 'lib/routes/animation_animated_container_ex.dart',
         title: 'AnimatedContainer',
@@ -493,7 +493,7 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
     groupName: 'Persistence',
     icon: Icon(Icons.sd_storage),
     routes: <MyRoute>[
-      MyRoute2(
+      MyRoute(
         child: SharedPreferenceExample(),
         sourceFilePath: 'lib/routes/persistence_preference_ex.dart',
         title: 'Shared preference',
@@ -502,7 +502,7 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
           'Cookbook': 'https://flutter.io/docs/cookbook/persistence/key-value',
         },
       ),
-      MyRoute2(
+      MyRoute(
         child: FileReadWriteExample(),
         sourceFilePath: 'lib/routes/persistence_file_rw_ex.dart',
         title: 'Local file read/write',
@@ -518,7 +518,7 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
     groupName: 'State Management',
     icon: Icon(Icons.developer_mode),
     routes: <MyRoute>[
-      MyRoute2(
+      MyRoute(
         child: StreamBuilderExample(),
         sourceFilePath: 'lib/routes/state_streambuilder_ex.dart',
         title: 'StreamBuilder (timer app)',
@@ -529,7 +529,7 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
           'Youtube': 'https://www.youtube.com/watch?v=MkKEWHfy99Y',
         },
       ),
-      MyRoute2(
+      MyRoute(
         child: StreamControllerExample(),
         sourceFilePath: 'lib/routes/state_streamcontroller_ex.dart',
         title: 'StreamController',
@@ -540,7 +540,7 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
               'https://api.dartlang.org/stable/2.1.1/dart-async/StreamController-class.html',
         },
       ),
-      MyRoute2(
+      MyRoute(
         child: InheritedWidgetExample(),
         sourceFilePath: 'lib/routes/state_inherited_widget_ex.dart',
         title: 'InheritedWidget',
@@ -551,7 +551,7 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
           'Youtube': 'https://www.youtube.com/watch?v=4I68ilX0Y24',
         },
       ),
-      MyRoute2(
+      MyRoute(
         child: ScopedModelExample(),
         sourceFilePath: 'lib/routes/state_scoped_model_ex.dart',
         title: 'ScopedModel',
@@ -562,7 +562,7 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
           'Youtube': 'https://www.youtube.com/watch?v=-MCeWP3rgI0',
         },
       ),
-      MyRoute2(
+      MyRoute(
         child: BlocExample(),
         sourceFilePath: 'lib/routes/state_bloc_ex.dart',
         title: 'BLoC pattern',
@@ -573,7 +573,7 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
           'Video by Reso Coder': 'https://youtu.be/oxeYeMHVLII',
         },
       ),
-      MyRoute2(
+      MyRoute(
         child: BlocLibExample(),
         sourceFilePath: 'lib/routes/state_bloc_lib_ex.dart',
         title: 'Easier BLoC pattern',
@@ -583,7 +583,7 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
           'flutter_bloc doc': 'https://felangel.github.io/bloc/#/coreconcepts',
         },
       ),
-      MyRoute2(
+      MyRoute(
         child: ProviderExample(),
         sourceFilePath: 'lib/routes/state_provider_ex.dart',
         title: 'Provider',
@@ -599,24 +599,24 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
     groupName: 'Plugins',
     icon: Icon(Icons.power),
     routes: <MyRoute>[
-      MyRoute2(
+      MyRoute(
         child: ImagePickerExample(),
         sourceFilePath: 'lib/routes/plugins_image_picker_ex.dart',
         title: 'Image Picker',
         description: 'Pick image from gallery or from camera.',
       ),
-      MyRoute2(
+      MyRoute(
         child: WebViewExample(),
         sourceFilePath: 'lib/routes/plugins_webview_ex.dart',
         title: 'Web View',
         description: 'Open web page inside Flutter app.',
       ),
-      MyRoute2(
+      MyRoute(
         child: MarkdownExample(),
         sourceFilePath: 'lib/routes/plugins_markdown_ex.dart',
         title: 'Markdown rendering',
       ),
-      MyRoute2(
+      MyRoute(
         child: LocalAuthExample(),
         sourceFilePath: 'lib/routes/plugins_local_auth_ex.dart',
         title: 'Local auth',
@@ -629,7 +629,7 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
     groupName: 'Firebase',
     icon: Icon(Icons.cloud),
     routes: <MyRoute>[
-      MyRoute2(
+      MyRoute(
         child: FirebaseLoginExample(),
         sourceFilePath: 'lib/routes/firebase_login_ex.dart',
         title: 'Firebase login',
@@ -638,7 +638,7 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
           'Youtube video': 'https://www.youtube.com/watch?v=JYCNvWKF7vw',
         },
       ),
-      MyRoute2(
+      MyRoute(
         child: FirebaseVoteExample(),
         sourceFilePath: 'lib/routes/firebase_vote_ex.dart',
         title: 'Firestore voting app',
@@ -649,7 +649,7 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
               'https://codelabs.developers.google.com/codelabs/flutter-firebase/#0',
         },
       ),
-      MyRoute2(
+      MyRoute(
         child: FirebaseChatroomExample(),
         sourceFilePath: 'lib/routes/firebase_chatroom_ex.dart',
         title: 'Chat room',
@@ -660,7 +660,7 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
           "Google I/O'17 video": 'https://www.youtube.com/watch?v=w2TcYP8qiRI',
         },
       ),
-      MyRoute2(
+      MyRoute(
         child: FirebaseMLKitExample(),
         sourceFilePath: 'lib/routes/firebase_mlkit_ex.dart',
         title: 'Firebase ML Kit',
@@ -675,7 +675,7 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
 
 final kAllRoutes = kMyAppRoutesStructure.expand((group) => group.routes);
 
-const kAboutRoute = MyRoute2(
+const kAboutRoute = MyRoute(
   child: MyAboutRoute(),
   sourceFilePath: 'lib/routes/about.dart',
   title: 'About',
@@ -684,8 +684,9 @@ const kAboutRoute = MyRoute2(
   },
 );
 
-const kHomeRoute = MyRoute2(
+const kHomeRoute = MyRoute(
   child: MyHomePage(),
   sourceFilePath: 'lib/routes/home.dart',
   title: APP_NAME,
+  routeName: Navigator.defaultRouteName,
 );
