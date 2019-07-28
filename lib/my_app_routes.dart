@@ -1,6 +1,5 @@
-// This file declares "metadata" (or "structure") of the app, in a const
-// List<Tuple2> object. And it provides functions to get app's routing table or
-// app's navigation drawer menu items from the declared metadata.
+// This file declares routes of this app, in particular it declares the
+// "structure" of the group of example routes, in a const List<Tuple2> object.
 import 'package:flutter/material.dart';
 
 import './constants.dart';
@@ -64,6 +63,22 @@ import './routes/widgets_stateful_widgets_ex.dart';
 import './routes/widgets_text_ex.dart';
 import './routes/widgets_textfield_ex.dart';
 import './routes/widgets_textformfield_ex.dart';
+
+const kHomeRoute = MyRoute(
+  child: MyHomePage(),
+  sourceFilePath: 'lib/routes/home.dart',
+  title: APP_NAME,
+  routeName: Navigator.defaultRouteName,
+);
+
+const kAboutRoute = MyRoute(
+  child: MyAboutRoute(),
+  sourceFilePath: 'lib/routes/about.dart',
+  title: 'About',
+  links: {
+    'Doc': 'https://docs.flutter.io/flutter/material/showAboutDialog.html'
+  },
+);
 
 // The structure of app's navigation drawer items is a 2-level menu, its schema
 // is the following:
@@ -672,19 +687,3 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
 ];
 
 final kAllRoutes = kMyAppRoutesStructure.expand((group) => group.routes);
-
-const kAboutRoute = MyRoute(
-  child: MyAboutRoute(),
-  sourceFilePath: 'lib/routes/about.dart',
-  title: 'About',
-  links: {
-    'Doc': 'https://docs.flutter.io/flutter/material/showAboutDialog.html'
-  },
-);
-
-const kHomeRoute = MyRoute(
-  child: MyHomePage(),
-  sourceFilePath: 'lib/routes/home.dart',
-  title: APP_NAME,
-  routeName: Navigator.defaultRouteName,
-);

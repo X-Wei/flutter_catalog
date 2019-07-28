@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import './my_route.dart';
-import './my_app_meta.dart' show kAllRoutes;
+import './my_app_routes.dart' show kAllRoutes;
 
 class MyAppSettings extends ChangeNotifier {
   static const _kBookmarkedRoutesPreferenceKey = 'BOOKMARKED_ROUTES';

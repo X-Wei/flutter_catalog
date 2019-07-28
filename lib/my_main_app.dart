@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import './constants.dart' show kAppIcon;
-import './my_app_meta.dart' show kAllRoutes, kAboutRoute, kHomeRoute;
+import './my_app_routes.dart' show kAllRoutes, kAboutRoute, kHomeRoute;
 import './my_app_settings.dart';
 import './themes.dart';
 

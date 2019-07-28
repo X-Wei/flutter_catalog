@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../my_app_settings.dart';
 import '../my_route.dart';
-import '../my_app_meta.dart'
+import '../my_app_routes.dart'
     show MyRouteGroup, kAboutRoute, kMyAppRoutesStructure;
 
 class MyHomePage extends StatelessWidget {
