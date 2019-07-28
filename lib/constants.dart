@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 // *Note*: when APP_VERSION is changed, remember to also update pubspec.yaml.
-const APP_VERSION = 'v2.1.0';
+const APP_VERSION = 'v2.2.0';
 const APP_NAME = 'Flutter Catalog';
 final kAppIcon =
     Image.asset('res/images/launcher_icon.png', height: 64.0, width: 64.0);
