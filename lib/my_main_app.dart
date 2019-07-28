@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_catalog/my_route.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import './constants.dart' show kAppIcon;
-import './my_app_routes.dart' show kAllRoutes, kAboutRoute, kHomeRoute;
+import './my_app_routes.dart' show kAppRoutingTable;
 import './my_app_settings.dart';
 import './themes.dart';
 
@@ -47,18 +46,12 @@ class _MyMainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // The app's root-level routing table.
-    final Map<String, WidgetBuilder> _routingTable = {
-      Navigator.defaultRouteName: (context) => kHomeRoute,
-      kAboutRoute.routeName: (context) => kAboutRoute,
-      for (MyRoute route in kAllRoutes) route.routeName: (context) => route
-    };
     return MaterialApp(
       title: 'Flutter Catalog',
       theme: Provider.of<MyAppSettings>(context).isDarkMode
           ? kDartTheme
           : kLightTheme,
-      routes: _routingTable,
+      routes: kAppRoutingTable,
     );
   }
 }

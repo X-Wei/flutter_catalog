@@ -687,3 +687,10 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
 ];
 
 final kAllRoutes = kMyAppRoutesStructure.expand((group) => group.routes);
+
+// This app's root-level routing table.
+final Map<String, WidgetBuilder> kAppRoutingTable = {
+  Navigator.defaultRouteName: (context) => kHomeRoute,
+  kAboutRoute.routeName: (context) => kAboutRoute,
+  for (MyRoute route in kAllRoutes) route.routeName: (context) => route,
+};
