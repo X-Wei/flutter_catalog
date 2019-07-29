@@ -43,6 +43,7 @@ import './routes/nav_routes_ex.dart';
 import './routes/nav_tabs_ex.dart';
 import './routes/persistence_file_rw_ex.dart';
 import './routes/persistence_preference_ex.dart';
+import './routes/persistence_sqlite_ex.dart';
 import './routes/plugins_image_picker_ex.dart';
 import './routes/plugins_local_auth_ex.dart';
 import './routes/plugins_markdown_ex.dart';
@@ -523,6 +524,16 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
         links: {
           'Cookbook':
               'https://flutter.io/docs/cookbook/persistence/reading-writing-files',
+        },
+      ),
+      MyRoute(
+        child: SqliteExample(),
+        sourceFilePath: 'lib/routes/persistence_sqlite_ex.dart',
+        title: 'SQLite',
+        description:
+            'A CRUD (Create-Read-Update-Delete) mini todo app using sqflite.',
+        links: {
+          'Pub package': 'https://pub.dev/packages/sqflite',
         },
       ),
     ],
