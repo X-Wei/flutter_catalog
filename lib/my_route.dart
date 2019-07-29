@@ -58,10 +58,7 @@ class MyRoute extends StatelessWidget {
       headerHeight: headerHeight,
       frontLayer: Builder(
         builder: (BuildContext context) => WidgetWithCodeView(
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: this.child,
-          ),
+          child: this.child,
           sourceFilePath: this.sourceFilePath,
           codeLinkPrefix: '$GITHUB_URL/blob/master',
         ),
