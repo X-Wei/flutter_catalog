@@ -64,6 +64,7 @@ import './routes/widgets_stateful_widgets_ex.dart';
 import './routes/widgets_text_ex.dart';
 import './routes/widgets_textfield_ex.dart';
 import './routes/widgets_textformfield_ex.dart';
+import 'routes/persistence_sembast_ex.dart';
 
 const kHomeRoute = MyRoute(
   child: MyHomePage(),
@@ -534,6 +535,17 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
             'A CRUD (Create-Read-Update-Delete) mini todo app using sqflite.',
         links: {
           'Pub package': 'https://pub.dev/packages/sqflite',
+        },
+      ),
+      MyRoute(
+        child: SembastExample(),
+        sourceFilePath: 'lib/routes/persistence_sembast_ex.dart',
+        title: 'Sembast',
+        description: 'NoSQL db, mini todo CRUD app.',
+        links: {
+          'Pub package': 'https://pub.dev/packages/sembast',
+          'ResoCoder blog':
+              'https://resocoder.com/2019/04/06/flutter-nosql-database-sembast-tutorial-w-bloc/'
         },
       ),
     ],

@@ -38,6 +38,7 @@ dependencies:
   path_provider: '1.1.0'
   provider: '3.0.0+1'
   scoped_model: '1.0.1'
+  sembast: '2.0.1'
   sqflite: '1.1.6+3'
   shared_preferences: ' 0.5.3+1'
   transparent_image: '1.0.0'
