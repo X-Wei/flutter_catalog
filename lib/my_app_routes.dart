@@ -43,6 +43,7 @@ import './routes/nav_routes_ex.dart';
 import './routes/nav_tabs_ex.dart';
 import './routes/persistence_file_rw_ex.dart';
 import './routes/persistence_preference_ex.dart';
+import './routes/persistence_sembast_ex.dart';
 import './routes/persistence_sqlite_ex.dart';
 import './routes/plugins_image_picker_ex.dart';
 import './routes/plugins_local_auth_ex.dart';
@@ -64,7 +65,6 @@ import './routes/widgets_stateful_widgets_ex.dart';
 import './routes/widgets_text_ex.dart';
 import './routes/widgets_textfield_ex.dart';
 import './routes/widgets_textformfield_ex.dart';
-import 'routes/persistence_sembast_ex.dart';
 
 const kHomeRoute = MyRoute(
   child: MyHomePage(),
