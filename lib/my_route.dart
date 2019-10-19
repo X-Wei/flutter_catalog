@@ -57,12 +57,16 @@ class MyRoute extends StatelessWidget {
       iconPosition: BackdropIconPosition.action,
       headerHeight: headerHeight,
       frontLayer: Builder(
-        builder: (BuildContext context) => WidgetWithCodeView(
-          child: this.child,
-          sourceFilePath: this.sourceFilePath,
-          codeLinkPrefix: '$GITHUB_URL/blob/master',
-        ),
+        builder: (BuildContext context) =>
+            routeName == Navigator.defaultRouteName
+                ? this.child
+                : WidgetWithCodeView(
+                    child: this.child,
+                    sourceFilePath: this.sourceFilePath,
+                    codeLinkPrefix: '$GITHUB_URL/blob/master',
+                  ),
       ),
+      frontLayerBorderRadius: BorderRadius.only(),
       // To make the listview in backlayer scrollable, had to calculate the
       // height of backlayer, and wrap inside a Column. This is due to the
       // implementation of BackdropScaffold ('backdrop' package, v0.1.8).
