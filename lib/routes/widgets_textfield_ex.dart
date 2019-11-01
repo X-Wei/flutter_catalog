@@ -9,30 +9,93 @@ class TextFieldExample extends StatefulWidget {
 }
 
 class _TextFieldExampleState extends State<TextFieldExample> {
-  bool _inputIsValid = true;
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-        child: TextField(
-      keyboardType: TextInputType.number, // Number only.
+  bool _numberInputIsValid = true;
+
+  Widget _buildNumberTextField() {
+    return TextField(
+      keyboardType: TextInputType.number,
       style: Theme.of(context).textTheme.display1,
       decoration: InputDecoration(
+        icon: Icon(Icons.attach_money),
         labelText: 'Enter an integer:',
-        errorText: _inputIsValid ? null : 'Please enter an integer!',
+        errorText: _numberInputIsValid ? null : 'Please enter an integer!',
         border: OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(10.0)),
         ),
       ),
-      onSubmitted: (String val) {
-        Fluttertoast.showToast(
-          msg: 'You entered: ${int.parse(val)}',
-        );
-      },
+      onSubmitted: (val) =>
+          Fluttertoast.showToast(msg: 'You entered: ${int.parse(val)}'),
       onChanged: (String val) {
-        int.parse(val, onError: (val) {
-          setState(() => _inputIsValid = false);
-        });
+        final v = int.tryParse(val);
+        debugPrint('parsed value = $v');
+        if (v == null) {
+          setState(() => _numberInputIsValid = false);
+        } else {
+          setState(() => _numberInputIsValid = true);
+        }
       },
-    ));
+    );
+  }
+
+  final _controller = TextEditingController();
+
+  Widget _buildMultilineTextField() {
+    return TextField(
+      controller: this._controller,
+      maxLines: 10,
+      textCapitalization: TextCapitalization.sentences,
+      decoration: InputDecoration(
+        counterText: '${this._controller.text.split(' ').length} words',
+        labelText: 'Enter multiline text:',
+        hintText: 'type something...',
+        border: OutlineInputBorder(),
+      ),
+      onChanged: (text) => setState(() {}),
+    );
+  }
+
+  bool _showPassword = false;
+
+  Widget _buildPasswordTextField() {
+    return TextField(
+      obscureText: !this._showPassword,
+      decoration: InputDecoration(
+        labelText: 'password',
+        prefixIcon: Icon(Icons.security),
+        suffixIcon: IconButton(
+          icon: Icon(
+            Icons.remove_red_eye,
+            color: this._showPassword ? Colors.blue : Colors.grey,
+          ),
+          onPressed: () {
+            setState(() => this._showPassword = !this._showPassword);
+          },
+        ),
+      ),
+    );
+  }
+
+  Widget _buildBorderlessTextField() {
+    return TextField(
+      maxLines: 3,
+      decoration: InputDecoration.collapsed(hintText: 'borderless input'),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      padding: EdgeInsets.all(8.0),
+      children: <Widget>[
+        ListTile(title: Text('1. Number input field')),
+        _buildNumberTextField(),
+        ListTile(title: Text('2. Multiline input field')),
+        _buildMultilineTextField(),
+        ListTile(title: Text('3. Password input field')),
+        _buildPasswordTextField(),
+        ListTile(title: Text('4. Borderless input')),
+        _buildBorderlessTextField(),
+      ],
+    );
   }
 }
