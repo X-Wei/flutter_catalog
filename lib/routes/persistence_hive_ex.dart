@@ -48,7 +48,7 @@ class _HiveExampleState extends State<HiveExample> {
   Future<bool> _initDbFuture;
 
   @override
-  void initState() { 
+  void initState() {
     super.initState();
     this._initDbFuture = this._initDb();
   }
@@ -56,19 +56,30 @@ class _HiveExampleState extends State<HiveExample> {
   // Initializes the hive DB, once done the hive operations are *synchronous*.
   Future<bool> _initDb() async {
     // Initialize hive.
-    final hiveFolder = join(
-        (await path_provider.getApplicationDocumentsDirectory()).path,
-        kHiveFolder);
+    final dir = await path_provider.getApplicationDocumentsDirectory();
+    final hiveFolder = join(dir.path, kHiveFolder);
     Hive.init(hiveFolder);
-    Hive.registerAdapter(TodoItemAdapter(), 0);
+    try {
+      // Normally we should register this at the app startup (i.e. in main.dart), 
+      // putting it here might cuase the line to run twice and lead to errors 
+      // since this page can be opened twice.
+      Hive.registerAdapter(TodoItemAdapter(), 0);
+    } on HiveError catch (e) {
+      print(e);
+    }
     // Open the hive box so that we can later call Hive.box(<name>) to use it.
     await Hive.openBox<TodoItem>(kHiveBoxName);
     final List<TodoItem> todos = _getTodoItems();
     print('Hive initialization done, todo items in the db are:');
-    for (final todo in todos) {
-      print(todo);
-    }
+    todos.forEach(print);
     return true;
+  }
+
+  @override
+  void dispose() {
+    Hive.box(kHiveBoxName).compact();
+    Hive.close();
+    super.dispose();
   }
 
   // Retrieves records from the hive box.
@@ -91,7 +102,7 @@ class _HiveExampleState extends State<HiveExample> {
 
   // Updates records in the db table.
   Future<void> _toggleTodoItem(TodoItem todo) async {
-    // Since class TodoItem extends HiveObject, update the record is very easy. 
+    // Since class TodoItem extends HiveObject, update the record is very easy.
     // Note the `todo` must already been added to the hive box.
     todo.isDone = !todo.isDone;
     await todo.save();
@@ -100,7 +111,7 @@ class _HiveExampleState extends State<HiveExample> {
 
   // Deletes records in the db table.
   Future<void> _deleteTodoItem(TodoItem todo) async {
-    // Since class TodoItem extends HiveObject, delete the object is very easy. 
+    // Since class TodoItem extends HiveObject, delete the object is very easy.
     // Note the `todo` must already been added to the hive box.
     await todo.delete();
     print('Delted: key=${todo.id}, value=$todo');
