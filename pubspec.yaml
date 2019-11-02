@@ -32,6 +32,8 @@ dependencies:
   flutter_webview_plugin: '0.3.5'
   fluttertoast: '3.1.0'
   google_sign_in: '4.0.2'
+  hive: '1.1.1'
+  hive_flutter: '0.2.1'
   image_picker: '0.6.0+11'
   local_auth: '0.5.2+4'
   package_info: '0.4.0+4'
@@ -53,6 +55,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  hive_generator: '0.5.2'
+  build_runner: '1.7.1'
 
 # For information on the generic Dart part of this file, see the
 # following page: https://www.dartlang.org/tools/pub/pubspec

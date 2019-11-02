@@ -35,6 +35,7 @@ import './routes/lists_listview_builder_ex.dart';
 import './routes/lists_reorderable_ex.dart';
 import './routes/lists_swipe_to_dismiss_ex.dart';
 import './routes/nav_bottom_navbar_ex.dart';
+import './routes/nav_bottom_sheet_ex.dart';
 import './routes/nav_bottom_tabbar_ex.dart';
 import './routes/nav_dialogs_ex.dart';
 import './routes/nav_nav_drawer_header_ex.dart';
@@ -42,6 +43,7 @@ import './routes/nav_pageselector_ex.dart';
 import './routes/nav_routes_ex.dart';
 import './routes/nav_tabs_ex.dart';
 import './routes/persistence_file_rw_ex.dart';
+import './routes/persistence_hive_ex.dart';
 import './routes/persistence_preference_ex.dart';
 import './routes/persistence_sembast_ex.dart';
 import './routes/persistence_sqlite_ex.dart';
@@ -65,7 +67,6 @@ import './routes/widgets_stateful_widgets_ex.dart';
 import './routes/widgets_text_ex.dart';
 import './routes/widgets_textfield_ex.dart';
 import './routes/widgets_textformfield_ex.dart';
-import 'routes/nav_bottom_sheet_ex.dart';
 
 const kHomeRoute = MyRoute(
   child: MyHomePage(),
@@ -411,7 +412,8 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
         sourceFilePath: 'lib/routes/nav_nav_bottom_sheet_ex.dart',
         title: 'Bottom sheet',
         links: {
-          'Medium article': 'https://medium.com/flutter-community/flutter-beginners-guide-to-using-the-bottom-sheet-b8025573c433',
+          'Medium article':
+              'https://medium.com/flutter-community/flutter-beginners-guide-to-using-the-bottom-sheet-b8025573c433',
         },
       ),
       MyRoute(
@@ -555,6 +557,18 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
           'Pub package': 'https://pub.dev/packages/sembast',
           'ResoCoder blog':
               'https://resocoder.com/2019/04/06/flutter-nosql-database-sembast-tutorial-w-bloc/'
+        },
+      ),
+      MyRoute(
+        child: HiveExample(),
+        sourceFilePath: 'lib/routes/persistence_sembast_ex.dart',
+        title: 'Hive',
+        description:
+            'Easier NoSQL db with less bolierplate code. Mini todo CRUD app.',
+        links: {
+          'Documentation': 'https://docs.hivedb.dev',
+          'ResoCoder blog':
+              'https://resocoder.com/2019/09/30/hive-flutter-tutorial-lightweight-fast-database'
         },
       ),
     ],
