@@ -65,6 +65,7 @@ import './routes/widgets_stateful_widgets_ex.dart';
 import './routes/widgets_text_ex.dart';
 import './routes/widgets_textfield_ex.dart';
 import './routes/widgets_textformfield_ex.dart';
+import 'routes/nav_bottom_sheet_ex.dart';
 
 const kHomeRoute = MyRoute(
   child: MyHomePage(),
@@ -403,6 +404,14 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
         title: 'Navigation Drawer',
         links: {
           'Doc': 'https://docs.flutter.io/flutter/material/Drawer-class.html',
+        },
+      ),
+      MyRoute(
+        child: BottomSheetExample(),
+        sourceFilePath: 'lib/routes/nav_nav_bottom_sheet_ex.dart',
+        title: 'Bottom sheet',
+        links: {
+          'Medium article': 'https://medium.com/flutter-community/flutter-beginners-guide-to-using-the-bottom-sheet-b8025573c433',
         },
       ),
       MyRoute(
