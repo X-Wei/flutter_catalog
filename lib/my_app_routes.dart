@@ -409,7 +409,7 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
       ),
       MyRoute(
         child: BottomSheetExample(),
-        sourceFilePath: 'lib/routes/nav_nav_bottom_sheet_ex.dart',
+        sourceFilePath: 'lib/routes/nav_bottom_sheet_ex.dart',
         title: 'Bottom sheet',
         links: {
           'Medium article':
@@ -561,7 +561,7 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
       ),
       MyRoute(
         child: HiveExample(),
-        sourceFilePath: 'lib/routes/persistence_sembast_ex.dart',
+        sourceFilePath: 'lib/routes/persistence_hive_ex.dart',
         title: 'Hive',
         description:
             'Easier NoSQL db with less bolierplate code. Mini todo CRUD app.',
