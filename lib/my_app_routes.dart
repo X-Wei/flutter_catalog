@@ -331,7 +331,7 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
       MyRoute(
         child: BottomAppbarExample(),
         sourceFilePath: 'lib/routes/appbar_bottom_appbar_ex.dart',
-        title: 'Bottom AppBar',
+        title: 'Bottom AppBar and Floating App Button (FAB)',
         links: {
           'Doc':
               'https://docs.flutter.io/flutter/material/BottomNavigationBar-class.html'
