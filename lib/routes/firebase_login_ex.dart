@@ -95,7 +95,7 @@ class _FirebaseLoginExampleState extends State<FirebaseLoginExample> {
       idToken: googleAuth.idToken,
     );
     // Note: user.providerData[0].photoUrl == googleUser.photoUrl.
-    final user = await kFirebaseAuth.signInWithCredential(credential);
+    final user = (await kFirebaseAuth.signInWithCredential(credential)).user;
     kFirebaseAnalytics.logLogin();
     setState(() => this._user = user);
     return user;
@@ -108,7 +108,7 @@ class _FirebaseLoginExampleState extends State<FirebaseLoginExample> {
       return curUser;
     }
     kFirebaseAuth.signOut();
-    final anonyUser = await kFirebaseAuth.signInAnonymously(); // final
+    final anonyUser = (await kFirebaseAuth.signInAnonymously()).user;
     final userInfo = UserUpdateInfo();
     userInfo.displayName = '${anonyUser.uid.substring(0, 5)}_Guest';
     await anonyUser.updateProfile(userInfo);
@@ -160,12 +160,10 @@ class _FirebaseLoginExampleState extends State<FirebaseLoginExample> {
                       ),
               ),
               ListTile(
-                title: Text(
-                    'Last sign in: ${DateTime.fromMillisecondsSinceEpoch(user.metadata.lastSignInTimestamp)}'),
+                title: Text('Last sign in: ${user.metadata.lastSignInTime}'),
               ),
               ListTile(
-                title: Text(
-                    'Creation time: ${DateTime.fromMillisecondsSinceEpoch(user.metadata.creationTimestamp)}'),
+                title: Text('Creation time: ${user.metadata.creationTime}'),
               ),
               ListTile(title: Text('ProviderData: ${user.providerData}')),
             ],
