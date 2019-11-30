@@ -3,7 +3,8 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
-import './firebase_constants.dart';
+
+import './firebase_login_ex.dart' show kFirebaseAnalytics;
 
 // NOTE: to add firebase support, first go to firebase console, generate the
 // firebase json file, and add configuration lines in the gradle files.
@@ -17,9 +18,9 @@ class FirebaseChatroomExample extends StatefulWidget {
 }
 
 class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
+  FirebaseUser _user;
   DatabaseReference _firebaseMsgDbRef;
 
-  FirebaseUser _user;
   final TextEditingController _textController = TextEditingController();
   bool _isComposing = false;
 
@@ -27,9 +28,10 @@ class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
   void initState() {
     super.initState();
     final now = DateTime.now().toUtc();
-    this._firebaseMsgDbRef =
-        kFirebaseDbRef.child('messages/${now.year}/${now.month}/${now.day}');
-    kFirebaseAuth.currentUser().then(
+    this._firebaseMsgDbRef = FirebaseDatabase.instance
+        .reference()
+        .child('messages/${now.year}/${now.month}/${now.day}');
+    FirebaseAuth.instance.currentUser().then(
           (user) => setState(() {
             this._user = user;
           }),
@@ -187,7 +189,7 @@ class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
   Future<Null> _onTextMsgSubmitted(String text) async {
     // Make sure _user is not null.
     if (this._user == null) {
-      this._user = await kFirebaseAuth.currentUser();
+      this._user = await FirebaseAuth.instance.currentUser();
     }
     if (this._user == null) {
       showDialog(

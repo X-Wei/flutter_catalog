@@ -1,7 +1,10 @@
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'dart:async';
-import './firebase_constants.dart';
+
+final kFirebaseAnalytics = FirebaseAnalytics();
 
 // NOTE: to add firebase support, first go to firebase console, generate the
 // firebase json file, and add configuration lines in the gradle files.
@@ -22,7 +25,7 @@ class _FirebaseLoginExampleState extends State<FirebaseLoginExample> {
   @override
   void initState() {
     super.initState();
-    kFirebaseAuth.currentUser().then(
+    FirebaseAuth.instance.currentUser().then(
           (user) => setState(() => this._user = user),
         );
   }
@@ -84,18 +87,19 @@ class _FirebaseLoginExampleState extends State<FirebaseLoginExample> {
 
   // Sign in with Google.
   Future<FirebaseUser> _googleSignIn() async {
-    final curUser = this._user ?? await kFirebaseAuth.currentUser();
+    final curUser = this._user ?? await FirebaseAuth.instance.currentUser();
     if (curUser != null && !curUser.isAnonymous) {
       return curUser;
     }
-    final googleUser = await kGoogleSignIn.signIn();
+    final googleUser = await GoogleSignIn().signIn();
     final googleAuth = await googleUser.authentication;
     final AuthCredential credential = GoogleAuthProvider.getCredential(
       accessToken: googleAuth.accessToken,
       idToken: googleAuth.idToken,
     );
     // Note: user.providerData[0].photoUrl == googleUser.photoUrl.
-    final user = (await kFirebaseAuth.signInWithCredential(credential)).user;
+    final user =
+        (await FirebaseAuth.instance.signInWithCredential(credential)).user;
     kFirebaseAnalytics.logLogin();
     setState(() => this._user = user);
     return user;
@@ -103,26 +107,26 @@ class _FirebaseLoginExampleState extends State<FirebaseLoginExample> {
 
   // Sign in Anonymously.
   Future<FirebaseUser> _anonymousSignIn() async {
-    final curUser = this._user ?? await kFirebaseAuth.currentUser();
+    final curUser = this._user ?? await FirebaseAuth.instance.currentUser();
     if (curUser != null && curUser.isAnonymous) {
       return curUser;
     }
-    kFirebaseAuth.signOut();
-    final anonyUser = (await kFirebaseAuth.signInAnonymously()).user;
+    FirebaseAuth.instance.signOut();
+    final anonyUser = (await FirebaseAuth.instance.signInAnonymously()).user;
     final userInfo = UserUpdateInfo();
     userInfo.displayName = '${anonyUser.uid.substring(0, 5)}_Guest';
     await anonyUser.updateProfile(userInfo);
     await anonyUser.reload();
-    // Have to re-call kFirebaseAuth.currentUser() to make `updateProfile` work.
-    // C.f. https://stackoverflow.com/questions/50986191/flutter-firebase-auth-updateprofile-method-is-not-working.
-    final user = await kFirebaseAuth.currentUser();
+    // Have to re-call `currentUser()` to make `updateProfile` work.
+    // Cf. https://stackoverflow.com/questions/50986191/flutter-firebase-auth-updateprofile-method-is-not-working.
+    final user = await FirebaseAuth.instance.currentUser();
     kFirebaseAnalytics.logLogin();
     setState(() => this._user = user);
     return user;
   }
 
   Future<Null> _signOut() async {
-    final user = await kFirebaseAuth.currentUser();
+    final user = await FirebaseAuth.instance.currentUser();
     Scaffold.of(context).showSnackBar(
       SnackBar(
         content: Text(user == null
@@ -130,7 +134,7 @@ class _FirebaseLoginExampleState extends State<FirebaseLoginExample> {
             : '"${user.displayName}" logged out.'),
       ),
     );
-    kFirebaseAuth.signOut();
+    FirebaseAuth.instance.signOut();
     setState(() => this._user = null);
   }
 
