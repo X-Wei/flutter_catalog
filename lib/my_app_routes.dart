@@ -106,7 +106,7 @@ class MyRouteGroup {
   final List<MyRoute> routes;
 }
 
-const kMyAppRoutesStructure = <MyRouteGroup>[
+const kMyAppRoutesBasic = <MyRouteGroup>[
   MyRouteGroup(
     groupName: 'Widgets',
     icon: Icon(Icons.extension),
@@ -441,6 +441,9 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
       ),
     ],
   ),
+];
+
+const kMyAppRoutesAdvanced = <MyRouteGroup>[
   MyRouteGroup(
     groupName: 'Animation',
     icon: Icon(Icons.movie_filter),
@@ -732,7 +735,10 @@ const kMyAppRoutesStructure = <MyRouteGroup>[
   ),
 ];
 
-final kAllRoutes = kMyAppRoutesStructure.expand((group) => group.routes);
+final kAllRoutes = <MyRoute>[
+  ...kMyAppRoutesBasic.expand((group) => group.routes),
+  ...kMyAppRoutesAdvanced.expand((group) => group.routes)
+];
 
 // This app's root-level routing table.
 final Map<String, WidgetBuilder> kAppRoutingTable = {
