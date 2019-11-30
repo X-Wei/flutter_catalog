@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -96,9 +98,14 @@ class _FirebaseVoteExampleState extends State<FirebaseVoteExample> {
 
   // Toggle the voted status of one record.
   void _toggleVoted(_LangaugeVotingRecord record) async {
-    final lang = record.language;
-    int deltaVotes = this._isVoted(lang) ? -1 : 1;
     try {
+      // Check internet connection before doing firebase transactions.
+      final result = await InternetAddress.lookup('firestore.googleapis.com');
+      if (result.isEmpty || result[0].rawAddress.isEmpty) {
+        throw 'Cannot access "firestore.googleapis.com"!';
+      }
+      final lang = record.language;
+      int deltaVotes = this._isVoted(lang) ? -1 : 1;
       // Update votes via transactions are atomic: no race condition.
       await Firestore.instance.runTransaction(
         (transaction) async {
