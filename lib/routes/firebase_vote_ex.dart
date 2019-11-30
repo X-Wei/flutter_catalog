@@ -102,12 +102,17 @@ class _FirebaseVoteExampleState extends State<FirebaseVoteExample> {
       // Update votes via transactions are atomic: no race condition.
       await Firestore.instance.runTransaction(
         (transaction) async {
-          final freshSnapshot =
-              await transaction.get(record.firestoreDocReference);
-          // Get the most fresh record.
-          final freshRecord = _LangaugeVotingRecord.fromSnapshot(freshSnapshot);
-          await transaction.update(record.firestoreDocReference,
-              {'votes': freshRecord.votes + deltaVotes});
+          try {
+            final freshSnapshot =
+                await transaction.get(record.firestoreDocReference);
+            // Get the most fresh record.
+            final freshRecord =
+                _LangaugeVotingRecord.fromSnapshot(freshSnapshot);
+            await transaction.update(record.firestoreDocReference,
+                {'votes': freshRecord.votes + deltaVotes});
+          } catch (e) {
+            throw e;
+          }
         },
         timeout: Duration(seconds: 3),
       );
