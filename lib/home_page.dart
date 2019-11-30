@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../my_app_settings.dart';
-import '../my_route.dart';
-import '../my_app_routes.dart'
+import './my_app_settings.dart';
+import './my_route.dart';
+import './my_app_routes.dart'
     show MyRouteGroup, kAboutRoute, kMyAppRoutesStructure;
 
 class MyHomePage extends StatelessWidget {
