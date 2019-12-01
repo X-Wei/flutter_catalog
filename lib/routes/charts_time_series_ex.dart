@@ -27,17 +27,18 @@ class TimeseriesChartExample extends StatefulWidget {
   const TimeseriesChartExample({Key key}) : super(key: key);
 
   @override
-  _TimeseriesChartExampleState createState() =>
-      _TimeseriesChartExampleState();
+  _TimeseriesChartExampleState createState() => _TimeseriesChartExampleState();
 }
 
 class _TimeseriesChartExampleState extends State<TimeseriesChartExample> {
   // Chart configs.
-  bool _animate = false;
+  bool _animate = true;
   bool _defaultInteractions = true;
   bool _includeArea = true;
   bool _includePoints = true;
   bool _stacked = true;
+  charts.BehaviorPosition _titlePosition = charts.BehaviorPosition.bottom;
+  charts.BehaviorPosition _legendPosition = charts.BehaviorPosition.bottom;
 
   // Data to render.
   List<_SalesData> _series1, _series2;
@@ -82,9 +83,10 @@ class _TimeseriesChartExampleState extends State<TimeseriesChartExample> {
             animate: this._animate,
             behaviors: [
               // Add title.
-              charts.ChartTitle('Dummy sales time series'),
+              charts.ChartTitle('Dummy sales time series',
+                  behaviorPosition: _titlePosition),
               // Add legend.
-              charts.SeriesLegend(),
+              charts.SeriesLegend(position: _legendPosition),
               // Highlight X and Y value of selected point.
               charts.LinePointHighlighter(
                 showHorizontalFollowLine:
@@ -95,7 +97,14 @@ class _TimeseriesChartExampleState extends State<TimeseriesChartExample> {
             ],
           ),
         ),
-        SizedBox(height: 20),
+        Divider(),
+        ..._controlWidgets(),
+      ],
+    );
+  }
+
+  /// Widgets to control the chart appearance and behavior.
+  List<Widget> _controlWidgets() => <Widget>[
         SwitchListTile(
           title: Text('animate'),
           onChanged: (bool val) => setState(() => this._animate = val),
@@ -122,7 +131,35 @@ class _TimeseriesChartExampleState extends State<TimeseriesChartExample> {
           onChanged: (bool val) => setState(() => this._stacked = val),
           value: this._stacked,
         ),
-      ],
-    );
-  }
+        ListTile(
+          title: Text('titlePosition:'),
+          trailing: DropdownButton<charts.BehaviorPosition>(
+            value: this._titlePosition,
+            onChanged: (charts.BehaviorPosition newVal) {
+              if (newVal != null) {
+                setState(() => this._titlePosition = newVal);
+              }
+            },
+            items: [
+              for (final val in charts.BehaviorPosition.values)
+                DropdownMenuItem(value: val, child: Text('$val'))
+            ],
+          ),
+        ),
+        ListTile(
+          title: Text('legendPosition:'),
+          trailing: DropdownButton<charts.BehaviorPosition>(
+            value: this._legendPosition,
+            onChanged: (charts.BehaviorPosition newVal) {
+              if (newVal != null) {
+                setState(() => this._legendPosition = newVal);
+              }
+            },
+            items: [
+              for (final val in charts.BehaviorPosition.values)
+                DropdownMenuItem(value: val, child: Text('$val'))
+            ],
+          ),
+        ),
+      ];
 }
