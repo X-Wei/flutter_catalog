@@ -35,7 +35,7 @@ class DialogsExample extends StatelessWidget {
                     ),
                   ],
                 ),
-              ).then<String>((returnVal) {
+              ).then((returnVal) {
                 if (returnVal != null) {
                   Scaffold.of(context).showSnackBar(
                     SnackBar(
@@ -73,7 +73,7 @@ class DialogsExample extends StatelessWidget {
                   ),
                 ],
               ),
-            ).then<String>((returnVal) {
+            ).then((returnVal) {
               if (returnVal != null) {
                 Scaffold.of(context).showSnackBar(
                   SnackBar(
@@ -94,7 +94,7 @@ class DialogsExample extends StatelessWidget {
             showTimePicker(
               context: context,
               initialTime: TimeOfDay(hour: now.hour, minute: now.minute),
-            ).then<TimeOfDay>((TimeOfDay value) {
+            ).then((TimeOfDay value) {
               if (value != null) {
                 Scaffold.of(context).showSnackBar(
                   SnackBar(
@@ -116,7 +116,7 @@ class DialogsExample extends StatelessWidget {
               initialDate: DateTime.now(),
               firstDate: DateTime(2018),
               lastDate: DateTime(2025),
-            ).then<DateTime>((DateTime value) {
+            ).then((DateTime value) {
               if (value != null) {
                 Scaffold.of(context).showSnackBar(
                   SnackBar(content: Text('Selected datetime: $value')),
@@ -150,18 +150,13 @@ class DialogsExample extends StatelessWidget {
                       dense: true,
                       title: Text('Click OK to dismiss'),
                     ),
-                    ButtonTheme.bar(
-                      // make buttons use the appropriate styles for cards
-                      child: ButtonBar(
-                        children: <Widget>[
-                          FlatButton(
-                            child: const Text('OK'),
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                          ),
-                        ],
-                      ),
+                    ButtonBar(
+                      children: <Widget>[
+                        FlatButton(
+                          child: const Text('OK'),
+                          onPressed: () => Navigator.pop(context),
+                        ),
+                      ],
                     ),
                   ],
                 ),

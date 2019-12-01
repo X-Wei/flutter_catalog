@@ -88,8 +88,8 @@ class _StreamControllerExampleState extends State<StreamControllerExample> {
   @override
   void dispose() {
     // Note: must explicitly close the stream controllers to release resource!
-    this._inputStreamController.close();
-    this._outputStreamController.close();
+    _inputStreamController.close();
+    _outputStreamController.close();
     super.dispose();
   }
 }

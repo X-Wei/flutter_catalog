@@ -103,6 +103,7 @@ class _FirebaseMLKitExampleState extends State<FirebaseMLKitExample> {
     final VisionText visionText =
         await textRecognizer.processImage(visionImage);
     final String text = visionText.text;
+    debugPrint('Recognized text: "$text"');
     result += 'Detected ${visionText.blocks.length} text blocks.\n';
     for (TextBlock block in visionText.blocks) {
       final Rect boundingBox = block.boundingBox;

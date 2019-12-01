@@ -94,20 +94,18 @@ class CardExample extends StatelessWidget {
                   ],
                 ),
               ),
-              ButtonTheme.bar(
-                child: ButtonBar(
-                  alignment: MainAxisAlignment.end,
-                  children: <Widget>[
-                    FlatButton(
-                      child: Text('SHARE'),
-                      onPressed: () {},
-                    ),
-                    FlatButton(
-                      child: Text('EXPLORE'),
-                      onPressed: () {},
-                    ),
-                  ],
-                ),
+              ButtonBar(
+                alignment: MainAxisAlignment.end,
+                children: <Widget>[
+                  FlatButton(
+                    child: Text('SHARE'),
+                    onPressed: () {},
+                  ),
+                  FlatButton(
+                    child: Text('EXPLORE'),
+                    onPressed: () {},
+                  ),
+                ],
               ),
             ],
           ),
