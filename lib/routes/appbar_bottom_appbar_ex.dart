@@ -82,7 +82,8 @@ class _BottomAppbarExampleState extends State<BottomAppbarExample> {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         mini: this._isFabMini,
-        onPressed: () => Fluttertoast.showToast(msg: 'Dummy floating action button'),
+        onPressed: () =>
+            Fluttertoast.showToast(msg: 'Dummy floating action button'),
       ),
       floatingActionButtonLocation: this._fabLocation,
       bottomNavigationBar: this._buildBottomAppBar(context),

@@ -60,8 +60,8 @@ class _HiveExampleState extends State<HiveExample> {
     final hiveFolder = join(dir.path, kHiveFolder);
     Hive.init(hiveFolder);
     try {
-      // Normally we should register this at the app startup (i.e. in main.dart), 
-      // putting it here might cuase the line to run twice and lead to errors 
+      // Normally we should register this at the app startup (i.e. in main.dart),
+      // putting it here might cuase the line to run twice and lead to errors
       // since this page can be opened twice.
       Hive.registerAdapter(TodoItemAdapter(), 0);
     } on HiveError catch (e) {

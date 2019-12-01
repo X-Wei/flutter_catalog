@@ -16,7 +16,7 @@ class TodoItem extends HiveObject {
 
   TodoItem({this.id, this.content, this.isDone = false, createdAt})
       : this.createdAt = createdAt ?? DateTime.now();
-  
+
   @override
   String toString() {
     return 'TodoItem(id=$id, content=$content, idDone=$isDone, createdAt=$createdAt)';
