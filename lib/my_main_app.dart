@@ -49,7 +49,7 @@ class _MyMainApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Catalog',
       theme: Provider.of<MyAppSettings>(context).isDarkMode
-          ? kDartTheme
+          ? kDarkTheme
           : kLightTheme,
       routes: kAppRoutingTable,
     );

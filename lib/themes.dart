@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 // https://github.com/flutter/flutter/blob/master/examples/flutter_gallery/lib/gallery/themes.dart
 
 final kLightTheme = _buildLightTheme();
-final kDartTheme = _buildDarkTheme();
+final kDarkTheme = _buildDarkTheme();
 
 ThemeData _buildLightTheme() {
   const Color primaryColor = Color(0xFF0175c2);

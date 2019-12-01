@@ -23,15 +23,15 @@ List<_SalesData> _genRandData() {
   ];
 }
 
-class TimeseriesChartsExample extends StatefulWidget {
-  const TimeseriesChartsExample({Key key}) : super(key: key);
+class TimeseriesChartExample extends StatefulWidget {
+  const TimeseriesChartExample({Key key}) : super(key: key);
 
   @override
-  _TimeseriesChartsExampleState createState() =>
-      _TimeseriesChartsExampleState();
+  _TimeseriesChartExampleState createState() =>
+      _TimeseriesChartExampleState();
 }
 
-class _TimeseriesChartsExampleState extends State<TimeseriesChartsExample> {
+class _TimeseriesChartExampleState extends State<TimeseriesChartExample> {
   // Chart configs.
   bool _animate = false;
   bool _defaultInteractions = true;

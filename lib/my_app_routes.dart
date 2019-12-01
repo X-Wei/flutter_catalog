@@ -693,9 +693,9 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
       icon: Icon(Icons.show_chart),
       routes: <MyRoute>[
         MyRoute(
-          child: TimeseriesChartsExample(),
+          child: TimeseriesChartExample(),
           sourceFilePath: 'lib/routes/charts_time_series_ex.dart',
-          title: 'Time Series Charts',
+          title: 'Time Series Chart',
           links: {
             'Demo gallery':
                 'https://google.github.io/charts/flutter/gallery.html'
