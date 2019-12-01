@@ -18,6 +18,7 @@ import './routes/appbar_basic_appbar_ex.dart';
 import './routes/appbar_bottom_appbar_ex.dart';
 import './routes/appbar_search_ex.dart';
 import './routes/appbar_sliver_appbar_ex.dart';
+import './routes/charts_time_series_ex.dart';
 import './routes/firebase_chatroom_ex.dart';
 import './routes/firebase_login_ex.dart';
 import './routes/firebase_mlkit_ex.dart';
@@ -687,6 +688,20 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
       ),
     ],
   ),
+  MyRouteGroup(
+      groupName: 'Charts',
+      icon: Icon(Icons.show_chart),
+      routes: <MyRoute>[
+        MyRoute(
+          child: TimeseriesChartsExample(),
+          sourceFilePath: 'lib/routes/charts_time_series_ex.dart',
+          title: 'Time Series Charts',
+          links: {
+            'Demo gallery':
+                'https://google.github.io/charts/flutter/gallery.html'
+          },
+        ),
+      ]),
   MyRouteGroup(
     groupName: 'Firebase',
     icon: Icon(Icons.cloud),
