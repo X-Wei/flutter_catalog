@@ -18,6 +18,7 @@ import './routes/appbar_basic_appbar_ex.dart';
 import './routes/appbar_bottom_appbar_ex.dart';
 import './routes/appbar_search_ex.dart';
 import './routes/appbar_sliver_appbar_ex.dart';
+import './routes/charts_pie_chart_ex.dart';
 import './routes/charts_time_series_ex.dart';
 import './routes/firebase_chatroom_ex.dart';
 import './routes/firebase_login_ex.dart';
@@ -696,6 +697,15 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
           child: TimeseriesChartExample(),
           sourceFilePath: 'lib/routes/charts_time_series_ex.dart',
           title: 'Time Series Chart',
+          links: {
+            'Demo gallery':
+                'https://google.github.io/charts/flutter/gallery.html'
+          },
+        ),
+        MyRoute(
+          child: PieChartExample(),
+          sourceFilePath: 'lib/routes/charts_pie_chart_ex.dart',
+          title: 'Pie Chart',
           links: {
             'Demo gallery':
                 'https://google.github.io/charts/flutter/gallery.html'
