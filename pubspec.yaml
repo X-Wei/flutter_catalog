@@ -2,7 +2,7 @@ name: flutter_catalog
 description: An app showcasing Flutter components, with side-by-side source code view.
 
 # *Note*: when version change, remember to also update constants.dart.
-version: 2.3.4+45
+version: 2.3.5+47
 
 environment:
   sdk: ">=2.3.0 <3.0.0"
@@ -13,8 +13,8 @@ dependencies:
   animated_floatactionbuttons: '0.1.0'
   async: '^2.2.0'
   backdrop: '0.1.8'
-  cached_network_image: '1.1.2+1'
-  cloud_firestore: '0.12.9+6'
+  cached_network_image: '2.0.0-rc.1'
+  cloud_firestore: '0.12.10+2'
   english_words: '3.1.5'
   firebase_analytics: '3.0.3'
   firebase_auth: '0.14.0+5'
