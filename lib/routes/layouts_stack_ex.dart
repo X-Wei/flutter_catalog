@@ -39,7 +39,7 @@ class _StackExampleState extends State<StackExample> {
       'centerEnd': AlignmentDirectional.centerEnd,
       'bottomStart': AlignmentDirectional.bottomStart,
       'bottomCenter': AlignmentDirectional.bottomCenter,
-      'bottomEn': AlignmentDirectional.bottomEnd
+      'bottomEnd': AlignmentDirectional.bottomEnd
     };
     return Material(
       color: Theme.of(context).primaryColorLight,
