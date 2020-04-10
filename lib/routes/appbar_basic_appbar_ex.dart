@@ -10,7 +10,6 @@ class BasicAppbarExample extends StatelessWidget {
         backgroundColor: Colors.redAccent,
         leading: Icon(Icons.tag_faces),
         title: Text("Sample title"),
-        // TODO: add actions when items are clicked.
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.directions_bike),

@@ -12,7 +12,7 @@ class TextFormFieldExample extends StatefulWidget {
 // https://github.com/flutter/flutter/blob/master/examples/flutter_gallery/lib/demo/material/text_form_field_demo.dart
 class _TextFormFieldExampleState extends State<TextFormFieldExample> {
   final GlobalKey<FormFieldState<String>> _passwordFieldKey =
-      new GlobalKey<FormFieldState<String>>();
+      GlobalKey<FormFieldState<String>>();
 
   String _name;
   String _phoneNumber;
@@ -21,7 +21,7 @@ class _TextFormFieldExampleState extends State<TextFormFieldExample> {
 
   String _validateName(String value) {
     if (value.isEmpty) return 'Name is required.';
-    final RegExp nameExp = new RegExp(r'^[A-Za-z ]+$');
+    final RegExp nameExp = RegExp(r'^[A-Za-z ]+$');
     if (!nameExp.hasMatch(value))
       return 'Please enter only alphabetical characters.';
     return null;
@@ -48,6 +48,7 @@ class _TextFormFieldExampleState extends State<TextFormFieldExample> {
             ),
             onSaved: (String value) {
               this._name = value;
+              print('name=$_name');
             },
             validator: _validateName,
           ),
@@ -65,6 +66,7 @@ class _TextFormFieldExampleState extends State<TextFormFieldExample> {
             keyboardType: TextInputType.phone,
             onSaved: (String value) {
               this._phoneNumber = value;
+              print('phoneNumber=$_phoneNumber');
             },
             // TextInputFormatters are applied in sequence.
             inputFormatters: <TextInputFormatter>[
@@ -84,6 +86,7 @@ class _TextFormFieldExampleState extends State<TextFormFieldExample> {
             keyboardType: TextInputType.emailAddress,
             onSaved: (String value) {
               this._email = value;
+              print('email=$_email');
             },
           ),
           SizedBox(height: 24.0),
@@ -159,7 +162,7 @@ class PasswordField extends StatefulWidget {
   final ValueChanged<String> onFieldSubmitted;
 
   @override
-  _PasswordFieldState createState() => new _PasswordFieldState();
+  _PasswordFieldState createState() => _PasswordFieldState();
 }
 
 class _PasswordFieldState extends State<PasswordField> {
@@ -167,27 +170,26 @@ class _PasswordFieldState extends State<PasswordField> {
 
   @override
   Widget build(BuildContext context) {
-    return new TextFormField(
+    return TextFormField(
       key: widget.fieldKey,
       obscureText: _obscureText,
       maxLength: 8,
       onSaved: widget.onSaved,
       validator: widget.validator,
       onFieldSubmitted: widget.onFieldSubmitted,
-      decoration: new InputDecoration(
+      decoration: InputDecoration(
         border: const UnderlineInputBorder(),
         filled: true,
         hintText: widget.hintText,
         labelText: widget.labelText,
         helperText: widget.helperText,
-        suffixIcon: new GestureDetector(
+        suffixIcon: GestureDetector(
           onTap: () {
             setState(() {
               _obscureText = !_obscureText;
             });
           },
-          child:
-              new Icon(_obscureText ? Icons.visibility : Icons.visibility_off),
+          child: Icon(_obscureText ? Icons.visibility : Icons.visibility_off),
         ),
       ),
     );

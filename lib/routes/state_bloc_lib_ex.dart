@@ -69,8 +69,6 @@ class _MyDemoApp extends StatefulWidget {
 }
 
 class _MyDemoAppState extends State<_MyDemoApp> {
-  final _bloc = MyBloc();
-
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -84,17 +82,11 @@ class _MyDemoAppState extends State<_MyDemoApp> {
         // ###4. Use the BlocProvider from flutter_bloc package, we don't need
         // to write our own InheritedWidget.
         BlocProvider<MyBloc>(
-          create: (BuildContext context) => this._bloc,
-          child: _AppRootWidget(), 
+          create: (BuildContext context) => MyBloc(),
+          child: _AppRootWidget(),
         ),
       ],
     );
-  }
-
-  @override
-  void dispose() {
-    this._bloc.close();
-    super.dispose();
   }
 }
 
