@@ -69,11 +69,15 @@ class _RestApiFetchExampleState extends State<RestApiFetchExample> {
     );
   }
 
-  void _reset() {
+  void _reset({bool resetControllers = true}) {
     setState(() {
-      this._urlController.text = 'https://jsonplaceholder.typicode.com/posts/1';
+      if (resetControllers) {
+        this._urlController.text =
+            'https://jsonplaceholder.typicode.com/posts/1';
+      }
       this._responseBody = '<empty>';
       this._error = '<none>';
+      this._pending = false;
     });
   }
 
