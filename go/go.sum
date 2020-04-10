@@ -7,6 +7,8 @@ github.com/go-flutter-desktop/go-flutter v0.33.0 h1:+0R9hn+oOKj5A9p95H7jcgPoWrjd
 github.com/go-flutter-desktop/go-flutter v0.33.0/go.mod h1:NCryd/AqiRbYSd8pMzQldYkgH1tZIFGt2ToUghZcWGA=
 github.com/go-flutter-desktop/go-flutter v0.35.1 h1:vs04dmq9CyrVC2UUam5JYN177bB4QOdYDl8kcoDQVOg=
 github.com/go-flutter-desktop/go-flutter v0.35.1/go.mod h1:eqenDt10Ece6cs/zZbLvT4Z1zf9k7gc+R8L7S68k6ao=
+github.com/go-flutter-desktop/go-flutter v0.37.0 h1:nH2DLXVvxht/sl+QPWMwYVPCcwdOMIfG+77HmTSHZaU=
+github.com/go-flutter-desktop/go-flutter v0.37.0/go.mod h1:8tjt3yZ3lTNLqgzWeH90f1uhCR9BL68LFoiy/n0aw/w=
 github.com/go-flutter-desktop/plugins v0.0.0-20191107105320-39f89c3e8eca h1:yhgSmn3kUJs0XPRcLZrQb0N74KKw+tfT9MOUUcjVxTw=
 github.com/go-flutter-desktop/plugins/image_picker v0.1.5 h1:VQza8aA+Els+trCLqNJa7phNJDBetLWVQMyzAIqYjts=
 github.com/go-flutter-desktop/plugins/image_picker v0.1.5/go.mod h1:lOmQKrMiJNsA55VM4ww3u78ufo//ptu2om+B3Ime+6o=
@@ -22,6 +24,8 @@ github.com/go-gl/glfw v0.0.0-20190409004039-e6da0acd62b1 h1:QbL/5oDUmRBzO9/Z7Seo
 github.com/go-gl/glfw v0.0.0-20190409004039-e6da0acd62b1/go.mod h1:vR7hzQXu2zJy9AVAgeJqvqgH9Q5CA+iKCZ2gyEVpxRU=
 github.com/go-gl/glfw v0.0.0-20191125211704-12ad95a8df72 h1:LgLYrxDRSVv3kStk6louYTP1ekZ6t7HZY/X05KUyaeM=
 github.com/go-gl/glfw v0.0.0-20191125211704-12ad95a8df72/go.mod h1:vR7hzQXu2zJy9AVAgeJqvqgH9Q5CA+iKCZ2gyEVpxRU=
+github.com/go-gl/glfw/v3.3/glfw v0.0.0-20200222043503-6f7a984d4dc4 h1:WtGNWLvXpe6ZudgnXrq0barxBImvnnJoMEhXAzcbM0I=
+github.com/go-gl/glfw/v3.3/glfw v0.0.0-20200222043503-6f7a984d4dc4/go.mod h1:tQ2UAYgL5IevRw8kRxooKSPJfGvJ9fJQFa0TUsXzTg8=
 github.com/golang/protobuf v1.2.0/go.mod h1:6lQm79b+lXiMfvg/cZm0SGofjICqVBUtrP5yJMmIC1U=
 github.com/golang/snappy v0.0.0-20180518054509-2e65f85255db h1:woRePGFeVFfLKN/pOkfl+p/TAqKOfFu+7KPlMVpok/w=
 github.com/golang/snappy v0.0.0-20180518054509-2e65f85255db/go.mod h1:/XxbfmMg8lxefKM7IXC3fBNl/7bRcc72aCRzEWrmP2Q=
@@ -38,6 +42,7 @@ github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZN
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
 github.com/stretchr/testify v1.4.0 h1:2E4SXV/wtOkTonXsotYi4li6zVWxYlZuYNCXe9XRJyk=
 github.com/stretchr/testify v1.4.0/go.mod h1:j7eGeouHqKxXV5pUuKE4zz7dFj8WfuZ+81PSLYec5m4=
+github.com/stretchr/testify v1.5.1/go.mod h1:5W2xD1RspED5o8YsWQXVCued0rvSQ+mT+I5cxcmMvtA=
 github.com/syndtr/goleveldb v1.0.0 h1:fBdIW9lB4Iz0n9khmH8w27SJ3QEJ7+IgjPEwGSZiFdE=
 github.com/syndtr/goleveldb v1.0.0/go.mod h1:ZVVdQEZoIme9iO1Ch2Jdy24qqXrMMOU6lpPAyBWyWuQ=
 golang.org/x/net v0.0.0-20180906233101-161cd47e91fd/go.mod h1:mL1N/T3taQHkDXs73rZJwtUhF3w3ftmwwsq0BUmARs4=
