@@ -44,6 +44,7 @@ import './routes/nav_nav_drawer_header_ex.dart';
 import './routes/nav_pageselector_ex.dart';
 import './routes/nav_routes_ex.dart';
 import './routes/nav_tabs_ex.dart';
+import './routes/networking_rest_api_fetch_ex.dart';
 import './routes/persistence_file_rw_ex.dart';
 import './routes/persistence_hive_ex.dart';
 import './routes/persistence_preference_ex.dart';
@@ -709,6 +710,20 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
           links: {
             'Demo gallery':
                 'https://google.github.io/charts/flutter/gallery.html'
+          },
+        ),
+      ]),
+  MyRouteGroup(
+      groupName: 'Networking',
+      icon: Icon(Icons.http),
+      routes: <MyRoute>[
+        MyRoute(
+          child: RestApiFetchExample(),
+          sourceFilePath: 'lib/routes/networking_rest_api_fetch_ex.dart',
+          title: 'Fetching data',
+          links: {
+            'cookbook':
+                'https://flutter.dev/docs/cookbook/networking/fetch-data'
           },
         ),
       ]),
