@@ -11,8 +11,8 @@ class ProviderExample extends StatelessWidget {
         // This is a stream that shows how many seconds have elapsed.
         StreamProvider<int>(
           initialData: 0,
-          builder: (BuildContext context) =>
-              Stream.periodic(Duration(milliseconds: 1000), (i) => i),
+          create: (BuildContext context) =>
+              Stream.periodic(Duration(milliseconds: 1000), (i) => i), 
         ),
         ChangeNotifierProvider<_MyCounterState>.value(
           value: _MyCounterState(),
