@@ -43,22 +43,22 @@ class MyBloc extends Bloc<_MyEvent, _MyState> {
 
   // The business logic is in this mapEventToState function.
   // Note: in flutter_bloc from v0.6.0 on, states are enforced IMMUTABLE,
-  // mutating currentState and yielding the it won't update on UI.
+  // mutating state and yielding the it won't update on UI.
   // C.f. https://github.com/felangel/bloc/issues/103.
   @override
   Stream<_MyState> mapEventToState(_MyEvent event) async* {
     _MyState newState;
     if (event.isIncrement) {
-      newState = _MyState(currentState.counter + 1);
+      newState = _MyState(state.counter + 1);
     } else {
-      newState = _MyState(currentState.counter - 1);
+      newState = _MyState(state.counter - 1);
     }
     yield newState;
   }
 
-  // Instead of doing bloc.sink.add(), we do bloc.dispatch().
-  void increment() => this.dispatch(_MyEvent(isIncrement: true));
-  void decrement() => this.dispatch(_MyEvent(isIncrement: false));
+  // Instead of doing bloc.sink.add(), we do bloc.add().
+  void increment() => this.add(_MyEvent(isIncrement: true));
+  void decrement() => this.add(_MyEvent(isIncrement: false));
 }
 
 class _MyDemoApp extends StatefulWidget {
@@ -84,8 +84,8 @@ class _MyDemoAppState extends State<_MyDemoApp> {
         // ###4. Use the BlocProvider from flutter_bloc package, we don't need
         // to write our own InheritedWidget.
         BlocProvider<MyBloc>(
-          builder: (BuildContext context) => this._bloc,
-          child: _AppRootWidget(),
+          create: (BuildContext context) => this._bloc,
+          child: _AppRootWidget(), 
         ),
       ],
     );
@@ -93,7 +93,7 @@ class _MyDemoAppState extends State<_MyDemoApp> {
 
   @override
   void dispose() {
-    this._bloc.dispose();
+    this._bloc.close();
     super.dispose();
   }
 }
@@ -144,7 +144,7 @@ class _CounterAndButton extends StatelessWidget {
               IconButton(
                 icon: Icon(Icons.add),
                 // ###6. Post new event by calling functions in bloc or by
-                // bloc.dispatch(newEvent);
+                // bloc.add(newEvent);
                 onPressed: () => BlocProvider.of<MyBloc>(context).increment(),
               ),
               IconButton(
