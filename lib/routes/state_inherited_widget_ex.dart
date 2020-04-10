@@ -30,7 +30,7 @@ class MyInheritedWidget extends InheritedWidget {
   }
 
   static MyInheritedWidget of(BuildContext context) {
-    return context.inheritFromWidgetOfExactType(MyInheritedWidget);
+    return context.dependOnInheritedWidgetOfExactType<MyInheritedWidget>();
   }
 }
 

@@ -76,8 +76,7 @@ class MyBlocProvider extends InheritedWidget {
       : super(key: key, child: child);
 
   static MyBlocProvider of(BuildContext context) {
-    return (context.inheritFromWidgetOfExactType(MyBlocProvider)
-        as MyBlocProvider);
+    return context.dependOnInheritedWidgetOfExactType<MyBlocProvider>();
   }
 
   @override
