@@ -2,75 +2,76 @@
 // "structure" of the group of example routes, in a const List<Tuple2> object.
 import 'package:flutter/material.dart';
 
-import './constants.dart';
-import './home_page.dart';
-import './my_route.dart';
-import './routes/about.dart';
+import 'constants.dart';
+import 'home_page.dart';
+import 'my_route.dart';
+import 'routes/about.dart';
 
-import './routes/animation_animated_builder_ex.dart';
-import './routes/animation_animated_container_ex.dart';
-import './routes/animation_animated_widget_ex.dart';
-import './routes/animation_basic_ex.dart';
-import './routes/animation_hero_ex.dart';
-import './routes/animation_opacity_ex.dart';
-import './routes/appbar_backdrop_ex.dart';
-import './routes/appbar_basic_appbar_ex.dart';
-import './routes/appbar_bottom_appbar_ex.dart';
-import './routes/appbar_search_ex.dart';
-import './routes/appbar_sliver_appbar_ex.dart';
-import './routes/charts_pie_chart_ex.dart';
-import './routes/charts_time_series_ex.dart';
-import './routes/firebase_chatroom_ex.dart';
-import './routes/firebase_login_ex.dart';
-import './routes/firebase_mlkit_ex.dart';
-import './routes/firebase_vote_ex.dart';
-import './routes/layouts_container_padding_center_ex.dart';
-import './routes/layouts_expanded_ex.dart';
-import './routes/layouts_row_col_ex.dart';
-import './routes/layouts_stack_ex.dart';
-import './routes/layouts_wrap_ex.dart';
-import './routes/lists_datatable_ex.dart';
-import './routes/lists_expansion_tile_ex.dart';
-import './routes/lists_grid_list_ex.dart';
-import './routes/lists_list_tile_ex.dart';
-import './routes/lists_listview_builder_ex.dart';
-import './routes/lists_reorderable_ex.dart';
-import './routes/lists_swipe_to_dismiss_ex.dart';
-import './routes/nav_bottom_navbar_ex.dart';
-import './routes/nav_bottom_sheet_ex.dart';
-import './routes/nav_bottom_tabbar_ex.dart';
-import './routes/nav_dialogs_ex.dart';
-import './routes/nav_nav_drawer_header_ex.dart';
-import './routes/nav_pageselector_ex.dart';
-import './routes/nav_routes_ex.dart';
-import './routes/nav_tabs_ex.dart';
-import './routes/networking_rest_api_fetch_ex.dart';
-import './routes/networking_rest_api_send_ex.dart';
-import './routes/persistence_file_rw_ex.dart';
-import './routes/persistence_hive_ex.dart';
-import './routes/persistence_preference_ex.dart';
-import './routes/persistence_sembast_ex.dart';
-import './routes/persistence_sqlite_ex.dart';
-import './routes/plugins_image_picker_ex.dart';
-import './routes/plugins_local_auth_ex.dart';
-import './routes/plugins_markdown_ex.dart';
-import './routes/plugins_webview_ex.dart';
-import './routes/state_bloc_ex.dart';
-import './routes/state_bloc_lib_ex.dart';
-import './routes/state_inherited_widget_ex.dart';
-import './routes/state_provider_ex.dart';
-import './routes/state_scoped_model_ex.dart';
-import './routes/state_streambuilder_ex.dart';
-import './routes/state_streamcontroller_ex.dart';
-import './routes/widgets_buttons_ex.dart';
-import './routes/widgets_card_ex.dart';
-import './routes/widgets_dropdown_button_ex.dart';
-import './routes/widgets_icon_ex.dart';
-import './routes/widgets_image_ex.dart';
-import './routes/widgets_stateful_widgets_ex.dart';
-import './routes/widgets_text_ex.dart';
-import './routes/widgets_textfield_ex.dart';
-import './routes/widgets_textformfield_ex.dart';
+import 'routes/animation_animated_builder_ex.dart';
+import 'routes/animation_animated_container_ex.dart';
+import 'routes/animation_animated_widget_ex.dart';
+import 'routes/animation_basic_ex.dart';
+import 'routes/animation_hero_ex.dart';
+import 'routes/animation_opacity_ex.dart';
+import 'routes/appbar_backdrop_ex.dart';
+import 'routes/appbar_basic_appbar_ex.dart';
+import 'routes/appbar_bottom_appbar_ex.dart';
+import 'routes/appbar_search_ex.dart';
+import 'routes/appbar_sliver_appbar_ex.dart';
+import 'routes/charts_pie_chart_ex.dart';
+import 'routes/charts_time_series_ex.dart';
+import 'routes/firebase_chatroom_ex.dart';
+import 'routes/firebase_login_ex.dart';
+import 'routes/firebase_mlkit_ex.dart';
+import 'routes/firebase_vote_ex.dart';
+import 'routes/layouts_container_padding_center_ex.dart';
+import 'routes/layouts_expanded_ex.dart';
+import 'routes/layouts_row_col_ex.dart';
+import 'routes/layouts_stack_ex.dart';
+import 'routes/layouts_wrap_ex.dart';
+import 'routes/lists_datatable_ex.dart';
+import 'routes/lists_expansion_tile_ex.dart';
+import 'routes/lists_grid_list_ex.dart';
+import 'routes/lists_list_tile_ex.dart';
+import 'routes/lists_listview_builder_ex.dart';
+import 'routes/lists_reorderable_ex.dart';
+import 'routes/lists_swipe_to_dismiss_ex.dart';
+import 'routes/nav_bottom_navbar_ex.dart';
+import 'routes/nav_bottom_sheet_ex.dart';
+import 'routes/nav_bottom_tabbar_ex.dart';
+import 'routes/nav_dialogs_ex.dart';
+import 'routes/nav_nav_drawer_header_ex.dart';
+import 'routes/nav_pageselector_ex.dart';
+import 'routes/nav_routes_ex.dart';
+import 'routes/nav_tabs_ex.dart';
+import 'routes/networking_hacker_news_ex.dart';
+import 'routes/networking_rest_api_fetch_ex.dart';
+import 'routes/networking_rest_api_send_ex.dart';
+import 'routes/persistence_file_rw_ex.dart';
+import 'routes/persistence_hive_ex.dart';
+import 'routes/persistence_preference_ex.dart';
+import 'routes/persistence_sembast_ex.dart';
+import 'routes/persistence_sqlite_ex.dart';
+import 'routes/plugins_image_picker_ex.dart';
+import 'routes/plugins_local_auth_ex.dart';
+import 'routes/plugins_markdown_ex.dart';
+import 'routes/plugins_webview_ex.dart';
+import 'routes/state_bloc_ex.dart';
+import 'routes/state_bloc_lib_ex.dart';
+import 'routes/state_inherited_widget_ex.dart';
+import 'routes/state_provider_ex.dart';
+import 'routes/state_scoped_model_ex.dart';
+import 'routes/state_streambuilder_ex.dart';
+import 'routes/state_streamcontroller_ex.dart';
+import 'routes/widgets_buttons_ex.dart';
+import 'routes/widgets_card_ex.dart';
+import 'routes/widgets_dropdown_button_ex.dart';
+import 'routes/widgets_icon_ex.dart';
+import 'routes/widgets_image_ex.dart';
+import 'routes/widgets_stateful_widgets_ex.dart';
+import 'routes/widgets_text_ex.dart';
+import 'routes/widgets_textfield_ex.dart';
+import 'routes/widgets_textformfield_ex.dart';
 
 const kHomeRoute = MyRoute(
   child: MyHomePage(),
@@ -734,6 +735,16 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
           links: {
             'Cookbook':
                 'https://flutter.dev/docs/cookbook/networking/send-data'
+          },
+        ),
+        MyRoute(
+          child: RestApiHackerNewsExample(),
+          sourceFilePath: 'lib/routes/networking_hacker_news_ex.dart',
+          title: 'Hacker News',
+          description: 'A full REST API example.',
+          links: {
+            'Hacker News API':
+                'https://github.com/HackerNews/API'
           },
         ),
       ]),
