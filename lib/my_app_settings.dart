@@ -5,8 +5,9 @@ import './my_route.dart';
 import './my_app_routes.dart' show kAllRoutes;
 
 class MyAppSettings extends ChangeNotifier {
-  static const _kBookmarkedRoutesPreferenceKey = 'BOOKMARKED_ROUTES';
   static const _kDarkModePreferenceKey = 'DARK_MODE';
+  static const _kSearchHistoryPreferenceKey = 'SEARCH_HISTORY';
+  static const _kBookmarkedRoutesPreferenceKey = 'BOOKMARKED_ROUTES';
   static final _kRoutenameToRouteMap = {
     for (MyRoute route in kAllRoutes) route.routeName: route
   };
@@ -20,6 +21,20 @@ class MyAppSettings extends ChangeNotifier {
   void setDarkMode(bool val) {
     _pref?.setBool(_kDarkModePreferenceKey, val);
     notifyListeners();
+  }
+
+  /// The list of route names in search history.
+  List<String> get searchHistory =>
+      _pref?.getStringList(_kSearchHistoryPreferenceKey) ?? [];
+
+  void addSearchHistory(String routeName) {
+    List<String> history = this.searchHistory;
+    history.remove(routeName);
+    history.insert(0, routeName);
+    if (history.length >= 10) {
+      history = history.take(10).toList();
+    }
+    _pref?.setStringList(_kSearchHistoryPreferenceKey, history);
   }
 
   List<String> get starredRoutenames =>

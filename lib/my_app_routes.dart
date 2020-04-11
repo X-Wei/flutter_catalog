@@ -733,8 +733,7 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
           sourceFilePath: 'lib/routes/networking_rest_api_send_ex.dart',
           title: 'Sending data',
           links: {
-            'Cookbook':
-                'https://flutter.dev/docs/cookbook/networking/send-data'
+            'Cookbook': 'https://flutter.dev/docs/cookbook/networking/send-data'
           },
         ),
         MyRoute(
@@ -742,10 +741,7 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
           sourceFilePath: 'lib/routes/networking_hacker_news_ex.dart',
           title: 'Hacker News',
           description: 'A full REST API example.',
-          links: {
-            'Hacker News API':
-                'https://github.com/HackerNews/API'
-          },
+          links: {'Hacker News API': 'https://github.com/HackerNews/API'},
         ),
       ]),
   MyRouteGroup(
@@ -796,13 +792,26 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
   ),
 ];
 
-final kAllRoutes = <MyRoute>[
-  ...kMyAppRoutesBasic.expand((group) => group.routes),
-  ...kMyAppRoutesAdvanced.expand((group) => group.routes)
+final kAllRouteGroups = <MyRouteGroup>[
+  ...kMyAppRoutesBasic,
+  ...kMyAppRoutesAdvanced,
 ];
 
+final kAllRoutes = <MyRoute>[
+  ...kAllRouteGroups.expand((group) => group.routes),
+];
+
+final kRouteNameToRoute = <String, MyRoute>{
+  for (final route in kAllRoutes) route.routeName: route
+};
+
+final kRouteNameToRouteGroup = <String, MyRouteGroup>{
+  for (final group in kAllRouteGroups)
+    for (final route in group.routes) route.routeName: group
+};
+
 // This app's root-level routing table.
-final Map<String, WidgetBuilder> kAppRoutingTable = {
+final kAppRoutingTable = <String, WidgetBuilder>{
   Navigator.defaultRouteName: (context) => kHomeRoute,
   kAboutRoute.routeName: (context) => kAboutRoute,
   for (MyRoute route in kAllRoutes) route.routeName: (context) => route,

@@ -51,7 +51,7 @@ class MyRoute extends StatelessWidget {
         child: Text(this.title),
       ),
       actions: _getAppbarActions(context),
-      iconPosition: BackdropIconPosition.leading,
+      iconPosition: BackdropIconPosition.action,
       headerHeight: 128,
       frontLayer: Builder(
         builder: (BuildContext context) =>
@@ -70,6 +70,22 @@ class MyRoute extends StatelessWidget {
   List<Widget> _getAppbarActions(BuildContext context) {
     final settings = Provider.of<MyAppSettings>(context);
     return <Widget>[
+      IconButton(
+        icon: Icon(Icons.search),
+        onPressed: () async {
+          final String selected = await showSearch<String>(
+            context: context,
+            delegate: MyRouteSearchDelegate(),
+          );
+          if (selected != null) {
+            Scaffold.of(context).showSnackBar(
+              SnackBar(
+                content: Text('You have selected the word: $selected'),
+              ),
+            );
+          }
+        },
+      ),
       if (this.routeName != Navigator.defaultRouteName)
         settings.starStatusOfRoute(this.routeName),
       if (this.links?.isNotEmpty ?? false)
