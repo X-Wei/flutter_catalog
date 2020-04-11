@@ -53,7 +53,7 @@ class MyAppSettings extends ChangeNotifier {
     } else {
       staredRoutes.add(routeName);
     }
-    final dedupedStaredRoutes = Set<String>.from(starredRoutenames).toList();
+    final dedupedStaredRoutes = Set<String>.from(staredRoutes).toList();
     _pref?.setStringList(_kBookmarkedRoutesPreferenceKey, dedupedStaredRoutes);
     notifyListeners();
   }
