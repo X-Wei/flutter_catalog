@@ -103,23 +103,27 @@ From https://jsonplaceholder.typicode.com/guide.html we see that the API expects
   Future<void> _httpPost(String title, String body, String userId) async {
     _reset(resetControllers: false);
     setState(() => this._pending = true);
-    final http.Response response = await http.post(
-      'https://jsonplaceholder.typicode.com/posts',
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
-      body: jsonEncode(<String, dynamic>{
-        'title': title,
-        'body': body,
-        'userId': userId,
-      }),
-    );
-    // If the server did return a 201 CREATED response.
-    if (response.statusCode == 201) {
-      setState(() => this._responseBody = response.body);
-    } else {
-      setState(
-          () => this._error = 'Failed to add a post: ' + response.toString());
+    try {
+      final http.Response response = await http.post(
+        'https://jsonplaceholder.typicode.com/posts',
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: jsonEncode(<String, dynamic>{
+          'title': title,
+          'body': body,
+          'userId': userId,
+        }),
+      );
+      // If the server did return a 201 CREATED response.
+      if (response.statusCode == 201) {
+        setState(() => this._responseBody = response.body);
+      } else {
+        setState(
+            () => this._error = 'Failed to add a post: ' + response.toString());
+      }
+    } catch (e) {
+      setState(() => this._error = 'Failed to add a post: $e');
     }
     setState(() => this._pending = false);
   }
