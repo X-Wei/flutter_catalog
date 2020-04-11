@@ -10,6 +10,7 @@ import './my_route_search_delegate.dart';
 import './routes/about.dart';
 
 class MyRoute extends StatelessWidget {
+  static const _kFrontLayerMinHeight = 128.0;
   // Path of source file (relative to project root). The file's content will be
   // shown in the "Code" tab.
   final String sourceFilePath;
@@ -43,6 +44,7 @@ class MyRoute extends StatelessWidget {
 
   String get title => _title ?? this.routeName;
 
+
   @override
   Widget build(BuildContext context) {
     return BackdropScaffold(
@@ -52,7 +54,7 @@ class MyRoute extends StatelessWidget {
       ),
       actions: _getAppbarActions(context),
       iconPosition: BackdropIconPosition.action,
-      headerHeight: 128,
+      headerHeight: _kFrontLayerMinHeight,
       frontLayer: Builder(
         builder: (BuildContext context) =>
             routeName == Navigator.defaultRouteName
@@ -112,7 +114,7 @@ class MyRoute extends StatelessWidget {
 
   ListView _getBackdropListTiles() {
     return ListView(
-      padding: EdgeInsets.only(bottom: 32.0),
+      padding: EdgeInsets.only(bottom: _kFrontLayerMinHeight),
       children: <Widget>[
         ListTile(
           leading: kAppIcon,
