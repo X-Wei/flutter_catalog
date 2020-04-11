@@ -6,6 +6,7 @@ import 'package:widget_with_codeview/widget_with_codeview.dart';
 
 import './constants.dart' show APP_NAME, APP_VERSION, GITHUB_URL, kAppIcon;
 import './my_app_settings.dart';
+import './my_route_search_delegate.dart';
 import './routes/about.dart';
 
 class MyRoute extends StatelessWidget {
@@ -44,18 +45,14 @@ class MyRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double headerHeight = 128.0;
-    final double appbarHeight = kToolbarHeight;
-    final double backLayerHeight =
-        MediaQuery.of(context).size.height - headerHeight - appbarHeight;
     return BackdropScaffold(
       title: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Text(this.title),
       ),
       actions: _getAppbarActions(context),
-      iconPosition: BackdropIconPosition.action,
-      headerHeight: headerHeight,
+      iconPosition: BackdropIconPosition.leading,
+      headerHeight: 128,
       frontLayer: Builder(
         builder: (BuildContext context) =>
             routeName == Navigator.defaultRouteName
@@ -66,15 +63,7 @@ class MyRoute extends StatelessWidget {
                     codeLinkPrefix: '$GITHUB_URL/blob/master',
                   ),
       ),
-      frontLayerBorderRadius: BorderRadius.only(),
-      // To make the listview in backlayer scrollable, had to calculate the
-      // height of backlayer, and wrap inside a Column. This is due to the
-      // implementation of BackdropScaffold ('backdrop' package, v0.1.8).
-      backLayer: Column(
-        children: <Widget>[
-          SizedBox(height: backLayerHeight, child: _getBackdropListTiles())
-        ],
-      ),
+      backLayer: _getBackdropListTiles(),
     );
   }
 
