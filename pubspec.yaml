@@ -2,7 +2,7 @@ name: flutter_catalog
 description: An app showcasing Flutter components, with side-by-side source code view.
 
 # *Note*: when version change, remember to also update constants.dart.
-version: 2.4.0+48
+version: 2.4.1+49
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
