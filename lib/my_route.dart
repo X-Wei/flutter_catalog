@@ -44,7 +44,6 @@ class MyRoute extends StatelessWidget {
 
   String get title => _title ?? this.routeName;
 
-
   @override
   Widget build(BuildContext context) {
     return BackdropScaffold(
@@ -72,22 +71,23 @@ class MyRoute extends StatelessWidget {
   List<Widget> _getAppbarActions(BuildContext context) {
     final settings = Provider.of<MyAppSettings>(context);
     return <Widget>[
-      IconButton(
-        icon: Icon(Icons.search),
-        onPressed: () async {
-          final String selected = await showSearch<String>(
-            context: context,
-            delegate: MyRouteSearchDelegate(),
-          );
-          if (selected != null) {
-            Scaffold.of(context).showSnackBar(
-              SnackBar(
-                content: Text('You have selected the word: $selected'),
-              ),
+      if (this.routeName == Navigator.defaultRouteName)
+        IconButton(
+          icon: Icon(Icons.search),
+          onPressed: () async {
+            final String selected = await showSearch<String>(
+              context: context,
+              delegate: MyRouteSearchDelegate(),
             );
-          }
-        },
-      ),
+            if (selected != null) {
+              Scaffold.of(context).showSnackBar(
+                SnackBar(
+                  content: Text('You have selected the word: $selected'),
+                ),
+              );
+            }
+          },
+        ),
       if (this.routeName != Navigator.defaultRouteName)
         settings.starStatusOfRoute(this.routeName),
       if (this.links?.isNotEmpty ?? false)
