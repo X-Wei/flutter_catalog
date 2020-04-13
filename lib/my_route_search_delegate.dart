@@ -10,6 +10,9 @@ import './my_route.dart';
 /// Delegate class to search pages in the list of
 class MyRouteSearchDelegate extends SearchDelegate<String> {
   @override
+  ThemeData appBarTheme(BuildContext context) => Theme.of(context);
+
+  @override
   List<Widget> buildActions(BuildContext context) {
     return <Widget>[
       if (this.query.isNotEmpty)
@@ -73,7 +76,11 @@ class MyRouteSearchDelegate extends SearchDelegate<String> {
           ),
           subtitle: route.description == null
               ? null
-              : SubstringHighlight(text: route.description, term: query),
+              : SubstringHighlight(
+                  text: route.description,
+                  term: query,
+                  textStyle: Theme.of(context).textTheme.body1,
+                ),
           onTap: () {
             Provider.of<MyAppSettings>(context, listen: false)
                 .addSearchHistory(route.routeName);
