@@ -40,6 +40,7 @@ import 'routes/nav_bottom_navbar_ex.dart';
 import 'routes/nav_bottom_sheet_ex.dart';
 import 'routes/nav_bottom_tabbar_ex.dart';
 import 'routes/nav_dialogs_ex.dart';
+import 'routes/nav_draggable_scrollable_sheet_ex.dart';
 import 'routes/nav_nav_drawer_header_ex.dart';
 import 'routes/nav_pageselector_ex.dart';
 import 'routes/nav_routes_ex.dart';
@@ -442,6 +443,16 @@ const kMyAppRoutesBasic = <MyRouteGroup>[
         links: {
           'Doc':
               'https://docs.flutter.io/flutter/material/TabPageSelector-class.html'
+        },
+      ),
+      MyRoute(
+        child: DraggableScrollableSheetExample(),
+        sourceFilePath: 'lib/routes/nav_draggable_scrollable_sheet_ex.dart',
+        title: 'DraggableScrollableSheet',
+        description: 'Scrollable sheet similar to Google Maps.',
+        links: {
+          'Youtube':
+              'https://www.youtube.com/watch?v=Hgw819mL_78'
         },
       ),
     ],
