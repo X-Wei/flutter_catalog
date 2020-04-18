@@ -258,7 +258,7 @@ class _FirebaseMLKitExampleState extends State<FirebaseMLKitExample> {
           ),
         ),
         Divider(),
-        Text('Result:', style: Theme.of(context).textTheme.subtitle),
+        Text('Result:', style: Theme.of(context).textTheme.subtitle2),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Text(

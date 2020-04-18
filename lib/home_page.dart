@@ -74,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
   ListTile _myRouteToListTile(MyRoute myRoute,
       {Widget leading, IconData trialing: Icons.keyboard_arrow_right}) {
     final routeTitleTextStyle =
-        Theme.of(context).textTheme.body1.copyWith(fontWeight: FontWeight.bold);
+        Theme.of(context).textTheme.bodyText2.copyWith(fontWeight: FontWeight.bold);
     return ListTile(
       leading: leading ??
           Provider.of<MyAppSettings>(context)
@@ -92,7 +92,7 @@ class _MyHomePageState extends State<MyHomePage> {
         leading: myRouteGroup.icon,
         title: Text(
           myRouteGroup.groupName,
-          style: Theme.of(context).textTheme.title,
+          style: Theme.of(context).textTheme.headline6,
         ),
         children: myRouteGroup.routes.map(_myRouteToListTile).toList(),
       ),

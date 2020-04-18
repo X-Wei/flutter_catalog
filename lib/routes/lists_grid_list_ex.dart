@@ -20,7 +20,7 @@ class GridListExample extends StatelessWidget {
             padding: const EdgeInsets.all(16.0),
             child: Text(
               'Item $index',
-              style: Theme.of(context).textTheme.headline,
+              style: Theme.of(context).textTheme.headline5,
             ),
           ),
         );

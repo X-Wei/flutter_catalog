@@ -71,7 +71,7 @@ class MyRouteSearchDelegate extends SearchDelegate<String> {
             term: query,
             textStyle: Theme.of(context)
                 .textTheme
-                .body1
+                .bodyText2
                 .copyWith(fontWeight: FontWeight.bold),
           ),
           subtitle: route.description == null
@@ -79,7 +79,7 @@ class MyRouteSearchDelegate extends SearchDelegate<String> {
               : SubstringHighlight(
                   text: route.description,
                   term: query,
-                  textStyle: Theme.of(context).textTheme.body1,
+                  textStyle: Theme.of(context).textTheme.bodyText2,
                 ),
           onTap: () {
             Provider.of<MyAppSettings>(context, listen: false)

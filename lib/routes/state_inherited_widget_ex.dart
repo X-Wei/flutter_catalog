@@ -86,7 +86,7 @@ class _AppRootWidget extends StatelessWidget {
           Text('(root widget)'),
           Text(
             '${rootWidgetsState.counterValue}',
-            style: Theme.of(context).textTheme.display1,
+            style: Theme.of(context).textTheme.headline4,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -114,7 +114,7 @@ class _CounterAndButton extends StatelessWidget {
           Text('(child widget)'),
           Text(
             '${rootWidgetsState.counterValue}',
-            style: Theme.of(context).textTheme.display1,
+            style: Theme.of(context).textTheme.headline4,
           ),
           ButtonBar(
             children: <Widget>[

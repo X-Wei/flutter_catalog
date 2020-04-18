@@ -127,7 +127,7 @@ class _CounterAndButton extends StatelessWidget {
             builder: (context, _MyState state) {
               return Text(
                 '${state.counter}',
-                style: Theme.of(context).textTheme.display1,
+                style: Theme.of(context).textTheme.headline4,
               );
             },
           ),

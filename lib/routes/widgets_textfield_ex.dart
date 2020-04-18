@@ -14,7 +14,7 @@ class _TextFieldExampleState extends State<TextFieldExample> {
   Widget _buildNumberTextField() {
     return TextField(
       keyboardType: TextInputType.number,
-      style: Theme.of(context).textTheme.display1,
+      style: Theme.of(context).textTheme.headline4,
       decoration: InputDecoration(
         icon: Icon(Icons.attach_money),
         labelText: 'Enter an integer:',
