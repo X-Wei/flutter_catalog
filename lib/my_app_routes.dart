@@ -46,6 +46,7 @@ import 'routes/nav_nav_drawer_header_ex.dart';
 import 'routes/nav_pageselector_ex.dart';
 import 'routes/nav_routes_ex.dart';
 import 'routes/nav_tabs_ex.dart';
+import 'routes/networking_googlebooks_ex.dart';
 import 'routes/networking_hacker_news_ex.dart';
 import 'routes/networking_rest_api_fetch_ex.dart';
 import 'routes/networking_rest_api_send_ex.dart';
@@ -763,6 +764,13 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
           sourceFilePath: 'lib/routes/networking_hacker_news_ex.dart',
           title: 'Hacker News',
           description: 'A full REST API example.',
+          links: {'Hacker News API': 'https://github.com/HackerNews/API'},
+        ),
+        MyRoute(
+          child: RestApiGoogleBooksExample(),
+          sourceFilePath: 'lib/routes/networking_googlebooks_ex.dart',
+          title: 'Google Books',
+          description: 'Another REST example using the Google books seach API.',
           links: {'Hacker News API': 'https://github.com/HackerNews/API'},
         ),
       ]),
