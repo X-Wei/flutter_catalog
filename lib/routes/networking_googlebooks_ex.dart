@@ -41,7 +41,7 @@ class _RestApiGoogleBooksExampleState extends State<RestApiGoogleBooksExample> {
               child: Text('Search'),
               onPressed: _pending
                   ? null
-                  : () => this._search(context, _queryController.text),
+                  : () => this._search(_queryController.text),
             ),
           ],
         ),
@@ -84,7 +84,7 @@ class _RestApiGoogleBooksExampleState extends State<RestApiGoogleBooksExample> {
     }
   }
 
-  Future<void> _search(BuildContext context, String query) async {
+  Future<void> _search(String query) async {
     setState(() => this._pending = true);
     try {
       this._books = await _getBooksList(query);
