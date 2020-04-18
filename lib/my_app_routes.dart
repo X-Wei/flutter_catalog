@@ -10,9 +10,9 @@ import 'routes/about.dart';
 import 'routes/animation_animated_builder_ex.dart';
 import 'routes/animation_animated_container_ex.dart';
 import 'routes/animation_animated_widget_ex.dart';
-import 'routes/animation_basic_ex.dart';
 import 'routes/animation_hero_ex.dart';
 import 'routes/animation_lottie_ex.dart';
+import 'routes/animation_low_level_ex.dart';
 import 'routes/animation_opacity_ex.dart';
 import 'routes/appbar_backdrop_ex.dart';
 import 'routes/appbar_basic_appbar_ex.dart';
@@ -458,25 +458,10 @@ const kMyAppRoutesBasic = <MyRouteGroup>[
         },
       ),
     ],
-  ),
-];
-
-const kMyAppRoutesAdvanced = <MyRouteGroup>[
-  MyRouteGroup(
-    groupName: 'Animation',
+  ),MyRouteGroup(
+    groupName: 'Animation(basic)',
     icon: Icon(Icons.movie_filter),
     routes: <MyRoute>[
-      MyRoute(
-        child: OpacityExample(),
-        sourceFilePath: 'lib/routes/animation_opacity_ex.dart',
-        title: 'Opacity',
-        description: 'Making a widget transparent/visible.',
-        links: {
-          'Doc': 'https://docs.flutter.io/flutter/widgets/Opacity-class.html',
-          'Youtube video':
-              'https://www.youtube.com/watch?v=9hltevOHQBw&index=5&list=PLOU2XLYxmsIL0pH0zWe_ZOHgGhZ7UasUE',
-        },
-      ),
       MyRoute(
         child: HeroExample(),
         sourceFilePath: 'lib/routes/animation_hero_ex.dart',
@@ -489,9 +474,41 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
         },
       ),
       MyRoute(
-        child: BasicAnimationExample(),
-        sourceFilePath: 'lib/routes/animation_basic_ex.dart',
-        title: 'Basic animation',
+        child: OpacityExample(),
+        sourceFilePath: 'lib/routes/animation_opacity_ex.dart',
+        title: 'Opacity',
+        description: 'Making a widget transparent/visible.',
+        links: {
+          'Doc': 'https://docs.flutter.io/flutter/widgets/Opacity-class.html',
+          'Youtube video':
+              'https://www.youtube.com/watch?v=9hltevOHQBw&index=5&list=PLOU2XLYxmsIL0pH0zWe_ZOHgGhZ7UasUE',
+        },
+      ),
+      MyRoute(
+        child: AnimatedContainerExample(),
+        sourceFilePath: 'lib/routes/animation_animated_container_ex.dart',
+        title: 'AnimatedContainer',
+        description:
+            'Implicit animation when container property changes, without controllers.',
+        links: {
+          'Cookbook':
+              'https://flutter.dev/docs/cookbook/animation/animated-container',
+          'Widget of the Week (YouTube)': 'https://youtu.be/yI-8QHpGIP4',
+        },
+      ),
+    ],
+  ),
+];
+
+const kMyAppRoutesAdvanced = <MyRouteGroup>[
+  MyRouteGroup(
+    groupName: 'Animation(advanced)',
+    icon: Icon(Icons.movie_filter),
+    routes: <MyRoute>[
+      MyRoute(
+        child: LowLevelAnimationExample(),
+        sourceFilePath: 'lib/routes/animation_low_level_ex.dart',
+        title: 'Low level animation',
         description:
             'Implement animation using low-level Animations, AnimationControllers and Tweens.',
         links: {
@@ -520,18 +537,6 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
           'Tutorial':
               'https://flutter.dev/docs/development/ui/animations/tutorial#refactoring-with-animatedbuilder',
           'Widget of the Week (YouTube)': 'https://youtu.be/N-RiyZlv8v8',
-        },
-      ),
-      MyRoute(
-        child: AnimatedContainerExample(),
-        sourceFilePath: 'lib/routes/animation_animated_container_ex.dart',
-        title: 'AnimatedContainer',
-        description:
-            'Implicit animation when container property changes, without controllers.',
-        links: {
-          'Cookbook':
-              'https://flutter.dev/docs/cookbook/animation/animated-container',
-          'Widget of the Week (YouTube)': 'https://youtu.be/yI-8QHpGIP4',
         },
       ),
       MyRoute(

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-class BasicAnimationExample extends StatefulWidget {
-  const BasicAnimationExample({Key key}) : super(key: key);
+class LowLevelAnimationExample extends StatefulWidget {
+  const LowLevelAnimationExample({Key key}) : super(key: key);
 
   @override
-  _BasicAnimationExampleState createState() => _BasicAnimationExampleState();
+  _LowLevelAnimationExampleState createState() => _LowLevelAnimationExampleState();
 }
 
 // Define the State as with SingleTickerProviderStateMixin to be able to set
 // `vsync=this`.
-class _BasicAnimationExampleState extends State<BasicAnimationExample>
+class _LowLevelAnimationExampleState extends State<LowLevelAnimationExample>
     with SingleTickerProviderStateMixin {
   // An Animation object knows the current state of an animation (for example,
   // whether it’s started, stopped, or moving forward or in reverse), but
