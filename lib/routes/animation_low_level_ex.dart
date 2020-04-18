@@ -4,7 +4,8 @@ class LowLevelAnimationExample extends StatefulWidget {
   const LowLevelAnimationExample({Key key}) : super(key: key);
 
   @override
-  _LowLevelAnimationExampleState createState() => _LowLevelAnimationExampleState();
+  _LowLevelAnimationExampleState createState() =>
+      _LowLevelAnimationExampleState();
 }
 
 // Define the State as with SingleTickerProviderStateMixin to be able to set

@@ -452,13 +452,11 @@ const kMyAppRoutesBasic = <MyRouteGroup>[
         sourceFilePath: 'lib/routes/nav_draggable_scrollable_sheet_ex.dart',
         title: 'DraggableScrollableSheet',
         description: 'Scrollable sheet similar to Google Maps.',
-        links: {
-          'Youtube':
-              'https://www.youtube.com/watch?v=Hgw819mL_78'
-        },
+        links: {'Youtube': 'https://www.youtube.com/watch?v=Hgw819mL_78'},
       ),
     ],
-  ),MyRouteGroup(
+  ),
+  MyRouteGroup(
     groupName: 'Animation(basic)',
     icon: Icon(Icons.movie_filter),
     routes: <MyRoute>[
