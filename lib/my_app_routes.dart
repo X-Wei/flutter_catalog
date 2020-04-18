@@ -12,6 +12,7 @@ import 'routes/animation_animated_container_ex.dart';
 import 'routes/animation_animated_widget_ex.dart';
 import 'routes/animation_basic_ex.dart';
 import 'routes/animation_hero_ex.dart';
+import 'routes/animation_lottie_ex.dart';
 import 'routes/animation_opacity_ex.dart';
 import 'routes/appbar_backdrop_ex.dart';
 import 'routes/appbar_basic_appbar_ex.dart';
@@ -530,6 +531,16 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
           'Cookbook':
               'https://flutter.dev/docs/cookbook/animation/animated-container',
           'Widget of the Week (YouTube)': 'https://youtu.be/yI-8QHpGIP4',
+        },
+      ),
+      MyRoute(
+        child: LottieExample(),
+        sourceFilePath: 'lib/routes/animation_lottie_ex.dart',
+        title: 'Lottie',
+        description: 'Easily add high-quality animation.',
+        links: {
+          'Lottie': 'https://airbnb.design/lottie/',
+          'Pub package': 'https://pub.dev/packages/lottie',
         },
       ),
     ],
