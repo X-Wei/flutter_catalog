@@ -658,7 +658,7 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
       MyRoute(
         child: BlocExample(),
         sourceFilePath: 'lib/routes/state_bloc_ex.dart',
-        title: 'BLoC pattern',
+        title: 'Vanilla BLoC pattern',
         description:
             'Combining StreamBuilder, StreamController, and InheritedWidget.',
         links: {
@@ -669,19 +669,21 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
       MyRoute(
         child: BlocLibExample(),
         sourceFilePath: 'lib/routes/state_bloc_lib_ex.dart',
-        title: 'Easier BLoC pattern',
+        title: 'Flutter bloc',
         description: 'Simpler BLoC implementation with flutter_bloc package.',
         links: {
-          'Video by Reso Coder': 'https://youtu.be/LeLrsnHeCZY',
+          'Flutter Europe talk': 'https://youtu.be/knMvKPKBzGE',
           'flutter_bloc doc': 'https://felangel.github.io/bloc/#/coreconcepts',
+          'Video by Reso Coder': 'https://youtu.be/LeLrsnHeCZY',
         },
       ),
       MyRoute(
         child: ProviderExample(),
         sourceFilePath: 'lib/routes/state_provider_ex.dart',
         title: 'Provider',
-        description: 'Officially recommended state management solution.',
+        description: 'Officially recommended.',
         links: {
+          'Flutter Europe talk': 'https://youtu.be/BulIREvHBWg',
           "I/O'19 talk": 'https://www.youtube.com/watch?v=d_m5csmrf7I',
           'pub.dev': 'https://pub.dev/packages/provider',
         },

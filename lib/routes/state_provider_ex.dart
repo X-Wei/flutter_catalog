@@ -14,8 +14,8 @@ class ProviderExample extends StatelessWidget {
           create: (BuildContext context) =>
               Stream.periodic(Duration(milliseconds: 1000), (i) => i),
         ),
-        ChangeNotifierProvider<_MyCounterState>.value(
-          value: _MyCounterState(),
+        ChangeNotifierProvider<_MyCounterState>(
+          create: (_) => _MyCounterState(),
         ),
       ],
       child: Padding(
@@ -90,8 +90,11 @@ class _AppRootWidget extends StatelessWidget {
 class _CounterAndButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // Way 1 to get state up the tree: Provider.of.
-    final state = Provider.of<_MyCounterState>(context);
+    // Way 1 to get state up the tree: `Provider.of<T>()`.
+    // Note: since v4.1, we can use extension methods which is nicer:
+    //   - context.watch<T>() -- equivalent to Provider.of<T>()
+    //   - context.read<T>()  -- equivalent to Provider.of<T>(listen: false)
+    final state = context.read<_MyCounterState>();
     return Card(
       margin: EdgeInsets.all(4.0).copyWith(top: 32.0, bottom: 32.0),
       color: Colors.white70,
@@ -100,7 +103,7 @@ class _CounterAndButton extends StatelessWidget {
           Text('(child widget)'),
           Text(
             '${state.counterValue}',
-            style: Theme.of(context).textTheme.display1,
+            style: Theme.of(context).textTheme.headline4,
           ),
           ButtonBar(
             children: <Widget>[
