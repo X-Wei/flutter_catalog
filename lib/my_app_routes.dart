@@ -19,6 +19,9 @@ import 'routes/appbar_basic_appbar_ex.dart';
 import 'routes/appbar_bottom_appbar_ex.dart';
 import 'routes/appbar_search_ex.dart';
 import 'routes/appbar_sliver_appbar_ex.dart';
+import 'routes/async_futurebuilder_ex.dart';
+import 'routes/async_streambuilder_ex.dart';
+import 'routes/async_streamcontroller_ex.dart';
 import 'routes/charts_pie_chart_ex.dart';
 import 'routes/charts_time_series_ex.dart';
 import 'routes/firebase_chatroom_ex.dart';
@@ -64,8 +67,6 @@ import 'routes/state_bloc_lib_ex.dart';
 import 'routes/state_inherited_widget_ex.dart';
 import 'routes/state_provider_ex.dart';
 import 'routes/state_scoped_model_ex.dart';
-import 'routes/state_streambuilder_ex.dart';
-import 'routes/state_streamcontroller_ex.dart';
 import 'routes/widgets_buttons_ex.dart';
 import 'routes/widgets_card_ex.dart';
 import 'routes/widgets_dropdown_button_ex.dart';
@@ -457,6 +458,45 @@ const kMyAppRoutesBasic = <MyRouteGroup>[
     ],
   ),
   MyRouteGroup(
+    groupName: 'Async',
+    icon: Icon(Icons.timer),
+    routes: <MyRoute>[
+      MyRoute(
+        child: FutureBuilderExample(),
+        sourceFilePath: 'lib/routes/async_futurebuilder_ex.dart',
+        title: 'FutureBuilder',
+        links: {
+          'Video on dart futures': 'https://youtu.be/OTS-ap9_aXc',
+          'Doc':
+              'https://api.flutter.dev/flutter/widgets/FutureBuilder-class.html',
+        },
+      ),
+      MyRoute(
+        child: StreamBuilderExample(),
+        sourceFilePath: 'lib/routes/async_streambuilder_ex.dart',
+        title: 'StreamBuilder (timer app)',
+        description: 'Update UI according to the latest stream value.',
+        links: {
+          'Video on dart streams': 'https://youtu.be/nQBpOIHE4eE',
+          'Doc':
+              'https://docs.flutter.io/flutter/widgets/StreamBuilder-class.html',
+          'Youtube': 'https://www.youtube.com/watch?v=MkKEWHfy99Y',
+        },
+      ),
+      MyRoute(
+        child: StreamControllerExample(),
+        sourceFilePath: 'lib/routes/async_streamcontroller_ex.dart',
+        title: 'StreamController',
+        description:
+            'Receive data from sink and output at stream, two StreamControllers can make a "Bloc".',
+        links: {
+          'Doc':
+              'https://api.dartlang.org/stable/2.1.1/dart-async/StreamController-class.html',
+        },
+      ),
+    ],
+  ),
+  MyRouteGroup(
     groupName: 'Animation(basic)',
     icon: Icon(Icons.movie_filter),
     routes: <MyRoute>[
@@ -611,28 +651,6 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
     groupName: 'State Management',
     icon: Icon(Icons.developer_mode),
     routes: <MyRoute>[
-      MyRoute(
-        child: StreamBuilderExample(),
-        sourceFilePath: 'lib/routes/state_streambuilder_ex.dart',
-        title: 'StreamBuilder (timer app)',
-        description: 'Update UI according to the latest stream value.',
-        links: {
-          'Doc':
-              'https://docs.flutter.io/flutter/widgets/StreamBuilder-class.html',
-          'Youtube': 'https://www.youtube.com/watch?v=MkKEWHfy99Y',
-        },
-      ),
-      MyRoute(
-        child: StreamControllerExample(),
-        sourceFilePath: 'lib/routes/state_streamcontroller_ex.dart',
-        title: 'StreamController',
-        description:
-            'Receive data from sink and output at stream, two StreamControllers can make a "Bloc".',
-        links: {
-          'Doc':
-              'https://api.dartlang.org/stable/2.1.1/dart-async/StreamController-class.html',
-        },
-      ),
       MyRoute(
         child: InheritedWidgetExample(),
         sourceFilePath: 'lib/routes/state_inherited_widget_ex.dart',
