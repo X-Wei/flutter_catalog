@@ -7,8 +7,9 @@ class BackdropExample extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BackdropScaffold(
-      title: Text('Backdrop demo'),
-      iconPosition: BackdropIconPosition.action,
+      appBar: BackdropAppBar(
+        title: Text('Backdrop demo'),
+      ),
       // Height of front layer when backlayer is shown.
       headerHeight: 120.0,
       frontLayer: Center(
