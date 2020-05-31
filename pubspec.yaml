@@ -47,6 +47,7 @@ dependencies:
   substring_highlight: 0.1.2
   transparent_image: 1.0.0
   url_launcher: 5.4.10
+  video_player: 0.10.11+1
   widget_with_codeview: 1.0.3
 
 dev_dependencies:

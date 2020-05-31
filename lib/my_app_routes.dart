@@ -42,6 +42,7 @@ import 'routes/lists_listview_builder_ex.dart';
 import 'routes/lists_reorderable_ex.dart';
 import 'routes/lists_swipe_to_dismiss_ex.dart';
 import 'routes/multimedia_extended_image_ex.dart';
+import 'routes/multimedia_video_player_ex.dart';
 import 'routes/nav_bottom_navbar_ex.dart';
 import 'routes/nav_bottom_sheet_ex.dart';
 import 'routes/nav_bottom_tabbar_ex.dart';
@@ -606,6 +607,13 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
         title: 'Extended Image',
         description: 'View and edit images easily.',
         links: {'Pub': 'https://pub.dev/packages/extended_image'},
+      ),
+      MyRoute(
+        child: VideoPlayerExample(),
+        sourceFilePath: 'lib/routes/multimedia_video_player_ex.dart',
+        title: 'Video Player',
+        description: 'Video/audio player plugin by the flutter team.',
+        links: {'Pub': 'https://pub.dev/packages/video_player'},
       ),
     ],
   ),
