@@ -1,6 +1,7 @@
 // This file declares routes of this app, in particular it declares the
 // "structure" of the group of example routes, in a const List<Tuple2> object.
 import 'package:flutter/material.dart';
+import 'package:flutter_catalog/routes/multimedia_image_picker_ex.dart';
 
 import 'constants.dart';
 import 'home_page.dart';
@@ -40,6 +41,7 @@ import 'routes/lists_list_tile_ex.dart';
 import 'routes/lists_listview_builder_ex.dart';
 import 'routes/lists_reorderable_ex.dart';
 import 'routes/lists_swipe_to_dismiss_ex.dart';
+import 'routes/multimedia_extended_image_ex.dart';
 import 'routes/nav_bottom_navbar_ex.dart';
 import 'routes/nav_bottom_sheet_ex.dart';
 import 'routes/nav_bottom_tabbar_ex.dart';
@@ -58,7 +60,6 @@ import 'routes/persistence_hive_ex.dart';
 import 'routes/persistence_preference_ex.dart';
 import 'routes/persistence_sembast_ex.dart';
 import 'routes/persistence_sqlite_ex.dart';
-import 'routes/plugins_image_picker_ex.dart';
 import 'routes/plugins_local_auth_ex.dart';
 import 'routes/plugins_markdown_ex.dart';
 import 'routes/plugins_webview_ex.dart';
@@ -590,6 +591,25 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
     ],
   ),
   MyRouteGroup(
+    groupName: 'Multimedia',
+    icon: Icon(Icons.perm_media),
+    routes: <MyRoute>[
+      MyRoute(
+        child: ImagePickerExample(),
+        sourceFilePath: 'lib/routes/multimedia_image_picker_ex.dart',
+        title: 'Image Picker',
+        description: 'Pick image from gallery or from camera.',
+      ),
+      MyRoute(
+        child: ExtendedImageExample(),
+        sourceFilePath: 'lib/routes/multimedia_extended_image_ex.dart',
+        title: 'Extended Image',
+        description: 'View and edit images easily.',
+        links: {'Pub': 'https://pub.dev/packages/extended_image'},
+      ),
+    ],
+  ),
+  MyRouteGroup(
     groupName: 'Persistence',
     icon: Icon(Icons.sd_storage),
     routes: <MyRoute>[
@@ -712,12 +732,6 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
     groupName: 'Plugins',
     icon: Icon(Icons.power),
     routes: <MyRoute>[
-      MyRoute(
-        child: ImagePickerExample(),
-        sourceFilePath: 'lib/routes/plugins_image_picker_ex.dart',
-        title: 'Image Picker',
-        description: 'Pick image from gallery or from camera.',
-      ),
       MyRoute(
         child: WebViewExample(),
         sourceFilePath: 'lib/routes/plugins_webview_ex.dart',
