@@ -5,7 +5,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
 
-import './data/todo_item.dart' show TodoItem, TodoItemAdapter;
+import 'data/todo_item.dart' show TodoItem, TodoItemAdapter;
 
 // We use built_value and hive_generator to make serializable data class.
 /* Content of the "./data/todo_item.dart" file:

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart' as url_launcher;
-import '../constants.dart';
+
+import 'package:flutter_catalog/constants.dart';
 
 // Inspired by the about page in Eajy's flutter demo:
 // https://github.com/Eajy/flutter_demo/blob/master/lib/route/about.dart
