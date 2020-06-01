@@ -22,6 +22,7 @@ class FirebaseMLKitExample extends StatefulWidget {
 class _FirebaseMLKitExampleState extends State<FirebaseMLKitExample> {
   File _imageFile;
   String _mlResult = '<no result>';
+  final _picker = ImagePicker();
 
   Future<bool> _pickImage() async {
     setState(() => this._imageFile = null);
@@ -33,9 +34,9 @@ class _FirebaseMLKitExampleState extends State<FirebaseMLKitExample> {
             leading: Icon(Icons.camera_alt),
             title: Text('Take picture'),
             onTap: () async {
-              final File imageFile =
-                  await ImagePicker.pickImage(source: ImageSource.camera);
-              Navigator.pop(ctx, imageFile);
+              final PickedFile pickedFile =
+                  await _picker.getImage(source: ImageSource.camera);
+              Navigator.pop(ctx, File(pickedFile.path));
             },
           ),
           ListTile(
@@ -43,9 +44,9 @@ class _FirebaseMLKitExampleState extends State<FirebaseMLKitExample> {
             title: Text('Pick from gallery'),
             onTap: () async {
               try {
-                final File imageFile =
-                    await ImagePicker.pickImage(source: ImageSource.gallery);
-                Navigator.pop(ctx, imageFile);
+                final PickedFile pickedFile =
+                    await _picker.getImage(source: ImageSource.gallery);
+                Navigator.pop(ctx, File(pickedFile.path));
               } catch (e) {
                 print(e);
                 Navigator.pop(ctx, null);

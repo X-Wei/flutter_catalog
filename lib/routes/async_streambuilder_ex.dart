@@ -59,7 +59,7 @@ class StreamBuilderExampleState extends State<StreamBuilderExample> {
       children: <Widget>[
         Text(
           '$_timerValue',
-          style: Theme.of(context).textTheme.display1,
+          style: Theme.of(context).textTheme.headline4,
         ),
         ButtonBar(
           mainAxisSize: MainAxisSize.min,

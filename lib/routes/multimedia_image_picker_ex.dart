@@ -12,6 +12,7 @@ class ImagePickerExample extends StatefulWidget {
 
 class _ImagePickerExampleState extends State<ImagePickerExample> {
   File _imageFile;
+  final _picker = ImagePicker();
 
   @override
   Widget build(BuildContext context) {
@@ -37,14 +38,14 @@ class _ImagePickerExampleState extends State<ImagePickerExample> {
   }
 
   Future<Null> _pickImageFromGallery() async {
-    final File imageFile =
-        await ImagePicker.pickImage(source: ImageSource.gallery);
-    setState(() => this._imageFile = imageFile);
+    final PickedFile pickedFile =
+        await _picker.getImage(source: ImageSource.gallery);
+    setState(() => this._imageFile = File(pickedFile.path));
   }
 
   Future<Null> _pickImageFromCamera() async {
-    final File imageFile =
-        await ImagePicker.pickImage(source: ImageSource.camera);
-    setState(() => this._imageFile = imageFile);
+    final PickedFile pickedFile =
+        await _picker.getImage(source: ImageSource.camera);
+    setState(() => this._imageFile = File(pickedFile.path));
   }
 }
