@@ -1,6 +1,7 @@
 // This file declares routes of this app, in particular it declares the
 // "structure" of the group of example routes, in a const List<Tuple2> object.
 import 'package:flutter/material.dart';
+import 'package:flutter_catalog/routes/multimedia_image_picker_ex.dart';
 
 import 'constants.dart';
 import 'home_page.dart';
@@ -19,6 +20,9 @@ import 'routes/appbar_basic_appbar_ex.dart';
 import 'routes/appbar_bottom_appbar_ex.dart';
 import 'routes/appbar_search_ex.dart';
 import 'routes/appbar_sliver_appbar_ex.dart';
+import 'routes/async_futurebuilder_ex.dart';
+import 'routes/async_streambuilder_ex.dart';
+import 'routes/async_streamcontroller_ex.dart';
 import 'routes/charts_pie_chart_ex.dart';
 import 'routes/charts_time_series_ex.dart';
 import 'routes/firebase_chatroom_ex.dart';
@@ -37,6 +41,8 @@ import 'routes/lists_list_tile_ex.dart';
 import 'routes/lists_listview_builder_ex.dart';
 import 'routes/lists_reorderable_ex.dart';
 import 'routes/lists_swipe_to_dismiss_ex.dart';
+import 'routes/multimedia_extended_image_ex.dart';
+import 'routes/multimedia_video_player_ex.dart';
 import 'routes/nav_bottom_navbar_ex.dart';
 import 'routes/nav_bottom_sheet_ex.dart';
 import 'routes/nav_bottom_tabbar_ex.dart';
@@ -55,7 +61,6 @@ import 'routes/persistence_hive_ex.dart';
 import 'routes/persistence_preference_ex.dart';
 import 'routes/persistence_sembast_ex.dart';
 import 'routes/persistence_sqlite_ex.dart';
-import 'routes/plugins_image_picker_ex.dart';
 import 'routes/plugins_local_auth_ex.dart';
 import 'routes/plugins_markdown_ex.dart';
 import 'routes/plugins_webview_ex.dart';
@@ -64,8 +69,6 @@ import 'routes/state_bloc_lib_ex.dart';
 import 'routes/state_inherited_widget_ex.dart';
 import 'routes/state_provider_ex.dart';
 import 'routes/state_scoped_model_ex.dart';
-import 'routes/state_streambuilder_ex.dart';
-import 'routes/state_streamcontroller_ex.dart';
 import 'routes/widgets_buttons_ex.dart';
 import 'routes/widgets_card_ex.dart';
 import 'routes/widgets_dropdown_button_ex.dart';
@@ -457,6 +460,45 @@ const kMyAppRoutesBasic = <MyRouteGroup>[
     ],
   ),
   MyRouteGroup(
+    groupName: 'Async',
+    icon: Icon(Icons.timer),
+    routes: <MyRoute>[
+      MyRoute(
+        child: FutureBuilderExample(),
+        sourceFilePath: 'lib/routes/async_futurebuilder_ex.dart',
+        title: 'FutureBuilder',
+        links: {
+          'Video on dart futures': 'https://youtu.be/OTS-ap9_aXc',
+          'Doc':
+              'https://api.flutter.dev/flutter/widgets/FutureBuilder-class.html',
+        },
+      ),
+      MyRoute(
+        child: StreamBuilderExample(),
+        sourceFilePath: 'lib/routes/async_streambuilder_ex.dart',
+        title: 'StreamBuilder (timer app)',
+        description: 'Update UI according to the latest stream value.',
+        links: {
+          'Video on dart streams': 'https://youtu.be/nQBpOIHE4eE',
+          'Doc':
+              'https://docs.flutter.io/flutter/widgets/StreamBuilder-class.html',
+          'Youtube': 'https://www.youtube.com/watch?v=MkKEWHfy99Y',
+        },
+      ),
+      MyRoute(
+        child: StreamControllerExample(),
+        sourceFilePath: 'lib/routes/async_streamcontroller_ex.dart',
+        title: 'StreamController',
+        description:
+            'Receive data from sink and output at stream, two StreamControllers can make a "Bloc".',
+        links: {
+          'Doc':
+              'https://api.dartlang.org/stable/2.1.1/dart-async/StreamController-class.html',
+        },
+      ),
+    ],
+  ),
+  MyRouteGroup(
     groupName: 'Animation(basic)',
     icon: Icon(Icons.movie_filter),
     routes: <MyRoute>[
@@ -550,6 +592,32 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
     ],
   ),
   MyRouteGroup(
+    groupName: 'Multimedia',
+    icon: Icon(Icons.perm_media),
+    routes: <MyRoute>[
+      MyRoute(
+        child: ImagePickerExample(),
+        sourceFilePath: 'lib/routes/multimedia_image_picker_ex.dart',
+        title: 'Image Picker',
+        description: 'Pick image from gallery or from camera.',
+      ),
+      MyRoute(
+        child: ExtendedImageExample(),
+        sourceFilePath: 'lib/routes/multimedia_extended_image_ex.dart',
+        title: 'Extended Image',
+        description: 'View and edit images easily.',
+        links: {'Pub': 'https://pub.dev/packages/extended_image'},
+      ),
+      MyRoute(
+        child: VideoPlayerExample(),
+        sourceFilePath: 'lib/routes/multimedia_video_player_ex.dart',
+        title: 'Video Player',
+        description: 'Video/audio player plugin by the flutter team.',
+        links: {'Pub': 'https://pub.dev/packages/video_player'},
+      ),
+    ],
+  ),
+  MyRouteGroup(
     groupName: 'Persistence',
     icon: Icon(Icons.sd_storage),
     routes: <MyRoute>[
@@ -612,28 +680,6 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
     icon: Icon(Icons.developer_mode),
     routes: <MyRoute>[
       MyRoute(
-        child: StreamBuilderExample(),
-        sourceFilePath: 'lib/routes/state_streambuilder_ex.dart',
-        title: 'StreamBuilder (timer app)',
-        description: 'Update UI according to the latest stream value.',
-        links: {
-          'Doc':
-              'https://docs.flutter.io/flutter/widgets/StreamBuilder-class.html',
-          'Youtube': 'https://www.youtube.com/watch?v=MkKEWHfy99Y',
-        },
-      ),
-      MyRoute(
-        child: StreamControllerExample(),
-        sourceFilePath: 'lib/routes/state_streamcontroller_ex.dart',
-        title: 'StreamController',
-        description:
-            'Receive data from sink and output at stream, two StreamControllers can make a "Bloc".',
-        links: {
-          'Doc':
-              'https://api.dartlang.org/stable/2.1.1/dart-async/StreamController-class.html',
-        },
-      ),
-      MyRoute(
         child: InheritedWidgetExample(),
         sourceFilePath: 'lib/routes/state_inherited_widget_ex.dart',
         title: 'InheritedWidget',
@@ -658,7 +704,7 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
       MyRoute(
         child: BlocExample(),
         sourceFilePath: 'lib/routes/state_bloc_ex.dart',
-        title: 'BLoC pattern',
+        title: 'Vanilla BLoC pattern',
         description:
             'Combining StreamBuilder, StreamController, and InheritedWidget.',
         links: {
@@ -669,19 +715,21 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
       MyRoute(
         child: BlocLibExample(),
         sourceFilePath: 'lib/routes/state_bloc_lib_ex.dart',
-        title: 'Easier BLoC pattern',
+        title: 'Flutter bloc',
         description: 'Simpler BLoC implementation with flutter_bloc package.',
         links: {
-          'Video by Reso Coder': 'https://youtu.be/LeLrsnHeCZY',
+          'Flutter Europe talk': 'https://youtu.be/knMvKPKBzGE',
           'flutter_bloc doc': 'https://felangel.github.io/bloc/#/coreconcepts',
+          'Video by Reso Coder': 'https://youtu.be/LeLrsnHeCZY',
         },
       ),
       MyRoute(
         child: ProviderExample(),
         sourceFilePath: 'lib/routes/state_provider_ex.dart',
         title: 'Provider',
-        description: 'Officially recommended state management solution.',
+        description: 'Officially recommended.',
         links: {
+          'Flutter Europe talk': 'https://youtu.be/BulIREvHBWg',
           "I/O'19 talk": 'https://www.youtube.com/watch?v=d_m5csmrf7I',
           'pub.dev': 'https://pub.dev/packages/provider',
         },
@@ -692,12 +740,6 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
     groupName: 'Plugins',
     icon: Icon(Icons.power),
     routes: <MyRoute>[
-      MyRoute(
-        child: ImagePickerExample(),
-        sourceFilePath: 'lib/routes/plugins_image_picker_ex.dart',
-        title: 'Image Picker',
-        description: 'Pick image from gallery or from camera.',
-      ),
       MyRoute(
         child: WebViewExample(),
         sourceFilePath: 'lib/routes/plugins_webview_ex.dart',

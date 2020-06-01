@@ -47,13 +47,16 @@ class MyRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BackdropScaffold(
-      title: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: Text(this.title),
+      appBar: BackdropAppBar(
+        title: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Text(this.title),
+        ),
+        actions: _getAppbarActions(context),
+        automaticallyImplyLeading: false,
       ),
-      actions: _getAppbarActions(context),
-      iconPosition: BackdropIconPosition.action,
       headerHeight: _kFrontLayerMinHeight,
+      frontLayerBorderRadius: BorderRadius.zero,
       frontLayer: Builder(
         builder: (BuildContext context) =>
             routeName == Navigator.defaultRouteName
@@ -71,6 +74,7 @@ class MyRoute extends StatelessWidget {
   List<Widget> _getAppbarActions(BuildContext context) {
     final settings = Provider.of<MyAppSettings>(context);
     return <Widget>[
+      BackdropToggleButton(),
       if (this.routeName == Navigator.defaultRouteName)
         IconButton(
           icon: Icon(Icons.search),

@@ -14,6 +14,9 @@
 
 An app showcasing Flutter components, with side-by-side source code view.
 
+**🚀🚀 New: Flutter Catalog is now available in the browser! Check it out [here](https://x-wei.github.io/flutter_catalog/).**
+And note there are some [limitations](https://github.com/X-Wei/flutter_catalog/issues/31#issuecomment-615964713) to the web variant.
+
 ## Screenshots
 
 <img src="screenshots/Screenshot_1546722517.png" width="240px" />
