@@ -11,6 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   animated_floatactionbuttons: 0.1.0
+  animations: 1.1.0
   async: ^2.4.0
   backdrop: 0.3.2
   cached_network_image: 2.2.0+1

@@ -11,6 +11,7 @@ import 'routes/about.dart';
 import 'routes/animation_animated_builder_ex.dart';
 import 'routes/animation_animated_container_ex.dart';
 import 'routes/animation_animated_widget_ex.dart';
+import 'routes/animation_animations_pkg_ex.dart';
 import 'routes/animation_hero_ex.dart';
 import 'routes/animation_lottie_ex.dart';
 import 'routes/animation_low_level_ex.dart';
@@ -499,7 +500,7 @@ const kMyAppRoutesBasic = <MyRouteGroup>[
     ],
   ),
   MyRouteGroup(
-    groupName: 'Animation(basic)',
+    groupName: 'Animation (basics)',
     icon: Icon(Icons.movie_filter),
     routes: <MyRoute>[
       MyRoute(
@@ -536,13 +537,23 @@ const kMyAppRoutesBasic = <MyRouteGroup>[
           'Widget of the Week (YouTube)': 'https://youtu.be/yI-8QHpGIP4',
         },
       ),
+      MyRoute(
+        child: AnimationsPackageExample(),
+        sourceFilePath: 'lib/routes/animation_animations_pkg_ex.dart',
+        title: 'Animations package',
+        description: 'Fancy pre-built animations provided by Flutter team.',
+        links: {
+          'Tutorial by Robert Brunhage': 'https://youtu.be/vWBWfTgUaRI',
+          'pub.dev': 'https://pub.dev/packages/animations',
+        },
+      ),
     ],
   ),
 ];
 
 const kMyAppRoutesAdvanced = <MyRouteGroup>[
   MyRouteGroup(
-    groupName: 'Animation(advanced)',
+    groupName: 'Animation (advanced)',
     icon: Icon(Icons.movie_filter),
     routes: <MyRoute>[
       MyRoute(
