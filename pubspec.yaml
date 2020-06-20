@@ -39,7 +39,7 @@ dependencies:
   lottie: ^0.3.3
   package_info: 0.4.0+18
   path_provider: 1.6.9
-  path: 1.6.4
+  path: 1.7.0
   provider: 4.1.2
   scoped_model: 1.0.1
   sembast: 2.4.4+1
@@ -47,7 +47,7 @@ dependencies:
   sqflite: 1.3.0+2
   substring_highlight: 0.1.2
   transparent_image: 1.0.0
-  url_launcher: 5.4.10
+  url_launcher: 5.4.11
   video_player: 0.10.11+1
   widget_with_codeview: 1.0.3
 
@@ -58,8 +58,9 @@ dev_dependencies:
   build_runner: 1.10.0
 
 dependency_overrides:
-  dartx: ^0.3.0
+  dartx: ^0.4.2
   characters: ^0.5.0
+  path: ^1.6.4 # cf. https://github.com/hivedb/hive/issues/285#issuecomment-633815558
 
 # The following section is specific to Flutter.
 flutter:
