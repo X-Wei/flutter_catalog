@@ -1,4 +1,4 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +18,7 @@ class FirebaseChatroomExample extends StatefulWidget {
 }
 
 class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
-  FirebaseUser _user;
+  firebase_auth.User _user;
   DatabaseReference _firebaseMsgDbRef;
 
   final TextEditingController _textController = TextEditingController();
@@ -31,11 +31,7 @@ class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
     this._firebaseMsgDbRef = FirebaseDatabase.instance
         .reference()
         .child('messages/${now.year}/${now.month}/${now.day}');
-    FirebaseAuth.instance.currentUser().then(
-          (user) => setState(() {
-            this._user = user;
-          }),
-        );
+    this._user = firebase_auth.FirebaseAuth.instance.currentUser;
   }
 
   @override
@@ -190,7 +186,7 @@ class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
   Future<Null> _onTextMsgSubmitted(String text) async {
     // Make sure _user is not null.
     if (this._user == null) {
-      this._user = await FirebaseAuth.instance.currentUser();
+      this._user = firebase_auth.FirebaseAuth.instance.currentUser;
     }
     if (this._user == null) {
       showDialog(
@@ -219,7 +215,7 @@ class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
     _firebaseMsgDbRef.push().set({
       'senderId': this._user.uid,
       'senderName': this._user.displayName,
-      'senderPhotoUrl': this._user.photoUrl,
+      'senderPhotoUrl': this._user.photoURL,
       'text': text,
       'timestamp': DateTime.now().millisecondsSinceEpoch,
     });

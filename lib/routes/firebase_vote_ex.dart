@@ -35,12 +35,14 @@ class _FirebaseVoteExampleState extends State<FirebaseVoteExample> {
     return Center(
       child: StreamBuilder<QuerySnapshot>(
         // In firestore console I added a "language_voting" collection.
-        stream: Firestore.instance.collection('language_voting').snapshots(),
+        stream: FirebaseFirestore.instance
+            .collection('language_voting')
+            .snapshots(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
             return LinearProgressIndicator();
           } else {
-            final List<_LangaugeVotingRecord> records = snapshot.data.documents
+            final List<_LangaugeVotingRecord> records = snapshot.data.docs
                 .map((snapshot) => _LangaugeVotingRecord.fromSnapshot(snapshot))
                 .toList()
                   ..sort((record1, record2) => record2.votes - record1.votes);
@@ -107,7 +109,7 @@ class _FirebaseVoteExampleState extends State<FirebaseVoteExample> {
       final lang = record.language;
       int deltaVotes = this._isVoted(lang) ? -1 : 1;
       // Update votes via transactions are atomic: no race condition.
-      await Firestore.instance.runTransaction(
+      await FirebaseFirestore.instance.runTransaction(
         (transaction) async {
           try {
             final freshSnapshot =
@@ -115,7 +117,7 @@ class _FirebaseVoteExampleState extends State<FirebaseVoteExample> {
             // Get the most fresh record.
             final freshRecord =
                 _LangaugeVotingRecord.fromSnapshot(freshSnapshot);
-            await transaction.update(record.firestoreDocReference,
+            transaction.update(record.firestoreDocReference,
                 {'votes': freshRecord.votes + deltaVotes});
           } catch (e) {
             throw e;
@@ -150,7 +152,8 @@ class _LangaugeVotingRecord {
         votes = map['votes'];
 
   _LangaugeVotingRecord.fromSnapshot(DocumentSnapshot snapshot)
-      : this.fromMap(snapshot.data, firestoreDocReference: snapshot.reference);
+      : this.fromMap(snapshot.data(),
+            firestoreDocReference: snapshot.reference);
 
   @override
   String toString() => "Record<$language:$votes>";
