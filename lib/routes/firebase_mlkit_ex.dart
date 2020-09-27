@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:firebase_ml_vision/firebase_ml_vision.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:transparent_image/transparent_image.dart'
     show kTransparentImage;
@@ -264,7 +265,7 @@ class _FirebaseMLKitExampleState extends State<FirebaseMLKitExample> {
           scrollDirection: Axis.horizontal,
           child: Text(
             this._mlResult,
-            style: TextStyle(fontFamily: 'monospace'),
+            style: GoogleFonts.droidSansMono(),
           ),
         ),
       ],

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:markdown/markdown.dart' as md;
 import 'package:syntax_highlighter/syntax_highlighter.dart'
     show SyntaxHighlighterStyle, DartSyntaxHighlighter;
@@ -9,13 +10,16 @@ const String _markdownSrc = '''
 # Markdown Example
 Markdown allows you to easily include formatted text, images, and even formatted
  Dart code in your app.
+
 ## Styling
 Style text as _italic_, __bold__, or `inline code`.
 - Use bulleted lists
 - To better clarify
 - Your points
+
 ## Links
 You can use [hyperlinks](https://flutter.dev) in markdown
+
 ## Images
 You can include images:
 ![Flutter logo](https://upload.wikimedia.org/wikipedia/commons/1/17/Google-flutter-logo.png)
@@ -90,7 +94,7 @@ class _MyDartSyntaxHighligher extends SyntaxHighlighter {
   @override
   TextSpan format(String source) {
     return TextSpan(
-      style: const TextStyle(fontFamily: 'monospace', fontSize: 12),
+      style: GoogleFonts.droidSansMono(),
       children: <TextSpan>[highlighter.format(source)],
     );
   }

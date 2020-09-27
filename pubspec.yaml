@@ -30,6 +30,7 @@ dependencies:
   flutter_markdown: 0.4.4
   flutter_webview_plugin: 0.3.11
   fluttertoast: 7.1.1
+  google_fonts: 1.1.0
   google_sign_in: 4.5.4
   hive_flutter: 0.3.1
   hive: 1.4.4
@@ -72,11 +73,7 @@ flutter:
     # assets. Note: this doesn't work with subfolders. 
     # c.f. https://github.com/flutter/flutter/issues/4890#issuecomment-407327749
     - lib/routes/
+    - lib/routes/data/
     - res/images/
     - res/lottie/
     - packages/flutter_gallery_assets/animated_images/animated_flutter_stickers.webp
-  
-  fonts:
-    - family: monospace
-      fonts:
-        - asset: res/DroidSansMono.ttf
