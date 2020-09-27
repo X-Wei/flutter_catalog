@@ -113,9 +113,8 @@ class _FirebaseLoginExampleState extends State<FirebaseLoginExample> {
     if (curUser != null && curUser.isAnonymous) {
       return curUser;
     }
-    _auth.signOut();
     final anonyUser = (await _auth.signInAnonymously()).user;
-    anonyUser.updateProfile(
+    await anonyUser.updateProfile(
         displayName: '${anonyUser.uid.substring(0, 5)}_Guest');
     await anonyUser.reload();
     // Have to re-call `currentUser()` to make `updateProfile` work.
@@ -153,7 +152,6 @@ class _FirebaseLoginExampleState extends State<FirebaseLoginExample> {
               ListTile(title: Text('User id: ${user.uid}')),
               ListTile(title: Text('Display name: ${user.displayName}')),
               ListTile(title: Text('Anonymous: ${user.isAnonymous}')),
-              ListTile(title: Text('providerData: ${user.providerData}')),
               ListTile(title: Text('Email: ${user.email}')),
               ListTile(
                 title: Text('Profile photo: '),
