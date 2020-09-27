@@ -59,7 +59,6 @@ dev_dependencies:
 
 dependency_overrides:
   dartx: ^0.5.0
-  characters: ^0.5.0
   path: ^1.6.4 # cf. https://github.com/hivedb/hive/issues/285#issuecomment-633815558
 
 # The following section is specific to Flutter.
