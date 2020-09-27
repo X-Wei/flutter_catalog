@@ -149,6 +149,7 @@ class _FirebaseLoginExampleState extends State<FirebaseLoginExample> {
           ),
           body: ListView(
             children: <Widget>[
+              ListTile(title: Text('User: $user')),
               ListTile(title: Text('User id: ${user.uid}')),
               ListTile(title: Text('Display name: ${user.displayName}')),
               ListTile(title: Text('Anonymous: ${user.isAnonymous}')),
