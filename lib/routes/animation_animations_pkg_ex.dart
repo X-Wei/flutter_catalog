@@ -112,11 +112,11 @@ class __PageTransitionSwitcherExState extends State<_PageTransitionSwitcherEx> {
   static const _btmNavbarItems = <BottomNavigationBarItem>[
     BottomNavigationBarItem(
       icon: Icon(Icons.home),
-      title: Text('Tab1'),
+      label: 'Tab1',
     ),
     BottomNavigationBarItem(
       icon: Icon(Icons.business),
-      title: Text('Tab2'),
+      label: 'Tab2',
     ),
   ];
 

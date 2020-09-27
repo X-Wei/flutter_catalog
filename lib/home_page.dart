@@ -19,17 +19,17 @@ class _MyHomePageState extends State<MyHomePage> {
     BottomNavigationBarItem(
       backgroundColor: Colors.blue,
       icon: Icon(Icons.library_books),
-      title: Text('Basics'),
+      label: 'Basics',
     ),
     BottomNavigationBarItem(
       backgroundColor: Colors.blueAccent,
       icon: Icon(Icons.insert_chart),
-      title: Text('Advanced'),
+      label: 'Advanced',
     ),
     BottomNavigationBarItem(
       backgroundColor: Colors.indigo,
       icon: Icon(Icons.star),
-      title: Text('Bookmarks'),
+      label: 'Bookmarks',
     ),
   ];
 
@@ -73,8 +73,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
   ListTile _myRouteToListTile(MyRoute myRoute,
       {Widget leading, IconData trialing: Icons.keyboard_arrow_right}) {
-    final routeTitleTextStyle =
-        Theme.of(context).textTheme.bodyText2.copyWith(fontWeight: FontWeight.bold);
+    final routeTitleTextStyle = Theme.of(context)
+        .textTheme
+        .bodyText2
+        .copyWith(fontWeight: FontWeight.bold);
     return ListTile(
       leading: leading ??
           Provider.of<MyAppSettings>(context)

@@ -19,9 +19,9 @@ class _BottomNavigationBarExampleState
       Center(child: Icon(Icons.forum, size: 64.0, color: Colors.blue)),
     ];
     final _kBottmonNavBarItems = <BottomNavigationBarItem>[
-      BottomNavigationBarItem(icon: Icon(Icons.cloud), title: Text('Tab1')),
-      BottomNavigationBarItem(icon: Icon(Icons.alarm), title: Text('Tab2')),
-      BottomNavigationBarItem(icon: Icon(Icons.forum), title: Text('Tab3')),
+      BottomNavigationBarItem(icon: Icon(Icons.cloud), label: 'Tab1'),
+      BottomNavigationBarItem(icon: Icon(Icons.alarm), label: 'Tab2'),
+      BottomNavigationBarItem(icon: Icon(Icons.forum), label: 'Tab3'),
     ];
     assert(_kTabPages.length == _kBottmonNavBarItems.length);
     final bottomNavBar = BottomNavigationBar(

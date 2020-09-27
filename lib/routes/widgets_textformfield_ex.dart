@@ -70,7 +70,7 @@ class _TextFormFieldExampleState extends State<TextFormFieldExample> {
             },
             // TextInputFormatters are applied in sequence.
             inputFormatters: <TextInputFormatter>[
-              WhitelistingTextInputFormatter.digitsOnly,
+              FilteringTextInputFormatter.digitsOnly
             ],
           ),
           SizedBox(height: 24.0),
