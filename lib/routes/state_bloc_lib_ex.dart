@@ -38,8 +38,7 @@ class _MyState {
 // flutter_bloc package. With this package, we don't need to manage the stream
 // controllers.
 class MyBloc extends Bloc<_MyEvent, _MyState> {
-  @override
-  _MyState get initialState => _MyState(0);
+  MyBloc(_MyState initialState) : super(initialState);
 
   // The business logic is in this mapEventToState function.
   // Note: in flutter_bloc from v0.6.0 on, states are enforced IMMUTABLE,
@@ -82,7 +81,7 @@ class _MyDemoAppState extends State<_MyDemoApp> {
         // ###4. Use the BlocProvider from flutter_bloc package, we don't need
         // to write our own InheritedWidget.
         BlocProvider<MyBloc>(
-          create: (BuildContext context) => MyBloc(),
+          create: (BuildContext context) => MyBloc(_MyState(0)),
           child: _AppRootWidget(),
         ),
       ],
@@ -123,7 +122,7 @@ class _CounterAndButton extends StatelessWidget {
           // ###5. Access the state from child widget by wrapping the widget by
           // a BlocBuilder.
           BlocBuilder(
-            bloc: BlocProvider.of<MyBloc>(context),
+            cubit: BlocProvider.of<MyBloc>(context),
             builder: (context, _MyState state) {
               return Text(
                 '${state.counter}',
