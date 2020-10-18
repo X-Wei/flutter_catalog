@@ -12,7 +12,7 @@ class ReorderableListExample extends StatefulWidget {
 }
 
 class _ListItem {
-  _ListItem(this.value, this.checked);
+  _ListItem(this.value, {this.checked});
   final String value;
   bool checked;
 }
@@ -34,17 +34,15 @@ class _ReorderableListExampleState extends State<ReorderableListExample> {
     'L',
     'M',
     'N',
-  ].map((item) => _ListItem(item, false)).toList();
+  ].map((item) => _ListItem(item, checked: false)).toList();
 
   // Handler called by ReorderableListView onReorder after a list child is
   // dropped into a new position.
   void _onReorder(int oldIndex, int newIndex) {
     setState(() {
-      if (newIndex > oldIndex) {
-        newIndex -= 1;
-      }
+      final newIdx = newIndex > oldIndex ? newIndex - 1 : newIndex;
       final _ListItem item = _items.removeAt(oldIndex);
-      _items.insert(newIndex, item);
+      _items.insert(newIdx, item);
     });
   }
 
@@ -61,11 +59,11 @@ class _ReorderableListExampleState extends State<ReorderableListExample> {
   @override
   Widget build(BuildContext context) {
     final _appbar = AppBar(
-      title: Text('Reorderable list'),
+      title: const Text('Reorderable list'),
       automaticallyImplyLeading: false,
       actions: <Widget>[
         IconButton(
-          icon: Icon(Icons.sort_by_alpha),
+          icon: const Icon(Icons.sort_by_alpha),
           tooltip: 'Sort',
           onPressed: _onSort,
         ),
@@ -82,7 +80,7 @@ class _ReorderableListExampleState extends State<ReorderableListExample> {
             title: Text('This item represents ${item.value}.'),
             isThreeLine: true,
             subtitle: Text('Item ${item.value}, checked=${item.checked}'),
-            secondary: Icon(Icons.drag_handle),
+            secondary: const Icon(Icons.drag_handle),
           ),
         )
         .toList();

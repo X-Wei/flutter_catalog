@@ -62,9 +62,9 @@ class MyRoute extends StatelessWidget {
             routeName == Navigator.defaultRouteName
                 ? this.child
                 : WidgetWithCodeView(
-                    child: this.child,
                     sourceFilePath: this.sourceFilePath,
                     codeLinkPrefix: '$GITHUB_URL/blob/master',
+                    child: this.child,
                   ),
       ),
       backLayer: _getBackdropListTiles(),
@@ -74,10 +74,10 @@ class MyRoute extends StatelessWidget {
   List<Widget> _getAppbarActions(BuildContext context) {
     final settings = Provider.of<MyAppSettings>(context);
     return <Widget>[
-      BackdropToggleButton(),
+      const BackdropToggleButton(),
       if (this.routeName == Navigator.defaultRouteName)
         IconButton(
-          icon: Icon(Icons.search),
+          icon: const Icon(Icons.search),
           onPressed: () async {
             final String selected = await showSearch<String>(
               context: context,
@@ -103,8 +103,8 @@ class MyRoute extends StatelessWidget {
                   child: ListTile(
                     title: Text(titleAndLink.key),
                     trailing: IconButton(
-                      icon: Icon(Icons.open_in_new),
-                      tooltip: '${titleAndLink.value}',
+                      icon: const Icon(Icons.open_in_new),
+                      tooltip: titleAndLink.value,
                       onPressed: () => url_launcher.launch(titleAndLink.value),
                     ),
                     onTap: () => url_launcher.launch(titleAndLink.value),
@@ -118,12 +118,12 @@ class MyRoute extends StatelessWidget {
 
   ListView _getBackdropListTiles() {
     return ListView(
-      padding: EdgeInsets.only(bottom: _kFrontLayerMinHeight),
+      padding: const EdgeInsets.only(bottom: _kFrontLayerMinHeight),
       children: <Widget>[
         ListTile(
           leading: kAppIcon,
-          title: Text(APP_NAME),
-          subtitle: Text(APP_VERSION),
+          title: const Text(APP_NAME),
+          subtitle: const Text(APP_VERSION),
         ),
         ...MyAboutRoute.kAboutListTiles,
         Consumer<MyAppSettings>(builder: (context, MyAppSettings settings, _) {
@@ -131,7 +131,7 @@ class MyRoute extends StatelessWidget {
             onTap: () {},
             leading: Icon(
                 settings.isDarkMode ? Icons.brightness_4 : Icons.brightness_7),
-            title: Text('Dark mode'),
+            title: const Text('Dark mode'),
             trailing: Switch(
               onChanged: (bool value) => settings.setDarkMode(value),
               value: settings.isDarkMode,

@@ -1,5 +1,6 @@
 // This file declares routes of this app, in particular it declares the
 // "structure" of the group of example routes, in a const List<Tuple2> object.
+// ignore_for_file: sort_child_properties_last
 import 'package:flutter/material.dart';
 import 'package:flutter_catalog/routes/multimedia_image_picker_ex.dart';
 
@@ -81,19 +82,19 @@ import 'routes/widgets_textfield_ex.dart';
 import 'routes/widgets_textformfield_ex.dart';
 
 const kHomeRoute = MyRoute(
-  child: MyHomePage(),
   sourceFilePath: 'lib/routes/home.dart',
   title: APP_NAME,
   routeName: Navigator.defaultRouteName,
+  child: MyHomePage(),
 );
 
 const kAboutRoute = MyRoute(
-  child: MyAboutRoute(),
   sourceFilePath: 'lib/routes/about.dart',
   title: 'About',
   links: {
     'Doc': 'https://docs.flutter.io/flutter/material/showAboutDialog.html'
   },
+  child: MyAboutRoute(),
 );
 
 // The structure of app's navigation drawer items is a 2-level menu, its schema
@@ -153,12 +154,12 @@ const kMyAppRoutesBasic = <MyRouteGroup>[
         },
       ),
       MyRoute(
-        child: ImageExample(),
         sourceFilePath: 'lib/routes/widgets_image_ex.dart',
         title: 'Image',
         links: {
           'Doc': 'https://docs.flutter.io/flutter/widgets/Image-class.html'
         },
+        child: ImageExample(),
       ),
       MyRoute(
         child: CardExample(),

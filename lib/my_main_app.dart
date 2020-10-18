@@ -23,7 +23,7 @@ class _MyMainAppState extends State<MyMainApp> {
     super.initState();
     Future<SharedPreferences> initApp() async {
       await Firebase.initializeApp();
-      return await SharedPreferences.getInstance();
+      return SharedPreferences.getInstance();
     }
 
     this._initAppFuture = initApp();
@@ -36,11 +36,11 @@ class _MyMainAppState extends State<MyMainApp> {
       builder:
           (BuildContext context, AsyncSnapshot<SharedPreferences> snapshot) {
         if (!snapshot.hasData) {
-          return _MySplashScreen();
+          return const _MySplashScreen();
         }
         return ChangeNotifierProvider<MyAppSettings>.value(
           value: MyAppSettings(snapshot.data),
-          child: _MyMainApp(),
+          child: const _MyMainApp(),
         );
       },
     );
@@ -53,7 +53,7 @@ class _MySplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      constraints: BoxConstraints.expand(),
+      constraints: const BoxConstraints.expand(),
       color: Colors.white,
       child: Center(child: kAppIcon),
     );

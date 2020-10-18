@@ -12,7 +12,7 @@ class ProviderExample extends StatelessWidget {
         StreamProvider<int>(
           initialData: 0,
           create: (BuildContext context) =>
-              Stream.periodic(Duration(milliseconds: 1000), (i) => i),
+              Stream.periodic(const Duration(milliseconds: 1000), (i) => i),
         ),
         ChangeNotifierProvider<_MyCounterState>(
           create: (_) => _MyCounterState(),
@@ -49,7 +49,8 @@ class _MyDemoApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: <Widget>[
-        Text("Provider is the officially recommended way to manage app states, "
+        const Text(
+            "Provider is the officially recommended way to manage app states, "
             "it's quite similar to ScopedModel in sharing/updating of app's "
             "state from children widgets down the widgets tree. In addition, "
             "you can provider multiple states at app root.\n\n"
@@ -72,7 +73,7 @@ class _AppRootWidget extends StatelessWidget {
       elevation: 4.0,
       child: Column(
         children: <Widget>[
-          Text('(root widget)'),
+          const Text('(root widget)'),
           Text('${Provider.of<int>(context)} seconds elapsed'),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -94,13 +95,13 @@ class _CounterAndButton extends StatelessWidget {
     // Note: since v4.1, we can use extension methods which is nicer:
     //   - context.watch<T>() -- equivalent to Provider.of<T>()
     //   - context.read<T>()  -- equivalent to Provider.of<T>(listen: false)
-    final state = context.read<_MyCounterState>();
+    final state = Provider.of<_MyCounterState>(context, listen: false);
     return Card(
-      margin: EdgeInsets.all(4.0).copyWith(top: 32.0, bottom: 32.0),
+      margin: const EdgeInsets.all(4.0).copyWith(top: 32.0, bottom: 32.0),
       color: Colors.white70,
       child: Column(
         children: <Widget>[
-          Text('(child widget)'),
+          const Text('(child widget)'),
           Text(
             '${state.counterValue}',
             style: Theme.of(context).textTheme.headline4,
@@ -108,7 +109,7 @@ class _CounterAndButton extends StatelessWidget {
           ButtonBar(
             children: <Widget>[
               IconButton(
-                icon: Icon(Icons.add),
+                icon: const Icon(Icons.add),
                 onPressed: () => state.incrementCounter(),
               ),
               // Way 2 to get state up the tree: wrap a Consumer widget.
@@ -116,7 +117,7 @@ class _CounterAndButton extends StatelessWidget {
                 builder: (BuildContext context, _MyCounterState value,
                     Widget child) {
                   return IconButton(
-                    icon: Icon(Icons.remove),
+                    icon: const Icon(Icons.remove),
                     onPressed: () => value.decrementCounter(),
                   );
                 },

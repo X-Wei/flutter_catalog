@@ -9,85 +9,85 @@ class AnimationsPackageExample extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: <Widget>[
-        Divider(thickness: 2, color: Colors.black),
+        const Divider(thickness: 2, color: Colors.black),
         ListTile(
-          title: Text('1. OpenContainer'),
-          subtitle: Text(
+          title: const Text('1. OpenContainer'),
+          subtitle: const Text(
               'A container that grows to fill the screen to reveal new content when tapped.'),
           trailing: IconButton(
             tooltip: 'Documentation',
-            icon: Icon(Icons.open_in_new),
+            icon: const Icon(Icons.open_in_new),
             onPressed: () => launch(
                 'https://pub.dev/documentation/animations/latest/animations/OpenContainer-class.html'),
           ),
         ),
         OpenContainer(
-          transitionDuration: Duration(milliseconds: 500),
-          closedBuilder: (ctx, action) => ListTile(
+          transitionDuration: const Duration(milliseconds: 500),
+          closedBuilder: (ctx, action) => const ListTile(
             title: Text('click me'),
             trailing: Icon(Icons.keyboard_arrow_right),
           ),
-          openBuilder: (ctx, action) => Scaffold(
+          openBuilder: (ctx, action) => const Scaffold(
             body: Center(
               child: Text('new page'),
             ),
           ),
         ),
-        Divider(thickness: 2, color: Colors.black),
+        const Divider(thickness: 2, color: Colors.black),
         ListTile(
-          title: Text('2. PageTransitionSwitcher'),
-          subtitle: Text(
+          title: const Text('2. PageTransitionSwitcher'),
+          subtitle: const Text(
               'Transition from an old child to a new child, similar to AnimationSwitcher'),
           trailing: IconButton(
             tooltip: 'Documentation',
-            icon: Icon(Icons.open_in_new),
+            icon: const Icon(Icons.open_in_new),
             onPressed: () => launch(
                 'https://pub.dev/documentation/animations/latest/animations/PageTransitionSwitcher-class.html'),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 200,
           child: _PageTransitionSwitcherEx(),
         ),
-        Divider(thickness: 2, color: Colors.black),
+        const Divider(thickness: 2, color: Colors.black),
         ListTile(
-          title: Text('3. SharedAxisTransition'),
-          subtitle: Text(
+          title: const Text('3. SharedAxisTransition'),
+          subtitle: const Text(
               'Transition animation between UI elements that have a spatial or navigational relationship.'),
           trailing: IconButton(
             tooltip: 'Documentation',
-            icon: Icon(Icons.open_in_new),
+            icon: const Icon(Icons.open_in_new),
             onPressed: () => launch(
                 'https://pub.dev/documentation/animations/latest/animations/SharedAxisTransition-class.html'),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 300,
           child: _SharedAxisEx(),
         ),
-        Divider(thickness: 2, color: Colors.black),
+        const Divider(thickness: 2, color: Colors.black),
         ListTile(
-          title: Text('4. showModal()'),
-          subtitle: Text('Displays a dialog with animation.'),
+          title: const Text('4. showModal()'),
+          subtitle: const Text('Displays a dialog with animation.'),
           trailing: IconButton(
             tooltip: 'Documentation',
-            icon: Icon(Icons.open_in_new),
+            icon: const Icon(Icons.open_in_new),
             onPressed: () => launch(
                 'https://pub.dev/documentation/animations/latest/animations/showModal.html'),
           ),
         ),
         RaisedButton(
-          child: Text('Show dialog'),
           onPressed: () => showModal(
-            configuration: FadeScaleTransitionConfiguration(
+            configuration: const FadeScaleTransitionConfiguration(
               transitionDuration: Duration(milliseconds: 500),
             ),
             context: context,
-            builder: (ctx) => AlertDialog(
+            builder: (ctx) => const AlertDialog(
               title: Text('New dialog'),
               content: Text('blahblahblah'),
             ),
           ),
+          child: const Text('Show dialog'),
         ),
       ],
     );
@@ -127,7 +127,7 @@ class __PageTransitionSwitcherExState extends State<_PageTransitionSwitcherEx> {
     return Scaffold(
       body: Center(
         child: PageTransitionSwitcher(
-          duration: Duration(seconds: 1),
+          duration: const Duration(seconds: 1),
           transitionBuilder: (child, primaryAnimation, secondaryAnimation) =>
               FadeThroughTransition(
             animation: primaryAnimation,
@@ -157,9 +157,9 @@ class __SharedAxisExState extends State<_SharedAxisEx> {
   final _pages = <Widget>[
     // *Note*: when changed child is of the same type as previous one, set the
     // key property explicitly.
-    Icon(Icons.looks_one, size: 64, key: ValueKey(1)),
-    Icon(Icons.looks_two, size: 64, key: ValueKey(2)),
-    Icon(Icons.looks_3, size: 64, key: ValueKey(3)),
+    const Icon(Icons.looks_one, size: 64, key: ValueKey(1)),
+    const Icon(Icons.looks_two, size: 64, key: ValueKey(2)),
+    const Icon(Icons.looks_3, size: 64, key: ValueKey(3)),
   ];
 
   int _currentPageIdx = 0;
@@ -174,7 +174,7 @@ class __SharedAxisExState extends State<_SharedAxisEx> {
           children: <Widget>[
             Expanded(
               child: PageTransitionSwitcher(
-                duration: Duration(seconds: 1),
+                duration: const Duration(seconds: 1),
                 transitionBuilder:
                     (child, primaryAnimation, secondaryAnimation) =>
                         SharedAxisTransition(
@@ -195,13 +195,13 @@ class __SharedAxisExState extends State<_SharedAxisEx> {
                     onPressed: this._currentPageIdx == 0
                         ? null
                         : () => setState(() => this._currentPageIdx--),
-                    child: Text('BACK'),
+                    child: const Text('BACK'),
                   ),
                   RaisedButton(
                     onPressed: this._currentPageIdx == 2
                         ? null
                         : () => setState(() => this._currentPageIdx++),
-                    child: Text('NEXT'),
+                    child: const Text('NEXT'),
                   ),
                 ],
               ),
@@ -220,7 +220,7 @@ class __SharedAxisExState extends State<_SharedAxisEx> {
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           ListTile(
-            title: Text('SharedAxisTransitionType'),
+            title: const Text('SharedAxisTransitionType'),
             trailing: DropdownButton<SharedAxisTransitionType>(
               value: _transitionType,
               items: [

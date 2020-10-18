@@ -3,17 +3,18 @@ import 'package:flutter/material.dart';
 // The AnimatedWidget base class allows you to separate out the core widget code
 // from the animation code.
 class _AnimatedLogo extends AnimatedWidget {
-  _AnimatedLogo({Key key, Animation<double> animation})
+  const _AnimatedLogo({Key key, Animation<double> animation})
       : super(key: key, listenable: animation);
 
+  @override
   Widget build(BuildContext context) {
-    final Animation<double> animation = this.listenable;
+    final Animation<double> animation = this.listenable as Animation<double>;
     return Center(
       child: Container(
-        margin: EdgeInsets.all(8.0),
-        child: FlutterLogo(),
+        margin: const EdgeInsets.all(8.0),
         height: animation.value,
         width: animation.value,
+        child: const FlutterLogo(),
       ),
     );
   }
@@ -34,7 +35,7 @@ class _AnimatedWidgetExampleState extends State<AnimatedWidgetExample>
   void initState() {
     super.initState();
     this._controller =
-        AnimationController(duration: Duration(seconds: 1), vsync: this);
+        AnimationController(duration: const Duration(seconds: 1), vsync: this);
     this._sizeAnimation =
         Tween<double>(begin: 50, end: 100).animate(this._controller);
   }
@@ -53,12 +54,12 @@ class _AnimatedWidgetExampleState extends State<AnimatedWidgetExample>
           animation: this._sizeAnimation,
         ),
         RaisedButton(
-          child: Text('Forward animation'),
           onPressed: () => _controller.forward(),
+          child: const Text('Forward animation'),
         ),
         RaisedButton(
-          child: Text('Reverse animation'),
           onPressed: () => _controller.reverse(),
+          child: const Text('Reverse animation'),
         ),
       ],
     );

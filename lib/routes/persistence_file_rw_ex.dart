@@ -19,17 +19,18 @@ class _FileReadWriteExampleState extends State<FileReadWriteExample> {
   void initState() {
     super.initState();
     this._loadTextFromLocalFile();
-    this._getLocalFile()
-      ..then((file) => setState(() => this._localFilePath = file.path));
+    this
+        ._getLocalFile()
+        .then((file) => setState(() => this._localFilePath = file.path));
   }
 
   @override
   Widget build(BuildContext context) {
-    FocusNode textFieldFocusNode = FocusNode();
+    final FocusNode textFieldFocusNode = FocusNode();
     return ListView(
-      padding: EdgeInsets.all(20.0),
+      padding: const EdgeInsets.all(20.0),
       children: <Widget>[
-        Text('Write to local file:'),
+        const Text('Write to local file:'),
         TextField(
           focusNode: textFieldFocusNode,
           controller: _textController,
@@ -38,7 +39,6 @@ class _FileReadWriteExampleState extends State<FileReadWriteExample> {
         ButtonBar(
           children: <Widget>[
             MaterialButton(
-              child: Text('Load'),
               onPressed: () async {
                 this._loadTextFromLocalFile();
                 this._textController.text = this._localFileContent;
@@ -46,23 +46,24 @@ class _FileReadWriteExampleState extends State<FileReadWriteExample> {
                 // Focus on text field (bring keyboard up).
                 FocusScope.of(context).requestFocus(textFieldFocusNode);
               },
+              child: const Text('Load'),
             ),
             MaterialButton(
-              child: Text('Save'),
               onPressed: () async {
                 await this._writeTextToLocalFile(this._textController.text);
                 this._textController.clear();
                 _showSnackBar('String successfully written to local file".');
                 await this._loadTextFromLocalFile();
               },
+              child: const Text('Save'),
             ),
           ],
         ),
-        Divider(height: 20.0),
-        Text('Local file path:'),
+        const Divider(height: 20.0),
+        const Text('Local file path:'),
         Text(this._localFilePath, style: Theme.of(context).textTheme.caption),
-        Divider(height: 20.0),
-        Text('Local file content:'),
+        const Divider(height: 20.0),
+        const Text('Local file content:'),
         Text(this._localFileContent,
             style: Theme.of(context).textTheme.caption),
       ],
@@ -80,7 +81,7 @@ class _FileReadWriteExampleState extends State<FileReadWriteExample> {
   }
 
   // Loads local file into this._localFileContent.
-  Future<Null> _loadTextFromLocalFile() async {
+  Future<void> _loadTextFromLocalFile() async {
     String content;
     try {
       final file = await _getLocalFile();
@@ -97,7 +98,7 @@ class _FileReadWriteExampleState extends State<FileReadWriteExample> {
     Scaffold.of(this.context).showSnackBar(
       SnackBar(
         content: Text(text),
-        duration: Duration(milliseconds: 500),
+        duration: const Duration(milliseconds: 500),
       ),
     );
   }

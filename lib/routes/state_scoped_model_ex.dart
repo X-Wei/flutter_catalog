@@ -37,7 +37,7 @@ class _MyDemoApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: <Widget>[
-        Text(
+        const Text(
             "ScopedModel allows efficient sharing/updating of app's state from "
             "children widgets down the widgets tree.\n\n"
             "In this example, the app's root widget is a ScopedModel, "
@@ -63,7 +63,7 @@ class _AppRootWidget extends StatelessWidget {
       elevation: 4.0,
       child: Column(
         children: <Widget>[
-          Text('(root widget)'),
+          const Text('(root widget)'),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
@@ -86,13 +86,12 @@ class _CounterAndButton extends StatelessWidget {
       // Note: Set `rebuildOnChange` to false if the current widget doesn't
       // need updating. E.g. When "add-to-cart" button is pressed, the app's
       // state is updated, but "product-details" page doesn't need updating.
-      rebuildOnChange: true,
       builder: (context, child, model) => Card(
-        margin: EdgeInsets.all(4.0).copyWith(top: 32.0, bottom: 32.0),
+        margin: const EdgeInsets.all(4.0).copyWith(top: 32.0, bottom: 32.0),
         color: Colors.white70,
         child: Column(
           children: <Widget>[
-            Text('(child widget)'),
+            const Text('(child widget)'),
             Text(
               '${model.counterValue}',
               style: Theme.of(context).textTheme.headline4,
@@ -100,11 +99,11 @@ class _CounterAndButton extends StatelessWidget {
             ButtonBar(
               children: <Widget>[
                 IconButton(
-                  icon: Icon(Icons.add),
+                  icon: const Icon(Icons.add),
                   onPressed: () => model.incrementCounter(),
                 ),
                 IconButton(
-                  icon: Icon(Icons.remove),
+                  icon: const Icon(Icons.remove),
                   onPressed: () => model.decrementCounter(),
                 ),
               ],

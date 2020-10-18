@@ -21,29 +21,32 @@ class _ImagePickerExampleState extends State<ImagePickerExample> {
         ButtonBar(
           children: <Widget>[
             IconButton(
-              icon: Icon(Icons.photo_camera),
-              onPressed: () async => await _pickImageFromCamera(),
+              icon: const Icon(Icons.photo_camera),
+              onPressed: () async => _pickImageFromCamera(),
               tooltip: 'Shoot picture',
             ),
             IconButton(
-              icon: Icon(Icons.photo),
-              onPressed: () async => await _pickImageFromGallery(),
+              icon: const Icon(Icons.photo),
+              onPressed: () async => _pickImageFromGallery(),
               tooltip: 'Pick from gallery',
             ),
           ],
         ),
-        this._imageFile == null ? Placeholder() : Image.file(this._imageFile),
+        if (this._imageFile == null)
+          const Placeholder()
+        else
+          Image.file(this._imageFile),
       ],
     );
   }
 
-  Future<Null> _pickImageFromGallery() async {
+  Future<void> _pickImageFromGallery() async {
     final PickedFile pickedFile =
         await _picker.getImage(source: ImageSource.gallery);
     setState(() => this._imageFile = File(pickedFile.path));
   }
 
-  Future<Null> _pickImageFromCamera() async {
+  Future<void> _pickImageFromCamera() async {
     final PickedFile pickedFile =
         await _picker.getImage(source: ImageSource.camera);
     setState(() => this._imageFile = File(pickedFile.path));

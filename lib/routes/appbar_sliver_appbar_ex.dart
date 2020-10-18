@@ -27,7 +27,7 @@ class _SliverAppBarExampleState extends State<SliverAppBarExample> {
             floating: this._floating,
             expandedHeight: 160.0,
             flexibleSpace: FlexibleSpaceBar(
-              title: Text("FlexibleSpace title"),
+              title: const Text("FlexibleSpace title"),
               background: Image.asset(
                 'res/images/material_design_3.png',
                 fit: BoxFit.fill,
@@ -35,7 +35,7 @@ class _SliverAppBarExampleState extends State<SliverAppBarExample> {
             ),
           ),
           // If the main content is a list, use SliverList instead.
-          SliverFillRemaining(
+          const SliverFillRemaining(
             child: Center(child: Text("Hello")),
           ),
         ],
@@ -51,7 +51,7 @@ class _SliverAppBarExampleState extends State<SliverAppBarExample> {
         children: <Widget>[
           Row(
             children: <Widget>[
-              Text('pinned'),
+              const Text('pinned'),
               Switch(
                 onChanged: (bool val) {
                   setState(() {
@@ -64,7 +64,7 @@ class _SliverAppBarExampleState extends State<SliverAppBarExample> {
           ),
           Row(
             children: <Widget>[
-              Text('snap'),
+              const Text('snap'),
               Switch(
                 onChanged: (bool val) {
                   setState(() {
@@ -79,7 +79,7 @@ class _SliverAppBarExampleState extends State<SliverAppBarExample> {
           ),
           Row(
             children: <Widget>[
-              Text('floating'),
+              const Text('floating'),
               Switch(
                 onChanged: (bool val) {
                   setState(() {

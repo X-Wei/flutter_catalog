@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+// ignore_for_file: constant_identifier_names
+
 // *Note*: when APP_VERSION is changed, remember to also update pubspec.yaml.
 const APP_VERSION = 'v2.5.5';
 const APP_NAME = 'Flutter Catalog';

@@ -5,7 +5,7 @@ class TextExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
+    return const Text(
       'Simple text demo.',
       // Optional params to try:
       textAlign: TextAlign.center,

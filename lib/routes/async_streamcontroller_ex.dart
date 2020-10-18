@@ -45,23 +45,24 @@ class _StreamControllerExampleState extends State<StreamControllerExample> {
   Widget build(BuildContext context) {
     return ListView(
       children: <Widget>[
-        Text("StreamController is like a pipe with `sink` as input and `stream`"
+        const Text(
+            "StreamController is like a pipe with `sink` as input and `stream` "
             "as output. \n\n"
             "To put a new value to the stream, use `streamController.sink.add(newValue)`; "
             "to access the output stream, use `streamController.stream`.\n\n"
             "Note: we can't transform the stream's value inside the controller, "
             "the output is exactly the input. Instead, we can use two stream controllers, "
             "and put a function between the input controller and output controller.\n\n"
-            "In this demo, the card renders the widget from _outputStreamController.stream"
+            "In this demo, the card renders the widget from _outputStreamController.stream "
             "and you can send a new random word to the "
             "_inputStreamController.sink by clicking the 'send' button.\n"),
         Card(
           elevation: 4.0,
           child: StreamBuilder<Widget>(
             stream: _outputStreamController.stream,
-            builder: (BuildContext context, AsyncSnapshot snapshot) {
+            builder: (BuildContext context, AsyncSnapshot<Widget> snapshot) {
               if (!snapshot.hasData) {
-                return ListTile(
+                return const ListTile(
                   leading: CircularProgressIndicator(),
                   title: Text('no data'),
                 );
@@ -72,8 +73,8 @@ class _StreamControllerExampleState extends State<StreamControllerExample> {
           ),
         ),
         RaisedButton.icon(
-          icon: Icon(Icons.send),
-          label: Text('Send random word to input stream'),
+          icon: const Icon(Icons.send),
+          label: const Text('Send random word to input stream'),
           onPressed: () => this._inputStreamController.sink.add(
                 _Data(
                   message: english_words.WordPair.random().asPascalCase,

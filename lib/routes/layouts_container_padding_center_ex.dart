@@ -14,25 +14,26 @@ class ContainerExample extends StatelessWidget {
         height: 200.0,
         color: Colors.blue,
         child: Padding(
-          // EdgeInsets.all: same padding value for all 4 directions.
+          // const EdgeInsets.all: same padding value for all 4 directions.
           padding: const EdgeInsets.all(16.0),
           child: Container(
             // Container.color should not be set when decoration is set.
             decoration: BoxDecoration(
-                border: Border.all(width: 5.0, color: Colors.black),
+                border: Border.all(width: 5.0),
                 color: Colors.yellow,
                 borderRadius: BorderRadius.circular(20.0)),
             // Container.padding is implementd internally with Padding widgets.
-            // EdgeInsets.fromLTRB: specify padding for left/right/top/bottom.
-            padding: EdgeInsets.fromLTRB(10.0, 20.0, 30.0, 40.0),
+            // const EdgeInsets.fromLTRB: specify padding for left/right/top/bottom.
+            padding: const EdgeInsets.fromLTRB(10.0, 20.0, 30.0, 40.0),
             child: Container(
               color: Colors.red,
-              // EdgeInsets.symmetric: specify vertical/horizontal padding.
-              padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+              // const EdgeInsets.symmetric: specify vertical/horizontal padding.
+              padding:
+                  const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
               // Rotation.
-              transform: new Matrix4.rotationZ(-0.1),
+              transform: Matrix4.rotationZ(-0.1),
               child: Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Colors.green,
                   borderRadius: BorderRadius.horizontal(
                     left: Radius.circular(10.0),
@@ -40,7 +41,7 @@ class ContainerExample extends StatelessWidget {
                   ),
                 ),
                 alignment: Alignment.topLeft,
-                child: Text("hello"),
+                child: const Text("hello"),
               ),
             ),
           ),

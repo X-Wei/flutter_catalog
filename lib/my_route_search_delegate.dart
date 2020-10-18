@@ -28,7 +28,7 @@ class MyRouteSearchDelegate extends SearchDelegate<String> {
   Widget buildLeading(BuildContext context) {
     return IconButton(
       tooltip: 'Back',
-      icon: Icon(Icons.arrow_back),
+      icon: const Icon(Icons.arrow_back),
       onPressed: () => this.close(context, null),
     );
   }
@@ -65,7 +65,7 @@ class MyRouteSearchDelegate extends SearchDelegate<String> {
         final route = suggestions.elementAt(i);
         final routeGroup = kRouteNameToRouteGroup[route.routeName];
         return ListTile(
-          leading: query.isEmpty ? Icon(Icons.history) : routeGroup.icon,
+          leading: query.isEmpty ? const Icon(Icons.history) : routeGroup.icon,
           title: SubstringHighlight(
             text: '${routeGroup.groupName}/${route.title}',
             term: query,
@@ -86,7 +86,7 @@ class MyRouteSearchDelegate extends SearchDelegate<String> {
                 .addSearchHistory(route.routeName);
             Navigator.of(context).popAndPushNamed(route.routeName);
           },
-          trailing: Icon(Icons.keyboard_arrow_right),
+          trailing: const Icon(Icons.keyboard_arrow_right),
         );
       },
     );

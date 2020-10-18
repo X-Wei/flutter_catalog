@@ -12,8 +12,8 @@ class TodoItemAdapter extends TypeAdapter<TodoItem> {
 
   @override
   TodoItem read(BinaryReader reader) {
-    var numOfFields = reader.readByte();
-    var fields = <int, dynamic>{
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
       for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return TodoItem(

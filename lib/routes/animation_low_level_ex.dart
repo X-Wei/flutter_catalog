@@ -28,7 +28,7 @@ class _LowLevelAnimationExampleState extends State<LowLevelAnimationExample>
   void initState() {
     super.initState();
     this._controller = AnimationController(
-      duration: Duration(seconds: 1),
+      duration: const Duration(seconds: 1),
       // Setting vsync prevents offscreen animations from consuming
       // unnecessary resources, `this` has SingleTickerProviderStateMixin.
       vsync: this,
@@ -58,24 +58,23 @@ class _LowLevelAnimationExampleState extends State<LowLevelAnimationExample>
     return Column(
       children: <Widget>[
         Container(
-          margin: EdgeInsets.all(8.0),
-          child: FlutterLogo(),
+          margin: const EdgeInsets.all(8.0),
           color: this._colorAnimation.value,
           height: this._sizeAnimation.value,
           width: this._sizeAnimation.value,
+          child: const FlutterLogo(),
         ),
         RaisedButton(
-          child: Text('Forward animation'),
           onPressed:
               this._controller.isCompleted ? null : () => _controller.forward(),
+          child: const Text('Forward animation'),
         ),
         RaisedButton(
-          child: Text('Reverse animation'),
           onPressed:
               this._controller.isDismissed ? null : () => _controller.reverse(),
+          child: const Text('Reverse animation'),
         ),
         RaisedButton(
-          child: Text('Loop animation'),
           onPressed: () {
             // Use addStatusListener() for notifications of changes to the
             // animation’s state, such as starting, stopping, or reversing
@@ -89,6 +88,7 @@ class _LowLevelAnimationExampleState extends State<LowLevelAnimationExample>
             });
             this._controller.forward();
           },
+          child: const Text('Loop animation'),
         ),
       ],
     );

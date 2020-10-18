@@ -16,10 +16,10 @@ class _TextFieldExampleState extends State<TextFieldExample> {
       keyboardType: TextInputType.number,
       style: Theme.of(context).textTheme.headline4,
       decoration: InputDecoration(
-        icon: Icon(Icons.attach_money),
+        icon: const Icon(Icons.attach_money),
         labelText: 'Enter an integer:',
         errorText: _numberInputIsValid ? null : 'Please enter an integer!',
-        border: OutlineInputBorder(
+        border: const OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(10.0)),
         ),
       ),
@@ -48,7 +48,7 @@ class _TextFieldExampleState extends State<TextFieldExample> {
         counterText: '${this._controller.text.split(' ').length} words',
         labelText: 'Enter multiline text:',
         hintText: 'type something...',
-        border: OutlineInputBorder(),
+        border: const OutlineInputBorder(),
       ),
       onChanged: (text) => setState(() {}),
     );
@@ -61,7 +61,7 @@ class _TextFieldExampleState extends State<TextFieldExample> {
       obscureText: !this._showPassword,
       decoration: InputDecoration(
         labelText: 'password',
-        prefixIcon: Icon(Icons.security),
+        prefixIcon: const Icon(Icons.security),
         suffixIcon: IconButton(
           icon: Icon(
             Icons.remove_red_eye,
@@ -76,7 +76,7 @@ class _TextFieldExampleState extends State<TextFieldExample> {
   }
 
   Widget _buildBorderlessTextField() {
-    return TextField(
+    return const TextField(
       maxLines: 3,
       decoration: InputDecoration.collapsed(hintText: 'borderless input'),
     );
@@ -85,15 +85,15 @@ class _TextFieldExampleState extends State<TextFieldExample> {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      padding: EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(8.0),
       children: <Widget>[
-        ListTile(title: Text('1. Number input field')),
+        const ListTile(title: Text('1. Number input field')),
         _buildNumberTextField(),
-        ListTile(title: Text('2. Multiline input field')),
+        const ListTile(title: Text('2. Multiline input field')),
         _buildMultilineTextField(),
-        ListTile(title: Text('3. Password input field')),
+        const ListTile(title: Text('3. Password input field')),
         _buildPasswordTextField(),
-        ListTile(title: Text('4. Borderless input')),
+        const ListTile(title: Text('4. Borderless input')),
         _buildBorderlessTextField(),
       ],
     );

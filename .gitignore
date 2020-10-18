@@ -20,9 +20,6 @@ local.properties
 *.iws
 .idea/
 
-# Visual Studio Code related
-.vscode/
-
 # Flutter/Dart/Pub related
 **/doc/api/
 .dart_tool/
@@ -78,3 +75,4 @@ build/
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
 ios/Flutter/flutter_export_environment.sh
 .flutter-plugins-dependencies
+.fvm/flutter_sdk

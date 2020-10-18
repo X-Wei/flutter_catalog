@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class RowColExample extends StatefulWidget {
   const RowColExample({Key key}) : super(key: key);
   @override
-  _RowColExampleState createState() => new _RowColExampleState();
+  _RowColExampleState createState() => _RowColExampleState();
 }
 
 class _RowColExampleState extends State<RowColExample> {
@@ -60,7 +60,7 @@ class _RowColExampleState extends State<RowColExample> {
                     onChanged: (bool value) {
                       setState(() => this._isRow = value);
                     }),
-                Text('Row'),
+                const Text('Row'),
               ],
             ),
             Row(
@@ -71,13 +71,13 @@ class _RowColExampleState extends State<RowColExample> {
                     onChanged: (bool value) {
                       setState(() => this._isRow = value);
                     }),
-                Text('Column'),
+                const Text('Column'),
               ],
             ),
           ],
         ),
         ListTile(
-          title: Text('mainAxisSize:'),
+          title: const Text('mainAxisSize:'),
           trailing: DropdownButton<MainAxisSize>(
             value: _mainAxisSize,
             onChanged: (MainAxisSize newVal) {
@@ -95,7 +95,7 @@ class _RowColExampleState extends State<RowColExample> {
           ),
         ),
         ListTile(
-          title: Text('mainAxisAlignment:'),
+          title: const Text('mainAxisAlignment:'),
           trailing: DropdownButton<MainAxisAlignment>(
             value: _mainAxisAlignment,
             onChanged: (MainAxisAlignment newVal) {
@@ -114,7 +114,7 @@ class _RowColExampleState extends State<RowColExample> {
           ),
         ),
         ListTile(
-          title: Text('crossAxisAlignment:'),
+          title: const Text('crossAxisAlignment:'),
           trailing: DropdownButton<CrossAxisAlignment>(
             value: _crossAxisAlignment,
             onChanged: (CrossAxisAlignment newVal) {

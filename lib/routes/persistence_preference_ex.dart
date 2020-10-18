@@ -19,12 +19,11 @@ class _SharedPreferenceExampleState extends State<SharedPreferenceExample> {
   @override
   void initState() {
     super.initState();
-    SharedPreferences.getInstance()
-      ..then((prefs) {
-        setState(() => this._prefs = prefs);
-        _loadNumberPref();
-        _loadBooleanPref();
-      });
+    SharedPreferences.getInstance().then((prefs) {
+      setState(() => this._prefs = prefs);
+      _loadNumberPref();
+      _loadBooleanPref();
+    });
   }
 
   @override
@@ -34,21 +33,21 @@ class _SharedPreferenceExampleState extends State<SharedPreferenceExample> {
       children: <TableRow>[
         TableRow(
           children: <Widget>[
-            Text('Number preference:'),
+            const Text('Number preference:'),
             Text('${this._numberPref}'),
             RaisedButton(
-              child: Text('Increment'),
               onPressed: () => this._setNumberPref(this._numberPref + 1),
+              child: const Text('Increment'),
             ),
           ],
         ),
         TableRow(
           children: <Widget>[
-            Text('Boolean preference:'),
+            const Text('Boolean preference:'),
             Text('${this._boolPref}'),
             RaisedButton(
-              child: Text('Toggle'),
               onPressed: () => this._setBooleanPref(!this._boolPref),
+              child: const Text('Toggle'),
             ),
           ],
         ),
@@ -70,12 +69,12 @@ class _SharedPreferenceExampleState extends State<SharedPreferenceExample> {
     });
   }
 
-  Future<Null> _setNumberPref(int val) async {
+  Future<void> _setNumberPref(int val) async {
     await this._prefs.setInt(kDemoNumberPrefKey, val);
     _loadNumberPref();
   }
 
-  Future<Null> _setBooleanPref(bool val) async {
+  Future<void> _setBooleanPref(bool val) async {
     await this._prefs.setBool(kDemoBooleanPrefKey, val);
     _loadBooleanPref();
   }

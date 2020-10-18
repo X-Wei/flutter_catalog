@@ -1,8 +1,9 @@
+import 'dart:async';
+
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'dart:async';
 
 final kFirebaseAnalytics = FirebaseAnalytics();
 
@@ -36,14 +37,13 @@ class _FirebaseLoginExampleState extends State<FirebaseLoginExample> {
   @override
   Widget build(BuildContext context) {
     final statusText = Padding(
-      padding: EdgeInsets.symmetric(vertical: 10.0),
+      padding: const EdgeInsets.symmetric(vertical: 10.0),
       child: Text(_user == null
           ? 'You are not logged in.'
           : 'You are logged in as "${_user.displayName}".'),
     );
     final googleLoginBtn = MaterialButton(
       color: Colors.blueAccent,
-      child: Text('Log in with Google'),
       onPressed: this._busy
           ? null
           : () async {
@@ -52,10 +52,10 @@ class _FirebaseLoginExampleState extends State<FirebaseLoginExample> {
               this._showUserProfilePage(user);
               setState(() => this._busy = false);
             },
+      child: const Text('Log in with Google'),
     );
     final anonymousLoginBtn = MaterialButton(
       color: Colors.deepOrange,
-      child: Text('Log in anonymously'),
       onPressed: this._busy
           ? null
           : () async {
@@ -64,9 +64,9 @@ class _FirebaseLoginExampleState extends State<FirebaseLoginExample> {
               this._showUserProfilePage(user);
               setState(() => this._busy = false);
             },
+      child: const Text('Log in anonymously'),
     );
     final signOutBtn = FlatButton(
-      child: Text('Log out'),
       onPressed: this._busy
           ? null
           : () async {
@@ -74,10 +74,11 @@ class _FirebaseLoginExampleState extends State<FirebaseLoginExample> {
               await this._signOut();
               setState(() => this._busy = false);
             },
+      child: const Text('Log out'),
     );
     return Center(
       child: ListView(
-        padding: EdgeInsets.symmetric(vertical: 100.0, horizontal: 50.0),
+        padding: const EdgeInsets.symmetric(vertical: 100.0, horizontal: 50.0),
         children: <Widget>[
           statusText,
           googleLoginBtn,
@@ -125,7 +126,7 @@ class _FirebaseLoginExampleState extends State<FirebaseLoginExample> {
     return user;
   }
 
-  Future<Null> _signOut() async {
+  Future<void> _signOut() async {
     final user = _auth.currentUser;
     Scaffold.of(context).showSnackBar(
       SnackBar(
@@ -144,7 +145,7 @@ class _FirebaseLoginExampleState extends State<FirebaseLoginExample> {
       MaterialPageRoute(
         builder: (ctx) => Scaffold(
           appBar: AppBar(
-            title: Text('user profile'),
+            title: const Text('user profile'),
           ),
           body: ListView(
             children: <Widget>[
@@ -154,7 +155,7 @@ class _FirebaseLoginExampleState extends State<FirebaseLoginExample> {
               ListTile(title: Text('Anonymous: ${user.isAnonymous}')),
               ListTile(title: Text('Email: ${user.email}')),
               ListTile(
-                title: Text('Profile photo: '),
+                title: const Text('Profile photo: '),
                 trailing: user.photoURL != null
                     ? CircleAvatar(
                         backgroundImage: NetworkImage(user.photoURL),

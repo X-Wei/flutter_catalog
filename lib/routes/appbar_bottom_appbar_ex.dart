@@ -23,7 +23,7 @@ class _BottomAppbarExampleState extends State<BottomAppbarExample> {
         padding: const EdgeInsets.all(8),
         children: <Widget>[
           ListTile(
-            title: Text('FloatingActionButton position:'),
+            title: const Text('FloatingActionButton position:'),
             trailing: DropdownButton<FloatingActionButtonLocation>(
               value: this._fabLocation,
               onChanged: (FloatingActionButtonLocation newVal) {
@@ -31,7 +31,7 @@ class _BottomAppbarExampleState extends State<BottomAppbarExample> {
                   setState(() => this._fabLocation = newVal);
                 }
               },
-              items: [
+              items: const [
                 DropdownMenuItem(
                   value: FloatingActionButtonLocation.centerFloat,
                   child: Text('centerFloat'),
@@ -60,7 +60,7 @@ class _BottomAppbarExampleState extends State<BottomAppbarExample> {
             ),
           ),
           ListTile(
-            title: Text('Mini FAB:'),
+            title: const Text('Mini FAB:'),
             trailing: Switch(
               value: this._isFabMini,
               onChanged: (bool val) {
@@ -69,7 +69,7 @@ class _BottomAppbarExampleState extends State<BottomAppbarExample> {
             ),
           ),
           ListTile(
-            title: Text('BottomAppBar notch:'),
+            title: const Text('BottomAppBar notch:'),
             trailing: Switch(
               value: this._isBottomBarNotched,
               onChanged: (bool val) {
@@ -80,10 +80,10 @@ class _BottomAppbarExampleState extends State<BottomAppbarExample> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
         mini: this._isFabMini,
         onPressed: () =>
             Fluttertoast.showToast(msg: 'Dummy floating action button'),
+        child: const Icon(Icons.add),
       ),
       floatingActionButtonLocation: this._fabLocation,
       bottomNavigationBar: this._buildBottomAppBar(context),
@@ -92,24 +92,24 @@ class _BottomAppbarExampleState extends State<BottomAppbarExample> {
 
   BottomAppBar _buildBottomAppBar(BuildContext context) {
     return BottomAppBar(
-      shape: this._isBottomBarNotched ? CircularNotchedRectangle() : null,
+      shape: this._isBottomBarNotched ? const CircularNotchedRectangle() : null,
       color: Theme.of(context).primaryColor,
       child: Row(
         children: <Widget>[
           // Bottom that pops up from the bottom of the screen.
           IconButton(
-            icon: Icon(Icons.menu),
+            icon: const Icon(Icons.menu),
             onPressed: () => showModalBottomSheet(
               context: context,
               builder: (BuildContext context) => Container(
                 alignment: Alignment.center,
                 height: 200,
-                child: Text('Dummy bottom sheet'),
+                child: const Text('Dummy bottom sheet'),
               ),
             ),
           ),
           IconButton(
-            icon: Icon(Icons.search),
+            icon: const Icon(Icons.search),
             onPressed: () =>
                 Fluttertoast.showToast(msg: 'Dummy search action.'),
           ),

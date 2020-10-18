@@ -22,40 +22,40 @@ class _OpacityExampleState extends State<OpacityExample> {
   Widget build(BuildContext context) {
     return Material(
       child: Padding(
-        padding: EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(8.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            Text('Click on colored squares below to make them invisible, click '
+            const Text('Click on colored squares below to make them invisible, click '
                 'once again to make them reappear.'),
             GestureDetector(
+              onTap: () {
+                setState(() => this._opacity1 = 1.0 - this._opacity1);
+              },
               child: Opacity(
                 opacity: _opacity1,
                 child: _coloredSquare(Colors.red),
               ),
-              onTap: () {
-                setState(() => this._opacity1 = 1.0 - this._opacity1);
-              },
             ),
             GestureDetector(
-              child: AnimatedOpacity(
-                duration: Duration(seconds: 1),
-                opacity: _opacity2,
-                child: _coloredSquare(Colors.green),
-              ),
               onTap: () {
                 setState(() => this._opacity2 = 1.0 - this._opacity2);
               },
+              child: AnimatedOpacity(
+                duration: const Duration(seconds: 1),
+                opacity: _opacity2,
+                child: _coloredSquare(Colors.green),
+              ),
             ),
             GestureDetector(
-              child: AnimatedOpacity(
-                duration: Duration(seconds: 1),
-                opacity: _opacity3,
-                child: _coloredSquare(Colors.blue),
-              ),
               onTap: () {
                 setState(() => this._opacity3 = 1.0 - this._opacity3);
               },
+              child: AnimatedOpacity(
+                duration: const Duration(seconds: 1),
+                opacity: _opacity3,
+                child: _coloredSquare(Colors.blue),
+              ),
             ),
           ],
         ),

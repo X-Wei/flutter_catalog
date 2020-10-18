@@ -63,7 +63,7 @@ class MyBloc extends Bloc<_MyEvent, _MyState> {
 class _MyDemoApp extends StatefulWidget {
   @override
   _MyDemoAppState createState() {
-    return new _MyDemoAppState();
+    return _MyDemoAppState();
   }
 }
 
@@ -72,7 +72,7 @@ class _MyDemoAppState extends State<_MyDemoApp> {
   Widget build(BuildContext context) {
     return ListView(
       children: <Widget>[
-        Text("BLoC pattern is great for accessing/mutating app's state and "
+        const Text("BLoC pattern is great for accessing/mutating app's state and "
             "updating UI without rebuilding the whole widget tree. But the vanilla "
             "BLoC implementation has too much boilerplate code. \n\n"
             "With the flutter_bloc package, we don't need to manage Streams "
@@ -81,7 +81,7 @@ class _MyDemoAppState extends State<_MyDemoApp> {
         // ###4. Use the BlocProvider from flutter_bloc package, we don't need
         // to write our own InheritedWidget.
         BlocProvider<MyBloc>(
-          create: (BuildContext context) => MyBloc(_MyState(0)),
+          create: (BuildContext context) => MyBloc(const _MyState(0)),
           child: _AppRootWidget(),
         ),
       ],
@@ -96,7 +96,7 @@ class _AppRootWidget extends StatelessWidget {
       elevation: 4.0,
       child: Column(
         children: <Widget>[
-          Text('(root widget)'),
+          const Text('(root widget)'),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
@@ -114,11 +114,11 @@ class _CounterAndButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: EdgeInsets.all(4.0).copyWith(top: 32.0, bottom: 32.0),
+      margin: const EdgeInsets.all(4.0).copyWith(top: 32.0, bottom: 32.0),
       color: Colors.white70,
       child: Column(
         children: <Widget>[
-          Text('(child widget)'),
+          const Text('(child widget)'),
           // ###5. Access the state from child widget by wrapping the widget by
           // a BlocBuilder.
           BlocBuilder(
@@ -133,13 +133,13 @@ class _CounterAndButton extends StatelessWidget {
           ButtonBar(
             children: <Widget>[
               IconButton(
-                icon: Icon(Icons.add),
+                icon: const Icon(Icons.add),
                 // ###6. Post new event by calling functions in bloc or by
                 // bloc.add(newEvent);
                 onPressed: () => BlocProvider.of<MyBloc>(context).increment(),
               ),
               IconButton(
-                icon: Icon(Icons.remove),
+                icon: const Icon(Icons.remove),
                 onPressed: () => BlocProvider.of<MyBloc>(context).decrement(),
               ),
             ],

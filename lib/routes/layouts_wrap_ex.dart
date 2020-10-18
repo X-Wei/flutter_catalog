@@ -10,7 +10,6 @@ class WrapExample extends StatelessWidget {
       spacing: 8.0,
       // Gap between lines.
       runSpacing: 4.0,
-      direction: Axis.horizontal,
       children: [
         'Cauchy',
         'Fourrier',

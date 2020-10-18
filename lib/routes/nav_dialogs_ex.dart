@@ -8,67 +8,67 @@ class DialogsExample extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      padding: EdgeInsets.all(32.0),
+      padding: const EdgeInsets.all(32.0),
       children: <Widget>[
         ////// Alert dialog.
         RaisedButton(
-            color: Colors.red,
-            child: Text('Alert Dialog'),
-            onPressed: () {
-              // The function showDialog<T> returns Future<T>.
-              // Use Navigator.pop() to return value (of type T).
-              showDialog<String>(
-                context: context,
-                builder: (BuildContext context) => AlertDialog(
-                  title: const Text('Dialog title'),
-                  content: Text(
-                    'Sample alert',
-                  ),
-                  actions: <Widget>[
-                    FlatButton(
-                      child: Text('Cancel'),
-                      onPressed: () => Navigator.pop(context, 'Cancel'),
-                    ),
-                    FlatButton(
-                      child: Text('OK'),
-                      onPressed: () => Navigator.pop(context, 'OK'),
-                    ),
-                  ],
+          color: Colors.red,
+          onPressed: () {
+            // The function showDialog<T> returns Future<T>.
+            // Use Navigator.pop() to return value (of type T).
+            showDialog<String>(
+              context: context,
+              builder: (BuildContext context) => AlertDialog(
+                title: const Text('Dialog title'),
+                content: const Text(
+                  'Sample alert',
                 ),
-              ).then((returnVal) {
-                if (returnVal != null) {
-                  Scaffold.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text('You clicked: $returnVal'),
-                      action: SnackBarAction(label: 'OK', onPressed: () {}),
-                    ),
-                  );
-                }
-              });
-            }),
+                actions: <Widget>[
+                  FlatButton(
+                    onPressed: () => Navigator.pop(context, 'Cancel'),
+                    child: const Text('Cancel'),
+                  ),
+                  FlatButton(
+                    onPressed: () => Navigator.pop(context, 'OK'),
+                    child: const Text('OK'),
+                  ),
+                ],
+              ),
+            ).then((returnVal) {
+              if (returnVal != null) {
+                Scaffold.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text('You clicked: $returnVal'),
+                    action: SnackBarAction(label: 'OK', onPressed: () {}),
+                  ),
+                );
+              }
+            });
+          },
+          child: const Text('Alert Dialog'),
+        ),
         ////// Simple Dialog.
         RaisedButton(
           color: Colors.yellow,
-          child: Text('Simple dialog'),
           onPressed: () {
             showDialog<String>(
               context: context,
               builder: (BuildContext context) => SimpleDialog(
-                title: Text('Dialog Title'),
+                title: const Text('Dialog Title'),
                 children: <Widget>[
                   ListTile(
-                    leading: Icon(Icons.account_circle),
-                    title: Text('user@example.com'),
+                    leading: const Icon(Icons.account_circle),
+                    title: const Text('user@example.com'),
                     onTap: () => Navigator.pop(context, 'user@example.com'),
                   ),
                   ListTile(
-                    leading: Icon(Icons.account_circle),
-                    title: Text('user2@gmail.com'),
+                    leading: const Icon(Icons.account_circle),
+                    title: const Text('user2@gmail.com'),
                     onTap: () => Navigator.pop(context, 'user2@gmail.com'),
                   ),
                   ListTile(
-                    leading: Icon(Icons.add_circle),
-                    title: Text('Add account'),
+                    leading: const Icon(Icons.add_circle),
+                    title: const Text('Add account'),
                     onTap: () => Navigator.pop(context, 'Add account'),
                   ),
                 ],
@@ -84,13 +84,13 @@ class DialogsExample extends StatelessWidget {
               }
             });
           },
+          child: const Text('Simple dialog'),
         ),
         ////// Time Picker Dialog.
         RaisedButton(
           color: Colors.green,
-          child: Text('Time Picker Dialog'),
           onPressed: () {
-            DateTime now = DateTime.now();
+            final DateTime now = DateTime.now();
             showTimePicker(
               context: context,
               initialTime: TimeOfDay(hour: now.hour, minute: now.minute),
@@ -98,18 +98,18 @@ class DialogsExample extends StatelessWidget {
               if (value != null) {
                 Scaffold.of(context).showSnackBar(
                   SnackBar(
-                    content: Text('${value.format(context)}'),
+                    content: Text(value.format(context)),
                     action: SnackBarAction(label: 'OK', onPressed: () {}),
                   ),
                 );
               }
             });
           },
+          child: const Text('Time Picker Dialog'),
         ),
         ////// Date Picker Dialog.
         RaisedButton(
           color: Colors.blue,
-          child: Text('Date Picker Dialog'),
           onPressed: () {
             showDatePicker(
               context: context,
@@ -124,37 +124,37 @@ class DialogsExample extends StatelessWidget {
               }
             });
           },
+          child: const Text('Date Picker Dialog'),
         ),
         ////// Bottom Sheet Dialog.
         RaisedButton(
           color: Colors.orange,
-          child: Text('Bottom Sheet'),
           onPressed: () {
             // Or: showModalBottomSheet(), with model bottom sheet, clicking
             // anywhere will dismiss the bottom sheet.
             showBottomSheet<String>(
               context: context,
               builder: (BuildContext context) => Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   border: Border(top: BorderSide(color: Colors.black12)),
                 ),
                 child: ListView(
                   shrinkWrap: true,
                   primary: false,
                   children: <Widget>[
-                    ListTile(
+                    const ListTile(
                       dense: true,
                       title: Text('This is a bottom sheet'),
                     ),
-                    ListTile(
+                    const ListTile(
                       dense: true,
                       title: Text('Click OK to dismiss'),
                     ),
                     ButtonBar(
                       children: <Widget>[
                         FlatButton(
-                          child: const Text('OK'),
                           onPressed: () => Navigator.pop(context),
+                          child: const Text('OK'),
                         ),
                       ],
                     ),
@@ -163,11 +163,12 @@ class DialogsExample extends StatelessWidget {
               ),
             );
           },
+          child: const Text('Bottom Sheet'),
         ),
       ]
           .map(
             (Widget button) => Container(
-              padding: EdgeInsets.symmetric(vertical: 8.0),
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
               child: button,
             ),
           )

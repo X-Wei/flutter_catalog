@@ -6,34 +6,32 @@ class CardExample extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      padding: EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(8.0),
       children: <Widget>[
         Card(
           color: Colors.red,
           // The elevation determines shade.
           elevation: 10.0,
-          child: Container(
+          child: SizedBox(
             height: 100.0,
             child: Row(
-              children: <Widget>[
-                Expanded(
-                  child: Text('Card 1'),
-                ),
+              children: const <Widget>[
+                Expanded(child: Text('Card 1')),
               ],
             ),
           ),
         ),
         Card(
           color: Colors.green,
-          margin: EdgeInsets.all(20.0),
+          margin: const EdgeInsets.all(20.0),
           elevation: 0.0,
-          child: Container(
+          child: SizedBox(
             height: 100.0,
             child: InkWell(
               splashColor: Colors.deepOrange,
               onTap: () {},
               child: Row(
-                children: <Widget>[
+                children: const <Widget>[
                   Expanded(
                     child: Text('Card 2 (with Inkwell effect on tap)'),
                   ),
@@ -44,16 +42,16 @@ class CardExample extends StatelessWidget {
         ),
         Card(
           color: Colors.blue,
-          shape: RoundedRectangleBorder(
+          shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(30.0),
               topRight: Radius.elliptical(40.0, 80.0),
             ),
           ),
-          child: Container(
+          child: SizedBox(
             height: 100.0,
             child: Row(
-              children: <Widget>[
+              children: const <Widget>[
                 Expanded(
                   child: Text('Card 3 (with custom border radius)'),
                 ),
@@ -98,12 +96,12 @@ class CardExample extends StatelessWidget {
                 alignment: MainAxisAlignment.end,
                 children: <Widget>[
                   FlatButton(
-                    child: Text('SHARE'),
                     onPressed: () {},
+                    child: const Text('SHARE'),
                   ),
                   FlatButton(
-                    child: Text('EXPLORE'),
                     onPressed: () {},
+                    child: const Text('EXPLORE'),
                   ),
                 ],
               ),

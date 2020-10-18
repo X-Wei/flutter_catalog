@@ -15,10 +15,11 @@ class TodoItem {
   TodoItem({this.id, this.content, this.isDone = false, this.createdAt});
 
   TodoItem.fromJsonMap(Map<String, dynamic> map)
-      : id = map['id'],
-        content = map['content'],
-        isDone = map['isDone'],
-        createdAt = DateTime.fromMillisecondsSinceEpoch(map['createdAt']);
+      : id = map['id'] as int,
+        content = map['content'] as String,
+        isDone = map['isDone'] as bool,
+        createdAt =
+            DateTime.fromMillisecondsSinceEpoch(map['createdAt'] as int);
 
   Map<String, dynamic> toJsonMap() => {
         'id': id,
@@ -77,14 +78,14 @@ class _SembastExampleState extends State<SembastExample> {
   // Note we don't need to explicitly set the primary key (id), it'll auto
   // increment.
   Future<void> _addTodoItem(TodoItem todo) async {
-    int id = await this._store.add(this._db, todo.toJsonMap());
+    final int id = await this._store.add(this._db, todo.toJsonMap());
     print('Inserted todo item with id=$id.');
   }
 
   // Updates records in the db table.
   Future<void> _toggleTodoItem(TodoItem todo) async {
     todo.isDone = !todo.isDone;
-    int count = await this._store.update(
+    final int count = await this._store.update(
           this._db,
           todo.toJsonMap(),
           finder: Finder(filter: Filter.byKey(todo.id)),
@@ -94,7 +95,7 @@ class _SembastExampleState extends State<SembastExample> {
 
   // Deletes records in the db table.
   Future<void> _deleteTodoItem(TodoItem todo) async {
-    int count = await this._store.delete(
+    final int count = await this._store.delete(
           this._db,
           finder: Finder(filter: Filter.byKey(todo.id)),
         );
@@ -106,10 +107,11 @@ class _SembastExampleState extends State<SembastExample> {
     return FutureBuilder<bool>(
       future: this._initDbFuture,
       builder: (context, snapshot) {
-        if (!snapshot.hasData)
-          return Center(
+        if (!snapshot.hasData) {
+          return const Center(
             child: CircularProgressIndicator(),
           );
+        }
         return Scaffold(
           body: ListView(
             children: this._todos.map(_itemToListTile).toList(),
@@ -144,7 +146,7 @@ class _SembastExampleState extends State<SembastExample> {
           },
         ),
         trailing: IconButton(
-            icon: Icon(Icons.delete),
+            icon: const Icon(Icons.delete),
             onPressed: () async {
               await _deleteTodoItem(todo);
               _updateUI();
@@ -153,7 +155,6 @@ class _SembastExampleState extends State<SembastExample> {
 
   FloatingActionButton _buildFloatingActionButton() {
     return FloatingActionButton(
-      child: Icon(Icons.add),
       onPressed: () async {
         await _addTodoItem(
           TodoItem(
@@ -163,6 +164,7 @@ class _SembastExampleState extends State<SembastExample> {
         );
         _updateUI();
       },
+      child: const Icon(Icons.add),
     );
   }
 }

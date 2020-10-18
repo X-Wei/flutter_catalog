@@ -34,15 +34,15 @@ class _RestApiFetchExampleState extends State<RestApiFetchExample> {
       children: <Widget>[
         TextField(
           controller: this._urlController,
-          decoration: InputDecoration(
+          decoration: const InputDecoration(
             labelText: 'URL to GET',
             border: OutlineInputBorder(),
           ),
         ),
-        SizedBox(height: 4),
+        const SizedBox(height: 4),
         TextField(
           controller: this._apiTokenController,
-          decoration: InputDecoration(
+          decoration: const InputDecoration(
             labelText: 'Optional api token',
             border: OutlineInputBorder(),
           ),
@@ -50,20 +50,20 @@ class _RestApiFetchExampleState extends State<RestApiFetchExample> {
         ButtonBar(
           children: <Widget>[
             RaisedButton(
-              child: Text('Get'),
               onPressed: _pending
                   ? null
                   : () => this
                       ._httpGet(_urlController.text, _apiTokenController.text),
+              child: const Text('Get'),
             ),
             RaisedButton(
               onPressed: this._reset,
-              child: Text('Reset'),
+              child: const Text('Reset'),
             ),
           ],
         ),
         Text('Response body=$_responseBody'),
-        Divider(),
+        const Divider(),
         Text('Error=$_error'),
       ],
     );
@@ -82,7 +82,7 @@ class _RestApiFetchExampleState extends State<RestApiFetchExample> {
   }
 
   // Using the http package we can easily GET data from REST APIs.
-  Future<Null> _httpGet(String url, String apiToken) async {
+  Future<void> _httpGet(String url, String apiToken) async {
     _reset();
     setState(() => this._pending = true);
     try {

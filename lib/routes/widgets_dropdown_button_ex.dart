@@ -42,7 +42,7 @@ class _DropdownButtonExampleState extends State<DropdownButtonExample> {
     return Column(
       children: <Widget>[
         ListTile(
-          title: Text('DropDownButton with default:'),
+          title: const Text('DropDownButton with default:'),
           trailing: DropdownButton<String>(
             // Must be one of items.value.
             value: _btn1SelectedVal,
@@ -55,26 +55,26 @@ class _DropdownButtonExampleState extends State<DropdownButtonExample> {
           ),
         ),
         ListTile(
-          title: Text('DropDownButton with hint:'),
+          title: const Text('DropDownButton with hint:'),
           trailing: DropdownButton(
             value: _btn2SelectedVal,
-            hint: Text('Choose'),
-            onChanged: ((String newValue) {
+            hint: const Text('Choose'),
+            onChanged: (String newValue) {
               setState(() {
                 _btn2SelectedVal = newValue;
               });
-            }),
+            },
             items: _dropDownMenuItems,
           ),
         ),
         ListTile(
           title: const Text('Popup menu button:'),
-          trailing: new PopupMenuButton<String>(
+          trailing: PopupMenuButton<String>(
             onSelected: (String newValue) {
               _btn3SelectedVal = newValue;
               Scaffold.of(context).showSnackBar(
                 SnackBar(
-                  content: Text('$_btn3SelectedVal'),
+                  content: Text(_btn3SelectedVal),
                 ),
               );
             },

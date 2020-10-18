@@ -22,8 +22,9 @@ class _TextFormFieldExampleState extends State<TextFormFieldExample> {
   String _validateName(String value) {
     if (value.isEmpty) return 'Name is required.';
     final RegExp nameExp = RegExp(r'^[A-Za-z ]+$');
-    if (!nameExp.hasMatch(value))
+    if (!nameExp.hasMatch(value)) {
       return 'Please enter only alphabetical characters.';
+    }
     return null;
   }
 
@@ -35,11 +36,11 @@ class _TextFormFieldExampleState extends State<TextFormFieldExample> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          SizedBox(height: 24.0),
+          const SizedBox(height: 24.0),
           // "Name" form.
           TextFormField(
             textCapitalization: TextCapitalization.words,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               border: UnderlineInputBorder(),
               filled: true,
               icon: Icon(Icons.person),
@@ -52,7 +53,7 @@ class _TextFormFieldExampleState extends State<TextFormFieldExample> {
             },
             validator: _validateName,
           ),
-          SizedBox(height: 24.0),
+          const SizedBox(height: 24.0),
           // "Phone number" form.
           TextFormField(
             decoration: const InputDecoration(
@@ -73,7 +74,7 @@ class _TextFormFieldExampleState extends State<TextFormFieldExample> {
               FilteringTextInputFormatter.digitsOnly
             ],
           ),
-          SizedBox(height: 24.0),
+          const SizedBox(height: 24.0),
           // "Email" form.
           TextFormField(
             decoration: const InputDecoration(
@@ -89,7 +90,7 @@ class _TextFormFieldExampleState extends State<TextFormFieldExample> {
               print('email=$_email');
             },
           ),
-          SizedBox(height: 24.0),
+          const SizedBox(height: 24.0),
           // "Life story" form.
           TextFormField(
             decoration: const InputDecoration(
@@ -100,7 +101,7 @@ class _TextFormFieldExampleState extends State<TextFormFieldExample> {
             ),
             maxLines: 3,
           ),
-          SizedBox(height: 24.0),
+          const SizedBox(height: 24.0),
           // "Salary" form.
           TextFormField(
             keyboardType: TextInputType.number,
@@ -110,9 +111,8 @@ class _TextFormFieldExampleState extends State<TextFormFieldExample> {
                 prefixText: '\$',
                 suffixText: 'USD',
                 suffixStyle: TextStyle(color: Colors.green)),
-            maxLines: 1,
           ),
-          SizedBox(height: 24.0),
+          const SizedBox(height: 24.0),
           // "Password" form.
           PasswordField(
             fieldKey: _passwordFieldKey,
@@ -124,7 +124,7 @@ class _TextFormFieldExampleState extends State<TextFormFieldExample> {
               });
             },
           ),
-          SizedBox(height: 24.0),
+          const SizedBox(height: 24.0),
           // "Re-type password" form.
           TextFormField(
             enabled: this._password != null && this._password.isNotEmpty,

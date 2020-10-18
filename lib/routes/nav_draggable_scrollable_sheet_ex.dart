@@ -29,7 +29,7 @@ class DraggableScrollableSheetExample extends StatelessWidget {
       maxChildSize: 0.8,
       builder: (BuildContext context, ScrollController scrollController) {
         return Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: Colors.blue,
             // border: Border.all(color: Colors.blue, width: 2),
             borderRadius: BorderRadius.only(
@@ -43,7 +43,7 @@ class DraggableScrollableSheetExample extends StatelessWidget {
               itemCount: 25,
               itemBuilder: (BuildContext context, int index) {
                 return ListTile(
-                  leading: Icon(Icons.ac_unit),
+                  leading: const Icon(Icons.ac_unit),
                   title: Text('Item $index'),
                 );
               },

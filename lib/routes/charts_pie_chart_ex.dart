@@ -26,11 +26,11 @@ class _PieChartExampleState extends State<PieChartExample> {
   charts.BehaviorPosition _legendPosition = charts.BehaviorPosition.bottom;
 
   // Data to render.
-  List<_CostsData> _data = [
-    _CostsData('housing', 1000),
-    _CostsData('food', 500),
-    _CostsData('health', 200),
-    _CostsData('trasport', 100),
+  final List<_CostsData> _data = [
+    const _CostsData('housing', 1000),
+    const _CostsData('food', 500),
+    const _CostsData('health', 200),
+    const _CostsData('trasport', 100),
   ];
 
   @override
@@ -40,7 +40,7 @@ class _PieChartExampleState extends State<PieChartExample> {
     return ListView(
       padding: const EdgeInsets.all(8),
       children: <Widget>[
-        Container(
+        SizedBox(
           height: 300,
           child: charts.PieChart(
             // Pie chart can only render one series.
@@ -57,7 +57,7 @@ class _PieChartExampleState extends State<PieChartExample> {
               ),
             ],
             animate: this._animate,
-            defaultRenderer: new charts.ArcRendererConfig(
+            defaultRenderer: charts.ArcRendererConfig(
               arcRatio: this._arcRatio,
               arcRendererDecorators: [
                 charts.ArcLabelDecorator(labelPosition: this._arcLabelPosition)
@@ -77,7 +77,7 @@ class _PieChartExampleState extends State<PieChartExample> {
             ],
           ),
         ),
-        Divider(),
+        const Divider(),
         ..._controlWidgets(),
       ],
     );
@@ -86,17 +86,17 @@ class _PieChartExampleState extends State<PieChartExample> {
   /// Widgets to control the chart appearance and behavior.
   List<Widget> _controlWidgets() => <Widget>[
         SwitchListTile(
-          title: Text('animate'),
+          title: const Text('animate'),
           onChanged: (bool val) => setState(() => this._animate = val),
           value: this._animate,
         ),
         SwitchListTile(
-          title: Text('defaultInteractions'),
+          title: const Text('defaultInteractions'),
           onChanged: (bool val) =>
               setState(() => this._defaultInteractions = val),
           value: this._defaultInteractions,
         ),
-        ListTile(title: Text('Arc width ratio w.r.t. radius:')),
+        const ListTile(title: Text('Arc width ratio w.r.t. radius:')),
         Slider(
           divisions: 10,
           onChanged: (double val) => setState(() => this._arcRatio = val),
@@ -104,7 +104,7 @@ class _PieChartExampleState extends State<PieChartExample> {
           label: '${this._arcRatio}',
         ),
         ListTile(
-          title: Text('arcLabelPosition:'),
+          title: const Text('arcLabelPosition:'),
           trailing: DropdownButton<charts.ArcLabelPosition>(
             value: this._arcLabelPosition,
             onChanged: (charts.ArcLabelPosition newVal) {
@@ -119,7 +119,7 @@ class _PieChartExampleState extends State<PieChartExample> {
           ),
         ),
         ListTile(
-          title: Text('titlePosition:'),
+          title: const Text('titlePosition:'),
           trailing: DropdownButton<charts.BehaviorPosition>(
             value: this._titlePosition,
             onChanged: (charts.BehaviorPosition newVal) {
@@ -134,7 +134,7 @@ class _PieChartExampleState extends State<PieChartExample> {
           ),
         ),
         ListTile(
-          title: Text('legendPosition:'),
+          title: const Text('legendPosition:'),
           trailing: DropdownButton<charts.BehaviorPosition>(
             value: this._legendPosition,
             onChanged: (charts.BehaviorPosition newVal) {

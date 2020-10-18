@@ -18,10 +18,11 @@ class TodoItem {
   TodoItem({this.id, this.content, this.isDone = false, this.createdAt});
 
   TodoItem.fromJsonMap(Map<String, dynamic> map)
-      : id = map['id'],
-        content = map['content'],
+      : id = map['id'] as int,
+        content = map['content'] as String,
         isDone = map['isDone'] == 1,
-        createdAt = DateTime.fromMillisecondsSinceEpoch(map['createdAt']);
+        createdAt =
+            DateTime.fromMillisecondsSinceEpoch(map['createdAt'] as int);
 
   Map<String, dynamic> toJsonMap() => {
         'id': id,
@@ -70,7 +71,8 @@ class _SqliteExampleState extends State<SqliteExample> {
 
   // Retrieves rows from the db table.
   Future<void> _getTodoItems() async {
-    List<Map> jsons = await this._db.rawQuery('SELECT * FROM $kDbTableName');
+    final List<Map<String, dynamic>> jsons =
+        await this._db.rawQuery('SELECT * FROM $kDbTableName');
     print('${jsons.length} rows retrieved from db!');
     this._todos = jsons.map((json) => TodoItem.fromJsonMap(json)).toList();
   }
@@ -81,7 +83,7 @@ class _SqliteExampleState extends State<SqliteExample> {
   Future<void> _addTodoItem(TodoItem todo) async {
     await this._db.transaction(
       (Transaction txn) async {
-        int id = await txn.rawInsert('''
+        final int id = await txn.rawInsert('''
           INSERT INTO $kDbTableName
             (content, isDone, createdAt)
           VALUES
@@ -97,11 +99,12 @@ class _SqliteExampleState extends State<SqliteExample> {
 
   // Updates records in the db table.
   Future<void> _toggleTodoItem(TodoItem todo) async {
-    int count = await this._db.rawUpdate(
-      /*sql=*/ '''UPDATE $kDbTableName
-                    SET isDone = ?
-                    WHERE id = ?''',
-      /*args=*/ [todo.isDone ? 0 : 1, todo.id],
+    final int count = await this._db.rawUpdate(
+      /*sql=*/ '''
+      UPDATE $kDbTableName
+      SET isDone = ?
+      WHERE id = ?''',
+      /*args=*/ [if (todo.isDone) 0 else 1, todo.id],
     );
     print('Updated $count records in db.');
   }
@@ -130,10 +133,11 @@ class _SqliteExampleState extends State<SqliteExample> {
     return FutureBuilder<bool>(
       future: _asyncInit(),
       builder: (context, snapshot) {
-        if (!snapshot.hasData || snapshot.data == false)
-          return Center(
+        if (!snapshot.hasData || snapshot.data == false) {
+          return const Center(
             child: CircularProgressIndicator(),
           );
+        }
         return Scaffold(
           body: ListView(
             children: this._todos.map(_itemToListTile).toList(),
@@ -168,7 +172,7 @@ class _SqliteExampleState extends State<SqliteExample> {
           },
         ),
         trailing: IconButton(
-            icon: Icon(Icons.delete),
+            icon: const Icon(Icons.delete),
             onPressed: () async {
               await _deleteTodoItem(todo);
               _updateUI();
@@ -177,7 +181,6 @@ class _SqliteExampleState extends State<SqliteExample> {
 
   FloatingActionButton _buildFloatingActionButton() {
     return FloatingActionButton(
-      child: Icon(Icons.add),
       onPressed: () async {
         await _addTodoItem(
           TodoItem(
@@ -187,6 +190,7 @@ class _SqliteExampleState extends State<SqliteExample> {
         );
         _updateUI();
       },
+      child: const Icon(Icons.add),
     );
   }
 }

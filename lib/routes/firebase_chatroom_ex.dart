@@ -1,8 +1,9 @@
+import 'dart:async';
+
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
-import 'dart:async';
 
 import './firebase_login_ex.dart' show kFirebaseAnalytics;
 
@@ -41,7 +42,7 @@ class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
       appBar: AppBar(
         backgroundColor: Colors.red,
         leading: IconButton(
-          icon: Icon(Icons.info),
+          icon: const Icon(Icons.info),
           onPressed: () => _showNoteDialog(context),
         ),
         title: SingleChildScrollView(
@@ -55,7 +56,7 @@ class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
         child: Column(
           children: <Widget>[
             _buildMessagesList(),
-            Divider(height: 2.0),
+            const Divider(height: 2.0),
             _buildComposeMsgRow()
           ],
         ),
@@ -67,16 +68,16 @@ class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
     showDialog(
       context: context,
       builder: (ctx) => AlertDialog(
-        title: Text('Note'),
-        content: Text('This chat room is only for demo purposes.\n\n'
+        title: const Text('Note'),
+        content: const Text('This chat room is only for demo purposes.\n\n'
             'The chat messages are publicly available, and they '
             'can be deleted at any time by the firebase admin.\n\n'
             'To send messages, you must log in '
             'in the "Firebase login" demo.'),
         actions: <Widget>[
           FlatButton(
-            child: Text('OK'),
             onPressed: () => Navigator.of(ctx).pop(),
+            child: const Text('OK'),
           )
         ],
       ),
@@ -88,10 +89,10 @@ class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
     return Flexible(
       child: Scrollbar(
         child: FirebaseAnimatedList(
-          defaultChild: Center(child: CircularProgressIndicator()),
+          defaultChild: const Center(child: CircularProgressIndicator()),
           query: _firebaseMsgDbRef,
           sort: (a, b) => b.key.compareTo(a.key),
-          padding: EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(8.0),
           reverse: true,
           itemBuilder: (BuildContext ctx, DataSnapshot snapshot,
                   Animation<double> animation, int idx) =>
@@ -104,17 +105,17 @@ class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
   // Returns the UI of one message from a data snapshot.
   Widget _messageFromSnapshot(
       DataSnapshot snapshot, Animation<double> animation) {
-    final String senderName = snapshot.value['senderName'] ?? '?? <unknown>';
-    final String msgText = snapshot.value['text'] ?? '??';
-    final sentTime = snapshot.value['timestamp'] ?? '<unknown timestamp>';
-    final String senderPhotoUrl = snapshot.value['senderPhotoUrl'];
+    final senderName = snapshot.value['senderName'] as String ?? '?? <unknown>';
+    final msgText = snapshot.value['text'] as String ?? '??';
+    final sentTime = snapshot.value['timestamp'] as int ?? 0;
+    final senderPhotoUrl = snapshot.value['senderPhotoUrl'] as String;
     final messageUI = Padding(
-      padding: EdgeInsets.symmetric(vertical: 10.0),
+      padding: const EdgeInsets.symmetric(vertical: 10.0),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Padding(
-            padding: EdgeInsets.only(right: 8.0),
+            padding: const EdgeInsets.only(right: 8.0),
             child: senderPhotoUrl != null
                 ? CircleAvatar(
                     backgroundImage: NetworkImage(senderPhotoUrl),
@@ -144,7 +145,6 @@ class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
         parent: animation,
         curve: Curves.easeOut,
       ),
-      axisAlignment: 0.0,
       child: messageUI,
     );
   }
@@ -152,7 +152,7 @@ class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
   // Builds the row for composing and sending message.
   Widget _buildComposeMsgRow() {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 4.0),
+      margin: const EdgeInsets.symmetric(horizontal: 4.0),
       decoration: BoxDecoration(color: Theme.of(context).cardColor),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.end,
@@ -164,15 +164,16 @@ class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
               // line is filled up.
               maxLines: null,
               maxLength: 200,
-              decoration: InputDecoration.collapsed(hintText: "Send a message"),
+              decoration:
+                  const InputDecoration.collapsed(hintText: "Send a message"),
               controller: _textController,
               onChanged: (String text) =>
-                  setState(() => _isComposing = text.length > 0),
+                  setState(() => _isComposing = text.isNotEmpty),
               onSubmitted: _onTextMsgSubmitted,
             ),
           ),
           IconButton(
-            icon: Icon(Icons.send),
+            icon: const Icon(Icons.send),
             onPressed: _isComposing
                 ? () => _onTextMsgSubmitted(_textController.text)
                 : null,
@@ -183,7 +184,7 @@ class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
   }
 
   // Triggered when text is submitted (send button pressed).
-  Future<Null> _onTextMsgSubmitted(String text) async {
+  Future<void> _onTextMsgSubmitted(String text) async {
     // Make sure _user is not null.
     if (this._user == null) {
       this._user = firebase_auth.FirebaseAuth.instance.currentUser;
@@ -192,14 +193,14 @@ class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
       showDialog(
         context: context,
         builder: (ctx) => AlertDialog(
-          title: Text('Login required'),
-          content: Text('To send messages you need to first log in.\n\n'
+          title: const Text('Login required'),
+          content: const Text('To send messages you need to first log in.\n\n'
               'Go to the "Firebase login" example, and log in from there. '
               'You will then be able to send messages.'),
           actions: <Widget>[
             FlatButton(
-              child: Text('OK'),
               onPressed: () => Navigator.of(ctx).pop(),
+              child: const Text('OK'),
             )
           ],
         ),

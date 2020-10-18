@@ -32,8 +32,8 @@ class _FirebaseMLKitExampleState extends State<FirebaseMLKitExample> {
       builder: (ctx) => SimpleDialog(
         children: <Widget>[
           ListTile(
-            leading: Icon(Icons.camera_alt),
-            title: Text('Take picture'),
+            leading: const Icon(Icons.camera_alt),
+            title: const Text('Take picture'),
             onTap: () async {
               final PickedFile pickedFile =
                   await _picker.getImage(source: ImageSource.camera);
@@ -41,8 +41,8 @@ class _FirebaseMLKitExampleState extends State<FirebaseMLKitExample> {
             },
           ),
           ListTile(
-            leading: Icon(Icons.image),
-            title: Text('Pick from gallery'),
+            leading: const Icon(Icons.image),
+            title: const Text('Pick from gallery'),
             onTap: () async {
               try {
                 final PickedFile pickedFile =
@@ -59,7 +59,7 @@ class _FirebaseMLKitExampleState extends State<FirebaseMLKitExample> {
     );
     if (imageFile == null) {
       Scaffold.of(context).showSnackBar(
-        SnackBar(content: Text('Please pick one image first.')),
+        const SnackBar(content: Text('Please pick one image first.')),
       );
       return false;
     }
@@ -68,7 +68,7 @@ class _FirebaseMLKitExampleState extends State<FirebaseMLKitExample> {
     return true;
   }
 
-  Future<Null> _imageLabelling() async {
+  Future<void> _imageLabelling() async {
     setState(() => this._mlResult = '<no result>');
     if (await _pickImage() == false) {
       return;
@@ -80,19 +80,19 @@ class _FirebaseMLKitExampleState extends State<FirebaseMLKitExample> {
     final List<ImageLabel> labels =
         await labelDetector.processImage(visionImage);
     result += 'Detected ${labels.length} labels.\n';
-    for (ImageLabel label in labels) {
+    for (final ImageLabel label in labels) {
       final String text = label.text;
       final String entityId = label.entityId;
       final double confidence = label.confidence;
       result +=
           '\n#Label: $text($entityId), confidence=${confidence.toStringAsFixed(3)}';
     }
-    if (result.length > 0) {
+    if (result.isNotEmpty) {
       setState(() => this._mlResult = result);
     }
   }
 
-  Future<Null> _textOcr() async {
+  Future<void> _textOcr() async {
     setState(() => this._mlResult = '<no result>');
     if (await _pickImage() == false) {
       return;
@@ -107,7 +107,7 @@ class _FirebaseMLKitExampleState extends State<FirebaseMLKitExample> {
     final String text = visionText.text;
     debugPrint('Recognized text: "$text"');
     result += 'Detected ${visionText.blocks.length} text blocks.\n';
-    for (TextBlock block in visionText.blocks) {
+    for (final TextBlock block in visionText.blocks) {
       final Rect boundingBox = block.boundingBox;
       final List<Offset> cornerPoints = block.cornerPoints;
       final String text = block.text;
@@ -123,12 +123,12 @@ class _FirebaseMLKitExampleState extends State<FirebaseMLKitExample> {
       //   }
       // }
     }
-    if (result.length > 0) {
+    if (result.isNotEmpty) {
       setState(() => this._mlResult = result);
     }
   }
 
-  Future<Null> _barcodeScan() async {
+  Future<void> _barcodeScan() async {
     setState(() => this._mlResult = '<no result>');
     if (await _pickImage() == false) {
       return;
@@ -142,7 +142,7 @@ class _FirebaseMLKitExampleState extends State<FirebaseMLKitExample> {
     final List<Barcode> barcodes =
         await barcodeDetector.detectInImage(visionImage);
     result += 'Detected ${barcodes.length} barcodes.\n';
-    for (Barcode barcode in barcodes) {
+    for (final Barcode barcode in barcodes) {
       final Rect boundingBox = barcode.boundingBox;
       final List<Offset> cornerPoints = barcode.cornerPoints;
 
@@ -168,12 +168,12 @@ class _FirebaseMLKitExampleState extends State<FirebaseMLKitExample> {
       //     break;
       // }
     }
-    if (result.length > 0) {
+    if (result.isNotEmpty) {
       setState(() => this._mlResult = result);
     }
   }
 
-  Future<Null> _faceDetect() async {
+  Future<void> _faceDetect() async {
     setState(() => this._mlResult = '<no result>');
     if (await _pickImage() == false) {
       return;
@@ -181,7 +181,7 @@ class _FirebaseMLKitExampleState extends State<FirebaseMLKitExample> {
     String result = '';
     final FirebaseVisionImage visionImage =
         FirebaseVisionImage.fromFile(this._imageFile);
-    final options = FaceDetectorOptions(
+    const options = FaceDetectorOptions(
       enableLandmarks: true,
       enableClassification: true,
       enableTracking: true,
@@ -190,7 +190,7 @@ class _FirebaseMLKitExampleState extends State<FirebaseMLKitExample> {
         FirebaseVision.instance.faceDetector(options);
     final List<Face> faces = await faceDetector.processImage(visionImage);
     result += 'Detected ${faces.length} faces.\n';
-    for (Face face in faces) {
+    for (final Face face in faces) {
       final Rect boundingBox = face.boundingBox;
       // Head is rotated to the right rotY degrees
       final double rotY = face.headEulerAngleY;
@@ -218,7 +218,7 @@ class _FirebaseMLKitExampleState extends State<FirebaseMLKitExample> {
         result += 'id=$id\n ';
       }
     }
-    if (result.length > 0) {
+    if (result.isNotEmpty) {
       setState(() => this._mlResult = result);
     }
   }
@@ -227,39 +227,40 @@ class _FirebaseMLKitExampleState extends State<FirebaseMLKitExample> {
   Widget build(BuildContext context) {
     return ListView(
       children: <Widget>[
-        this._imageFile == null
-            ? Placeholder(
-                fallbackHeight: 200.0,
-              )
-            : FadeInImage(
-                placeholder: MemoryImage(kTransparentImage),
-                image: FileImage(this._imageFile),
-                // Image.file(, fit: BoxFit.contain),
-              ),
+        if (this._imageFile == null)
+          const Placeholder(
+            fallbackHeight: 200.0,
+          )
+        else
+          FadeInImage(
+            placeholder: MemoryImage(kTransparentImage),
+            image: FileImage(this._imageFile),
+            // Image.file(, fit: BoxFit.contain),
+          ),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: ButtonBar(
             children: <Widget>[
               RaisedButton(
-                child: Text('Image Labelling'),
                 onPressed: this._imageLabelling,
+                child: const Text('Image Labelling'),
               ),
               RaisedButton(
-                child: Text('Text OCR'),
                 onPressed: this._textOcr,
+                child: const Text('Text OCR'),
               ),
               RaisedButton(
-                child: Text('Barcode Scan'),
                 onPressed: this._barcodeScan,
+                child: const Text('Barcode Scan'),
               ),
               RaisedButton(
-                child: Text('Face Detection'),
                 onPressed: this._faceDetect,
+                child: const Text('Face Detection'),
               ),
             ],
           ),
         ),
-        Divider(),
+        const Divider(),
         Text('Result:', style: Theme.of(context).textTheme.subtitle2),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,

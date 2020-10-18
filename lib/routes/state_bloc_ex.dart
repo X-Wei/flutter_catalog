@@ -70,9 +70,10 @@ class MyBloc {
 // ###4. Define a MyBlocProvider class which is an InheritedWidget.
 class MyBlocProvider extends InheritedWidget {
   final MyBloc bloc;
-  final Widget child;
+  @override
+  final Widget child; // ignore: overridden_fields
 
-  MyBlocProvider({Key key, @required this.bloc, this.child})
+  const MyBlocProvider({Key key, @required this.bloc, this.child})
       : super(key: key, child: child);
 
   static MyBlocProvider of(BuildContext context) {
@@ -86,7 +87,7 @@ class MyBlocProvider extends InheritedWidget {
 class _MyDemoApp extends StatefulWidget {
   @override
   _MyDemoAppState createState() {
-    return new _MyDemoAppState();
+    return _MyDemoAppState();
   }
 }
 
@@ -97,7 +98,7 @@ class _MyDemoAppState extends State<_MyDemoApp> {
   Widget build(BuildContext context) {
     return ListView(
       children: <Widget>[
-        Text(
+        const Text(
             "BLoC pattern is a combination of StreamBuilder and InheritedWidget. "
             "Using StreamBuilder allows extracting all business logic into a "
             "separate 'MyBloc' class; using a InheritedWidget (usually name it "
@@ -132,7 +133,7 @@ class _AppRootWidget extends StatelessWidget {
       elevation: 4.0,
       child: Column(
         children: <Widget>[
-          Text('(root widget)'),
+          const Text('(root widget)'),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
@@ -151,18 +152,18 @@ class _CounterAndButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final MyBloc bloc = MyBlocProvider.of(context).bloc;
     return Card(
-      margin: EdgeInsets.all(4.0).copyWith(top: 32.0, bottom: 32.0),
+      margin: const EdgeInsets.all(4.0).copyWith(top: 32.0, bottom: 32.0),
       color: Colors.white70,
       child: Column(
         children: <Widget>[
-          Text('(child widget)'),
+          const Text('(child widget)'),
           // ###6. Access the state from child widget by wrapping the widget by
           // a StreamBuilder.
           StreamBuilder<_MyState>(
             stream: bloc.outputStream,
             builder: (context, AsyncSnapshot<_MyState> snapshot) {
               if (!snapshot.hasData) {
-                return Center(child: CircularProgressIndicator());
+                return const Center(child: CircularProgressIndicator());
               }
               print(snapshot.data);
               final state = snapshot.data;
@@ -175,13 +176,13 @@ class _CounterAndButton extends StatelessWidget {
           ButtonBar(
             children: <Widget>[
               IconButton(
-                icon: Icon(Icons.add),
+                icon: const Icon(Icons.add),
                 // ###7. Post new event to MyBloc by adding to bloc.inputSink.
                 onPressed: () =>
                     bloc.inputSink.add(_MyEvent(isIncrement: true)),
               ),
               IconButton(
-                icon: Icon(Icons.remove),
+                icon: const Icon(Icons.remove),
                 onPressed: () =>
                     bloc.inputSink.add(_MyEvent(isIncrement: false)),
               ),

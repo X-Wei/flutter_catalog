@@ -5,8 +5,8 @@ class ListViewBuilderExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final numItems = 20;
-    final _biggerFont = const TextStyle(fontSize: 18.0);
+    const numItems = 20;
+    const _biggerFont = TextStyle(fontSize: 18.0);
 
     Widget _buildRow(int idx) {
       return ListTile(
@@ -17,7 +17,7 @@ class ListViewBuilderExample extends StatelessWidget {
           'Item $idx',
           style: _biggerFont,
         ),
-        trailing: Icon(Icons.dashboard),
+        trailing: const Icon(Icons.dashboard),
       );
     }
 
@@ -25,7 +25,7 @@ class ListViewBuilderExample extends StatelessWidget {
       itemCount: numItems * 2,
       padding: const EdgeInsets.all(16.0),
       itemBuilder: (BuildContext context, int i) {
-        if (i.isOdd) return Divider();
+        if (i.isOdd) return const Divider();
         final index = i ~/ 2 + 1;
         return _buildRow(index);
       },

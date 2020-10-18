@@ -10,7 +10,7 @@ class _SalesData {
 
   _SalesData(this.year, this.sales);
   // Returns Jan.1st of that year as date.
-  DateTime get date => DateTime(this.year, 1, 1);
+  DateTime get date => DateTime(this.year);
 }
 
 /// Generate some random data.
@@ -55,7 +55,7 @@ class _TimeseriesChartExampleState extends State<TimeseriesChartExample> {
     return ListView(
       padding: const EdgeInsets.all(8),
       children: <Widget>[
-        Container(
+        SizedBox(
           height: 300,
           child: charts.TimeSeriesChart(
             /*seriesList=*/ [
@@ -97,7 +97,7 @@ class _TimeseriesChartExampleState extends State<TimeseriesChartExample> {
             ],
           ),
         ),
-        Divider(),
+        const Divider(),
         ..._controlWidgets(),
       ],
     );
@@ -106,33 +106,33 @@ class _TimeseriesChartExampleState extends State<TimeseriesChartExample> {
   /// Widgets to control the chart appearance and behavior.
   List<Widget> _controlWidgets() => <Widget>[
         SwitchListTile(
-          title: Text('animate'),
+          title: const Text('animate'),
           onChanged: (bool val) => setState(() => this._animate = val),
           value: this._animate,
         ),
         SwitchListTile(
-          title: Text('defaultInteractions'),
+          title: const Text('defaultInteractions'),
           onChanged: (bool val) =>
               setState(() => this._defaultInteractions = val),
           value: this._defaultInteractions,
         ),
         SwitchListTile(
-          title: Text('includePoints'),
+          title: const Text('includePoints'),
           onChanged: (bool val) => setState(() => this._includePoints = val),
           value: this._includePoints,
         ),
         SwitchListTile(
-          title: Text('includeArea'),
+          title: const Text('includeArea'),
           onChanged: (bool val) => setState(() => this._includeArea = val),
           value: this._includeArea,
         ),
         SwitchListTile(
-          title: Text('stacked'),
+          title: const Text('stacked'),
           onChanged: (bool val) => setState(() => this._stacked = val),
           value: this._stacked,
         ),
         ListTile(
-          title: Text('titlePosition:'),
+          title: const Text('titlePosition:'),
           trailing: DropdownButton<charts.BehaviorPosition>(
             value: this._titlePosition,
             onChanged: (charts.BehaviorPosition newVal) {
@@ -147,7 +147,7 @@ class _TimeseriesChartExampleState extends State<TimeseriesChartExample> {
           ),
         ),
         ListTile(
-          title: Text('legendPosition:'),
+          title: const Text('legendPosition:'),
           trailing: DropdownButton<charts.BehaviorPosition>(
             value: this._legendPosition,
             onChanged: (charts.BehaviorPosition newVal) {

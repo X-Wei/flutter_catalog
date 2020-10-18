@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_catalog/my_app_routes.dart';
 import 'package:provider/provider.dart';
 
-import './my_app_settings.dart';
-import './my_route.dart';
 import './my_app_routes.dart'
     show MyRouteGroup, kAboutRoute, kMyAppRoutesBasic, kMyAppRoutesAdvanced;
+import './my_app_settings.dart';
+import './my_route.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key key}) : super(key: key);
@@ -48,17 +48,17 @@ class _MyHomePageState extends State<MyHomePage> {
     final bookmarkAndAboutDemos = <Widget>[
       for (final MyRoute route
           in Provider.of<MyAppSettings>(context).starredRoutes)
-        _myRouteToListTile(route, leading: Icon(Icons.bookmark)),
-      _myRouteToListTile(kAboutRoute, leading: Icon(Icons.info)),
+        _myRouteToListTile(route, leading: const Icon(Icons.bookmark)),
+      _myRouteToListTile(kAboutRoute, leading: const Icon(Icons.info)),
     ];
     return Scaffold(
       body: IndexedStack(
+        index: _currentTabIndex,
         children: <Widget>[
           ListView(children: basicDemos),
           ListView(children: advancedDemos),
           ListView(children: bookmarkAndAboutDemos),
         ],
-        index: _currentTabIndex,
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: _kBottmonNavBarItems,
@@ -72,7 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   ListTile _myRouteToListTile(MyRoute myRoute,
-      {Widget leading, IconData trialing: Icons.keyboard_arrow_right}) {
+      {Widget leading, IconData trialing = Icons.keyboard_arrow_right}) {
     final routeTitleTextStyle = Theme.of(context)
         .textTheme
         .bodyText2

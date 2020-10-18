@@ -9,21 +9,21 @@ class HeroExample extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          SizedBox(
+          const SizedBox(
             height: 20.0,
           ),
           ListTile(
             leading: GestureDetector(
-              child: Hero(
+              onTap: () => _showSecondPage(context),
+              child: const Hero(
                 tag: 'my-hero-animation-tag',
                 child: CircleAvatar(
                   backgroundImage:
                       AssetImage('res/images/material_design_3.png'),
                 ),
               ),
-              onTap: () => _showSecondPage(context),
             ),
-            title: Text('Tap on the photo to view the animation transition.'),
+            title: const Text('Tap on the photo to view the animation transition.'),
           ),
         ],
       ),
