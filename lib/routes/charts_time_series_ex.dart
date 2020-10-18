@@ -10,7 +10,7 @@ class _SalesData {
 
   _SalesData(this.year, this.sales);
   // Returns Jan.1st of that year as date.
-  DateTime get date => DateTime(this.year, 1, 1);
+  DateTime get date => DateTime(this.year);
 }
 
 /// Generate some random data.

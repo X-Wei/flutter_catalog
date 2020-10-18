@@ -181,7 +181,7 @@ class _FirebaseMLKitExampleState extends State<FirebaseMLKitExample> {
     String result = '';
     final FirebaseVisionImage visionImage =
         FirebaseVisionImage.fromFile(this._imageFile);
-    final options = const FaceDetectorOptions(
+    const options = const FaceDetectorOptions(
       enableLandmarks: true,
       enableClassification: true,
       enableTracking: true,
@@ -227,11 +227,9 @@ class _FirebaseMLKitExampleState extends State<FirebaseMLKitExample> {
   Widget build(BuildContext context) {
     return ListView(
       children: <Widget>[
-        this._imageFile == null
-            ? const Placeholder(
+        if (this._imageFile == null) const Placeholder(
                 fallbackHeight: 200.0,
-              )
-            : FadeInImage(
+              ) else FadeInImage(
                 placeholder: MemoryImage(kTransparentImage),
                 image: FileImage(this._imageFile),
                 // Image.file(, fit: BoxFit.contain),

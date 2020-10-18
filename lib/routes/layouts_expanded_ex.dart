@@ -12,7 +12,6 @@ class ExpandedExample extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
         Expanded(
-          flex: 1,
           child: Container(
             color: Colors.red,
             child: const Text('Item1: flex=1'),

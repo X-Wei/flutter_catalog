@@ -103,7 +103,7 @@ class _SqliteExampleState extends State<SqliteExample> {
       /*sql=*/ '''UPDATE $kDbTableName
                     SET isDone = ?
                     WHERE id = ?''',
-      /*args=*/ [todo.isDone ? 0 : 1, todo.id],
+      /*args=*/ [if (todo.isDone) 0 else 1, todo.id],
     );
     print('Updated $count records in db.');
   }
@@ -132,10 +132,11 @@ class _SqliteExampleState extends State<SqliteExample> {
     return FutureBuilder<bool>(
       future: _asyncInit(),
       builder: (context, snapshot) {
-        if (!snapshot.hasData || snapshot.data == false)
+        if (!snapshot.hasData || snapshot.data == false) {
           return const Center(
             child: CircularProgressIndicator(),
           );
+        }
         return Scaffold(
           body: ListView(
             children: this._todos.map(_itemToListTile).toList(),

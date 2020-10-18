@@ -5,8 +5,8 @@ class ListViewBuilderExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final numItems = 20;
-    final _biggerFont = const TextStyle(fontSize: 18.0);
+    const numItems = 20;
+    const _biggerFont = const TextStyle(fontSize: 18.0);
 
     Widget _buildRow(int idx) {
       return ListTile(

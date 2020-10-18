@@ -22,8 +22,9 @@ class _TextFormFieldExampleState extends State<TextFormFieldExample> {
   String _validateName(String value) {
     if (value.isEmpty) return 'Name is required.';
     final RegExp nameExp = RegExp(r'^[A-Za-z ]+$');
-    if (!nameExp.hasMatch(value))
+    if (!nameExp.hasMatch(value)) {
       return 'Please enter only alphabetical characters.';
+    }
     return null;
   }
 
@@ -110,7 +111,6 @@ class _TextFormFieldExampleState extends State<TextFormFieldExample> {
                 prefixText: '\$',
                 suffixText: 'USD',
                 suffixStyle: TextStyle(color: Colors.green)),
-            maxLines: 1,
           ),
           const SizedBox(height: 24.0),
           // "Password" form.

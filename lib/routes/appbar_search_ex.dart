@@ -144,15 +144,13 @@ class _MySearchDelegate extends SearchDelegate<String> {
   @override
   List<Widget> buildActions(BuildContext context) {
     return <Widget>[
-      query.isEmpty
-          ? IconButton(
+      if (query.isEmpty) IconButton(
               tooltip: 'Voice Search',
               icon: const Icon(Icons.mic),
               onPressed: () {
                 this.query = 'TODO: implement voice input';
               },
-            )
-          : IconButton(
+            ) else IconButton(
               tooltip: 'Clear',
               icon: const Icon(Icons.clear),
               onPressed: () {

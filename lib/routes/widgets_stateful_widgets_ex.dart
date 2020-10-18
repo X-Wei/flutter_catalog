@@ -58,7 +58,6 @@ class _StatefulWidgetsExampleState extends State<StatefulWidgetsExample> {
         const Text('Slider with Divisions and Label'),
         Slider(
             value: _slider2Val,
-            min: 0.0,
             max: 100.0,
             divisions: 5,
             label: '${_slider2Val.round()}',

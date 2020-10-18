@@ -70,9 +70,10 @@ class MyBloc {
 // ###4. Define a MyBlocProvider class which is an InheritedWidget.
 class MyBlocProvider extends InheritedWidget {
   final MyBloc bloc;
+  @override
   final Widget child;
 
-  MyBlocProvider({Key key, @required this.bloc, this.child})
+  const MyBlocProvider({Key key, @required this.bloc, this.child})
       : super(key: key, child: child);
 
   static MyBlocProvider of(BuildContext context) {

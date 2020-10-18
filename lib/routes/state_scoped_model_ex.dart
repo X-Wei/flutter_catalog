@@ -86,7 +86,6 @@ class _CounterAndButton extends StatelessWidget {
       // Note: Set `rebuildOnChange` to false if the current widget doesn't
       // need updating. E.g. When "add-to-cart" button is pressed, the app's
       // state is updated, but "product-details" page doesn't need updating.
-      rebuildOnChange: true,
       builder: (context, child, model) => Card(
         margin: const EdgeInsets.all(4.0).copyWith(top: 32.0, bottom: 32.0),
         color: Colors.white70,

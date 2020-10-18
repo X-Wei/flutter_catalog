@@ -40,7 +40,6 @@ class _BottomTabbarExampleState extends State<BottomTabbarExample>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: null,
       body: TabBarView(
         controller: _tabController,
         children: _kTabPages,

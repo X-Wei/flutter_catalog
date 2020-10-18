@@ -19,7 +19,7 @@ class ContainerExample extends StatelessWidget {
           child: Container(
             // Container.color should not be set when decoration is set.
             decoration: BoxDecoration(
-                border: Border.all(width: 5.0, color: Colors.black),
+                border: Border.all(width: 5.0),
                 color: Colors.yellow,
                 borderRadius: BorderRadius.circular(20.0)),
             // Container.padding is implementd internally with Padding widgets.

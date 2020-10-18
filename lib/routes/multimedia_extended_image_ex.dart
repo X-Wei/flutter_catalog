@@ -23,8 +23,6 @@ class _ExtendedImageExampleState extends State<ExtendedImageExample> {
         initEditorConfigHandler: (state) {
           return EditorConfig(
             maxScale: 8.0,
-            cropRectPadding: const EdgeInsets.all(20.0),
-            hitTestSize: 20.0,
             // cropAspectRatio: _aspectRatio.aspectRatio,
           );
         },
@@ -36,7 +34,7 @@ class _ExtendedImageExampleState extends State<ExtendedImageExample> {
             RaisedButton.icon(
               label: const Text('Rotate right'),
               icon: const Icon(Icons.rotate_right),
-              onPressed: () => _editorKey.currentState.rotate(right: true),
+              onPressed: () => _editorKey.currentState.rotate(),
             ),
             RaisedButton.icon(
               label: const Text('Rotate left'),

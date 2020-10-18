@@ -5,7 +5,7 @@ class NavDrawerExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final drawerHeader = const UserAccountsDrawerHeader(
+    const drawerHeader = const UserAccountsDrawerHeader(
       accountName: Text('User Name'),
       accountEmail: Text('user.name@email.com'),
       currentAccountPicture: CircleAvatar(

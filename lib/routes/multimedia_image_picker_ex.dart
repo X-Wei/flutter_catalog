@@ -32,9 +32,7 @@ class _ImagePickerExampleState extends State<ImagePickerExample> {
             ),
           ],
         ),
-        this._imageFile == null
-            ? const Placeholder()
-            : Image.file(this._imageFile),
+        if (this._imageFile == null) const Placeholder() else Image.file(this._imageFile),
       ],
     );
   }

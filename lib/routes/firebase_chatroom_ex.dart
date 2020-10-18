@@ -144,7 +144,6 @@ class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
         parent: animation,
         curve: Curves.easeOut,
       ),
-      axisAlignment: 0.0,
       child: messageUI,
     );
   }

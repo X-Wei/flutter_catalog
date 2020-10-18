@@ -107,10 +107,11 @@ class _SembastExampleState extends State<SembastExample> {
     return FutureBuilder<bool>(
       future: this._initDbFuture,
       builder: (context, snapshot) {
-        if (!snapshot.hasData)
+        if (!snapshot.hasData) {
           return const Center(
             child: CircularProgressIndicator(),
           );
+        }
         return Scaffold(
           body: ListView(
             children: this._todos.map(_itemToListTile).toList(),

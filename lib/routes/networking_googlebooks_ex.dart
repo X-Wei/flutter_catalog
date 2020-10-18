@@ -145,7 +145,6 @@ class _MyBookDetailsPage extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(4),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Hero(
               tag: _book.id,
