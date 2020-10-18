@@ -26,7 +26,7 @@ class _FileReadWriteExampleState extends State<FileReadWriteExample> {
 
   @override
   Widget build(BuildContext context) {
-    FocusNode textFieldFocusNode = FocusNode();
+    final FocusNode textFieldFocusNode = FocusNode();
     return ListView(
       padding: const EdgeInsets.all(20.0),
       children: <Widget>[

@@ -90,7 +90,7 @@ class DialogsExample extends StatelessWidget {
         RaisedButton(
           color: Colors.green,
           onPressed: () {
-            DateTime now = DateTime.now();
+            final DateTime now = DateTime.now();
             showTimePicker(
               context: context,
               initialTime: TimeOfDay(hour: now.hour, minute: now.minute),

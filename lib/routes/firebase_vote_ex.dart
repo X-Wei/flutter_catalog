@@ -106,7 +106,7 @@ class _FirebaseVoteExampleState extends State<FirebaseVoteExample> {
         throw 'Cannot access "firestore.googleapis.com"!';
       }
       final lang = record.language;
-      int deltaVotes = this._isVoted(lang) ? -1 : 1;
+      final int deltaVotes = this._isVoted(lang) ? -1 : 1;
       // Update votes via transactions are atomic: no race condition.
       await FirebaseFirestore.instance.runTransaction(
         (transaction) async {

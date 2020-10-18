@@ -93,7 +93,7 @@ class _HiveExampleState extends State<HiveExample> {
   // increment.
   Future<void> _addTodoItem(TodoItem todo) async {
     final box = Hive.box<TodoItem>(kHiveBoxName);
-    int key = await box.add(todo);
+    final int key = await box.add(todo);
     // Set the id field to the auto-incremented key.
     todo.id = key;
     await todo.save();

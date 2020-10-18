@@ -78,14 +78,14 @@ class _SembastExampleState extends State<SembastExample> {
   // Note we don't need to explicitly set the primary key (id), it'll auto
   // increment.
   Future<void> _addTodoItem(TodoItem todo) async {
-    int id = await this._store.add(this._db, todo.toJsonMap());
+    final int id = await this._store.add(this._db, todo.toJsonMap());
     print('Inserted todo item with id=$id.');
   }
 
   // Updates records in the db table.
   Future<void> _toggleTodoItem(TodoItem todo) async {
     todo.isDone = !todo.isDone;
-    int count = await this._store.update(
+    final int count = await this._store.update(
           this._db,
           todo.toJsonMap(),
           finder: Finder(filter: Filter.byKey(todo.id)),
@@ -95,7 +95,7 @@ class _SembastExampleState extends State<SembastExample> {
 
   // Deletes records in the db table.
   Future<void> _deleteTodoItem(TodoItem todo) async {
-    int count = await this._store.delete(
+    final int count = await this._store.delete(
           this._db,
           finder: Finder(filter: Filter.byKey(todo.id)),
         );

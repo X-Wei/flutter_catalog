@@ -71,7 +71,7 @@ class _SqliteExampleState extends State<SqliteExample> {
 
   // Retrieves rows from the db table.
   Future<void> _getTodoItems() async {
-    List<Map<String, dynamic>> jsons =
+    final List<Map<String, dynamic>> jsons =
         await this._db.rawQuery('SELECT * FROM $kDbTableName');
     print('${jsons.length} rows retrieved from db!');
     this._todos = jsons.map((json) => TodoItem.fromJsonMap(json)).toList();
@@ -83,7 +83,7 @@ class _SqliteExampleState extends State<SqliteExample> {
   Future<void> _addTodoItem(TodoItem todo) async {
     await this._db.transaction(
       (Transaction txn) async {
-        int id = await txn.rawInsert('''
+        final int id = await txn.rawInsert('''
           INSERT INTO $kDbTableName
             (content, isDone, createdAt)
           VALUES
@@ -99,7 +99,7 @@ class _SqliteExampleState extends State<SqliteExample> {
 
   // Updates records in the db table.
   Future<void> _toggleTodoItem(TodoItem todo) async {
-    int count = await this._db.rawUpdate(
+    final int count = await this._db.rawUpdate(
       /*sql=*/ '''UPDATE $kDbTableName
                     SET isDone = ?
                     WHERE id = ?''',
