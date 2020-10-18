@@ -59,11 +59,11 @@ class _DropdownButtonExampleState extends State<DropdownButtonExample> {
           trailing: DropdownButton(
             value: _btn2SelectedVal,
             hint: const Text('Choose'),
-            onChanged: ((String newValue) {
+            onChanged: (String newValue) {
               setState(() {
                 _btn2SelectedVal = newValue;
               });
-            }),
+            },
             items: _dropDownMenuItems,
           ),
         ),
@@ -74,7 +74,7 @@ class _DropdownButtonExampleState extends State<DropdownButtonExample> {
               _btn3SelectedVal = newValue;
               Scaffold.of(context).showSnackBar(
                 SnackBar(
-                  content: Text('$_btn3SelectedVal'),
+                  content: Text(_btn3SelectedVal),
                 ),
               );
             },

@@ -32,7 +32,8 @@ class _RestApiSendExampleState extends State<RestApiSendExample> {
     return ListView(
       padding: const EdgeInsets.all(16.0),
       children: <Widget>[
-        const Text('''In this example we will POST to the jsonplaceholder API.
+        const Text('''
+In this example we will POST to the jsonplaceholder API.
 
 From https://jsonplaceholder.typicode.com/guide.html we see that the API expects title, body and userId in the request body.'''),
         const Divider(),
@@ -119,8 +120,7 @@ From https://jsonplaceholder.typicode.com/guide.html we see that the API expects
       if (response.statusCode == 201) {
         setState(() => this._responseBody = response.body);
       } else {
-        setState(
-            () => this._error = 'Failed to add a post: ' + response.toString());
+        setState(() => this._error = 'Failed to add a post: $response');
       }
     } catch (e) {
       setState(() => this._error = 'Failed to add a post: $e');

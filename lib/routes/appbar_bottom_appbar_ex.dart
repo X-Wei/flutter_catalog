@@ -31,28 +31,28 @@ class _BottomAppbarExampleState extends State<BottomAppbarExample> {
                   setState(() => this._fabLocation = newVal);
                 }
               },
-              items: [
-                const DropdownMenuItem(
+              items: const [
+                DropdownMenuItem(
                   value: FloatingActionButtonLocation.centerFloat,
                   child: Text('centerFloat'),
                 ),
-                const DropdownMenuItem(
+                DropdownMenuItem(
                   value: FloatingActionButtonLocation.endFloat,
                   child: Text('endFloat'),
                 ),
-                const DropdownMenuItem(
+                DropdownMenuItem(
                   value: FloatingActionButtonLocation.centerDocked,
                   child: Text('centerDocked'),
                 ),
-                const DropdownMenuItem(
+                DropdownMenuItem(
                   value: FloatingActionButtonLocation.endDocked,
                   child: Text('endDocked'),
                 ),
-                const DropdownMenuItem(
+                DropdownMenuItem(
                   value: FloatingActionButtonLocation.miniStartTop,
                   child: Text('miniStartTop'),
                 ),
-                const DropdownMenuItem(
+                DropdownMenuItem(
                   value: FloatingActionButtonLocation.startTop,
                   child: Text('startTop'),
                 ),

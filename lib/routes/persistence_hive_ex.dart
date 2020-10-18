@@ -64,7 +64,7 @@ class _HiveExampleState extends State<HiveExample> {
       // putting it here might cuase the line to run twice and lead to errors
       // since this page can be opened twice.
       Hive.registerAdapter(TodoItemAdapter());
-    } on HiveError catch (e) {
+    } on Exception catch (e) {
       print(e);
     }
     // Open the hive box so that we can later call Hive.box(<name>) to use it.

@@ -80,14 +80,14 @@ class _FirebaseMLKitExampleState extends State<FirebaseMLKitExample> {
     final List<ImageLabel> labels =
         await labelDetector.processImage(visionImage);
     result += 'Detected ${labels.length} labels.\n';
-    for (ImageLabel label in labels) {
+    for (final ImageLabel label in labels) {
       final String text = label.text;
       final String entityId = label.entityId;
       final double confidence = label.confidence;
       result +=
           '\n#Label: $text($entityId), confidence=${confidence.toStringAsFixed(3)}';
     }
-    if (result.length > 0) {
+    if (result.isNotEmpty) {
       setState(() => this._mlResult = result);
     }
   }
@@ -107,7 +107,7 @@ class _FirebaseMLKitExampleState extends State<FirebaseMLKitExample> {
     final String text = visionText.text;
     debugPrint('Recognized text: "$text"');
     result += 'Detected ${visionText.blocks.length} text blocks.\n';
-    for (TextBlock block in visionText.blocks) {
+    for (final TextBlock block in visionText.blocks) {
       final Rect boundingBox = block.boundingBox;
       final List<Offset> cornerPoints = block.cornerPoints;
       final String text = block.text;
@@ -123,7 +123,7 @@ class _FirebaseMLKitExampleState extends State<FirebaseMLKitExample> {
       //   }
       // }
     }
-    if (result.length > 0) {
+    if (result.isNotEmpty) {
       setState(() => this._mlResult = result);
     }
   }
@@ -142,7 +142,7 @@ class _FirebaseMLKitExampleState extends State<FirebaseMLKitExample> {
     final List<Barcode> barcodes =
         await barcodeDetector.detectInImage(visionImage);
     result += 'Detected ${barcodes.length} barcodes.\n';
-    for (Barcode barcode in barcodes) {
+    for (final Barcode barcode in barcodes) {
       final Rect boundingBox = barcode.boundingBox;
       final List<Offset> cornerPoints = barcode.cornerPoints;
 
@@ -168,7 +168,7 @@ class _FirebaseMLKitExampleState extends State<FirebaseMLKitExample> {
       //     break;
       // }
     }
-    if (result.length > 0) {
+    if (result.isNotEmpty) {
       setState(() => this._mlResult = result);
     }
   }
@@ -181,7 +181,7 @@ class _FirebaseMLKitExampleState extends State<FirebaseMLKitExample> {
     String result = '';
     final FirebaseVisionImage visionImage =
         FirebaseVisionImage.fromFile(this._imageFile);
-    const options = const FaceDetectorOptions(
+    const options = FaceDetectorOptions(
       enableLandmarks: true,
       enableClassification: true,
       enableTracking: true,
@@ -190,7 +190,7 @@ class _FirebaseMLKitExampleState extends State<FirebaseMLKitExample> {
         FirebaseVision.instance.faceDetector(options);
     final List<Face> faces = await faceDetector.processImage(visionImage);
     result += 'Detected ${faces.length} faces.\n';
-    for (Face face in faces) {
+    for (final Face face in faces) {
       final Rect boundingBox = face.boundingBox;
       // Head is rotated to the right rotY degrees
       final double rotY = face.headEulerAngleY;
@@ -218,7 +218,7 @@ class _FirebaseMLKitExampleState extends State<FirebaseMLKitExample> {
         result += 'id=$id\n ';
       }
     }
-    if (result.length > 0) {
+    if (result.isNotEmpty) {
       setState(() => this._mlResult = result);
     }
   }
@@ -227,13 +227,16 @@ class _FirebaseMLKitExampleState extends State<FirebaseMLKitExample> {
   Widget build(BuildContext context) {
     return ListView(
       children: <Widget>[
-        if (this._imageFile == null) const Placeholder(
-                fallbackHeight: 200.0,
-              ) else FadeInImage(
-                placeholder: MemoryImage(kTransparentImage),
-                image: FileImage(this._imageFile),
-                // Image.file(, fit: BoxFit.contain),
-              ),
+        if (this._imageFile == null)
+          const Placeholder(
+            fallbackHeight: 200.0,
+          )
+        else
+          FadeInImage(
+            placeholder: MemoryImage(kTransparentImage),
+            image: FileImage(this._imageFile),
+            // Image.file(, fit: BoxFit.contain),
+          ),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: ButtonBar(

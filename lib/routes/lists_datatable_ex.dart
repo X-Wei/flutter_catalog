@@ -17,7 +17,7 @@ class _DataTableExampleState extends State<DataTableExample> {
       child: PaginatedDataTable(
         header: const Text('Nutrition'),
         rowsPerPage: _rowsPerPage,
-        availableRowsPerPage: <int>[5, 10, 20],
+        availableRowsPerPage: const <int>[5, 10, 20],
         onRowsPerPageChanged: (int value) {
           setState(() {
             _rowsPerPage = value;
@@ -123,11 +123,11 @@ class DessertDataSource extends DataTableSource {
           }
         },
         cells: <DataCell>[
-          DataCell(Text('${dessert.name}')),
+          DataCell(Text(dessert.name)),
           DataCell(Text('${dessert.calories}')),
-          DataCell(Text('${dessert.fat.toStringAsFixed(1)}')),
+          DataCell(Text(dessert.fat.toStringAsFixed(1))),
           DataCell(Text('${dessert.carbs}')),
-          DataCell(Text('${dessert.protein.toStringAsFixed(1)}')),
+          DataCell(Text(dessert.protein.toStringAsFixed(1))),
           DataCell(Text('${dessert.sodium}')),
           DataCell(Text('${dessert.calcium}%')),
           DataCell(Text('${dessert.iron}%')),

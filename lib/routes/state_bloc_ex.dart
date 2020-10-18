@@ -71,7 +71,7 @@ class MyBloc {
 class MyBlocProvider extends InheritedWidget {
   final MyBloc bloc;
   @override
-  final Widget child;
+  final Widget child; // ignore: overridden_fields
 
   const MyBlocProvider({Key key, @required this.bloc, this.child})
       : super(key: key, child: child);

@@ -98,7 +98,7 @@ class _FirebaseVoteExampleState extends State<FirebaseVoteExample> {
   }
 
   // Toggle the voted status of one record.
-  void _toggleVoted(_LangaugeVotingRecord record) async {
+  Future<void> _toggleVoted(_LangaugeVotingRecord record) async {
     try {
       // Check internet connection before doing firebase transactions.
       final result = await InternetAddress.lookup('firestore.googleapis.com');
@@ -119,7 +119,8 @@ class _FirebaseVoteExampleState extends State<FirebaseVoteExample> {
             transaction.update(record.firestoreDocReference,
                 {'votes': freshRecord.votes + deltaVotes});
           } catch (e) {
-            throw e;
+            print(e);
+            rethrow;
           }
         },
         timeout: const Duration(seconds: 3),

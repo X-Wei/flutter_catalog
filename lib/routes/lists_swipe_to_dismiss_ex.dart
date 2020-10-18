@@ -53,7 +53,7 @@ class _ListSwipeToDismissExampleState extends State<ListSwipeToDismissExample> {
             child: const Icon(Icons.thumb_up),
           ),
           child: ListTile(
-            title: Center(child: Text('${_items[index]}')),
+            title: Center(child: Text(_items[index])),
           ),
         );
       },

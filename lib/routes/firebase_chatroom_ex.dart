@@ -1,8 +1,9 @@
+import 'dart:async';
+
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
-import 'dart:async';
 
 import './firebase_login_ex.dart' show kFirebaseAnalytics;
 
@@ -167,7 +168,7 @@ class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
                   const InputDecoration.collapsed(hintText: "Send a message"),
               controller: _textController,
               onChanged: (String text) =>
-                  setState(() => _isComposing = text.length > 0),
+                  setState(() => _isComposing = text.isNotEmpty),
               onSubmitted: _onTextMsgSubmitted,
             ),
           ),

@@ -98,7 +98,7 @@ class DialogsExample extends StatelessWidget {
               if (value != null) {
                 Scaffold.of(context).showSnackBar(
                   SnackBar(
-                    content: Text('${value.format(context)}'),
+                    content: Text(value.format(context)),
                     action: SnackBarAction(label: 'OK', onPressed: () {}),
                   ),
                 );
@@ -136,8 +136,7 @@ class DialogsExample extends StatelessWidget {
               context: context,
               builder: (BuildContext context) => Container(
                 decoration: const BoxDecoration(
-                  border: Border(
-                      top: BorderSide(color: Colors.black12)),
+                  border: Border(top: BorderSide(color: Colors.black12)),
                 ),
                 child: ListView(
                   shrinkWrap: true,

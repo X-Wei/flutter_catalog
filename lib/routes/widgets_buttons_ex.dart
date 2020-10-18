@@ -6,12 +6,12 @@ class ButtonsExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _showToast = () => Fluttertoast.showToast(
+    void _showToast() => Fluttertoast.showToast(
           msg: 'Button tapped',
           toastLength: Toast.LENGTH_SHORT,
         );
 
-    final _showSnack = () => Scaffold.of(context).showSnackBar(
+    void _showSnack() => Scaffold.of(context).showSnackBar(
           const SnackBar(
             content: Text('Button tapped'),
             duration: Duration(milliseconds: 500),
@@ -22,7 +22,8 @@ class ButtonsExample extends StatelessWidget {
       children: <Widget>[
         Column(
           children: <Widget>[
-            const Text('Raised buttons add dimension to mostly flat layouts. They '
+            const Text(
+                'Raised buttons add dimension to mostly flat layouts. They '
                 'emphasize functions on busy or wide spaces.'),
             ButtonBar(
               alignment: MainAxisAlignment.spaceEvenly,
@@ -63,7 +64,8 @@ class ButtonsExample extends StatelessWidget {
         const Divider(),
         Column(
           children: <Widget>[
-            const Text('Outline buttons become opaque and elevate when pressed. They '
+            const Text(
+                'Outline buttons become opaque and elevate when pressed. They '
                 'are often paired with raised buttons to indicate an '
                 'alternative, secondary action.'),
             ButtonBar(
@@ -84,7 +86,8 @@ class ButtonsExample extends StatelessWidget {
         const Divider(),
         Column(
           children: <Widget>[
-            const Text('Tooltips are short identifying messages that briefly appear '
+            const Text(
+                'Tooltips are short identifying messages that briefly appear '
                 'in response to a long press. Tooltip messages are also used '
                 'by services that make Flutter apps accessible, like screen '
                 'readers.'),

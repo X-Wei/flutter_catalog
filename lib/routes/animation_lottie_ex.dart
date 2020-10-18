@@ -67,7 +67,7 @@ class __LottieCustomState extends State<_LottieCustom>
             });
           },
         ),
-        Text('${_controller.value.toStringAsFixed(2)}'),
+        Text(_controller.value.toStringAsFixed(2)),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

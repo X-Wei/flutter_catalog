@@ -100,9 +100,10 @@ class _SqliteExampleState extends State<SqliteExample> {
   // Updates records in the db table.
   Future<void> _toggleTodoItem(TodoItem todo) async {
     final int count = await this._db.rawUpdate(
-      /*sql=*/ '''UPDATE $kDbTableName
-                    SET isDone = ?
-                    WHERE id = ?''',
+      /*sql=*/ '''
+      UPDATE $kDbTableName
+      SET isDone = ?
+      WHERE id = ?''',
       /*args=*/ [if (todo.isDone) 0 else 1, todo.id],
     );
     print('Updated $count records in db.');

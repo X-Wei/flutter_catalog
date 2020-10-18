@@ -5,7 +5,7 @@ class NavDrawerExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const drawerHeader = const UserAccountsDrawerHeader(
+    const drawerHeader = UserAccountsDrawerHeader(
       accountName: Text('User Name'),
       accountEmail: Text('user.name@email.com'),
       currentAccountPicture: CircleAvatar(
@@ -54,8 +54,8 @@ class NavDrawerExample extends StatelessWidget {
   }
 }
 
-// <Null> means this route returns nothing.
-class _NewPage extends MaterialPageRoute<Null> {
+// <void> means this route returns nothing.
+class _NewPage extends MaterialPageRoute<void> {
   _NewPage(int id)
       : super(builder: (BuildContext context) {
           return Scaffold(

@@ -15,3 +15,4 @@ linter:
     omit_local_variable_types: false
     # We sometimes have print statements just for demo purposes.
     avoid_print: false
+    use_string_buffers: false

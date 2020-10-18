@@ -55,7 +55,7 @@ class _TimeseriesChartExampleState extends State<TimeseriesChartExample> {
     return ListView(
       padding: const EdgeInsets.all(8),
       children: <Widget>[
-        Container(
+        SizedBox(
           height: 300,
           child: charts.TimeSeriesChart(
             /*seriesList=*/ [

@@ -29,8 +29,8 @@ class RoutesExample extends StatelessWidget {
   }
 }
 
-// <Null> means this route returns nothing.
-class _PageTwo extends MaterialPageRoute<Null> {
+// <void> means this route returns nothing.
+class _PageTwo extends MaterialPageRoute<void> {
   _PageTwo()
       : super(builder: (BuildContext context) {
           return Scaffold(

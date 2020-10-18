@@ -44,7 +44,7 @@ class _RestApiGoogleBooksExampleState extends State<RestApiGoogleBooksExample> {
             ),
           ],
         ),
-        if (this._books.length > 0)
+        if (this._books.isNotEmpty)
           Expanded(
             child: ListView.builder(
               itemCount: this._books.length,
@@ -72,7 +72,7 @@ class _RestApiGoogleBooksExampleState extends State<RestApiGoogleBooksExample> {
       scheme: 'https',
       host: 'www.googleapis.com',
       path: 'books/v1/volumes',
-      queryParameters: {'q': '$query'},
+      queryParameters: {'q': query},
     );
     print('uri=$uri'); // https://www.googleapis.com/books/v1/volumes?q=$query
     final http.Response response = await http.get(uri.toString());

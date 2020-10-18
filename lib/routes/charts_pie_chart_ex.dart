@@ -26,7 +26,7 @@ class _PieChartExampleState extends State<PieChartExample> {
   charts.BehaviorPosition _legendPosition = charts.BehaviorPosition.bottom;
 
   // Data to render.
-  List<_CostsData> _data = [
+  final List<_CostsData> _data = [
     const _CostsData('housing', 1000),
     const _CostsData('food', 500),
     const _CostsData('health', 200),
@@ -40,7 +40,7 @@ class _PieChartExampleState extends State<PieChartExample> {
     return ListView(
       padding: const EdgeInsets.all(8),
       children: <Widget>[
-        Container(
+        SizedBox(
           height: 300,
           child: charts.PieChart(
             // Pie chart can only render one series.
