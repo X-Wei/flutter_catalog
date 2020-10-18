@@ -21,24 +21,24 @@ class _BottomSheetExampleState extends State<BottomSheetExample> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             RaisedButton(
-              child: Text('show bottom sheet'),
               onPressed: () => this
                   ._scaffoldKey
                   .currentState
                   .showBottomSheet((ctx) => _buildBottomSheet(ctx)),
+              child: Text('show bottom sheet'),
             ),
             RaisedButton(
-              child: Text('show modal bottom sheet'),
               onPressed: () => showModalBottomSheet(
                   context: context, builder: (ctx) => _buildBottomSheet(ctx)),
+              child: Text('show modal bottom sheet'),
             ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.add),
         onPressed: () =>
             Fluttertoast.showToast(msg: 'Dummy floating action button'),
+        child: const Icon(Icons.add),
       ),
     );
   }

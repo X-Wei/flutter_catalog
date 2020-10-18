@@ -29,33 +29,33 @@ class _OpacityExampleState extends State<OpacityExample> {
             Text('Click on colored squares below to make them invisible, click '
                 'once again to make them reappear.'),
             GestureDetector(
+              onTap: () {
+                setState(() => this._opacity1 = 1.0 - this._opacity1);
+              },
               child: Opacity(
                 opacity: _opacity1,
                 child: _coloredSquare(Colors.red),
               ),
-              onTap: () {
-                setState(() => this._opacity1 = 1.0 - this._opacity1);
-              },
             ),
             GestureDetector(
+              onTap: () {
+                setState(() => this._opacity2 = 1.0 - this._opacity2);
+              },
               child: AnimatedOpacity(
                 duration: Duration(seconds: 1),
                 opacity: _opacity2,
                 child: _coloredSquare(Colors.green),
               ),
-              onTap: () {
-                setState(() => this._opacity2 = 1.0 - this._opacity2);
-              },
             ),
             GestureDetector(
+              onTap: () {
+                setState(() => this._opacity3 = 1.0 - this._opacity3);
+              },
               child: AnimatedOpacity(
                 duration: Duration(seconds: 1),
                 opacity: _opacity3,
                 child: _coloredSquare(Colors.blue),
               ),
-              onTap: () {
-                setState(() => this._opacity3 = 1.0 - this._opacity3);
-              },
             ),
           ],
         ),

@@ -14,8 +14,8 @@ class ExpandedExample extends StatelessWidget {
         Expanded(
           flex: 1,
           child: Container(
-            child: Text('Item1: flex=1'),
             color: Colors.red,
+            child: Text('Item1: flex=1'),
           ),
         ),
         SizedBox(
@@ -24,8 +24,8 @@ class ExpandedExample extends StatelessWidget {
         Expanded(
           flex: 2,
           child: Container(
-            child: Text('Item2: flex=2'),
             color: Colors.green,
+            child: Text('Item2: flex=2'),
           ),
         ),
         SizedBox(
@@ -34,8 +34,8 @@ class ExpandedExample extends StatelessWidget {
         Expanded(
           flex: 3,
           child: Container(
-            child: Text('Item3, flex=3'),
             color: Colors.blue,
+            child: Text('Item3, flex=3'),
           ),
         ),
       ],

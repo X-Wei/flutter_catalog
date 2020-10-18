@@ -43,7 +43,6 @@ class _FirebaseLoginExampleState extends State<FirebaseLoginExample> {
     );
     final googleLoginBtn = MaterialButton(
       color: Colors.blueAccent,
-      child: Text('Log in with Google'),
       onPressed: this._busy
           ? null
           : () async {
@@ -52,10 +51,10 @@ class _FirebaseLoginExampleState extends State<FirebaseLoginExample> {
               this._showUserProfilePage(user);
               setState(() => this._busy = false);
             },
+      child: Text('Log in with Google'),
     );
     final anonymousLoginBtn = MaterialButton(
       color: Colors.deepOrange,
-      child: Text('Log in anonymously'),
       onPressed: this._busy
           ? null
           : () async {
@@ -64,9 +63,9 @@ class _FirebaseLoginExampleState extends State<FirebaseLoginExample> {
               this._showUserProfilePage(user);
               setState(() => this._busy = false);
             },
+      child: Text('Log in anonymously'),
     );
     final signOutBtn = FlatButton(
-      child: Text('Log out'),
       onPressed: this._busy
           ? null
           : () async {
@@ -74,6 +73,7 @@ class _FirebaseLoginExampleState extends State<FirebaseLoginExample> {
               await this._signOut();
               setState(() => this._busy = false);
             },
+      child: Text('Log out'),
     );
     return Center(
       child: ListView(

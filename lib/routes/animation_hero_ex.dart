@@ -14,6 +14,7 @@ class HeroExample extends StatelessWidget {
           ),
           ListTile(
             leading: GestureDetector(
+              onTap: () => _showSecondPage(context),
               child: Hero(
                 tag: 'my-hero-animation-tag',
                 child: CircleAvatar(
@@ -21,7 +22,6 @@ class HeroExample extends StatelessWidget {
                       AssetImage('res/images/material_design_3.png'),
                 ),
               ),
-              onTap: () => _showSecondPage(context),
             ),
             title: Text('Tap on the photo to view the animation transition.'),
           ),

@@ -42,8 +42,8 @@ class _BottomTabbarExampleState extends State<BottomTabbarExample>
     return Scaffold(
       appBar: null,
       body: TabBarView(
-        children: _kTabPages,
         controller: _tabController,
+        children: _kTabPages,
       ),
       bottomNavigationBar: Material(
         color: Colors.blue,

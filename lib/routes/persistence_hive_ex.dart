@@ -166,7 +166,6 @@ class _HiveExampleState extends State<HiveExample> {
 
   FloatingActionButton _buildFloatingActionButton() {
     return FloatingActionButton(
-      child: const Icon(Icons.add),
       onPressed: () async {
         await _addTodoItem(
           TodoItem(
@@ -174,6 +173,7 @@ class _HiveExampleState extends State<HiveExample> {
           ),
         );
       },
+      child: const Icon(Icons.add),
     );
   }
 }

@@ -9,17 +9,17 @@ class NavDrawerExample extends StatelessWidget {
       accountName: Text('User Name'),
       accountEmail: Text('user.name@email.com'),
       currentAccountPicture: CircleAvatar(
-        child: FlutterLogo(size: 42.0),
         backgroundColor: Colors.white,
+        child: FlutterLogo(size: 42.0),
       ),
       otherAccountsPictures: <Widget>[
         CircleAvatar(
-          child: Text('A'),
           backgroundColor: Colors.yellow,
+          child: Text('A'),
         ),
         CircleAvatar(
-          child: Text('B'),
           backgroundColor: Colors.red,
+          child: Text('B'),
         )
       ],
     );

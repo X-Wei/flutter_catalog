@@ -179,7 +179,6 @@ class _SqliteExampleState extends State<SqliteExample> {
 
   FloatingActionButton _buildFloatingActionButton() {
     return FloatingActionButton(
-      child: const Icon(Icons.add),
       onPressed: () async {
         await _addTodoItem(
           TodoItem(
@@ -189,6 +188,7 @@ class _SqliteExampleState extends State<SqliteExample> {
         );
         _updateUI();
       },
+      child: const Icon(Icons.add),
     );
   }
 }

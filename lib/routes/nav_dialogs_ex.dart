@@ -12,44 +12,44 @@ class DialogsExample extends StatelessWidget {
       children: <Widget>[
         ////// Alert dialog.
         RaisedButton(
-            color: Colors.red,
-            child: Text('Alert Dialog'),
-            onPressed: () {
-              // The function showDialog<T> returns Future<T>.
-              // Use Navigator.pop() to return value (of type T).
-              showDialog<String>(
-                context: context,
-                builder: (BuildContext context) => AlertDialog(
-                  title: const Text('Dialog title'),
-                  content: Text(
-                    'Sample alert',
-                  ),
-                  actions: <Widget>[
-                    FlatButton(
-                      child: Text('Cancel'),
-                      onPressed: () => Navigator.pop(context, 'Cancel'),
-                    ),
-                    FlatButton(
-                      child: Text('OK'),
-                      onPressed: () => Navigator.pop(context, 'OK'),
-                    ),
-                  ],
+          color: Colors.red,
+          onPressed: () {
+            // The function showDialog<T> returns Future<T>.
+            // Use Navigator.pop() to return value (of type T).
+            showDialog<String>(
+              context: context,
+              builder: (BuildContext context) => AlertDialog(
+                title: const Text('Dialog title'),
+                content: Text(
+                  'Sample alert',
                 ),
-              ).then((returnVal) {
-                if (returnVal != null) {
-                  Scaffold.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text('You clicked: $returnVal'),
-                      action: SnackBarAction(label: 'OK', onPressed: () {}),
-                    ),
-                  );
-                }
-              });
-            }),
+                actions: <Widget>[
+                  FlatButton(
+                    onPressed: () => Navigator.pop(context, 'Cancel'),
+                    child: Text('Cancel'),
+                  ),
+                  FlatButton(
+                    onPressed: () => Navigator.pop(context, 'OK'),
+                    child: Text('OK'),
+                  ),
+                ],
+              ),
+            ).then((returnVal) {
+              if (returnVal != null) {
+                Scaffold.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text('You clicked: $returnVal'),
+                    action: SnackBarAction(label: 'OK', onPressed: () {}),
+                  ),
+                );
+              }
+            });
+          },
+          child: Text('Alert Dialog'),
+        ),
         ////// Simple Dialog.
         RaisedButton(
           color: Colors.yellow,
-          child: Text('Simple dialog'),
           onPressed: () {
             showDialog<String>(
               context: context,
@@ -84,11 +84,11 @@ class DialogsExample extends StatelessWidget {
               }
             });
           },
+          child: Text('Simple dialog'),
         ),
         ////// Time Picker Dialog.
         RaisedButton(
           color: Colors.green,
-          child: Text('Time Picker Dialog'),
           onPressed: () {
             DateTime now = DateTime.now();
             showTimePicker(
@@ -105,11 +105,11 @@ class DialogsExample extends StatelessWidget {
               }
             });
           },
+          child: Text('Time Picker Dialog'),
         ),
         ////// Date Picker Dialog.
         RaisedButton(
           color: Colors.blue,
-          child: Text('Date Picker Dialog'),
           onPressed: () {
             showDatePicker(
               context: context,
@@ -124,11 +124,11 @@ class DialogsExample extends StatelessWidget {
               }
             });
           },
+          child: Text('Date Picker Dialog'),
         ),
         ////// Bottom Sheet Dialog.
         RaisedButton(
           color: Colors.orange,
-          child: Text('Bottom Sheet'),
           onPressed: () {
             // Or: showModalBottomSheet(), with model bottom sheet, clicking
             // anywhere will dismiss the bottom sheet.
@@ -153,8 +153,8 @@ class DialogsExample extends StatelessWidget {
                     ButtonBar(
                       children: <Widget>[
                         FlatButton(
-                          child: const Text('OK'),
                           onPressed: () => Navigator.pop(context),
+                          child: const Text('OK'),
                         ),
                       ],
                     ),
@@ -163,6 +163,7 @@ class DialogsExample extends StatelessWidget {
               ),
             );
           },
+          child: Text('Bottom Sheet'),
         ),
       ]
           .map(

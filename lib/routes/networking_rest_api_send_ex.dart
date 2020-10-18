@@ -64,7 +64,6 @@ From https://jsonplaceholder.typicode.com/guide.html we see that the API expects
         ButtonBar(
           children: <Widget>[
             RaisedButton(
-              child: Text('Post'),
               onPressed: _pending
                   ? null
                   : () => this._httpPost(
@@ -72,6 +71,7 @@ From https://jsonplaceholder.typicode.com/guide.html we see that the API expects
                         _contentController.text,
                         _userIdController.text,
                       ),
+              child: Text('Post'),
             ),
             RaisedButton(
               onPressed: this._reset,

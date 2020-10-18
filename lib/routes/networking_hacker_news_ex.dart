@@ -31,10 +31,11 @@ class _RestApiHackerNewsExampleState extends State<RestApiHackerNewsExample> {
           Divider(),
           Expanded(
             child: RefreshIndicator(
+              onRefresh: this._getLatestArticleIds,
               child: _articleIds.isEmpty
                   ? SingleChildScrollView(
-                      child: Text('(Pull to refresh)'),
                       physics: AlwaysScrollableScrollPhysics(),
+                      child: Text('(Pull to refresh)'),
                     )
                   : Scrollbar(
                       child: ListView.builder(
@@ -45,9 +46,9 @@ class _RestApiHackerNewsExampleState extends State<RestApiHackerNewsExample> {
                               AsyncSnapshot<String> snapshot) {
                             if (!snapshot.hasData) {
                               return Container(
-                                child: CircularProgressIndicator(),
                                 margin: const EdgeInsets.all(4),
                                 alignment: Alignment.center,
+                                child: CircularProgressIndicator(),
                               );
                             }
                             final hnArticle = MyHackerNewsArticle.fromJson(json
@@ -57,7 +58,6 @@ class _RestApiHackerNewsExampleState extends State<RestApiHackerNewsExample> {
                         ),
                       ),
                     ),
-              onRefresh: this._getLatestArticleIds,
             ),
           ),
         ],

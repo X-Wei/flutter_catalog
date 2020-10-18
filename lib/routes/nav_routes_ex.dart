@@ -17,12 +17,12 @@ class RoutesExample extends StatelessWidget {
       ),
       body: Center(
         child: RaisedButton(
-          child: Text('Go to page two'),
           onPressed: () {
             // Navigator maintains a stack-like structure of pages. Jumping
             // between routes is by push/pop of Navigator.
             Navigator.push(context, _PageTwo());
           },
+          child: Text('Go to page two'),
         ),
       ),
     );
@@ -44,7 +44,6 @@ class _PageTwo extends MaterialPageRoute<Null> {
             body: Builder(
               builder: (BuildContext context) => Center(
                 child: RaisedButton(
-                  child: Text('Go to page 3'),
                   onPressed: () {
                     // Navigator.push<T> returns a Future<T>, which is the
                     // return value of the pushed route when it's popped.
@@ -64,6 +63,7 @@ class _PageTwo extends MaterialPageRoute<Null> {
                       }
                     });
                   },
+                  child: Text('Go to page 3'),
                 ),
               ),
             ),
@@ -109,7 +109,6 @@ class _PageThree extends MaterialPageRoute<String> {
                   ),
                   Divider(),
                   MaterialButton(
-                    child: Text('Go home'),
                     onPressed: () {
                       // Pops until reaching a route with that route name.
                       Navigator.popUntil(
@@ -117,6 +116,7 @@ class _PageThree extends MaterialPageRoute<String> {
                         ModalRoute.withName(RoutesExample.kRouteName),
                       );
                     },
+                    child: Text('Go home'),
                   ),
                 ],
               ),

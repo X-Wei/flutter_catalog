@@ -36,8 +36,8 @@ class _SharedPreferenceExampleState extends State<SharedPreferenceExample> {
             Text('Number preference:'),
             Text('${this._numberPref}'),
             RaisedButton(
-              child: Text('Increment'),
               onPressed: () => this._setNumberPref(this._numberPref + 1),
+              child: Text('Increment'),
             ),
           ],
         ),
@@ -46,8 +46,8 @@ class _SharedPreferenceExampleState extends State<SharedPreferenceExample> {
             Text('Boolean preference:'),
             Text('${this._boolPref}'),
             RaisedButton(
-              child: Text('Toggle'),
               onPressed: () => this._setBooleanPref(!this._boolPref),
+              child: Text('Toggle'),
             ),
           ],
         ),

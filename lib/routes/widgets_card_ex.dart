@@ -98,12 +98,12 @@ class CardExample extends StatelessWidget {
                 alignment: MainAxisAlignment.end,
                 children: <Widget>[
                   FlatButton(
-                    child: Text('SHARE'),
                     onPressed: () {},
+                    child: Text('SHARE'),
                   ),
                   FlatButton(
-                    child: Text('EXPLORE'),
                     onPressed: () {},
+                    child: Text('EXPLORE'),
                   ),
                 ],
               ),

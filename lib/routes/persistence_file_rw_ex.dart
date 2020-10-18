@@ -39,7 +39,6 @@ class _FileReadWriteExampleState extends State<FileReadWriteExample> {
         ButtonBar(
           children: <Widget>[
             MaterialButton(
-              child: Text('Load'),
               onPressed: () async {
                 this._loadTextFromLocalFile();
                 this._textController.text = this._localFileContent;
@@ -47,15 +46,16 @@ class _FileReadWriteExampleState extends State<FileReadWriteExample> {
                 // Focus on text field (bring keyboard up).
                 FocusScope.of(context).requestFocus(textFieldFocusNode);
               },
+              child: Text('Load'),
             ),
             MaterialButton(
-              child: Text('Save'),
               onPressed: () async {
                 await this._writeTextToLocalFile(this._textController.text);
                 this._textController.clear();
                 _showSnackBar('String successfully written to local file".');
                 await this._loadTextFromLocalFile();
               },
+              child: Text('Save'),
             ),
           ],
         ),

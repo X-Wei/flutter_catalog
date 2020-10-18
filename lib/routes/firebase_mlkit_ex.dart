@@ -241,20 +241,20 @@ class _FirebaseMLKitExampleState extends State<FirebaseMLKitExample> {
           child: ButtonBar(
             children: <Widget>[
               RaisedButton(
-                child: Text('Image Labelling'),
                 onPressed: this._imageLabelling,
+                child: Text('Image Labelling'),
               ),
               RaisedButton(
-                child: Text('Text OCR'),
                 onPressed: this._textOcr,
+                child: Text('Text OCR'),
               ),
               RaisedButton(
-                child: Text('Barcode Scan'),
                 onPressed: this._barcodeScan,
+                child: Text('Barcode Scan'),
               ),
               RaisedButton(
-                child: Text('Face Detection'),
                 onPressed: this._faceDetect,
+                child: Text('Face Detection'),
               ),
             ],
           ),

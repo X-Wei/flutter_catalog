@@ -50,11 +50,11 @@ class _RestApiFetchExampleState extends State<RestApiFetchExample> {
         ButtonBar(
           children: <Widget>[
             RaisedButton(
-              child: Text('Get'),
               onPressed: _pending
                   ? null
                   : () => this
                       ._httpGet(_urlController.text, _apiTokenController.text),
+              child: Text('Get'),
             ),
             RaisedButton(
               onPressed: this._reset,

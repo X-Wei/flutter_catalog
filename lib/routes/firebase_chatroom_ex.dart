@@ -75,8 +75,8 @@ class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
             'in the "Firebase login" demo.'),
         actions: <Widget>[
           FlatButton(
-            child: Text('OK'),
             onPressed: () => Navigator.of(ctx).pop(),
+            child: Text('OK'),
           )
         ],
       ),
@@ -198,8 +198,8 @@ class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
               'You will then be able to send messages.'),
           actions: <Widget>[
             FlatButton(
-              child: Text('OK'),
               onPressed: () => Navigator.of(ctx).pop(),
+              child: Text('OK'),
             )
           ],
         ),

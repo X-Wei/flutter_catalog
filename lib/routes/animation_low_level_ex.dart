@@ -59,23 +59,22 @@ class _LowLevelAnimationExampleState extends State<LowLevelAnimationExample>
       children: <Widget>[
         Container(
           margin: const EdgeInsets.all(8.0),
-          child: FlutterLogo(),
           color: this._colorAnimation.value,
           height: this._sizeAnimation.value,
           width: this._sizeAnimation.value,
+          child: FlutterLogo(),
         ),
         RaisedButton(
-          child: Text('Forward animation'),
           onPressed:
               this._controller.isCompleted ? null : () => _controller.forward(),
+          child: Text('Forward animation'),
         ),
         RaisedButton(
-          child: Text('Reverse animation'),
           onPressed:
               this._controller.isDismissed ? null : () => _controller.reverse(),
+          child: Text('Reverse animation'),
         ),
         RaisedButton(
-          child: Text('Loop animation'),
           onPressed: () {
             // Use addStatusListener() for notifications of changes to the
             // animation’s state, such as starting, stopping, or reversing
@@ -89,6 +88,7 @@ class _LowLevelAnimationExampleState extends State<LowLevelAnimationExample>
             });
             this._controller.forward();
           },
+          child: Text('Loop animation'),
         ),
       ],
     );

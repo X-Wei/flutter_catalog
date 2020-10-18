@@ -77,7 +77,6 @@ class AnimationsPackageExample extends StatelessWidget {
           ),
         ),
         RaisedButton(
-          child: Text('Show dialog'),
           onPressed: () => showModal(
             configuration: FadeScaleTransitionConfiguration(
               transitionDuration: Duration(milliseconds: 500),
@@ -88,6 +87,7 @@ class AnimationsPackageExample extends StatelessWidget {
               content: Text('blahblahblah'),
             ),
           ),
+          child: Text('Show dialog'),
         ),
       ],
     );

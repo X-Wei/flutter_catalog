@@ -38,9 +38,9 @@ class _RestApiGoogleBooksExampleState extends State<RestApiGoogleBooksExample> {
         ButtonBar(
           children: <Widget>[
             RaisedButton(
-              child: Text('Search'),
               onPressed:
                   _pending ? null : () => this._search(_queryController.text),
+              child: Text('Search'),
             ),
           ],
         ),

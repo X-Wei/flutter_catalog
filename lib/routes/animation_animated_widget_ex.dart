@@ -12,9 +12,9 @@ class _AnimatedLogo extends AnimatedWidget {
     return Center(
       child: Container(
         margin: const EdgeInsets.all(8.0),
-        child: FlutterLogo(),
         height: animation.value,
         width: animation.value,
+        child: FlutterLogo(),
       ),
     );
   }
@@ -54,12 +54,12 @@ class _AnimatedWidgetExampleState extends State<AnimatedWidgetExample>
           animation: this._sizeAnimation,
         ),
         RaisedButton(
-          child: Text('Forward animation'),
           onPressed: () => _controller.forward(),
+          child: Text('Forward animation'),
         ),
         RaisedButton(
-          child: Text('Reverse animation'),
           onPressed: () => _controller.reverse(),
+          child: Text('Reverse animation'),
         ),
       ],
     );

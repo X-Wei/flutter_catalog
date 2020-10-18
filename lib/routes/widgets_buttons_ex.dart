@@ -28,12 +28,12 @@ class ButtonsExample extends StatelessWidget {
               alignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 RaisedButton(
-                  child: Text('RaisedButton'),
                   onPressed: _showSnack,
+                  child: Text('RaisedButton'),
                 ),
                 RaisedButton(
-                  child: Text('disabled-RaisedButton'),
                   onPressed: null,
+                  child: Text('disabled-RaisedButton'),
                 ),
               ],
             ),
@@ -49,12 +49,12 @@ class ButtonsExample extends StatelessWidget {
               alignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 FlatButton(
-                  child: Text('FlatButton'),
                   onPressed: _showToast,
+                  child: Text('FlatButton'),
                 ),
                 FlatButton(
-                  child: Text('disabled-FlatButton'),
                   onPressed: null,
+                  child: Text('disabled-FlatButton'),
                 ),
               ],
             ),
@@ -70,12 +70,12 @@ class ButtonsExample extends StatelessWidget {
               alignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 OutlineButton(
-                  child: Text('OutlineButton'),
                   onPressed: _showToast,
+                  child: Text('OutlineButton'),
                 ),
                 OutlineButton(
-                  child: Text('OutlineButton'),
                   onPressed: null,
+                  child: Text('OutlineButton'),
                 )
               ],
             ),
