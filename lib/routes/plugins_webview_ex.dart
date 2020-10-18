@@ -50,7 +50,7 @@ class _WebViewExampleState extends State<WebViewExample> {
     );
   }
 
-  Future<Null> _openInWebview(String url) async {
+  Future<void> _openInWebview(String url) async {
     if (await url_launcher.canLaunch(url)) {
       Navigator.of(context).push(
         MaterialPageRoute(

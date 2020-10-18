@@ -125,7 +125,7 @@ class _FirebaseLoginExampleState extends State<FirebaseLoginExample> {
     return user;
   }
 
-  Future<Null> _signOut() async {
+  Future<void> _signOut() async {
     final user = _auth.currentUser;
     Scaffold.of(context).showSnackBar(
       SnackBar(

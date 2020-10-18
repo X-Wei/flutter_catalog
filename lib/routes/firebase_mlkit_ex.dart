@@ -68,7 +68,7 @@ class _FirebaseMLKitExampleState extends State<FirebaseMLKitExample> {
     return true;
   }
 
-  Future<Null> _imageLabelling() async {
+  Future<void> _imageLabelling() async {
     setState(() => this._mlResult = '<no result>');
     if (await _pickImage() == false) {
       return;
@@ -92,7 +92,7 @@ class _FirebaseMLKitExampleState extends State<FirebaseMLKitExample> {
     }
   }
 
-  Future<Null> _textOcr() async {
+  Future<void> _textOcr() async {
     setState(() => this._mlResult = '<no result>');
     if (await _pickImage() == false) {
       return;
@@ -128,7 +128,7 @@ class _FirebaseMLKitExampleState extends State<FirebaseMLKitExample> {
     }
   }
 
-  Future<Null> _barcodeScan() async {
+  Future<void> _barcodeScan() async {
     setState(() => this._mlResult = '<no result>');
     if (await _pickImage() == false) {
       return;
@@ -173,7 +173,7 @@ class _FirebaseMLKitExampleState extends State<FirebaseMLKitExample> {
     }
   }
 
-  Future<Null> _faceDetect() async {
+  Future<void> _faceDetect() async {
     setState(() => this._mlResult = '<no result>');
     if (await _pickImage() == false) {
       return;

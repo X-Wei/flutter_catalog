@@ -32,18 +32,20 @@ class _ImagePickerExampleState extends State<ImagePickerExample> {
             ),
           ],
         ),
-        this._imageFile == null ? const Placeholder() : Image.file(this._imageFile),
+        this._imageFile == null
+            ? const Placeholder()
+            : Image.file(this._imageFile),
       ],
     );
   }
 
-  Future<Null> _pickImageFromGallery() async {
+  Future<void> _pickImageFromGallery() async {
     final PickedFile pickedFile =
         await _picker.getImage(source: ImageSource.gallery);
     setState(() => this._imageFile = File(pickedFile.path));
   }
 
-  Future<Null> _pickImageFromCamera() async {
+  Future<void> _pickImageFromCamera() async {
     final PickedFile pickedFile =
         await _picker.getImage(source: ImageSource.camera);
     setState(() => this._imageFile = File(pickedFile.path));

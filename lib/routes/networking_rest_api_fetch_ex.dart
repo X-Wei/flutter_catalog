@@ -82,7 +82,7 @@ class _RestApiFetchExampleState extends State<RestApiFetchExample> {
   }
 
   // Using the http package we can easily GET data from REST APIs.
-  Future<Null> _httpGet(String url, String apiToken) async {
+  Future<void> _httpGet(String url, String apiToken) async {
     _reset();
     setState(() => this._pending = true);
     try {

@@ -81,7 +81,7 @@ class _FileReadWriteExampleState extends State<FileReadWriteExample> {
   }
 
   // Loads local file into this._localFileContent.
-  Future<Null> _loadTextFromLocalFile() async {
+  Future<void> _loadTextFromLocalFile() async {
     String content;
     try {
       final file = await _getLocalFile();

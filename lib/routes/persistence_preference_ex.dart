@@ -69,12 +69,12 @@ class _SharedPreferenceExampleState extends State<SharedPreferenceExample> {
     });
   }
 
-  Future<Null> _setNumberPref(int val) async {
+  Future<void> _setNumberPref(int val) async {
     await this._prefs.setInt(kDemoNumberPrefKey, val);
     _loadNumberPref();
   }
 
-  Future<Null> _setBooleanPref(bool val) async {
+  Future<void> _setBooleanPref(bool val) async {
     await this._prefs.setBool(kDemoBooleanPrefKey, val);
     _loadBooleanPref();
   }

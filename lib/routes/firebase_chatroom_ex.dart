@@ -164,7 +164,8 @@ class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
               // line is filled up.
               maxLines: null,
               maxLength: 200,
-              decoration: const InputDecoration.collapsed(hintText: "Send a message"),
+              decoration:
+                  const InputDecoration.collapsed(hintText: "Send a message"),
               controller: _textController,
               onChanged: (String text) =>
                   setState(() => _isComposing = text.length > 0),
@@ -183,7 +184,7 @@ class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
   }
 
   // Triggered when text is submitted (send button pressed).
-  Future<Null> _onTextMsgSubmitted(String text) async {
+  Future<void> _onTextMsgSubmitted(String text) async {
     // Make sure _user is not null.
     if (this._user == null) {
       this._user = firebase_auth.FirebaseAuth.instance.currentUser;

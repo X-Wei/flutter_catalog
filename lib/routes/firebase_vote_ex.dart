@@ -62,7 +62,7 @@ class _FirebaseVoteExampleState extends State<FirebaseVoteExample> {
   }
 
   // Mark a language as voted or not-voted.
-  Future<Null> _markVotedStatus(String lang, bool voted) async {
+  Future<void> _markVotedStatus(String lang, bool voted) async {
     this._preferences.setBool('$kVotedPreferenceKeyPrefx$lang', voted);
   }
 
