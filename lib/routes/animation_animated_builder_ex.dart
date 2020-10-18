@@ -16,7 +16,7 @@ class _AnimatedBuilderExampleState extends State<AnimatedBuilderExample>
   void initState() {
     super.initState();
     this._controller =
-        AnimationController(duration: Duration(seconds: 1), vsync: this);
+        AnimationController(duration: const Duration(seconds: 1), vsync: this);
   }
 
   @override
@@ -33,21 +33,21 @@ class _AnimatedBuilderExampleState extends State<AnimatedBuilderExample>
       children: <Widget>[
         AnimatedBuilder(
           animation: rotateAnimation,
-          child: FlutterLogo(size: 72.0),
           builder: (context, child) {
             return Transform.rotate(
               angle: rotateAnimation.value,
               child: child,
             );
           },
+          child: const FlutterLogo(size: 72.0),
         ),
         RaisedButton(
-          child: Text('Forward animation'),
           onPressed: () => _controller.forward(),
+          child: const Text('Forward animation'),
         ),
         RaisedButton(
-          child: Text('Reverse animation'),
           onPressed: () => _controller.reverse(),
+          child: const Text('Reverse animation'),
         ),
       ],
     );

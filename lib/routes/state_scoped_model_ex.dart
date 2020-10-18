@@ -88,7 +88,7 @@ class _CounterAndButton extends StatelessWidget {
       // state is updated, but "product-details" page doesn't need updating.
       rebuildOnChange: true,
       builder: (context, child, model) => Card(
-        margin: EdgeInsets.all(4.0).copyWith(top: 32.0, bottom: 32.0),
+        margin: const EdgeInsets.all(4.0).copyWith(top: 32.0, bottom: 32.0),
         color: Colors.white70,
         child: Column(
           children: <Widget>[
@@ -100,11 +100,11 @@ class _CounterAndButton extends StatelessWidget {
             ButtonBar(
               children: <Widget>[
                 IconButton(
-                  icon: Icon(Icons.add),
+                  icon: const Icon(Icons.add),
                   onPressed: () => model.incrementCounter(),
                 ),
                 IconButton(
-                  icon: Icon(Icons.remove),
+                  icon: const Icon(Icons.remove),
                   onPressed: () => model.decrementCounter(),
                 ),
               ],

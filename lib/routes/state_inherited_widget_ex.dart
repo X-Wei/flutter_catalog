@@ -107,7 +107,7 @@ class _CounterAndButton extends StatelessWidget {
     // ###4. Retrieve parent widget's state using the static of() function.
     final rootWidgetsState = MyInheritedWidget.of(context).myState;
     return Card(
-      margin: EdgeInsets.all(4.0).copyWith(bottom: 32.0),
+      margin: const EdgeInsets.all(4.0).copyWith(bottom: 32.0),
       color: Colors.white70,
       child: Column(
         children: <Widget>[
@@ -119,11 +119,11 @@ class _CounterAndButton extends StatelessWidget {
           ButtonBar(
             children: <Widget>[
               IconButton(
-                icon: Icon(Icons.add),
+                icon: const Icon(Icons.add),
                 onPressed: () => rootWidgetsState.incrementCounter(),
               ),
               IconButton(
-                icon: Icon(Icons.remove),
+                icon: const Icon(Icons.remove),
                 onPressed: () => rootWidgetsState.decrementCounter(),
               ),
             ],

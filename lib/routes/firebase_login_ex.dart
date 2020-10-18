@@ -36,7 +36,7 @@ class _FirebaseLoginExampleState extends State<FirebaseLoginExample> {
   @override
   Widget build(BuildContext context) {
     final statusText = Padding(
-      padding: EdgeInsets.symmetric(vertical: 10.0),
+      padding: const EdgeInsets.symmetric(vertical: 10.0),
       child: Text(_user == null
           ? 'You are not logged in.'
           : 'You are logged in as "${_user.displayName}".'),
@@ -77,7 +77,7 @@ class _FirebaseLoginExampleState extends State<FirebaseLoginExample> {
     );
     return Center(
       child: ListView(
-        padding: EdgeInsets.symmetric(vertical: 100.0, horizontal: 50.0),
+        padding: const EdgeInsets.symmetric(vertical: 100.0, horizontal: 50.0),
         children: <Widget>[
           statusText,
           googleLoginBtn,

@@ -96,7 +96,7 @@ class _CounterAndButton extends StatelessWidget {
     //   - context.read<T>()  -- equivalent to Provider.of<T>(listen: false)
     final state = context.read<_MyCounterState>();
     return Card(
-      margin: EdgeInsets.all(4.0).copyWith(top: 32.0, bottom: 32.0),
+      margin: const EdgeInsets.all(4.0).copyWith(top: 32.0, bottom: 32.0),
       color: Colors.white70,
       child: Column(
         children: <Widget>[
@@ -108,7 +108,7 @@ class _CounterAndButton extends StatelessWidget {
           ButtonBar(
             children: <Widget>[
               IconButton(
-                icon: Icon(Icons.add),
+                icon: const Icon(Icons.add),
                 onPressed: () => state.incrementCounter(),
               ),
               // Way 2 to get state up the tree: wrap a Consumer widget.
@@ -116,7 +116,7 @@ class _CounterAndButton extends StatelessWidget {
                 builder: (BuildContext context, _MyCounterState value,
                     Widget child) {
                   return IconButton(
-                    icon: Icon(Icons.remove),
+                    icon: const Icon(Icons.remove),
                     onPressed: () => value.decrementCounter(),
                   );
                 },

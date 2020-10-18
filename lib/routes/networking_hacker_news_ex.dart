@@ -97,7 +97,7 @@ class _RestApiHackerNewsExampleState extends State<RestApiHackerNewsExample> {
       subtitle: Text('${article.by} - '
           '${formatter.format(createdAt)}'),
       trailing: IconButton(
-        icon: Icon(Icons.open_in_new),
+        icon: const Icon(Icons.open_in_new),
         onPressed: () async {
           if (await url_launcher.canLaunch(article.url)) {
             Navigator.of(context).push(

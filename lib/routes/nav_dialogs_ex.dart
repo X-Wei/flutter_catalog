@@ -8,7 +8,7 @@ class DialogsExample extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      padding: EdgeInsets.all(32.0),
+      padding: const EdgeInsets.all(32.0),
       children: <Widget>[
         ////// Alert dialog.
         RaisedButton(
@@ -57,17 +57,17 @@ class DialogsExample extends StatelessWidget {
                 title: Text('Dialog Title'),
                 children: <Widget>[
                   ListTile(
-                    leading: Icon(Icons.account_circle),
+                    leading: const Icon(Icons.account_circle),
                     title: Text('user@example.com'),
                     onTap: () => Navigator.pop(context, 'user@example.com'),
                   ),
                   ListTile(
-                    leading: Icon(Icons.account_circle),
+                    leading: const Icon(Icons.account_circle),
                     title: Text('user2@gmail.com'),
                     onTap: () => Navigator.pop(context, 'user2@gmail.com'),
                   ),
                   ListTile(
-                    leading: Icon(Icons.add_circle),
+                    leading: const Icon(Icons.add_circle),
                     title: Text('Add account'),
                     onTap: () => Navigator.pop(context, 'Add account'),
                   ),
@@ -167,7 +167,7 @@ class DialogsExample extends StatelessWidget {
       ]
           .map(
             (Widget button) => Container(
-              padding: EdgeInsets.symmetric(vertical: 8.0),
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
               child: button,
             ),
           )

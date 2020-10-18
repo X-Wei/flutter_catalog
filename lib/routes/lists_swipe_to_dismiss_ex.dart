@@ -43,13 +43,13 @@ class _ListSwipeToDismissExampleState extends State<ListSwipeToDismissExample> {
           // Show a red background as the item is swiped away
           background: Container(
             color: Colors.red,
-            child: Icon(Icons.delete),
+            child: const Icon(Icons.delete),
             alignment: Alignment.centerLeft,
           ),
           // Background when swipping from right to left
           secondaryBackground: Container(
             color: Colors.green,
-            child: Icon(Icons.thumb_up),
+            child: const Icon(Icons.thumb_up),
             alignment: Alignment.centerRight,
           ),
           child: ListTile(

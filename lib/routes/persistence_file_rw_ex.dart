@@ -28,7 +28,7 @@ class _FileReadWriteExampleState extends State<FileReadWriteExample> {
   Widget build(BuildContext context) {
     FocusNode textFieldFocusNode = FocusNode();
     return ListView(
-      padding: EdgeInsets.all(20.0),
+      padding: const EdgeInsets.all(20.0),
       children: <Widget>[
         Text('Write to local file:'),
         TextField(

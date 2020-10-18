@@ -4,12 +4,12 @@ class PageSelectorExample extends StatelessWidget {
   const PageSelectorExample({Key key}) : super(key: key);
 
   static const kIcons = <Icon>[
-    Icon(Icons.event),
-    Icon(Icons.home),
-    Icon(Icons.android),
-    Icon(Icons.alarm),
-    Icon(Icons.face),
-    Icon(Icons.language),
+    const Icon(Icons.event),
+    const Icon(Icons.home),
+    const Icon(Icons.android),
+    const Icon(Icons.alarm),
+    const Icon(Icons.face),
+    const Icon(Icons.language),
   ];
 
   @override

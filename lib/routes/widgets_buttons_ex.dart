@@ -18,7 +18,7 @@ class ButtonsExample extends StatelessWidget {
           ),
         );
     return ListView(
-      padding: EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(16.0),
       children: <Widget>[
         Column(
           children: <Widget>[
@@ -91,7 +91,7 @@ class ButtonsExample extends StatelessWidget {
             Center(
               child: IconButton(
                 iconSize: 32.0,
-                icon: Icon(Icons.call),
+                icon: const Icon(Icons.call),
                 tooltip: 'Place a phone call',
                 onPressed: _showSnack,
               ),

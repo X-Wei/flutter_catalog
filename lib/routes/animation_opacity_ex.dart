@@ -22,7 +22,7 @@ class _OpacityExampleState extends State<OpacityExample> {
   Widget build(BuildContext context) {
     return Material(
       child: Padding(
-        padding: EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(8.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[

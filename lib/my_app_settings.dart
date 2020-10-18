@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import './my_route.dart';
 import './my_app_routes.dart' show kAllRoutes;
+import './my_route.dart';
 
 class MyAppSettings extends ChangeNotifier {
   static const _kDarkModePreferenceKey = 'DARK_MODE';
@@ -18,6 +18,7 @@ class MyAppSettings extends ChangeNotifier {
 
   bool get isDarkMode => _pref?.getBool(_kDarkModePreferenceKey) ?? false;
 
+  // ignore:avoid_positional_boolean_parameters
   void setDarkMode(bool val) {
     _pref?.setBool(_kDarkModePreferenceKey, val);
     notifyListeners();

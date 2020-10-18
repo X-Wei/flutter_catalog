@@ -58,7 +58,7 @@ class _LowLevelAnimationExampleState extends State<LowLevelAnimationExample>
     return Column(
       children: <Widget>[
         Container(
-          margin: EdgeInsets.all(8.0),
+          margin: const EdgeInsets.all(8.0),
           child: FlutterLogo(),
           color: this._colorAnimation.value,
           height: this._sizeAnimation.value,

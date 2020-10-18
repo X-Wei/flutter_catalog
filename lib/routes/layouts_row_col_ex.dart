@@ -10,9 +10,9 @@ class RowColExample extends StatefulWidget {
 
 class _RowColExampleState extends State<RowColExample> {
   static const kElements = <Widget>[
-    Icon(Icons.stars, size: 50.0),
-    Icon(Icons.stars, size: 100.0),
-    Icon(Icons.stars, size: 50.0),
+    const Icon(Icons.stars, size: 50.0),
+    const Icon(Icons.stars, size: 100.0),
+    const Icon(Icons.stars, size: 50.0),
   ];
 
   bool _isRow = true;

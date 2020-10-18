@@ -145,7 +145,7 @@ class _SembastExampleState extends State<SembastExample> {
           },
         ),
         trailing: IconButton(
-            icon: Icon(Icons.delete),
+            icon: const Icon(Icons.delete),
             onPressed: () async {
               await _deleteTodoItem(todo);
               _updateUI();
@@ -154,7 +154,7 @@ class _SembastExampleState extends State<SembastExample> {
 
   FloatingActionButton _buildFloatingActionButton() {
     return FloatingActionButton(
-      child: Icon(Icons.add),
+      child: const Icon(Icons.add),
       onPressed: () async {
         await _addTodoItem(
           TodoItem(

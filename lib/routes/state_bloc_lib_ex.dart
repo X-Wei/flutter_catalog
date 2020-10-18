@@ -114,7 +114,7 @@ class _CounterAndButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: EdgeInsets.all(4.0).copyWith(top: 32.0, bottom: 32.0),
+      margin: const EdgeInsets.all(4.0).copyWith(top: 32.0, bottom: 32.0),
       color: Colors.white70,
       child: Column(
         children: <Widget>[
@@ -133,13 +133,13 @@ class _CounterAndButton extends StatelessWidget {
           ButtonBar(
             children: <Widget>[
               IconButton(
-                icon: Icon(Icons.add),
+                icon: const Icon(Icons.add),
                 // ###6. Post new event by calling functions in bloc or by
                 // bloc.add(newEvent);
                 onPressed: () => BlocProvider.of<MyBloc>(context).increment(),
               ),
               IconButton(
-                icon: Icon(Icons.remove),
+                icon: const Icon(Icons.remove),
                 onPressed: () => BlocProvider.of<MyBloc>(context).decrement(),
               ),
             ],

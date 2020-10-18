@@ -6,7 +6,7 @@ class CardExample extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      padding: EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(8.0),
       children: <Widget>[
         Card(
           color: Colors.red,
@@ -25,7 +25,7 @@ class CardExample extends StatelessWidget {
         ),
         Card(
           color: Colors.green,
-          margin: EdgeInsets.all(20.0),
+          margin: const EdgeInsets.all(20.0),
           elevation: 0.0,
           child: Container(
             height: 100.0,

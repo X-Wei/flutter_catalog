@@ -81,7 +81,7 @@ class _PageThree extends MaterialPageRoute<String> {
               elevation: 2.0,
               actions: <Widget>[
                 IconButton(
-                  icon: Icon(Icons.close),
+                  icon: const Icon(Icons.close),
                   onPressed: () {
                     Navigator.pop(context);
                   },
@@ -89,7 +89,7 @@ class _PageThree extends MaterialPageRoute<String> {
               ],
             ),
             body: Padding(
-              padding: EdgeInsets.all(32.0),
+              padding: const EdgeInsets.all(32.0),
               child: ListView(
                 children: <Widget>[
                   ListTile(

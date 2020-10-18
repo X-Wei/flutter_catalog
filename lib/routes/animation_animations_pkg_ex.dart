@@ -16,7 +16,7 @@ class AnimationsPackageExample extends StatelessWidget {
               'A container that grows to fill the screen to reveal new content when tapped.'),
           trailing: IconButton(
             tooltip: 'Documentation',
-            icon: Icon(Icons.open_in_new),
+            icon: const Icon(Icons.open_in_new),
             onPressed: () => launch(
                 'https://pub.dev/documentation/animations/latest/animations/OpenContainer-class.html'),
           ),
@@ -25,7 +25,7 @@ class AnimationsPackageExample extends StatelessWidget {
           transitionDuration: Duration(milliseconds: 500),
           closedBuilder: (ctx, action) => ListTile(
             title: Text('click me'),
-            trailing: Icon(Icons.keyboard_arrow_right),
+            trailing: const Icon(Icons.keyboard_arrow_right),
           ),
           openBuilder: (ctx, action) => Scaffold(
             body: Center(
@@ -40,7 +40,7 @@ class AnimationsPackageExample extends StatelessWidget {
               'Transition from an old child to a new child, similar to AnimationSwitcher'),
           trailing: IconButton(
             tooltip: 'Documentation',
-            icon: Icon(Icons.open_in_new),
+            icon: const Icon(Icons.open_in_new),
             onPressed: () => launch(
                 'https://pub.dev/documentation/animations/latest/animations/PageTransitionSwitcher-class.html'),
           ),
@@ -56,7 +56,7 @@ class AnimationsPackageExample extends StatelessWidget {
               'Transition animation between UI elements that have a spatial or navigational relationship.'),
           trailing: IconButton(
             tooltip: 'Documentation',
-            icon: Icon(Icons.open_in_new),
+            icon: const Icon(Icons.open_in_new),
             onPressed: () => launch(
                 'https://pub.dev/documentation/animations/latest/animations/SharedAxisTransition-class.html'),
           ),
@@ -71,7 +71,7 @@ class AnimationsPackageExample extends StatelessWidget {
           subtitle: Text('Displays a dialog with animation.'),
           trailing: IconButton(
             tooltip: 'Documentation',
-            icon: Icon(Icons.open_in_new),
+            icon: const Icon(Icons.open_in_new),
             onPressed: () => launch(
                 'https://pub.dev/documentation/animations/latest/animations/showModal.html'),
           ),
@@ -106,16 +106,16 @@ class __PageTransitionSwitcherExState extends State<_PageTransitionSwitcherEx> {
   static const _tabs = <Widget>[
     // *Note*: when changed child is of the same type as previous one, set the
     // key property explicitly.
-    Icon(Icons.looks_one, size: 48, key: ValueKey(1)),
-    Icon(Icons.looks_two, size: 48, key: ValueKey(2)),
+    const Icon(Icons.looks_one, size: 48, key: ValueKey(1)),
+    const Icon(Icons.looks_two, size: 48, key: ValueKey(2)),
   ];
   static const _btmNavbarItems = <BottomNavigationBarItem>[
     BottomNavigationBarItem(
-      icon: Icon(Icons.home),
+      icon: const Icon(Icons.home),
       label: 'Tab1',
     ),
     BottomNavigationBarItem(
-      icon: Icon(Icons.business),
+      icon: const Icon(Icons.business),
       label: 'Tab2',
     ),
   ];
@@ -157,9 +157,9 @@ class __SharedAxisExState extends State<_SharedAxisEx> {
   final _pages = <Widget>[
     // *Note*: when changed child is of the same type as previous one, set the
     // key property explicitly.
-    Icon(Icons.looks_one, size: 64, key: ValueKey(1)),
-    Icon(Icons.looks_two, size: 64, key: ValueKey(2)),
-    Icon(Icons.looks_3, size: 64, key: ValueKey(3)),
+    const Icon(Icons.looks_one, size: 64, key: ValueKey(1)),
+    const Icon(Icons.looks_two, size: 64, key: ValueKey(2)),
+    const Icon(Icons.looks_3, size: 64, key: ValueKey(3)),
   ];
 
   int _currentPageIdx = 0;

@@ -17,7 +17,7 @@ class ListViewBuilderExample extends StatelessWidget {
           'Item $idx',
           style: _biggerFont,
         ),
-        trailing: Icon(Icons.dashboard),
+        trailing: const Icon(Icons.dashboard),
       );
     }
 

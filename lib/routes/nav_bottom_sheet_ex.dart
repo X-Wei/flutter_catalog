@@ -36,7 +36,7 @@ class _BottomSheetExampleState extends State<BottomSheetExample> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
         onPressed: () =>
             Fluttertoast.showToast(msg: 'Dummy floating action button'),
       ),
@@ -46,7 +46,7 @@ class _BottomSheetExampleState extends State<BottomSheetExample> {
   Container _buildBottomSheet(BuildContext context) {
     return Container(
       height: 300,
-      padding: EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(8.0),
       decoration: BoxDecoration(
         border: Border.all(color: Colors.blue, width: 2.0),
         borderRadius: BorderRadius.circular(8.0),
@@ -58,14 +58,14 @@ class _BottomSheetExampleState extends State<BottomSheetExample> {
             keyboardType: TextInputType.number,
             decoration: InputDecoration(
               border: OutlineInputBorder(),
-              icon: Icon(Icons.attach_money),
+              icon: const Icon(Icons.attach_money),
               labelText: 'Enter an integer',
             ),
           ),
           Container(
             alignment: Alignment.center,
             child: RaisedButton.icon(
-              icon: Icon(Icons.save),
+              icon: const Icon(Icons.save),
               label: Text('Save and close'),
               onPressed: () => Navigator.pop(context),
             ),

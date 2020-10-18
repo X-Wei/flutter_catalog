@@ -34,7 +34,7 @@ class _WebViewExampleState extends State<WebViewExample> {
         ButtonBar(
           children: <Widget>[
             FlatButton.icon(
-              icon: Icon(Icons.open_in_new),
+              icon: const Icon(Icons.open_in_new),
               label: Text('Open in webview'),
               onPressed: () {
                 // Dismiss the keyboard, otherwise the webview will not take

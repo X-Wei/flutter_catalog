@@ -72,7 +72,7 @@ class _StreamControllerExampleState extends State<StreamControllerExample> {
           ),
         ),
         RaisedButton.icon(
-          icon: Icon(Icons.send),
+          icon: const Icon(Icons.send),
           label: Text('Send random word to input stream'),
           onPressed: () => this._inputStreamController.sink.add(
                 _Data(

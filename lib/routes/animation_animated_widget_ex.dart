@@ -3,14 +3,15 @@ import 'package:flutter/material.dart';
 // The AnimatedWidget base class allows you to separate out the core widget code
 // from the animation code.
 class _AnimatedLogo extends AnimatedWidget {
-  _AnimatedLogo({Key key, Animation<double> animation})
+  const _AnimatedLogo({Key key, Animation<double> animation})
       : super(key: key, listenable: animation);
 
+  @override
   Widget build(BuildContext context) {
     final Animation<double> animation = this.listenable as Animation<double>;
     return Center(
       child: Container(
-        margin: EdgeInsets.all(8.0),
+        margin: const EdgeInsets.all(8.0),
         child: FlutterLogo(),
         height: animation.value,
         width: animation.value,

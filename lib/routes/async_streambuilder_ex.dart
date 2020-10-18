@@ -26,7 +26,7 @@ class StreamBuilderExampleState extends State<StreamBuilderExample> {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
-      margin: EdgeInsets.all(8),
+      margin: const EdgeInsets.all(8),
       child: StreamBuilder(
         stream: this._periodicStream,
         builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
@@ -69,7 +69,7 @@ class StreamBuilderExampleState extends State<StreamBuilderExample> {
               onPressed: () => setState(() => this._paused = !this._paused),
             ),
             IconButton(
-              icon: Icon(Icons.stop),
+              icon: const Icon(Icons.stop),
               onPressed: () => setState(
                 () {
                   this._timerValue = 0;

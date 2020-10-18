@@ -73,14 +73,14 @@ class __LottieCustomState extends State<_LottieCustom>
           children: [
             // Play backward
             IconButton(
-              icon: Icon(Icons.arrow_left),
+              icon: const Icon(Icons.arrow_left),
               onPressed: () {
                 _controller.reverse(from: _controller.value);
               },
             ),
             // Pause
             IconButton(
-              icon: Icon(Icons.pause),
+              icon: const Icon(Icons.pause),
               onPressed: () {
                 setState(() {
                   _controller.stop();
@@ -89,7 +89,7 @@ class __LottieCustomState extends State<_LottieCustom>
             ),
             // Play forward
             IconButton(
-              icon: Icon(Icons.arrow_right),
+              icon: const Icon(Icons.arrow_right),
               onPressed: () {
                 _controller.forward(
                     from: _controller.value == 1 ? 0 : _controller.value);

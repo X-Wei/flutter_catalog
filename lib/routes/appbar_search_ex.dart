@@ -180,7 +180,7 @@ class _SuggestionList extends StatelessWidget {
       itemBuilder: (BuildContext context, int i) {
         final String suggestion = suggestions[i];
         return ListTile(
-          leading: query.isEmpty ? Icon(Icons.history) : Icon(null),
+          leading: query.isEmpty ? const Icon(Icons.history) : const Icon(null),
           // Highlight the substring that matched the query.
           title: RichText(
             text: TextSpan(

@@ -41,7 +41,7 @@ class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
       appBar: AppBar(
         backgroundColor: Colors.red,
         leading: IconButton(
-          icon: Icon(Icons.info),
+          icon: const Icon(Icons.info),
           onPressed: () => _showNoteDialog(context),
         ),
         title: SingleChildScrollView(
@@ -91,7 +91,7 @@ class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
           defaultChild: Center(child: CircularProgressIndicator()),
           query: _firebaseMsgDbRef,
           sort: (a, b) => b.key.compareTo(a.key),
-          padding: EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(8.0),
           reverse: true,
           itemBuilder: (BuildContext ctx, DataSnapshot snapshot,
                   Animation<double> animation, int idx) =>
@@ -109,12 +109,12 @@ class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
     final sentTime = snapshot.value['timestamp'] as int ?? 0;
     final senderPhotoUrl = snapshot.value['senderPhotoUrl'] as String;
     final messageUI = Padding(
-      padding: EdgeInsets.symmetric(vertical: 10.0),
+      padding: const EdgeInsets.symmetric(vertical: 10.0),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Padding(
-            padding: EdgeInsets.only(right: 8.0),
+            padding: const EdgeInsets.only(right: 8.0),
             child: senderPhotoUrl != null
                 ? CircleAvatar(
                     backgroundImage: NetworkImage(senderPhotoUrl),
@@ -152,7 +152,7 @@ class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
   // Builds the row for composing and sending message.
   Widget _buildComposeMsgRow() {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 4.0),
+      margin: const EdgeInsets.symmetric(horizontal: 4.0),
       decoration: BoxDecoration(color: Theme.of(context).cardColor),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.end,
@@ -172,7 +172,7 @@ class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
             ),
           ),
           IconButton(
-            icon: Icon(Icons.send),
+            icon: const Icon(Icons.send),
             onPressed: _isComposing
                 ? () => _onTextMsgSubmitted(_textController.text)
                 : null,

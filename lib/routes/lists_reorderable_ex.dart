@@ -65,7 +65,7 @@ class _ReorderableListExampleState extends State<ReorderableListExample> {
       automaticallyImplyLeading: false,
       actions: <Widget>[
         IconButton(
-          icon: Icon(Icons.sort_by_alpha),
+          icon: const Icon(Icons.sort_by_alpha),
           tooltip: 'Sort',
           onPressed: _onSort,
         ),
@@ -82,7 +82,7 @@ class _ReorderableListExampleState extends State<ReorderableListExample> {
             title: Text('This item represents ${item.value}.'),
             isThreeLine: true,
             subtitle: Text('Item ${item.value}, checked=${item.checked}'),
-            secondary: Icon(Icons.drag_handle),
+            secondary: const Icon(Icons.drag_handle),
           ),
         )
         .toList();

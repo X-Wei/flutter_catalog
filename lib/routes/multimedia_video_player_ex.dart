@@ -31,7 +31,7 @@ class _VideoPlayerExampleState extends State<VideoPlayerExample> {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      padding: EdgeInsets.all(4),
+      padding: const EdgeInsets.all(4),
       children: <Widget>[
         ListTile(title: Text('Play online video:')),
         Center(

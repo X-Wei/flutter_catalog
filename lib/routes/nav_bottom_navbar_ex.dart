@@ -14,14 +14,14 @@ class _BottomNavigationBarExampleState
   @override
   Widget build(BuildContext context) {
     final _kTabPages = <Widget>[
-      Center(child: Icon(Icons.cloud, size: 64.0, color: Colors.teal)),
-      Center(child: Icon(Icons.alarm, size: 64.0, color: Colors.cyan)),
-      Center(child: Icon(Icons.forum, size: 64.0, color: Colors.blue)),
+      Center(child: const Icon(Icons.cloud, size: 64.0, color: Colors.teal)),
+      Center(child: const Icon(Icons.alarm, size: 64.0, color: Colors.cyan)),
+      Center(child: const Icon(Icons.forum, size: 64.0, color: Colors.blue)),
     ];
     final _kBottmonNavBarItems = <BottomNavigationBarItem>[
-      BottomNavigationBarItem(icon: Icon(Icons.cloud), label: 'Tab1'),
-      BottomNavigationBarItem(icon: Icon(Icons.alarm), label: 'Tab2'),
-      BottomNavigationBarItem(icon: Icon(Icons.forum), label: 'Tab3'),
+      BottomNavigationBarItem(icon: const Icon(Icons.cloud), label: 'Tab1'),
+      BottomNavigationBarItem(icon: const Icon(Icons.alarm), label: 'Tab2'),
+      BottomNavigationBarItem(icon: const Icon(Icons.forum), label: 'Tab3'),
     ];
     assert(_kTabPages.length == _kBottmonNavBarItems.length);
     final bottomNavBar = BottomNavigationBar(

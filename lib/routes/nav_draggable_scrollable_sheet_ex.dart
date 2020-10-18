@@ -43,7 +43,7 @@ class DraggableScrollableSheetExample extends StatelessWidget {
               itemCount: 25,
               itemBuilder: (BuildContext context, int index) {
                 return ListTile(
-                  leading: Icon(Icons.ac_unit),
+                  leading: const Icon(Icons.ac_unit),
                   title: Text('Item $index'),
                 );
               },

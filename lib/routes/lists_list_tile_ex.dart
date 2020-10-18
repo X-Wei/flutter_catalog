@@ -11,9 +11,9 @@ class ListTileExample extends StatelessWidget {
       ),
       Divider(),
       ListTile(
-        leading: Icon(Icons.face),
+        leading: const Icon(Icons.face),
         title: Text('Tile 1: with leading/trailing widgets'),
-        trailing: Icon(Icons.tag_faces),
+        trailing: const Icon(Icons.tag_faces),
       ),
       Divider(),
       ListTile(

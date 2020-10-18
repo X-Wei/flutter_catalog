@@ -42,7 +42,7 @@ class _TextFormFieldExampleState extends State<TextFormFieldExample> {
             decoration: InputDecoration(
               border: UnderlineInputBorder(),
               filled: true,
-              icon: Icon(Icons.person),
+              icon: const Icon(Icons.person),
               hintText: 'What do people call you?',
               labelText: 'Name *',
             ),
@@ -58,7 +58,7 @@ class _TextFormFieldExampleState extends State<TextFormFieldExample> {
             decoration: const InputDecoration(
               border: UnderlineInputBorder(),
               filled: true,
-              icon: Icon(Icons.phone),
+              icon: const Icon(Icons.phone),
               hintText: 'Where can we reach you?',
               labelText: 'Phone Number *',
               prefixText: '+86',
@@ -79,7 +79,7 @@ class _TextFormFieldExampleState extends State<TextFormFieldExample> {
             decoration: const InputDecoration(
               border: UnderlineInputBorder(),
               filled: true,
-              icon: Icon(Icons.email),
+              icon: const Icon(Icons.email),
               hintText: 'Your email address',
               labelText: 'E-mail',
             ),

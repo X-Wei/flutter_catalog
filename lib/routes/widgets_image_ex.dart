@@ -33,7 +33,7 @@ class ImageExample extends StatelessWidget {
           imageUrl: 'https://picsum.photos/id/7/250/250',
           placeholder: (context, url) =>
               Center(child: CircularProgressIndicator()),
-          errorWidget: (context, url, error) => Icon(Icons.error),
+          errorWidget: (context, url, error) => const Icon(Icons.error),
         ),
         Divider(),
         ListTile(title: Text('GIF from asset:')),

@@ -80,7 +80,7 @@ class _BottomAppbarExampleState extends State<BottomAppbarExample> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
         mini: this._isFabMini,
         onPressed: () =>
             Fluttertoast.showToast(msg: 'Dummy floating action button'),
@@ -98,7 +98,7 @@ class _BottomAppbarExampleState extends State<BottomAppbarExample> {
         children: <Widget>[
           // Bottom that pops up from the bottom of the screen.
           IconButton(
-            icon: Icon(Icons.menu),
+            icon: const Icon(Icons.menu),
             onPressed: () => showModalBottomSheet(
               context: context,
               builder: (BuildContext context) => Container(
@@ -109,7 +109,7 @@ class _BottomAppbarExampleState extends State<BottomAppbarExample> {
             ),
           ),
           IconButton(
-            icon: Icon(Icons.search),
+            icon: const Icon(Icons.search),
             onPressed: () =>
                 Fluttertoast.showToast(msg: 'Dummy search action.'),
           ),

@@ -54,7 +54,7 @@ class _LocalAuthExampleState extends State<LocalAuthExample> {
     return Column(
       children: <Widget>[
         FlatButton.icon(
-          icon: Icon(Icons.fingerprint),
+          icon: const Icon(Icons.fingerprint),
           label: Text('Auth in to view hidden image'),
           onPressed: () async {
             final authSuccess = await this._auth();

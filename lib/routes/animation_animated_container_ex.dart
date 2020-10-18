@@ -26,8 +26,7 @@ class _AnimatedContainerExampleState extends State<AnimatedContainerExample> {
     return Column(
       children: <Widget>[
         AnimatedContainer(
-          margin: EdgeInsets.all(8),
-          child: FlutterLogo(),
+          margin: const EdgeInsets.all(8),
           // Use the properties stored in the State class.
           width: this._width,
           height: this._height,
@@ -35,12 +34,13 @@ class _AnimatedContainerExampleState extends State<AnimatedContainerExample> {
             color: this._color,
             borderRadius: BorderRadius.circular(this._borderRadius),
           ),
-          duration: Duration(seconds: 1),
+          duration: const Duration(seconds: 1),
           curve: Curves.fastOutSlowIn,
+          child: const FlutterLogo(),
         ),
         RaisedButton.icon(
-          icon: Icon(Icons.update),
-          label: Text('Change random property'),
+          icon: const Icon(Icons.update),
+          label: const Text('Change random property'),
           onPressed: () => setState(
             () {
               // Generate a random width and height.

@@ -32,7 +32,7 @@ class _FirebaseMLKitExampleState extends State<FirebaseMLKitExample> {
       builder: (ctx) => SimpleDialog(
         children: <Widget>[
           ListTile(
-            leading: Icon(Icons.camera_alt),
+            leading: const Icon(Icons.camera_alt),
             title: Text('Take picture'),
             onTap: () async {
               final PickedFile pickedFile =
@@ -41,7 +41,7 @@ class _FirebaseMLKitExampleState extends State<FirebaseMLKitExample> {
             },
           ),
           ListTile(
-            leading: Icon(Icons.image),
+            leading: const Icon(Icons.image),
             title: Text('Pick from gallery'),
             onTap: () async {
               try {

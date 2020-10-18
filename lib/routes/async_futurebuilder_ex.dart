@@ -19,7 +19,7 @@ class FutureBuilderExampleState extends State<FutureBuilderExample> {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
-      margin: EdgeInsets.all(8),
+      margin: const EdgeInsets.all(8),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
