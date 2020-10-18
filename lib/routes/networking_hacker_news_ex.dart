@@ -23,19 +23,19 @@ class _RestApiHackerNewsExampleState extends State<RestApiHackerNewsExample> {
       padding: const EdgeInsets.all(8.0),
       child: Column(
         children: <Widget>[
-          Text('This is a full example using the hacker news API, '
+          const Text('This is a full example using the hacker news API, '
               'cf. https://github.com/HackerNews/API.\n'
               'We use a two-hop way to get articles: '
               'first we fetch the list of latest article Ids at https://hacker-news.firebaseio.com/v0/newstories.json, '
               'then for each id we get its content at https://hacker-news.firebaseio.com/v0/item/\$id.json'),
-          Divider(),
+          const Divider(),
           Expanded(
             child: RefreshIndicator(
               onRefresh: this._getLatestArticleIds,
               child: _articleIds.isEmpty
-                  ? SingleChildScrollView(
-                      physics: AlwaysScrollableScrollPhysics(),
-                      child: Text('(Pull to refresh)'),
+                  ? const SingleChildScrollView(
+                      physics: const AlwaysScrollableScrollPhysics(),
+                      child: const Text('(Pull to refresh)'),
                     )
                   : Scrollbar(
                       child: ListView.builder(
@@ -48,7 +48,7 @@ class _RestApiHackerNewsExampleState extends State<RestApiHackerNewsExample> {
                               return Container(
                                 margin: const EdgeInsets.all(4),
                                 alignment: Alignment.center,
-                                child: CircularProgressIndicator(),
+                                child: const CircularProgressIndicator(),
                               );
                             }
                             final hnArticle = MyHackerNewsArticle.fromJson(json
@@ -103,7 +103,7 @@ class _RestApiHackerNewsExampleState extends State<RestApiHackerNewsExample> {
             Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (ctx) => WebviewScaffold(
-                  initialChild: Center(child: CircularProgressIndicator()),
+                  initialChild: const Center(child: const CircularProgressIndicator()),
                   url: article.url,
                   appBar: AppBar(title: Text(article.title)),
                 ),

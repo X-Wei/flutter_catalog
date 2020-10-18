@@ -61,7 +61,7 @@ class _ReorderableListExampleState extends State<ReorderableListExample> {
   @override
   Widget build(BuildContext context) {
     final _appbar = AppBar(
-      title: Text('Reorderable list'),
+      title: const Text('Reorderable list'),
       automaticallyImplyLeading: false,
       actions: <Widget>[
         IconButton(

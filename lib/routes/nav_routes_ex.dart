@@ -13,7 +13,7 @@ class RoutesExample extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Text('Page 1'),
+        title: const Text('Page 1'),
       ),
       body: Center(
         child: RaisedButton(
@@ -22,7 +22,7 @@ class RoutesExample extends StatelessWidget {
             // between routes is by push/pop of Navigator.
             Navigator.push(context, _PageTwo());
           },
-          child: Text('Go to page two'),
+          child: const Text('Go to page two'),
         ),
       ),
     );
@@ -35,7 +35,7 @@ class _PageTwo extends MaterialPageRoute<Null> {
       : super(builder: (BuildContext context) {
           return Scaffold(
             appBar: AppBar(
-              title: Text('Page 2'),
+              title: const Text('Page 2'),
               elevation: 1.0,
             ),
             // *Note*: use a Builder instead of directly giving the body, so
@@ -63,7 +63,7 @@ class _PageTwo extends MaterialPageRoute<Null> {
                       }
                     });
                   },
-                  child: Text('Go to page 3'),
+                  child: const Text('Go to page 3'),
                 ),
               ),
             ),
@@ -77,7 +77,7 @@ class _PageThree extends MaterialPageRoute<String> {
       : super(builder: (BuildContext context) {
           return Scaffold(
             appBar: AppBar(
-              title: Text('Last page'),
+              title: const Text('Last page'),
               elevation: 2.0,
               actions: <Widget>[
                 IconButton(
@@ -93,21 +93,21 @@ class _PageThree extends MaterialPageRoute<String> {
               child: ListView(
                 children: <Widget>[
                   ListTile(
-                    leading: CircleAvatar(child: Text('1')),
-                    title: Text('user1@example.com'),
+                    leading: const CircleAvatar(child: const Text('1')),
+                    title: const Text('user1@example.com'),
                     onTap: () => Navigator.pop(context, 'user1@example.com'),
                   ),
                   ListTile(
-                    leading: CircleAvatar(child: Text('2')),
-                    title: Text('user2@example.com'),
+                    leading: const CircleAvatar(child: const Text('2')),
+                    title: const Text('user2@example.com'),
                     onTap: () => Navigator.pop(context, 'user2@example.com'),
                   ),
                   ListTile(
-                    leading: CircleAvatar(child: Text('3')),
-                    title: Text('user3@example.com'),
+                    leading: const CircleAvatar(child: const Text('3')),
+                    title: const Text('user3@example.com'),
                     onTap: () => Navigator.pop(context, 'user3@example.com'),
                   ),
-                  Divider(),
+                  const Divider(),
                   MaterialButton(
                     onPressed: () {
                       // Pops until reaching a route with that route name.
@@ -116,7 +116,7 @@ class _PageThree extends MaterialPageRoute<String> {
                         ModalRoute.withName(RoutesExample.kRouteName),
                       );
                     },
-                    child: Text('Go home'),
+                    child: const Text('Go home'),
                   ),
                 ],
               ),

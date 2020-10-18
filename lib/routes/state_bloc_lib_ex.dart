@@ -72,7 +72,7 @@ class _MyDemoAppState extends State<_MyDemoApp> {
   Widget build(BuildContext context) {
     return ListView(
       children: <Widget>[
-        Text("BLoC pattern is great for accessing/mutating app's state and "
+        const Text("BLoC pattern is great for accessing/mutating app's state and "
             "updating UI without rebuilding the whole widget tree. But the vanilla "
             "BLoC implementation has too much boilerplate code. \n\n"
             "With the flutter_bloc package, we don't need to manage Streams "
@@ -81,7 +81,7 @@ class _MyDemoAppState extends State<_MyDemoApp> {
         // ###4. Use the BlocProvider from flutter_bloc package, we don't need
         // to write our own InheritedWidget.
         BlocProvider<MyBloc>(
-          create: (BuildContext context) => MyBloc(_MyState(0)),
+          create: (BuildContext context) => MyBloc(const _MyState(0)),
           child: _AppRootWidget(),
         ),
       ],
@@ -96,7 +96,7 @@ class _AppRootWidget extends StatelessWidget {
       elevation: 4.0,
       child: Column(
         children: <Widget>[
-          Text('(root widget)'),
+          const Text('(root widget)'),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
@@ -118,7 +118,7 @@ class _CounterAndButton extends StatelessWidget {
       color: Colors.white70,
       child: Column(
         children: <Widget>[
-          Text('(child widget)'),
+          const Text('(child widget)'),
           // ###5. Access the state from child widget by wrapping the widget by
           // a BlocBuilder.
           BlocBuilder(

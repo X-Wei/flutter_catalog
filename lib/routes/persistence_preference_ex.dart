@@ -33,21 +33,21 @@ class _SharedPreferenceExampleState extends State<SharedPreferenceExample> {
       children: <TableRow>[
         TableRow(
           children: <Widget>[
-            Text('Number preference:'),
+            const Text('Number preference:'),
             Text('${this._numberPref}'),
             RaisedButton(
               onPressed: () => this._setNumberPref(this._numberPref + 1),
-              child: Text('Increment'),
+              child: const Text('Increment'),
             ),
           ],
         ),
         TableRow(
           children: <Widget>[
-            Text('Boolean preference:'),
+            const Text('Boolean preference:'),
             Text('${this._boolPref}'),
             RaisedButton(
               onPressed: () => this._setBooleanPref(!this._boolPref),
-              child: Text('Toggle'),
+              child: const Text('Toggle'),
             ),
           ],
         ),

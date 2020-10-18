@@ -32,33 +32,33 @@ class _RestApiSendExampleState extends State<RestApiSendExample> {
     return ListView(
       padding: const EdgeInsets.all(16.0),
       children: <Widget>[
-        Text('''In this example we will POST to the jsonplaceholder API.
+        const Text('''In this example we will POST to the jsonplaceholder API.
 
 From https://jsonplaceholder.typicode.com/guide.html we see that the API expects title, body and userId in the request body.'''),
-        Divider(),
+        const Divider(),
         TextField(
           controller: this._titleController,
-          decoration: InputDecoration(
+          decoration: const InputDecoration(
             labelText: 'Title',
-            border: OutlineInputBorder(),
+            border: const OutlineInputBorder(),
           ),
         ),
-        SizedBox(height: 4),
+        const SizedBox(height: 4),
         TextField(
           controller: this._contentController,
           maxLines: null,
-          decoration: InputDecoration(
+          decoration: const InputDecoration(
             labelText: 'Content',
-            border: OutlineInputBorder(),
+            border: const OutlineInputBorder(),
           ),
         ),
-        SizedBox(height: 4),
+        const SizedBox(height: 4),
         TextField(
           controller: this._userIdController,
           keyboardType: TextInputType.number,
-          decoration: InputDecoration(
+          decoration: const InputDecoration(
             labelText: 'UserId',
-            border: OutlineInputBorder(),
+            border: const OutlineInputBorder(),
           ),
         ),
         ButtonBar(
@@ -71,16 +71,16 @@ From https://jsonplaceholder.typicode.com/guide.html we see that the API expects
                         _contentController.text,
                         _userIdController.text,
                       ),
-              child: Text('Post'),
+              child: const Text('Post'),
             ),
             RaisedButton(
               onPressed: this._reset,
-              child: Text('Reset'),
+              child: const Text('Reset'),
             ),
           ],
         ),
         Text('Response body=$_responseBody'),
-        Divider(),
+        const Divider(),
         Text('Error=$_error'),
       ],
     );

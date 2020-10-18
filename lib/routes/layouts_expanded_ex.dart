@@ -15,27 +15,27 @@ class ExpandedExample extends StatelessWidget {
           flex: 1,
           child: Container(
             color: Colors.red,
-            child: Text('Item1: flex=1'),
+            child: const Text('Item1: flex=1'),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 20.0,
         ),
         Expanded(
           flex: 2,
           child: Container(
             color: Colors.green,
-            child: Text('Item2: flex=2'),
+            child: const Text('Item2: flex=2'),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 20.0,
         ),
         Expanded(
           flex: 3,
           child: Container(
             color: Colors.blue,
-            child: Text('Item3, flex=3'),
+            child: const Text('Item3, flex=3'),
           ),
         ),
       ],

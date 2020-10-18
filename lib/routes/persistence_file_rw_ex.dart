@@ -30,7 +30,7 @@ class _FileReadWriteExampleState extends State<FileReadWriteExample> {
     return ListView(
       padding: const EdgeInsets.all(20.0),
       children: <Widget>[
-        Text('Write to local file:'),
+        const Text('Write to local file:'),
         TextField(
           focusNode: textFieldFocusNode,
           controller: _textController,
@@ -46,7 +46,7 @@ class _FileReadWriteExampleState extends State<FileReadWriteExample> {
                 // Focus on text field (bring keyboard up).
                 FocusScope.of(context).requestFocus(textFieldFocusNode);
               },
-              child: Text('Load'),
+              child: const Text('Load'),
             ),
             MaterialButton(
               onPressed: () async {
@@ -55,15 +55,15 @@ class _FileReadWriteExampleState extends State<FileReadWriteExample> {
                 _showSnackBar('String successfully written to local file".');
                 await this._loadTextFromLocalFile();
               },
-              child: Text('Save'),
+              child: const Text('Save'),
             ),
           ],
         ),
-        Divider(height: 20.0),
-        Text('Local file path:'),
+        const Divider(height: 20.0),
+        const Text('Local file path:'),
         Text(this._localFilePath, style: Theme.of(context).textTheme.caption),
-        Divider(height: 20.0),
-        Text('Local file content:'),
+        const Divider(height: 20.0),
+        const Text('Local file content:'),
         Text(this._localFileContent,
             style: Theme.of(context).textTheme.caption),
       ],
@@ -98,7 +98,7 @@ class _FileReadWriteExampleState extends State<FileReadWriteExample> {
     Scaffold.of(this.context).showSnackBar(
       SnackBar(
         content: Text(text),
-        duration: Duration(milliseconds: 500),
+        duration: const Duration(milliseconds: 500),
       ),
     );
   }

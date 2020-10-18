@@ -37,7 +37,7 @@ class _MyDemoApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: <Widget>[
-        Text(
+        const Text(
             "ScopedModel allows efficient sharing/updating of app's state from "
             "children widgets down the widgets tree.\n\n"
             "In this example, the app's root widget is a ScopedModel, "
@@ -63,7 +63,7 @@ class _AppRootWidget extends StatelessWidget {
       elevation: 4.0,
       child: Column(
         children: <Widget>[
-          Text('(root widget)'),
+          const Text('(root widget)'),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
@@ -92,7 +92,7 @@ class _CounterAndButton extends StatelessWidget {
         color: Colors.white70,
         child: Column(
           children: <Widget>[
-            Text('(child widget)'),
+            const Text('(child widget)'),
             Text(
               '${model.counterValue}',
               style: Theme.of(context).textTheme.headline4,

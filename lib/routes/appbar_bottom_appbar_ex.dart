@@ -23,7 +23,7 @@ class _BottomAppbarExampleState extends State<BottomAppbarExample> {
         padding: const EdgeInsets.all(8),
         children: <Widget>[
           ListTile(
-            title: Text('FloatingActionButton position:'),
+            title: const Text('FloatingActionButton position:'),
             trailing: DropdownButton<FloatingActionButtonLocation>(
               value: this._fabLocation,
               onChanged: (FloatingActionButtonLocation newVal) {
@@ -32,35 +32,35 @@ class _BottomAppbarExampleState extends State<BottomAppbarExample> {
                 }
               },
               items: [
-                DropdownMenuItem(
+                const DropdownMenuItem(
                   value: FloatingActionButtonLocation.centerFloat,
-                  child: Text('centerFloat'),
+                  child: const Text('centerFloat'),
                 ),
-                DropdownMenuItem(
+                const DropdownMenuItem(
                   value: FloatingActionButtonLocation.endFloat,
-                  child: Text('endFloat'),
+                  child: const Text('endFloat'),
                 ),
-                DropdownMenuItem(
+                const DropdownMenuItem(
                   value: FloatingActionButtonLocation.centerDocked,
-                  child: Text('centerDocked'),
+                  child: const Text('centerDocked'),
                 ),
-                DropdownMenuItem(
+                const DropdownMenuItem(
                   value: FloatingActionButtonLocation.endDocked,
-                  child: Text('endDocked'),
+                  child: const Text('endDocked'),
                 ),
-                DropdownMenuItem(
+                const DropdownMenuItem(
                   value: FloatingActionButtonLocation.miniStartTop,
-                  child: Text('miniStartTop'),
+                  child: const Text('miniStartTop'),
                 ),
-                DropdownMenuItem(
+                const DropdownMenuItem(
                   value: FloatingActionButtonLocation.startTop,
-                  child: Text('startTop'),
+                  child: const Text('startTop'),
                 ),
               ],
             ),
           ),
           ListTile(
-            title: Text('Mini FAB:'),
+            title: const Text('Mini FAB:'),
             trailing: Switch(
               value: this._isFabMini,
               onChanged: (bool val) {
@@ -69,7 +69,7 @@ class _BottomAppbarExampleState extends State<BottomAppbarExample> {
             ),
           ),
           ListTile(
-            title: Text('BottomAppBar notch:'),
+            title: const Text('BottomAppBar notch:'),
             trailing: Switch(
               value: this._isBottomBarNotched,
               onChanged: (bool val) {
@@ -92,7 +92,7 @@ class _BottomAppbarExampleState extends State<BottomAppbarExample> {
 
   BottomAppBar _buildBottomAppBar(BuildContext context) {
     return BottomAppBar(
-      shape: this._isBottomBarNotched ? CircularNotchedRectangle() : null,
+      shape: this._isBottomBarNotched ? const CircularNotchedRectangle() : null,
       color: Theme.of(context).primaryColor,
       child: Row(
         children: <Widget>[
@@ -104,7 +104,7 @@ class _BottomAppbarExampleState extends State<BottomAppbarExample> {
               builder: (BuildContext context) => Container(
                 alignment: Alignment.center,
                 height: 200,
-                child: Text('Dummy bottom sheet'),
+                child: const Text('Dummy bottom sheet'),
               ),
             ),
           ),

@@ -32,7 +32,7 @@ class _AppBarSearchExampleState extends State<AppBarSearchExample> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Text('English Words'),
+        title: const Text('English Words'),
         actions: <Widget>[
           IconButton(
             tooltip: 'Search',
@@ -101,7 +101,7 @@ class _MySearchDelegate extends SearchDelegate<String> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            Text('You have selected the word:'),
+            const Text('You have selected the word:'),
             GestureDetector(
               onTap: () {
                 // Returns this.query as result to previous screen, c.f.

@@ -29,12 +29,12 @@ class DraggableScrollableSheetExample extends StatelessWidget {
       maxChildSize: 0.8,
       builder: (BuildContext context, ScrollController scrollController) {
         return Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: Colors.blue,
             // border: Border.all(color: Colors.blue, width: 2),
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(8),
-              topRight: Radius.circular(8),
+            borderRadius: const BorderRadius.only(
+              topLeft: const Radius.circular(8),
+              topRight: const Radius.circular(8),
             ),
           ),
           child: Scrollbar(

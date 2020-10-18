@@ -39,7 +39,7 @@ class _FirebaseVoteExampleState extends State<FirebaseVoteExample> {
             .snapshots(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
-            return LinearProgressIndicator();
+            return const LinearProgressIndicator();
           } else {
             final List<_LangaugeVotingRecord> records = snapshot.data.docs
                 .map((snapshot) => _LangaugeVotingRecord.fromSnapshot(snapshot))
@@ -122,7 +122,7 @@ class _FirebaseVoteExampleState extends State<FirebaseVoteExample> {
             throw e;
           }
         },
-        timeout: Duration(seconds: 3),
+        timeout: const Duration(seconds: 3),
       );
       // Update local voted status only after transaction is successful.
       this._markVotedStatus(lang, !this._isVoted(lang));

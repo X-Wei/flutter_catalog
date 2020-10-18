@@ -33,15 +33,15 @@ class ContainerExample extends StatelessWidget {
               // Rotation.
               transform: Matrix4.rotationZ(-0.1),
               child: Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Colors.green,
-                  borderRadius: BorderRadius.horizontal(
-                    left: Radius.circular(10.0),
-                    right: Radius.circular(30.0),
+                  borderRadius: const BorderRadius.horizontal(
+                    left: const Radius.circular(10.0),
+                    right: const Radius.circular(30.0),
                   ),
                 ),
                 alignment: Alignment.topLeft,
-                child: Text("hello"),
+                child: const Text("hello"),
               ),
             ),
           ),

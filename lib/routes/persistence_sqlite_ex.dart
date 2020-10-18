@@ -133,8 +133,8 @@ class _SqliteExampleState extends State<SqliteExample> {
       future: _asyncInit(),
       builder: (context, snapshot) {
         if (!snapshot.hasData || snapshot.data == false)
-          return Center(
-            child: CircularProgressIndicator(),
+          return const Center(
+            child: const CircularProgressIndicator(),
           );
         return Scaffold(
           body: ListView(

@@ -33,7 +33,7 @@ class _FirebaseMLKitExampleState extends State<FirebaseMLKitExample> {
         children: <Widget>[
           ListTile(
             leading: const Icon(Icons.camera_alt),
-            title: Text('Take picture'),
+            title: const Text('Take picture'),
             onTap: () async {
               final PickedFile pickedFile =
                   await _picker.getImage(source: ImageSource.camera);
@@ -42,7 +42,7 @@ class _FirebaseMLKitExampleState extends State<FirebaseMLKitExample> {
           ),
           ListTile(
             leading: const Icon(Icons.image),
-            title: Text('Pick from gallery'),
+            title: const Text('Pick from gallery'),
             onTap: () async {
               try {
                 final PickedFile pickedFile =
@@ -59,7 +59,7 @@ class _FirebaseMLKitExampleState extends State<FirebaseMLKitExample> {
     );
     if (imageFile == null) {
       Scaffold.of(context).showSnackBar(
-        SnackBar(content: Text('Please pick one image first.')),
+        const SnackBar(content: const Text('Please pick one image first.')),
       );
       return false;
     }
@@ -181,7 +181,7 @@ class _FirebaseMLKitExampleState extends State<FirebaseMLKitExample> {
     String result = '';
     final FirebaseVisionImage visionImage =
         FirebaseVisionImage.fromFile(this._imageFile);
-    final options = FaceDetectorOptions(
+    final options = const FaceDetectorOptions(
       enableLandmarks: true,
       enableClassification: true,
       enableTracking: true,
@@ -228,7 +228,7 @@ class _FirebaseMLKitExampleState extends State<FirebaseMLKitExample> {
     return ListView(
       children: <Widget>[
         this._imageFile == null
-            ? Placeholder(
+            ? const Placeholder(
                 fallbackHeight: 200.0,
               )
             : FadeInImage(
@@ -242,24 +242,24 @@ class _FirebaseMLKitExampleState extends State<FirebaseMLKitExample> {
             children: <Widget>[
               RaisedButton(
                 onPressed: this._imageLabelling,
-                child: Text('Image Labelling'),
+                child: const Text('Image Labelling'),
               ),
               RaisedButton(
                 onPressed: this._textOcr,
-                child: Text('Text OCR'),
+                child: const Text('Text OCR'),
               ),
               RaisedButton(
                 onPressed: this._barcodeScan,
-                child: Text('Barcode Scan'),
+                child: const Text('Barcode Scan'),
               ),
               RaisedButton(
                 onPressed: this._faceDetect,
-                child: Text('Face Detection'),
+                child: const Text('Face Detection'),
               ),
             ],
           ),
         ),
-        Divider(),
+        const Divider(),
         Text('Result:', style: Theme.of(context).textTheme.subtitle2),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,

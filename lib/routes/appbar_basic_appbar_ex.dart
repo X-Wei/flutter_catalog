@@ -9,7 +9,7 @@ class BasicAppbarExample extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.redAccent,
         leading: const Icon(Icons.tag_faces),
-        title: Text("Sample title"),
+        title: const Text("Sample title"),
         actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.directions_bike),
@@ -22,14 +22,14 @@ class BasicAppbarExample extends StatelessWidget {
           PopupMenuButton(
             itemBuilder: (BuildContext context) {
               return [
-                PopupMenuItem(child: Text('Boat')),
-                PopupMenuItem(child: Text('Train'))
+                const PopupMenuItem(child: const Text('Boat')),
+                const PopupMenuItem(child: const Text('Train'))
               ];
             },
           )
         ],
       ),
-      body: Center(child: Text("Hello")),
+      body: const Center(child: const Text("Hello")),
     );
   }
 }

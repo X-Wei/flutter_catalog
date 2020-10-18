@@ -5,21 +5,21 @@ class NavDrawerExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final drawerHeader = UserAccountsDrawerHeader(
-      accountName: Text('User Name'),
-      accountEmail: Text('user.name@email.com'),
-      currentAccountPicture: CircleAvatar(
+    final drawerHeader = const UserAccountsDrawerHeader(
+      accountName: const Text('User Name'),
+      accountEmail: const Text('user.name@email.com'),
+      currentAccountPicture: const CircleAvatar(
         backgroundColor: Colors.white,
-        child: FlutterLogo(size: 42.0),
+        child: const FlutterLogo(size: 42.0),
       ),
       otherAccountsPictures: <Widget>[
-        CircleAvatar(
+        const CircleAvatar(
           backgroundColor: Colors.yellow,
-          child: Text('A'),
+          child: const Text('A'),
         ),
-        CircleAvatar(
+        const CircleAvatar(
           backgroundColor: Colors.red,
-          child: Text('B'),
+          child: const Text('B'),
         )
       ],
     );
@@ -27,15 +27,15 @@ class NavDrawerExample extends StatelessWidget {
       children: <Widget>[
         drawerHeader,
         ListTile(
-          title: Text('To page 1'),
+          title: const Text('To page 1'),
           onTap: () => Navigator.of(context).push(_NewPage(1)),
         ),
         ListTile(
-          title: Text('To page 2'),
+          title: const Text('To page 2'),
           onTap: () => Navigator.of(context).push(_NewPage(2)),
         ),
         ListTile(
-          title: Text('other drawer item'),
+          title: const Text('other drawer item'),
           onTap: () {},
         ),
       ],
@@ -43,10 +43,10 @@ class NavDrawerExample extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.amber,
-          title: Text('Drawer example'),
+          title: const Text('Drawer example'),
         ),
-        body: Center(
-          child: Text('Swip or click upper-left icon to see drawer.'),
+        body: const Center(
+          child: const Text('Swip or click upper-left icon to see drawer.'),
         ),
         drawer: Drawer(
           child: drawerItems,

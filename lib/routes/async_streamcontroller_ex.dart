@@ -45,7 +45,7 @@ class _StreamControllerExampleState extends State<StreamControllerExample> {
   Widget build(BuildContext context) {
     return ListView(
       children: <Widget>[
-        Text("StreamController is like a pipe with `sink` as input and `stream`"
+        const Text("StreamController is like a pipe with `sink` as input and `stream`"
             "as output. \n\n"
             "To put a new value to the stream, use `streamController.sink.add(newValue)`; "
             "to access the output stream, use `streamController.stream`.\n\n"
@@ -61,9 +61,9 @@ class _StreamControllerExampleState extends State<StreamControllerExample> {
             stream: _outputStreamController.stream,
             builder: (BuildContext context, AsyncSnapshot<Widget> snapshot) {
               if (!snapshot.hasData) {
-                return ListTile(
-                  leading: CircularProgressIndicator(),
-                  title: Text('no data'),
+                return const ListTile(
+                  leading: const CircularProgressIndicator(),
+                  title: const Text('no data'),
                 );
               }
               final Widget widgetToRender = snapshot.data;
@@ -73,7 +73,7 @@ class _StreamControllerExampleState extends State<StreamControllerExample> {
         ),
         RaisedButton.icon(
           icon: const Icon(Icons.send),
-          label: Text('Send random word to input stream'),
+          label: const Text('Send random word to input stream'),
           onPressed: () => this._inputStreamController.sink.add(
                 _Data(
                   message: english_words.WordPair.random().asPascalCase,

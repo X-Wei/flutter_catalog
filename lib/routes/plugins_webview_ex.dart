@@ -25,8 +25,8 @@ class _WebViewExampleState extends State<WebViewExample> {
       children: <Widget>[
         TextField(
           controller: this._controller,
-          decoration: InputDecoration(
-            border: OutlineInputBorder(),
+          decoration: const InputDecoration(
+            border: const OutlineInputBorder(),
             hintText: 'Enter URL to open it in webview.',
             labelText: 'URL to open',
           ),
@@ -35,7 +35,7 @@ class _WebViewExampleState extends State<WebViewExample> {
           children: <Widget>[
             FlatButton.icon(
               icon: const Icon(Icons.open_in_new),
-              label: Text('Open in webview'),
+              label: const Text('Open in webview'),
               onPressed: () {
                 // Dismiss the keyboard, otherwise the webview will not take
                 // full screen.
@@ -58,7 +58,7 @@ class _WebViewExampleState extends State<WebViewExample> {
           // AndroidManifest.xml.
           // Cf. https://github.com/flutter/flutter/issues/30368#issuecomment-480300618
           builder: (ctx) => WebviewScaffold(
-            initialChild: Center(child: CircularProgressIndicator()),
+            initialChild: const Center(child: const CircularProgressIndicator()),
             url: url,
             appBar: AppBar(title: Text(url)),
           ),

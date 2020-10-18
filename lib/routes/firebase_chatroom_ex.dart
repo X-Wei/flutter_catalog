@@ -55,7 +55,7 @@ class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
         child: Column(
           children: <Widget>[
             _buildMessagesList(),
-            Divider(height: 2.0),
+            const Divider(height: 2.0),
             _buildComposeMsgRow()
           ],
         ),
@@ -67,8 +67,8 @@ class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
     showDialog(
       context: context,
       builder: (ctx) => AlertDialog(
-        title: Text('Note'),
-        content: Text('This chat room is only for demo purposes.\n\n'
+        title: const Text('Note'),
+        content: const Text('This chat room is only for demo purposes.\n\n'
             'The chat messages are publicly available, and they '
             'can be deleted at any time by the firebase admin.\n\n'
             'To send messages, you must log in '
@@ -76,7 +76,7 @@ class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
         actions: <Widget>[
           FlatButton(
             onPressed: () => Navigator.of(ctx).pop(),
-            child: Text('OK'),
+            child: const Text('OK'),
           )
         ],
       ),
@@ -88,7 +88,7 @@ class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
     return Flexible(
       child: Scrollbar(
         child: FirebaseAnimatedList(
-          defaultChild: Center(child: CircularProgressIndicator()),
+          defaultChild: const Center(child: const CircularProgressIndicator()),
           query: _firebaseMsgDbRef,
           sort: (a, b) => b.key.compareTo(a.key),
           padding: const EdgeInsets.all(8.0),
@@ -164,7 +164,7 @@ class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
               // line is filled up.
               maxLines: null,
               maxLength: 200,
-              decoration: InputDecoration.collapsed(hintText: "Send a message"),
+              decoration: const InputDecoration.collapsed(hintText: "Send a message"),
               controller: _textController,
               onChanged: (String text) =>
                   setState(() => _isComposing = text.length > 0),
@@ -192,14 +192,14 @@ class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
       showDialog(
         context: context,
         builder: (ctx) => AlertDialog(
-          title: Text('Login required'),
-          content: Text('To send messages you need to first log in.\n\n'
+          title: const Text('Login required'),
+          content: const Text('To send messages you need to first log in.\n\n'
               'Go to the "Firebase login" example, and log in from there. '
               'You will then be able to send messages.'),
           actions: <Widget>[
             FlatButton(
               onPressed: () => Navigator.of(ctx).pop(),
-              child: Text('OK'),
+              child: const Text('OK'),
             )
           ],
         ),

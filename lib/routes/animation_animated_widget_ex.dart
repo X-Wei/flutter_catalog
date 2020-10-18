@@ -14,7 +14,7 @@ class _AnimatedLogo extends AnimatedWidget {
         margin: const EdgeInsets.all(8.0),
         height: animation.value,
         width: animation.value,
-        child: FlutterLogo(),
+        child: const FlutterLogo(),
       ),
     );
   }
@@ -35,7 +35,7 @@ class _AnimatedWidgetExampleState extends State<AnimatedWidgetExample>
   void initState() {
     super.initState();
     this._controller =
-        AnimationController(duration: Duration(seconds: 1), vsync: this);
+        AnimationController(duration: const Duration(seconds: 1), vsync: this);
     this._sizeAnimation =
         Tween<double>(begin: 50, end: 100).animate(this._controller);
   }
@@ -55,11 +55,11 @@ class _AnimatedWidgetExampleState extends State<AnimatedWidgetExample>
         ),
         RaisedButton(
           onPressed: () => _controller.forward(),
-          child: Text('Forward animation'),
+          child: const Text('Forward animation'),
         ),
         RaisedButton(
           onPressed: () => _controller.reverse(),
-          child: Text('Reverse animation'),
+          child: const Text('Reverse animation'),
         ),
       ],
     );

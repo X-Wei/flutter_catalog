@@ -47,7 +47,7 @@ class _StackExampleState extends State<StackExample> {
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           ListTile(
-            title: Text('alignmentDirectional:'),
+            title: const Text('alignmentDirectional:'),
             trailing: DropdownButton<AlignmentDirectional>(
               value: _alignmentDirectional,
               onChanged: (AlignmentDirectional newVal) {

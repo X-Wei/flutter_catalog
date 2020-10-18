@@ -55,7 +55,7 @@ class _MyDemoAppState extends State<_MyDemoApp> {
   Widget build(BuildContext context) {
     return ListView(
       children: <Widget>[
-        Text("InheritedWidget allows efficient sharing of app's state down "
+        const Text("InheritedWidget allows efficient sharing of app's state down "
             "the widgets tree.\n\n"
             "In this example, the app's root widget is an InheritedWidget, "
             "so it's state is shared to the two `CounterAndButtons` widgets "
@@ -83,7 +83,7 @@ class _AppRootWidget extends StatelessWidget {
       elevation: 4.0,
       child: Column(
         children: <Widget>[
-          Text('(root widget)'),
+          const Text('(root widget)'),
           Text(
             '${rootWidgetsState.counterValue}',
             style: Theme.of(context).textTheme.headline4,
@@ -111,7 +111,7 @@ class _CounterAndButton extends StatelessWidget {
       color: Colors.white70,
       child: Column(
         children: <Widget>[
-          Text('(child widget)'),
+          const Text('(child widget)'),
           Text(
             '${rootWidgetsState.counterValue}',
             style: Theme.of(context).textTheme.headline4,

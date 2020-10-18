@@ -33,22 +33,22 @@ class _VideoPlayerExampleState extends State<VideoPlayerExample> {
     return ListView(
       padding: const EdgeInsets.all(4),
       children: <Widget>[
-        ListTile(title: Text('Play online video:')),
+        const ListTile(title: const Text('Play online video:')),
         Center(
           child: _videoController.value.initialized
               ? _buildVideoPlayerUI()
-              : CircularProgressIndicator(),
+              : const CircularProgressIndicator(),
         ),
-        Divider(),
-        ListTile(title: Text('Play online audio:')),
+        const Divider(),
+        const ListTile(title: const Text('Play online audio:')),
         Center(
           child: _audioController.value.initialized
               ? _buildAudioPlayerUI()
-              : LinearProgressIndicator(),
+              : const LinearProgressIndicator(),
         ),
-        Divider(),
-        ListTile(
-            title: Text('(Also possible to play media from local file or '
+        const Divider(),
+        const ListTile(
+            title: const Text('(Also possible to play media from local file or '
                 'from assets, or display subtitles. '
                 'Cf. the plugin documentation.)')),
       ],

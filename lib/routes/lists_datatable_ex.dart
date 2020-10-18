@@ -15,7 +15,7 @@ class _DataTableExampleState extends State<DataTableExample> {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: PaginatedDataTable(
-        header: Text('Nutrition'),
+        header: const Text('Nutrition'),
         rowsPerPage: _rowsPerPage,
         availableRowsPerPage: <int>[5, 10, 20],
         onRowsPerPageChanged: (int value) {

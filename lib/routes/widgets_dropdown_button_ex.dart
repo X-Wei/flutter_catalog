@@ -42,7 +42,7 @@ class _DropdownButtonExampleState extends State<DropdownButtonExample> {
     return Column(
       children: <Widget>[
         ListTile(
-          title: Text('DropDownButton with default:'),
+          title: const Text('DropDownButton with default:'),
           trailing: DropdownButton<String>(
             // Must be one of items.value.
             value: _btn1SelectedVal,
@@ -55,10 +55,10 @@ class _DropdownButtonExampleState extends State<DropdownButtonExample> {
           ),
         ),
         ListTile(
-          title: Text('DropDownButton with hint:'),
+          title: const Text('DropDownButton with hint:'),
           trailing: DropdownButton(
             value: _btn2SelectedVal,
-            hint: Text('Choose'),
+            hint: const Text('Choose'),
             onChanged: ((String newValue) {
               setState(() {
                 _btn2SelectedVal = newValue;

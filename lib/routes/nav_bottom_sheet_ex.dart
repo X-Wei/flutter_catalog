@@ -25,12 +25,12 @@ class _BottomSheetExampleState extends State<BottomSheetExample> {
                   ._scaffoldKey
                   .currentState
                   .showBottomSheet((ctx) => _buildBottomSheet(ctx)),
-              child: Text('show bottom sheet'),
+              child: const Text('show bottom sheet'),
             ),
             RaisedButton(
               onPressed: () => showModalBottomSheet(
                   context: context, builder: (ctx) => _buildBottomSheet(ctx)),
-              child: Text('show modal bottom sheet'),
+              child: const Text('show modal bottom sheet'),
             ),
           ],
         ),
@@ -53,11 +53,11 @@ class _BottomSheetExampleState extends State<BottomSheetExample> {
       ),
       child: ListView(
         children: <Widget>[
-          ListTile(title: Text('Bottom sheet')),
-          TextField(
+          const ListTile(title: const Text('Bottom sheet')),
+          const TextField(
             keyboardType: TextInputType.number,
-            decoration: InputDecoration(
-              border: OutlineInputBorder(),
+            decoration: const InputDecoration(
+              border: const OutlineInputBorder(),
               icon: const Icon(Icons.attach_money),
               labelText: 'Enter an integer',
             ),
@@ -66,7 +66,7 @@ class _BottomSheetExampleState extends State<BottomSheetExample> {
             alignment: Alignment.center,
             child: RaisedButton.icon(
               icon: const Icon(Icons.save),
-              label: Text('Save and close'),
+              label: const Text('Save and close'),
               onPressed: () => Navigator.pop(context),
             ),
           )

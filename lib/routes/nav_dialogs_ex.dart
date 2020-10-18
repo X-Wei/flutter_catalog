@@ -20,17 +20,17 @@ class DialogsExample extends StatelessWidget {
               context: context,
               builder: (BuildContext context) => AlertDialog(
                 title: const Text('Dialog title'),
-                content: Text(
+                content: const Text(
                   'Sample alert',
                 ),
                 actions: <Widget>[
                   FlatButton(
                     onPressed: () => Navigator.pop(context, 'Cancel'),
-                    child: Text('Cancel'),
+                    child: const Text('Cancel'),
                   ),
                   FlatButton(
                     onPressed: () => Navigator.pop(context, 'OK'),
-                    child: Text('OK'),
+                    child: const Text('OK'),
                   ),
                 ],
               ),
@@ -45,7 +45,7 @@ class DialogsExample extends StatelessWidget {
               }
             });
           },
-          child: Text('Alert Dialog'),
+          child: const Text('Alert Dialog'),
         ),
         ////// Simple Dialog.
         RaisedButton(
@@ -54,21 +54,21 @@ class DialogsExample extends StatelessWidget {
             showDialog<String>(
               context: context,
               builder: (BuildContext context) => SimpleDialog(
-                title: Text('Dialog Title'),
+                title: const Text('Dialog Title'),
                 children: <Widget>[
                   ListTile(
                     leading: const Icon(Icons.account_circle),
-                    title: Text('user@example.com'),
+                    title: const Text('user@example.com'),
                     onTap: () => Navigator.pop(context, 'user@example.com'),
                   ),
                   ListTile(
                     leading: const Icon(Icons.account_circle),
-                    title: Text('user2@gmail.com'),
+                    title: const Text('user2@gmail.com'),
                     onTap: () => Navigator.pop(context, 'user2@gmail.com'),
                   ),
                   ListTile(
                     leading: const Icon(Icons.add_circle),
-                    title: Text('Add account'),
+                    title: const Text('Add account'),
                     onTap: () => Navigator.pop(context, 'Add account'),
                   ),
                 ],
@@ -84,7 +84,7 @@ class DialogsExample extends StatelessWidget {
               }
             });
           },
-          child: Text('Simple dialog'),
+          child: const Text('Simple dialog'),
         ),
         ////// Time Picker Dialog.
         RaisedButton(
@@ -105,7 +105,7 @@ class DialogsExample extends StatelessWidget {
               }
             });
           },
-          child: Text('Time Picker Dialog'),
+          child: const Text('Time Picker Dialog'),
         ),
         ////// Date Picker Dialog.
         RaisedButton(
@@ -124,7 +124,7 @@ class DialogsExample extends StatelessWidget {
               }
             });
           },
-          child: Text('Date Picker Dialog'),
+          child: const Text('Date Picker Dialog'),
         ),
         ////// Bottom Sheet Dialog.
         RaisedButton(
@@ -135,20 +135,20 @@ class DialogsExample extends StatelessWidget {
             showBottomSheet<String>(
               context: context,
               builder: (BuildContext context) => Container(
-                decoration: BoxDecoration(
-                  border: Border(top: BorderSide(color: Colors.black12)),
+                decoration: const BoxDecoration(
+                  border: const Border(top: const BorderSide(color: Colors.black12)),
                 ),
                 child: ListView(
                   shrinkWrap: true,
                   primary: false,
                   children: <Widget>[
-                    ListTile(
+                    const ListTile(
                       dense: true,
-                      title: Text('This is a bottom sheet'),
+                      title: const Text('This is a bottom sheet'),
                     ),
-                    ListTile(
+                    const ListTile(
                       dense: true,
-                      title: Text('Click OK to dismiss'),
+                      title: const Text('Click OK to dismiss'),
                     ),
                     ButtonBar(
                       children: <Widget>[
@@ -163,7 +163,7 @@ class DialogsExample extends StatelessWidget {
               ),
             );
           },
-          child: Text('Bottom Sheet'),
+          child: const Text('Bottom Sheet'),
         ),
       ]
           .map(

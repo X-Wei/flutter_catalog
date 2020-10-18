@@ -97,7 +97,7 @@ class _MyDemoAppState extends State<_MyDemoApp> {
   Widget build(BuildContext context) {
     return ListView(
       children: <Widget>[
-        Text(
+        const Text(
             "BLoC pattern is a combination of StreamBuilder and InheritedWidget. "
             "Using StreamBuilder allows extracting all business logic into a "
             "separate 'MyBloc' class; using a InheritedWidget (usually name it "
@@ -132,7 +132,7 @@ class _AppRootWidget extends StatelessWidget {
       elevation: 4.0,
       child: Column(
         children: <Widget>[
-          Text('(root widget)'),
+          const Text('(root widget)'),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
@@ -155,14 +155,14 @@ class _CounterAndButton extends StatelessWidget {
       color: Colors.white70,
       child: Column(
         children: <Widget>[
-          Text('(child widget)'),
+          const Text('(child widget)'),
           // ###6. Access the state from child widget by wrapping the widget by
           // a StreamBuilder.
           StreamBuilder<_MyState>(
             stream: bloc.outputStream,
             builder: (context, AsyncSnapshot<_MyState> snapshot) {
               if (!snapshot.hasData) {
-                return Center(child: CircularProgressIndicator());
+                return const Center(child: const CircularProgressIndicator());
               }
               print(snapshot.data);
               final state = snapshot.data;

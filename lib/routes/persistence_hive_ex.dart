@@ -123,8 +123,8 @@ class _HiveExampleState extends State<HiveExample> {
       future: this._initDbFuture,
       builder: (context, snapshot) {
         if (!snapshot.hasData)
-          return Center(
-            child: CircularProgressIndicator(),
+          return const Center(
+            child: const CircularProgressIndicator(),
           );
         return Scaffold(
           // WatchBoxBuilder by hive_flutter can save us from writing a

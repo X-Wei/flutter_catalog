@@ -24,8 +24,8 @@ class _LocalAuthExampleState extends State<LocalAuthExample> {
     setState(() => this._authSuccess = false);
     if (await this._localAuth.canCheckBiometrics == false) {
       Scaffold.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Your device is NOT capable of checking biometrics.\n'
+        const SnackBar(
+          content: const Text('Your device is NOT capable of checking biometrics.\n'
               'This demo will not work on your device!\n'
               'You must have android 6.0+ and have fingerprint sensor.'),
         ),
@@ -55,7 +55,7 @@ class _LocalAuthExampleState extends State<LocalAuthExample> {
       children: <Widget>[
         FlatButton.icon(
           icon: const Icon(Icons.fingerprint),
-          label: Text('Auth in to view hidden image'),
+          label: const Text('Auth in to view hidden image'),
           onPressed: () async {
             final authSuccess = await this._auth();
             setState(() => this._authSuccess = authSuccess);
@@ -64,9 +64,9 @@ class _LocalAuthExampleState extends State<LocalAuthExample> {
         this._authSuccess
             ? FadeInImage(
                 placeholder: MemoryImage(kTransparentImage),
-                image: AssetImage('res/images/animated_flutter_lgtm.gif'),
+                image: const AssetImage('res/images/animated_flutter_lgtm.gif'),
               )
-            : Placeholder(),
+            : const Placeholder(),
       ],
     );
   }

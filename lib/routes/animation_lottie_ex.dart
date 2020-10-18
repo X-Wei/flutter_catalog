@@ -12,12 +12,12 @@ class LottieExample extends StatelessWidget {
           'res/lottie/thumbs-up.json',
           height: 100,
         ),
-        Divider(),
+        const Divider(),
         Lottie.network(
           'https://assets7.lottiefiles.com/datafiles/40aX5db74VvGPWw/data.json',
           height: 100,
         ),
-        Divider(),
+        const Divider(),
         _LottieCustom(),
       ],
     );

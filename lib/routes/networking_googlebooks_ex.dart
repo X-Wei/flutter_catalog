@@ -26,21 +26,21 @@ class _RestApiGoogleBooksExampleState extends State<RestApiGoogleBooksExample> {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        Divider(),
+        const Divider(),
         TextField(
           controller: this._queryController,
-          decoration: InputDecoration(
+          decoration: const InputDecoration(
             labelText: 'Title',
-            border: OutlineInputBorder(),
+            border: const OutlineInputBorder(),
           ),
         ),
-        SizedBox(height: 4),
+        const SizedBox(height: 4),
         ButtonBar(
           children: <Widget>[
             RaisedButton(
               onPressed:
                   _pending ? null : () => this._search(_queryController.text),
-              child: Text('Search'),
+              child: const Text('Search'),
             ),
           ],
         ),
@@ -151,7 +151,7 @@ class _MyBookDetailsPage extends StatelessWidget {
               tag: _book.id,
               child: _book.thumbnail,
             ),
-            Divider(),
+            const Divider(),
             Expanded(
               child: SingleChildScrollView(
                 child: Text(_book.description),

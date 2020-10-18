@@ -12,9 +12,9 @@ class ButtonsExample extends StatelessWidget {
         );
 
     final _showSnack = () => Scaffold.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Button tapped'),
-            duration: Duration(milliseconds: 500),
+          const SnackBar(
+            content: const Text('Button tapped'),
+            duration: const Duration(milliseconds: 500),
           ),
         );
     return ListView(
@@ -22,27 +22,27 @@ class ButtonsExample extends StatelessWidget {
       children: <Widget>[
         Column(
           children: <Widget>[
-            Text('Raised buttons add dimension to mostly flat layouts. They '
+            const Text('Raised buttons add dimension to mostly flat layouts. They '
                 'emphasize functions on busy or wide spaces.'),
             ButtonBar(
               alignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 RaisedButton(
                   onPressed: _showSnack,
-                  child: Text('RaisedButton'),
+                  child: const Text('RaisedButton'),
                 ),
-                RaisedButton(
+                const RaisedButton(
                   onPressed: null,
-                  child: Text('disabled-RaisedButton'),
+                  child: const Text('disabled-RaisedButton'),
                 ),
               ],
             ),
           ],
         ),
-        Divider(),
+        const Divider(),
         Column(
           children: <Widget>[
-            Text('A flat button displays an ink splash on press '
+            const Text('A flat button displays an ink splash on press '
                 'but does not lift. Use flat buttons on toolbars, in dialogs '
                 'and inline with padding'),
             ButtonBar(
@@ -50,20 +50,20 @@ class ButtonsExample extends StatelessWidget {
               children: <Widget>[
                 FlatButton(
                   onPressed: _showToast,
-                  child: Text('FlatButton'),
+                  child: const Text('FlatButton'),
                 ),
-                FlatButton(
+                const FlatButton(
                   onPressed: null,
-                  child: Text('disabled-FlatButton'),
+                  child: const Text('disabled-FlatButton'),
                 ),
               ],
             ),
           ],
         ),
-        Divider(),
+        const Divider(),
         Column(
           children: <Widget>[
-            Text('Outline buttons become opaque and elevate when pressed. They '
+            const Text('Outline buttons become opaque and elevate when pressed. They '
                 'are often paired with raised buttons to indicate an '
                 'alternative, secondary action.'),
             ButtonBar(
@@ -71,20 +71,20 @@ class ButtonsExample extends StatelessWidget {
               children: <Widget>[
                 OutlineButton(
                   onPressed: _showToast,
-                  child: Text('OutlineButton'),
+                  child: const Text('OutlineButton'),
                 ),
-                OutlineButton(
+                const OutlineButton(
                   onPressed: null,
-                  child: Text('OutlineButton'),
+                  child: const Text('OutlineButton'),
                 )
               ],
             ),
           ],
         ),
-        Divider(),
+        const Divider(),
         Column(
           children: <Widget>[
-            Text('Tooltips are short identifying messages that briefly appear '
+            const Text('Tooltips are short identifying messages that briefly appear '
                 'in response to a long press. Tooltip messages are also used '
                 'by services that make Flutter apps accessible, like screen '
                 'readers.'),

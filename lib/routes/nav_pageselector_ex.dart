@@ -23,14 +23,14 @@ class PageSelectorExample extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: <Widget>[
-              TabPageSelector(),
+              const TabPageSelector(),
               Expanded(
                 child: IconTheme(
                   data: IconThemeData(
                     size: 128.0,
                     color: Theme.of(context).accentColor,
                   ),
-                  child: TabBarView(children: kIcons),
+                  child: const TabBarView(children: kIcons),
                 ),
               ),
               RaisedButton(
@@ -41,7 +41,7 @@ class PageSelectorExample extends StatelessWidget {
                     controller.animateTo(kIcons.length - 1);
                   }
                 },
-                child: Text('SKIP'),
+                child: const Text('SKIP'),
               )
             ],
           ),

@@ -51,7 +51,7 @@ class _FirebaseLoginExampleState extends State<FirebaseLoginExample> {
               this._showUserProfilePage(user);
               setState(() => this._busy = false);
             },
-      child: Text('Log in with Google'),
+      child: const Text('Log in with Google'),
     );
     final anonymousLoginBtn = MaterialButton(
       color: Colors.deepOrange,
@@ -63,7 +63,7 @@ class _FirebaseLoginExampleState extends State<FirebaseLoginExample> {
               this._showUserProfilePage(user);
               setState(() => this._busy = false);
             },
-      child: Text('Log in anonymously'),
+      child: const Text('Log in anonymously'),
     );
     final signOutBtn = FlatButton(
       onPressed: this._busy
@@ -73,7 +73,7 @@ class _FirebaseLoginExampleState extends State<FirebaseLoginExample> {
               await this._signOut();
               setState(() => this._busy = false);
             },
-      child: Text('Log out'),
+      child: const Text('Log out'),
     );
     return Center(
       child: ListView(
@@ -144,7 +144,7 @@ class _FirebaseLoginExampleState extends State<FirebaseLoginExample> {
       MaterialPageRoute(
         builder: (ctx) => Scaffold(
           appBar: AppBar(
-            title: Text('user profile'),
+            title: const Text('user profile'),
           ),
           body: ListView(
             children: <Widget>[
@@ -154,7 +154,7 @@ class _FirebaseLoginExampleState extends State<FirebaseLoginExample> {
               ListTile(title: Text('Anonymous: ${user.isAnonymous}')),
               ListTile(title: Text('Email: ${user.email}')),
               ListTile(
-                title: Text('Profile photo: '),
+                title: const Text('Profile photo: '),
                 trailing: user.photoURL != null
                     ? CircleAvatar(
                         backgroundImage: NetworkImage(user.photoURL),
