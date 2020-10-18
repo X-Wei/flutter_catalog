@@ -7,7 +7,7 @@ class _AnimatedLogo extends AnimatedWidget {
       : super(key: key, listenable: animation);
 
   Widget build(BuildContext context) {
-    final Animation<double> animation = this.listenable;
+    final Animation<double> animation = this.listenable as Animation<double>;
     return Center(
       child: Container(
         margin: EdgeInsets.all(8.0),

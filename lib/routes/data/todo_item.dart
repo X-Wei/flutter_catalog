@@ -14,7 +14,7 @@ class TodoItem extends HiveObject {
   @HiveField(3)
   final DateTime createdAt;
 
-  TodoItem({this.id, this.content, this.isDone = false, createdAt})
+  TodoItem({this.id, this.content, this.isDone = false, DateTime createdAt})
       : this.createdAt = createdAt ?? DateTime.now();
 
   @override

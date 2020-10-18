@@ -50,8 +50,8 @@ class _RestApiHackerNewsExampleState extends State<RestApiHackerNewsExample> {
                                 alignment: Alignment.center,
                               );
                             }
-                            final hnArticle = MyHackerNewsArticle.fromJson(
-                                json.decode(snapshot.data));
+                            final hnArticle = MyHackerNewsArticle.fromJson(json
+                                .decode(snapshot.data) as Map<String, dynamic>);
                             return this._articleListTile(hnArticle);
                           },
                         ),
@@ -70,7 +70,8 @@ class _RestApiHackerNewsExampleState extends State<RestApiHackerNewsExample> {
     const url = 'https://hacker-news.firebaseio.com/v0/newstories.json';
     final response = await http.get(url);
     if (response.statusCode == 200) {
-      final List<int> articleIds = List<int>.from(json.decode(response.body));
+      final List<int> articleIds =
+          List<int>.from(json.decode(response.body) as Iterable);
       setState(() => this._articleIds = articleIds);
     } else {
       Scaffold.of(context).showSnackBar(SnackBar(
@@ -137,14 +138,14 @@ class MyHackerNewsArticle {
       this.url});
 
   MyHackerNewsArticle.fromJson(Map<String, dynamic> json) {
-    by = json['by'];
-    descendants = json['descendants'];
-    id = json['id'];
-    score = json['score'];
-    time = json['time'];
-    title = json['title'];
-    type = json['type'];
-    url = json['url'];
+    by = json['by'] as String;
+    descendants = json['descendants'] as int;
+    id = json['id'] as int;
+    score = json['score'] as int;
+    time = json['time'] as int;
+    title = json['title'] as String;
+    type = json['type'] as String;
+    url = json['url'] as String;
   }
 
   Map<String, dynamic> toJson() {

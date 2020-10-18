@@ -39,9 +39,8 @@ class _RestApiGoogleBooksExampleState extends State<RestApiGoogleBooksExample> {
           children: <Widget>[
             RaisedButton(
               child: Text('Search'),
-              onPressed: _pending
-                  ? null
-                  : () => this._search(_queryController.text),
+              onPressed:
+                  _pending ? null : () => this._search(_queryController.text),
             ),
           ],
         ),
@@ -116,16 +115,17 @@ class _MyBook {
       : CircleAvatar(child: Text(this.title[0]));
 
   _MyBook.fromJson(Map<String, dynamic> jsonMap)
-      : id = jsonMap['id'],
-        title = jsonMap['volumeInfo']['title'],
+      : id = jsonMap['id'] as String,
+        title = jsonMap['volumeInfo']['title'] as String,
         authors = (jsonMap['volumeInfo']['authors'] as List).join(', '),
-        description =
-            jsonMap['volumeInfo']['description'] ?? '<missing description>',
-        thumbnailUrl = jsonMap['volumeInfo']['imageLinks']['smallThumbnail'];
+        description = jsonMap['volumeInfo']['description'] as String ??
+            '<missing description>',
+        thumbnailUrl =
+            jsonMap['volumeInfo']['imageLinks']['smallThumbnail'] as String;
 
   static List<_MyBook> parseFromJsonStr(String jsonStr) {
     final json = jsonDecode(jsonStr);
-    final jsonList = json['items'] as List;
+    final jsonList = json['items'] as List<Map<String, dynamic>>;
     print('${jsonList.length} items in json');
     return [for (final jsonMap in jsonList) _MyBook.fromJson(jsonMap)];
   }

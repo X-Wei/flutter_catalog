@@ -15,10 +15,11 @@ class TodoItem {
   TodoItem({this.id, this.content, this.isDone = false, this.createdAt});
 
   TodoItem.fromJsonMap(Map<String, dynamic> map)
-      : id = map['id'],
-        content = map['content'],
-        isDone = map['isDone'],
-        createdAt = DateTime.fromMillisecondsSinceEpoch(map['createdAt']);
+      : id = map['id'] as int,
+        content = map['content'] as String,
+        isDone = map['isDone'] as bool,
+        createdAt =
+            DateTime.fromMillisecondsSinceEpoch(map['createdAt'] as int);
 
   Map<String, dynamic> toJsonMap() => {
         'id': id,

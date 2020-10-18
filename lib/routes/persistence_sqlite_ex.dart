@@ -18,10 +18,11 @@ class TodoItem {
   TodoItem({this.id, this.content, this.isDone = false, this.createdAt});
 
   TodoItem.fromJsonMap(Map<String, dynamic> map)
-      : id = map['id'],
-        content = map['content'],
+      : id = map['id'] as int,
+        content = map['content'] as String,
         isDone = map['isDone'] == 1,
-        createdAt = DateTime.fromMillisecondsSinceEpoch(map['createdAt']);
+        createdAt =
+            DateTime.fromMillisecondsSinceEpoch(map['createdAt'] as int);
 
   Map<String, dynamic> toJsonMap() => {
         'id': id,
@@ -70,7 +71,8 @@ class _SqliteExampleState extends State<SqliteExample> {
 
   // Retrieves rows from the db table.
   Future<void> _getTodoItems() async {
-    List<Map> jsons = await this._db.rawQuery('SELECT * FROM $kDbTableName');
+    List<Map<String, dynamic>> jsons =
+        await this._db.rawQuery('SELECT * FROM $kDbTableName');
     print('${jsons.length} rows retrieved from db!');
     this._todos = jsons.map((json) => TodoItem.fromJsonMap(json)).toList();
   }

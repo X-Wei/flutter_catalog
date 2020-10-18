@@ -59,7 +59,7 @@ class _StreamControllerExampleState extends State<StreamControllerExample> {
           elevation: 4.0,
           child: StreamBuilder<Widget>(
             stream: _outputStreamController.stream,
-            builder: (BuildContext context, AsyncSnapshot snapshot) {
+            builder: (BuildContext context, AsyncSnapshot<Widget> snapshot) {
               if (!snapshot.hasData) {
                 return ListTile(
                   leading: CircularProgressIndicator(),
