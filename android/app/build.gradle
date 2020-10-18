@@ -32,6 +32,8 @@ if (keystorePropertiesFile.exists()) {
 
 android {
     compileSdkVersion 29
+    // Cf. https://github.com/flutter/flutter/issues/53657#issuecomment-642236438
+    ndkVersion '21.3.6528147'
 
     lintOptions {
         disable 'InvalidPackage'
