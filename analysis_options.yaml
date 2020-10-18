@@ -3,3 +3,10 @@ include: package:lint/analysis_options.yaml
 analyzer:
   exclude: 
     - build/**
+
+linter:
+  rules:
+    # Rationale: in our app, the codes are for reading on mobile phones, adding
+    # `this` makes it easier for readers to understand which variables class
+    # members and which ones are not.
+    unnecessary_this: false
