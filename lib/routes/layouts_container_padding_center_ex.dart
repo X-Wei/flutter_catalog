@@ -30,7 +30,7 @@ class ContainerExample extends StatelessWidget {
               // EdgeInsets.symmetric: specify vertical/horizontal padding.
               padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
               // Rotation.
-              transform: new Matrix4.rotationZ(-0.1),
+              transform: Matrix4.rotationZ(-0.1),
               child: Container(
                 decoration: BoxDecoration(
                   color: Colors.green,

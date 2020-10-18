@@ -49,20 +49,20 @@ class _PageTwo extends MaterialPageRoute<Null> {
                     // Navigator.push<T> returns a Future<T>, which is the
                     // return value of the pushed route when it's popped.
                     Navigator.push<String>(context, _PageThree())
-                      ..then((returnVal) {
-                        if (returnVal != null) {
-                          Scaffold.of(context).removeCurrentSnackBar();
-                          Scaffold.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text('You clicked: $returnVal'),
-                              action: SnackBarAction(
-                                label: 'OK',
-                                onPressed: () {},
-                              ),
+                        .then((returnVal) {
+                      if (returnVal != null) {
+                        Scaffold.of(context).removeCurrentSnackBar();
+                        Scaffold.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text('You clicked: $returnVal'),
+                            action: SnackBarAction(
+                              label: 'OK',
+                              onPressed: () {},
                             ),
-                          );
-                        }
-                      });
+                          ),
+                        );
+                      }
+                    });
                   },
                 ),
               ),

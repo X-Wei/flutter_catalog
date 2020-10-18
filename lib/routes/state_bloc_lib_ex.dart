@@ -63,7 +63,7 @@ class MyBloc extends Bloc<_MyEvent, _MyState> {
 class _MyDemoApp extends StatefulWidget {
   @override
   _MyDemoAppState createState() {
-    return new _MyDemoAppState();
+    return _MyDemoAppState();
   }
 }
 

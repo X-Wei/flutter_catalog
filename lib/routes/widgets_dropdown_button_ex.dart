@@ -69,7 +69,7 @@ class _DropdownButtonExampleState extends State<DropdownButtonExample> {
         ),
         ListTile(
           title: const Text('Popup menu button:'),
-          trailing: new PopupMenuButton<String>(
+          trailing: PopupMenuButton<String>(
             onSelected: (String newValue) {
               _btn3SelectedVal = newValue;
               Scaffold.of(context).showSnackBar(

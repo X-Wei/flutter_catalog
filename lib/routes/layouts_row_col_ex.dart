@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class RowColExample extends StatefulWidget {
   const RowColExample({Key key}) : super(key: key);
   @override
-  _RowColExampleState createState() => new _RowColExampleState();
+  _RowColExampleState createState() => _RowColExampleState();
 }
 
 class _RowColExampleState extends State<RowColExample> {

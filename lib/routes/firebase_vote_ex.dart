@@ -24,10 +24,9 @@ class _FirebaseVoteExampleState extends State<FirebaseVoteExample> {
   @override
   void initState() {
     super.initState();
-    SharedPreferences.getInstance()
-      ..then((prefs) {
-        setState(() => this._preferences = prefs);
-      });
+    SharedPreferences.getInstance().then((prefs) {
+      setState(() => this._preferences = prefs);
+    });
   }
 
   @override

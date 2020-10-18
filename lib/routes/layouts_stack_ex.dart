@@ -6,7 +6,7 @@ class StackExample extends StatefulWidget {
   const StackExample({Key key}) : super(key: key);
 
   @override
-  _StackExampleState createState() => new _StackExampleState();
+  _StackExampleState createState() => _StackExampleState();
 }
 
 class _StackExampleState extends State<StackExample> {

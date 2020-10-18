@@ -19,12 +19,11 @@ class _SharedPreferenceExampleState extends State<SharedPreferenceExample> {
   @override
   void initState() {
     super.initState();
-    SharedPreferences.getInstance()
-      ..then((prefs) {
-        setState(() => this._prefs = prefs);
-        _loadNumberPref();
-        _loadBooleanPref();
-      });
+    SharedPreferences.getInstance().then((prefs) {
+      setState(() => this._prefs = prefs);
+      _loadNumberPref();
+      _loadBooleanPref();
+    });
   }
 
   @override

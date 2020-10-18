@@ -57,7 +57,7 @@ class _PieChartExampleState extends State<PieChartExample> {
               ),
             ],
             animate: this._animate,
-            defaultRenderer: new charts.ArcRendererConfig(
+            defaultRenderer: charts.ArcRendererConfig(
               arcRatio: this._arcRatio,
               arcRendererDecorators: [
                 charts.ArcLabelDecorator(labelPosition: this._arcLabelPosition)

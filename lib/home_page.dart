@@ -72,7 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   ListTile _myRouteToListTile(MyRoute myRoute,
-      {Widget leading, IconData trialing: Icons.keyboard_arrow_right}) {
+      {Widget leading, IconData trialing = Icons.keyboard_arrow_right}) {
     final routeTitleTextStyle = Theme.of(context)
         .textTheme
         .bodyText2

@@ -86,7 +86,7 @@ class MyBlocProvider extends InheritedWidget {
 class _MyDemoApp extends StatefulWidget {
   @override
   _MyDemoAppState createState() {
-    return new _MyDemoAppState();
+    return _MyDemoAppState();
   }
 }
 

@@ -19,8 +19,9 @@ class _FileReadWriteExampleState extends State<FileReadWriteExample> {
   void initState() {
     super.initState();
     this._loadTextFromLocalFile();
-    this._getLocalFile()
-      ..then((file) => setState(() => this._localFilePath = file.path));
+    this
+        ._getLocalFile()
+        .then((file) => setState(() => this._localFilePath = file.path));
   }
 
   @override
