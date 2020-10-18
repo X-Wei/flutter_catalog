@@ -13,8 +13,8 @@ class ButtonsExample extends StatelessWidget {
 
     final _showSnack = () => Scaffold.of(context).showSnackBar(
           const SnackBar(
-            content: const Text('Button tapped'),
-            duration: const Duration(milliseconds: 500),
+            content: Text('Button tapped'),
+            duration: Duration(milliseconds: 500),
           ),
         );
     return ListView(
@@ -33,7 +33,7 @@ class ButtonsExample extends StatelessWidget {
                 ),
                 const RaisedButton(
                   onPressed: null,
-                  child: const Text('disabled-RaisedButton'),
+                  child: Text('disabled-RaisedButton'),
                 ),
               ],
             ),
@@ -54,7 +54,7 @@ class ButtonsExample extends StatelessWidget {
                 ),
                 const FlatButton(
                   onPressed: null,
-                  child: const Text('disabled-FlatButton'),
+                  child: Text('disabled-FlatButton'),
                 ),
               ],
             ),
@@ -75,7 +75,7 @@ class ButtonsExample extends StatelessWidget {
                 ),
                 const OutlineButton(
                   onPressed: null,
-                  child: const Text('OutlineButton'),
+                  child: Text('OutlineButton'),
                 )
               ],
             ),

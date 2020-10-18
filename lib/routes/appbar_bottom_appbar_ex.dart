@@ -34,27 +34,27 @@ class _BottomAppbarExampleState extends State<BottomAppbarExample> {
               items: [
                 const DropdownMenuItem(
                   value: FloatingActionButtonLocation.centerFloat,
-                  child: const Text('centerFloat'),
+                  child: Text('centerFloat'),
                 ),
                 const DropdownMenuItem(
                   value: FloatingActionButtonLocation.endFloat,
-                  child: const Text('endFloat'),
+                  child: Text('endFloat'),
                 ),
                 const DropdownMenuItem(
                   value: FloatingActionButtonLocation.centerDocked,
-                  child: const Text('centerDocked'),
+                  child: Text('centerDocked'),
                 ),
                 const DropdownMenuItem(
                   value: FloatingActionButtonLocation.endDocked,
-                  child: const Text('endDocked'),
+                  child: Text('endDocked'),
                 ),
                 const DropdownMenuItem(
                   value: FloatingActionButtonLocation.miniStartTop,
-                  child: const Text('miniStartTop'),
+                  child: Text('miniStartTop'),
                 ),
                 const DropdownMenuItem(
                   value: FloatingActionButtonLocation.startTop,
-                  child: const Text('startTop'),
+                  child: Text('startTop'),
                 ),
               ],
             ),

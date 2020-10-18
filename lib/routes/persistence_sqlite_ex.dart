@@ -134,7 +134,7 @@ class _SqliteExampleState extends State<SqliteExample> {
       builder: (context, snapshot) {
         if (!snapshot.hasData || snapshot.data == false)
           return const Center(
-            child: const CircularProgressIndicator(),
+            child: CircularProgressIndicator(),
           );
         return Scaffold(
           body: ListView(

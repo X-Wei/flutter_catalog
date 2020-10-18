@@ -9,7 +9,7 @@ class TextExample extends StatelessWidget {
       'Simple text demo.',
       // Optional params to try:
       textAlign: TextAlign.center,
-      style: const TextStyle(
+      style: TextStyle(
           color: Colors.blue,
           fontSize: 32.0,
           fontStyle: FontStyle.italic,

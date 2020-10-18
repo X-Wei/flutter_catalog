@@ -62,8 +62,8 @@ class _StreamControllerExampleState extends State<StreamControllerExample> {
             builder: (BuildContext context, AsyncSnapshot<Widget> snapshot) {
               if (!snapshot.hasData) {
                 return const ListTile(
-                  leading: const CircularProgressIndicator(),
-                  title: const Text('no data'),
+                  leading: CircularProgressIndicator(),
+                  title: Text('no data'),
                 );
               }
               final Widget widgetToRender = snapshot.data;

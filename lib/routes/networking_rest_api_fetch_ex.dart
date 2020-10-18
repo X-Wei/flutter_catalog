@@ -36,7 +36,7 @@ class _RestApiFetchExampleState extends State<RestApiFetchExample> {
           controller: this._urlController,
           decoration: const InputDecoration(
             labelText: 'URL to GET',
-            border: const OutlineInputBorder(),
+            border: OutlineInputBorder(),
           ),
         ),
         const SizedBox(height: 4),
@@ -44,7 +44,7 @@ class _RestApiFetchExampleState extends State<RestApiFetchExample> {
           controller: this._apiTokenController,
           decoration: const InputDecoration(
             labelText: 'Optional api token',
-            border: const OutlineInputBorder(),
+            border: OutlineInputBorder(),
           ),
         ),
         ButtonBar(

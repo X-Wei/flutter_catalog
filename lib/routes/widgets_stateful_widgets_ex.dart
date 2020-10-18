@@ -28,7 +28,7 @@ class _StatefulWidgetsExampleState extends State<StatefulWidgetsExample> {
         ),
         const Text('Disabled Switch'),
         const Center(
-          child: const Switch(
+          child: Switch(
             onChanged: null,
             value: false,
           ),
@@ -71,7 +71,7 @@ class _StatefulWidgetsExampleState extends State<StatefulWidgetsExample> {
         const LinearProgressIndicator(),
         const Divider(),
         const Text('CircularProgressIndicator'),
-        const Center(child: const CircularProgressIndicator()),
+        const Center(child: CircularProgressIndicator()),
         const Divider(),
         const Text('Radio'),
         Row(

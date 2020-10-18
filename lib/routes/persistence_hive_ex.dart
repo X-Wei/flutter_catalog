@@ -124,7 +124,7 @@ class _HiveExampleState extends State<HiveExample> {
       builder: (context, snapshot) {
         if (!snapshot.hasData)
           return const Center(
-            child: const CircularProgressIndicator(),
+            child: CircularProgressIndicator(),
           );
         return Scaffold(
           // WatchBoxBuilder by hive_flutter can save us from writing a

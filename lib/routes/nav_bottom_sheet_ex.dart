@@ -53,12 +53,12 @@ class _BottomSheetExampleState extends State<BottomSheetExample> {
       ),
       child: ListView(
         children: <Widget>[
-          const ListTile(title: const Text('Bottom sheet')),
+          const ListTile(title: Text('Bottom sheet')),
           const TextField(
             keyboardType: TextInputType.number,
-            decoration: const InputDecoration(
-              border: const OutlineInputBorder(),
-              icon: const Icon(Icons.attach_money),
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              icon: Icon(Icons.attach_money),
               labelText: 'Enter an integer',
             ),
           ),

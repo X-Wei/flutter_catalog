@@ -96,7 +96,7 @@ class _PieChartExampleState extends State<PieChartExample> {
               setState(() => this._defaultInteractions = val),
           value: this._defaultInteractions,
         ),
-        const ListTile(title: const Text('Arc width ratio w.r.t. radius:')),
+        const ListTile(title: Text('Arc width ratio w.r.t. radius:')),
         Slider(
           divisions: 10,
           onChanged: (double val) => setState(() => this._arcRatio = val),

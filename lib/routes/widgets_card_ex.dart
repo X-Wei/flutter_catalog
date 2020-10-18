@@ -17,7 +17,7 @@ class CardExample extends StatelessWidget {
             child: Row(
               children: <Widget>[
                 const Expanded(
-                  child: const Text('Card 1'),
+                  child: Text('Card 1'),
                 ),
               ],
             ),
@@ -35,7 +35,7 @@ class CardExample extends StatelessWidget {
               child: Row(
                 children: <Widget>[
                   const Expanded(
-                    child: const Text('Card 2 (with Inkwell effect on tap)'),
+                    child: Text('Card 2 (with Inkwell effect on tap)'),
                   ),
                 ],
               ),
@@ -45,9 +45,9 @@ class CardExample extends StatelessWidget {
         Card(
           color: Colors.blue,
           shape: const RoundedRectangleBorder(
-            borderRadius: const BorderRadius.only(
-              topLeft: const Radius.circular(30.0),
-              topRight: const Radius.elliptical(40.0, 80.0),
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(30.0),
+              topRight: Radius.elliptical(40.0, 80.0),
             ),
           ),
           child: Container(
@@ -55,7 +55,7 @@ class CardExample extends StatelessWidget {
             child: Row(
               children: <Widget>[
                 const Expanded(
-                  child: const Text('Card 3 (with custom border radius)'),
+                  child: Text('Card 3 (with custom border radius)'),
                 ),
               ],
             ),

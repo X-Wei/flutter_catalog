@@ -34,8 +34,8 @@ class _RestApiHackerNewsExampleState extends State<RestApiHackerNewsExample> {
               onRefresh: this._getLatestArticleIds,
               child: _articleIds.isEmpty
                   ? const SingleChildScrollView(
-                      physics: const AlwaysScrollableScrollPhysics(),
-                      child: const Text('(Pull to refresh)'),
+                      physics: AlwaysScrollableScrollPhysics(),
+                      child: Text('(Pull to refresh)'),
                     )
                   : Scrollbar(
                       child: ListView.builder(
@@ -103,7 +103,7 @@ class _RestApiHackerNewsExampleState extends State<RestApiHackerNewsExample> {
             Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (ctx) => WebviewScaffold(
-                  initialChild: const Center(child: const CircularProgressIndicator()),
+                  initialChild: const Center(child: CircularProgressIndicator()),
                   url: article.url,
                   appBar: AppBar(title: Text(article.title)),
                 ),

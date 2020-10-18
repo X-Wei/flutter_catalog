@@ -88,7 +88,7 @@ class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
     return Flexible(
       child: Scrollbar(
         child: FirebaseAnimatedList(
-          defaultChild: const Center(child: const CircularProgressIndicator()),
+          defaultChild: const Center(child: CircularProgressIndicator()),
           query: _firebaseMsgDbRef,
           sort: (a, b) => b.key.compareTo(a.key),
           padding: const EdgeInsets.all(8.0),

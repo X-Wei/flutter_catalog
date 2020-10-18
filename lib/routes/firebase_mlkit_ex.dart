@@ -59,7 +59,7 @@ class _FirebaseMLKitExampleState extends State<FirebaseMLKitExample> {
     );
     if (imageFile == null) {
       Scaffold.of(context).showSnackBar(
-        const SnackBar(content: const Text('Please pick one image first.')),
+        const SnackBar(content: Text('Please pick one image first.')),
       );
       return false;
     }

@@ -40,7 +40,7 @@ From https://jsonplaceholder.typicode.com/guide.html we see that the API expects
           controller: this._titleController,
           decoration: const InputDecoration(
             labelText: 'Title',
-            border: const OutlineInputBorder(),
+            border: OutlineInputBorder(),
           ),
         ),
         const SizedBox(height: 4),
@@ -49,7 +49,7 @@ From https://jsonplaceholder.typicode.com/guide.html we see that the API expects
           maxLines: null,
           decoration: const InputDecoration(
             labelText: 'Content',
-            border: const OutlineInputBorder(),
+            border: OutlineInputBorder(),
           ),
         ),
         const SizedBox(height: 4),
@@ -58,7 +58,7 @@ From https://jsonplaceholder.typicode.com/guide.html we see that the API expects
           keyboardType: TextInputType.number,
           decoration: const InputDecoration(
             labelText: 'UserId',
-            border: const OutlineInputBorder(),
+            border: OutlineInputBorder(),
           ),
         ),
         ButtonBar(

@@ -17,9 +17,9 @@ class HeroExample extends StatelessWidget {
               onTap: () => _showSecondPage(context),
               child: const Hero(
                 tag: 'my-hero-animation-tag',
-                child: const CircleAvatar(
+                child: CircleAvatar(
                   backgroundImage:
-                      const AssetImage('res/images/material_design_3.png'),
+                      AssetImage('res/images/material_design_3.png'),
                 ),
               ),
             ),

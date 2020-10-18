@@ -136,7 +136,8 @@ class DialogsExample extends StatelessWidget {
               context: context,
               builder: (BuildContext context) => Container(
                 decoration: const BoxDecoration(
-                  border: const Border(top: const BorderSide(color: Colors.black12)),
+                  border: Border(
+                      top: BorderSide(color: Colors.black12)),
                 ),
                 child: ListView(
                   shrinkWrap: true,
@@ -144,11 +145,11 @@ class DialogsExample extends StatelessWidget {
                   children: <Widget>[
                     const ListTile(
                       dense: true,
-                      title: const Text('This is a bottom sheet'),
+                      title: Text('This is a bottom sheet'),
                     ),
                     const ListTile(
                       dense: true,
-                      title: const Text('Click OK to dismiss'),
+                      title: Text('Click OK to dismiss'),
                     ),
                     ButtonBar(
                       children: <Widget>[

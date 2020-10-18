@@ -109,7 +109,7 @@ class _SembastExampleState extends State<SembastExample> {
       builder: (context, snapshot) {
         if (!snapshot.hasData)
           return const Center(
-            child: const CircularProgressIndicator(),
+            child: CircularProgressIndicator(),
           );
         return Scaffold(
           body: ListView(

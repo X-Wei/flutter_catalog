@@ -24,12 +24,12 @@ class AnimationsPackageExample extends StatelessWidget {
         OpenContainer(
           transitionDuration: const Duration(milliseconds: 500),
           closedBuilder: (ctx, action) => const ListTile(
-            title: const Text('click me'),
-            trailing: const Icon(Icons.keyboard_arrow_right),
+            title: Text('click me'),
+            trailing: Icon(Icons.keyboard_arrow_right),
           ),
           openBuilder: (ctx, action) => const Scaffold(
-            body: const Center(
-              child: const Text('new page'),
+            body: Center(
+              child: Text('new page'),
             ),
           ),
         ),
@@ -47,7 +47,7 @@ class AnimationsPackageExample extends StatelessWidget {
         ),
         const SizedBox(
           height: 200,
-          child: const _PageTransitionSwitcherEx(),
+          child: _PageTransitionSwitcherEx(),
         ),
         const Divider(thickness: 2, color: Colors.black),
         ListTile(
@@ -63,7 +63,7 @@ class AnimationsPackageExample extends StatelessWidget {
         ),
         const SizedBox(
           height: 300,
-          child: const _SharedAxisEx(),
+          child: _SharedAxisEx(),
         ),
         const Divider(thickness: 2, color: Colors.black),
         ListTile(
@@ -79,12 +79,12 @@ class AnimationsPackageExample extends StatelessWidget {
         RaisedButton(
           onPressed: () => showModal(
             configuration: const FadeScaleTransitionConfiguration(
-              transitionDuration: const Duration(milliseconds: 500),
+              transitionDuration: Duration(milliseconds: 500),
             ),
             context: context,
             builder: (ctx) => const AlertDialog(
-              title: const Text('New dialog'),
-              content: const Text('blahblahblah'),
+              title: Text('New dialog'),
+              content: Text('blahblahblah'),
             ),
           ),
           child: const Text('Show dialog'),
@@ -106,16 +106,16 @@ class __PageTransitionSwitcherExState extends State<_PageTransitionSwitcherEx> {
   static const _tabs = <Widget>[
     // *Note*: when changed child is of the same type as previous one, set the
     // key property explicitly.
-    const Icon(Icons.looks_one, size: 48, key: ValueKey(1)),
-    const Icon(Icons.looks_two, size: 48, key: ValueKey(2)),
+    Icon(Icons.looks_one, size: 48, key: ValueKey(1)),
+    Icon(Icons.looks_two, size: 48, key: ValueKey(2)),
   ];
   static const _btmNavbarItems = <BottomNavigationBarItem>[
     BottomNavigationBarItem(
-      icon: const Icon(Icons.home),
+      icon: Icon(Icons.home),
       label: 'Tab1',
     ),
     BottomNavigationBarItem(
-      icon: const Icon(Icons.business),
+      icon: Icon(Icons.business),
       label: 'Tab2',
     ),
   ];

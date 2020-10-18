@@ -32,9 +32,9 @@ class DraggableScrollableSheetExample extends StatelessWidget {
           decoration: const BoxDecoration(
             color: Colors.blue,
             // border: Border.all(color: Colors.blue, width: 2),
-            borderRadius: const BorderRadius.only(
-              topLeft: const Radius.circular(8),
-              topRight: const Radius.circular(8),
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(8),
+              topRight: Radius.circular(8),
             ),
           ),
           child: Scrollbar(

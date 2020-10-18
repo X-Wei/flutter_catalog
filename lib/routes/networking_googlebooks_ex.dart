@@ -31,7 +31,7 @@ class _RestApiGoogleBooksExampleState extends State<RestApiGoogleBooksExample> {
           controller: this._queryController,
           decoration: const InputDecoration(
             labelText: 'Title',
-            border: const OutlineInputBorder(),
+            border: OutlineInputBorder(),
           ),
         ),
         const SizedBox(height: 4),

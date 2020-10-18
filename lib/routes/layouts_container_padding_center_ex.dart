@@ -35,9 +35,9 @@ class ContainerExample extends StatelessWidget {
               child: Container(
                 decoration: const BoxDecoration(
                   color: Colors.green,
-                  borderRadius: const BorderRadius.horizontal(
-                    left: const Radius.circular(10.0),
-                    right: const Radius.circular(30.0),
+                  borderRadius: BorderRadius.horizontal(
+                    left: Radius.circular(10.0),
+                    right: Radius.circular(30.0),
                   ),
                 ),
                 alignment: Alignment.topLeft,

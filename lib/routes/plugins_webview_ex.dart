@@ -26,7 +26,7 @@ class _WebViewExampleState extends State<WebViewExample> {
         TextField(
           controller: this._controller,
           decoration: const InputDecoration(
-            border: const OutlineInputBorder(),
+            border: OutlineInputBorder(),
             hintText: 'Enter URL to open it in webview.',
             labelText: 'URL to open',
           ),
@@ -58,7 +58,7 @@ class _WebViewExampleState extends State<WebViewExample> {
           // AndroidManifest.xml.
           // Cf. https://github.com/flutter/flutter/issues/30368#issuecomment-480300618
           builder: (ctx) => WebviewScaffold(
-            initialChild: const Center(child: const CircularProgressIndicator()),
+            initialChild: const Center(child: CircularProgressIndicator()),
             url: url,
             appBar: AppBar(title: Text(url)),
           ),

@@ -6,20 +6,20 @@ class NavDrawerExample extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final drawerHeader = const UserAccountsDrawerHeader(
-      accountName: const Text('User Name'),
-      accountEmail: const Text('user.name@email.com'),
-      currentAccountPicture: const CircleAvatar(
+      accountName: Text('User Name'),
+      accountEmail: Text('user.name@email.com'),
+      currentAccountPicture: CircleAvatar(
         backgroundColor: Colors.white,
-        child: const FlutterLogo(size: 42.0),
+        child: FlutterLogo(size: 42.0),
       ),
       otherAccountsPictures: <Widget>[
-        const CircleAvatar(
+        CircleAvatar(
           backgroundColor: Colors.yellow,
-          child: const Text('A'),
+          child: Text('A'),
         ),
-        const CircleAvatar(
+        CircleAvatar(
           backgroundColor: Colors.red,
-          child: const Text('B'),
+          child: Text('B'),
         )
       ],
     );
@@ -46,7 +46,7 @@ class NavDrawerExample extends StatelessWidget {
           title: const Text('Drawer example'),
         ),
         body: const Center(
-          child: const Text('Swip or click upper-left icon to see drawer.'),
+          child: Text('Swip or click upper-left icon to see drawer.'),
         ),
         drawer: Drawer(
           child: drawerItems,

@@ -22,14 +22,14 @@ class BasicAppbarExample extends StatelessWidget {
           PopupMenuButton(
             itemBuilder: (BuildContext context) {
               return [
-                const PopupMenuItem(child: const Text('Boat')),
-                const PopupMenuItem(child: const Text('Train'))
+                const PopupMenuItem(child: Text('Boat')),
+                const PopupMenuItem(child: Text('Train'))
               ];
             },
           )
         ],
       ),
-      body: const Center(child: const Text("Hello")),
+      body: const Center(child: Text("Hello")),
     );
   }
 }

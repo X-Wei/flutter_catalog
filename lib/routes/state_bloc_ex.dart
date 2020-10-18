@@ -162,7 +162,7 @@ class _CounterAndButton extends StatelessWidget {
             stream: bloc.outputStream,
             builder: (context, AsyncSnapshot<_MyState> snapshot) {
               if (!snapshot.hasData) {
-                return const Center(child: const CircularProgressIndicator());
+                return const Center(child: CircularProgressIndicator());
               }
               print(snapshot.data);
               final state = snapshot.data;
