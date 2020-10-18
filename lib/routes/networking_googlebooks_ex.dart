@@ -125,9 +125,12 @@ class _MyBook {
 
   static List<_MyBook> parseFromJsonStr(String jsonStr) {
     final json = jsonDecode(jsonStr);
-    final jsonList = json['items'] as List<Map<String, dynamic>>;
+    final jsonList = json['items'] as List<dynamic>;
     print('${jsonList.length} items in json');
-    return [for (final jsonMap in jsonList) _MyBook.fromJson(jsonMap)];
+    return [
+      for (final jsonMap in jsonList)
+        _MyBook.fromJson(jsonMap as Map<String, dynamic>)
+    ];
   }
 }
 

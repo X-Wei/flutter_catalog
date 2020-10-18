@@ -49,7 +49,8 @@ class _MyDemoApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: <Widget>[
-        const Text("Provider is the officially recommended way to manage app states, "
+        const Text(
+            "Provider is the officially recommended way to manage app states, "
             "it's quite similar to ScopedModel in sharing/updating of app's "
             "state from children widgets down the widgets tree. In addition, "
             "you can provider multiple states at app root.\n\n"
@@ -94,7 +95,7 @@ class _CounterAndButton extends StatelessWidget {
     // Note: since v4.1, we can use extension methods which is nicer:
     //   - context.watch<T>() -- equivalent to Provider.of<T>()
     //   - context.read<T>()  -- equivalent to Provider.of<T>(listen: false)
-    final state = context.read<_MyCounterState>();
+    final state = Provider.of<_MyCounterState>(context, listen: false);
     return Card(
       margin: const EdgeInsets.all(4.0).copyWith(top: 32.0, bottom: 32.0),
       color: Colors.white70,

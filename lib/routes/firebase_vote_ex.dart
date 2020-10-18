@@ -147,7 +147,7 @@ class _LangaugeVotingRecord {
   _LangaugeVotingRecord.fromMap(Map<String, dynamic> map,
       {@required this.firestoreDocReference})
       : assert(map['language'] != null && map['language'] is String),
-        assert(map['votes'] != null && map['language'] is int),
+        assert(map['votes'] != null && map['votes'] is int),
         language = map['language'] as String,
         votes = map['votes'] as int;
 
