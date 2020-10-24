@@ -24,12 +24,6 @@ if (flutterVersionName == null) {
 apply plugin: 'com.android.application'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
-def keystoreProperties = new Properties()
-def keystorePropertiesFile = rootProject.file('key.properties')
-if (keystorePropertiesFile.exists()) {
-    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
-}
-
 android {
     compileSdkVersion 29
     // Cf. https://github.com/flutter/flutter/issues/53657#issuecomment-642236438
@@ -57,10 +51,15 @@ android {
 
     signingConfigs {
     release {
-        keyAlias keystoreProperties['keyAlias']
-        keyPassword keystoreProperties['keyPassword']
-        storeFile file(keystoreProperties['storeFile'])
-        storePassword keystoreProperties['storePassword']
+      def keystoreProperties = new Properties()
+      def keystorePropertiesFile = rootProject.file('key.properties')
+      if (keystorePropertiesFile.exists()) {
+          keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+          keyAlias keystoreProperties['keyAlias']
+          keyPassword keystoreProperties['keyPassword']
+          storeFile file(keystoreProperties['storeFile'])
+          storePassword keystoreProperties['storePassword']
+      }
     }
     }
     buildTypes {
