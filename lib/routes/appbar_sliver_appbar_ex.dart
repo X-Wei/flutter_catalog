@@ -84,6 +84,11 @@ class _SliverAppBarExampleState extends State<SliverAppBarExample> {
                 onChanged: (bool val) {
                   setState(() {
                     this._floating = val;
+                    if (this._snap == true) {
+                      if (this._floating != true) {
+                        this._snap = false;
+                      }
+                    }
                   });
                 },
                 value: this._floating,
