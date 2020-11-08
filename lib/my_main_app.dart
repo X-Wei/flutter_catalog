@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import './constants.dart' show kAppIcon;
+import './constants.dart' show kAppIcon, kIsOnMobile;
 import './my_app_routes.dart' show kAppRoutingTable;
 import './my_app_settings.dart';
 import './themes.dart';
@@ -22,7 +22,9 @@ class _MyMainAppState extends State<MyMainApp> {
   void initState() {
     super.initState();
     Future<SharedPreferences> initApp() async {
-      await Firebase.initializeApp();
+      if (kIsOnMobile) {
+        await Firebase.initializeApp();
+      }
       return SharedPreferences.getInstance();
     }
 

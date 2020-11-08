@@ -1,3 +1,5 @@
+import 'dart:io' show Platform;
+
 import 'package:flutter/material.dart';
 
 // ignore_for_file: constant_identifier_names
@@ -14,3 +16,6 @@ const GOOGLEPLAY_URL =
     'https://play.google.com/store/apps/details?id=io.github.x_wei.flutter_catalog';
 const GITHUB_URL = 'https://github.com/X-Wei/flutter_catalog';
 const AUTHOR_SITE = 'http://x-wei.github.io';
+
+// Whether the app is running on mobile phones (Android/iOS)
+final kIsOnMobile = Platform.isAndroid || Platform.isIOS;
