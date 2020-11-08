@@ -4,7 +4,8 @@ import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart' as url_launcher;
 import 'package:widget_with_codeview/widget_with_codeview.dart';
 
-import './constants.dart' show APP_NAME, APP_VERSION, GITHUB_URL, kAppIcon;
+import './constants.dart'
+    show APP_NAME, APP_VERSION, GITHUB_URL, kAppIcon, kIsOnMobile;
 import './my_app_settings.dart';
 import './my_route_search_delegate.dart';
 import './routes/about.dart';
@@ -46,6 +47,13 @@ class MyRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appbarLeading =
+        (kIsOnMobile || this.routeName == Navigator.defaultRouteName)
+            ? null
+            : IconButton(
+                icon: const Icon(Icons.arrow_back),
+                onPressed: () => Navigator.of(context).pop(),
+              );
     return BackdropScaffold(
       appBar: BackdropAppBar(
         title: SingleChildScrollView(
@@ -54,6 +62,7 @@ class MyRoute extends StatelessWidget {
         ),
         actions: _getAppbarActions(context),
         automaticallyImplyLeading: false,
+        leading: appbarLeading,
       ),
       headerHeight: _kFrontLayerMinHeight,
       frontLayerBorderRadius: BorderRadius.zero,
