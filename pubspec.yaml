@@ -25,7 +25,7 @@ dependencies:
   firebase_database: 4.0.0
   firebase_ml_vision: 0.9.7
   firebase_storage: 4.0.1
-  flutter_bloc: 6.0.6
+  flutter_bloc: ^6.1.0
   flutter_gallery_assets: 0.1.9+2
   flutter_markdown: 0.4.4
   flutter_webview_plugin: 0.3.11
