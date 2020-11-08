@@ -2,7 +2,6 @@
 // "structure" of the group of example routes, in a const List<Tuple2> object.
 // ignore_for_file: sort_child_properties_last
 import 'package:flutter/material.dart';
-import 'package:flutter_catalog/routes/multimedia_image_picker_ex.dart';
 
 import 'constants.dart';
 import 'home_page.dart';
@@ -20,6 +19,7 @@ import 'routes/animation_opacity_ex.dart';
 import 'routes/appbar_backdrop_ex.dart';
 import 'routes/appbar_basic_appbar_ex.dart';
 import 'routes/appbar_bottom_appbar_ex.dart';
+import 'routes/appbar_convex_appbar_ex.dart';
 import 'routes/appbar_search_ex.dart';
 import 'routes/appbar_sliver_appbar_ex.dart';
 import 'routes/async_futurebuilder_ex.dart';
@@ -42,8 +42,10 @@ import 'routes/lists_grid_list_ex.dart';
 import 'routes/lists_list_tile_ex.dart';
 import 'routes/lists_listview_builder_ex.dart';
 import 'routes/lists_reorderable_ex.dart';
+import 'routes/lists_slidable_tile_ex.dart';
 import 'routes/lists_swipe_to_dismiss_ex.dart';
 import 'routes/multimedia_extended_image_ex.dart';
+import 'routes/multimedia_image_picker_ex.dart';
 import 'routes/multimedia_video_player_ex.dart';
 import 'routes/nav_bottom_navbar_ex.dart';
 import 'routes/nav_bottom_sheet_ex.dart';
@@ -316,6 +318,13 @@ const kMyAppRoutesBasic = <MyRouteGroup>[
         },
       ),
       MyRoute(
+        child: SlidableTileExample(),
+        sourceFilePath: 'lib/routes/lists_slidable_tile_ex.dart',
+        title: 'Slidable list tile',
+        description: 'Nice slidabe tile from Flutter Favorite package.',
+        links: {'pub.dev': 'https://pub.dev/packages/flutter_slidable'},
+      ),
+      MyRoute(
         child: DataTableExample(),
         sourceFilePath: 'lib/routes/lists_datatable_ex.dart',
         title: 'DataTable',
@@ -381,6 +390,13 @@ const kMyAppRoutesBasic = <MyRouteGroup>[
           'Medium article':
               'https://medium.com/flutter/decomposing-widgets-backdrop-b5c664fb9cf4'
         },
+      ),
+      MyRoute(
+        child: ConvexAppExample(),
+        sourceFilePath: 'lib/routes/appbar_convex_appbar_ex.dart',
+        title: 'Convext Appbar',
+        description: 'Nicer-looking appbar (Flutter Favorite package).',
+        links: {'Pub.dev': 'https://pub.dev/packages/convex_bottom_bar'},
       ),
     ],
   ),

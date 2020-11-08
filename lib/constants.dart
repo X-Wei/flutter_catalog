@@ -1,9 +1,11 @@
+import 'dart:io' show Platform;
+
 import 'package:flutter/material.dart';
 
 // ignore_for_file: constant_identifier_names
 
 // *Note*: when APP_VERSION is changed, remember to also update pubspec.yaml.
-const APP_VERSION = 'v2.5.6';
+const APP_VERSION = 'v2.5.7';
 const APP_NAME = 'Flutter Catalog';
 final kAppIcon =
     Image.asset('res/images/launcher_icon.png', height: 64.0, width: 64.0);
@@ -14,3 +16,6 @@ const GOOGLEPLAY_URL =
     'https://play.google.com/store/apps/details?id=io.github.x_wei.flutter_catalog';
 const GITHUB_URL = 'https://github.com/X-Wei/flutter_catalog';
 const AUTHOR_SITE = 'http://x-wei.github.io';
+
+// Whether the app is running on mobile phones (Android/iOS)
+final kIsOnMobile = Platform.isAndroid || Platform.isIOS;
