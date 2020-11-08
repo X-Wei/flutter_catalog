@@ -42,6 +42,7 @@ import 'routes/lists_grid_list_ex.dart';
 import 'routes/lists_list_tile_ex.dart';
 import 'routes/lists_listview_builder_ex.dart';
 import 'routes/lists_reorderable_ex.dart';
+import 'routes/lists_slidable_tile_ex.dart';
 import 'routes/lists_swipe_to_dismiss_ex.dart';
 import 'routes/multimedia_extended_image_ex.dart';
 import 'routes/multimedia_image_picker_ex.dart';
@@ -315,6 +316,13 @@ const kMyAppRoutesBasic = <MyRouteGroup>[
           'Doc':
               'https://docs.flutter.io/flutter/material/ReorderableListView-class.html'
         },
+      ),
+      MyRoute(
+        child: SlidableTileExample(),
+        sourceFilePath: 'lib/routes/lists_slidable_tile_ex.dart',
+        title: 'Slidable list tile',
+        description: 'Nice slidabe tile from Flutter Favorite package.',
+        links: {'pub.dev': 'https://pub.dev/packages/flutter_slidable'},
       ),
       MyRoute(
         child: DataTableExample(),
