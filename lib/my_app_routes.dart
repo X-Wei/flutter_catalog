@@ -394,7 +394,7 @@ const kMyAppRoutesBasic = <MyRouteGroup>[
       MyRoute(
         child: ConvexAppExample(),
         sourceFilePath: 'lib/routes/appbar_convex_appbar_ex.dart',
-        title: 'Convext Appbar',
+        title: 'Convex Appbar',
         description: 'Nicer-looking appbar (Flutter Favorite package).',
         links: {'Pub.dev': 'https://pub.dev/packages/convex_bottom_bar'},
       ),

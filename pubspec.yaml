@@ -14,6 +14,7 @@ dependencies:
   animations: 1.1.2
   async: ^2.4.0
   backdrop: 0.4.6
+  badges: ^1.1.4
   cached_network_image: 2.3.3
   charts_flutter: 0.9.0
   cloud_firestore: 0.14.1+3
@@ -53,7 +54,7 @@ dependencies:
   transparent_image: 1.0.0
   url_launcher: ^5.7.10
   video_player: ^0.11.1+2
-  widget_with_codeview: 1.0.4
+  widget_with_codeview: ^1.0.5
 
 dev_dependencies:
   flutter_test:
