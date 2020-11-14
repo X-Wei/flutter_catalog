@@ -1,3 +1,4 @@
+import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 
 class ListTileExample extends StatelessWidget {
@@ -5,31 +6,40 @@ class ListTileExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const listTiles = <Widget>[
-      ListTile(
+    final listTiles = <Widget>[
+      const ListTile(
         title: Text('Tile 0: basic'),
       ),
-      Divider(),
-      ListTile(
+      const Divider(),
+      const ListTile(
         leading: Icon(Icons.face),
         title: Text('Tile 1: with leading/trailing widgets'),
         trailing: Icon(Icons.tag_faces),
       ),
-      Divider(),
-      ListTile(
+      const Divider(),
+      const ListTile(
         title: Text('Tile 2 title'),
         subtitle: Text('subtitle of tile 2'),
       ),
-      Divider(),
-      ListTile(
+      const Divider(),
+      const ListTile(
         title: Text('Tile 3: 3 lines'),
         isThreeLine: true,
         subtitle: Text('subtitle of tile 3'),
       ),
-      Divider(),
-      ListTile(
+      const Divider(),
+      const ListTile(
         title: Text('Tile 4: dense'),
         dense: true,
+      ),
+      const Divider(),
+      ListTile(
+        title: const Text('Tile5: tile with badge'),
+        subtitle: const Text('(This uses the badges package)'),
+        trailing: Badge(
+          badgeContent: const Text('3'),
+          child: const Icon(Icons.message),
+        ),
       ),
     ];
     // Directly returning a list of widgets is not common practice.
