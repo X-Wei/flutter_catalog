@@ -25,6 +25,9 @@ import 'routes/appbar_sliver_appbar_ex.dart';
 import 'routes/async_futurebuilder_ex.dart';
 import 'routes/async_streambuilder_ex.dart';
 import 'routes/async_streamcontroller_ex.dart';
+import 'routes/charts_fl_bar_chart_ex.dart';
+import 'routes/charts_fl_line_chart_ex.dart';
+import 'routes/charts_fl_pie_chart_ex.dart';
 import 'routes/charts_pie_chart_ex.dart';
 import 'routes/charts_time_series_ex.dart';
 import 'routes/firebase_chatroom_ex.dart';
@@ -808,6 +811,33 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
           links: {
             'Demo gallery':
                 'https://google.github.io/charts/flutter/gallery.html'
+          },
+        ),
+        MyRoute(
+          child: FlLineChartExample(),
+          sourceFilePath: 'lib/routes/charts_fl_line_chart_ex.dart',
+          title: 'LineChart with fl_chart',
+          links: {
+            'doc':
+                'https://github.com/imaNNeoFighT/fl_chart/blob/master/repo_files/documentations/line_chart.md'
+          },
+        ),
+        MyRoute(
+          child: FlBarChartExample(),
+          sourceFilePath: 'lib/routes/charts_fl_bar_chart_ex.dart',
+          title: 'BarChart with fl_chart',
+          links: {
+            'doc':
+                'https://github.com/imaNNeoFighT/fl_chart/blob/master/repo_files/documentations/bar_chart.md'
+          },
+        ),
+        MyRoute(
+          child: FlPieChartExample(),
+          sourceFilePath: 'lib/routes/charts_fl_pie_chart_ex.dart',
+          title: 'PieChart with fl_chart',
+          links: {
+            'doc':
+                'https://github.com/imaNNeoFighT/fl_chart/blob/master/repo_files/documentations/pie_chart.md'
           },
         ),
       ]),
