@@ -30,6 +30,7 @@ import 'routes/charts_fl_pie_chart_ex.dart';
 import 'routes/charts_graphview_ex.dart';
 import 'routes/charts_heatmap_calendar_ex.dart';
 import 'routes/charts_pie_chart_ex.dart';
+import 'routes/charts_radar_chart_ex.dart';
 import 'routes/charts_time_series_ex.dart';
 import 'routes/firebase_chatroom_ex.dart';
 import 'routes/firebase_login_ex.dart';
@@ -852,6 +853,12 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
           sourceFilePath: 'lib/routes/charts_heatmap_calendar_ex.dart',
           title: 'Heatmap Calendar',
           links: {'pub.dev': 'https://pub.dev/packages/heatmap_calendar'},
+        ),
+        MyRoute(
+          child: RadarChartExample(),
+          sourceFilePath: 'lib/routes/charts_radar_chart_ex.dart',
+          title: 'Radar Chart',
+          links: {'pub.dev': 'https://pub.dev/packages/flutter_radar_chart'},
         ),
       ]),
   MyRouteGroup(
