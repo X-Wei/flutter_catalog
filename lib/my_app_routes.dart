@@ -81,6 +81,7 @@ import 'routes/state_scoped_model_ex.dart';
 import 'routes/widgets_buttons_ex.dart';
 import 'routes/widgets_card_ex.dart';
 import 'routes/widgets_dropdown_button_ex.dart';
+import 'routes/widgets_gradient_ex.dart';
 import 'routes/widgets_icon_ex.dart';
 import 'routes/widgets_image_ex.dart';
 import 'routes/widgets_stateful_widgets_ex.dart';
@@ -177,6 +178,16 @@ const kMyAppRoutesBasic = <MyRouteGroup>[
         links: {
           'Doc': 'https://docs.flutter.io/flutter/material/Card-class.html',
           'Inkwell': 'https://flutter.io/cookbook/gestures/ripples/',
+        },
+      ),
+      MyRoute(
+        child: GradientExample(),
+        sourceFilePath: 'lib/routes/widgets_gradient_ex.dart',
+        title: 'Gradient',
+        description: 'Gradient and BoxDecoration to for better UI',
+        links: {
+          'Blog':
+              'https://www.digitalocean.com/community/tutorials/flutter-flutter-gradient',
         },
       ),
       MyRoute(
