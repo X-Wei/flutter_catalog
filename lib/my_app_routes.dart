@@ -7,7 +7,6 @@ import 'constants.dart';
 import 'home_page.dart';
 import 'my_route.dart';
 import 'routes/about.dart';
-
 import 'routes/animation_animated_builder_ex.dart';
 import 'routes/animation_animated_container_ex.dart';
 import 'routes/animation_animated_widget_ex.dart';
@@ -28,6 +27,7 @@ import 'routes/async_streamcontroller_ex.dart';
 import 'routes/charts_fl_bar_chart_ex.dart';
 import 'routes/charts_fl_line_chart_ex.dart';
 import 'routes/charts_fl_pie_chart_ex.dart';
+import 'routes/charts_graphview_ex.dart';
 import 'routes/charts_pie_chart_ex.dart';
 import 'routes/charts_time_series_ex.dart';
 import 'routes/firebase_chatroom_ex.dart';
@@ -839,6 +839,12 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
             'doc':
                 'https://github.com/imaNNeoFighT/fl_chart/blob/master/repo_files/documentations/pie_chart.md'
           },
+        ),
+        MyRoute(
+          child: GraphViewExample(),
+          sourceFilePath: 'lib/routes/charts_graphview_ex.dart',
+          title: 'GraphView',
+          links: {'pub.dev': 'https://pub.dev/packages/graphview'},
         ),
       ]),
   MyRouteGroup(
