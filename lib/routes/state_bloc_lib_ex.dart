@@ -72,7 +72,8 @@ class _MyDemoAppState extends State<_MyDemoApp> {
   Widget build(BuildContext context) {
     return ListView(
       children: <Widget>[
-        const Text("BLoC pattern is great for accessing/mutating app's state and "
+        const Text(
+            "BLoC pattern is great for accessing/mutating app's state and "
             "updating UI without rebuilding the whole widget tree. But the vanilla "
             "BLoC implementation has too much boilerplate code. \n\n"
             "With the flutter_bloc package, we don't need to manage Streams "

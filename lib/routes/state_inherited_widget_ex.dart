@@ -55,7 +55,8 @@ class _MyDemoAppState extends State<_MyDemoApp> {
   Widget build(BuildContext context) {
     return ListView(
       children: <Widget>[
-        const Text("InheritedWidget allows efficient sharing of app's state down "
+        const Text(
+            "InheritedWidget allows efficient sharing of app's state down "
             "the widgets tree.\n\n"
             "In this example, the app's root widget is an InheritedWidget, "
             "so it's state is shared to the two `CounterAndButtons` widgets "

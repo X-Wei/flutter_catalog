@@ -103,7 +103,8 @@ class _RestApiHackerNewsExampleState extends State<RestApiHackerNewsExample> {
             Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (ctx) => WebviewScaffold(
-                  initialChild: const Center(child: CircularProgressIndicator()),
+                  initialChild:
+                      const Center(child: CircularProgressIndicator()),
                   url: article.url,
                   appBar: AppBar(title: Text(article.title)),
                 ),

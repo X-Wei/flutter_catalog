@@ -61,10 +61,13 @@ class _LocalAuthExampleState extends State<LocalAuthExample> {
             setState(() => this._authSuccess = authSuccess);
           },
         ),
-        if (this._authSuccess) FadeInImage(
-                placeholder: MemoryImage(kTransparentImage),
-                image: const AssetImage('res/images/animated_flutter_lgtm.gif'),
-              ) else const Placeholder(),
+        if (this._authSuccess)
+          FadeInImage(
+            placeholder: MemoryImage(kTransparentImage),
+            image: const AssetImage('res/images/animated_flutter_lgtm.gif'),
+          )
+        else
+          const Placeholder(),
       ],
     );
   }
