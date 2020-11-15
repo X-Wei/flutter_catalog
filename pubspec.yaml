@@ -37,6 +37,7 @@ dependencies:
   google_fonts: 1.1.1
   google_sign_in: 4.5.5
   graphview: ^0.6.1
+  heatmap_calendar: ^1.2.8
   hive: 1.4.4+1
   hive_flutter: 0.3.1
   http: 0.12.2

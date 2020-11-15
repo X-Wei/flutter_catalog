@@ -28,6 +28,7 @@ import 'routes/charts_fl_bar_chart_ex.dart';
 import 'routes/charts_fl_line_chart_ex.dart';
 import 'routes/charts_fl_pie_chart_ex.dart';
 import 'routes/charts_graphview_ex.dart';
+import 'routes/charts_heatmap_calendar_ex.dart';
 import 'routes/charts_pie_chart_ex.dart';
 import 'routes/charts_time_series_ex.dart';
 import 'routes/firebase_chatroom_ex.dart';
@@ -845,6 +846,12 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
           sourceFilePath: 'lib/routes/charts_graphview_ex.dart',
           title: 'GraphView',
           links: {'pub.dev': 'https://pub.dev/packages/graphview'},
+        ),
+        MyRoute(
+          child: HeatmapCalendarExample(),
+          sourceFilePath: 'lib/routes/charts_heatmap_calendar_ex.dart',
+          title: 'Heatmap Calendar',
+          links: {'pub.dev': 'https://pub.dev/packages/heatmap_calendar'},
         ),
       ]),
   MyRouteGroup(
