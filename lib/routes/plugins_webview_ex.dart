@@ -23,6 +23,8 @@ class _WebViewExampleState extends State<WebViewExample> {
     _controller.text = 'www.google.com';
     return Column(
       children: <Widget>[
+        const SizedBox(height: 15,
+        ),
         TextField(
           controller: this._controller,
           decoration: const InputDecoration(
