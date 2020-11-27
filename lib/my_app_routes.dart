@@ -38,6 +38,7 @@ import 'routes/firebase_mlkit_ex.dart';
 import 'routes/firebase_vote_ex.dart';
 import 'routes/layouts_container_padding_center_ex.dart';
 import 'routes/layouts_expanded_ex.dart';
+import 'routes/layouts_fractionally_sizedbox_ex.dart';
 import 'routes/layouts_row_col_ex.dart';
 import 'routes/layouts_stack_ex.dart';
 import 'routes/layouts_wrap_ex.dart';
@@ -252,6 +253,14 @@ const kMyAppRoutesBasic = <MyRouteGroup>[
           "Youtube video": "https://www.youtube.com/watch?v=z5iw2SeFx2M",
           'Doc': 'https://docs.flutter.io/flutter/widgets/Wrap-class.html',
         },
+      ),
+      MyRoute(
+        child: FractionallySizedBoxExample(),
+        sourceFilePath: 'lib/routes/layouts_fractionally_sizedbox_ex.dart',
+        title: 'FractionallySizedBox',
+        description:
+            'Sizing widgets to a fraction of the total available space.',
+        links: {"Youtube video": "https://youtu.be/PEsY654EGZ0"},
       ),
       MyRoute(
         child: ExpandedExample(),
