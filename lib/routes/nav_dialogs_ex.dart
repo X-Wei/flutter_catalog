@@ -36,7 +36,7 @@ class DialogsExample extends StatelessWidget {
               ),
             ).then((returnVal) {
               if (returnVal != null) {
-                Scaffold.of(context).showSnackBar(
+                ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text('You clicked: $returnVal'),
                     action: SnackBarAction(label: 'OK', onPressed: () {}),
@@ -75,7 +75,7 @@ class DialogsExample extends StatelessWidget {
               ),
             ).then((returnVal) {
               if (returnVal != null) {
-                Scaffold.of(context).showSnackBar(
+                ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text('You clicked: $returnVal'),
                     action: SnackBarAction(label: 'OK', onPressed: () {}),
@@ -96,7 +96,7 @@ class DialogsExample extends StatelessWidget {
               initialTime: TimeOfDay(hour: now.hour, minute: now.minute),
             ).then((TimeOfDay value) {
               if (value != null) {
-                Scaffold.of(context).showSnackBar(
+                ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text(value.format(context)),
                     action: SnackBarAction(label: 'OK', onPressed: () {}),
@@ -118,7 +118,7 @@ class DialogsExample extends StatelessWidget {
               lastDate: DateTime(2025),
             ).then((DateTime value) {
               if (value != null) {
-                Scaffold.of(context).showSnackBar(
+                ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(content: Text('Selected datetime: $value')),
                 );
               }

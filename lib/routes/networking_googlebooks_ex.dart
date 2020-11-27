@@ -87,11 +87,11 @@ class _RestApiGoogleBooksExampleState extends State<RestApiGoogleBooksExample> {
     setState(() => this._pending = true);
     try {
       this._books = await _getBooksList(query);
-      Scaffold.of(context).showSnackBar(
+      ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Successfully found ${_books.length} books.')),
       );
     } catch (e) {
-      Scaffold.of(context).showSnackBar(
+      ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Error: $e')),
       );
     }

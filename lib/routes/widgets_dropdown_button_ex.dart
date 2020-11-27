@@ -72,7 +72,7 @@ class _DropdownButtonExampleState extends State<DropdownButtonExample> {
           trailing: PopupMenuButton<String>(
             onSelected: (String newValue) {
               _btn3SelectedVal = newValue;
-              Scaffold.of(context).showSnackBar(
+              ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
                   content: Text(_btn3SelectedVal),
                 ),

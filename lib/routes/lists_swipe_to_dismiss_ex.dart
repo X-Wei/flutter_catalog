@@ -26,7 +26,7 @@ class _ListSwipeToDismissExampleState extends State<ListSwipeToDismissExample> {
           // after an item has been swiped away.
           onDismissed: (DismissDirection dir) {
             setState(() => this._items.removeAt(index));
-            Scaffold.of(context).showSnackBar(
+            ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: Text(dir == DismissDirection.startToEnd
                     ? '$item removed.'

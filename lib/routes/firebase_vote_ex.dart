@@ -128,7 +128,7 @@ class _FirebaseVoteExampleState extends State<FirebaseVoteExample> {
       // Update local voted status only after transaction is successful.
       this._markVotedStatus(lang, !this._isVoted(lang));
     } catch (e) {
-      Scaffold.of(context).showSnackBar(
+      ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('Error doing firebase transaction: $e'),
         ),

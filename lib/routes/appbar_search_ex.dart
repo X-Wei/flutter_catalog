@@ -43,7 +43,7 @@ class _AppBarSearchExampleState extends State<AppBarSearchExample> {
                 delegate: _delegate,
               );
               if (selected != null) {
-                Scaffold.of(context).showSnackBar(
+                ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text('You have selected the word: $selected'),
                   ),

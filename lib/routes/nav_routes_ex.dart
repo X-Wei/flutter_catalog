@@ -50,8 +50,8 @@ class _PageTwo extends MaterialPageRoute<void> {
                     Navigator.push<String>(context, _PageThree())
                         .then((returnVal) {
                       if (returnVal != null) {
-                        Scaffold.of(context).removeCurrentSnackBar();
-                        Scaffold.of(context).showSnackBar(
+                        ScaffoldMessenger.of(context).removeCurrentSnackBar();
+                        ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: Text('You clicked: $returnVal'),
                             action: SnackBarAction(

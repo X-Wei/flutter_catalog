@@ -23,7 +23,7 @@ class _LocalAuthExampleState extends State<LocalAuthExample> {
   Future<bool> _auth() async {
     setState(() => this._authSuccess = false);
     if (await this._localAuth.canCheckBiometrics == false) {
-      Scaffold.of(context).showSnackBar(
+      ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('Your device is NOT capable of checking biometrics.\n'
               'This demo will not work on your device!\n'
@@ -37,12 +37,12 @@ class _LocalAuthExampleState extends State<LocalAuthExample> {
     try {
       final authSuccess = await this._localAuth.authenticateWithBiometrics(
           localizedReason: 'Auth in to see hidden image');
-      Scaffold.of(context).showSnackBar(
+      ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('authSuccess=$authSuccess')),
       );
       return authSuccess;
     } catch (e) {
-      Scaffold.of(context).showSnackBar(
+      ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text(e.toString())),
       );
       return false;

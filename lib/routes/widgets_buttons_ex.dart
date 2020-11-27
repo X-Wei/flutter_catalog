@@ -11,7 +11,7 @@ class ButtonsExample extends StatelessWidget {
           toastLength: Toast.LENGTH_SHORT,
         );
 
-    void _showSnack() => Scaffold.of(context).showSnackBar(
+    void _showSnack() => ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
             content: Text('Button tapped'),
             duration: Duration(milliseconds: 500),

@@ -74,7 +74,7 @@ class _RestApiHackerNewsExampleState extends State<RestApiHackerNewsExample> {
           List<int>.from(json.decode(response.body) as Iterable);
       setState(() => this._articleIds = articleIds);
     } else {
-      Scaffold.of(context).showSnackBar(SnackBar(
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Text('Error fetching article Ids: $response'),
       ));
     }

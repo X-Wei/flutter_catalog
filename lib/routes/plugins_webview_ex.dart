@@ -23,7 +23,8 @@ class _WebViewExampleState extends State<WebViewExample> {
     _controller.text = 'www.google.com';
     return Column(
       children: <Widget>[
-        const SizedBox(height: 15,
+        const SizedBox(
+          height: 15,
         ),
         TextField(
           controller: this._controller,
@@ -67,7 +68,7 @@ class _WebViewExampleState extends State<WebViewExample> {
         ),
       );
     } else {
-      Scaffold.of(context).showSnackBar(
+      ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('URL $url can not be launched.'),
         ),

@@ -88,17 +88,10 @@ class MyRoute extends StatelessWidget {
         IconButton(
           icon: const Icon(Icons.search),
           onPressed: () async {
-            final String selected = await showSearch<String>(
+            await showSearch<String>(
               context: context,
               delegate: MyRouteSearchDelegate(),
             );
-            if (selected != null) {
-              Scaffold.of(context).showSnackBar(
-                SnackBar(
-                  content: Text('You have selected the word: $selected'),
-                ),
-              );
-            }
           },
         ),
       if (this.routeName != Navigator.defaultRouteName)

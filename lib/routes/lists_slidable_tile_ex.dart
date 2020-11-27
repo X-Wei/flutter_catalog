@@ -119,7 +119,7 @@ class _SlidableTileExampleState extends State<SlidableTileExample> {
   }
 
   void _showSnackBar(String message) {
-    Scaffold.of(context).showSnackBar(
+    ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text(message)),
     );
   }

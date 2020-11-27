@@ -60,7 +60,7 @@ class MarkdownExample extends StatelessWidget {
       if (await canLaunch(href)) {
         launch(href);
       } else {
-        Scaffold.of(context).showSnackBar(
+        ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text('Wrong address: $href'),
           ),

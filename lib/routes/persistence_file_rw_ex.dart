@@ -95,7 +95,7 @@ class _FileReadWriteExampleState extends State<FileReadWriteExample> {
   }
 
   void _showSnackBar(String text) {
-    Scaffold.of(this.context).showSnackBar(
+    ScaffoldMessenger.of(this.context).showSnackBar(
       SnackBar(
         content: Text(text),
         duration: const Duration(milliseconds: 500),
