@@ -7,20 +7,22 @@ version: 2.5.8+65
 environment:
   sdk: ">=2.7.0 <3.0.0"
 
+publish_to: none
+
 dependencies:
   flutter:
     sdk: flutter
   animated_floatactionbuttons: 0.1.0
   animations: 1.1.2
   async: ^2.4.0
-  backdrop: 0.4.6
+  backdrop: ^0.4.7
   badges: ^1.1.4
   cached_network_image: 2.3.3
   charts_flutter: 0.9.0
   cloud_firestore: 0.14.1+3
   convex_bottom_bar: ^2.6.0
   english_words: 3.1.5
-  extended_image: 1.3.0
+  extended_image: ^1.3.1-dev
   firebase_analytics: 6.0.2
   firebase_auth: 0.18.1+2
   firebase_core: 0.5.0+1
@@ -28,52 +30,54 @@ dependencies:
   firebase_ml_vision: 0.9.7
   firebase_storage: 4.0.1
   fl_chart: ^0.12.0
-  flutter_bloc: ^6.1.0
-  flutter_gallery_assets: 0.1.9+2
+  flutter_bloc: ^6.1.1
+  flutter_gallery_assets: ^0.2.6
   flutter_gradients: ^1.0.0+2
-  flutter_markdown: 0.4.4
+  flutter_markdown: ^0.5.1
   flutter_radar_chart: ^0.1.6
   flutter_slidable: ^0.5.7
   flutter_webview_plugin: 0.3.11
-  fluttertoast: 7.1.1
+  fluttertoast: ^7.1.5
   google_fonts: 1.1.1
-  google_sign_in: 4.5.5
-  gradient_app_bar: ^0.1.3
+  google_sign_in: ^4.5.6
+  gradient_app_bar: 
+    git: # Note: the official pkg is not migrated to nullsafty, so we take the unmerged PR(https://github.com/joostlek/GradientAppBar/pull/20)
+      url: https://github.com/TinyProgrammers/GradientAppBar.git
   graphview: ^0.6.1
   heatmap_calendar: ^1.2.8
   hive_flutter: 0.3.1
   hive: 1.4.4+1
   http: 0.12.2
-  image_picker: 0.6.7+12
+  image_picker: ^0.6.7+14
   intl: ^0.16.1
-  local_auth: 0.6.3+3
-  lottie: 0.6.0
-  package_info: 0.4.3
-  path_provider: 1.6.21
+  local_auth: ^0.6.3+4
+  lottie: ^0.7.0+1
+  package_info: ^0.4.3+2
+  path_provider: ^1.6.24
   path: 1.7.0
   provider: 4.3.2+2
-  scoped_model: 1.0.1
-  sembast: 2.4.7+7
-  shared_preferences: 0.5.12+2
-  sqflite: 1.3.1+1
+  scoped_model: ^1.1.0
+  sembast: ^2.4.8
+  shared_preferences: ^0.5.12+4
+  sqflite: ^1.3.2+1
   substring_highlight: 0.1.2
   syntax_highlighter: 0.1.1
   transparent_image: 1.0.0
   tuple: ^1.0.3
   url_launcher: ^5.7.10
-  video_player: ^0.11.1+2
+  video_player: ^1.0.1
   widget_with_codeview: ^1.0.5
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
-  build_runner: 1.10.3
-  hive_generator: 0.8.1
-  lint: ^1.3.0
+  # flutter_test:
+  #   sdk: flutter
+  build_runner: ^1.10.6
+  hive_generator: ^0.8.2
+  lint: ^1.5.1
 
 dependency_overrides:
   dartx: ^0.5.0
-  path: ^1.6.4 # cf. https://github.com/hivedb/hive/issues/285#issuecomment-633815558
+  # path: ^1.6.4 # cf. https://github.com/hivedb/hive/issues/285#issuecomment-633815558
 
 # The following section is specific to Flutter.
 flutter:
