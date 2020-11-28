@@ -130,6 +130,29 @@ class DialogsExample extends StatelessWidget {
           },
           child: const Text('Date Picker Dialog'),
         ),
+        ////// DateRange Picker Dialog.
+        RaisedButton(
+          color: Colors.purple,
+          onPressed: () {
+            showDateRangePicker(
+              context: context,
+              firstDate: DateTime(2018),
+              lastDate: DateTime(2025),
+            ).then((DateTimeRange value) {
+              if (value != null) {
+                DateTimeRange _fromRange =
+                    DateTimeRange(start: DateTime.now(), end: DateTime.now());
+                _fromRange = value;
+                final String range =
+                    '${DateFormat.yMMMd().format(_fromRange.start)} - ${DateFormat.yMMMd().format(_fromRange.end)}';
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text(range)),
+                );
+              }
+            });
+          },
+          child: const Text('Date Range Picker Dialog'),
+        ),
         ////// Bottom Sheet Dialog.
         RaisedButton(
           color: Colors.orange,
