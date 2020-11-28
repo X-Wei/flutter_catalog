@@ -138,9 +138,10 @@ class DialogsExample extends StatelessWidget {
             ).then((DateTimeRange value) {
               if (value != null) {
                 DateTimeRange _fromRange =
-                DateTimeRange(start: DateTime.now(), end: DateTime.now());
+                    DateTimeRange(start: DateTime.now(), end: DateTime.now());
                 _fromRange = value;
-                final String range = '${DateFormat.yMMMd().format(_fromRange.start)} - ${DateFormat.yMMMd().format(_fromRange.end)}';
+                final String range =
+                    '${DateFormat.yMMMd().format(_fromRange.start)} - ${DateFormat.yMMMd().format(_fromRange.end)}';
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(content: Text(range)),
                 );
