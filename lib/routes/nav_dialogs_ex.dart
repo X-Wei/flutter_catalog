@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 // Adapted from Eajy's flutter demo app:
 // https://github.com/Eajy/flutter_demo/blob/master/lib/route/homeDialogs.dart.
@@ -118,8 +119,11 @@ class DialogsExample extends StatelessWidget {
               lastDate: DateTime(2025),
             ).then((DateTime value) {
               if (value != null) {
+                DateTime _fromDate = DateTime.now();
+                _fromDate = value;
+                final String date = DateFormat.yMMMd().format(_fromDate);
                 ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('Selected datetime: $value')),
+                  SnackBar(content: Text('Selected datetime: $date')),
                 );
               }
             });
