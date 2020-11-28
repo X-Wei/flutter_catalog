@@ -148,7 +148,7 @@ class DialogsExample extends StatelessWidget {
               }
             });
           },
-          child: const Text('DateRange Picker Dialog'),
+          child: const Text('Date Range Picker Dialog'),
         ),
         ////// Bottom Sheet Dialog.
         RaisedButton(
