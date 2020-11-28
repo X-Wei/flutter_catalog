@@ -123,7 +123,7 @@ class DialogsExample extends StatelessWidget {
                 _fromDate = value;
                 final String date = DateFormat.yMMMd().format(_fromDate);
                 ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('Selected datetime: $date')),
+                  SnackBar(content: Text('Selected date: $date')),
                 );
               }
             });
