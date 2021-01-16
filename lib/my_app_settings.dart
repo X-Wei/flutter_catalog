@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import './my_app_routes.dart' show kAllRoutes;
+import './my_app_routes.dart' show MyRouteGroup, kAllRoutes;
 import './my_route.dart';
 
 class MyAppSettings extends ChangeNotifier {
@@ -14,7 +14,14 @@ class MyAppSettings extends ChangeNotifier {
 
   final SharedPreferences _pref;
 
-  MyAppSettings(this._pref);
+  MyAppSettings(this._pref) {
+    // When first time opening the app: mark all routes as known -- we only
+    // display a red dot for *new* routes.
+    if (_pref.getStringList(_kKnownRoutesKey) == null) {
+      _pref.setStringList(
+          _kKnownRoutesKey, _kRoutenameToRouteMap.keys.toList());
+    }
+  }
 
   bool get isDarkMode => _pref?.getBool(_kDarkModePreferenceKey) ?? false;
 
@@ -72,5 +79,24 @@ class MyAppSettings extends ChangeNotifier {
     final dedupedStaredRoutes = Set<String>.from(staredRoutes).toList();
     _pref?.setStringList(_kBookmarkedRoutesPreferenceKey, dedupedStaredRoutes);
     notifyListeners();
+  }
+
+  // Used to decide if an example route is newly added. We will show a red dot
+  // for newly added routes.
+  static const _kKnownRoutesKey = 'KNOWN_ROUTES';
+  bool isNewRoute(String routeName) =>
+      !_pref.getStringList(_kKnownRoutesKey).contains(routeName);
+
+  void markRouteKnown(String routeName) {
+    if (isNewRoute(routeName)) {
+      final knowRoutes = _pref.getStringList(_kKnownRoutesKey)..add(routeName);
+      _pref.setStringList(_kKnownRoutesKey, knowRoutes);
+      notifyListeners();
+    }
+  }
+
+  // Returns the number of new example routes in this group.
+  int numNewRoutes(MyRouteGroup group) {
+    return group.routes.where((route) => isNewRoute(route.routeName)).length;
   }
 }

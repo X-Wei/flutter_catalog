@@ -1,3 +1,4 @@
+import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_catalog/my_app_routes.dart';
 import 'package:provider/provider.dart';
@@ -71,27 +72,42 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  ListTile _myRouteToListTile(MyRoute myRoute,
+  Widget _myRouteToListTile(MyRoute myRoute,
       {Widget leading, IconData trialing = Icons.keyboard_arrow_right}) {
+    final mySettings = context.watch<MyAppSettings>();
     final routeTitleTextStyle = Theme.of(context)
         .textTheme
         .bodyText2
         .copyWith(fontWeight: FontWeight.bold);
+    final leadingWidget =
+        leading ?? mySettings.starStatusOfRoute(myRoute.routeName);
+    final isNew = mySettings.isNewRoute(myRoute.routeName);
     return ListTile(
-      leading: leading ??
-          Provider.of<MyAppSettings>(context)
-              .starStatusOfRoute(myRoute.routeName),
+      leading: isNew
+          ? Badge(
+              position: BadgePosition.topEnd(top: 2, end: 2),
+              child: leadingWidget,
+            )
+          : leadingWidget,
       title: Text(myRoute.title, style: routeTitleTextStyle),
       trailing: trialing == null ? null : Icon(trialing),
       subtitle: myRoute.description == null ? null : Text(myRoute.description),
-      onTap: () => Navigator.of(context).pushNamed(myRoute.routeName),
+      onTap: () {
+        if (isNew) {
+          mySettings.markRouteKnown(myRoute.routeName);
+        }
+        Navigator.of(context).pushNamed(myRoute.routeName);
+      },
     );
   }
 
   Widget _myRouteGroupToExpansionTile(MyRouteGroup myRouteGroup) {
+    final nNew = context.watch<MyAppSettings>().numNewRoutes(myRouteGroup);
     return Card(
       child: ExpansionTile(
-        leading: myRouteGroup.icon,
+        leading: nNew > 0
+            ? Badge(badgeContent: Text('$nNew'), child: myRouteGroup.icon)
+            : myRouteGroup.icon,
         title: Text(
           myRouteGroup.groupName,
           style: Theme.of(context).textTheme.headline6,
