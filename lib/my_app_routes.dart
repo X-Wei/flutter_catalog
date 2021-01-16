@@ -214,14 +214,13 @@ const kMyAppRoutesBasic = <MyRouteGroup>[
               'https://docs.flutter.io/flutter/material/DropdownButton-class.html'
         },
       ),
-      // TODO: re-enable this example after 2.6.0 app is released.
-      // MyRoute(
-      //   child: ImageFilteredExample(),
-      //   sourceFilePath: 'lib/routes/widgets_image_filtered_ex.dart',
-      //   title: 'ImageFiltered',
-      //   description: 'Adding blur or transformation to widgets.',
-      //   links: {'Youtube video': 'https://youtu.be/7Lftorq4i2o'},
-      // ),
+      MyRoute(
+        child: ImageFilteredExample(),
+        sourceFilePath: 'lib/routes/widgets_image_filtered_ex.dart',
+        title: 'ImageFiltered',
+        description: 'Adding blur or transformation to widgets.',
+        links: {'Youtube video': 'https://youtu.be/7Lftorq4i2o'},
+      ),
       MyRoute(
         child: StatefulWidgetsExample(),
         sourceFilePath: 'lib/routes/widgets_stateful_widgets_ex.dart',
