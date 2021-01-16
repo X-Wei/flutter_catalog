@@ -85,6 +85,7 @@ import 'routes/widgets_dropdown_button_ex.dart';
 import 'routes/widgets_gradient_ex.dart';
 import 'routes/widgets_icon_ex.dart';
 import 'routes/widgets_image_ex.dart';
+import 'routes/widgets_image_filtered_ex.dart';
 import 'routes/widgets_stateful_widgets_ex.dart';
 import 'routes/widgets_text_ex.dart';
 import 'routes/widgets_textfield_ex.dart';
@@ -212,6 +213,13 @@ const kMyAppRoutesBasic = <MyRouteGroup>[
           'Doc':
               'https://docs.flutter.io/flutter/material/DropdownButton-class.html'
         },
+      ),
+      MyRoute(
+        child: ImageFilteredExample(),
+        sourceFilePath: 'lib/routes/widgets_image_filtered_ex.dart',
+        title: 'ImageFiltered',
+        description: 'Adding blur or transformation to widgets.',
+        links: {'Youtube video': 'https://youtu.be/7Lftorq4i2o'},
       ),
       MyRoute(
         child: StatefulWidgetsExample(),
