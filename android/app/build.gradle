@@ -74,6 +74,9 @@ android {
             ndk {
               debugSymbolLevel 'FULL'
             }
+            // Cf. https://github.com/flutter/flutter/issues/65334#issuecomment-748523100
+            shrinkResources false
+            minifyEnabled false
         }
     }
 }
