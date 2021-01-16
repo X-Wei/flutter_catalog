@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import './my_app_routes.dart' show MyRouteGroup, kAllRoutes;
+import './my_app_routes.dart' show MyRouteGroup, kAboutRoute, kAllRoutes;
 import './my_route.dart';
 
 class MyAppSettings extends ChangeNotifier {
@@ -18,8 +18,9 @@ class MyAppSettings extends ChangeNotifier {
     // When first time opening the app: mark all routes as known -- we only
     // display a red dot for *new* routes.
     if (_pref.getStringList(_kKnownRoutesKey) == null) {
-      _pref.setStringList(
-          _kKnownRoutesKey, _kRoutenameToRouteMap.keys.toList());
+      final allrouteNames = _kRoutenameToRouteMap.keys.toList()
+        ..add(kAboutRoute.routeName);
+      _pref.setStringList(_kKnownRoutesKey, allrouteNames);
     }
   }
 
