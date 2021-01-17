@@ -12,6 +12,9 @@ publish_to: none
 dependencies:
   flutter:
     sdk: flutter
+  gradient_app_bar:
+    git:
+      url: https://github.com/TinyProgrammers/GradientAppBar.git
   animated_floatactionbuttons: 0.1.0
   animations: 1.1.2
   async: ^2.4.0
@@ -40,21 +43,19 @@ dependencies:
   fluttertoast: ^7.1.5
   google_fonts: 1.1.1
   google_sign_in: ^4.5.6
-  gradient_app_bar: 
-    git: # Note: the official pkg is not migrated to nullsafty, so we take the unmerged PR(https://github.com/joostlek/GradientAppBar/pull/20)
-      url: https://github.com/TinyProgrammers/GradientAppBar.git
   graphview: ^0.6.1
   heatmap_calendar: ^1.2.8
-  hive_flutter: 0.3.1
   hive: 1.4.4+1
+  hive_flutter: 0.3.1
   http: 0.12.2
+  image: ^2.1.19
   image_picker: ^0.6.7+14
   intl: ^0.16.1
   local_auth: ^0.6.3+4
   lottie: ^0.7.0+1
   package_info: ^0.4.3+2
-  path_provider: ^1.6.24
   path: 1.7.0
+  path_provider: ^1.6.24
   provider: 4.3.2+2
   scoped_model: ^1.1.0
   sembast: ^2.4.8
@@ -69,8 +70,6 @@ dependencies:
   widget_with_codeview: ^1.0.5
 
 dev_dependencies:
-  # flutter_test:
-  #   sdk: flutter
   build_runner: ^1.10.6
   hive_generator: ^0.8.2
   lint: ^1.5.1

@@ -71,6 +71,7 @@ import 'routes/persistence_hive_ex.dart';
 import 'routes/persistence_preference_ex.dart';
 import 'routes/persistence_sembast_ex.dart';
 import 'routes/persistence_sqlite_ex.dart';
+import 'routes/plugins_image_ex.dart';
 import 'routes/plugins_local_auth_ex.dart';
 import 'routes/plugins_markdown_ex.dart';
 import 'routes/plugins_webview_ex.dart';
@@ -818,6 +819,16 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
         title: 'Local auth',
         description: 'Authenticate with biometrics(fingerprint).',
         links: {},
+      ),
+      MyRoute(
+        child: ImagePluginExample(),
+        sourceFilePath: 'lib/routes/plugins_image_ex.dart',
+        title: 'Image manipulation',
+        links: {
+          'Pub.dev': 'https://pub.dev/packages/image',
+          'Full list of examples':
+              'https://github.com/brendan-duncan/image/wiki/Examples',
+        },
       ),
     ],
   ),
