@@ -31,7 +31,7 @@ class _DemoPageState extends State<_DemoPage> {
 
   List<String> _getRandomStrings() {
     return <String>[
-      for (final wordPair in english_words.generateWordPairs().take(30))
+      for (final wordPair in english_words.generateWordPairs().take(20))
         wordPair.asPascalCase
     ];
   }
@@ -50,23 +50,25 @@ class _DemoPageState extends State<_DemoPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: _buildFabColumn(context),
-      body: ListView(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.all(4),
-        children: [
-          const Text(
-              'This is a simple page showing a list of random words, and has 3 '
-              'buttons: add one / remove one / refresh. \n\n'
-              'Feature discovery will go through and introduce them.'),
-          RaisedButton.icon(
-            icon: const Icon(Icons.play_arrow),
-            onPressed: _showDiscovery,
-            label: const Text('Start feature discovery'),
-          ),
-          const Divider(),
-          for (final str in _strsToShow)
-            Card(child: ListTile(title: Text(str))),
-          _buildRefreshBtn(context),
-        ],
+        child: Column(
+          children: [
+            const Text(
+                'This is a simple page showing a list of random words, and has 3 '
+                'buttons: add one / remove one / refresh. \n\n'
+                'Feature discovery will go through and introduce them.'),
+            RaisedButton.icon(
+              icon: const Icon(Icons.play_arrow),
+              onPressed: _showDiscovery,
+              label: const Text('Start feature discovery'),
+            ),
+            const Divider(),
+            for (final str in _strsToShow)
+              Card(child: ListTile(title: Text(str))),
+            _buildRefreshBtn(context),
+          ],
+        ),
       ),
     );
   }
@@ -89,7 +91,8 @@ class _DemoPageState extends State<_DemoPage> {
         return true;
       },
       // !Use EnsureVisible to scroll to the button during Feature Discovery.
-      // ?? this doesn't seems to work ??
+      // !! **Note**: to make this work, the scrollable widget must be a
+      // !! SingleChildScrollView, ListView will NOT work!
       child: EnsureVisible(
         key: _ensureVisibleGlobalKey,
         child: RaisedButton.icon(
