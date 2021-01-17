@@ -37,7 +37,7 @@ class _MyMainAppState extends State<MyMainApp> {
       future: this._initAppFuture,
       builder:
           (BuildContext context, AsyncSnapshot<SharedPreferences> snapshot) {
-        print('snapshot=$snapshot');
+        // print('snapshot=$snapshot');
         if (!snapshot.hasData) {
           return const _MySplashScreen();
         }
