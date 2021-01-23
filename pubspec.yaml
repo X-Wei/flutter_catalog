@@ -24,6 +24,7 @@ dependencies:
   charts_flutter: 0.9.0
   cloud_firestore: 0.14.1+3
   convex_bottom_bar: ^2.6.0
+  day_night_switcher: ^0.1.1+1
   edge_detection: ^1.0.5
   english_words: 3.1.5
   extended_image: ^1.3.1-dev

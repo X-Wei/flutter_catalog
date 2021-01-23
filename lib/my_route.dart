@@ -1,4 +1,5 @@
 import 'package:backdrop/backdrop.dart';
+import 'package:day_night_switcher/day_night_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart' as url_launcher;
@@ -131,12 +132,14 @@ class MyRoute extends StatelessWidget {
         Consumer<MyAppSettings>(builder: (context, MyAppSettings settings, _) {
           return ListTile(
             onTap: () {},
-            leading: Icon(
-                settings.isDarkMode ? Icons.brightness_4 : Icons.brightness_7),
-            title: const Text('Dark mode'),
-            trailing: Switch(
-              onChanged: (bool value) => settings.setDarkMode(value),
-              value: settings.isDarkMode,
+            leading: DayNightSwitcherIcon(
+              isDarkModeEnabled: settings.isDarkMode,
+              onStateChanged: (_) {},
+            ),
+            title: Text('Dark mode: ${settings.isDarkMode ? 'on' : 'off'}'),
+            trailing: DayNightSwitcher(
+              isDarkModeEnabled: settings.isDarkMode,
+              onStateChanged: (bool value) => settings.setDarkMode(value),
             ),
           );
         }),
