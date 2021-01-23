@@ -58,6 +58,7 @@ dependencies:
   package_info: ^0.4.3+2
   path: 1.7.0
   path_provider: ^1.6.24
+  photo_view: ^0.10.3
   provider: 4.3.2+2
   scoped_model: ^1.1.0
   sembast: ^2.4.8

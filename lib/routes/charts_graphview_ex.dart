@@ -3,15 +3,33 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:graphview/GraphView.dart';
 
-class GraphViewExample extends StatefulWidget {
+class GraphViewExample extends StatelessWidget {
   const GraphViewExample({Key key}) : super(key: key);
 
   @override
-  _GraphViewExampleState createState() => _GraphViewExampleState();
+  Widget build(BuildContext context) {
+    return Center(
+      child: ElevatedButton.icon(
+        label: const Text('View'),
+        icon: const Icon(Icons.graphic_eq),
+        onPressed: () => Navigator.of(context)
+            .push(MaterialPageRoute(builder: (BuildContext context) {
+          return const GraphViewEx();
+        })),
+      ),
+    );
+  }
 }
 
-class _GraphViewExampleState extends State<GraphViewExample> {
-  int _iterations = 1000;
+class GraphViewEx extends StatefulWidget {
+  const GraphViewEx({Key key}) : super(key: key);
+
+  @override
+  _GraphViewExState createState() => _GraphViewExState();
+}
+
+class _GraphViewExState extends State<GraphViewEx> {
+  int _iterations = 300;
 
   @override
   Widget build(BuildContext context) {
@@ -44,23 +62,24 @@ class _GraphViewExampleState extends State<GraphViewExample> {
     );
 
     final algo = FruchtermanReingoldAlgorithm(iterations: this._iterations)
-      ..rand = Random(/*seed=*/ 0) // For deterministic rendering:
+      ..rand = Random(/*seed=*/ 0) // For deterministic rendering
       ..attractionK = 100;
 
     return Scaffold(
       body: InteractiveViewer(
         constrained: false,
-        scaleEnabled: false,
-        boundaryMargin: const EdgeInsets.all(100),
+        // scaleEnabled: false,
         minScale: 0.1,
         maxScale: 5,
+        boundaryMargin: const EdgeInsets.all(100),
         child: GraphView(
-            graph: graph,
-            // ! There are other algorithms for other graphs:
-            // * [SugiyamaAlgorithm] for layered graph
-            // * [BuchheimWalkerAlgorithm] for tree graph
-            // * [FruchtermanReingoldAlgorithm] for directed graph (this example)
-            algorithm: algo),
+          graph: graph,
+          // ! There are other algorithms for other graphs:
+          // * [SugiyamaAlgorithm] for layered graph
+          // * [BuchheimWalkerAlgorithm] for tree graph
+          // * [FruchtermanReingoldAlgorithm] for directed graph (this example)
+          algorithm: algo,
+        ),
       ),
       bottomNavigationBar: _buildControlWidgets(),
     );
@@ -68,14 +87,14 @@ class _GraphViewExampleState extends State<GraphViewExample> {
 
   Widget _buildControlWidgets() {
     return Container(
-      height: 200,
       color: Colors.grey[200],
       child: ListView(
+        shrinkWrap: true,
         children: [
           ListTile(title: Text('Iterations: $_iterations')),
           Slider(
             divisions: 100,
-            max: 10000,
+            max: 1000,
             onChanged: (double val) =>
                 setState(() => this._iterations = val.toInt()),
             value: this._iterations.toDouble(),
