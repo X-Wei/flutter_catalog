@@ -50,8 +50,10 @@ import 'routes/lists_listview_builder_ex.dart';
 import 'routes/lists_reorderable_ex.dart';
 import 'routes/lists_slidable_tile_ex.dart';
 import 'routes/lists_swipe_to_dismiss_ex.dart';
+import 'routes/multimedia_edge_detection_ex.dart';
 import 'routes/multimedia_extended_image_ex.dart';
 import 'routes/multimedia_image_picker_ex.dart';
+import 'routes/multimedia_image_plugin_ex.dart';
 import 'routes/multimedia_video_player_ex.dart';
 import 'routes/nav_bottom_navbar_ex.dart';
 import 'routes/nav_bottom_sheet_ex.dart';
@@ -71,9 +73,7 @@ import 'routes/persistence_hive_ex.dart';
 import 'routes/persistence_preference_ex.dart';
 import 'routes/persistence_sembast_ex.dart';
 import 'routes/persistence_sqlite_ex.dart';
-import 'routes/multimedia_edge_detection_ex.dart';
 import 'routes/plugins_feature_discovery_ex.dart';
-import 'routes/plugins_image_ex.dart';
 import 'routes/plugins_local_auth_ex.dart';
 import 'routes/plugins_markdown_ex.dart';
 import 'routes/plugins_webview_ex.dart';
@@ -673,6 +673,16 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
         links: {'Pub': 'https://pub.dev/packages/extended_image'},
       ),
       MyRoute(
+        child: ImagePluginExample(),
+        sourceFilePath: 'lib/routes/multimedia_image_plugin_ex.dart',
+        title: 'Image manipulation',
+        links: {
+          'pub.dev': 'https://pub.dev/packages/image',
+          'Full list of examples':
+              'https://github.com/brendan-duncan/image/wiki/Examples',
+        },
+      ),
+      MyRoute(
         child: VideoPlayerExample(),
         sourceFilePath: 'lib/routes/multimedia_video_player_ex.dart',
         title: 'Video Player',
@@ -828,16 +838,6 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
         title: 'Local auth',
         description: 'Authenticate with biometrics(fingerprint).',
         links: {},
-      ),
-      MyRoute(
-        child: ImagePluginExample(),
-        sourceFilePath: 'lib/routes/plugins_image_ex.dart',
-        title: 'Image manipulation',
-        links: {
-          'pub.dev': 'https://pub.dev/packages/image',
-          'Full list of examples':
-              'https://github.com/brendan-duncan/image/wiki/Examples',
-        },
       ),
       MyRoute(
         child: FeatureDiscoveryExample(),
