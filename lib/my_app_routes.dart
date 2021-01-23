@@ -71,6 +71,7 @@ import 'routes/persistence_hive_ex.dart';
 import 'routes/persistence_preference_ex.dart';
 import 'routes/persistence_sembast_ex.dart';
 import 'routes/persistence_sqlite_ex.dart';
+import 'routes/multimedia_edge_detection_ex.dart';
 import 'routes/plugins_feature_discovery_ex.dart';
 import 'routes/plugins_image_ex.dart';
 import 'routes/plugins_local_auth_ex.dart';
@@ -677,6 +678,13 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
         title: 'Video Player',
         description: 'Video/audio player plugin by the flutter team.',
         links: {'Pub': 'https://pub.dev/packages/video_player'},
+      ),
+      MyRoute(
+        child: EdgeDetectionExample(),
+        sourceFilePath: 'lib/routes/multimedia_edge_detection_ex.dart',
+        title: 'Edge Detection',
+        description: 'Plugin to scan documents.',
+        links: {'Pub': 'https://pub.dev/packages/edge_detection'},
       ),
     ],
   ),
