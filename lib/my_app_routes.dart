@@ -76,6 +76,7 @@ import 'routes/persistence_sqlite_ex.dart';
 import 'routes/plugins_feature_discovery_ex.dart';
 import 'routes/plugins_local_auth_ex.dart';
 import 'routes/plugins_markdown_ex.dart';
+import 'routes/plugins_shimmer_ex.dart';
 import 'routes/plugins_webview_ex.dart';
 import 'routes/state_bloc_ex.dart';
 import 'routes/state_bloc_lib_ex.dart';
@@ -837,16 +838,19 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
         sourceFilePath: 'lib/routes/plugins_local_auth_ex.dart',
         title: 'Local auth',
         description: 'Authenticate with biometrics(fingerprint).',
-        links: {},
       ),
       MyRoute(
         child: FeatureDiscoveryExample(),
         sourceFilePath: 'lib/routes/plugins_feature_discovery_ex.dart',
         title: 'Feature discovery',
         description: 'Introduce UI elements and features to users',
-        links: {
-          'pub.dev': 'https://pub.dev/packages/feature_discovery',
-        },
+        links: {'pub.dev': 'https://pub.dev/packages/feature_discovery'},
+      ),
+      MyRoute(
+        child: ShimmerExample(),
+        sourceFilePath: 'lib/routes/plugins_shimmer_ex.dart',
+        title: 'Shimmer effect',
+        links: {'pub.dev': 'https://pub.dev/packages/shimmer'},
       ),
     ],
   ),
