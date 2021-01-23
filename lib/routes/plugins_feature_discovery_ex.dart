@@ -8,8 +8,8 @@ class FeatureDiscoveryExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const FeatureDiscovery(
-      child: _DemoPage(),
+    return FeatureDiscovery(
+      child: const _DemoPage(),
     );
   }
 }
@@ -154,7 +154,6 @@ class _DemoPageState extends State<_DemoPage> {
   Future<void> _showDiscovery() async {
     // !Clear the "feature discovered" data, otherwise it'll show up only for
     // !the first time.
-    // ?? v0.13.0 doesn't seems to work, so I use version 0.12.0 instead.
     await FeatureDiscovery.clearPreferences(context,
         <String>{_kFeatureId1Add, _kFeatureId2Sub, _kFeatureId3Refresh});
     // ! Start feature discovery
