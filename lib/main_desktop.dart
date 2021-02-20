@@ -1,10 +1,15 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart'
     show debugDefaultTargetPlatformOverride;
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import './my_main_app.dart';
 
-void main() {
+Future<void> main() async {
   debugDefaultTargetPlatformOverride = TargetPlatform.fuchsia;
-  runApp(const MyMainApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  final sharedPref = await SharedPreferences.getInstance();
+  runApp(MyMainApp(sharedPref));
 }

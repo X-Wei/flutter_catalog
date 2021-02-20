@@ -1,70 +1,26 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import './constants.dart' show kAppIcon, kIsOnMobile;
 import './my_app_routes.dart' show kAppRoutingTable;
 import './my_app_settings.dart';
 import './themes.dart';
 
-class MyMainApp extends StatefulWidget {
-  const MyMainApp({Key key}) : super(key: key);
-
-  @override
-  _MyMainAppState createState() => _MyMainAppState();
-}
-
-class _MyMainAppState extends State<MyMainApp> {
-  Future<SharedPreferences> _initAppFuture;
-
-  @override
-  void initState() {
-    super.initState();
-    Future<SharedPreferences> initApp() async {
-      if (kIsOnMobile) {
-        await Firebase.initializeApp();
-      }
-      return SharedPreferences.getInstance();
-    }
-
-    this._initAppFuture = initApp();
-  }
+class MyMainApp extends StatelessWidget {
+  final SharedPreferences sharedPref;
+  const MyMainApp(this.sharedPref, {Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<SharedPreferences>(
-      future: this._initAppFuture,
-      builder:
-          (BuildContext context, AsyncSnapshot<SharedPreferences> snapshot) {
-        // print('snapshot=$snapshot');
-        if (!snapshot.hasData) {
-          return const _MySplashScreen();
-        }
-        return ChangeNotifierProvider<MyAppSettings>.value(
-          value: MyAppSettings(snapshot.data),
-          child: const _MyMainApp(),
-        );
-      },
+    return ChangeNotifierProvider<MyAppSettings>.value(
+      value: MyAppSettings(sharedPref),
+      child: const _MyMaterialApp(),
     );
   }
 }
 
-class _MySplashScreen extends StatelessWidget {
-  const _MySplashScreen({Key key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      constraints: const BoxConstraints.expand(),
-      color: Colors.white,
-      child: Center(child: kAppIcon),
-    );
-  }
-}
-
-class _MyMainApp extends StatelessWidget {
-  const _MyMainApp({Key key}) : super(key: key);
+class _MyMaterialApp extends StatelessWidget {
+  const _MyMaterialApp({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
