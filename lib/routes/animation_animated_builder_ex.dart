@@ -41,11 +41,11 @@ class _AnimatedBuilderExampleState extends State<AnimatedBuilderExample>
           },
           child: const FlutterLogo(size: 72.0),
         ),
-        RaisedButton(
+        ElevatedButton(
           onPressed: () => _controller.forward(),
           child: const Text('Forward animation'),
         ),
-        RaisedButton(
+        ElevatedButton(
           onPressed: () => _controller.reverse(),
           child: const Text('Reverse animation'),
         ),

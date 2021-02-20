@@ -64,17 +64,17 @@ class _LowLevelAnimationExampleState extends State<LowLevelAnimationExample>
           width: this._sizeAnimation.value,
           child: const FlutterLogo(),
         ),
-        RaisedButton(
+        ElevatedButton(
           onPressed:
               this._controller.isCompleted ? null : () => _controller.forward(),
           child: const Text('Forward animation'),
         ),
-        RaisedButton(
+        ElevatedButton(
           onPressed:
               this._controller.isDismissed ? null : () => _controller.reverse(),
           child: const Text('Reverse animation'),
         ),
-        RaisedButton(
+        ElevatedButton(
           onPressed: () {
             // Use addStatusListener() for notifications of changes to the
             // animation’s state, such as starting, stopping, or reversing

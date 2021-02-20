@@ -35,7 +35,7 @@ class _SharedPreferenceExampleState extends State<SharedPreferenceExample> {
           children: <Widget>[
             const Text('Number preference:'),
             Text('${this._numberPref}'),
-            RaisedButton(
+            ElevatedButton(
               onPressed: () => this._setNumberPref(this._numberPref + 1),
               child: const Text('Increment'),
             ),
@@ -45,7 +45,7 @@ class _SharedPreferenceExampleState extends State<SharedPreferenceExample> {
           children: <Widget>[
             const Text('Boolean preference:'),
             Text('${this._boolPref}'),
-            RaisedButton(
+            ElevatedButton(
               onPressed: () => this._setBooleanPref(!this._boolPref),
               child: const Text('Toggle'),
             ),

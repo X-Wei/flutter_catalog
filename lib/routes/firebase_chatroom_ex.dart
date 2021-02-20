@@ -75,7 +75,7 @@ class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
             'To send messages, you must log in '
             'in the "Firebase login" demo.'),
         actions: <Widget>[
-          FlatButton(
+          TextButton(
             onPressed: () => Navigator.of(ctx).pop(),
             child: const Text('OK'),
           )
@@ -198,7 +198,7 @@ class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
               'Go to the "Firebase login" example, and log in from there. '
               'You will then be able to send messages.'),
           actions: <Widget>[
-            FlatButton(
+            TextButton(
               onPressed: () => Navigator.of(ctx).pop(),
               child: const Text('OK'),
             )

@@ -241,19 +241,19 @@ class _FirebaseMLKitExampleState extends State<FirebaseMLKitExample> {
           scrollDirection: Axis.horizontal,
           child: ButtonBar(
             children: <Widget>[
-              RaisedButton(
+              ElevatedButton(
                 onPressed: this._imageLabelling,
                 child: const Text('Image Labelling'),
               ),
-              RaisedButton(
+              ElevatedButton(
                 onPressed: this._textOcr,
                 child: const Text('Text OCR'),
               ),
-              RaisedButton(
+              ElevatedButton(
                 onPressed: this._barcodeScan,
                 child: const Text('Barcode Scan'),
               ),
-              RaisedButton(
+              ElevatedButton(
                 onPressed: this._faceDetect,
                 child: const Text('Face Detection'),
               ),

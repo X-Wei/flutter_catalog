@@ -28,13 +28,13 @@ class ButtonsExample extends StatelessWidget {
             ButtonBar(
               alignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                RaisedButton(
+                ElevatedButton(
                   onPressed: _showSnack,
-                  child: const Text('RaisedButton'),
+                  child: const Text('ElevatedButton'),
                 ),
-                const RaisedButton(
+                const ElevatedButton(
                   onPressed: null,
-                  child: Text('disabled-RaisedButton'),
+                  child: Text('disabled-ElevatedButton'),
                 ),
               ],
             ),
@@ -49,13 +49,13 @@ class ButtonsExample extends StatelessWidget {
             ButtonBar(
               alignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                FlatButton(
+                TextButton(
                   onPressed: _showToast,
-                  child: const Text('FlatButton'),
+                  child: const Text('TextButton'),
                 ),
-                const FlatButton(
+                const TextButton(
                   onPressed: null,
-                  child: Text('disabled-FlatButton'),
+                  child: Text('disabled-TextButton'),
                 ),
               ],
             ),
@@ -71,11 +71,11 @@ class ButtonsExample extends StatelessWidget {
             ButtonBar(
               alignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                OutlineButton(
+                OutlinedButton(
                   onPressed: _showToast,
                   child: const Text('OutlineButton'),
                 ),
-                const OutlineButton(
+                const OutlinedButton(
                   onPressed: null,
                   child: Text('OutlineButton'),
                 )

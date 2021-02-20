@@ -38,7 +38,7 @@ class _AnimatedContainerExampleState extends State<AnimatedContainerExample> {
           curve: Curves.fastOutSlowIn,
           child: const FlutterLogo(),
         ),
-        RaisedButton.icon(
+        ElevatedButton.icon(
           icon: const Icon(Icons.update),
           label: const Text('Change random property'),
           onPressed: () => setState(

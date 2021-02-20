@@ -33,7 +33,7 @@ class PageSelectorExample extends StatelessWidget {
                   child: const TabBarView(children: kIcons),
                 ),
               ),
-              RaisedButton(
+              ElevatedButton(
                 onPressed: () {
                   final TabController controller =
                       DefaultTabController.of(context);

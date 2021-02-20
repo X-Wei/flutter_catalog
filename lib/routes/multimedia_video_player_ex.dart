@@ -66,7 +66,7 @@ class _VideoPlayerExampleState extends State<VideoPlayerExample> {
         Text(
             '${_videoController.value.position} / ${_videoController.value.duration}'),
         VideoProgressIndicator(_videoController, allowScrubbing: true),
-        RaisedButton.icon(
+        ElevatedButton.icon(
           onPressed: () => _videoController.value.isPlaying
               ? _videoController.pause()
               : _videoController.play(),
@@ -86,7 +86,7 @@ class _VideoPlayerExampleState extends State<VideoPlayerExample> {
         VideoProgressIndicator(_audioController, allowScrubbing: true),
         Text(
             '${_audioController.value.position} / ${_audioController.value.duration}'),
-        RaisedButton.icon(
+        ElevatedButton.icon(
           onPressed: () => _audioController.value.isPlaying
               ? _audioController.pause()
               : _audioController.play(),

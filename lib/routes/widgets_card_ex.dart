@@ -95,11 +95,11 @@ class CardExample extends StatelessWidget {
               ButtonBar(
                 alignment: MainAxisAlignment.end,
                 children: <Widget>[
-                  FlatButton(
+                  TextButton(
                     onPressed: () {},
                     child: const Text('SHARE'),
                   ),
-                  FlatButton(
+                  TextButton(
                     onPressed: () {},
                     child: const Text('EXPLORE'),
                   ),

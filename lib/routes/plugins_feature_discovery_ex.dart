@@ -58,7 +58,7 @@ class _DemoPageState extends State<_DemoPage> {
                 'This is a simple page showing a list of random words, and has 3 '
                 'buttons: add one / remove one / refresh. \n\n'
                 'Feature discovery will go through and introduce them.'),
-            RaisedButton.icon(
+            ElevatedButton.icon(
               icon: const Icon(Icons.play_arrow),
               onPressed: _showDiscovery,
               label: const Text('Start feature discovery'),
@@ -95,7 +95,7 @@ class _DemoPageState extends State<_DemoPage> {
       // !! SingleChildScrollView, ListView will NOT work!
       child: EnsureVisible(
         key: _ensureVisibleGlobalKey,
-        child: RaisedButton.icon(
+        child: ElevatedButton.icon(
           icon: const Icon(Icons.refresh),
           onPressed: () {
             setState(() => this._strsToShow = _getRandomStrings());

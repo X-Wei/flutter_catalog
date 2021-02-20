@@ -66,7 +66,7 @@ class _FirebaseLoginExampleState extends State<FirebaseLoginExample> {
             },
       child: const Text('Log in anonymously'),
     );
-    final signOutBtn = FlatButton(
+    final signOutBtn = TextButton(
       onPressed: this._busy
           ? null
           : () async {

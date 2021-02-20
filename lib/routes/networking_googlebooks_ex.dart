@@ -37,7 +37,7 @@ class _RestApiGoogleBooksExampleState extends State<RestApiGoogleBooksExample> {
         const SizedBox(height: 4),
         ButtonBar(
           children: <Widget>[
-            RaisedButton(
+            ElevatedButton(
               onPressed:
                   _pending ? null : () => this._search(_queryController.text),
               child: const Text('Search'),

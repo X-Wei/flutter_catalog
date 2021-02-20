@@ -36,7 +36,7 @@ class _WebViewExampleState extends State<WebViewExample> {
         ),
         ButtonBar(
           children: <Widget>[
-            FlatButton.icon(
+            TextButton.icon(
               icon: const Icon(Icons.open_in_new),
               label: const Text('Open in webview'),
               onPressed: () {

@@ -81,11 +81,11 @@ class _SlidableTileExampleState extends State<SlidableTileExample> {
                   actionType == SlideActionType.primary ? 'Archive' : 'Delete'),
               content: const Text('Confirm action?'),
               actions: <Widget>[
-                FlatButton(
+                TextButton(
                   onPressed: () => Navigator.of(context).pop(false),
                   child: const Text('Cancel'),
                 ),
-                FlatButton(
+                TextButton(
                   onPressed: () => Navigator.of(context).pop(true),
                   child: const Text('Ok'),
                 ),

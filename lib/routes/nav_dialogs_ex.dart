@@ -12,8 +12,8 @@ class DialogsExample extends StatelessWidget {
       padding: const EdgeInsets.all(32.0),
       children: <Widget>[
         ////// Alert dialog.
-        RaisedButton(
-          color: Colors.red,
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(primary: Colors.red),
           onPressed: () {
             // The function showDialog<T> returns Future<T>.
             // Use Navigator.pop() to return value (of type T).
@@ -25,11 +25,11 @@ class DialogsExample extends StatelessWidget {
                   'Sample alert',
                 ),
                 actions: <Widget>[
-                  FlatButton(
+                  TextButton(
                     onPressed: () => Navigator.pop(context, 'Cancel'),
                     child: const Text('Cancel'),
                   ),
-                  FlatButton(
+                  TextButton(
                     onPressed: () => Navigator.pop(context, 'OK'),
                     child: const Text('OK'),
                   ),
@@ -49,8 +49,8 @@ class DialogsExample extends StatelessWidget {
           child: const Text('Alert Dialog'),
         ),
         ////// Simple Dialog.
-        RaisedButton(
-          color: Colors.yellow,
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(primary: Colors.yellow),
           onPressed: () {
             showDialog<String>(
               context: context,
@@ -88,8 +88,8 @@ class DialogsExample extends StatelessWidget {
           child: const Text('Simple dialog'),
         ),
         ////// Time Picker Dialog.
-        RaisedButton(
-          color: Colors.green,
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(primary: Colors.green),
           onPressed: () {
             final DateTime now = DateTime.now();
             showTimePicker(
@@ -109,8 +109,8 @@ class DialogsExample extends StatelessWidget {
           child: const Text('Time Picker Dialog'),
         ),
         ////// Date Picker Dialog.
-        RaisedButton(
-          color: Colors.blue,
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(primary: Colors.blue),
           onPressed: () {
             showDatePicker(
               context: context,
@@ -131,8 +131,8 @@ class DialogsExample extends StatelessWidget {
           child: const Text('Date Picker Dialog'),
         ),
         ////// DateRange Picker Dialog.
-        RaisedButton(
-          color: Colors.purple,
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(primary: Colors.purple),
           onPressed: () {
             showDateRangePicker(
               context: context,
@@ -154,8 +154,8 @@ class DialogsExample extends StatelessWidget {
           child: const Text('Date Range Picker Dialog'),
         ),
         ////// Bottom Sheet Dialog.
-        RaisedButton(
-          color: Colors.orange,
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(primary: Colors.orange),
           onPressed: () {
             // Or: showModalBottomSheet(), with model bottom sheet, clicking
             // anywhere will dismiss the bottom sheet.
@@ -179,7 +179,7 @@ class DialogsExample extends StatelessWidget {
                     ),
                     ButtonBar(
                       children: <Widget>[
-                        FlatButton(
+                        TextButton(
                           onPressed: () => Navigator.pop(context),
                           child: const Text('OK'),
                         ),

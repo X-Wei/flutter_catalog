@@ -53,11 +53,11 @@ class _AnimatedWidgetExampleState extends State<AnimatedWidgetExample>
         _AnimatedLogo(
           animation: this._sizeAnimation,
         ),
-        RaisedButton(
+        ElevatedButton(
           onPressed: () => _controller.forward(),
           child: const Text('Forward animation'),
         ),
-        RaisedButton(
+        ElevatedButton(
           onPressed: () => _controller.reverse(),
           child: const Text('Reverse animation'),
         ),

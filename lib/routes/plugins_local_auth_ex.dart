@@ -53,7 +53,7 @@ class _LocalAuthExampleState extends State<LocalAuthExample> {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        FlatButton.icon(
+        TextButton.icon(
           icon: const Icon(Icons.fingerprint),
           label: const Text('Auth in to view hidden image'),
           onPressed: () async {

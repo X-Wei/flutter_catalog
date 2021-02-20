@@ -201,7 +201,7 @@ const kMyAppRoutesBasic = <MyRouteGroup>[
         sourceFilePath: 'lib/routes/widgets_buttons_ex.dart',
         title: 'Buttons',
         description:
-            'RaisedButton, FlatButton, OutlineButton, IconButton&Tooltips',
+            'ElevatedButton, TextButton, OutlineButton, IconButton&Tooltips',
         links: {
           'Doc':
               'https://docs.flutter.io/flutter/material/ButtonBar-class.html',

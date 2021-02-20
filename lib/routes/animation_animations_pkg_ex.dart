@@ -76,7 +76,7 @@ class AnimationsPackageExample extends StatelessWidget {
                 'https://pub.dev/documentation/animations/latest/animations/showModal.html'),
           ),
         ),
-        RaisedButton(
+        ElevatedButton(
           onPressed: () => showModal(
             configuration: const FadeScaleTransitionConfiguration(
               transitionDuration: Duration(milliseconds: 500),
@@ -191,13 +191,13 @@ class __SharedAxisExState extends State<_SharedAxisEx> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  FlatButton(
+                  TextButton(
                     onPressed: this._currentPageIdx == 0
                         ? null
                         : () => setState(() => this._currentPageIdx--),
                     child: const Text('BACK'),
                   ),
-                  RaisedButton(
+                  ElevatedButton(
                     onPressed: this._currentPageIdx == 2
                         ? null
                         : () => setState(() => this._currentPageIdx++),

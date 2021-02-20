@@ -31,17 +31,17 @@ class _ExtendedImageExampleState extends State<ExtendedImageExample> {
         scrollDirection: Axis.horizontal,
         child: ButtonBar(
           children: <Widget>[
-            RaisedButton.icon(
+            ElevatedButton.icon(
               label: const Text('Rotate right'),
               icon: const Icon(Icons.rotate_right),
               onPressed: () => _editorKey.currentState.rotate(),
             ),
-            RaisedButton.icon(
+            ElevatedButton.icon(
               label: const Text('Rotate left'),
               icon: const Icon(Icons.rotate_left),
               onPressed: () => _editorKey.currentState.rotate(right: false),
             ),
-            RaisedButton.icon(
+            ElevatedButton.icon(
               label: const Text('Reset'),
               icon: const Icon(Icons.restore),
               onPressed: () => _editorKey.currentState.reset(),

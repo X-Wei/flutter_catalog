@@ -23,7 +23,7 @@ class RoutesExample extends StatelessWidget {
         title: const Text('Page 1'),
       ),
       body: Center(
-        child: RaisedButton(
+        child: ElevatedButton(
           onPressed: () {
             // Navigator maintains a stack-like structure of pages. Jumping
             // between routes is by push/pop of Navigator.
@@ -50,7 +50,7 @@ class _PageTwo extends MaterialPageRoute<void> {
             // https://stackoverflow.com/a/51304732.
             body: Builder(
               builder: (BuildContext context) => Center(
-                child: RaisedButton(
+                child: ElevatedButton(
                   onPressed: () {
                     // Navigator.push<T> returns a Future<T>, which is the
                     // return value of the pushed route when it's popped.
