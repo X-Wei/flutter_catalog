@@ -76,12 +76,19 @@ dependencies:
 
 dev_dependencies:
   build_runner: ^1.10.6
+  flutter_native_splash: ^0.2.7
   hive_generator: ^0.8.2
   lint: ^1.5.1
 
 dependency_overrides:
   dartx: ^0.5.0
   # path: ^1.6.4 # cf. https://github.com/hivedb/hive/issues/285#issuecomment-633815558
+
+# Cf. https://pub.dev/packages/flutter_native_splash
+flutter_native_splash:
+  color: "#f6f6f6"
+  image: res/images/splash_screen.png
+
 
 # The following section is specific to Flutter.
 flutter:
