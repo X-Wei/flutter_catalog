@@ -3,6 +3,8 @@ include: package:lint/analysis_options.yaml
 analyzer:
   exclude: 
     - build/**
+  enable-experiment:
+    - non-nullable
 
 linter:
   rules:
