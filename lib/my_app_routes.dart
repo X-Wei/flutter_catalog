@@ -9,6 +9,7 @@ import 'my_route.dart';
 import 'routes/about.dart';
 import 'routes/animation_animated_builder_ex.dart';
 import 'routes/animation_animated_container_ex.dart';
+import 'routes/animation_animated_icons_ex.dart';
 import 'routes/animation_animated_widget_ex.dart';
 import 'routes/animation_animations_pkg_ex.dart';
 import 'routes/animation_hero_ex.dart';
@@ -579,6 +580,12 @@ const kMyAppRoutesBasic = <MyRouteGroup>[
           'Youtube video':
               'https://www.youtube.com/watch?v=9hltevOHQBw&index=5&list=PLOU2XLYxmsIL0pH0zWe_ZOHgGhZ7UasUE',
         },
+      ),
+      MyRoute(
+        child: AnimatedIconsExample(),
+        sourceFilePath: 'lib/routes/animation_animated_icons_ex.dart',
+        title: 'AnimatedIcon',
+        links: {'Youtube video': 'https://youtu.be/pJcbh8pbvJs'},
       ),
       MyRoute(
         child: AnimatedContainerExample(),
