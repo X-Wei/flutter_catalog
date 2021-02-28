@@ -84,6 +84,7 @@ import 'routes/state_bloc_lib_ex.dart';
 import 'routes/state_inherited_widget_ex.dart';
 import 'routes/state_provider_ex.dart';
 import 'routes/state_scoped_model_ex.dart';
+import 'routes/state_state_notifier_freezed_ex.dart';
 import 'routes/widgets_buttons_ex.dart';
 import 'routes/widgets_card_ex.dart';
 import 'routes/widgets_dropdown_button_ex.dart';
@@ -817,11 +818,23 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
         child: ProviderExample(),
         sourceFilePath: 'lib/routes/state_provider_ex.dart',
         title: 'Provider',
-        description: 'Officially recommended.',
+        description: 'Officially recommended state management solution.',
         links: {
           'Flutter Europe talk': 'https://youtu.be/BulIREvHBWg',
           "I/O'19 talk": 'https://www.youtube.com/watch?v=d_m5csmrf7I',
+          'Flutter documentation ':
+              'https://flutter.dev/docs/development/data-and-backend/state-mgmt/simple',
           'pub.dev': 'https://pub.dev/packages/provider',
+        },
+      ),
+      MyRoute(
+        child: StateNotifierFreezedExample(),
+        sourceFilePath: 'lib/routes/state_state_notifier_freezed_ex.dart.dart',
+        title: 'StateNotifier and Freezed',
+        description: 'Better than Providier+ChangeNotifier.',
+        links: {
+          'Tutorial by Andrea Bizzotto':
+              'https://codewithandrea.com/videos/flutter-state-management-setstate-freezed-state-notifier-provider/'
         },
       ),
     ],
