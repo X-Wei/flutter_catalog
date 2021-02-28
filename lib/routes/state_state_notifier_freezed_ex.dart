@@ -20,7 +20,7 @@ class MyApiModel extends StateNotifier<MyApiState> {
     state = MyApiState.loading();
     await Future.delayed(const Duration(seconds: 1));
     if (n < 0) {
-      state = MyApiState.error('Error: the argument should be negative!');
+      state = MyApiState.error('Error: the argument should be positive!');
     } else {
       final randomNames = generateWordPairs()
           .take(n)
@@ -55,80 +55,81 @@ class __DemoPageState extends State<_DemoPage> {
   @override
   Widget build(BuildContext context) {
     final state = context.watch<MyApiState>();
-
-    return ListView(
-      padding: const EdgeInsets.all(8),
-      children: [
-        ExpansionTile(
-          leading: const Icon(Icons.info),
-          title: const Text('Note'),
-          children: [
-            const MarkdownBody(
-              data: 'In this example we show how to use StateNotifier and '
-                  'freezed state to build a simple app to genrate N random names '
-                  '(returns error when N<0). \n\n'
-                  'The data class `MyApiState` is generated using **freezed**.\n\n'
-                  'The `MyApiModel` is a `StateNotifier`, such that listeners will '
-                  'auto update when `model.state` changes.',
-            ),
-            ElevatedButton.icon(
-              icon: const Icon(Icons.code),
-              label: const Text('View freezed definition of MyApiState'),
-              onPressed: () => Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (ctx) => Scaffold(
-                    appBar: AppBar(title: const Text('data/my_api_state.dart')),
-                    body: const SourceCodeView(
-                        filePath: 'lib/routes/data/my_api_state.dart'),
+    return Scaffold(
+      appBar: AppBar(
+        leading: const Icon(Icons.api),
+        title: const Text('Random name generator'),
+      ),
+      body: ListView(
+        padding: const EdgeInsets.all(8),
+        children: [
+          ExpansionTile(
+            leading: const Icon(Icons.info),
+            title: const Text('Note'),
+            children: [
+              const MarkdownBody(
+                data: 'In this example we show how to use StateNotifier and '
+                    'freezed state to build a simple app to genrate N random names '
+                    '(returns error when N<0). \n\n'
+                    'The data class `MyApiState` is generated using **freezed**.\n\n'
+                    'The `MyApiModel` is a `StateNotifier`, such that listeners will '
+                    'auto update when `model.state` changes.',
+              ),
+              ElevatedButton.icon(
+                icon: const Icon(Icons.code),
+                label: const Text('View freezed definition of MyApiState'),
+                onPressed: () => Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (ctx) => Scaffold(
+                      appBar:
+                          AppBar(title: const Text('data/my_api_state.dart')),
+                      body: const SourceCodeView(
+                          filePath: 'lib/routes/data/my_api_state.dart'),
+                    ),
                   ),
                 ),
               ),
-            ),
-          ],
-        ),
-        const Divider(),
-        AppBar(
-          leading: const Icon(Icons.api),
-          title: const Text('Random name generator'),
-        ),
-        const Text('Choose how many names to generate:'),
-        Slider(
-          divisions: 10,
-          min: -5,
-          max: 5,
-          value: this._n.toDouble(),
-          onChanged: (val) => setState(() => this._n = val.toInt()),
-        ),
-        ElevatedButton.icon(
-          icon: const Icon(Icons.send),
-          label: Text('Genreate $_n random names'),
-          onPressed: () {
-            final model = context.read<MyApiModel>();
-            model.generateRandomNames(this._n);
-          },
-        ),
-        // ! With the sealed union by freezed, we can match on the possible
-        // ! states and show different UI.
-        state.when<Widget>(
-          success: (names) => ListView(
-            shrinkWrap: true,
-            physics: const ClampingScrollPhysics(),
-            children: [
-              for (final name in names)
-                ListTile(
-                  title: Text(name),
-                )
             ],
           ),
-          error: (errorMsg) => Text(
-            errorMsg,
-            style: const TextStyle(color: Colors.red),
+          const Divider(),
+          const Text('Choose how many names to generate:'),
+          Slider(
+            divisions: 10,
+            min: -5,
+            max: 5,
+            value: this._n.toDouble(),
+            onChanged: (val) => setState(() => this._n = val.toInt()),
           ),
-          loading: () =>
-              const Center(child: CircularProgressIndicator.adaptive()),
-        )
-        // TODO: add SourceCodeView for the freezed data class def.
-      ],
+          ElevatedButton.icon(
+            icon: const Icon(Icons.send),
+            label: Text('Genreate $_n random names'),
+            onPressed: () {
+              final model = context.read<MyApiModel>();
+              model.generateRandomNames(this._n);
+            },
+          ),
+          // ! With the sealed union by freezed, we can match on the possible
+          // ! states and show different UI.
+          state.when<Widget>(
+            success: (names) => ListView(
+              shrinkWrap: true,
+              physics: const ClampingScrollPhysics(),
+              children: [
+                for (final name in names)
+                  ListTile(
+                    title: Text(name),
+                  )
+              ],
+            ),
+            error: (errorMsg) => Text(
+              errorMsg,
+              style: const TextStyle(color: Colors.red),
+            ),
+            loading: () =>
+                const Center(child: CircularProgressIndicator.adaptive()),
+          ),
+        ],
+      ),
     );
   }
 }

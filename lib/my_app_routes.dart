@@ -83,6 +83,7 @@ import 'routes/state_bloc_ex.dart';
 import 'routes/state_bloc_lib_ex.dart';
 import 'routes/state_inherited_widget_ex.dart';
 import 'routes/state_provider_ex.dart';
+import 'routes/state_riverpod_freezed_ex.dart';
 import 'routes/state_scoped_model_ex.dart';
 import 'routes/state_state_notifier_freezed_ex.dart';
 import 'routes/widgets_buttons_ex.dart';
@@ -829,12 +830,22 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
       ),
       MyRoute(
         child: StateNotifierFreezedExample(),
-        sourceFilePath: 'lib/routes/state_state_notifier_freezed_ex.dart.dart',
-        title: 'StateNotifier and Freezed',
-        description: 'Better than Providier+ChangeNotifier.',
+        sourceFilePath: 'lib/routes/state_state_notifier_freezed_ex.dart',
+        title: 'StateNotifier+Freezed',
+        description: 'Better ChangeNotifier and better state data class.',
         links: {
           'Tutorial by Andrea Bizzotto':
               'https://codewithandrea.com/videos/flutter-state-management-setstate-freezed-state-notifier-provider/'
+        },
+      ),
+      MyRoute(
+        child: RiverpodFreezedExample(),
+        sourceFilePath: 'lib/routes/state_riverpod_freezed_ex.dart',
+        title: 'Riverpod+StateNotifier+Freezed',
+        description: 'Better than Provider+ChangeNotifier.',
+        links: {
+          'Tutorial by Resocoder':
+              'https://resocoder.com/2020/12/11/flutter-statenotifier-riverpod-tutorial-immutable-state-management/'
         },
       ),
     ],

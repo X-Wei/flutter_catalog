@@ -9,9 +9,9 @@ part 'my_api_state.freezed.dart';
 // 4. Declare the class as abstract and add `with _$ClassName`
 abstract class MyApiState with _$MyApiState {
   // 5. Create a `const factory` constructor for each valid state
-  factory MyApiState.success(List<String> data) = _Success;
-  factory MyApiState.error(String errorMsg) = _Error;
-  factory MyApiState.loading() = _Loading;
+  factory MyApiState.success(List<String> data) = SuccessState;
+  factory MyApiState.error(String errorMsg) = ErrorState;
+  factory MyApiState.loading() = LoadingState;
 }
 
 // ! To run code generation:

@@ -14,22 +14,22 @@ class _$MyApiStateTearOff {
   const _$MyApiStateTearOff();
 
 // ignore: unused_element
-  _Success success(List<String> data) {
-    return _Success(
+  SuccessState success(List<String> data) {
+    return SuccessState(
       data,
     );
   }
 
 // ignore: unused_element
-  _Error error(String errorMsg) {
-    return _Error(
+  ErrorState error(String errorMsg) {
+    return ErrorState(
       errorMsg,
     );
   }
 
 // ignore: unused_element
-  _Loading loading() {
-    return _Loading();
+  LoadingState loading() {
+    return LoadingState();
   }
 }
 
@@ -54,15 +54,15 @@ mixin _$MyApiState {
   });
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult success(_Success value),
-    @required TResult error(_Error value),
-    @required TResult loading(_Loading value),
+    @required TResult success(SuccessState value),
+    @required TResult error(ErrorState value),
+    @required TResult loading(LoadingState value),
   });
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
-    TResult success(_Success value),
-    TResult error(_Error value),
-    TResult loading(_Loading value),
+    TResult success(SuccessState value),
+    TResult error(ErrorState value),
+    TResult loading(LoadingState value),
     @required TResult orElse(),
   });
 }
@@ -84,34 +84,36 @@ class _$MyApiStateCopyWithImpl<$Res> implements $MyApiStateCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$SuccessCopyWith<$Res> {
-  factory _$SuccessCopyWith(_Success value, $Res Function(_Success) then) =
-      __$SuccessCopyWithImpl<$Res>;
+abstract class $SuccessStateCopyWith<$Res> {
+  factory $SuccessStateCopyWith(
+          SuccessState value, $Res Function(SuccessState) then) =
+      _$SuccessStateCopyWithImpl<$Res>;
   $Res call({List<String> data});
 }
 
 /// @nodoc
-class __$SuccessCopyWithImpl<$Res> extends _$MyApiStateCopyWithImpl<$Res>
-    implements _$SuccessCopyWith<$Res> {
-  __$SuccessCopyWithImpl(_Success _value, $Res Function(_Success) _then)
-      : super(_value, (v) => _then(v as _Success));
+class _$SuccessStateCopyWithImpl<$Res> extends _$MyApiStateCopyWithImpl<$Res>
+    implements $SuccessStateCopyWith<$Res> {
+  _$SuccessStateCopyWithImpl(
+      SuccessState _value, $Res Function(SuccessState) _then)
+      : super(_value, (v) => _then(v as SuccessState));
 
   @override
-  _Success get _value => super._value as _Success;
+  SuccessState get _value => super._value as SuccessState;
 
   @override
   $Res call({
     Object data = freezed,
   }) {
-    return _then(_Success(
+    return _then(SuccessState(
       data == freezed ? _value.data : data as List<String>,
     ));
   }
 }
 
 /// @nodoc
-class _$_Success implements _Success {
-  _$_Success(this.data) : assert(data != null);
+class _$SuccessState implements SuccessState {
+  _$SuccessState(this.data) : assert(data != null);
 
   @override
   final List<String> data;
@@ -124,7 +126,7 @@ class _$_Success implements _Success {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Success &&
+        (other is SuccessState &&
             (identical(other.data, data) ||
                 const DeepCollectionEquality().equals(other.data, data)));
   }
@@ -135,8 +137,8 @@ class _$_Success implements _Success {
 
   @JsonKey(ignore: true)
   @override
-  _$SuccessCopyWith<_Success> get copyWith =>
-      __$SuccessCopyWithImpl<_Success>(this, _$identity);
+  $SuccessStateCopyWith<SuccessState> get copyWith =>
+      _$SuccessStateCopyWithImpl<SuccessState>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -169,9 +171,9 @@ class _$_Success implements _Success {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult success(_Success value),
-    @required TResult error(_Error value),
-    @required TResult loading(_Loading value),
+    @required TResult success(SuccessState value),
+    @required TResult error(ErrorState value),
+    @required TResult loading(LoadingState value),
   }) {
     assert(success != null);
     assert(error != null);
@@ -182,9 +184,9 @@ class _$_Success implements _Success {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
-    TResult success(_Success value),
-    TResult error(_Error value),
-    TResult loading(_Loading value),
+    TResult success(SuccessState value),
+    TResult error(ErrorState value),
+    TResult loading(LoadingState value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -195,43 +197,44 @@ class _$_Success implements _Success {
   }
 }
 
-abstract class _Success implements MyApiState {
-  factory _Success(List<String> data) = _$_Success;
+abstract class SuccessState implements MyApiState {
+  factory SuccessState(List<String> data) = _$SuccessState;
 
   List<String> get data;
   @JsonKey(ignore: true)
-  _$SuccessCopyWith<_Success> get copyWith;
+  $SuccessStateCopyWith<SuccessState> get copyWith;
 }
 
 /// @nodoc
-abstract class _$ErrorCopyWith<$Res> {
-  factory _$ErrorCopyWith(_Error value, $Res Function(_Error) then) =
-      __$ErrorCopyWithImpl<$Res>;
+abstract class $ErrorStateCopyWith<$Res> {
+  factory $ErrorStateCopyWith(
+          ErrorState value, $Res Function(ErrorState) then) =
+      _$ErrorStateCopyWithImpl<$Res>;
   $Res call({String errorMsg});
 }
 
 /// @nodoc
-class __$ErrorCopyWithImpl<$Res> extends _$MyApiStateCopyWithImpl<$Res>
-    implements _$ErrorCopyWith<$Res> {
-  __$ErrorCopyWithImpl(_Error _value, $Res Function(_Error) _then)
-      : super(_value, (v) => _then(v as _Error));
+class _$ErrorStateCopyWithImpl<$Res> extends _$MyApiStateCopyWithImpl<$Res>
+    implements $ErrorStateCopyWith<$Res> {
+  _$ErrorStateCopyWithImpl(ErrorState _value, $Res Function(ErrorState) _then)
+      : super(_value, (v) => _then(v as ErrorState));
 
   @override
-  _Error get _value => super._value as _Error;
+  ErrorState get _value => super._value as ErrorState;
 
   @override
   $Res call({
     Object errorMsg = freezed,
   }) {
-    return _then(_Error(
+    return _then(ErrorState(
       errorMsg == freezed ? _value.errorMsg : errorMsg as String,
     ));
   }
 }
 
 /// @nodoc
-class _$_Error implements _Error {
-  _$_Error(this.errorMsg) : assert(errorMsg != null);
+class _$ErrorState implements ErrorState {
+  _$ErrorState(this.errorMsg) : assert(errorMsg != null);
 
   @override
   final String errorMsg;
@@ -244,7 +247,7 @@ class _$_Error implements _Error {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Error &&
+        (other is ErrorState &&
             (identical(other.errorMsg, errorMsg) ||
                 const DeepCollectionEquality()
                     .equals(other.errorMsg, errorMsg)));
@@ -256,8 +259,8 @@ class _$_Error implements _Error {
 
   @JsonKey(ignore: true)
   @override
-  _$ErrorCopyWith<_Error> get copyWith =>
-      __$ErrorCopyWithImpl<_Error>(this, _$identity);
+  $ErrorStateCopyWith<ErrorState> get copyWith =>
+      _$ErrorStateCopyWithImpl<ErrorState>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -290,9 +293,9 @@ class _$_Error implements _Error {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult success(_Success value),
-    @required TResult error(_Error value),
-    @required TResult loading(_Loading value),
+    @required TResult success(SuccessState value),
+    @required TResult error(ErrorState value),
+    @required TResult loading(LoadingState value),
   }) {
     assert(success != null);
     assert(error != null);
@@ -303,9 +306,9 @@ class _$_Error implements _Error {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
-    TResult success(_Success value),
-    TResult error(_Error value),
-    TResult loading(_Loading value),
+    TResult success(SuccessState value),
+    TResult error(ErrorState value),
+    TResult loading(LoadingState value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -316,33 +319,35 @@ class _$_Error implements _Error {
   }
 }
 
-abstract class _Error implements MyApiState {
-  factory _Error(String errorMsg) = _$_Error;
+abstract class ErrorState implements MyApiState {
+  factory ErrorState(String errorMsg) = _$ErrorState;
 
   String get errorMsg;
   @JsonKey(ignore: true)
-  _$ErrorCopyWith<_Error> get copyWith;
+  $ErrorStateCopyWith<ErrorState> get copyWith;
 }
 
 /// @nodoc
-abstract class _$LoadingCopyWith<$Res> {
-  factory _$LoadingCopyWith(_Loading value, $Res Function(_Loading) then) =
-      __$LoadingCopyWithImpl<$Res>;
+abstract class $LoadingStateCopyWith<$Res> {
+  factory $LoadingStateCopyWith(
+          LoadingState value, $Res Function(LoadingState) then) =
+      _$LoadingStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$LoadingCopyWithImpl<$Res> extends _$MyApiStateCopyWithImpl<$Res>
-    implements _$LoadingCopyWith<$Res> {
-  __$LoadingCopyWithImpl(_Loading _value, $Res Function(_Loading) _then)
-      : super(_value, (v) => _then(v as _Loading));
+class _$LoadingStateCopyWithImpl<$Res> extends _$MyApiStateCopyWithImpl<$Res>
+    implements $LoadingStateCopyWith<$Res> {
+  _$LoadingStateCopyWithImpl(
+      LoadingState _value, $Res Function(LoadingState) _then)
+      : super(_value, (v) => _then(v as LoadingState));
 
   @override
-  _Loading get _value => super._value as _Loading;
+  LoadingState get _value => super._value as LoadingState;
 }
 
 /// @nodoc
-class _$_Loading implements _Loading {
-  _$_Loading();
+class _$LoadingState implements LoadingState {
+  _$LoadingState();
 
   @override
   String toString() {
@@ -351,7 +356,7 @@ class _$_Loading implements _Loading {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Loading);
+    return identical(this, other) || (other is LoadingState);
   }
 
   @override
@@ -388,9 +393,9 @@ class _$_Loading implements _Loading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult success(_Success value),
-    @required TResult error(_Error value),
-    @required TResult loading(_Loading value),
+    @required TResult success(SuccessState value),
+    @required TResult error(ErrorState value),
+    @required TResult loading(LoadingState value),
   }) {
     assert(success != null);
     assert(error != null);
@@ -401,9 +406,9 @@ class _$_Loading implements _Loading {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
-    TResult success(_Success value),
-    TResult error(_Error value),
-    TResult loading(_Loading value),
+    TResult success(SuccessState value),
+    TResult error(ErrorState value),
+    TResult loading(LoadingState value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -414,6 +419,6 @@ class _$_Loading implements _Loading {
   }
 }
 
-abstract class _Loading implements MyApiState {
-  factory _Loading() = _$_Loading;
+abstract class LoadingState implements MyApiState {
+  factory LoadingState() = _$LoadingState;
 }
