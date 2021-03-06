@@ -27,7 +27,6 @@ local.properties
 .packages
 .pub-cache/
 .pub/
-build/
 
 # Android related
 **/android/**/gradle-wrapper.jar
@@ -77,3 +76,8 @@ ios/Flutter/flutter_export_environment.sh
 .flutter-plugins-dependencies
 .fvm/flutter_sdk
 .firebase/*.cache
+# Ignore "build/" except for "build/web":
+!build
+build/*
+!build/web
+.last_build_id
