@@ -1,5 +1,6 @@
 import 'dart:io' show Platform;
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 // ignore_for_file: constant_identifier_names
@@ -18,4 +19,5 @@ const GITHUB_URL = 'https://github.com/X-Wei/flutter_catalog';
 const AUTHOR_SITE = 'http://x-wei.github.io';
 
 // Whether the app is running on mobile phones (Android/iOS)
-final kIsOnMobile = Platform.isAndroid || Platform.isIOS;
+// ! `Platform` is not available on web !
+final kIsOnMobile = kIsWeb || Platform.isAndroid || Platform.isIOS;
