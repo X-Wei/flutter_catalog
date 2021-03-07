@@ -6,7 +6,7 @@ import 'package:url_launcher/url_launcher.dart' as url_launcher;
 import 'package:widget_with_codeview/widget_with_codeview.dart';
 
 import './constants.dart'
-    show APP_NAME, APP_VERSION, GITHUB_URL, kAppIcon, kIsOnMobile;
+    show APP_NAME, APP_VERSION, GITHUB_URL, kAppIcon, kIsOnMobile, PlatformType;
 import './my_app_settings.dart';
 import './my_route_search_delegate.dart';
 import './routes/about.dart';
@@ -28,6 +28,7 @@ class MyRoute extends StatelessWidget {
   final Map<String, String> links;
   // Route name of a page.
   final String _routeName;
+  final Iterable<PlatformType> supportedPlatforms;
 
   const MyRoute({
     Key key,
@@ -37,6 +38,7 @@ class MyRoute extends StatelessWidget {
     this.description,
     this.links,
     String routeName,
+    this.supportedPlatforms = PlatformType.values,
   })  : _title = title,
         _routeName = routeName,
         super(key: key);

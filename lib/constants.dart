@@ -18,17 +18,16 @@ const GOOGLEPLAY_URL =
 const GITHUB_URL = 'https://github.com/X-Wei/flutter_catalog';
 const AUTHOR_SITE = 'http://x-wei.github.io';
 
-// Whether the app is running on mobile phones (Android/iOS)
-// ! `Platform` is not available on web !
-final kIsOnMobile = kIsWeb || Platform.isAndroid || Platform.isIOS;
-
-/// Adapted from https://www.flutterclutter.dev/flutter/tutorials/how-to-detect-what-platform-a-flutter-app-is-running-on/2020/127/
-
 final kPlatformType = getCurrentPlatformType();
+// Whether the app is running on mobile phones (Android/iOS)
+final kIsOnMobile =
+    {PlatformType.Android, PlatformType.iOS}.contains(kPlatformType);
 
+/// ! Adapted from https://www.flutterclutter.dev/flutter/tutorials/how-to-detect-what-platform-a-flutter-app-is-running-on/2020/127/
 enum PlatformType { Web, iOS, Android, MacOS, Fuchsia, Linux, Windows, Unknown }
 
 PlatformType getCurrentPlatformType() {
+  // ! `Platform` is not available on web, so we must check web first.
   if (kIsWeb) {
     return PlatformType.Web;
   }
