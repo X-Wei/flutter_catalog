@@ -18,3 +18,6 @@ linter:
     # We sometimes have print statements just for demo purposes.
     avoid_print: false
     use_string_buffers: false
+    avoid_redundant_argument_values: false
+    prefer_const_constructors: false
+    avoid_dynamic_calls: false

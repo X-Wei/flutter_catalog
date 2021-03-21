@@ -16,6 +16,7 @@ dependencies:
     git:
       url: https://github.com/TinyProgrammers/GradientAppBar.git
   animated_floatactionbuttons: 0.1.0
+  animated_text_kit: ^4.0.0
   animations: ^2.0.0
   async: ^2.5.0
   backdrop: ^0.5.3
@@ -23,7 +24,7 @@ dependencies:
   cached_network_image: ^2.5.0
   charts_flutter: 0.9.0
   cloud_firestore: ^0.16.0+1
-  cloud_firestore_web:
+  cloud_firestore_web: null
   convex_bottom_bar: ^2.7.1+2
   day_night_switcher: ^0.2.0
   edge_detection: ^1.0.5
@@ -31,15 +32,15 @@ dependencies:
   extended_image: 1.5.0-dev
   feature_discovery: ^0.13.0+2
   firebase_analytics: ^7.0.1
-  firebase_analytics_web:
+  firebase_analytics_web: null
   firebase_auth: ^0.20.1
-  firebase_auth_web:
+  firebase_auth_web: null
   firebase_core: ^0.7.0
-  firebase_core_web:
+  firebase_core_web: null
   firebase_database: ^6.0.0
   firebase_ml_vision: ^0.11.0
   firebase_storage: ^7.0.0
-  firebase_storage_web:
+  firebase_storage_web: null
   fl_chart: ^0.20.1
   flutter_bloc: ^6.1.3
   flutter_gallery_assets: ^0.2.6
