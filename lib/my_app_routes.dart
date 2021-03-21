@@ -10,6 +10,7 @@ import 'routes/about.dart';
 import 'routes/animation_animated_builder_ex.dart';
 import 'routes/animation_animated_container_ex.dart';
 import 'routes/animation_animated_icons_ex.dart';
+import 'routes/animation_animated_text_kit_ex.dart';
 import 'routes/animation_animated_widget_ex.dart';
 import 'routes/animation_animations_pkg_ex.dart';
 import 'routes/animation_hero_ex.dart';
@@ -662,6 +663,16 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
         links: {
           'Lottie': 'https://airbnb.design/lottie/',
           'Pub package': 'https://pub.dev/packages/lottie',
+        },
+      ),
+      MyRoute(
+        child: AnimatedTextKitExample(),
+        sourceFilePath: 'lib/routes/animation_animated_text_kit_ex.dart',
+        title: 'Animated Text Kit',
+        description:
+            'A flutter package with some cool and awesome text animations.',
+        links: {
+          'Pub package': 'https://pub.flutter-io.cn/packages/animated_text_kit'
         },
       ),
     ],
