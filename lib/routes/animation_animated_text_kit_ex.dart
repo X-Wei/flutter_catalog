@@ -30,48 +30,74 @@ class AnimatedTextKitExample extends StatelessWidget {
         Text('RotateAnimatedTextKit', style: titleTextStyle),
         SizedBox(
           height: 64,
-          child: RotateAnimatedTextKit(
+          child: AnimatedTextKit(
+            animatedTexts: [
+              for (final txt in _kTexts)
+                RotateAnimatedText(
+                  txt,
+                  textStyle: _kTextStyle,
+                  textAlign: TextAlign.start,
+                ),
+            ],
             onTap: () => print("Tap Event"),
-            text: _kTexts,
+            // text: _kTexts,
             repeatForever: true,
-            textStyle: _kTextStyle,
-            textAlign: TextAlign.start,
           ),
         ),
         Divider(),
         Text('TypewriterAnimatedTextKit', style: titleTextStyle),
-        TypewriterAnimatedTextKit(
-          text: _kTexts,
-          textStyle: _kTextStyle,
-          textAlign: TextAlign.start,
+        AnimatedTextKit(
+          animatedTexts: [
+            for (final txt in _kTexts)
+              TypewriterAnimatedText(
+                txt,
+                textStyle: _kTextStyle,
+                textAlign: TextAlign.start,
+              )
+          ],
         ),
         Divider(),
         Text('FadeAnimatedTextKit', style: titleTextStyle),
         SizedBox(
           height: 64,
-          child: FadeAnimatedTextKit(
+          child: AnimatedTextKit(
             onTap: () => print("Tap Event"),
-            text: _kTexts,
+            animatedTexts: [
+              for (final txt in _kTexts)
+                FadeAnimatedText(
+                  txt,
+                  textStyle: _kTextStyle,
+                )
+            ],
             repeatForever: true,
-            textStyle: _kTextStyle,
           ),
         ),
         Divider(),
         Text('TyperAnimatedTextKit', style: titleTextStyle),
-        TyperAnimatedTextKit(
+        AnimatedTextKit(
           onTap: () => print("Tap Event"),
-          text: _kTexts,
-          textStyle: _kTextStyle,
-          textAlign: TextAlign.start,
+          animatedTexts: [
+            for (final txt in _kTexts)
+              TyperAnimatedText(
+                txt,
+                textStyle: _kTextStyle,
+                textAlign: TextAlign.start,
+              )
+          ],
         ),
         Divider(),
         Text('WavyAnimatedTextKit', style: titleTextStyle),
         SizedBox(
           height: 128,
-          child: WavyAnimatedTextKit(
-            textStyle: _kTextStyle,
-            text: _kTexts,
-            textAlign: TextAlign.center,
+          child: AnimatedTextKit(
+            animatedTexts: [
+              for (final txt in _kTexts)
+                WavyAnimatedText(
+                  txt,
+                  textStyle: _kTextStyle,
+                  textAlign: TextAlign.center,
+                )
+            ],
             isRepeatingAnimation: true,
           ),
         ),
@@ -80,10 +106,15 @@ class AnimatedTextKitExample extends StatelessWidget {
         SizedBox(
           height: 64,
           width: 100,
-          child: ScaleAnimatedTextKit(
-            text: _kTexts,
-            textStyle: _kTextStyle,
-            textAlign: TextAlign.center,
+          child: AnimatedTextKit(
+            animatedTexts: [
+              for (final txt in _kTexts)
+                ScaleAnimatedText(
+                  txt,
+                  textStyle: _kTextStyle,
+                  textAlign: TextAlign.center,
+                )
+            ],
             isRepeatingAnimation: true,
           ),
         ),
