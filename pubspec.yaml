@@ -16,21 +16,23 @@ dependencies:
     git:
       url: https://github.com/TinyProgrammers/GradientAppBar.git
   animated_floatactionbuttons: 0.1.0
-  animated_text_kit: ^4.0.0
+  animated_text_kit: ^4.2.1
   animations: ^2.0.0
-  async: ^2.5.0
-  backdrop: ^0.5.3
-  badges: ^1.2.0
-  cached_network_image: ^2.5.0
-  charts_flutter: 0.9.0
+  async: ^2.7.0
+  backdrop: ^0.6.1
+  badges: ^2.0.1
+  cached_network_image: ^2.5.1
+  charts_flutter: ^0.10.0
   cloud_firestore: ^0.16.0+1
   cloud_firestore_web: null
-  convex_bottom_bar: ^2.7.1+2
+  convex_bottom_bar: ^3.0.0
   day_night_switcher: ^0.2.0
-  edge_detection: ^1.0.5
+  edge_detection: ^1.0.6
   english_words: 3.1.5
+  # cf. https://github.com/fluttercandies/extended_image/issues/309
   extended_image: 1.5.0-dev
   feature_discovery: ^0.13.0+2
+  ffi: ^1.1.1
   firebase_analytics: ^7.0.1
   firebase_analytics_web: null
   firebase_auth: ^0.20.1
@@ -38,24 +40,24 @@ dependencies:
   firebase_core: ^0.7.0
   firebase_core_web: null
   firebase_database: ^6.0.0
-  firebase_ml_vision: ^0.11.0
+  firebase_ml_vision: ^0.12.0+2
   firebase_storage: ^7.0.0
   firebase_storage_web: null
-  fl_chart: ^0.20.1
+  fl_chart: ^0.36.1
   flutter_bloc: ^6.1.3
   flutter_gallery_assets: ^0.2.6
   flutter_gradients: ^1.0.0+2
   flutter_markdown: ^0.5.2
-  flutter_radar_chart: ^0.1.6
+  flutter_radar_chart: ^0.2.0
   flutter_riverpod: ^0.12.4
-  flutter_slidable: ^0.5.7
+  flutter_slidable: ^0.6.0
   flutter_state_notifier: ^0.6.1
-  flutter_webview_plugin: 0.3.11
-  fluttertoast: 7.1.5
+  flutter_webview_plugin: ^0.4.0
+  fluttertoast: ^8.0.7
   freezed_annotation: ^0.12.0
   google_fonts: ^1.1.2
   google_sign_in: ^4.5.9
-  graphview: ^0.6.7
+  graphview: ^0.7.0
   heatmap_calendar: ^1.2.8
   hive: 1.4.4+1
   hive_flutter: 0.3.1
@@ -65,31 +67,31 @@ dependencies:
   intl: ^0.16.1
   local_auth: ^0.6.3+4
   lottie: ^0.7.0+1
-  package_info: ^0.4.3+2
-  path: 1.7.0
-  path_provider: ^1.6.24
-  photo_view: ^0.10.3
+  package_info: ^2.0.2
+  path: ^1.8.0
+  path_provider: ^1.6.28
+  photo_view: ^0.11.1
   provider: ^4.3.3
   scoped_model: ^1.1.0
-  sembast: ^2.4.8
+  sembast: ^3.0.3
   shared_preferences: ^0.5.12+4
-  shimmer: ^1.1.2
-  sqflite: ^1.3.2+1
+  shimmer: ^2.0.0
+  sqflite: ^2.0.0+3
   state_notifier: ^0.6.0
-  substring_highlight: 0.1.2
+  substring_highlight: ^1.0.33
   syntax_highlighter: 0.1.1
-  transparent_image: 1.0.0
+  transparent_image: ^2.0.0
   tuple: ^1.0.3
   url_launcher: ^5.7.10
   video_player: ^1.0.1
   widget_with_codeview: ^1.0.5
 
 dev_dependencies:
-  build_runner: ^1.10.6
-  flutter_native_splash: ^0.2.7
+  build_runner: ^1.11.5
+  flutter_native_splash: ^0.3.2
   freezed: ^0.12.7
   hive_generator: ^0.8.2
-  lint: ^1.5.1
+  lint: ^1.5.3
 
 dependency_overrides:
   dartx: ^0.5.0
