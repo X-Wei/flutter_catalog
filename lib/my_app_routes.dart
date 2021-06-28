@@ -44,6 +44,7 @@ import 'routes/layouts_fractionally_sizedbox_ex.dart';
 import 'routes/layouts_row_col_ex.dart';
 import 'routes/layouts_stack_ex.dart';
 import 'routes/layouts_wrap_ex.dart';
+import 'routes/lists_wheel_scroll_view_ex.dart';
 import 'routes/lists_datatable_ex.dart';
 import 'routes/lists_expansion_tile_ex.dart';
 import 'routes/lists_grid_list_ex.dart';
@@ -359,6 +360,16 @@ const kMyAppRoutesBasic = <MyRouteGroup>[
           'Youtube': 'https://youtu.be/3fB1mxOsqJE',
         },
       ),
+      MyRoute(
+        sourceFilePath: 'lib/routes/lists_wheel_scroll_view_ex.dart',
+         child: ListWheelViewExample(),
+        title: 'List Wheel Scroll View',
+        description: 'fancy list view',
+        links: {
+          'Doc': 'https://api.flutter.dev/flutter/widgets/ListWheelScrollView-class.html',
+          'Youtube':'https://youtu.be/dUhmWAz4C7Y'
+        },
+         ),
       MyRoute(
         child: SlidableTileExample(),
         sourceFilePath: 'lib/routes/lists_slidable_tile_ex.dart',
