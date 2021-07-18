@@ -15,7 +15,7 @@ class ButtonsExample extends StatelessWidget {
           const SnackBar(
             content: Text('Button tapped'),
             duration: Duration(milliseconds: 500),
-          ),
+          ), 
         );
     return ListView(
       padding: const EdgeInsets.all(16.0),
