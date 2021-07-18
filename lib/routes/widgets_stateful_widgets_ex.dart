@@ -11,7 +11,7 @@ class _StatefulWidgetsExampleState extends State<StatefulWidgetsExample> {
   bool _switchVal = true;
   bool _checkBoxVal = true;
   double _slider1Val = 0.5;
-  double _slider2Val = 50.0;
+  double _slider2Val = 50.0; 
   int _radioVal = 0;
   @override
   Widget build(BuildContext context) {
