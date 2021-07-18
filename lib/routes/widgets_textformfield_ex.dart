@@ -170,7 +170,7 @@ class _PasswordFieldState extends State<PasswordField> {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
+    return TextFormField( 
       key: widget.fieldKey,
       obscureText: _obscureText,
       maxLength: 8,
