@@ -26,7 +26,7 @@ class CardExample extends StatelessWidget {
           margin: const EdgeInsets.all(20.0),
           elevation: 0.0,
           child: SizedBox(
-            height: 100.0,
+            height: 100.0, 
             child: InkWell(
               splashColor: Colors.deepOrange,
               onTap: () {},
