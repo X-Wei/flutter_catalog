@@ -52,7 +52,7 @@ class _TextFieldExampleState extends State<TextFieldExample> {
       ),
       onChanged: (text) => setState(() {}),
     );
-  }
+  } 
 
   bool _showPassword = false;
 
