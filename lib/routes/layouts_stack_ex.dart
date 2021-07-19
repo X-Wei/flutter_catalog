@@ -12,7 +12,7 @@ class StackExample extends StatefulWidget {
 class _StackExampleState extends State<StackExample> {
   AlignmentDirectional _alignmentDirectional = AlignmentDirectional.topStart;
 
-  @override
+  @override 
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
