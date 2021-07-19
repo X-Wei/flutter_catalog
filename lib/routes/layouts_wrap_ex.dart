@@ -8,7 +8,7 @@ class WrapExample extends StatelessWidget {
     return Wrap(
       // Gap between adjacent chips.
       spacing: 8.0,
-      // Gap between lines.
+      // Gap between lines. 
       runSpacing: 4.0,
       children: [
         'Cauchy',
