@@ -105,23 +105,23 @@ class _MyBook {
   final String title;
   final String authors;
   final String description;
-  final String thumbnailUrl;
+  final String? thumbnailUrl;
 
   _MyBook(
       this.id, this.title, this.authors, this.description, this.thumbnailUrl);
 
   Widget get thumbnail => this.thumbnailUrl != null
-      ? Image.network(this.thumbnailUrl)
+      ? Image.network(this.thumbnailUrl!)
       : CircleAvatar(child: Text(this.title[0]));
 
   _MyBook.fromJson(Map<String, dynamic> jsonMap)
       : id = jsonMap['id'] as String,
         title = jsonMap['volumeInfo']['title'] as String,
         authors = (jsonMap['volumeInfo']['authors'] as List).join(', '),
-        description = jsonMap['volumeInfo']['description'] as String ??
+        description = jsonMap['volumeInfo']['description'] as String? ??
             '<missing description>',
         thumbnailUrl =
-            jsonMap['volumeInfo']['imageLinks']['smallThumbnail'] as String;
+            jsonMap['volumeInfo']['imageLinks']['smallThumbnail'] as String?;
 
   static List<_MyBook> parseFromJsonStr(String jsonStr) {
     final json = jsonDecode(jsonStr);

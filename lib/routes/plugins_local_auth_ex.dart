@@ -35,8 +35,10 @@ class _LocalAuthExampleState extends State<LocalAuthExample> {
     // **NOTE**: for local auth to work, tha MainActivity needs to extend from
     // FlutterFragmentActivity, cf. https://stackoverflow.com/a/56605771.
     try {
-      final authSuccess = await this._localAuth.authenticateWithBiometrics(
-          localizedReason: 'Auth in to see hidden image');
+      final authSuccess = await this._localAuth.authenticate(
+            biometricOnly: true,
+            localizedReason: 'Auth in to see hidden image',
+          );
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('authSuccess=$authSuccess')),
       );

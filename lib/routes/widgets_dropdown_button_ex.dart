@@ -35,7 +35,7 @@ class _DropdownButtonExampleState extends State<DropdownButtonExample> {
 
   String _btn1SelectedVal = 'One';
   String? _btn2SelectedVal;
-  String? _btn3SelectedVal;
+  late String _btn3SelectedVal;
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +74,7 @@ class _DropdownButtonExampleState extends State<DropdownButtonExample> {
               _btn3SelectedVal = newValue;
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
-                  content: Text(_btn3SelectedVal!),
+                  content: Text(_btn3SelectedVal),
                 ),
               );
             },

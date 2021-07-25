@@ -41,16 +41,14 @@ class _ImagePickerExampleState extends State<ImagePickerExample> {
   }
 
   Future<void> _pickImageFromGallery() async {
-    final PickedFile? pickedFile =
-        await _picker.getImage(source: ImageSource.gallery);
+    final pickedFile = await _picker.pickImage(source: ImageSource.gallery);
     if (pickedFile != null) {
       setState(() => this._imageFile = File(pickedFile.path));
     }
   }
 
   Future<void> _pickImageFromCamera() async {
-    final PickedFile? pickedFile =
-        await _picker.getImage(source: ImageSource.camera);
+    final pickedFile = await _picker.pickImage(source: ImageSource.camera);
     if (pickedFile != null) {
       setState(() => this._imageFile = File(pickedFile.path));
     }

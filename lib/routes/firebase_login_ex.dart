@@ -116,7 +116,7 @@ class _FirebaseLoginExampleState extends State<FirebaseLoginExample> {
     }
     final anonyUser = (await _auth.signInAnonymously()).user;
     await anonyUser!
-        .updateProfile(displayName: '${anonyUser.uid.substring(0, 5)}_Guest');
+        .updateDisplayName('${anonyUser.uid.substring(0, 5)}_Guest');
     await anonyUser.reload();
     // Have to re-call `currentUser()` to make `updateProfile` work.
     // Cf. https://stackoverflow.com/questions/50986191/flutter-firebase-auth-updateprofile-method-is-not-working.

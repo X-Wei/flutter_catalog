@@ -24,17 +24,17 @@ class MyAppSettings extends ChangeNotifier {
     }
   }
 
-  bool get isDarkMode => _pref?.getBool(_kDarkModePreferenceKey) ?? false;
+  bool get isDarkMode => _pref.getBool(_kDarkModePreferenceKey) ?? false;
 
   // ignore:avoid_positional_boolean_parameters
   void setDarkMode(bool val) {
-    _pref?.setBool(_kDarkModePreferenceKey, val);
+    _pref.setBool(_kDarkModePreferenceKey, val);
     notifyListeners();
   }
 
   /// The list of route names in search history.
   List<String> get searchHistory =>
-      _pref?.getStringList(_kSearchHistoryPreferenceKey) ?? [];
+      _pref.getStringList(_kSearchHistoryPreferenceKey) ?? [];
 
   void addSearchHistory(String routeName) {
     List<String> history = this.searchHistory;
@@ -43,11 +43,11 @@ class MyAppSettings extends ChangeNotifier {
     if (history.length >= 10) {
       history = history.take(10).toList();
     }
-    _pref?.setStringList(_kSearchHistoryPreferenceKey, history);
+    _pref.setStringList(_kSearchHistoryPreferenceKey, history);
   }
 
   List<String> get starredRoutenames =>
-      _pref?.getStringList(_kBookmarkedRoutesPreferenceKey) ?? [];
+      _pref.getStringList(_kBookmarkedRoutesPreferenceKey) ?? [];
 
   List<MyRoute> get starredRoutes => [
         for (String routename in this.starredRoutenames)
@@ -67,8 +67,7 @@ class MyAppSettings extends ChangeNotifier {
     );
   }
 
-  bool isStarred(String routeName) =>
-      starredRoutenames.contains(routeName) ?? false;
+  bool isStarred(String routeName) => starredRoutenames.contains(routeName);
 
   void toggleStarred(String routeName) {
     final staredRoutes = this.starredRoutenames;
@@ -78,7 +77,7 @@ class MyAppSettings extends ChangeNotifier {
       staredRoutes.add(routeName);
     }
     final dedupedStaredRoutes = Set<String>.from(staredRoutes).toList();
-    _pref?.setStringList(_kBookmarkedRoutesPreferenceKey, dedupedStaredRoutes);
+    _pref.setStringList(_kBookmarkedRoutesPreferenceKey, dedupedStaredRoutes);
     notifyListeners();
   }
 

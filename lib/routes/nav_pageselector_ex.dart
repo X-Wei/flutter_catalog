@@ -28,7 +28,7 @@ class PageSelectorExample extends StatelessWidget {
                 child: IconTheme(
                   data: IconThemeData(
                     size: 128.0,
-                    color: Theme.of(context).accentColor,
+                    color: Theme.of(context).colorScheme.secondary,
                   ),
                   child: const TabBarView(children: kIcons),
                 ),

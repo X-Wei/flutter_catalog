@@ -35,8 +35,8 @@ class _FirebaseMLKitExampleState extends State<FirebaseMLKitExample> {
             leading: const Icon(Icons.camera_alt),
             title: const Text('Take picture'),
             onTap: () async {
-              final PickedFile? pickedFile =
-                  await _picker.getImage(source: ImageSource.camera);
+              final XFile? pickedFile =
+                  await _picker.pickImage(source: ImageSource.camera);
               if (pickedFile != null) {
                 Navigator.pop(ctx, File(pickedFile.path));
               }
@@ -47,8 +47,8 @@ class _FirebaseMLKitExampleState extends State<FirebaseMLKitExample> {
             title: const Text('Pick from gallery'),
             onTap: () async {
               try {
-                final PickedFile? pickedFile =
-                    await _picker.getImage(source: ImageSource.gallery);
+                final XFile? pickedFile =
+                    await _picker.pickImage(source: ImageSource.gallery);
                 if (pickedFile != null) {
                   Navigator.pop(ctx, File(pickedFile.path));
                 }

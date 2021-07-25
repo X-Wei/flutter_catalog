@@ -90,7 +90,7 @@ class _MyHomePageState extends State<MyHomePage> {
             )
           : leadingWidget,
       title: Text(myRoute.title, style: routeTitleTextStyle),
-      trailing: trialing == null ? null : Icon(trialing),
+      trailing: Icon(trialing),
       subtitle: myRoute.description.isEmpty ? null : Text(myRoute.description),
       onTap: () {
         if (isNew) {

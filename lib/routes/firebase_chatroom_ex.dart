@@ -105,10 +105,11 @@ class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
   // Returns the UI of one message from a data snapshot.
   Widget _messageFromSnapshot(
       DataSnapshot snapshot, Animation<double> animation) {
-    final senderName = snapshot.value['senderName'] as String ?? '?? <unknown>';
-    final msgText = snapshot.value['text'] as String ?? '??';
-    final sentTime = snapshot.value['timestamp'] as int ?? 0;
-    final senderPhotoUrl = snapshot.value['senderPhotoUrl'] as String;
+    final senderName =
+        snapshot.value['senderName'] as String? ?? '?? <unknown>';
+    final msgText = snapshot.value['text'] as String? ?? '??';
+    final sentTime = snapshot.value['timestamp'] as int? ?? 0;
+    final senderPhotoUrl = snapshot.value['senderPhotoUrl'] as String?;
     final messageUI = Padding(
       padding: const EdgeInsets.symmetric(vertical: 10.0),
       child: Row(

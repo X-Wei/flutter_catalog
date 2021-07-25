@@ -11,7 +11,7 @@ class EdgeDetectionExample extends StatefulWidget {
 }
 
 class _EdgeDetectionExampleState extends State<EdgeDetectionExample> {
-  late String _scannedImgPath;
+  String? _scannedImgPath;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -23,9 +23,9 @@ class _EdgeDetectionExampleState extends State<EdgeDetectionExample> {
           onPressed: _doScan,
         ),
         if (_scannedImgPath != null) ...[
-          Text(_scannedImgPath),
+          Text(_scannedImgPath!),
           Expanded(
-            child: Image.file(File(_scannedImgPath)),
+            child: Image.file(File(_scannedImgPath!)),
           )
         ]
       ],
