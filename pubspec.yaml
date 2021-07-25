@@ -16,6 +16,7 @@ dependencies:
     git:
       url: https://github.com/TinyProgrammers/GradientAppBar.git
   animated_floatactionbuttons: 0.1.0
+  animated_radial_menu: ^0.0.1
   animated_text_kit: ^4.2.1
   animations: ^2.0.0
   async: ^2.7.0
