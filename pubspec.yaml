@@ -5,7 +5,7 @@ description: An app showcasing Flutter components, with side-by-side source code
 version: 2.6.3+74
 
 environment:
-  sdk: ">=2.10.0 <3.0.0"
+  sdk: ">=2.13.0 <3.0.0"
 
 publish_to: none
 

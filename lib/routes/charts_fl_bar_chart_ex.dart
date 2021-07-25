@@ -26,7 +26,7 @@ class _FlBarChartExampleState extends State<FlBarChartExample> {
           x: entry.key.toInt(),
           barRods: [
             BarChartRodData(y: entry.value, colors: [Colors.blue]),
-            BarChartRodData(y: _data2[entry.key], colors: [Colors.red]),
+            BarChartRodData(y: _data2[entry.key]!, colors: [Colors.red]),
           ],
         ),
     ];

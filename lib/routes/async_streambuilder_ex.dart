@@ -33,7 +33,7 @@ class StreamBuilderExampleState extends State<StreamBuilderExample> {
           if (snapshot.hasData) {
             if (snapshot.data != this._previousStreamValue) {
               print('Latest snapshot from stream: ${snapshot.data}');
-              this._previousStreamValue = snapshot.data;
+              this._previousStreamValue = snapshot.data!;
               if (!_paused) {
                 this._timerValue++;
               }

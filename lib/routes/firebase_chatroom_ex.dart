@@ -19,8 +19,8 @@ class FirebaseChatroomExample extends StatefulWidget {
 }
 
 class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
-  firebase_auth.User _user;
-  DatabaseReference _firebaseMsgDbRef;
+  firebase_auth.User? _user;
+  late DatabaseReference _firebaseMsgDbRef;
 
   final TextEditingController _textController = TextEditingController();
   bool _isComposing = false;
@@ -49,7 +49,7 @@ class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
           scrollDirection: Axis.horizontal,
           child: Text(_user == null
               ? 'Chatting'
-              : 'Chatting as "${_user.displayName}"'),
+              : 'Chatting as "${_user!.displayName}"'),
         ),
       ),
       body: Center(
@@ -91,7 +91,7 @@ class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
         child: FirebaseAnimatedList(
           defaultChild: const Center(child: CircularProgressIndicator()),
           query: _firebaseMsgDbRef,
-          sort: (a, b) => b.key.compareTo(a.key),
+          sort: (a, b) => b.key!.compareTo(a.key!),
           padding: const EdgeInsets.all(8.0),
           reverse: true,
           itemBuilder: (BuildContext ctx, DataSnapshot snapshot,
@@ -214,9 +214,9 @@ class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
     });
     // Send message to firebase realtime database.
     _firebaseMsgDbRef.push().set({
-      'senderId': this._user.uid,
-      'senderName': this._user.displayName,
-      'senderPhotoUrl': this._user.photoURL,
+      'senderId': this._user!.uid,
+      'senderName': this._user!.displayName,
+      'senderPhotoUrl': this._user!.photoURL,
       'text': text,
       'timestamp': DateTime.now().millisecondsSinceEpoch,
     });

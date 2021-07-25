@@ -20,7 +20,7 @@ class FirebaseVoteExample extends StatefulWidget {
 
 class _FirebaseVoteExampleState extends State<FirebaseVoteExample> {
   // We use SharedPreferences to keep track of which languages are voted.
-  SharedPreferences _preferences;
+  late SharedPreferences _preferences;
   static const kVotedPreferenceKeyPrefx = 'AlreadyVotedFor_';
 
   @override
@@ -43,7 +43,7 @@ class _FirebaseVoteExampleState extends State<FirebaseVoteExample> {
           if (!snapshot.hasData) {
             return const LinearProgressIndicator();
           } else {
-            final List<_LangaugeVotingRecord> records = snapshot.data.docs
+            final List<_LangaugeVotingRecord> records = snapshot.data!.docs
                 .map((snapshot) => _LangaugeVotingRecord.fromSnapshot(snapshot))
                 .toList()
                   ..sort((record1, record2) => record2.votes - record1.votes);
@@ -154,7 +154,7 @@ class _LangaugeVotingRecord {
         votes = map['votes'] as int;
 
   _LangaugeVotingRecord.fromSnapshot(DocumentSnapshot<JsonMap> snapshot)
-      : this.fromMap(snapshot.data(),
+      : this.fromMap(snapshot.data()!,
             firestoreDocReference: snapshot.reference);
 
   @override

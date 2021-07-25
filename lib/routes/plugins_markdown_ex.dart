@@ -57,7 +57,8 @@ class MarkdownExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Future<void> _onTapLink(String text, String href, String title) async {
+    Future<void> _onTapLink(String text, String? href, String title) async {
+      if (href == null) return;
       if (await canLaunch(href)) {
         launch(href);
       } else {

@@ -58,7 +58,7 @@ class _ConvexAppExampleState extends State<ConvexAppExample> {
     final dropdown = DropdownButton<TabStyle>(
       value: _tabStyle,
       onChanged: (newStyle) {
-        setState(() => _tabStyle = newStyle);
+        if (newStyle != null) setState(() => _tabStyle = newStyle);
       },
       items: [
         for (final style in TabStyle.values)

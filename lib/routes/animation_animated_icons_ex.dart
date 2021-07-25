@@ -57,7 +57,7 @@ class _AnimIconDemoBox extends StatefulWidget {
 // ! Add SingleTickerProviderStateMixin to use animation controllers.
 class _AnimIconDemoBoxState extends State<_AnimIconDemoBox>
     with SingleTickerProviderStateMixin {
-  AnimationController _animationController;
+  late AnimationController _animationController;
 
   @override
   void initState() {

@@ -18,10 +18,10 @@ class _DataTableExampleState extends State<DataTableExample> {
         header: const Text('Nutrition'),
         rowsPerPage: _rowsPerPage,
         availableRowsPerPage: const <int>[5, 10, 20],
-        onRowsPerPageChanged: (int value) {
-          setState(() {
-            _rowsPerPage = value;
-          });
+        onRowsPerPageChanged: (int? value) {
+          if (value != null) {
+            setState(() => _rowsPerPage = value);
+          }
         },
         columns: kTableColumns,
         source: DessertDataSource(),
@@ -107,14 +107,15 @@ class DessertDataSource extends DataTableSource {
   ];
 
   @override
-  DataRow getRow(int index) {
+  DataRow? getRow(int index) {
     assert(index >= 0);
     if (index >= _desserts.length) return null;
     final Dessert dessert = _desserts[index];
     return DataRow.byIndex(
         index: index,
         selected: dessert.selected,
-        onSelectChanged: (bool value) {
+        onSelectChanged: (bool? value) {
+          if (value == null) return;
           if (dessert.selected != value) {
             _selectedCount += value ? 1 : -1;
             assert(_selectedCount >= 0);

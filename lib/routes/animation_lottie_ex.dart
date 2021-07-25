@@ -31,7 +31,7 @@ class _LottieCustom extends StatefulWidget {
 
 class __LottieCustomState extends State<_LottieCustom>
     with TickerProviderStateMixin {
-  AnimationController _controller;
+  late AnimationController _controller;
 
   @override
   void initState() {

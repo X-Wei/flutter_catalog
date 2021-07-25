@@ -10,7 +10,7 @@ class WebViewExample extends StatefulWidget {
 }
 
 class _WebViewExampleState extends State<WebViewExample> {
-  TextEditingController _controller;
+  late TextEditingController _controller;
 
   @override
   void initState() {

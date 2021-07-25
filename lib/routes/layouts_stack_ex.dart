@@ -50,7 +50,7 @@ class _StackExampleState extends State<StackExample> {
             title: const Text('alignmentDirectional:'),
             trailing: DropdownButton<AlignmentDirectional>(
               value: _alignmentDirectional,
-              onChanged: (AlignmentDirectional newVal) {
+              onChanged: (AlignmentDirectional? newVal) {
                 if (newVal != null) {
                   setState(() => this._alignmentDirectional = newVal);
                 }

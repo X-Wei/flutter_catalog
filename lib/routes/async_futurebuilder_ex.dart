@@ -37,7 +37,7 @@ class FutureBuilderExampleState extends State<FutureBuilderExample> {
                 // This shouldn't happen in our case, but good to handle errors.
                 return const Text('Error has happened in the future!');
               } else {
-                return Image.memory(snapshot.data.buffer.asUint8List());
+                return Image.memory(snapshot.data!.buffer.asUint8List());
               }
             },
           ),

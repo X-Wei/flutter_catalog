@@ -43,7 +43,7 @@ class _FlLineChartExampleState extends State<FlLineChartExample> {
           isCurved: _isCurved,
           dotData: FlDotData(show: _showDot),
           belowBarData:
-              BarAreaData(show: _showBelowArea, colors: [Colors.blue[200]]),
+              BarAreaData(show: _showBelowArea, colors: [Colors.blue[200]!]),
         ),
         LineChartBarData(
           spots: spots2,
@@ -52,7 +52,7 @@ class _FlLineChartExampleState extends State<FlLineChartExample> {
           isCurved: _isCurved,
           dotData: FlDotData(show: _showDot),
           belowBarData:
-              BarAreaData(show: _showBelowArea, colors: [Colors.red[200]]),
+              BarAreaData(show: _showBelowArea, colors: [Colors.red[200]!]),
         ),
       ],
       // ! Behavior when touching the chart:

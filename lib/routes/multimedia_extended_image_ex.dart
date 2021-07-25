@@ -34,17 +34,17 @@ class _ExtendedImageExampleState extends State<ExtendedImageExample> {
             ElevatedButton.icon(
               label: const Text('Rotate right'),
               icon: const Icon(Icons.rotate_right),
-              onPressed: () => _editorKey.currentState.rotate(),
+              onPressed: () => _editorKey.currentState?.rotate(),
             ),
             ElevatedButton.icon(
               label: const Text('Rotate left'),
               icon: const Icon(Icons.rotate_left),
-              onPressed: () => _editorKey.currentState.rotate(right: false),
+              onPressed: () => _editorKey.currentState?.rotate(right: false),
             ),
             ElevatedButton.icon(
               label: const Text('Reset'),
               icon: const Icon(Icons.restore),
-              onPressed: () => _editorKey.currentState.reset(),
+              onPressed: () => _editorKey.currentState?.reset(),
             ),
           ],
         ),

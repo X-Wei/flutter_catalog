@@ -11,7 +11,7 @@ class EdgeDetectionExample extends StatefulWidget {
 }
 
 class _EdgeDetectionExampleState extends State<EdgeDetectionExample> {
-  String _scannedImgPath;
+  late String _scannedImgPath;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -38,6 +38,8 @@ class _EdgeDetectionExampleState extends State<EdgeDetectionExample> {
     /// !Unfortunately we cannot customize the behavior like loading image from
     /// !gallery or changing the saved image path.
     final imgPath = await EdgeDetection.detectEdge;
-    setState(() => _scannedImgPath = imgPath);
+    if (imgPath != null) {
+      setState(() => _scannedImgPath = imgPath);
+    }
   }
 }

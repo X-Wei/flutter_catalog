@@ -36,7 +36,7 @@ class HeatmapCalendarExample extends StatelessWidget {
           squareSize: 18,
           textOpacity: 0.3,
           labelTextColor: Colors.blueGrey,
-          dayTextColor: Colors.blue[500],
+          dayTextColor: Colors.blue[500]!,
           // Week day and month labels can be overriden:
           // weekDaysLabels: const ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
           // monthsLabels: const ['', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',

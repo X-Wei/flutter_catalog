@@ -12,7 +12,7 @@ class LocalAuthExample extends StatefulWidget {
 
 class _LocalAuthExampleState extends State<LocalAuthExample> {
   bool _authSuccess = false;
-  LocalAuthentication _localAuth;
+  late LocalAuthentication _localAuth;
 
   @override
   void initState() {

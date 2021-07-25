@@ -57,8 +57,8 @@ class _RowColExampleState extends State<RowColExample> {
                 Radio<bool>(
                     value: true,
                     groupValue: this._isRow,
-                    onChanged: (bool value) {
-                      setState(() => this._isRow = value);
+                    onChanged: (bool? value) {
+                      if (value != null) setState(() => this._isRow = value);
                     }),
                 const Text('Row'),
               ],
@@ -68,8 +68,8 @@ class _RowColExampleState extends State<RowColExample> {
                 Radio<bool>(
                     value: false,
                     groupValue: this._isRow,
-                    onChanged: (bool value) {
-                      setState(() => this._isRow = value);
+                    onChanged: (bool? value) {
+                      if (value != null) setState(() => this._isRow = value);
                     }),
                 const Text('Column'),
               ],
@@ -80,7 +80,7 @@ class _RowColExampleState extends State<RowColExample> {
           title: const Text('mainAxisSize:'),
           trailing: DropdownButton<MainAxisSize>(
             value: _mainAxisSize,
-            onChanged: (MainAxisSize newVal) {
+            onChanged: (MainAxisSize? newVal) {
               if (newVal != null) {
                 setState(() => this._mainAxisSize = newVal);
               }
@@ -98,7 +98,7 @@ class _RowColExampleState extends State<RowColExample> {
           title: const Text('mainAxisAlignment:'),
           trailing: DropdownButton<MainAxisAlignment>(
             value: _mainAxisAlignment,
-            onChanged: (MainAxisAlignment newVal) {
+            onChanged: (MainAxisAlignment? newVal) {
               if (newVal != null) {
                 setState(() => this._mainAxisAlignment = newVal);
               }
@@ -117,7 +117,7 @@ class _RowColExampleState extends State<RowColExample> {
           title: const Text('crossAxisAlignment:'),
           trailing: DropdownButton<CrossAxisAlignment>(
             value: _crossAxisAlignment,
-            onChanged: (CrossAxisAlignment newVal) {
+            onChanged: (CrossAxisAlignment? newVal) {
               if (newVal != null) {
                 setState(() => this._crossAxisAlignment = newVal);
               }

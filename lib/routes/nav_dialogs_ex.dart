@@ -95,7 +95,7 @@ class DialogsExample extends StatelessWidget {
             showTimePicker(
               context: context,
               initialTime: TimeOfDay(hour: now.hour, minute: now.minute),
-            ).then((TimeOfDay value) {
+            ).then((TimeOfDay? value) {
               if (value != null) {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
@@ -117,7 +117,7 @@ class DialogsExample extends StatelessWidget {
               initialDate: DateTime.now(),
               firstDate: DateTime(2018),
               lastDate: DateTime(2025),
-            ).then((DateTime value) {
+            ).then((DateTime? value) {
               if (value != null) {
                 DateTime _fromDate = DateTime.now();
                 _fromDate = value;
@@ -138,7 +138,7 @@ class DialogsExample extends StatelessWidget {
               context: context,
               firstDate: DateTime(2018),
               lastDate: DateTime(2025),
-            ).then((DateTimeRange value) {
+            ).then((DateTimeRange? value) {
               if (value != null) {
                 DateTimeRange _fromRange =
                     DateTimeRange(start: DateTime.now(), end: DateTime.now());

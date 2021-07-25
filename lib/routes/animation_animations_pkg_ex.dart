@@ -232,8 +232,9 @@ class __SharedAxisExState extends State<_SharedAxisEx> {
                         .substring('SharedAxisTransitionType.'.length)),
                   )
               ],
-              onChanged: (SharedAxisTransitionType val) =>
-                  setState(() => this._transitionType = val),
+              onChanged: (SharedAxisTransitionType? val) {
+                if (val != null) setState(() => this._transitionType = val);
+              },
             ),
           ),
         ],

@@ -12,7 +12,7 @@ class RestApiGoogleBooksExample extends StatefulWidget {
 }
 
 class _RestApiGoogleBooksExampleState extends State<RestApiGoogleBooksExample> {
-  TextEditingController _queryController;
+  late TextEditingController _queryController;
   List<_MyBook> _books = [];
   bool _pending = false;
 
@@ -75,7 +75,7 @@ class _RestApiGoogleBooksExampleState extends State<RestApiGoogleBooksExample> {
       queryParameters: {'q': query},
     );
     print('uri=$uri'); // https://www.googleapis.com/books/v1/volumes?q=$query
-    final http.Response response = await http.get(uri.toString());
+    final http.Response response = await http.get(uri);
     if (response.statusCode == 200) {
       return _MyBook.parseFromJsonStr(response.body);
     } else {

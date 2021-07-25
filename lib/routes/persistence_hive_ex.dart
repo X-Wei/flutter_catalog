@@ -45,7 +45,7 @@ class _HiveExampleState extends State<HiveExample> {
   static const kHiveFolder = 'hive';
   static const kHiveBoxName = 'todosBox';
 
-  Future<bool> _initDbFuture;
+  late Future<bool> _initDbFuture;
 
   @override
   void initState() {

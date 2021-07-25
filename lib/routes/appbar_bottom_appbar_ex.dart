@@ -26,7 +26,7 @@ class _BottomAppbarExampleState extends State<BottomAppbarExample> {
             title: const Text('FloatingActionButton position:'),
             trailing: DropdownButton<FloatingActionButtonLocation>(
               value: this._fabLocation,
-              onChanged: (FloatingActionButtonLocation newVal) {
+              onChanged: (FloatingActionButtonLocation? newVal) {
                 if (newVal != null) {
                   setState(() => this._fabLocation = newVal);
                 }

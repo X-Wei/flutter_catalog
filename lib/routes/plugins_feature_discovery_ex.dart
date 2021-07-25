@@ -26,8 +26,8 @@ class _DemoPageState extends State<_DemoPage> {
   static const _kFeatureId2Sub = 'feature2_substract';
   static const _kFeatureId3Refresh = 'feature3_refresh';
 
-  List<String> _strsToShow;
-  GlobalKey<EnsureVisibleState> _ensureVisibleGlobalKey;
+  late List<String> _strsToShow;
+  late GlobalKey<EnsureVisibleState> _ensureVisibleGlobalKey;
 
   List<String> _getRandomStrings() {
     return <String>[
@@ -43,7 +43,7 @@ class _DemoPageState extends State<_DemoPage> {
     this._strsToShow = _getRandomStrings();
     // !Show feature discovery right after the page is ready.
     SchedulerBinding.instance
-        .addPostFrameCallback((Duration duration) => _showDiscovery());
+        ?.addPostFrameCallback((Duration duration) => _showDiscovery());
   }
 
   @override
@@ -82,8 +82,8 @@ class _DemoPageState extends State<_DemoPage> {
           'Tap the refresh button to re-generate the random text list.'),
       backgroundColor: Theme.of(context).primaryColor,
       onOpen: () async {
-        WidgetsBinding.instance.addPostFrameCallback((Duration duration) {
-          _ensureVisibleGlobalKey.currentState.ensureVisible(
+        WidgetsBinding.instance?.addPostFrameCallback((Duration duration) {
+          _ensureVisibleGlobalKey.currentState?.ensureVisible(
             preciseAlignment: 0.5,
             duration: const Duration(milliseconds: 400),
           );

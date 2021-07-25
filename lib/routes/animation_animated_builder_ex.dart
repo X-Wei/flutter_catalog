@@ -10,7 +10,7 @@ class AnimatedBuilderExample extends StatefulWidget {
 
 class _AnimatedBuilderExampleState extends State<AnimatedBuilderExample>
     with SingleTickerProviderStateMixin {
-  AnimationController _controller;
+  late AnimationController _controller;
 
   @override
   void initState() {

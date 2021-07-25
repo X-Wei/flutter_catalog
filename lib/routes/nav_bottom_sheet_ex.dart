@@ -24,7 +24,7 @@ class _BottomSheetExampleState extends State<BottomSheetExample> {
               onPressed: () => this
                   ._scaffoldKey
                   .currentState
-                  .showBottomSheet((ctx) => _buildBottomSheet(ctx)),
+                  ?.showBottomSheet((ctx) => _buildBottomSheet(ctx)),
               child: const Text('show bottom sheet'),
             ),
             ElevatedButton(

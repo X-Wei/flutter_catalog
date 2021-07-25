@@ -9,7 +9,7 @@ class BottomTabbarExample extends StatefulWidget {
 
 class _BottomTabbarExampleState extends State<BottomTabbarExample>
     with SingleTickerProviderStateMixin {
-  TabController _tabController;
+  late TabController _tabController;
 
   static const _kTabPages = <Widget>[
     Center(child: Icon(Icons.cloud, size: 64.0, color: Colors.teal)),

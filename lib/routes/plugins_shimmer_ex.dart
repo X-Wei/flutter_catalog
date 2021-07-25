@@ -11,8 +11,8 @@ class ShimmerExample extends StatelessWidget {
       children: [
         Shimmer.fromColors(
           // enabled: true,
-          baseColor: Colors.grey[400],
-          highlightColor: Colors.grey[100],
+          baseColor: Colors.grey[400]!,
+          highlightColor: Colors.grey[100]!,
           child: const ListTile(
             title: Text('Slide to unlock'),
             trailing: Icon(Icons.keyboard_arrow_right),
@@ -21,8 +21,8 @@ class ShimmerExample extends StatelessWidget {
         const Divider(),
         Shimmer.fromColors(
           // enabled: true,
-          baseColor: Colors.grey[400],
-          highlightColor: Colors.grey[100],
+          baseColor: Colors.grey[400]!,
+          highlightColor: Colors.grey[100]!,
           child: ListView.separated(
             shrinkWrap: true,
             physics: const ClampingScrollPhysics(),

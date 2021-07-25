@@ -11,7 +11,7 @@ class ImagePickerExample extends StatefulWidget {
 }
 
 class _ImagePickerExampleState extends State<ImagePickerExample> {
-  File _imageFile;
+  File? _imageFile;
   final _picker = ImagePicker();
 
   @override
@@ -35,20 +35,24 @@ class _ImagePickerExampleState extends State<ImagePickerExample> {
         if (this._imageFile == null)
           const Placeholder()
         else
-          Image.file(this._imageFile),
+          Image.file(this._imageFile!),
       ],
     );
   }
 
   Future<void> _pickImageFromGallery() async {
-    final PickedFile pickedFile =
+    final PickedFile? pickedFile =
         await _picker.getImage(source: ImageSource.gallery);
-    setState(() => this._imageFile = File(pickedFile.path));
+    if (pickedFile != null) {
+      setState(() => this._imageFile = File(pickedFile.path));
+    }
   }
 
   Future<void> _pickImageFromCamera() async {
-    final PickedFile pickedFile =
+    final PickedFile? pickedFile =
         await _picker.getImage(source: ImageSource.camera);
-    setState(() => this._imageFile = File(pickedFile.path));
+    if (pickedFile != null) {
+      setState(() => this._imageFile = File(pickedFile.path));
+    }
   }
 }

@@ -29,7 +29,7 @@ class MyRouteSearchDelegate extends SearchDelegate<String> {
     return IconButton(
       tooltip: 'Back',
       icon: const Icon(Icons.arrow_back),
-      onPressed: () => this.close(context, null),
+      onPressed: () => this.close(context, ''),
     );
   }
 

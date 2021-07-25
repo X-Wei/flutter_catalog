@@ -16,7 +16,7 @@ class RoutesExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    debugPrint('RouteName=${ModalRoute.of(context).settings.name}');
+    debugPrint('RouteName=${ModalRoute.of(context)?.settings.name}');
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,

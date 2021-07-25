@@ -9,8 +9,8 @@ class VideoPlayerExample extends StatefulWidget {
 }
 
 class _VideoPlayerExampleState extends State<VideoPlayerExample> {
-  VideoPlayerController _videoController;
-  VideoPlayerController _audioController;
+  late VideoPlayerController _videoController;
+  late VideoPlayerController _audioController;
 
   @override
   void initState() {
@@ -35,14 +35,14 @@ class _VideoPlayerExampleState extends State<VideoPlayerExample> {
       children: <Widget>[
         const ListTile(title: Text('Play online video:')),
         Center(
-          child: _videoController.value.initialized
+          child: _videoController.value.isInitialized
               ? _buildVideoPlayerUI()
               : const CircularProgressIndicator(),
         ),
         const Divider(),
         const ListTile(title: Text('Play online audio:')),
         Center(
-          child: _audioController.value.initialized
+          child: _audioController.value.isInitialized
               ? _buildAudioPlayerUI()
               : const LinearProgressIndicator(),
         ),

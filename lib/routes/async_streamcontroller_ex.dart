@@ -67,7 +67,7 @@ class _StreamControllerExampleState extends State<StreamControllerExample> {
                   title: Text('no data'),
                 );
               }
-              final Widget widgetToRender = snapshot.data;
+              final Widget widgetToRender = snapshot.data!;
               return widgetToRender;
             },
           ),

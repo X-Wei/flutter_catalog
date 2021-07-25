@@ -115,7 +115,7 @@ class _CounterAndButton extends StatelessWidget {
               // Way 2 to get state up the tree: wrap a Consumer widget.
               Consumer<_MyCounterState>(
                 builder: (BuildContext context, _MyCounterState value,
-                    Widget child) {
+                    Widget? child) {
                   return IconButton(
                     icon: const Icon(Icons.remove),
                     onPressed: () => value.decrementCounter(),
