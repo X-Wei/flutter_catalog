@@ -12,10 +12,10 @@ publish_to: none
 dependencies:
   flutter:
     sdk: flutter
-  gradient_app_bar:
+  new_gradient_app_bar:
     git:
-      url: https://github.com/TinyProgrammers/GradientAppBar.git
-  animated_floatactionbuttons: 0.1.0
+      url: https://github.com/GUIKAR741/NewGradientAppBar.git
+  # animated_floatactionbuttons: 0.1.0
   animated_radial_menu: ^0.0.1
   animated_text_kit: ^4.2.1
   animations: ^2.0.0
@@ -47,7 +47,7 @@ dependencies:
   fl_chart: ^0.36.1
   flutter_bloc: ^6.1.3
   flutter_gallery_assets: ^0.2.6
-  flutter_gradients: ^1.0.0+2
+  # flutter_gradients: ^1.0.0+2
   flutter_markdown: ^0.5.2
   flutter_radar_chart: ^0.2.0
   flutter_riverpod: ^0.12.4
@@ -59,7 +59,11 @@ dependencies:
   google_fonts: ^1.1.2
   google_sign_in: ^4.5.9
   graphview: ^0.7.0
-  heatmap_calendar: ^1.2.8
+  # TODO: use canonical package when the nullsafety PR (https://github.com/pedrohff/flutter_heatmap_calendar/pull/11) is in.
+  # heatmap_calendar: ^1.2.8
+  heatmap_calendar: 
+    git: 
+      url: https://github.com/CouldI/flutter_heatmap_calendar.git
   hive: 1.4.4+1
   hive_flutter: 0.3.1
   http: 0.12.2
@@ -80,7 +84,7 @@ dependencies:
   sqflite: ^2.0.0+3
   state_notifier: ^0.6.0
   substring_highlight: ^1.0.33
-  syntax_highlighter: 0.1.1
+  # syntax_highlighter: 0.1.1
   transparent_image: ^2.0.0
   tuple: ^1.0.3
   url_launcher: ^5.7.10
@@ -94,8 +98,8 @@ dev_dependencies:
   hive_generator: ^0.8.2
   lint: ^1.5.3
 
-dependency_overrides:
-  dartx: ^0.5.0
+# dependency_overrides:
+#   dartx: ^0.7.1
   # path: ^1.6.4 # cf. https://github.com/hivedb/hive/issues/285#issuecomment-633815558
 
 # Cf. https://pub.dev/packages/flutter_native_splash
