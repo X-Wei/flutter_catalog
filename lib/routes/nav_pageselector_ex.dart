@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class PageSelectorExample extends StatelessWidget {
-  const PageSelectorExample({Key key}) : super(key: key);
+  const PageSelectorExample({Key? key}) : super(key: key);
 
   static const kIcons = <Icon>[
     Icon(Icons.event),

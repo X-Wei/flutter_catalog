@@ -4,7 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class BlocLibExample extends StatelessWidget {
-  const BlocLibExample({Key key}) : super(key: key);
+  const BlocLibExample({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class _MyEvent {
   final bool isIncrement;
   final DateTime timestamp;
 
-  _MyEvent({@required this.isIncrement, DateTime timestamp})
+  _MyEvent({required this.isIncrement, DateTime timestamp})
       : this.timestamp = timestamp ?? DateTime.now();
 }
 

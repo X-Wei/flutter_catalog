@@ -33,7 +33,7 @@ class TodoItem {
 }
 
 class SqliteExample extends StatefulWidget {
-  const SqliteExample({Key key}) : super(key: key);
+  const SqliteExample({Key? key}) : super(key: key);
 
   @override
   _SqliteExampleState createState() => _SqliteExampleState();

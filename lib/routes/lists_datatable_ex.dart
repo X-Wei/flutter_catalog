@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 // Adapted from the data table demo in offical flutter gallery:
 // https://github.com/flutter/flutter/blob/master/examples/flutter_gallery/lib/demo/material/data_table_demo.dart
 class DataTableExample extends StatefulWidget {
-  const DataTableExample({Key key}) : super(key: key);
+  const DataTableExample({Key? key}) : super(key: key);
 
   @override
   _DataTableExampleState createState() => _DataTableExampleState();

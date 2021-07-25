@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class LowLevelAnimationExample extends StatefulWidget {
-  const LowLevelAnimationExample({Key key}) : super(key: key);
+  const LowLevelAnimationExample({Key? key}) : super(key: key);
 
   @override
   _LowLevelAnimationExampleState createState() =>

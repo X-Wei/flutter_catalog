@@ -19,25 +19,25 @@ class MyRoute extends StatelessWidget {
   // Actual content of the example.
   final Widget child;
   // Title shown in the route's appbar. By default just returns routeName.
-  final String _title;
+  final String? _title;
   // A short description of the route. If not null, will be shown as subtitle in
   // the home page list tile.
   final String description;
   // Returns a set of links {title:link} that are relative to the route. Can put
   // documention links or reference video/article links here.
   final Map<String, String> links;
-  // Route name of a page.
-  final String _routeName;
+  // Route name of a page, if missing, use ${child.runtimeType}.
+  final String? _routeName;
   final Iterable<PlatformType> supportedPlatforms;
 
   const MyRoute({
-    Key key,
-    @required this.sourceFilePath,
-    @required this.child,
-    String title,
-    this.description,
-    this.links,
-    String routeName,
+    Key? key,
+    required this.sourceFilePath,
+    required this.child,
+    String? title,
+    this.description = '',
+    this.links = const <String, String>{},
+    String? routeName,
     this.supportedPlatforms = PlatformType.values,
   })  : _title = title,
         _routeName = routeName,
@@ -99,7 +99,7 @@ class MyRoute extends StatelessWidget {
         ),
       if (this.routeName != Navigator.defaultRouteName)
         settings.starStatusOfRoute(this.routeName),
-      if (this.links?.isNotEmpty ?? false)
+      if (this.links.isNotEmpty)
         PopupMenuButton(
           itemBuilder: (context) {
             return <PopupMenuItem>[

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
 
 class FileReadWriteExample extends StatefulWidget {
-  const FileReadWriteExample({Key key}) : super(key: key);
+  const FileReadWriteExample({Key? key}) : super(key: key);
 
   @override
   _FileReadWriteExampleState createState() => _FileReadWriteExampleState();

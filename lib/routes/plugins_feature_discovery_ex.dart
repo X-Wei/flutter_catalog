@@ -4,7 +4,7 @@ import 'package:english_words/english_words.dart' as english_words;
 import 'package:flutter/scheduler.dart';
 
 class FeatureDiscoveryExample extends StatelessWidget {
-  const FeatureDiscoveryExample({Key key}) : super(key: key);
+  const FeatureDiscoveryExample({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class FeatureDiscoveryExample extends StatelessWidget {
 }
 
 class _DemoPage extends StatefulWidget {
-  const _DemoPage({Key key}) : super(key: key);
+  const _DemoPage({Key? key}) : super(key: key);
 
   @override
   _DemoPageState createState() => _DemoPageState();

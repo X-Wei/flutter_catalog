@@ -52,7 +52,7 @@ class MyAppSettings extends ChangeNotifier {
   List<MyRoute> get starredRoutes => [
         for (String routename in this.starredRoutenames)
           if (_kRoutenameToRouteMap[routename] != null)
-            _kRoutenameToRouteMap[routename]
+            _kRoutenameToRouteMap[routename]!
       ];
 
   // Returns a widget showing the star status of one demo route.
@@ -86,12 +86,12 @@ class MyAppSettings extends ChangeNotifier {
   // for newly added routes.
   static const _kKnownRoutesKey = 'KNOWN_ROUTES';
   bool isNewRoute(String routeName) =>
-      !_pref.getStringList(_kKnownRoutesKey).contains(routeName);
+      !(_pref.getStringList(_kKnownRoutesKey)?.contains(routeName) ?? false);
 
   void markRouteKnown(String routeName) {
     if (isNewRoute(routeName)) {
-      final knowRoutes = _pref.getStringList(_kKnownRoutesKey)..add(routeName);
-      _pref.setStringList(_kKnownRoutesKey, knowRoutes);
+      final knowRoutes = _pref.getStringList(_kKnownRoutesKey)?..add(routeName);
+      _pref.setStringList(_kKnownRoutesKey, knowRoutes ?? []);
       notifyListeners();
     }
   }

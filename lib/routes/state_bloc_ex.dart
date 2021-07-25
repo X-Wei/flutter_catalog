@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 class BlocExample extends StatelessWidget {
-  const BlocExample({Key key}) : super(key: key);
+  const BlocExample({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class _MyEvent {
   final bool isIncrement;
   final DateTime timestamp;
 
-  _MyEvent({@required this.isIncrement, DateTime timestamp})
+  _MyEvent({required this.isIncrement, DateTime timestamp})
       : this.timestamp = timestamp ?? DateTime.now();
 }
 
@@ -73,7 +73,7 @@ class MyBlocProvider extends InheritedWidget {
   @override
   final Widget child; // ignore: overridden_fields
 
-  const MyBlocProvider({Key key, @required this.bloc, this.child})
+  const MyBlocProvider({Key? key, required this.bloc, this.child})
       : super(key: key, child: child);
 
   static MyBlocProvider of(BuildContext context) {

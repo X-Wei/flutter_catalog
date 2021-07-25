@@ -9,7 +9,7 @@ const _kTextStyle = TextStyle(
 );
 
 class AnimatedTextKitExample extends StatelessWidget {
-  const AnimatedTextKitExample({Key key}) : super(key: key);
+  const AnimatedTextKitExample({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

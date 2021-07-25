@@ -14,7 +14,7 @@ import 'package:flutter/material.dart';
 // Adapted from the flutter firestore "babyname voter" codelab:
 // https://codelabs.developers.google.com/codelabs/flutter-firebase/#0
 class FirebaseMLKitExample extends StatefulWidget {
-  const FirebaseMLKitExample({Key key}) : super(key: key);
+  const FirebaseMLKitExample({Key? key}) : super(key: key);
 
   @override
   _FirebaseMLKitExampleState createState() => _FirebaseMLKitExampleState();

@@ -8,7 +8,7 @@ import './themes.dart';
 
 class MyMainApp extends StatelessWidget {
   final SharedPreferences sharedPref;
-  const MyMainApp(this.sharedPref, {Key key}) : super(key: key);
+  const MyMainApp(this.sharedPref, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class MyMainApp extends StatelessWidget {
 }
 
 class _MyMaterialApp extends StatelessWidget {
-  const _MyMaterialApp({Key key}) : super(key: key);
+  const _MyMaterialApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

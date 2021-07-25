@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 // Adapted from Eajy's flutter demo app:
 // https://github.com/Eajy/flutter_demo/blob/master/lib/route/homeDialogs.dart.
 class DialogsExample extends StatelessWidget {
-  const DialogsExample({Key key}) : super(key: key);
+  const DialogsExample({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

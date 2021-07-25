@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_radar_chart/flutter_radar_chart.dart';
 
 class RadarChartExample extends StatelessWidget {
-  const RadarChartExample({Key key}) : super(key: key);
+  const RadarChartExample({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

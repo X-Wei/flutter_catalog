@@ -5,7 +5,7 @@ import 'package:transparent_image/transparent_image.dart'
     show kTransparentImage;
 
 class ImageExample extends StatelessWidget {
-  const ImageExample({Key key}) : super(key: key);
+  const ImageExample({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

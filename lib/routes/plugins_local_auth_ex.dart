@@ -4,7 +4,7 @@ import 'package:transparent_image/transparent_image.dart'
     show kTransparentImage;
 
 class LocalAuthExample extends StatefulWidget {
-  const LocalAuthExample({Key key}) : super(key: key);
+  const LocalAuthExample({Key? key}) : super(key: key);
 
   @override
   _LocalAuthExampleState createState() => _LocalAuthExampleState();

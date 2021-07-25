@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class InheritedWidgetExample extends StatelessWidget {
-  const InheritedWidgetExample({Key key}) : super(key: key);
+  const InheritedWidgetExample({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class InheritedWidgetExample extends StatelessWidget {
 class MyInheritedWidget extends InheritedWidget {
   final _MyDemoAppState myState;
 
-  const MyInheritedWidget({Key key, Widget child, @required this.myState})
+  const MyInheritedWidget({Key? key, Widget child, required this.myState})
       : super(key: key, child: child);
 
   @override

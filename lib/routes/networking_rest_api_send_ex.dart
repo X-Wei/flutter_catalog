@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class RestApiSendExample extends StatefulWidget {
-  const RestApiSendExample({Key key}) : super(key: key);
+  const RestApiSendExample({Key? key}) : super(key: key);
 
   @override
   _RestApiSendExampleState createState() => _RestApiSendExampleState();

@@ -53,7 +53,7 @@ Enjoy!
 ''';
 
 class MarkdownExample extends StatelessWidget {
-  const MarkdownExample({Key key}) : super(key: key);
+  const MarkdownExample({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

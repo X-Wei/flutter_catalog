@@ -11,7 +11,7 @@ final kFirebaseAnalytics = FirebaseAnalytics();
 // firebase json file, and add configuration lines in the gradle files.
 // C.f. this commit: https://github.com/X-Wei/flutter_catalog/commit/48792cbc0de62fc47e0e9ba2cd3718117f4d73d1.
 class FirebaseLoginExample extends StatefulWidget {
-  const FirebaseLoginExample({Key key}) : super(key: key);
+  const FirebaseLoginExample({Key? key}) : super(key: key);
 
   @override
   _FirebaseLoginExampleState createState() => _FirebaseLoginExampleState();

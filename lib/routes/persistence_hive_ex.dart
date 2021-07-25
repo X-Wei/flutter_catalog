@@ -35,7 +35,7 @@ class TodoItem extends HiveObject {
 } */
 
 class HiveExample extends StatefulWidget {
-  const HiveExample({Key key}) : super(key: key);
+  const HiveExample({Key? key}) : super(key: key);
 
   @override
   _HiveExampleState createState() => _HiveExampleState();

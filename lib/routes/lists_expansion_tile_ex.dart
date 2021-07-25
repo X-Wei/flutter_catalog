@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ExpansionTileExample extends StatelessWidget {
-  const ExpansionTileExample({Key key}) : super(key: key);
+  const ExpansionTileExample({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class FractionallySizedBoxExample extends StatelessWidget {
-  const FractionallySizedBoxExample({Key key}) : super(key: key);
+  const FractionallySizedBoxExample({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

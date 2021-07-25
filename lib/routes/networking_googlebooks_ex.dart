@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class RestApiGoogleBooksExample extends StatefulWidget {
-  const RestApiGoogleBooksExample({Key key}) : super(key: key);
+  const RestApiGoogleBooksExample({Key? key}) : super(key: key);
 
   @override
   _RestApiGoogleBooksExampleState createState() =>

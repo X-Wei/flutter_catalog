@@ -10,7 +10,7 @@ const _kPages = <String, IconData>{
 };
 
 class ConvexAppExample extends StatefulWidget {
-  const ConvexAppExample({Key key}) : super(key: key);
+  const ConvexAppExample({Key? key}) : super(key: key);
 
   @override
   _ConvexAppExampleState createState() => _ConvexAppExampleState();

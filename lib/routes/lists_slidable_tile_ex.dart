@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
 class SlidableTileExample extends StatefulWidget {
-  const SlidableTileExample({Key key}) : super(key: key);
+  const SlidableTileExample({Key? key}) : super(key: key);
 
   @override
   _SlidableTileExampleState createState() => _SlidableTileExampleState();

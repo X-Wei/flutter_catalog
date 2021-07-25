@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 // Adapted from offical flutter gallery:
 // https://github.com/flutter/flutter/blob/master/examples/flutter_gallery/lib/demo/material/bottom_app_bar_demo.dart
 class SliverAppBarExample extends StatefulWidget {
-  const SliverAppBarExample({Key key}) : super(key: key);
+  const SliverAppBarExample({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _SliverAppBarExampleState();

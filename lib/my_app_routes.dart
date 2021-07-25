@@ -133,7 +133,7 @@ const kAboutRoute = MyRoute(
 // ]
 class MyRouteGroup {
   const MyRouteGroup(
-      {@required this.groupName, @required this.icon, @required this.routes});
+      {required this.groupName, required this.icon, required this.routes});
   final String groupName;
   final Widget icon;
   final List<MyRoute> routes;
@@ -363,14 +363,15 @@ const kMyAppRoutesBasic = <MyRouteGroup>[
       ),
       MyRoute(
         sourceFilePath: 'lib/routes/lists_wheel_scroll_view_ex.dart',
-         child: ListWheelViewExample(),
+        child: ListWheelViewExample(),
         title: 'List Wheel Scroll View',
         description: 'fancy list view',
         links: {
-          'Doc': 'https://api.flutter.dev/flutter/widgets/ListWheelScrollView-class.html',
-          'Youtube':'https://youtu.be/dUhmWAz4C7Y'
+          'Doc':
+              'https://api.flutter.dev/flutter/widgets/ListWheelScrollView-class.html',
+          'Youtube': 'https://youtu.be/dUhmWAz4C7Y'
         },
-         ),
+      ),
       MyRoute(
         child: SlidableTileExample(),
         sourceFilePath: 'lib/routes/lists_slidable_tile_ex.dart',
@@ -672,9 +673,7 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
         sourceFilePath: 'lib/routes/animation_animated_radial_menu_ex.dart',
         title: 'Animated Radial Menu',
         description: 'Easy add radial menu with high-quality animation',
-        links: {
-          'Pub package': 'https://pub.dev/packages/animated_radial_menu'
-        },
+        links: {'Pub package': 'https://pub.dev/packages/animated_radial_menu'},
       ),
       MyRoute(
         child: LottieExample(),

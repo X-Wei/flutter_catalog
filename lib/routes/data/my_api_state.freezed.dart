@@ -41,29 +41,29 @@ const $MyApiState = _$MyApiStateTearOff();
 mixin _$MyApiState {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult success(List<String> data),
-    @required TResult error(String errorMsg),
-    @required TResult loading(),
+    required TResult success(List<String> data),
+    required TResult error(String errorMsg),
+    required TResult loading(),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult success(List<String> data),
     TResult error(String errorMsg),
     TResult loading(),
-    @required TResult orElse(),
+    required TResult orElse(),
   });
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult success(SuccessState value),
-    @required TResult error(ErrorState value),
-    @required TResult loading(LoadingState value),
+    required TResult success(SuccessState value),
+    required TResult error(ErrorState value),
+    required TResult loading(LoadingState value),
   });
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult success(SuccessState value),
     TResult error(ErrorState value),
     TResult loading(LoadingState value),
-    @required TResult orElse(),
+    required TResult orElse(),
   });
 }
 
@@ -143,9 +143,9 @@ class _$SuccessState implements SuccessState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult success(List<String> data),
-    @required TResult error(String errorMsg),
-    @required TResult loading(),
+    required TResult success(List<String> data),
+    required TResult error(String errorMsg),
+    required TResult loading(),
   }) {
     assert(success != null);
     assert(error != null);
@@ -159,7 +159,7 @@ class _$SuccessState implements SuccessState {
     TResult success(List<String> data),
     TResult error(String errorMsg),
     TResult loading(),
-    @required TResult orElse(),
+    required TResult orElse(),
   }) {
     assert(orElse != null);
     if (success != null) {
@@ -171,9 +171,9 @@ class _$SuccessState implements SuccessState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult success(SuccessState value),
-    @required TResult error(ErrorState value),
-    @required TResult loading(LoadingState value),
+    required TResult success(SuccessState value),
+    required TResult error(ErrorState value),
+    required TResult loading(LoadingState value),
   }) {
     assert(success != null);
     assert(error != null);
@@ -187,7 +187,7 @@ class _$SuccessState implements SuccessState {
     TResult success(SuccessState value),
     TResult error(ErrorState value),
     TResult loading(LoadingState value),
-    @required TResult orElse(),
+    required TResult orElse(),
   }) {
     assert(orElse != null);
     if (success != null) {
@@ -265,9 +265,9 @@ class _$ErrorState implements ErrorState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult success(List<String> data),
-    @required TResult error(String errorMsg),
-    @required TResult loading(),
+    required TResult success(List<String> data),
+    required TResult error(String errorMsg),
+    required TResult loading(),
   }) {
     assert(success != null);
     assert(error != null);
@@ -281,7 +281,7 @@ class _$ErrorState implements ErrorState {
     TResult success(List<String> data),
     TResult error(String errorMsg),
     TResult loading(),
-    @required TResult orElse(),
+    required TResult orElse(),
   }) {
     assert(orElse != null);
     if (error != null) {
@@ -293,9 +293,9 @@ class _$ErrorState implements ErrorState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult success(SuccessState value),
-    @required TResult error(ErrorState value),
-    @required TResult loading(LoadingState value),
+    required TResult success(SuccessState value),
+    required TResult error(ErrorState value),
+    required TResult loading(LoadingState value),
   }) {
     assert(success != null);
     assert(error != null);
@@ -309,7 +309,7 @@ class _$ErrorState implements ErrorState {
     TResult success(SuccessState value),
     TResult error(ErrorState value),
     TResult loading(LoadingState value),
-    @required TResult orElse(),
+    required TResult orElse(),
   }) {
     assert(orElse != null);
     if (error != null) {
@@ -365,9 +365,9 @@ class _$LoadingState implements LoadingState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult success(List<String> data),
-    @required TResult error(String errorMsg),
-    @required TResult loading(),
+    required TResult success(List<String> data),
+    required TResult error(String errorMsg),
+    required TResult loading(),
   }) {
     assert(success != null);
     assert(error != null);
@@ -381,7 +381,7 @@ class _$LoadingState implements LoadingState {
     TResult success(List<String> data),
     TResult error(String errorMsg),
     TResult loading(),
-    @required TResult orElse(),
+    required TResult orElse(),
   }) {
     assert(orElse != null);
     if (loading != null) {
@@ -393,9 +393,9 @@ class _$LoadingState implements LoadingState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult success(SuccessState value),
-    @required TResult error(ErrorState value),
-    @required TResult loading(LoadingState value),
+    required TResult success(SuccessState value),
+    required TResult error(ErrorState value),
+    required TResult loading(LoadingState value),
   }) {
     assert(success != null);
     assert(error != null);
@@ -409,7 +409,7 @@ class _$LoadingState implements LoadingState {
     TResult success(SuccessState value),
     TResult error(ErrorState value),
     TResult loading(LoadingState value),
-    @required TResult orElse(),
+    required TResult orElse(),
   }) {
     assert(orElse != null);
     if (loading != null) {

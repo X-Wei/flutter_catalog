@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class RestApiFetchExample extends StatefulWidget {
-  const RestApiFetchExample({Key key}) : super(key: key);
+  const RestApiFetchExample({Key? key}) : super(key: key);
 
   @override
   _RestApiFetchExampleState createState() => _RestApiFetchExampleState();

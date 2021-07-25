@@ -10,7 +10,7 @@ class _CostsData {
 }
 
 class PieChartExample extends StatefulWidget {
-  const PieChartExample({Key key}) : super(key: key);
+  const PieChartExample({Key? key}) : super(key: key);
 
   @override
   _PieChartExampleState createState() => _PieChartExampleState();

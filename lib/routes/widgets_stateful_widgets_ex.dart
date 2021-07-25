@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class StatefulWidgetsExample extends StatefulWidget {
-  const StatefulWidgetsExample({Key key}) : super(key: key);
+  const StatefulWidgetsExample({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _StatefulWidgetsExampleState();

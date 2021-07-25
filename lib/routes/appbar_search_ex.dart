@@ -4,7 +4,7 @@ import 'package:english_words/english_words.dart' as english_words;
 // Adapted from search demo in offical flutter gallery:
 // https://github.com/flutter/flutter/blob/master/examples/flutter_gallery/lib/demo/material/search_demo.dart
 class AppBarSearchExample extends StatefulWidget {
-  const AppBarSearchExample({Key key}) : super(key: key);
+  const AppBarSearchExample({Key? key}) : super(key: key);
 
   @override
   _AppBarSearchExampleState createState() => _AppBarSearchExampleState();

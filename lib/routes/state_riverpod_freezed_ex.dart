@@ -40,7 +40,7 @@ final kMyApiModelProvider = StateNotifierProvider<MyApiModel>(
 );
 
 class RiverpodFreezedExample extends StatelessWidget {
-  const RiverpodFreezedExample({Key key}) : super(key: key);
+  const RiverpodFreezedExample({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

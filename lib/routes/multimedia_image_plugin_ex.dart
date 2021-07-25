@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:image/image.dart' as image_pkg;
 
 class ImagePluginExample extends StatelessWidget {
-  const ImagePluginExample({Key key}) : super(key: key);
+  const ImagePluginExample({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

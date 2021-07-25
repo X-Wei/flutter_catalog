@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPreferenceExample extends StatefulWidget {
-  const SharedPreferenceExample({Key key}) : super(key: key);
+  const SharedPreferenceExample({Key? key}) : super(key: key);
 
   @override
   _SharedPreferenceExampleState createState() =>
