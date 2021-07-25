@@ -3,6 +3,8 @@ include: package:lint/analysis_options.yaml
 analyzer:
   exclude: 
     - build/**
+    - "lib/**/*.g.dart"
+    - "lib/**/*.freezed.dart"
   enable-experiment:
     - non-nullable
 
@@ -21,3 +23,5 @@ linter:
     avoid_redundant_argument_values: false
     prefer_const_constructors: false
     avoid_dynamic_calls: false
+    directives_ordering: false
+    sort_pub_dependencies: false

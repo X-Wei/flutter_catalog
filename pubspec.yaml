@@ -12,6 +12,11 @@ publish_to: none
 dependencies:
   flutter:
     sdk: flutter
+  # TODO: use canonical package when the nullsafety PR (https://github.com/pedrohff/flutter_heatmap_calendar/pull/11) is in.
+  # heatmap_calendar: ^1.2.8
+  heatmap_calendar:
+    git:
+      url: https://github.com/CouldI/flutter_heatmap_calendar.git
   new_gradient_app_bar:
     git:
       url: https://github.com/GUIKAR741/NewGradientAppBar.git
@@ -58,11 +63,6 @@ dependencies:
   google_fonts: ^2.1.0
   google_sign_in: ^5.0.5
   graphview: ^1.0.0-nullsafety.1
-  # TODO: use canonical package when the nullsafety PR (https://github.com/pedrohff/flutter_heatmap_calendar/pull/11) is in.
-  # heatmap_calendar: ^1.2.8
-  heatmap_calendar: 
-    git: 
-      url: https://github.com/CouldI/flutter_heatmap_calendar.git
   hive: ^2.0.4
   hive_flutter: ^1.1.0
   http: ^0.13.3
@@ -95,11 +95,8 @@ dev_dependencies:
   flutter_native_splash: ^1.2.0
   freezed: ^0.14.2
   hive_generator: ^1.1.0
+  json_serializable:
   lint: ^1.5.3
-
-# dependency_overrides:
-#   dartx: ^0.7.1
-  # path: ^1.6.4 # cf. https://github.com/hivedb/hive/issues/285#issuecomment-633815558
 
 # Cf. https://pub.dev/packages/flutter_native_splash
 flutter_native_splash:
