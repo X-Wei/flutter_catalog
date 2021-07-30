@@ -46,7 +46,7 @@ class _FirebaseVoteExampleState extends State<FirebaseVoteExample> {
             final List<_LangaugeVotingRecord> records = snapshot.data!.docs
                 .map((snapshot) => _LangaugeVotingRecord.fromSnapshot(snapshot))
                 .toList()
-              ..sort((record1, record2) => record2.votes - record1.votes);
+                  ..sort((record1, record2) => record2.votes - record1.votes);
             return ListView(
               children: records
                   .map((record) => _buildListItem(context, record))
