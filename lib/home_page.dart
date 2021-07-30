@@ -9,7 +9,7 @@ import './my_app_settings.dart';
 import './my_route.dart';
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key key}) : super(key: key);
+  const MyHomePage({Key? key}) : super(key: key);
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -73,11 +73,11 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Widget _myRouteToListTile(MyRoute myRoute,
-      {Widget leading, IconData trialing = Icons.keyboard_arrow_right}) {
+      {Widget? leading, IconData trialing = Icons.keyboard_arrow_right}) {
     final mySettings = context.watch<MyAppSettings>();
     final routeTitleTextStyle = Theme.of(context)
         .textTheme
-        .bodyText2
+        .bodyText2!
         .copyWith(fontWeight: FontWeight.bold);
     final leadingWidget =
         leading ?? mySettings.starStatusOfRoute(myRoute.routeName);
@@ -90,8 +90,8 @@ class _MyHomePageState extends State<MyHomePage> {
             )
           : leadingWidget,
       title: Text(myRoute.title, style: routeTitleTextStyle),
-      trailing: trialing == null ? null : Icon(trialing),
-      subtitle: myRoute.description == null ? null : Text(myRoute.description),
+      trailing: Icon(trialing),
+      subtitle: myRoute.description.isEmpty ? null : Text(myRoute.description),
       onTap: () {
         if (isNew) {
           mySettings.markRouteKnown(myRoute.routeName);

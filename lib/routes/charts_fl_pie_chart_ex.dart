@@ -11,7 +11,7 @@ final _data = <Tuple3<String, double, Color>>[
 ];
 
 class FlPieChartExample extends StatefulWidget {
-  const FlPieChartExample({Key key}) : super(key: key);
+  const FlPieChartExample({Key? key}) : super(key: key);
 
   @override
   _FlPieChartExampleState createState() => _FlPieChartExampleState();
@@ -46,7 +46,9 @@ class _FlPieChartExampleState extends State<FlPieChartExample> {
       pieTouchData: PieTouchData(
         enabled: true,
         touchCallback: (pieTouchResponse) => setState(() {
-          _touchedIdx = pieTouchResponse.touchedSection.touchedSectionIndex;
+          if (pieTouchResponse.touchedSection != null) {
+            _touchedIdx = pieTouchResponse.touchedSection!.touchedSectionIndex;
+          }
         }),
       ),
       centerSpaceRadius: _innerRadius,

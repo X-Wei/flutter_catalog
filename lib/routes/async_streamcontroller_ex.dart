@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart' as english_words;
 
 class StreamControllerExample extends StatefulWidget {
-  const StreamControllerExample({Key key}) : super(key: key);
+  const StreamControllerExample({Key? key}) : super(key: key);
 
   @override
   _StreamControllerExampleState createState() =>
@@ -16,7 +16,7 @@ class _Data {
   final String message;
   final DateTime timestamp;
 
-  _Data({@required this.message, @required this.timestamp});
+  _Data({required this.message, required this.timestamp});
 }
 
 class _StreamControllerExampleState extends State<StreamControllerExample> {
@@ -67,7 +67,7 @@ class _StreamControllerExampleState extends State<StreamControllerExample> {
                   title: Text('no data'),
                 );
               }
-              final Widget widgetToRender = snapshot.data;
+              final Widget widgetToRender = snapshot.data!;
               return widgetToRender;
             },
           ),

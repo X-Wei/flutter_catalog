@@ -11,7 +11,7 @@ final kFirebaseAnalytics = FirebaseAnalytics();
 // firebase json file, and add configuration lines in the gradle files.
 // C.f. this commit: https://github.com/X-Wei/flutter_catalog/commit/48792cbc0de62fc47e0e9ba2cd3718117f4d73d1.
 class FirebaseLoginExample extends StatefulWidget {
-  const FirebaseLoginExample({Key key}) : super(key: key);
+  const FirebaseLoginExample({Key? key}) : super(key: key);
 
   @override
   _FirebaseLoginExampleState createState() => _FirebaseLoginExampleState();
@@ -19,7 +19,7 @@ class FirebaseLoginExample extends StatefulWidget {
 
 class _FirebaseLoginExampleState extends State<FirebaseLoginExample> {
   final _auth = firebase_auth.FirebaseAuth.instance;
-  firebase_auth.User _user;
+  firebase_auth.User? _user;
   // If this._busy=true, the buttons are not clickable. This is to avoid
   // clicking buttons while a previous onTap function is not finished.
   bool _busy = false;
@@ -28,7 +28,7 @@ class _FirebaseLoginExampleState extends State<FirebaseLoginExample> {
   void initState() {
     super.initState();
     this._user = _auth.currentUser;
-    _auth.authStateChanges().listen((firebase_auth.User usr) {
+    _auth.authStateChanges().listen((firebase_auth.User? usr) {
       this._user = usr;
       debugPrint('user=$_user');
     });
@@ -40,7 +40,7 @@ class _FirebaseLoginExampleState extends State<FirebaseLoginExample> {
       padding: const EdgeInsets.symmetric(vertical: 10.0),
       child: Text(_user == null
           ? 'You are not logged in.'
-          : 'You are logged in as "${_user.displayName}".'),
+          : 'You are logged in as "${_user!.displayName}".'),
     );
     final googleLoginBtn = MaterialButton(
       color: Colors.blueAccent,
@@ -49,7 +49,7 @@ class _FirebaseLoginExampleState extends State<FirebaseLoginExample> {
           : () async {
               setState(() => this._busy = true);
               final user = await this._googleSignIn();
-              this._showUserProfilePage(user);
+              this._showUserProfilePage(user!);
               setState(() => this._busy = false);
             },
       child: const Text('Log in with Google'),
@@ -61,7 +61,7 @@ class _FirebaseLoginExampleState extends State<FirebaseLoginExample> {
           : () async {
               setState(() => this._busy = true);
               final user = await this._anonymousSignIn();
-              this._showUserProfilePage(user);
+              this._showUserProfilePage(user!);
               setState(() => this._busy = false);
             },
       child: const Text('Log in anonymously'),
@@ -90,13 +90,13 @@ class _FirebaseLoginExampleState extends State<FirebaseLoginExample> {
   }
 
   // Sign in with Google.
-  Future<firebase_auth.User> _googleSignIn() async {
+  Future<firebase_auth.User?> _googleSignIn() async {
     final curUser = this._user ?? _auth.currentUser;
     if (curUser != null && !curUser.isAnonymous) {
       return curUser;
     }
     final googleUser = await GoogleSignIn().signIn();
-    final googleAuth = await googleUser.authentication;
+    final googleAuth = await googleUser!.authentication;
     final credential = firebase_auth.GoogleAuthProvider.credential(
       accessToken: googleAuth.accessToken,
       idToken: googleAuth.idToken,
@@ -109,14 +109,14 @@ class _FirebaseLoginExampleState extends State<FirebaseLoginExample> {
   }
 
   // Sign in Anonymously.
-  Future<firebase_auth.User> _anonymousSignIn() async {
+  Future<firebase_auth.User?> _anonymousSignIn() async {
     final curUser = this._user ?? _auth.currentUser;
     if (curUser != null && curUser.isAnonymous) {
       return curUser;
     }
     final anonyUser = (await _auth.signInAnonymously()).user;
-    await anonyUser.updateProfile(
-        displayName: '${anonyUser.uid.substring(0, 5)}_Guest');
+    await anonyUser!
+        .updateDisplayName('${anonyUser.uid.substring(0, 5)}_Guest');
     await anonyUser.reload();
     // Have to re-call `currentUser()` to make `updateProfile` work.
     // Cf. https://stackoverflow.com/questions/50986191/flutter-firebase-auth-updateprofile-method-is-not-working.
@@ -158,10 +158,10 @@ class _FirebaseLoginExampleState extends State<FirebaseLoginExample> {
                 title: const Text('Profile photo: '),
                 trailing: user.photoURL != null
                     ? CircleAvatar(
-                        backgroundImage: NetworkImage(user.photoURL),
+                        backgroundImage: NetworkImage(user.photoURL!),
                       )
                     : CircleAvatar(
-                        child: Text(user.displayName[0]),
+                        child: Text(user.displayName![0]),
                       ),
               ),
               ListTile(

@@ -24,7 +24,7 @@ List<_SalesData> _genRandData() {
 }
 
 class TimeseriesChartExample extends StatefulWidget {
-  const TimeseriesChartExample({Key key}) : super(key: key);
+  const TimeseriesChartExample({Key? key}) : super(key: key);
 
   @override
   _TimeseriesChartExampleState createState() => _TimeseriesChartExampleState();
@@ -41,7 +41,7 @@ class _TimeseriesChartExampleState extends State<TimeseriesChartExample> {
   charts.BehaviorPosition _legendPosition = charts.BehaviorPosition.bottom;
 
   // Data to render.
-  List<_SalesData> _series1, _series2;
+  late List<_SalesData> _series1, _series2;
 
   @override
   void initState() {
@@ -135,7 +135,7 @@ class _TimeseriesChartExampleState extends State<TimeseriesChartExample> {
           title: const Text('titlePosition:'),
           trailing: DropdownButton<charts.BehaviorPosition>(
             value: this._titlePosition,
-            onChanged: (charts.BehaviorPosition newVal) {
+            onChanged: (charts.BehaviorPosition? newVal) {
               if (newVal != null) {
                 setState(() => this._titlePosition = newVal);
               }
@@ -150,7 +150,7 @@ class _TimeseriesChartExampleState extends State<TimeseriesChartExample> {
           title: const Text('legendPosition:'),
           trailing: DropdownButton<charts.BehaviorPosition>(
             value: this._legendPosition,
-            onChanged: (charts.BehaviorPosition newVal) {
+            onChanged: (charts.BehaviorPosition? newVal) {
               if (newVal != null) {
                 setState(() => this._legendPosition = newVal);
               }

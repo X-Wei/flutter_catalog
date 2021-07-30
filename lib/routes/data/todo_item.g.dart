@@ -17,10 +17,10 @@ class TodoItemAdapter extends TypeAdapter<TodoItem> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return TodoItem(
-      id: fields[0] as int,
+      id: fields[0] as int?,
       content: fields[1] as String,
       isDone: fields[2] as bool,
-      createdAt: fields[3] as DateTime,
+      createdAt: fields[3] as DateTime?,
     );
   }
 

@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 class StreamBuilderExample extends StatefulWidget {
-  const StreamBuilderExample({Key key}) : super(key: key);
+  const StreamBuilderExample({Key? key}) : super(key: key);
 
   @override
   StreamBuilderExampleState createState() => StreamBuilderExampleState();
@@ -33,7 +33,7 @@ class StreamBuilderExampleState extends State<StreamBuilderExample> {
           if (snapshot.hasData) {
             if (snapshot.data != this._previousStreamValue) {
               print('Latest snapshot from stream: ${snapshot.data}');
-              this._previousStreamValue = snapshot.data;
+              this._previousStreamValue = snapshot.data!;
               if (!_paused) {
                 this._timerValue++;
               }

@@ -4,6 +4,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+typedef JsonMap = Map<String, dynamic>;
+
 // NOTE: to add firebase support, first go to firebase console, generate the
 // firebase json file, and add configuration lines in the gradle files.
 // C.f. this commit: https://github.com/X-Wei/flutter_catalog/commit/48792cbc0de62fc47e0e9ba2cd3718117f4d73d1.
@@ -11,14 +13,14 @@ import 'package:shared_preferences/shared_preferences.dart';
 // Adapted from the flutter firestore "babyname voter" codelab:
 // https://codelabs.developers.google.com/codelabs/flutter-firebase/#0
 class FirebaseVoteExample extends StatefulWidget {
-  const FirebaseVoteExample({Key key}) : super(key: key);
+  const FirebaseVoteExample({Key? key}) : super(key: key);
   @override
   _FirebaseVoteExampleState createState() => _FirebaseVoteExampleState();
 }
 
 class _FirebaseVoteExampleState extends State<FirebaseVoteExample> {
   // We use SharedPreferences to keep track of which languages are voted.
-  SharedPreferences _preferences;
+  late SharedPreferences _preferences;
   static const kVotedPreferenceKeyPrefx = 'AlreadyVotedFor_';
 
   @override
@@ -32,7 +34,7 @@ class _FirebaseVoteExampleState extends State<FirebaseVoteExample> {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: StreamBuilder<QuerySnapshot>(
+      child: StreamBuilder<QuerySnapshot<JsonMap>>(
         // In firestore console I added a "language_voting" collection.
         stream: FirebaseFirestore.instance
             .collection('language_voting')
@@ -41,7 +43,7 @@ class _FirebaseVoteExampleState extends State<FirebaseVoteExample> {
           if (!snapshot.hasData) {
             return const LinearProgressIndicator();
           } else {
-            final List<_LangaugeVotingRecord> records = snapshot.data.docs
+            final List<_LangaugeVotingRecord> records = snapshot.data!.docs
                 .map((snapshot) => _LangaugeVotingRecord.fromSnapshot(snapshot))
                 .toList()
                   ..sort((record1, record2) => record2.votes - record1.votes);
@@ -112,7 +114,7 @@ class _FirebaseVoteExampleState extends State<FirebaseVoteExample> {
         (transaction) async {
           try {
             final freshSnapshot =
-                await transaction.get(record.firestoreDocReference);
+                await transaction.get<JsonMap>(record.firestoreDocReference);
             // Get the most fresh record.
             final freshRecord =
                 _LangaugeVotingRecord.fromSnapshot(freshSnapshot);
@@ -142,17 +144,17 @@ class _LangaugeVotingRecord {
   final String language;
   final int votes;
   // Reference to this record as a firestore document.
-  final DocumentReference firestoreDocReference;
+  final DocumentReference<JsonMap> firestoreDocReference;
 
-  _LangaugeVotingRecord.fromMap(Map<String, dynamic> map,
-      {@required this.firestoreDocReference})
+  _LangaugeVotingRecord.fromMap(JsonMap map,
+      {required this.firestoreDocReference})
       : assert(map['language'] != null && map['language'] is String),
         assert(map['votes'] != null && map['votes'] is int),
         language = map['language'] as String,
         votes = map['votes'] as int;
 
-  _LangaugeVotingRecord.fromSnapshot(DocumentSnapshot snapshot)
-      : this.fromMap(snapshot.data(),
+  _LangaugeVotingRecord.fromSnapshot(DocumentSnapshot<JsonMap> snapshot)
+      : this.fromMap(snapshot.data()!,
             firestoreDocReference: snapshot.reference);
 
   @override

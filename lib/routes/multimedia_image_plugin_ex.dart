@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:image/image.dart' as image_pkg;
 
 class ImagePluginExample extends StatelessWidget {
-  const ImagePluginExample({Key key}) : super(key: key);
+  const ImagePluginExample({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,7 @@ class ImagePluginExample extends StatelessWidget {
       future: getImgBytes(),
       builder: (BuildContext context, AsyncSnapshot<Uint8List> snapshot) {
         if (snapshot.hasData) {
-          final newImgBytes = manipulateImage(snapshot.data);
+          final newImgBytes = manipulateImage(snapshot.data!);
           return Center(child: Image.memory(newImgBytes));
         } else {
           return const Center(
@@ -25,7 +25,7 @@ class ImagePluginExample extends StatelessWidget {
   }
 
   Uint8List manipulateImage(Uint8List pngData) {
-    final img = image_pkg.readPng(pngData);
+    final img = image_pkg.readPng(pngData)!;
     image_pkg.drawString(
       img,
       /*font=*/ image_pkg.arial_48,

@@ -3,14 +3,14 @@ import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:url_launcher/url_launcher.dart' as url_launcher;
 
 class WebViewExample extends StatefulWidget {
-  const WebViewExample({Key key}) : super(key: key);
+  const WebViewExample({Key? key}) : super(key: key);
 
   @override
   _WebViewExampleState createState() => _WebViewExampleState();
 }
 
 class _WebViewExampleState extends State<WebViewExample> {
-  TextEditingController _controller;
+  late TextEditingController _controller;
 
   @override
   void initState() {

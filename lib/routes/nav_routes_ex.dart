@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 // Adapted from Tensor Programming's multi-page app tutorial:
 // https://github.com/tensor-programming/dart_flutter_multi_page_app.
 class RoutesExample extends StatelessWidget {
-  const RoutesExample({Key key}) : super(key: key);
+  const RoutesExample({Key? key}) : super(key: key);
 
   /// Route name is useful for navigating between routes.
   /// ! Note: in the Flutter Catalog each example's names are class names
@@ -16,7 +16,7 @@ class RoutesExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    debugPrint('RouteName=${ModalRoute.of(context).settings.name}');
+    debugPrint('RouteName=${ModalRoute.of(context)?.settings.name}');
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,

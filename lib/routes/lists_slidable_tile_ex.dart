@@ -1,8 +1,10 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
 class SlidableTileExample extends StatefulWidget {
-  const SlidableTileExample({Key key}) : super(key: key);
+  const SlidableTileExample({Key? key}) : super(key: key);
 
   @override
   _SlidableTileExampleState createState() => _SlidableTileExampleState();
@@ -15,7 +17,7 @@ class _SlidableTileExampleState extends State<SlidableTileExample> {
     'SlidableScrollActionPane': SlidableScrollActionPane(),
     'SlidableStrechActionPane': SlidableStrechActionPane(),
   };
-  List<Slidable> _items;
+  late List<Slidable> _items;
   @override
   void initState() {
     super.initState();
@@ -92,7 +94,7 @@ class _SlidableTileExampleState extends State<SlidableTileExample> {
               ],
             );
           },
-        );
+        ) as FutureOr<bool>;
       },
       child: const SlidableDrawerDismissal(),
     );

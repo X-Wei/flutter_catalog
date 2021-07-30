@@ -2,7 +2,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 class AnimatedBuilderExample extends StatefulWidget {
-  const AnimatedBuilderExample({Key key}) : super(key: key);
+  const AnimatedBuilderExample({Key? key}) : super(key: key);
 
   @override
   _AnimatedBuilderExampleState createState() => _AnimatedBuilderExampleState();
@@ -10,7 +10,7 @@ class AnimatedBuilderExample extends StatefulWidget {
 
 class _AnimatedBuilderExampleState extends State<AnimatedBuilderExample>
     with SingleTickerProviderStateMixin {
-  AnimationController _controller;
+  late AnimationController _controller;
 
   @override
   void initState() {

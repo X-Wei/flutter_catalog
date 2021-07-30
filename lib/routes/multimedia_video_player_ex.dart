@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
 class VideoPlayerExample extends StatefulWidget {
-  const VideoPlayerExample({Key key}) : super(key: key);
+  const VideoPlayerExample({Key? key}) : super(key: key);
 
   @override
   _VideoPlayerExampleState createState() => _VideoPlayerExampleState();
 }
 
 class _VideoPlayerExampleState extends State<VideoPlayerExample> {
-  VideoPlayerController _videoController;
-  VideoPlayerController _audioController;
+  late VideoPlayerController _videoController;
+  late VideoPlayerController _audioController;
 
   @override
   void initState() {
@@ -35,14 +35,14 @@ class _VideoPlayerExampleState extends State<VideoPlayerExample> {
       children: <Widget>[
         const ListTile(title: Text('Play online video:')),
         Center(
-          child: _videoController.value.initialized
+          child: _videoController.value.isInitialized
               ? _buildVideoPlayerUI()
               : const CircularProgressIndicator(),
         ),
         const Divider(),
         const ListTile(title: Text('Play online audio:')),
         Center(
-          child: _audioController.value.initialized
+          child: _audioController.value.isInitialized
               ? _buildAudioPlayerUI()
               : const LinearProgressIndicator(),
         ),

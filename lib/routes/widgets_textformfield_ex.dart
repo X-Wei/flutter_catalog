@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class TextFormFieldExample extends StatefulWidget {
-  const TextFormFieldExample({Key key}) : super(key: key);
+  const TextFormFieldExample({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _TextFormFieldExampleState();
@@ -14,15 +14,17 @@ class _TextFormFieldExampleState extends State<TextFormFieldExample> {
   final GlobalKey<FormFieldState<String>> _passwordFieldKey =
       GlobalKey<FormFieldState<String>>();
 
-  String _name;
-  String _phoneNumber;
-  String _email;
-  String _password;
+  String? _name;
+  String? _phoneNumber;
+  String? _email;
+  String? _password;
 
-  String _validateName(String value) {
-    if (value.isEmpty) return 'Name is required.';
+  String? _validateName(String? value) {
+    if (value?.isEmpty ?? false) {
+      return 'Name is required.';
+    }
     final RegExp nameExp = RegExp(r'^[A-Za-z ]+$');
-    if (!nameExp.hasMatch(value)) {
+    if (!nameExp.hasMatch(value!)) {
       return 'Please enter only alphabetical characters.';
     }
     return null;
@@ -47,7 +49,7 @@ class _TextFormFieldExampleState extends State<TextFormFieldExample> {
               hintText: 'What do people call you?',
               labelText: 'Name *',
             ),
-            onSaved: (String value) {
+            onSaved: (String? value) {
               this._name = value;
               print('name=$_name');
             },
@@ -65,7 +67,7 @@ class _TextFormFieldExampleState extends State<TextFormFieldExample> {
               prefixText: '+86',
             ),
             keyboardType: TextInputType.phone,
-            onSaved: (String value) {
+            onSaved: (String? value) {
               this._phoneNumber = value;
               print('phoneNumber=$_phoneNumber');
             },
@@ -85,7 +87,7 @@ class _TextFormFieldExampleState extends State<TextFormFieldExample> {
               labelText: 'E-mail',
             ),
             keyboardType: TextInputType.emailAddress,
-            onSaved: (String value) {
+            onSaved: (String? value) {
               this._email = value;
               print('email=$_email');
             },
@@ -127,7 +129,7 @@ class _TextFormFieldExampleState extends State<TextFormFieldExample> {
           const SizedBox(height: 24.0),
           // "Re-type password" form.
           TextFormField(
-            enabled: this._password != null && this._password.isNotEmpty,
+            enabled: this._password != null && this._password!.isNotEmpty,
             decoration: const InputDecoration(
               border: UnderlineInputBorder(),
               filled: true,
@@ -153,13 +155,13 @@ class PasswordField extends StatefulWidget {
     this.onFieldSubmitted,
   });
 
-  final Key fieldKey;
-  final String hintText;
-  final String labelText;
-  final String helperText;
-  final FormFieldSetter<String> onSaved;
-  final FormFieldValidator<String> validator;
-  final ValueChanged<String> onFieldSubmitted;
+  final Key? fieldKey;
+  final String? hintText;
+  final String? labelText;
+  final String? helperText;
+  final FormFieldSetter<String>? onSaved;
+  final FormFieldValidator<String>? validator;
+  final ValueChanged<String>? onFieldSubmitted;
 
   @override
   _PasswordFieldState createState() => _PasswordFieldState();

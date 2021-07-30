@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPreferenceExample extends StatefulWidget {
-  const SharedPreferenceExample({Key key}) : super(key: key);
+  const SharedPreferenceExample({Key? key}) : super(key: key);
 
   @override
   _SharedPreferenceExampleState createState() =>
@@ -10,7 +10,7 @@ class SharedPreferenceExample extends StatefulWidget {
 }
 
 class _SharedPreferenceExampleState extends State<SharedPreferenceExample> {
-  SharedPreferences _prefs;
+  SharedPreferences? _prefs;
   static const String kDemoNumberPrefKey = 'demo_number_pref';
   static const String kDemoBooleanPrefKey = 'demo_boolean_pref';
   int _numberPref = 0;
@@ -58,24 +58,24 @@ class _SharedPreferenceExampleState extends State<SharedPreferenceExample> {
   // Loads number preference into this._numberPref.
   void _loadNumberPref() {
     setState(() {
-      this._numberPref = this._prefs.getInt(kDemoNumberPrefKey) ?? 0;
+      this._numberPref = this._prefs?.getInt(kDemoNumberPrefKey) ?? 0;
     });
   }
 
   // Loads boolean preference into this._numberPref.
   void _loadBooleanPref() {
     setState(() {
-      this._boolPref = this._prefs.getBool(kDemoBooleanPrefKey) ?? false;
+      this._boolPref = this._prefs?.getBool(kDemoBooleanPrefKey) ?? false;
     });
   }
 
   Future<void> _setNumberPref(int val) async {
-    await this._prefs.setInt(kDemoNumberPrefKey, val);
+    await this._prefs?.setInt(kDemoNumberPrefKey, val);
     _loadNumberPref();
   }
 
   Future<void> _setBooleanPref(bool val) async {
-    await this._prefs.setBool(kDemoBooleanPrefKey, val);
+    await this._prefs?.setBool(kDemoBooleanPrefKey, val);
     _loadBooleanPref();
   }
 }

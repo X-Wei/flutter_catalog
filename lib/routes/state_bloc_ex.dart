@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 class BlocExample extends StatelessWidget {
-  const BlocExample({Key key}) : super(key: key);
+  const BlocExample({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class _MyEvent {
   final bool isIncrement;
   final DateTime timestamp;
 
-  _MyEvent({@required this.isIncrement, DateTime timestamp})
+  _MyEvent({required this.isIncrement, DateTime? timestamp})
       : this.timestamp = timestamp ?? DateTime.now();
 }
 
@@ -73,10 +73,10 @@ class MyBlocProvider extends InheritedWidget {
   @override
   final Widget child; // ignore: overridden_fields
 
-  const MyBlocProvider({Key key, @required this.bloc, this.child})
+  const MyBlocProvider({Key? key, required this.bloc, required this.child})
       : super(key: key, child: child);
 
-  static MyBlocProvider of(BuildContext context) {
+  static MyBlocProvider? of(BuildContext context) {
     return context.dependOnInheritedWidgetOfExactType<MyBlocProvider>();
   }
 
@@ -150,7 +150,7 @@ class _AppRootWidget extends StatelessWidget {
 class _CounterAndButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final MyBloc bloc = MyBlocProvider.of(context).bloc;
+    final MyBloc bloc = MyBlocProvider.of(context)!.bloc;
     return Card(
       margin: const EdgeInsets.all(4.0).copyWith(top: 32.0, bottom: 32.0),
       color: Colors.white70,
@@ -168,7 +168,7 @@ class _CounterAndButton extends StatelessWidget {
               print(snapshot.data);
               final state = snapshot.data;
               return Text(
-                '${state.counterValue}',
+                '${state!.counterValue}',
                 style: Theme.of(context).textTheme.headline4,
               );
             },

@@ -10,7 +10,7 @@ class _CostsData {
 }
 
 class PieChartExample extends StatefulWidget {
-  const PieChartExample({Key key}) : super(key: key);
+  const PieChartExample({Key? key}) : super(key: key);
 
   @override
   _PieChartExampleState createState() => _PieChartExampleState();
@@ -47,7 +47,7 @@ class _PieChartExampleState extends State<PieChartExample> {
             /*seriesList=*/ [
               charts.Series<_CostsData, String>(
                 id: 'Sales-1',
-                colorFn: (_, idx) => _colorPalettes[idx].shadeDefault,
+                colorFn: (_, idx) => _colorPalettes[idx!].shadeDefault,
                 domainFn: (_CostsData sales, _) => sales.category,
                 measureFn: (_CostsData sales, _) => sales.cost,
                 data: this._data,
@@ -107,7 +107,7 @@ class _PieChartExampleState extends State<PieChartExample> {
           title: const Text('arcLabelPosition:'),
           trailing: DropdownButton<charts.ArcLabelPosition>(
             value: this._arcLabelPosition,
-            onChanged: (charts.ArcLabelPosition newVal) {
+            onChanged: (charts.ArcLabelPosition? newVal) {
               if (newVal != null) {
                 setState(() => this._arcLabelPosition = newVal);
               }
@@ -122,7 +122,7 @@ class _PieChartExampleState extends State<PieChartExample> {
           title: const Text('titlePosition:'),
           trailing: DropdownButton<charts.BehaviorPosition>(
             value: this._titlePosition,
-            onChanged: (charts.BehaviorPosition newVal) {
+            onChanged: (charts.BehaviorPosition? newVal) {
               if (newVal != null) {
                 setState(() => this._titlePosition = newVal);
               }
@@ -137,7 +137,7 @@ class _PieChartExampleState extends State<PieChartExample> {
           title: const Text('legendPosition:'),
           trailing: DropdownButton<charts.BehaviorPosition>(
             value: this._legendPosition,
-            onChanged: (charts.BehaviorPosition newVal) {
+            onChanged: (charts.BehaviorPosition? newVal) {
               if (newVal != null) {
                 setState(() => this._legendPosition = newVal);
               }

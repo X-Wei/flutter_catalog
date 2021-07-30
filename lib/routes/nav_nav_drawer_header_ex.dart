@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class NavDrawerExample extends StatelessWidget {
-  const NavDrawerExample({Key key}) : super(key: key);
+  const NavDrawerExample({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

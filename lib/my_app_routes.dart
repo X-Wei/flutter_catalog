@@ -45,7 +45,6 @@ import 'routes/layouts_fractionally_sizedbox_ex.dart';
 import 'routes/layouts_row_col_ex.dart';
 import 'routes/layouts_stack_ex.dart';
 import 'routes/layouts_wrap_ex.dart';
-import 'routes/lists_wheel_scroll_view_ex.dart';
 import 'routes/lists_datatable_ex.dart';
 import 'routes/lists_expansion_tile_ex.dart';
 import 'routes/lists_grid_list_ex.dart';
@@ -54,6 +53,7 @@ import 'routes/lists_listview_builder_ex.dart';
 import 'routes/lists_reorderable_ex.dart';
 import 'routes/lists_slidable_tile_ex.dart';
 import 'routes/lists_swipe_to_dismiss_ex.dart';
+import 'routes/lists_wheel_scroll_view_ex.dart';
 import 'routes/multimedia_edge_detection_ex.dart';
 import 'routes/multimedia_extended_image_ex.dart';
 import 'routes/multimedia_image_picker_ex.dart';
@@ -133,7 +133,7 @@ const kAboutRoute = MyRoute(
 // ]
 class MyRouteGroup {
   const MyRouteGroup(
-      {@required this.groupName, @required this.icon, @required this.routes});
+      {required this.groupName, required this.icon, required this.routes});
   final String groupName;
   final Widget icon;
   final List<MyRoute> routes;
@@ -363,14 +363,15 @@ const kMyAppRoutesBasic = <MyRouteGroup>[
       ),
       MyRoute(
         sourceFilePath: 'lib/routes/lists_wheel_scroll_view_ex.dart',
-         child: ListWheelViewExample(),
+        child: ListWheelViewExample(),
         title: 'List Wheel Scroll View',
         description: 'fancy list view',
         links: {
-          'Doc': 'https://api.flutter.dev/flutter/widgets/ListWheelScrollView-class.html',
-          'Youtube':'https://youtu.be/dUhmWAz4C7Y'
+          'Doc':
+              'https://api.flutter.dev/flutter/widgets/ListWheelScrollView-class.html',
+          'Youtube': 'https://youtu.be/dUhmWAz4C7Y'
         },
-         ),
+      ),
       MyRoute(
         child: SlidableTileExample(),
         sourceFilePath: 'lib/routes/lists_slidable_tile_ex.dart',
@@ -672,9 +673,7 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
         sourceFilePath: 'lib/routes/animation_animated_radial_menu_ex.dart',
         title: 'Animated Radial Menu',
         description: 'Easy add radial menu with high-quality animation',
-        links: {
-          'Pub package': 'https://pub.dev/packages/animated_radial_menu'
-        },
+        links: {'Pub package': 'https://pub.dev/packages/animated_radial_menu'},
       ),
       MyRoute(
         child: LottieExample(),
@@ -1058,12 +1057,14 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
         },
       ),
       MyRoute(
-        child: FirebaseMLKitExample(),
+        child: GoogleMLKitExample(),
         sourceFilePath: 'lib/routes/firebase_mlkit_ex.dart',
-        title: 'Firebase ML Kit',
+        title: 'Google ML Kit',
         description: 'Image labelling, text OCR, barcode scan, face detection.',
         links: {
-          'Doc': 'https://pub.dartlang.org/packages/firebase_ml_vision',
+          'pub.dev': 'https://pub.dev/packages/google_ml_kit',
+          'MLKit doc':
+              'https://developers.google.com/ml-kit/vision/text-recognition',
         },
       ),
     ],

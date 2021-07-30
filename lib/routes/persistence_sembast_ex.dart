@@ -7,12 +7,17 @@ import 'package:sembast/sembast_io.dart';
 
 // Data class for the mini todo application.
 class TodoItem {
-  final int id;
+  final int? id;
   final String content;
   bool isDone;
   final DateTime createdAt;
 
-  TodoItem({this.id, this.content, this.isDone = false, this.createdAt});
+  TodoItem({
+    this.id,
+    required this.content,
+    this.isDone = false,
+    required this.createdAt,
+  });
 
   TodoItem.fromJsonMap(Map<String, dynamic> map)
       : id = map['id'] as int,
@@ -30,7 +35,7 @@ class TodoItem {
 }
 
 class SembastExample extends StatefulWidget {
-  const SembastExample({Key key}) : super(key: key);
+  const SembastExample({Key? key}) : super(key: key);
 
   @override
   _SembastExampleState createState() => _SembastExampleState();
@@ -40,9 +45,9 @@ class _SembastExampleState extends State<SembastExample> {
   static const kDbFileName = 'sembast_ex.db';
   static const kDbStoreName = 'example_store';
 
-  Future<bool> _initDbFuture;
-  Database _db;
-  StoreRef<int, Map<String, dynamic>> _store;
+  late Future<bool> _initDbFuture;
+  late Database _db;
+  late StoreRef<int, Map<String, dynamic>> _store;
   List<TodoItem> _todos = [];
 
   @override

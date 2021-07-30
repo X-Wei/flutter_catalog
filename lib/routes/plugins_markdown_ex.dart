@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:markdown/markdown.dart' as md;
-import 'package:syntax_highlighter/syntax_highlighter.dart'
-    show SyntaxHighlighterStyle, DartSyntaxHighlighter;
+// import 'package:google_fonts/google_fonts.dart';
+// TODO: re-add syntax_highlighter when the package is migrated to null-safty.
+// import 'package:syntax_highlighter/syntax_highlighter.dart'
+//     show SyntaxHighlighterStyle, DartSyntaxHighlighter;
 import 'package:url_launcher/url_launcher.dart';
 
 const String _markdownSrc = '''
@@ -52,11 +53,12 @@ Enjoy!
 ''';
 
 class MarkdownExample extends StatelessWidget {
-  const MarkdownExample({Key key}) : super(key: key);
+  const MarkdownExample({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    Future<void> _onTapLink(String text, String href, String title) async {
+    Future<void> _onTapLink(String text, String? href, String title) async {
+      if (href == null) return;
       if (await canLaunch(href)) {
         launch(href);
       } else {
@@ -73,7 +75,7 @@ class MarkdownExample extends StatelessWidget {
         data: _markdownSrc,
         onTapLink: _onTapLink,
         selectable: true,
-        syntaxHighlighter: _MyDartSyntaxHighligher(),
+        // syntaxHighlighter: _MyDartSyntaxHighligher(),
         //// We use [GitHub flavored Markdown]: https://github.github.com/gfm/.
         extensionSet: md.ExtensionSet(
           /*blockSyntaxes=*/ md.ExtensionSet.gitHubFlavored.blockSyntaxes,
@@ -84,18 +86,18 @@ class MarkdownExample extends StatelessWidget {
   }
 }
 
-/// Note: There is a package [syntax_highlighter] with [format] function, but
-/// (at version=0.1.1) it doesn't extend the [flutter_markdown.SyntaxHighlighter]
-/// class, thus cannot be used in [Markdown]. So here we add a custom wrapper.
-/// TODO: create a pull request to the [syntax_highlighter] package.
-class _MyDartSyntaxHighligher extends SyntaxHighlighter {
-  final highlighter =
-      DartSyntaxHighlighter(SyntaxHighlighterStyle.lightThemeStyle());
-  @override
-  TextSpan format(String source) {
-    return TextSpan(
-      style: GoogleFonts.droidSansMono(),
-      children: <TextSpan>[highlighter.format(source)],
-    );
-  }
-}
+// /// Note: There is a package [syntax_highlighter] with [format] function, but
+// /// (at version=0.1.1) it doesn't extend the [flutter_markdown.SyntaxHighlighter]
+// /// class, thus cannot be used in [Markdown]. So here we add a custom wrapper.
+// /// TODO: create a pull request to the [syntax_highlighter] package.
+// class _MyDartSyntaxHighligher extends SyntaxHighlighter {
+//   final highlighter =
+//       DartSyntaxHighlighter(SyntaxHighlighterStyle.lightThemeStyle());
+//   @override
+//   TextSpan format(String source) {
+//     return TextSpan(
+//       style: GoogleFonts.droidSansMono(),
+//       children: <TextSpan>[highlighter.format(source)],
+//     );
+//   }
+// }

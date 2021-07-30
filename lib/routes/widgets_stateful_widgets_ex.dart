@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class StatefulWidgetsExample extends StatefulWidget {
-  const StatefulWidgetsExample({Key key}) : super(key: key);
+  const StatefulWidgetsExample({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _StatefulWidgetsExampleState();
@@ -36,8 +36,10 @@ class _StatefulWidgetsExampleState extends State<StatefulWidgetsExample> {
         const Divider(),
         const Text('Checkbox'),
         Checkbox(
-          onChanged: (bool value) {
-            setState(() => this._checkBoxVal = value);
+          onChanged: (bool? value) {
+            if (value != null) {
+              setState(() => this._checkBoxVal = value);
+            }
           },
           value: this._checkBoxVal,
         ),
@@ -78,8 +80,10 @@ class _StatefulWidgetsExampleState extends State<StatefulWidgetsExample> {
               .map((int index) => Radio<int>(
                     value: index,
                     groupValue: this._radioVal,
-                    onChanged: (int value) {
-                      setState(() => this._radioVal = value);
+                    onChanged: (int? value) {
+                      if (value != null) {
+                        setState(() => this._radioVal = value);
+                      }
                     },
                   ))
               .toList(),

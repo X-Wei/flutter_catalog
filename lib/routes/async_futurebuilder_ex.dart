@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class FutureBuilderExample extends StatefulWidget {
-  const FutureBuilderExample({Key key}) : super(key: key);
+  const FutureBuilderExample({Key? key}) : super(key: key);
 
   @override
   FutureBuilderExampleState createState() => FutureBuilderExampleState();
@@ -37,7 +37,7 @@ class FutureBuilderExampleState extends State<FutureBuilderExample> {
                 // This shouldn't happen in our case, but good to handle errors.
                 return const Text('Error has happened in the future!');
               } else {
-                return Image.memory(snapshot.data.buffer.asUint8List());
+                return Image.memory(snapshot.data!.buffer.asUint8List());
               }
             },
           ),

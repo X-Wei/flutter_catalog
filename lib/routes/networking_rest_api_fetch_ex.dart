@@ -6,15 +6,15 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class RestApiFetchExample extends StatefulWidget {
-  const RestApiFetchExample({Key key}) : super(key: key);
+  const RestApiFetchExample({Key? key}) : super(key: key);
 
   @override
   _RestApiFetchExampleState createState() => _RestApiFetchExampleState();
 }
 
 class _RestApiFetchExampleState extends State<RestApiFetchExample> {
-  TextEditingController _urlController;
-  TextEditingController _apiTokenController;
+  late TextEditingController _urlController;
+  late TextEditingController _apiTokenController;
   String _responseBody = '<empty>';
   String _error = '<none>';
   bool _pending = false;
@@ -87,7 +87,7 @@ class _RestApiFetchExampleState extends State<RestApiFetchExample> {
     setState(() => this._pending = true);
     try {
       final http.Response response = await http.get(
-        url,
+        Uri.parse(url),
         headers: {HttpHeaders.authorizationHeader: apiToken},
       );
       // Usually we will add code to convert the response body into our data

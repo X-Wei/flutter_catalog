@@ -2,7 +2,7 @@ import 'package:animated_radial_menu/animated_radial_menu.dart';
 import 'package:flutter/material.dart';
 
 class RadialMenuExample extends StatelessWidget {
-  const RadialMenuExample({Key key}) : super(key: key);
+  const RadialMenuExample({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +45,7 @@ class RadialMenuExample extends StatelessWidget {
 }
 
 class TargetScreen extends StatelessWidget {
-  const TargetScreen({Key key}) : super(key: key);
+  const TargetScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

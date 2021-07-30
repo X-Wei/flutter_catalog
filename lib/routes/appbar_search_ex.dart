@@ -4,7 +4,7 @@ import 'package:english_words/english_words.dart' as english_words;
 // Adapted from search demo in offical flutter gallery:
 // https://github.com/flutter/flutter/blob/master/examples/flutter_gallery/lib/demo/material/search_demo.dart
 class AppBarSearchExample extends StatefulWidget {
-  const AppBarSearchExample({Key key}) : super(key: key);
+  const AppBarSearchExample({Key? key}) : super(key: key);
 
   @override
   _AppBarSearchExampleState createState() => _AppBarSearchExampleState();
@@ -12,7 +12,7 @@ class AppBarSearchExample extends StatefulWidget {
 
 class _AppBarSearchExampleState extends State<AppBarSearchExample> {
   final List<String> kEnglishWords;
-  _MySearchDelegate _delegate;
+  late _MySearchDelegate _delegate;
 
   _AppBarSearchExampleState()
       : kEnglishWords = List.from(Set.from(english_words.all))
@@ -38,7 +38,7 @@ class _AppBarSearchExampleState extends State<AppBarSearchExample> {
             tooltip: 'Search',
             icon: const Icon(Icons.search),
             onPressed: () async {
-              final String selected = await showSearch<String>(
+              final String? selected = await showSearch<String>(
                 context: context,
                 delegate: _delegate,
               );
@@ -87,7 +87,7 @@ class _MySearchDelegate extends SearchDelegate<String> {
       ),
       onPressed: () {
         // SearchDelegate.close() can return vlaues, similar to Navigator.pop().
-        this.close(context, null);
+        this.close(context, '');
       },
     );
   }
@@ -112,7 +112,7 @@ class _MySearchDelegate extends SearchDelegate<String> {
                 this.query,
                 style: Theme.of(context)
                     .textTheme
-                    .headline4
+                    .headline4!
                     .copyWith(fontWeight: FontWeight.bold),
               ),
             ),
@@ -167,7 +167,10 @@ class _MySearchDelegate extends SearchDelegate<String> {
 
 // Suggestions list widget displayed in the search page.
 class _SuggestionList extends StatelessWidget {
-  const _SuggestionList({this.suggestions, this.query, this.onSelected});
+  const _SuggestionList(
+      {required this.suggestions,
+      required this.query,
+      required this.onSelected});
 
   final List<String> suggestions;
   final String query;
@@ -175,7 +178,7 @@ class _SuggestionList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme.subtitle1;
+    final textTheme = Theme.of(context).textTheme.subtitle1!;
     return ListView.builder(
       itemCount: suggestions.length,
       itemBuilder: (BuildContext context, int i) {

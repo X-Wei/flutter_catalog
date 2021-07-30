@@ -18,7 +18,7 @@ const _kAllANimatedIcons = <String, AnimatedIconData>{
 };
 
 class AnimatedIconsExample extends StatelessWidget {
-  const AnimatedIconsExample({Key key}) : super(key: key);
+  const AnimatedIconsExample({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -47,8 +47,7 @@ class _AnimIconDemoBox extends StatefulWidget {
   final AnimatedIconData iconData;
   final String name;
 
-  const _AnimIconDemoBox(
-      {Key key, @required this.iconData, @required this.name})
+  const _AnimIconDemoBox({Key? key, required this.iconData, required this.name})
       : super(key: key);
 
   @override
@@ -58,7 +57,7 @@ class _AnimIconDemoBox extends StatefulWidget {
 // ! Add SingleTickerProviderStateMixin to use animation controllers.
 class _AnimIconDemoBoxState extends State<_AnimIconDemoBox>
     with SingleTickerProviderStateMixin {
-  AnimationController _animationController;
+  late AnimationController _animationController;
 
   @override
   void initState() {

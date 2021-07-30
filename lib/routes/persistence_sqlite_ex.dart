@@ -8,14 +8,19 @@ import 'package:sqflite/sqflite.dart';
 
 // Data class for the mini todo application.
 class TodoItem {
-  final int id;
+  final int? id;
   final String content;
   // SQLite doesn't supprot boolean. Use INTEGER/BIT (0/1 values).
   final bool isDone;
   // SQLite doesn't supprot DateTime. Store them as INTEGER (millisSinceEpoch).
   final DateTime createdAt;
 
-  TodoItem({this.id, this.content, this.isDone = false, this.createdAt});
+  TodoItem({
+    this.id,
+    required this.content,
+    this.isDone = false,
+    required this.createdAt,
+  });
 
   TodoItem.fromJsonMap(Map<String, dynamic> map)
       : id = map['id'] as int,
@@ -33,7 +38,7 @@ class TodoItem {
 }
 
 class SqliteExample extends StatefulWidget {
-  const SqliteExample({Key key}) : super(key: key);
+  const SqliteExample({Key? key}) : super(key: key);
 
   @override
   _SqliteExampleState createState() => _SqliteExampleState();
@@ -44,7 +49,7 @@ class _SqliteExampleState extends State<SqliteExample> {
   static const kDbTableName = 'example_tbl';
   final AsyncMemoizer _memoizer = AsyncMemoizer();
 
-  Database _db;
+  late Database _db;
   List<TodoItem> _todos = [];
 
   // Opens a db local file. Creates the db table if it's not yet created.

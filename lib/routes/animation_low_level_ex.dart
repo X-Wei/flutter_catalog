@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class LowLevelAnimationExample extends StatefulWidget {
-  const LowLevelAnimationExample({Key key}) : super(key: key);
+  const LowLevelAnimationExample({Key? key}) : super(key: key);
 
   @override
   _LowLevelAnimationExampleState createState() =>
@@ -15,14 +15,14 @@ class _LowLevelAnimationExampleState extends State<LowLevelAnimationExample>
   // An Animation object knows the current state of an animation (for example,
   // whether it’s started, stopped, or moving forward or in reverse), but
   // doesn’t know anything about what appears onscreen.
-  Animation<double> _sizeAnimation;
-  Animation<Color> _colorAnimation;
+  late Animation<double> _sizeAnimation;
+  late Animation<Color?> _colorAnimation;
   // Both AnimationController and CurvedAnimation extends Animation<double>,
   // but add additional methods
   // An AnimationController manages the Animation.
-  AnimationController _controller;
+  late AnimationController _controller;
   // A CurvedAnimation defines progression as a non-linear curve.
-  CurvedAnimation _curve;
+  late CurvedAnimation _curve;
 
   @override
   void initState() {

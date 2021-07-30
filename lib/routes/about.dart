@@ -6,7 +6,7 @@ import 'package:flutter_catalog/constants.dart';
 // Inspired by the about page in Eajy's flutter demo:
 // https://github.com/Eajy/flutter_demo/blob/master/lib/route/about.dart
 class MyAboutRoute extends StatelessWidget {
-  const MyAboutRoute({Key key}) : super(key: key);
+  const MyAboutRoute({Key? key}) : super(key: key);
 
   // These tiles are also used as drawer nav items in home route.
   static final List<Widget> kAboutListTiles = <Widget>[

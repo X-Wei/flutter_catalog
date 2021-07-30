@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class BottomSheetExample extends StatefulWidget {
-  const BottomSheetExample({Key key}) : super(key: key);
+  const BottomSheetExample({Key? key}) : super(key: key);
 
   @override
   _BottomSheetExampleState createState() => _BottomSheetExampleState();
@@ -24,7 +24,7 @@ class _BottomSheetExampleState extends State<BottomSheetExample> {
               onPressed: () => this
                   ._scaffoldKey
                   .currentState
-                  .showBottomSheet((ctx) => _buildBottomSheet(ctx)),
+                  ?.showBottomSheet((ctx) => _buildBottomSheet(ctx)),
               child: const Text('show bottom sheet'),
             ),
             ElevatedButton(

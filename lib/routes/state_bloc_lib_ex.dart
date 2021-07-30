@@ -4,7 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class BlocLibExample extends StatelessWidget {
-  const BlocLibExample({Key key}) : super(key: key);
+  const BlocLibExample({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class _MyEvent {
   final bool isIncrement;
   final DateTime timestamp;
 
-  _MyEvent({@required this.isIncrement, DateTime timestamp})
+  _MyEvent({required this.isIncrement, DateTime? timestamp})
       : this.timestamp = timestamp ?? DateTime.now();
 }
 
@@ -122,8 +122,8 @@ class _CounterAndButton extends StatelessWidget {
           const Text('(child widget)'),
           // ###5. Access the state from child widget by wrapping the widget by
           // a BlocBuilder.
-          BlocBuilder(
-            cubit: BlocProvider.of<MyBloc>(context),
+          BlocBuilder<MyBloc, _MyState>(
+            bloc: BlocProvider.of<MyBloc>(context),
             builder: (context, _MyState state) {
               return Text(
                 '${state.counter}',

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 // Inspired by dropdown buttons demo in offical flutter gallery:
 // https://github.com/flutter/flutter/blob/master/examples/flutter_gallery/lib/demo/material/buttons_demo.dart
 class DropdownButtonExample extends StatefulWidget {
-  const DropdownButtonExample({Key key}) : super(key: key);
+  const DropdownButtonExample({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _DropdownButtonExampleState();
@@ -34,8 +34,8 @@ class _DropdownButtonExampleState extends State<DropdownButtonExample> {
       .toList();
 
   String _btn1SelectedVal = 'One';
-  String _btn2SelectedVal;
-  String _btn3SelectedVal;
+  String? _btn2SelectedVal;
+  late String _btn3SelectedVal;
 
   @override
   Widget build(BuildContext context) {
@@ -46,10 +46,10 @@ class _DropdownButtonExampleState extends State<DropdownButtonExample> {
           trailing: DropdownButton<String>(
             // Must be one of items.value.
             value: _btn1SelectedVal,
-            onChanged: (String newValue) {
-              setState(() {
-                _btn1SelectedVal = newValue;
-              });
+            onChanged: (String? newValue) {
+              if (newValue != null) {
+                setState(() => _btn1SelectedVal = newValue);
+              }
             },
             items: this._dropDownMenuItems,
           ),
@@ -59,10 +59,10 @@ class _DropdownButtonExampleState extends State<DropdownButtonExample> {
           trailing: DropdownButton(
             value: _btn2SelectedVal,
             hint: const Text('Choose'),
-            onChanged: (String newValue) {
-              setState(() {
-                _btn2SelectedVal = newValue;
-              });
+            onChanged: (String? newValue) {
+              if (newValue != null) {
+                setState(() => _btn2SelectedVal = newValue);
+              }
             },
             items: _dropDownMenuItems,
           ),

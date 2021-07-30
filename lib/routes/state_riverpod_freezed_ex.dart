@@ -35,12 +35,12 @@ class MyApiModel extends StateNotifier<MyApiState> {
 /// Note: in Resocoder's tutorial, he defined a "repository" class that abstracts
 /// the core logic of generating names (and have one provider depending on
 /// another provider). Here I don't have the "repository" abstraction layer.
-final kMyApiModelProvider = StateNotifierProvider<MyApiModel>(
+final kMyApiModelProvider = StateNotifierProvider<MyApiModel, MyApiState>(
   (ref) => MyApiModel(),
 );
 
 class RiverpodFreezedExample extends StatelessWidget {
-  const RiverpodFreezedExample({Key key}) : super(key: key);
+  const RiverpodFreezedExample({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -116,7 +116,8 @@ class __DemoPageState extends State<_DemoPage> {
             onPressed: () {
               //! Use context.read(fooProvider) to access provider outside of
               //! `build()`.
-              final model = context.read<MyApiModel>(kMyApiModelProvider);
+              final model =
+                  context.read<MyApiModel>(kMyApiModelProvider.notifier);
               model.generateRandomNames(this._n);
             },
           ),
@@ -126,7 +127,7 @@ class __DemoPageState extends State<_DemoPage> {
           ///! If we put the logic in build(), a snackbar will show every time
           ///! the widget builds
           ProviderListener<MyApiState>(
-            provider: kMyApiModelProvider.state,
+            provider: kMyApiModelProvider,
             onChange: (context, state) {
               if (state is ErrorState) {
                 ScaffoldMessenger.of(context).showSnackBar(
@@ -141,7 +142,7 @@ class __DemoPageState extends State<_DemoPage> {
             ///! `ConsumerWidget`, there we have access to the `watch` function.
             child: Consumer(
               builder: (context, watch, child) {
-                final state = watch(kMyApiModelProvider.state);
+                final state = watch(kMyApiModelProvider);
                 // ! With the sealed union by freezed, we can match on the possible
                 // ! states and show different UI.
                 return state.when<Widget>(

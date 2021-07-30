@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'my_api_state.dart';
 
@@ -9,62 +9,65 @@ part of 'my_api_state.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 /// @nodoc
 class _$MyApiStateTearOff {
   const _$MyApiStateTearOff();
 
-// ignore: unused_element
   SuccessState success(List<String> data) {
     return SuccessState(
       data,
     );
   }
 
-// ignore: unused_element
   ErrorState error(String errorMsg) {
     return ErrorState(
       errorMsg,
     );
   }
 
-// ignore: unused_element
   LoadingState loading() {
     return LoadingState();
   }
 }
 
 /// @nodoc
-// ignore: unused_element
 const $MyApiState = _$MyApiStateTearOff();
 
 /// @nodoc
 mixin _$MyApiState {
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult success(List<String> data),
-    @required TResult error(String errorMsg),
-    @required TResult loading(),
-  });
+  TResult when<TResult extends Object?>({
+    required TResult Function(List<String> data) success,
+    required TResult Function(String errorMsg) error,
+    required TResult Function() loading,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult success(List<String> data),
-    TResult error(String errorMsg),
-    TResult loading(),
-    @required TResult orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(List<String> data)? success,
+    TResult Function(String errorMsg)? error,
+    TResult Function()? loading,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult success(SuccessState value),
-    @required TResult error(ErrorState value),
-    @required TResult loading(LoadingState value),
-  });
+  TResult map<TResult extends Object?>({
+    required TResult Function(SuccessState value) success,
+    required TResult Function(ErrorState value) error,
+    required TResult Function(LoadingState value) loading,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult success(SuccessState value),
-    TResult error(ErrorState value),
-    TResult loading(LoadingState value),
-    @required TResult orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(SuccessState value)? success,
+    TResult Function(ErrorState value)? error,
+    TResult Function(LoadingState value)? loading,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -103,17 +106,21 @@ class _$SuccessStateCopyWithImpl<$Res> extends _$MyApiStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object data = freezed,
+    Object? data = freezed,
   }) {
     return _then(SuccessState(
-      data == freezed ? _value.data : data as List<String>,
+      data == freezed
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
 
 /// @nodoc
+
 class _$SuccessState implements SuccessState {
-  _$SuccessState(this.data) : assert(data != null);
+  _$SuccessState(this.data);
 
   @override
   final List<String> data;
@@ -142,26 +149,22 @@ class _$SuccessState implements SuccessState {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult success(List<String> data),
-    @required TResult error(String errorMsg),
-    @required TResult loading(),
+  TResult when<TResult extends Object?>({
+    required TResult Function(List<String> data) success,
+    required TResult Function(String errorMsg) error,
+    required TResult Function() loading,
   }) {
-    assert(success != null);
-    assert(error != null);
-    assert(loading != null);
     return success(data);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult success(List<String> data),
-    TResult error(String errorMsg),
-    TResult loading(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(List<String> data)? success,
+    TResult Function(String errorMsg)? error,
+    TResult Function()? loading,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (success != null) {
       return success(data);
     }
@@ -170,26 +173,22 @@ class _$SuccessState implements SuccessState {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult success(SuccessState value),
-    @required TResult error(ErrorState value),
-    @required TResult loading(LoadingState value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(SuccessState value) success,
+    required TResult Function(ErrorState value) error,
+    required TResult Function(LoadingState value) loading,
   }) {
-    assert(success != null);
-    assert(error != null);
-    assert(loading != null);
     return success(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult success(SuccessState value),
-    TResult error(ErrorState value),
-    TResult loading(LoadingState value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(SuccessState value)? success,
+    TResult Function(ErrorState value)? error,
+    TResult Function(LoadingState value)? loading,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (success != null) {
       return success(this);
     }
@@ -200,9 +199,10 @@ class _$SuccessState implements SuccessState {
 abstract class SuccessState implements MyApiState {
   factory SuccessState(List<String> data) = _$SuccessState;
 
-  List<String> get data;
+  List<String> get data => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $SuccessStateCopyWith<SuccessState> get copyWith;
+  $SuccessStateCopyWith<SuccessState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -224,17 +224,21 @@ class _$ErrorStateCopyWithImpl<$Res> extends _$MyApiStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object errorMsg = freezed,
+    Object? errorMsg = freezed,
   }) {
     return _then(ErrorState(
-      errorMsg == freezed ? _value.errorMsg : errorMsg as String,
+      errorMsg == freezed
+          ? _value.errorMsg
+          : errorMsg // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
+
 class _$ErrorState implements ErrorState {
-  _$ErrorState(this.errorMsg) : assert(errorMsg != null);
+  _$ErrorState(this.errorMsg);
 
   @override
   final String errorMsg;
@@ -264,26 +268,22 @@ class _$ErrorState implements ErrorState {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult success(List<String> data),
-    @required TResult error(String errorMsg),
-    @required TResult loading(),
+  TResult when<TResult extends Object?>({
+    required TResult Function(List<String> data) success,
+    required TResult Function(String errorMsg) error,
+    required TResult Function() loading,
   }) {
-    assert(success != null);
-    assert(error != null);
-    assert(loading != null);
     return error(errorMsg);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult success(List<String> data),
-    TResult error(String errorMsg),
-    TResult loading(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(List<String> data)? success,
+    TResult Function(String errorMsg)? error,
+    TResult Function()? loading,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (error != null) {
       return error(errorMsg);
     }
@@ -292,26 +292,22 @@ class _$ErrorState implements ErrorState {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult success(SuccessState value),
-    @required TResult error(ErrorState value),
-    @required TResult loading(LoadingState value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(SuccessState value) success,
+    required TResult Function(ErrorState value) error,
+    required TResult Function(LoadingState value) loading,
   }) {
-    assert(success != null);
-    assert(error != null);
-    assert(loading != null);
     return error(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult success(SuccessState value),
-    TResult error(ErrorState value),
-    TResult loading(LoadingState value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(SuccessState value)? success,
+    TResult Function(ErrorState value)? error,
+    TResult Function(LoadingState value)? loading,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (error != null) {
       return error(this);
     }
@@ -322,9 +318,10 @@ class _$ErrorState implements ErrorState {
 abstract class ErrorState implements MyApiState {
   factory ErrorState(String errorMsg) = _$ErrorState;
 
-  String get errorMsg;
+  String get errorMsg => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ErrorStateCopyWith<ErrorState> get copyWith;
+  $ErrorStateCopyWith<ErrorState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -346,6 +343,7 @@ class _$LoadingStateCopyWithImpl<$Res> extends _$MyApiStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$LoadingState implements LoadingState {
   _$LoadingState();
 
@@ -364,26 +362,22 @@ class _$LoadingState implements LoadingState {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult success(List<String> data),
-    @required TResult error(String errorMsg),
-    @required TResult loading(),
+  TResult when<TResult extends Object?>({
+    required TResult Function(List<String> data) success,
+    required TResult Function(String errorMsg) error,
+    required TResult Function() loading,
   }) {
-    assert(success != null);
-    assert(error != null);
-    assert(loading != null);
     return loading();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult success(List<String> data),
-    TResult error(String errorMsg),
-    TResult loading(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(List<String> data)? success,
+    TResult Function(String errorMsg)? error,
+    TResult Function()? loading,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading();
     }
@@ -392,26 +386,22 @@ class _$LoadingState implements LoadingState {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult success(SuccessState value),
-    @required TResult error(ErrorState value),
-    @required TResult loading(LoadingState value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(SuccessState value) success,
+    required TResult Function(ErrorState value) error,
+    required TResult Function(LoadingState value) loading,
   }) {
-    assert(success != null);
-    assert(error != null);
-    assert(loading != null);
     return loading(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult success(SuccessState value),
-    TResult error(ErrorState value),
-    TResult loading(LoadingState value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(SuccessState value)? success,
+    TResult Function(ErrorState value)? error,
+    TResult Function(LoadingState value)? loading,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loading != null) {
       return loading(this);
     }

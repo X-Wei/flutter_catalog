@@ -9,7 +9,7 @@ const _kTextStyle = TextStyle(
 );
 
 class AnimatedTextKitExample extends StatelessWidget {
-  const AnimatedTextKitExample({Key key}) : super(key: key);
+  const AnimatedTextKitExample({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class AnimatedTextKitExample extends StatelessWidget {
         TextLiquidFill(
           text: 'LIQUIDY',
           waveColor: Colors.blueAccent,
-          boxBackgroundColor: Colors.red[100],
+          boxBackgroundColor: Colors.red[100]!,
           textStyle:
               const TextStyle(fontSize: 80.0, fontWeight: FontWeight.bold),
           boxHeight: 300.0,

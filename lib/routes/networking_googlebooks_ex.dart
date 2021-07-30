@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class RestApiGoogleBooksExample extends StatefulWidget {
-  const RestApiGoogleBooksExample({Key key}) : super(key: key);
+  const RestApiGoogleBooksExample({Key? key}) : super(key: key);
 
   @override
   _RestApiGoogleBooksExampleState createState() =>
@@ -12,7 +12,7 @@ class RestApiGoogleBooksExample extends StatefulWidget {
 }
 
 class _RestApiGoogleBooksExampleState extends State<RestApiGoogleBooksExample> {
-  TextEditingController _queryController;
+  late TextEditingController _queryController;
   List<_MyBook> _books = [];
   bool _pending = false;
 
@@ -75,7 +75,7 @@ class _RestApiGoogleBooksExampleState extends State<RestApiGoogleBooksExample> {
       queryParameters: {'q': query},
     );
     print('uri=$uri'); // https://www.googleapis.com/books/v1/volumes?q=$query
-    final http.Response response = await http.get(uri.toString());
+    final http.Response response = await http.get(uri);
     if (response.statusCode == 200) {
       return _MyBook.parseFromJsonStr(response.body);
     } else {
@@ -105,23 +105,23 @@ class _MyBook {
   final String title;
   final String authors;
   final String description;
-  final String thumbnailUrl;
+  final String? thumbnailUrl;
 
   _MyBook(
       this.id, this.title, this.authors, this.description, this.thumbnailUrl);
 
   Widget get thumbnail => this.thumbnailUrl != null
-      ? Image.network(this.thumbnailUrl)
+      ? Image.network(this.thumbnailUrl!)
       : CircleAvatar(child: Text(this.title[0]));
 
   _MyBook.fromJson(Map<String, dynamic> jsonMap)
       : id = jsonMap['id'] as String,
         title = jsonMap['volumeInfo']['title'] as String,
         authors = (jsonMap['volumeInfo']['authors'] as List).join(', '),
-        description = jsonMap['volumeInfo']['description'] as String ??
+        description = jsonMap['volumeInfo']['description'] as String? ??
             '<missing description>',
         thumbnailUrl =
-            jsonMap['volumeInfo']['imageLinks']['smallThumbnail'] as String;
+            jsonMap['volumeInfo']['imageLinks']['smallThumbnail'] as String?;
 
   static List<_MyBook> parseFromJsonStr(String jsonStr) {
     final json = jsonDecode(jsonStr);

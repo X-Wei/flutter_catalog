@@ -2,7 +2,7 @@ import 'package:backdrop/backdrop.dart';
 import 'package:flutter/material.dart';
 
 class BackdropExample extends StatelessWidget {
-  const BackdropExample({Key key}) : super(key: key);
+  const BackdropExample({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -4,16 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class RestApiSendExample extends StatefulWidget {
-  const RestApiSendExample({Key key}) : super(key: key);
+  const RestApiSendExample({Key? key}) : super(key: key);
 
   @override
   _RestApiSendExampleState createState() => _RestApiSendExampleState();
 }
 
 class _RestApiSendExampleState extends State<RestApiSendExample> {
-  TextEditingController _titleController;
-  TextEditingController _contentController;
-  TextEditingController _userIdController;
+  late TextEditingController _titleController;
+  late TextEditingController _contentController;
+  late TextEditingController _userIdController;
   String _responseBody = '<empty>';
   String _error = '<none>';
   bool _pending = false;
@@ -106,7 +106,7 @@ From https://jsonplaceholder.typicode.com/guide.html we see that the API expects
     setState(() => this._pending = true);
     try {
       final http.Response response = await http.post(
-        'https://jsonplaceholder.typicode.com/posts',
+        Uri.parse('https://jsonplaceholder.typicode.com/posts'),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },

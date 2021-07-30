@@ -11,7 +11,7 @@ import './firebase_login_ex.dart' show kFirebaseAnalytics;
 // firebase json file, and add configuration lines in the gradle files.
 // C.f. this commit: https://github.com/X-Wei/flutter_catalog/commit/48792cbc0de62fc47e0e9ba2cd3718117f4d73d1.
 class FirebaseChatroomExample extends StatefulWidget {
-  const FirebaseChatroomExample({Key key}) : super(key: key);
+  const FirebaseChatroomExample({Key? key}) : super(key: key);
 
   @override
   _FirebaseChatroomExampleState createState() =>
@@ -19,8 +19,8 @@ class FirebaseChatroomExample extends StatefulWidget {
 }
 
 class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
-  firebase_auth.User _user;
-  DatabaseReference _firebaseMsgDbRef;
+  firebase_auth.User? _user;
+  late DatabaseReference _firebaseMsgDbRef;
 
   final TextEditingController _textController = TextEditingController();
   bool _isComposing = false;
@@ -49,7 +49,7 @@ class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
           scrollDirection: Axis.horizontal,
           child: Text(_user == null
               ? 'Chatting'
-              : 'Chatting as "${_user.displayName}"'),
+              : 'Chatting as "${_user!.displayName}"'),
         ),
       ),
       body: Center(
@@ -91,7 +91,7 @@ class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
         child: FirebaseAnimatedList(
           defaultChild: const Center(child: CircularProgressIndicator()),
           query: _firebaseMsgDbRef,
-          sort: (a, b) => b.key.compareTo(a.key),
+          sort: (a, b) => b.key!.compareTo(a.key!),
           padding: const EdgeInsets.all(8.0),
           reverse: true,
           itemBuilder: (BuildContext ctx, DataSnapshot snapshot,
@@ -105,10 +105,11 @@ class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
   // Returns the UI of one message from a data snapshot.
   Widget _messageFromSnapshot(
       DataSnapshot snapshot, Animation<double> animation) {
-    final senderName = snapshot.value['senderName'] as String ?? '?? <unknown>';
-    final msgText = snapshot.value['text'] as String ?? '??';
-    final sentTime = snapshot.value['timestamp'] as int ?? 0;
-    final senderPhotoUrl = snapshot.value['senderPhotoUrl'] as String;
+    final senderName =
+        snapshot.value['senderName'] as String? ?? '?? <unknown>';
+    final msgText = snapshot.value['text'] as String? ?? '??';
+    final sentTime = snapshot.value['timestamp'] as int? ?? 0;
+    final senderPhotoUrl = snapshot.value['senderPhotoUrl'] as String?;
     final messageUI = Padding(
       padding: const EdgeInsets.symmetric(vertical: 10.0),
       child: Row(
@@ -214,9 +215,9 @@ class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
     });
     // Send message to firebase realtime database.
     _firebaseMsgDbRef.push().set({
-      'senderId': this._user.uid,
-      'senderName': this._user.displayName,
-      'senderPhotoUrl': this._user.photoURL,
+      'senderId': this._user!.uid,
+      'senderName': this._user!.displayName,
+      'senderPhotoUrl': this._user!.photoURL,
       'text': text,
       'timestamp': DateTime.now().millisecondsSinceEpoch,
     });

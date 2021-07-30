@@ -6,7 +6,7 @@ part 'todo_item.g.dart';
 @HiveType(typeId: 0)
 class TodoItem extends HiveObject {
   @HiveField(0)
-  int id;
+  int? id;
   @HiveField(1)
   String content;
   @HiveField(2)
@@ -14,8 +14,12 @@ class TodoItem extends HiveObject {
   @HiveField(3)
   final DateTime createdAt;
 
-  TodoItem({this.id, this.content, this.isDone = false, DateTime createdAt})
-      : this.createdAt = createdAt ?? DateTime.now();
+  TodoItem({
+    this.id,
+    required this.content,
+    this.isDone = false,
+    DateTime? createdAt,
+  }) : this.createdAt = createdAt ?? DateTime.now();
 
   @override
   String toString() {

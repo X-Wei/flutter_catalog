@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CardExample extends StatelessWidget {
-  const CardExample({Key key}) : super(key: key);
+  const CardExample({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -84,7 +84,7 @@ class CardExample extends StatelessWidget {
                           'Card 4 (complex example)',
                           style: Theme.of(context)
                               .textTheme
-                              .headline5
+                              .headline5!
                               .copyWith(color: Colors.white),
                         ),
                       ),

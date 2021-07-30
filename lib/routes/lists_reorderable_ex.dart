@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 // Adapted from reorderable list demo in offical flutter gallery:
 // https://github.com/flutter/flutter/blob/master/examples/flutter_gallery/lib/demo/material/reorderable_list_demo.dart
 class ReorderableListExample extends StatefulWidget {
-  const ReorderableListExample({Key key}) : super(key: key);
+  const ReorderableListExample({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {

@@ -3,7 +3,7 @@ import 'package:heatmap_calendar/heatmap_calendar.dart';
 import 'package:heatmap_calendar/time_utils.dart';
 
 class HeatmapCalendarExample extends StatelessWidget {
-  const HeatmapCalendarExample({Key key}) : super(key: key);
+  const HeatmapCalendarExample({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,7 @@ class HeatmapCalendarExample extends StatelessWidget {
           squareSize: 18,
           textOpacity: 0.3,
           labelTextColor: Colors.blueGrey,
-          dayTextColor: Colors.blue[500],
+          dayTextColor: Colors.blue[500]!,
           // Week day and month labels can be overriden:
           // weekDaysLabels: const ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
           // monthsLabels: const ['', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',

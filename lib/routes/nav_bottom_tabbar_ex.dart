@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class BottomTabbarExample extends StatefulWidget {
-  const BottomTabbarExample({Key key}) : super(key: key);
+  const BottomTabbarExample({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _BottomTabbarExampleState();
@@ -9,7 +9,7 @@ class BottomTabbarExample extends StatefulWidget {
 
 class _BottomTabbarExampleState extends State<BottomTabbarExample>
     with SingleTickerProviderStateMixin {
-  TabController _tabController;
+  late TabController _tabController;
 
   static const _kTabPages = <Widget>[
     Center(child: Icon(Icons.cloud, size: 64.0, color: Colors.teal)),

@@ -4,7 +4,7 @@ import 'package:transparent_image/transparent_image.dart'
     show kTransparentImage;
 
 class LocalAuthExample extends StatefulWidget {
-  const LocalAuthExample({Key key}) : super(key: key);
+  const LocalAuthExample({Key? key}) : super(key: key);
 
   @override
   _LocalAuthExampleState createState() => _LocalAuthExampleState();
@@ -12,7 +12,7 @@ class LocalAuthExample extends StatefulWidget {
 
 class _LocalAuthExampleState extends State<LocalAuthExample> {
   bool _authSuccess = false;
-  LocalAuthentication _localAuth;
+  late LocalAuthentication _localAuth;
 
   @override
   void initState() {
@@ -35,8 +35,10 @@ class _LocalAuthExampleState extends State<LocalAuthExample> {
     // **NOTE**: for local auth to work, tha MainActivity needs to extend from
     // FlutterFragmentActivity, cf. https://stackoverflow.com/a/56605771.
     try {
-      final authSuccess = await this._localAuth.authenticateWithBiometrics(
-          localizedReason: 'Auth in to see hidden image');
+      final authSuccess = await this._localAuth.authenticate(
+            biometricOnly: true,
+            localizedReason: 'Auth in to see hidden image',
+          );
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('authSuccess=$authSuccess')),
       );

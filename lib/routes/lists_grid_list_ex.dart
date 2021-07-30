@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class GridListExample extends StatelessWidget {
-  const GridListExample({Key key}) : super(key: key);
+  const GridListExample({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

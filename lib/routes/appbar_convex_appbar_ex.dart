@@ -10,7 +10,7 @@ const _kPages = <String, IconData>{
 };
 
 class ConvexAppExample extends StatefulWidget {
-  const ConvexAppExample({Key key}) : super(key: key);
+  const ConvexAppExample({Key? key}) : super(key: key);
 
   @override
   _ConvexAppExampleState createState() => _ConvexAppExampleState();
@@ -58,7 +58,7 @@ class _ConvexAppExampleState extends State<ConvexAppExample> {
     final dropdown = DropdownButton<TabStyle>(
       value: _tabStyle,
       onChanged: (newStyle) {
-        setState(() => _tabStyle = newStyle);
+        if (newStyle != null) setState(() => _tabStyle = newStyle);
       },
       items: [
         for (final style in TabStyle.values)

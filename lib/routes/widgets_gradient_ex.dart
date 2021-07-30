@@ -1,17 +1,18 @@
 import 'dart:math' show pi;
 
 import 'package:flutter/material.dart';
-import 'package:gradient_app_bar/gradient_app_bar.dart';
-import 'package:flutter_gradients/flutter_gradients.dart';
+import 'package:new_gradient_app_bar/new_gradient_app_bar.dart';
+// TODO: re-add flutter_gradients when it's migrated to null-safe (https://github.com/JonathanMonga/flutter_gradients/issues/9).
+// import 'package:flutter_gradients/flutter_gradients.dart';
 
 class GradientExample extends StatelessWidget {
-  const GradientExample({Key key}) : super(key: key);
+  const GradientExample({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final txtStyle = Theme.of(context).textTheme.headline4;
     return Scaffold(
-      appBar: GradientAppBar(
+      appBar: NewGradientAppBar(
         title: const Text('Gradient appbar'),
         gradient: const LinearGradient(
           colors: [Colors.indigo, Colors.cyan],
@@ -55,14 +56,14 @@ class GradientExample extends StatelessWidget {
             child: Text('SweepGradient', style: txtStyle),
           ),
           const Divider(),
-          Container(
-            height: 300,
-            decoration: BoxDecoration(
-              gradient: FlutterGradients.fabledSunset(),
-            ),
-            child: Text('Predefined gradient from flutter_gradients',
-                style: txtStyle),
-          )
+          // Container(
+          //   height: 300,
+          //   decoration: BoxDecoration(
+          //     gradient: FlutterGradients.fabledSunset(),
+          //   ),
+          //   child: Text('Predefined gradient from flutter_gradients',
+          //       style: txtStyle),
+          // )
         ],
       ),
     );

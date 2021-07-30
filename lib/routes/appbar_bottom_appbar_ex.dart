@@ -4,7 +4,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 // Adapted from offical flutter gallery:
 // https://github.com/flutter/flutter/blob/master/examples/flutter_gallery/lib/demo/material/bottom_app_bar_demo.dart
 class BottomAppbarExample extends StatefulWidget {
-  const BottomAppbarExample({Key key}) : super(key: key);
+  const BottomAppbarExample({Key? key}) : super(key: key);
 
   @override
   _BottomAppbarExampleState createState() => _BottomAppbarExampleState();
@@ -26,7 +26,7 @@ class _BottomAppbarExampleState extends State<BottomAppbarExample> {
             title: const Text('FloatingActionButton position:'),
             trailing: DropdownButton<FloatingActionButtonLocation>(
               value: this._fabLocation,
-              onChanged: (FloatingActionButtonLocation newVal) {
+              onChanged: (FloatingActionButtonLocation? newVal) {
                 if (newVal != null) {
                   setState(() => this._fabLocation = newVal);
                 }

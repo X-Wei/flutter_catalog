@@ -7,7 +7,7 @@ import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart' as url_launcher;
 
 class RestApiHackerNewsExample extends StatefulWidget {
-  const RestApiHackerNewsExample({Key key}) : super(key: key);
+  const RestApiHackerNewsExample({Key? key}) : super(key: key);
 
   @override
   _RestApiHackerNewsExampleState createState() =>
@@ -51,8 +51,9 @@ class _RestApiHackerNewsExampleState extends State<RestApiHackerNewsExample> {
                                 child: const CircularProgressIndicator(),
                               );
                             }
-                            final hnArticle = MyHackerNewsArticle.fromJson(json
-                                .decode(snapshot.data) as Map<String, dynamic>);
+                            final hnArticle = MyHackerNewsArticle.fromJson(
+                                json.decode(snapshot.data!)
+                                    as Map<String, dynamic>);
                             return this._articleListTile(hnArticle);
                           },
                         ),
@@ -67,7 +68,8 @@ class _RestApiHackerNewsExampleState extends State<RestApiHackerNewsExample> {
 
   // Fetches the list of latest article Ids from '/v0/newstories.json'.
   Future<void> _getLatestArticleIds() async {
-    const url = 'https://hacker-news.firebaseio.com/v0/newstories.json';
+    final url =
+        Uri.parse('https://hacker-news.firebaseio.com/v0/newstories.json');
     final response = await http.get(url);
     if (response.statusCode == 200) {
       final List<int> articleIds =
@@ -82,7 +84,8 @@ class _RestApiHackerNewsExampleState extends State<RestApiHackerNewsExample> {
 
   // Gets the detail of an article by its id from '/v0/item/$id.json'.
   Future<String> _getArticleById(int id) async {
-    final url = 'https://hacker-news.firebaseio.com/v0/item/$id.json';
+    final url =
+        Uri.parse('https://hacker-news.firebaseio.com/v0/item/$id.json');
     final response = await http.get(url);
     assert(response.statusCode == 200);
     return response.body;
@@ -91,22 +94,22 @@ class _RestApiHackerNewsExampleState extends State<RestApiHackerNewsExample> {
   // Renders one article obj as a list tile.
   Widget _articleListTile(MyHackerNewsArticle article) {
     final formatter = DateFormat.yMd().add_jms();
-    final createdAt = DateTime.fromMillisecondsSinceEpoch(article.time * 1000);
+    final createdAt = DateTime.fromMillisecondsSinceEpoch(article.time! * 1000);
     return ListTile(
-      title: Text(article.title),
+      title: Text(article.title!),
       subtitle: Text('${article.by} - '
           '${formatter.format(createdAt)}'),
       trailing: IconButton(
         icon: const Icon(Icons.open_in_new),
         onPressed: () async {
-          if (await url_launcher.canLaunch(article.url)) {
+          if (await url_launcher.canLaunch(article.url!)) {
             Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (ctx) => WebviewScaffold(
                   initialChild:
                       const Center(child: CircularProgressIndicator()),
-                  url: article.url,
-                  appBar: AppBar(title: Text(article.title)),
+                  url: article.url!,
+                  appBar: AppBar(title: Text(article.title!)),
                 ),
               ),
             );
@@ -119,14 +122,14 @@ class _RestApiHackerNewsExampleState extends State<RestApiHackerNewsExample> {
 
 /// This data class is generated from https://javiercbk.github.io/json_to_dart/.
 class MyHackerNewsArticle {
-  String by;
-  int descendants;
-  int id;
-  int score;
-  int time;
-  String title;
-  String type;
-  String url;
+  String? by;
+  int? descendants;
+  int? id;
+  int? score;
+  int? time;
+  String? title;
+  String? type;
+  String? url;
 
   MyHackerNewsArticle(
       {this.by,

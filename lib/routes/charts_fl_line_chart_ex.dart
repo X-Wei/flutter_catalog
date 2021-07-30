@@ -7,7 +7,7 @@ final _data1 = <double, double>{1: 10, 2: 15, 3: 20, 4: 28, 5: 34, 6: 50};
 final _data2 = <double, double>{1: 8, 2: 12, 3: 27, 4: 31, 5: 36, 6: 45};
 
 class FlLineChartExample extends StatefulWidget {
-  const FlLineChartExample({Key key}) : super(key: key);
+  const FlLineChartExample({Key? key}) : super(key: key);
 
   @override
   _FlLineChartExampleState createState() => _FlLineChartExampleState();
@@ -43,7 +43,7 @@ class _FlLineChartExampleState extends State<FlLineChartExample> {
           isCurved: _isCurved,
           dotData: FlDotData(show: _showDot),
           belowBarData:
-              BarAreaData(show: _showBelowArea, colors: [Colors.blue[200]]),
+              BarAreaData(show: _showBelowArea, colors: [Colors.blue[200]!]),
         ),
         LineChartBarData(
           spots: spots2,
@@ -52,7 +52,7 @@ class _FlLineChartExampleState extends State<FlLineChartExample> {
           isCurved: _isCurved,
           dotData: FlDotData(show: _showDot),
           belowBarData:
-              BarAreaData(show: _showBelowArea, colors: [Colors.red[200]]),
+              BarAreaData(show: _showBelowArea, colors: [Colors.red[200]!]),
         ),
       ],
       // ! Behavior when touching the chart:

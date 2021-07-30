@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:graphview/GraphView.dart';
 
 class GraphViewExample extends StatelessWidget {
-  const GraphViewExample({Key key}) : super(key: key);
+  const GraphViewExample({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class GraphViewExample extends StatelessWidget {
 }
 
 class GraphViewEx extends StatefulWidget {
-  const GraphViewEx({Key key}) : super(key: key);
+  const GraphViewEx({Key? key}) : super(key: key);
 
   @override
   _GraphViewExState createState() => _GraphViewExState();
@@ -62,8 +62,8 @@ class _GraphViewExState extends State<GraphViewEx> {
     );
 
     final algo = FruchtermanReingoldAlgorithm(iterations: this._iterations)
-      ..rand = Random(/*seed=*/ 0) // For deterministic rendering
-      ..attractionK = 100;
+          ..rand = Random(/*seed=*/ 0) // For deterministic rendering
+        ;
 
     return Scaffold(
       body: InteractiveViewer(

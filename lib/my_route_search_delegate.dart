@@ -29,7 +29,7 @@ class MyRouteSearchDelegate extends SearchDelegate<String> {
     return IconButton(
       tooltip: 'Back',
       icon: const Icon(Icons.arrow_back),
-      onPressed: () => this.close(context, null),
+      onPressed: () => this.close(context, ''),
     );
   }
 
@@ -44,15 +44,13 @@ class MyRouteSearchDelegate extends SearchDelegate<String> {
     // List<String> suggestions = _history;
     Iterable<MyRoute> suggestions = [
       for (final routeName in Provider.of<MyAppSettings>(context).searchHistory)
-        kRouteNameToRoute[routeName]
+        kRouteNameToRoute[routeName]!
     ];
     if (this.query.isNotEmpty) {
       suggestions = kAllRoutes
           .where((route) =>
               route.title.toLowerCase().contains(query.toLowerCase()) ||
-              (route.description ?? '')
-                  .toLowerCase()
-                  .contains(query.toLowerCase()))
+              route.description.toLowerCase().contains(query.toLowerCase()))
           .toList();
     }
     return _buildSuggestionsList(suggestions);
@@ -63,7 +61,7 @@ class MyRouteSearchDelegate extends SearchDelegate<String> {
       itemCount: suggestions.length,
       itemBuilder: (BuildContext context, int i) {
         final route = suggestions.elementAt(i);
-        final routeGroup = kRouteNameToRouteGroup[route.routeName];
+        final routeGroup = kRouteNameToRouteGroup[route.routeName]!;
         return ListTile(
           leading: query.isEmpty ? const Icon(Icons.history) : routeGroup.icon,
           title: SubstringHighlight(
@@ -71,15 +69,15 @@ class MyRouteSearchDelegate extends SearchDelegate<String> {
             term: query,
             textStyle: Theme.of(context)
                 .textTheme
-                .bodyText2
+                .bodyText2!
                 .copyWith(fontWeight: FontWeight.bold),
           ),
-          subtitle: route.description == null
+          subtitle: route.description.isEmpty
               ? null
               : SubstringHighlight(
                   text: route.description,
                   term: query,
-                  textStyle: Theme.of(context).textTheme.bodyText2,
+                  textStyle: Theme.of(context).textTheme.bodyText2!,
                 ),
           onTap: () {
             Provider.of<MyAppSettings>(context, listen: false)

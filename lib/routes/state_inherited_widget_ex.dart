@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class InheritedWidgetExample extends StatelessWidget {
-  const InheritedWidgetExample({Key key}) : super(key: key);
+  const InheritedWidgetExample({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,8 @@ class InheritedWidgetExample extends StatelessWidget {
 class MyInheritedWidget extends InheritedWidget {
   final _MyDemoAppState myState;
 
-  const MyInheritedWidget({Key key, Widget child, @required this.myState})
+  const MyInheritedWidget(
+      {Key? key, required Widget child, required this.myState})
       : super(key: key, child: child);
 
   @override
@@ -29,7 +30,7 @@ class MyInheritedWidget extends InheritedWidget {
     return this.myState.counterValue != oldWidget.myState.counterValue;
   }
 
-  static MyInheritedWidget of(BuildContext context) {
+  static MyInheritedWidget? of(BuildContext context) {
     return context.dependOnInheritedWidgetOfExactType<MyInheritedWidget>();
   }
 }
@@ -79,7 +80,7 @@ class _MyDemoAppState extends State<_MyDemoApp> {
 class _AppRootWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final rootWidgetsState = MyInheritedWidget.of(context).myState;
+    final rootWidgetsState = MyInheritedWidget.of(context)!.myState;
     return Card(
       elevation: 4.0,
       child: Column(
@@ -106,7 +107,7 @@ class _CounterAndButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // ###4. Retrieve parent widget's state using the static of() function.
-    final rootWidgetsState = MyInheritedWidget.of(context).myState;
+    final rootWidgetsState = MyInheritedWidget.of(context)!.myState;
     return Card(
       margin: const EdgeInsets.all(4.0).copyWith(bottom: 32.0),
       color: Colors.white70,

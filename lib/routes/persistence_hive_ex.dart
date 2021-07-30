@@ -35,7 +35,7 @@ class TodoItem extends HiveObject {
 } */
 
 class HiveExample extends StatefulWidget {
-  const HiveExample({Key key}) : super(key: key);
+  const HiveExample({Key? key}) : super(key: key);
 
   @override
   _HiveExampleState createState() => _HiveExampleState();
@@ -45,7 +45,7 @@ class _HiveExampleState extends State<HiveExample> {
   static const kHiveFolder = 'hive';
   static const kHiveBoxName = 'todosBox';
 
-  Future<bool> _initDbFuture;
+  late Future<bool> _initDbFuture;
 
   @override
   void initState() {
