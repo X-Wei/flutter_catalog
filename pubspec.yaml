@@ -2,7 +2,7 @@ name: flutter_catalog
 description: An app showcasing Flutter components, with side-by-side source code view.
 
 # *Note*: when version change, remember to also update constants.dart.
-version: 2.6.3+74
+version: 3.0.0+75
 
 environment:
   sdk: ">=2.13.0 <3.0.0"
@@ -23,7 +23,7 @@ dependencies:
   animated_radial_menu: ^0.0.1
   animated_text_kit: ^4.2.1
   animations: ^2.0.1
-  async: ^2.8.1
+  async: 
   backdrop: ^0.6.2
   badges: ^2.0.1
   cached_network_image: ^3.1.0
@@ -86,7 +86,7 @@ dependencies:
   transparent_image: ^2.0.0
   tuple: ^2.0.0
   url_launcher: ^6.0.9
-  video_player: ^2.0.0-nullsafety.9
+  video_player: ^2.1.12
   widget_with_codeview: ^2.0.0-nullsafe
 
 dev_dependencies:
