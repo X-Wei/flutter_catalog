@@ -1057,12 +1057,14 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
         },
       ),
       MyRoute(
-        child: FirebaseMLKitExample(),
+        child: GoogleMLKitExample(),
         sourceFilePath: 'lib/routes/firebase_mlkit_ex.dart',
-        title: 'Firebase ML Kit',
+        title: 'Google ML Kit',
         description: 'Image labelling, text OCR, barcode scan, face detection.',
         links: {
-          'Doc': 'https://pub.dartlang.org/packages/firebase_ml_vision',
+          'pub.dev': 'https://pub.dev/packages/google_ml_kit',
+          'MLKit doc':
+              'https://developers.google.com/ml-kit/vision/text-recognition',
         },
       ),
     ],
