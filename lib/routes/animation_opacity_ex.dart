@@ -13,7 +13,7 @@ class _OpacityExampleState extends State<OpacityExample> {
   Widget _coloredSquare(Color color) {
     return Container(
       height: 100.0,
-      width: 100.0,
+      width: 100.0, 
       color: color,
     );
   }
