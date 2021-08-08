@@ -12,7 +12,7 @@ class AnimatedContainerExample extends StatefulWidget {
 class _AnimatedContainerExampleState extends State<AnimatedContainerExample> {
   final _rng = Random();
   double _height = 100;
-  double _width = 100;
+  double _width = 100; 
   double _borderRadius = 8;
   Color _color = Colors.blue;
 
