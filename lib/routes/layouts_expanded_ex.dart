@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class ExpandedExample extends StatelessWidget {
   const ExpandedExample({Key? key}) : super(key: key);
-
+ 
   @override
   Widget build(BuildContext context) {
     // Expanded() objects takes all available space, and each Expanded gets the
