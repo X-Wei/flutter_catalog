@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+ 
 class OpacityExample extends StatefulWidget {
   const OpacityExample({Key? key}) : super(key: key);
 
