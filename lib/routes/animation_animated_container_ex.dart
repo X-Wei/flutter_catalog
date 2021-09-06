@@ -14,7 +14,7 @@ class _AnimatedContainerExampleState extends State<AnimatedContainerExample> {
   double _height = 100;
   double _width = 100;
   double _borderRadius = 8;
-  Color _color = Colors.blue;
+  Color _color = Colors.blue; 
 
   @override
   void initState() {
