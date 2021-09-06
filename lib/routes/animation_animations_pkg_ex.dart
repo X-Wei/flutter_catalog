@@ -6,7 +6,7 @@ class AnimationsPackageExample extends StatelessWidget {
   const AnimationsPackageExample({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) { 
     return ListView(
       children: <Widget>[
         const Divider(thickness: 2, color: Colors.black),
