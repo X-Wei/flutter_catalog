@@ -10,6 +10,7 @@ analyzer:
 
 linter:
   rules:
+    prefer_relative_imports: true # https://stackoverflow.com/a/66188522/12421326
     # Rationale: in our app, the codes are for reading on mobile phones, adding
     # `this` makes it easier for readers to understand which variables class
     # members and which ones are not.
