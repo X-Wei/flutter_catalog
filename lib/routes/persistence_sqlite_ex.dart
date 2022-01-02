@@ -63,13 +63,15 @@ class _SqliteExampleState extends State<SqliteExample> {
       dbPath,
       version: 1,
       onCreate: (Database db, int version) async {
-        await db.execute('''
+        await db.execute(
+          '''
         CREATE TABLE $kDbTableName(
           id INTEGER PRIMARY KEY, 
           isDone BIT NOT NULL,
           content TEXT,
           createdAt INT)
-        ''',);
+        ''',
+        );
       },
     );
   }
@@ -88,7 +90,8 @@ class _SqliteExampleState extends State<SqliteExample> {
   Future<void> _addTodoItem(TodoItem todo) async {
     await this._db.transaction(
       (Transaction txn) async {
-        final int id = await txn.rawInsert('''
+        final int id = await txn.rawInsert(
+          '''
           INSERT INTO $kDbTableName
             (content, isDone, createdAt)
           VALUES
@@ -96,7 +99,8 @@ class _SqliteExampleState extends State<SqliteExample> {
               "${todo.content}",
               ${todo.isDone ? 1 : 0}, 
               ${todo.createdAt.millisecondsSinceEpoch}
-            )''',);
+            )''',
+        );
         print('Inserted todo item with id=$id.');
       },
     );
@@ -116,10 +120,12 @@ class _SqliteExampleState extends State<SqliteExample> {
 
   // Deletes records in the db table.
   Future<void> _deleteTodoItem(TodoItem todo) async {
-    final count = await this._db.rawDelete('''
+    final count = await this._db.rawDelete(
+      '''
         DELETE FROM $kDbTableName
         WHERE id = ${todo.id}
-      ''',);
+      ''',
+    );
     print('Updated $count records in db.');
   }
 
@@ -162,26 +168,29 @@ class _SqliteExampleState extends State<SqliteExample> {
         title: Text(
           todo.content,
           style: TextStyle(
-              fontStyle: todo.isDone ? FontStyle.italic : null,
-              color: todo.isDone ? Colors.grey : null,
-              decoration: todo.isDone ? TextDecoration.lineThrough : null,),
+            fontStyle: todo.isDone ? FontStyle.italic : null,
+            color: todo.isDone ? Colors.grey : null,
+            decoration: todo.isDone ? TextDecoration.lineThrough : null,
+          ),
         ),
         subtitle: Text('id=${todo.id}\ncreated at ${todo.createdAt}'),
         isThreeLine: true,
         leading: IconButton(
           icon: Icon(
-              todo.isDone ? Icons.check_box : Icons.check_box_outline_blank,),
+            todo.isDone ? Icons.check_box : Icons.check_box_outline_blank,
+          ),
           onPressed: () async {
             await _toggleTodoItem(todo);
             _updateUI();
           },
         ),
         trailing: IconButton(
-            icon: const Icon(Icons.delete),
-            onPressed: () async {
-              await _deleteTodoItem(todo);
-              _updateUI();
-            },),
+          icon: const Icon(Icons.delete),
+          onPressed: () async {
+            await _deleteTodoItem(todo);
+            _updateUI();
+          },
+        ),
       );
 
   FloatingActionButton _buildFloatingActionButton() {

@@ -28,9 +28,11 @@ class _ListSwipeToDismissExampleState extends State<ListSwipeToDismissExample> {
             setState(() => this._items.removeAt(index));
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
-                content: Text(dir == DismissDirection.startToEnd
-                    ? '$item removed.'
-                    : '$item liked.',),
+                content: Text(
+                  dir == DismissDirection.startToEnd
+                      ? '$item removed.'
+                      : '$item liked.',
+                ),
                 action: SnackBarAction(
                   label: 'UNDO',
                   onPressed: () {

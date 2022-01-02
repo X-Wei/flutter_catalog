@@ -50,16 +50,17 @@ class _MyDemoApp extends StatelessWidget {
     return ListView(
       children: <Widget>[
         const Text(
-            "Provider is the officially recommended way to manage app states, "
-            "it's quite similar to ScopedModel in sharing/updating of app's "
-            "state from children widgets down the widgets tree. In addition, "
-            "you can provider multiple states at app root.\n\n"
-            "In this example, the app's root widget is a MultiProvider, which "
-            "provides two states: the number of seconds elapsed (StreamProvider) "
-            "and the counter value(ChangeNotifierProvider).\n\n"
-            "There's a text widget showing the seconds elapsed, and two card "
-            "widgets showing the counter value. Clicking on child widget's "
-            "button would update the _MyCounterState of the app.\n",),
+          "Provider is the officially recommended way to manage app states, "
+          "it's quite similar to ScopedModel in sharing/updating of app's "
+          "state from children widgets down the widgets tree. In addition, "
+          "you can provider multiple states at app root.\n\n"
+          "In this example, the app's root widget is a MultiProvider, which "
+          "provides two states: the number of seconds elapsed (StreamProvider) "
+          "and the counter value(ChangeNotifierProvider).\n\n"
+          "There's a text widget showing the seconds elapsed, and two card "
+          "widgets showing the counter value. Clicking on child widget's "
+          "button would update the _MyCounterState of the app.\n",
+        ),
         _AppRootWidget(),
       ],
     );

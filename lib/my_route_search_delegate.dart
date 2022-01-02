@@ -48,9 +48,11 @@ class MyRouteSearchDelegate extends SearchDelegate<String> {
     ];
     if (this.query.isNotEmpty) {
       suggestions = kAllRoutes
-          .where((route) =>
-              route.title.toLowerCase().contains(query.toLowerCase()) ||
-              route.description.toLowerCase().contains(query.toLowerCase()),)
+          .where(
+            (route) =>
+                route.title.toLowerCase().contains(query.toLowerCase()) ||
+                route.description.toLowerCase().contains(query.toLowerCase()),
+          )
           .toList();
     }
     return _buildSuggestionsList(suggestions);

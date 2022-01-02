@@ -207,9 +207,11 @@ class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
         context: context,
         builder: (ctx) => AlertDialog(
           title: const Text('Login required'),
-          content: const Text('To send messages you need to first log in.\n\n'
-              'Go to the "Firebase login" example, and log in from there. '
-              'You will then be able to send messages.',),
+          content: const Text(
+            'To send messages you need to first log in.\n\n'
+            'Go to the "Firebase login" example, and log in from there. '
+            'You will then be able to send messages.',
+          ),
           actions: <Widget>[
             TextButton(
               onPressed: () => Navigator.of(ctx).pop(),

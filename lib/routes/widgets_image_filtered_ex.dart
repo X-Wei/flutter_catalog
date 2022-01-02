@@ -26,8 +26,9 @@ class _ImageFilteredExampleState extends State<ImageFilteredExample> {
             mainAxisSize: MainAxisSize.min,
             children: [
               const Text(
-                  'Not only can images be "filtered", in fact any widget '
-                  'can be placed under ImageFiltered!',),
+                'Not only can images be "filtered", in fact any widget '
+                'can be placed under ImageFiltered!',
+              ),
               Image.asset('res/images/dart-side.png'),
             ],
           ),

@@ -84,7 +84,8 @@ class __DemoPageState extends State<_DemoPage> {
                       appBar:
                           AppBar(title: const Text('data/my_api_state.dart')),
                       body: const SourceCodeView(
-                          filePath: 'lib/routes/data/my_api_state.dart',),
+                        filePath: 'lib/routes/data/my_api_state.dart',
+                      ),
                     ),
                   ),
                 ),

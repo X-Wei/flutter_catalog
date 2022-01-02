@@ -32,10 +32,12 @@ class _RestApiSendExampleState extends State<RestApiSendExample> {
     return ListView(
       padding: const EdgeInsets.all(16.0),
       children: <Widget>[
-        const Text('''
+        const Text(
+          '''
 In this example we will POST to the jsonplaceholder API.
 
-From https://jsonplaceholder.typicode.com/guide.html we see that the API expects title, body and userId in the request body.''',),
+From https://jsonplaceholder.typicode.com/guide.html we see that the API expects title, body and userId in the request body.''',
+        ),
         const Divider(),
         TextField(
           controller: this._titleController,

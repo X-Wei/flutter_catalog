@@ -24,7 +24,8 @@ class HeroExample extends StatelessWidget {
               ),
             ),
             title: const Text(
-                'Tap on the photo to view the animation transition.',),
+              'Tap on the photo to view the animation transition.',
+            ),
           ),
         ],
       ),

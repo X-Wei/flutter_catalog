@@ -55,9 +55,10 @@ class _DemoPageState extends State<_DemoPage> {
         child: Column(
           children: [
             const Text(
-                'This is a simple page showing a list of random words, and has 3 '
-                'buttons: add one / remove one / refresh. \n\n'
-                'Feature discovery will go through and introduce them.',),
+              'This is a simple page showing a list of random words, and has 3 '
+              'buttons: add one / remove one / refresh. \n\n'
+              'Feature discovery will go through and introduce them.',
+            ),
             ElevatedButton.icon(
               icon: const Icon(Icons.play_arrow),
               onPressed: _showDiscovery,
@@ -79,7 +80,8 @@ class _DemoPageState extends State<_DemoPage> {
       tapTarget: const Icon(Icons.refresh),
       title: const Text('Refresh'),
       description: const Text(
-          'Tap the refresh button to re-generate the random text list.',),
+        'Tap the refresh button to re-generate the random text list.',
+      ),
       backgroundColor: Theme.of(context).primaryColor,
       onOpen: () async {
         WidgetsBinding.instance?.addPostFrameCallback((Duration duration) {
@@ -124,8 +126,12 @@ class _DemoPageState extends State<_DemoPage> {
           backgroundColor: Theme.of(context).primaryColor,
           child: FloatingActionButton(
             onPressed: () {
-              setState(() => this._strsToShow.insert(
-                  0, english_words.generateWordPairs().first.asCamelCase,),);
+              setState(
+                () => this._strsToShow.insert(
+                      0,
+                      english_words.generateWordPairs().first.asCamelCase,
+                    ),
+              );
             },
             heroTag: 'plus_one',
             child: const Icon(Icons.plus_one),
@@ -154,8 +160,11 @@ class _DemoPageState extends State<_DemoPage> {
   Future<void> _showDiscovery() async {
     // !Clear the "feature discovered" data, otherwise it'll show up only for
     // !the first time.
-    await FeatureDiscovery.clearPreferences(context,
-        <String>{_kFeatureId1Add, _kFeatureId2Sub, _kFeatureId3Refresh},);
+    await FeatureDiscovery.clearPreferences(
+      context,
+      <String>{_kFeatureId1Add, _kFeatureId2Sub, _kFeatureId3Refresh},
+    );
+    if (!mounted) return;
     // ! Start feature discovery
     FeatureDiscovery.discoverFeatures(
       context,

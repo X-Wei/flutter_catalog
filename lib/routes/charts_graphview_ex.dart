@@ -12,10 +12,13 @@ class GraphViewExample extends StatelessWidget {
       child: ElevatedButton.icon(
         label: const Text('View'),
         icon: const Icon(Icons.graphic_eq),
-        onPressed: () => Navigator.of(context)
-            .push(MaterialPageRoute(builder: (BuildContext context) {
-          return const GraphViewEx();
-        },),),
+        onPressed: () => Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (BuildContext context) {
+              return const GraphViewEx();
+            },
+          ),
+        ),
       ),
     );
   }

@@ -31,7 +31,7 @@ class _GoogleMLKitExampleState extends State<GoogleMLKitExample> {
             onTap: () async {
               final XFile? pickedFile =
                   await _picker.pickImage(source: ImageSource.camera);
-              if (pickedFile != null) {
+              if (mounted && pickedFile != null) {
                 Navigator.pop(ctx, File(pickedFile.path));
               }
             },
@@ -43,7 +43,7 @@ class _GoogleMLKitExampleState extends State<GoogleMLKitExample> {
               try {
                 final XFile? pickedFile =
                     await _picker.pickImage(source: ImageSource.gallery);
-                if (pickedFile != null) {
+                if (mounted && pickedFile != null) {
                   Navigator.pop(ctx, File(pickedFile.path));
                 }
               } catch (e) {
@@ -55,7 +55,7 @@ class _GoogleMLKitExampleState extends State<GoogleMLKitExample> {
         ],
       ),
     );
-    if (imageFile == null) {
+    if (mounted && imageFile == null) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Please pick one image first.')),
       );

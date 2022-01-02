@@ -46,11 +46,12 @@ class MyAboutRoute extends StatelessWidget {
         icon: const Icon(Icons.info),
         onPressed: () {
           showAboutDialog(
-              context: context,
-              applicationName: APP_NAME,
-              applicationVersion: APP_VERSION,
-              applicationIcon: kAppIcon,
-              children: <Widget>[const Text(APP_DESCRIPTION)],);
+            context: context,
+            applicationName: APP_NAME,
+            applicationVersion: APP_VERSION,
+            applicationIcon: kAppIcon,
+            children: <Widget>[const Text(APP_DESCRIPTION)],
+          );
         },
       ),
     );

@@ -13,19 +13,20 @@ class _ListWheelViewExampleState extends State<ListWheelViewExample> {
     return ListWheelScrollView.useDelegate(
       itemExtent: 75,
       childDelegate: ListWheelChildBuilderDelegate(
-          builder: (BuildContext context, int index) {
-        if (index < 0 || index > 8) {
-          return null;
-        }
-        return ListTile(
-          leading: Text(
-            "$index",
-            style: TextStyle(fontSize: 50),
-          ),
-          title: Text("Title $index"),
-          subtitle: Text('Description here'),
-        );
-      },),
+        builder: (BuildContext context, int index) {
+          if (index < 0 || index > 8) {
+            return null;
+          }
+          return ListTile(
+            leading: Text(
+              "$index",
+              style: TextStyle(fontSize: 50),
+            ),
+            title: Text("Title $index"),
+            subtitle: Text('Description here'),
+          );
+        },
+      ),
     );
   }
 }

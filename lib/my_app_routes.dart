@@ -918,109 +918,108 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
     ],
   ),
   MyRouteGroup(
-      groupName: 'Charts',
-      icon: Icon(Icons.show_chart),
-      routes: <MyRoute>[
-        MyRoute(
-          child: TimeseriesChartExample(),
-          sourceFilePath: 'lib/routes/charts_time_series_ex.dart',
-          title: 'Time Series Chart',
-          links: {
-            'Demo gallery':
-                'https://google.github.io/charts/flutter/gallery.html'
-          },
-        ),
-        MyRoute(
-          child: PieChartExample(),
-          sourceFilePath: 'lib/routes/charts_pie_chart_ex.dart',
-          title: 'Pie Chart',
-          links: {
-            'Demo gallery':
-                'https://google.github.io/charts/flutter/gallery.html'
-          },
-        ),
-        MyRoute(
-          child: FlLineChartExample(),
-          sourceFilePath: 'lib/routes/charts_fl_line_chart_ex.dart',
-          title: 'LineChart with fl_chart',
-          links: {
-            'doc':
-                'https://github.com/imaNNeoFighT/fl_chart/blob/master/repo_files/documentations/line_chart.md'
-          },
-        ),
-        MyRoute(
-          child: FlBarChartExample(),
-          sourceFilePath: 'lib/routes/charts_fl_bar_chart_ex.dart',
-          title: 'BarChart with fl_chart',
-          links: {
-            'doc':
-                'https://github.com/imaNNeoFighT/fl_chart/blob/master/repo_files/documentations/bar_chart.md'
-          },
-        ),
-        MyRoute(
-          child: FlPieChartExample(),
-          sourceFilePath: 'lib/routes/charts_fl_pie_chart_ex.dart',
-          title: 'PieChart with fl_chart',
-          links: {
-            'doc':
-                'https://github.com/imaNNeoFighT/fl_chart/blob/master/repo_files/documentations/pie_chart.md'
-          },
-        ),
-        MyRoute(
-          child: GraphViewExample(),
-          sourceFilePath: 'lib/routes/charts_graphview_ex.dart',
-          title: 'GraphView',
-          links: {'pub.dev': 'https://pub.dev/packages/graphview'},
-        ),
-        MyRoute(
-          child: HeatmapCalendarExample(),
-          sourceFilePath: 'lib/routes/charts_heatmap_calendar_ex.dart',
-          title: 'Heatmap Calendar',
-          links: {'pub.dev': 'https://pub.dev/packages/heatmap_calendar'},
-        ),
-        MyRoute(
-          child: RadarChartExample(),
-          sourceFilePath: 'lib/routes/charts_radar_chart_ex.dart',
-          title: 'Radar Chart',
-          links: {'pub.dev': 'https://pub.dev/packages/flutter_radar_chart'},
-        ),
-      ],),
+    groupName: 'Charts',
+    icon: Icon(Icons.show_chart),
+    routes: <MyRoute>[
+      MyRoute(
+        child: TimeseriesChartExample(),
+        sourceFilePath: 'lib/routes/charts_time_series_ex.dart',
+        title: 'Time Series Chart',
+        links: {
+          'Demo gallery': 'https://google.github.io/charts/flutter/gallery.html'
+        },
+      ),
+      MyRoute(
+        child: PieChartExample(),
+        sourceFilePath: 'lib/routes/charts_pie_chart_ex.dart',
+        title: 'Pie Chart',
+        links: {
+          'Demo gallery': 'https://google.github.io/charts/flutter/gallery.html'
+        },
+      ),
+      MyRoute(
+        child: FlLineChartExample(),
+        sourceFilePath: 'lib/routes/charts_fl_line_chart_ex.dart',
+        title: 'LineChart with fl_chart',
+        links: {
+          'doc':
+              'https://github.com/imaNNeoFighT/fl_chart/blob/master/repo_files/documentations/line_chart.md'
+        },
+      ),
+      MyRoute(
+        child: FlBarChartExample(),
+        sourceFilePath: 'lib/routes/charts_fl_bar_chart_ex.dart',
+        title: 'BarChart with fl_chart',
+        links: {
+          'doc':
+              'https://github.com/imaNNeoFighT/fl_chart/blob/master/repo_files/documentations/bar_chart.md'
+        },
+      ),
+      MyRoute(
+        child: FlPieChartExample(),
+        sourceFilePath: 'lib/routes/charts_fl_pie_chart_ex.dart',
+        title: 'PieChart with fl_chart',
+        links: {
+          'doc':
+              'https://github.com/imaNNeoFighT/fl_chart/blob/master/repo_files/documentations/pie_chart.md'
+        },
+      ),
+      MyRoute(
+        child: GraphViewExample(),
+        sourceFilePath: 'lib/routes/charts_graphview_ex.dart',
+        title: 'GraphView',
+        links: {'pub.dev': 'https://pub.dev/packages/graphview'},
+      ),
+      MyRoute(
+        child: HeatmapCalendarExample(),
+        sourceFilePath: 'lib/routes/charts_heatmap_calendar_ex.dart',
+        title: 'Heatmap Calendar',
+        links: {'pub.dev': 'https://pub.dev/packages/heatmap_calendar'},
+      ),
+      MyRoute(
+        child: RadarChartExample(),
+        sourceFilePath: 'lib/routes/charts_radar_chart_ex.dart',
+        title: 'Radar Chart',
+        links: {'pub.dev': 'https://pub.dev/packages/flutter_radar_chart'},
+      ),
+    ],
+  ),
   MyRouteGroup(
-      groupName: 'Networking',
-      icon: Icon(Icons.http),
-      routes: <MyRoute>[
-        MyRoute(
-          child: RestApiFetchExample(),
-          sourceFilePath: 'lib/routes/networking_rest_api_fetch_ex.dart',
-          title: 'Fetching data',
-          links: {
-            'Cookbook':
-                'https://flutter.dev/docs/cookbook/networking/fetch-data'
-          },
-        ),
-        MyRoute(
-          child: RestApiSendExample(),
-          sourceFilePath: 'lib/routes/networking_rest_api_send_ex.dart',
-          title: 'Sending data',
-          links: {
-            'Cookbook': 'https://flutter.dev/docs/cookbook/networking/send-data'
-          },
-        ),
-        MyRoute(
-          child: RestApiHackerNewsExample(),
-          sourceFilePath: 'lib/routes/networking_hacker_news_ex.dart',
-          title: 'Hacker News',
-          description: 'A full REST API example.',
-          links: {'Hacker News API': 'https://github.com/HackerNews/API'},
-        ),
-        MyRoute(
-          child: RestApiGoogleBooksExample(),
-          sourceFilePath: 'lib/routes/networking_googlebooks_ex.dart',
-          title: 'Google Books',
-          description: 'Another REST example using the Google books seach API.',
-          links: {'Hacker News API': 'https://github.com/HackerNews/API'},
-        ),
-      ],),
+    groupName: 'Networking',
+    icon: Icon(Icons.http),
+    routes: <MyRoute>[
+      MyRoute(
+        child: RestApiFetchExample(),
+        sourceFilePath: 'lib/routes/networking_rest_api_fetch_ex.dart',
+        title: 'Fetching data',
+        links: {
+          'Cookbook': 'https://flutter.dev/docs/cookbook/networking/fetch-data'
+        },
+      ),
+      MyRoute(
+        child: RestApiSendExample(),
+        sourceFilePath: 'lib/routes/networking_rest_api_send_ex.dart',
+        title: 'Sending data',
+        links: {
+          'Cookbook': 'https://flutter.dev/docs/cookbook/networking/send-data'
+        },
+      ),
+      MyRoute(
+        child: RestApiHackerNewsExample(),
+        sourceFilePath: 'lib/routes/networking_hacker_news_ex.dart',
+        title: 'Hacker News',
+        description: 'A full REST API example.',
+        links: {'Hacker News API': 'https://github.com/HackerNews/API'},
+      ),
+      MyRoute(
+        child: RestApiGoogleBooksExample(),
+        sourceFilePath: 'lib/routes/networking_googlebooks_ex.dart',
+        title: 'Google Books',
+        description: 'Another REST example using the Google books seach API.',
+        links: {'Hacker News API': 'https://github.com/HackerNews/API'},
+      ),
+    ],
+  ),
   MyRouteGroup(
     groupName: 'Firebase',
     icon: Icon(Icons.cloud),

@@ -49,7 +49,11 @@ class _AnimatedContainerExampleState extends State<AnimatedContainerExample> {
               _borderRadius = _rng.nextInt(50).toDouble();
               // Generate a random color.
               _color = Color.fromRGBO(
-                  _rng.nextInt(256), _rng.nextInt(256), _rng.nextInt(256), 1,);
+                _rng.nextInt(256),
+                _rng.nextInt(256),
+                _rng.nextInt(256),
+                1,
+              );
             },
           ),
         ),

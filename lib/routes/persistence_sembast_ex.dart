@@ -72,10 +72,12 @@ class _SembastExampleState extends State<SembastExample> {
     final finder = Finder();
     final recordSnapshots = await this._store.find(this._db, finder: finder);
     this._todos = recordSnapshots
-        .map((snapshot) => TodoItem.fromJsonMap({
-              ...snapshot.value,
-              'id': snapshot.key,
-            }),)
+        .map(
+          (snapshot) => TodoItem.fromJsonMap({
+            ...snapshot.value,
+            'id': snapshot.key,
+          }),
+        )
         .toList();
   }
 
@@ -136,26 +138,29 @@ class _SembastExampleState extends State<SembastExample> {
         title: Text(
           todo.content,
           style: TextStyle(
-              fontStyle: todo.isDone ? FontStyle.italic : null,
-              color: todo.isDone ? Colors.grey : null,
-              decoration: todo.isDone ? TextDecoration.lineThrough : null,),
+            fontStyle: todo.isDone ? FontStyle.italic : null,
+            color: todo.isDone ? Colors.grey : null,
+            decoration: todo.isDone ? TextDecoration.lineThrough : null,
+          ),
         ),
         subtitle: Text('id=${todo.id}\ncreated at ${todo.createdAt}'),
         isThreeLine: true,
         leading: IconButton(
           icon: Icon(
-              todo.isDone ? Icons.check_box : Icons.check_box_outline_blank,),
+            todo.isDone ? Icons.check_box : Icons.check_box_outline_blank,
+          ),
           onPressed: () async {
             await _toggleTodoItem(todo);
             _updateUI();
           },
         ),
         trailing: IconButton(
-            icon: const Icon(Icons.delete),
-            onPressed: () async {
-              await _deleteTodoItem(todo);
-              _updateUI();
-            },),
+          icon: const Icon(Icons.delete),
+          onPressed: () async {
+            await _deleteTodoItem(todo);
+            _updateUI();
+          },
+        ),
       );
 
   FloatingActionButton _buildFloatingActionButton() {

@@ -10,20 +10,10 @@ environment:
 publish_to: none
 
 dependencies:
-  flutter:
-    sdk: flutter
-  # TODO: use canonical package when the nullsafety PR (https://github.com/pedrohff/flutter_heatmap_calendar/pull/11) is in.
-  # heatmap_calendar: ^1.2.8
-  heatmap_calendar:
-    git:
-      url: https://github.com/CouldI/flutter_heatmap_calendar.git
-  new_gradient_app_bar:
-    git:
-      url: https://github.com/GUIKAR741/NewGradientAppBar.git
   animated_radial_menu: ^0.0.1
   animated_text_kit: ^4.2.1
   animations: ^2.0.1
-  async: 
+  async: null
   backdrop: ^0.7.1
   badges: ^2.0.1
   cached_network_image: ^3.1.0
@@ -47,10 +37,11 @@ dependencies:
   firebase_storage: ^10.0.1
   firebase_storage_web: ^3.0.0
   fl_chart: ^0.40.6
+  flutter:
+    sdk: flutter
   flutter_bloc: ^8.0.1
   flutter_gallery_assets: ^1.0.2
-  # flutter_gradients: ^1.0.0+2
-  flutter_markdown: ^0.6.2
+  flutter_markdown: ^0.6.9
   flutter_radar_chart: ^0.2.0
   flutter_riverpod: ^1.0.3
   flutter_slidable: ^1.2.0
@@ -62,6 +53,9 @@ dependencies:
   google_ml_kit: ^0.7.0
   google_sign_in: ^5.0.5
   graphview: ^1.1.1
+  heatmap_calendar:
+    git:
+      url: https://github.com/CouldI/flutter_heatmap_calendar.git
   hive: ^2.0.4
   hive_flutter: ^1.1.0
   http: ^0.13.3
@@ -70,6 +64,10 @@ dependencies:
   intl: ^0.17.0
   local_auth: ^1.1.6
   lottie: ^1.1.0
+  markdown: ^4.0.1
+  new_gradient_app_bar:
+    git:
+      url: https://github.com/GUIKAR741/NewGradientAppBar.git
   package_info: ^2.0.2
   path: ^1.8.0
   path_provider: ^2.0.2
@@ -82,7 +80,6 @@ dependencies:
   sqflite: ^2.0.0+3
   state_notifier: ^0.7.0
   substring_highlight: ^1.0.33
-  # syntax_highlighter: 0.1.1
   transparent_image: ^2.0.0
   tuple: ^2.0.0
   url_launcher: ^6.0.9
@@ -94,7 +91,7 @@ dev_dependencies:
   flutter_native_splash: ^1.2.0
   freezed: ^1.1.0
   hive_generator: ^1.1.0
-  json_serializable:
+  json_serializable: null
   lint: ^1.5.3
 
 # Cf. https://pub.dev/packages/flutter_native_splash
@@ -105,11 +102,11 @@ flutter_native_splash:
 # The following section is specific to Flutter.
 flutter:
   uses-material-design: true
-  # Note: when new assets are added, have to run `flutter clean` to see 
+  # Note: when new assets are added, have to run `flutter clean` to see
   # changes take effect.
   assets:
-    # *Tip*: keep the slash at the end of folder path adds all files to 
-    # assets. Note: this doesn't work with subfolders. 
+    # *Tip*: keep the slash at the end of folder path adds all files to
+    # assets. Note: this doesn't work with subfolders.
     # c.f. https://github.com/flutter/flutter/issues/4890#issuecomment-407327749
     - lib/routes/
     - lib/routes/data/

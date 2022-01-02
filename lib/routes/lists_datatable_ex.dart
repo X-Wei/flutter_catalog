@@ -112,27 +112,28 @@ class DessertDataSource extends DataTableSource {
     if (index >= _desserts.length) return null;
     final Dessert dessert = _desserts[index];
     return DataRow.byIndex(
-        index: index,
-        selected: dessert.selected,
-        onSelectChanged: (bool? value) {
-          if (value == null) return;
-          if (dessert.selected != value) {
-            _selectedCount += value ? 1 : -1;
-            assert(_selectedCount >= 0);
-            dessert.selected = value;
-            notifyListeners();
-          }
-        },
-        cells: <DataCell>[
-          DataCell(Text(dessert.name)),
-          DataCell(Text('${dessert.calories}')),
-          DataCell(Text(dessert.fat.toStringAsFixed(1))),
-          DataCell(Text('${dessert.carbs}')),
-          DataCell(Text(dessert.protein.toStringAsFixed(1))),
-          DataCell(Text('${dessert.sodium}')),
-          DataCell(Text('${dessert.calcium}%')),
-          DataCell(Text('${dessert.iron}%')),
-        ],);
+      index: index,
+      selected: dessert.selected,
+      onSelectChanged: (bool? value) {
+        if (value == null) return;
+        if (dessert.selected != value) {
+          _selectedCount += value ? 1 : -1;
+          assert(_selectedCount >= 0);
+          dessert.selected = value;
+          notifyListeners();
+        }
+      },
+      cells: <DataCell>[
+        DataCell(Text(dessert.name)),
+        DataCell(Text('${dessert.calories}')),
+        DataCell(Text(dessert.fat.toStringAsFixed(1))),
+        DataCell(Text('${dessert.carbs}')),
+        DataCell(Text(dessert.protein.toStringAsFixed(1))),
+        DataCell(Text('${dessert.sodium}')),
+        DataCell(Text('${dessert.calcium}%')),
+        DataCell(Text('${dessert.iron}%')),
+      ],
+    );
   }
 
   @override

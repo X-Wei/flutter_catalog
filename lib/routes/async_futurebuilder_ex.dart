@@ -24,10 +24,11 @@ class FutureBuilderExampleState extends State<FutureBuilderExample> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           const Text(
-              'In this example we first have an async operatio that takes '
-              '~3 seconds and succeeds with the content of an image from asset.\n'
-              'Note this is just for demonstration purposes, normally we just '
-              'use `Image.asset()`.',),
+            'In this example we first have an async operatio that takes '
+            '~3 seconds and succeeds with the content of an image from asset.\n'
+            'Note this is just for demonstration purposes, normally we just '
+            'use `Image.asset()`.',
+          ),
           FutureBuilder<ByteData>(
             future: _wait3SecAndLoadImage(),
             builder: (BuildContext context, AsyncSnapshot<ByteData> snapshot) {

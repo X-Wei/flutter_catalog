@@ -42,10 +42,12 @@ class StreamBuilderExampleState extends State<StreamBuilderExample> {
           return Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              const Text("StreamBuilders can listen to a stream, and update UI "
-                  "according to the stream's latest snapshot value.\n\n"
-                  "In this demo we build a simple timer app by listening to a "
-                  "stream that updates every second.\n",),
+              const Text(
+                "StreamBuilders can listen to a stream, and update UI "
+                "according to the stream's latest snapshot value.\n\n"
+                "In this demo we build a simple timer app by listening to a "
+                "stream that updates every second.\n",
+              ),
               Card(child: _buildTimerUI()),
             ],
           );

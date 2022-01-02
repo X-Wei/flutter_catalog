@@ -64,8 +64,10 @@ class _FileReadWriteExampleState extends State<FileReadWriteExample> {
         Text(this._localFilePath, style: Theme.of(context).textTheme.caption),
         const Divider(height: 20.0),
         const Text('Local file content:'),
-        Text(this._localFileContent,
-            style: Theme.of(context).textTheme.caption,),
+        Text(
+          this._localFileContent,
+          style: Theme.of(context).textTheme.caption,
+        ),
       ],
     );
   }

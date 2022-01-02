@@ -23,8 +23,9 @@ class ButtonsExample extends StatelessWidget {
         Column(
           children: <Widget>[
             const Text(
-                'Raised buttons add dimension to mostly flat layouts. They '
-                'emphasize functions on busy or wide spaces.',),
+              'Raised buttons add dimension to mostly flat layouts. They '
+              'emphasize functions on busy or wide spaces.',
+            ),
             ButtonBar(
               alignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
@@ -43,9 +44,11 @@ class ButtonsExample extends StatelessWidget {
         const Divider(),
         Column(
           children: <Widget>[
-            const Text('A flat button displays an ink splash on press '
-                'but does not lift. Use flat buttons on toolbars, in dialogs '
-                'and inline with padding',),
+            const Text(
+              'A flat button displays an ink splash on press '
+              'but does not lift. Use flat buttons on toolbars, in dialogs '
+              'and inline with padding',
+            ),
             ButtonBar(
               alignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
@@ -65,9 +68,10 @@ class ButtonsExample extends StatelessWidget {
         Column(
           children: <Widget>[
             const Text(
-                'Outline buttons become opaque and elevate when pressed. They '
-                'are often paired with raised buttons to indicate an '
-                'alternative, secondary action.',),
+              'Outline buttons become opaque and elevate when pressed. They '
+              'are often paired with raised buttons to indicate an '
+              'alternative, secondary action.',
+            ),
             ButtonBar(
               alignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
@@ -87,10 +91,11 @@ class ButtonsExample extends StatelessWidget {
         Column(
           children: <Widget>[
             const Text(
-                'Tooltips are short identifying messages that briefly appear '
-                'in response to a long press. Tooltip messages are also used '
-                'by services that make Flutter apps accessible, like screen '
-                'readers.',),
+              'Tooltips are short identifying messages that briefly appear '
+              'in response to a long press. Tooltip messages are also used '
+              'by services that make Flutter apps accessible, like screen '
+              'readers.',
+            ),
             Center(
               child: IconButton(
                 iconSize: 32.0,

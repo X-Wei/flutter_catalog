@@ -59,13 +59,14 @@ class _StatefulWidgetsExampleState extends State<StatefulWidgetsExample> {
         ),
         const Text('Slider with Divisions and Label'),
         Slider(
-            value: _slider2Val,
-            max: 100.0,
-            divisions: 5,
-            label: '${_slider2Val.round()}',
-            onChanged: (double value) {
-              setState(() => _slider2Val = value);
-            },),
+          value: _slider2Val,
+          max: 100.0,
+          divisions: 5,
+          label: '${_slider2Val.round()}',
+          onChanged: (double value) {
+            setState(() => _slider2Val = value);
+          },
+        ),
         const Divider(),
         const Text('LinearProgressIndicator'),
         // **When value=null, progress indicators become stateless.**
@@ -77,15 +78,17 @@ class _StatefulWidgetsExampleState extends State<StatefulWidgetsExample> {
         const Text('Radio'),
         Row(
           children: [0, 1, 2, 3]
-              .map((int index) => Radio<int>(
-                    value: index,
-                    groupValue: this._radioVal,
-                    onChanged: (int? value) {
-                      if (value != null) {
-                        setState(() => this._radioVal = value);
-                      }
-                    },
-                  ),)
+              .map(
+                (int index) => Radio<int>(
+                  value: index,
+                  groupValue: this._radioVal,
+                  onChanged: (int? value) {
+                    if (value != null) {
+                      setState(() => this._radioVal = value);
+                    }
+                  },
+                ),
+              )
               .toList(),
         ),
         const Divider(),

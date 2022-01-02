@@ -41,31 +41,34 @@ class NavDrawerExample extends StatelessWidget {
       ],
     );
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.amber,
-          title: const Text('Drawer example'),
-        ),
-        body: const Center(
-          child: Text('Swip or click upper-left icon to see drawer.'),
-        ),
-        drawer: Drawer(
-          child: drawerItems,
-        ),);
+      appBar: AppBar(
+        backgroundColor: Colors.amber,
+        title: const Text('Drawer example'),
+      ),
+      body: const Center(
+        child: Text('Swip or click upper-left icon to see drawer.'),
+      ),
+      drawer: Drawer(
+        child: drawerItems,
+      ),
+    );
   }
 }
 
 // <void> means this route returns nothing.
 class _NewPage extends MaterialPageRoute<void> {
   _NewPage(int id)
-      : super(builder: (BuildContext context) {
-          return Scaffold(
-            appBar: AppBar(
-              title: Text('Page $id'),
-              elevation: 1.0,
-            ),
-            body: Center(
-              child: Text('Page $id'),
-            ),
-          );
-        },);
+      : super(
+          builder: (BuildContext context) {
+            return Scaffold(
+              appBar: AppBar(
+                title: Text('Page $id'),
+                elevation: 1.0,
+              ),
+              body: Center(
+                child: Text('Page $id'),
+              ),
+            );
+          },
+        );
 }

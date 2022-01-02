@@ -38,13 +38,14 @@ class _MyDemoApp extends StatelessWidget {
     return ListView(
       children: <Widget>[
         const Text(
-            "ScopedModel allows efficient sharing/updating of app's state from "
-            "children widgets down the widgets tree.\n\n"
-            "In this example, the app's root widget is a ScopedModel, "
-            "so it's state is shared to the two 'CounterAndButtons' children"
-            " widgets below. \n\n"
-            "Clicking on child widget's button would update the MyStateModel "
-            "of root widget.\n",),
+          "ScopedModel allows efficient sharing/updating of app's state from "
+          "children widgets down the widgets tree.\n\n"
+          "In this example, the app's root widget is a ScopedModel, "
+          "so it's state is shared to the two 'CounterAndButtons' children"
+          " widgets below. \n\n"
+          "Clicking on child widget's button would update the MyStateModel "
+          "of root widget.\n",
+        ),
         // ###2. Put the ScopedModel at the root of the widget tree, so that all
         // children widget can access the state.
         ScopedModel<_MyState>(

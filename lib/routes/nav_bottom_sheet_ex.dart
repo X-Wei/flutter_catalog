@@ -29,7 +29,9 @@ class _BottomSheetExampleState extends State<BottomSheetExample> {
             ),
             ElevatedButton(
               onPressed: () => showModalBottomSheet(
-                  context: context, builder: (ctx) => _buildBottomSheet(ctx),),
+                context: context,
+                builder: (ctx) => _buildBottomSheet(ctx),
+              ),
               child: const Text('show modal bottom sheet'),
             ),
           ],

@@ -13,12 +13,14 @@ class AnimationsPackageExample extends StatelessWidget {
         ListTile(
           title: const Text('1. OpenContainer'),
           subtitle: const Text(
-              'A container that grows to fill the screen to reveal new content when tapped.',),
+            'A container that grows to fill the screen to reveal new content when tapped.',
+          ),
           trailing: IconButton(
             tooltip: 'Documentation',
             icon: const Icon(Icons.open_in_new),
             onPressed: () => launch(
-                'https://pub.dev/documentation/animations/latest/animations/OpenContainer-class.html',),
+              'https://pub.dev/documentation/animations/latest/animations/OpenContainer-class.html',
+            ),
           ),
         ),
         OpenContainer(
@@ -37,12 +39,14 @@ class AnimationsPackageExample extends StatelessWidget {
         ListTile(
           title: const Text('2. PageTransitionSwitcher'),
           subtitle: const Text(
-              'Transition from an old child to a new child, similar to AnimationSwitcher',),
+            'Transition from an old child to a new child, similar to AnimationSwitcher',
+          ),
           trailing: IconButton(
             tooltip: 'Documentation',
             icon: const Icon(Icons.open_in_new),
             onPressed: () => launch(
-                'https://pub.dev/documentation/animations/latest/animations/PageTransitionSwitcher-class.html',),
+              'https://pub.dev/documentation/animations/latest/animations/PageTransitionSwitcher-class.html',
+            ),
           ),
         ),
         const SizedBox(
@@ -53,12 +57,14 @@ class AnimationsPackageExample extends StatelessWidget {
         ListTile(
           title: const Text('3. SharedAxisTransition'),
           subtitle: const Text(
-              'Transition animation between UI elements that have a spatial or navigational relationship.',),
+            'Transition animation between UI elements that have a spatial or navigational relationship.',
+          ),
           trailing: IconButton(
             tooltip: 'Documentation',
             icon: const Icon(Icons.open_in_new),
             onPressed: () => launch(
-                'https://pub.dev/documentation/animations/latest/animations/SharedAxisTransition-class.html',),
+              'https://pub.dev/documentation/animations/latest/animations/SharedAxisTransition-class.html',
+            ),
           ),
         ),
         const SizedBox(
@@ -73,7 +79,8 @@ class AnimationsPackageExample extends StatelessWidget {
             tooltip: 'Documentation',
             icon: const Icon(Icons.open_in_new),
             onPressed: () => launch(
-                'https://pub.dev/documentation/animations/latest/animations/showModal.html',),
+              'https://pub.dev/documentation/animations/latest/animations/showModal.html',
+            ),
           ),
         ),
         ElevatedButton(
@@ -227,9 +234,11 @@ class __SharedAxisExState extends State<_SharedAxisEx> {
                 for (final val in SharedAxisTransitionType.values)
                   DropdownMenuItem(
                     value: val,
-                    child: Text(val
-                        .toString()
-                        .substring('SharedAxisTransitionType.'.length),),
+                    child: Text(
+                      val
+                          .toString()
+                          .substring('SharedAxisTransitionType.'.length),
+                    ),
                   )
               ],
               onChanged: (SharedAxisTransitionType? val) {

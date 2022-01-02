@@ -39,95 +39,99 @@ class RoutesExample extends StatelessWidget {
 // <void> means this route returns nothing.
 class _PageTwo extends MaterialPageRoute<void> {
   _PageTwo()
-      : super(builder: (BuildContext context) {
-          return Scaffold(
-            appBar: AppBar(
-              title: const Text('Page 2'),
-              elevation: 1.0,
-            ),
-            // *Note*: use a Builder instead of directly giving the body, so
-            // that Scaffold.of(context) won't throw exception, c.f.
-            // https://stackoverflow.com/a/51304732.
-            body: Builder(
-              builder: (BuildContext context) => Center(
-                child: ElevatedButton(
-                  onPressed: () {
-                    // Navigator.push<T> returns a Future<T>, which is the
-                    // return value of the pushed route when it's popped.
-                    Navigator.push<String>(context, _PageThree())
-                        .then((returnVal) {
-                      if (returnVal != null) {
-                        ScaffoldMessenger.of(context).removeCurrentSnackBar();
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text('You clicked: $returnVal'),
-                            action: SnackBarAction(
-                              label: 'OK',
-                              onPressed: () {},
+      : super(
+          builder: (BuildContext context) {
+            return Scaffold(
+              appBar: AppBar(
+                title: const Text('Page 2'),
+                elevation: 1.0,
+              ),
+              // *Note*: use a Builder instead of directly giving the body, so
+              // that Scaffold.of(context) won't throw exception, c.f.
+              // https://stackoverflow.com/a/51304732.
+              body: Builder(
+                builder: (BuildContext context) => Center(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      // Navigator.push<T> returns a Future<T>, which is the
+                      // return value of the pushed route when it's popped.
+                      Navigator.push<String>(context, _PageThree())
+                          .then((returnVal) {
+                        if (returnVal != null) {
+                          ScaffoldMessenger.of(context).removeCurrentSnackBar();
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text('You clicked: $returnVal'),
+                              action: SnackBarAction(
+                                label: 'OK',
+                                onPressed: () {},
+                              ),
                             ),
-                          ),
-                        );
-                      }
-                    });
-                  },
-                  child: const Text('Go to page 3'),
+                          );
+                        }
+                      });
+                    },
+                    child: const Text('Go to page 3'),
+                  ),
                 ),
               ),
-            ),
-          );
-        },);
+            );
+          },
+        );
 }
 
 // MaterialPageRoute<String> returns a Future<String>.
 class _PageThree extends MaterialPageRoute<String> {
   _PageThree()
-      : super(builder: (BuildContext context) {
-          return Scaffold(
-            appBar: AppBar(
-              title: const Text('Last page'),
-              elevation: 2.0,
-              actions: <Widget>[
-                IconButton(
-                  icon: const Icon(Icons.close),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                ),
-              ],
-            ),
-            body: Padding(
-              padding: const EdgeInsets.all(32.0),
-              child: ListView(
-                children: <Widget>[
-                  ListTile(
-                    leading: const CircleAvatar(child: Text('1')),
-                    title: const Text('user1@example.com'),
-                    onTap: () => Navigator.pop(context, 'user1@example.com'),
-                  ),
-                  ListTile(
-                    leading: const CircleAvatar(child: Text('2')),
-                    title: const Text('user2@example.com'),
-                    onTap: () => Navigator.pop(context, 'user2@example.com'),
-                  ),
-                  ListTile(
-                    leading: const CircleAvatar(child: Text('3')),
-                    title: const Text('user3@example.com'),
-                    onTap: () => Navigator.pop(context, 'user3@example.com'),
-                  ),
-                  const Divider(),
-                  MaterialButton(
+      : super(
+          builder: (BuildContext context) {
+            return Scaffold(
+              appBar: AppBar(
+                title: const Text('Last page'),
+                elevation: 2.0,
+                actions: <Widget>[
+                  IconButton(
+                    icon: const Icon(Icons.close),
                     onPressed: () {
-                      // Pops until reaching a route with that route name.
-                      Navigator.popUntil(
-                        context,
-                        ModalRoute.withName(RoutesExample.kRouteName),
-                      );
+                      Navigator.pop(context);
                     },
-                    child: const Text('Go home'),
                   ),
                 ],
               ),
-            ),
-          );
-        },);
+              body: Padding(
+                padding: const EdgeInsets.all(32.0),
+                child: ListView(
+                  children: <Widget>[
+                    ListTile(
+                      leading: const CircleAvatar(child: Text('1')),
+                      title: const Text('user1@example.com'),
+                      onTap: () => Navigator.pop(context, 'user1@example.com'),
+                    ),
+                    ListTile(
+                      leading: const CircleAvatar(child: Text('2')),
+                      title: const Text('user2@example.com'),
+                      onTap: () => Navigator.pop(context, 'user2@example.com'),
+                    ),
+                    ListTile(
+                      leading: const CircleAvatar(child: Text('3')),
+                      title: const Text('user3@example.com'),
+                      onTap: () => Navigator.pop(context, 'user3@example.com'),
+                    ),
+                    const Divider(),
+                    MaterialButton(
+                      onPressed: () {
+                        // Pops until reaching a route with that route name.
+                        Navigator.popUntil(
+                          context,
+                          ModalRoute.withName(RoutesExample.kRouteName),
+                        );
+                      },
+                      child: const Text('Go home'),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          },
+        );
 }

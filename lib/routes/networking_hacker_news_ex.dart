@@ -23,11 +23,13 @@ class _RestApiHackerNewsExampleState extends State<RestApiHackerNewsExample> {
       padding: const EdgeInsets.all(8.0),
       child: Column(
         children: <Widget>[
-          const Text('This is a full example using the hacker news API, '
-              'cf. https://github.com/HackerNews/API.\n'
-              'We use a two-hop way to get articles: '
-              'first we fetch the list of latest article Ids at https://hacker-news.firebaseio.com/v0/newstories.json, '
-              'then for each id we get its content at https://hacker-news.firebaseio.com/v0/item/\$id.json',),
+          const Text(
+            'This is a full example using the hacker news API, '
+            'cf. https://github.com/HackerNews/API.\n'
+            'We use a two-hop way to get articles: '
+            'first we fetch the list of latest article Ids at https://hacker-news.firebaseio.com/v0/newstories.json, '
+            'then for each id we get its content at https://hacker-news.firebaseio.com/v0/item/\$id.json',
+          ),
           const Divider(),
           Expanded(
             child: RefreshIndicator(
@@ -52,8 +54,9 @@ class _RestApiHackerNewsExampleState extends State<RestApiHackerNewsExample> {
                               );
                             }
                             final hnArticle = MyHackerNewsArticle.fromJson(
-                                json.decode(snapshot.data!)
-                                    as Map<String, dynamic>,);
+                              json.decode(snapshot.data!)
+                                  as Map<String, dynamic>,
+                            );
                             return this._articleListTile(hnArticle);
                           },
                         ),
@@ -75,10 +78,12 @@ class _RestApiHackerNewsExampleState extends State<RestApiHackerNewsExample> {
       final List<int> articleIds =
           List<int>.from(json.decode(response.body) as Iterable);
       setState(() => this._articleIds = articleIds);
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text('Error fetching article Ids: $response'),
-      ),);
+    } else if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Error fetching article Ids: $response'),
+        ),
+      );
     }
   }
 
@@ -97,8 +102,10 @@ class _RestApiHackerNewsExampleState extends State<RestApiHackerNewsExample> {
     final createdAt = DateTime.fromMillisecondsSinceEpoch(article.time! * 1000);
     return ListTile(
       title: Text(article.title!),
-      subtitle: Text('${article.by} - '
-          '${formatter.format(createdAt)}',),
+      subtitle: Text(
+        '${article.by} - '
+        '${formatter.format(createdAt)}',
+      ),
       trailing: IconButton(
         icon: const Icon(Icons.open_in_new),
         onPressed: () async {

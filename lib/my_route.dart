@@ -131,20 +131,22 @@ class MyRoute extends StatelessWidget {
           subtitle: const Text(APP_VERSION),
         ),
         ...MyAboutRoute.kAboutListTiles,
-        Consumer<MyAppSettings>(builder: (context, MyAppSettings settings, _) {
-          return ListTile(
-            onTap: () {},
-            leading: DayNightSwitcherIcon(
-              isDarkModeEnabled: settings.isDarkMode,
-              onStateChanged: (_) {},
-            ),
-            title: Text('Dark mode: ${settings.isDarkMode ? 'on' : 'off'}'),
-            trailing: DayNightSwitcher(
-              isDarkModeEnabled: settings.isDarkMode,
-              onStateChanged: (bool value) => settings.setDarkMode(value),
-            ),
-          );
-        },),
+        Consumer<MyAppSettings>(
+          builder: (context, MyAppSettings settings, _) {
+            return ListTile(
+              onTap: () {},
+              leading: DayNightSwitcherIcon(
+                isDarkModeEnabled: settings.isDarkMode,
+                onStateChanged: (_) {},
+              ),
+              title: Text('Dark mode: ${settings.isDarkMode ? 'on' : 'off'}'),
+              trailing: DayNightSwitcher(
+                isDarkModeEnabled: settings.isDarkMode,
+                onStateChanged: (bool value) => settings.setDarkMode(value),
+              ),
+            );
+          },
+        ),
       ],
     );
   }

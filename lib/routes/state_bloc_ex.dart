@@ -99,16 +99,17 @@ class _MyDemoAppState extends State<_MyDemoApp> {
     return ListView(
       children: <Widget>[
         const Text(
-            "BLoC pattern is a combination of StreamBuilder and InheritedWidget. "
-            "Using StreamBuilder allows extracting all business logic into a "
-            "separate 'MyBloc' class; using a InheritedWidget (usually name it "
-            "as 'MyBlocProviders') allows accessing myBloc from children widgets "
-            "down the widgets tree.\n\n"
-            "In this example, the app's root widget is a MyBlocProvider (InheritedWidget), "
-            "so MyBlocProvider.myBloc is accessed by the two 'CounterAndButtons' children"
-            " widgets below. \n\n"
-            "Clicking on one child widget's button would update the app's "
-            "state of root widget.\n",),
+          "BLoC pattern is a combination of StreamBuilder and InheritedWidget. "
+          "Using StreamBuilder allows extracting all business logic into a "
+          "separate 'MyBloc' class; using a InheritedWidget (usually name it "
+          "as 'MyBlocProviders') allows accessing myBloc from children widgets "
+          "down the widgets tree.\n\n"
+          "In this example, the app's root widget is a MyBlocProvider (InheritedWidget), "
+          "so MyBlocProvider.myBloc is accessed by the two 'CounterAndButtons' children"
+          " widgets below. \n\n"
+          "Clicking on one child widget's button would update the app's "
+          "state of root widget.\n",
+        ),
         // ###5. Put MyBlocProvider as the app's root widget, so children widget can
         // access the bloc.
         MyBlocProvider(

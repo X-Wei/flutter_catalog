@@ -108,11 +108,12 @@ class _TextFormFieldExampleState extends State<TextFormFieldExample> {
           TextFormField(
             keyboardType: TextInputType.number,
             decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Salary',
-                prefixText: '\$',
-                suffixText: 'USD',
-                suffixStyle: TextStyle(color: Colors.green),),
+              border: OutlineInputBorder(),
+              labelText: 'Salary',
+              prefixText: '\$',
+              suffixText: 'USD',
+              suffixStyle: TextStyle(color: Colors.green),
+            ),
           ),
           const SizedBox(height: 24.0),
           // "Password" form.

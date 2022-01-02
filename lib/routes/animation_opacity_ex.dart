@@ -27,8 +27,9 @@ class _OpacityExampleState extends State<OpacityExample> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             const Text(
-                'Click on colored squares below to make them invisible, click '
-                'once again to make them reappear.',),
+              'Click on colored squares below to make them invisible, click '
+              'once again to make them reappear.',
+            ),
             GestureDetector(
               onTap: () {
                 setState(() => this._opacity1 = 1.0 - this._opacity1);

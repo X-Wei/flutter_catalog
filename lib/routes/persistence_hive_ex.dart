@@ -147,15 +147,17 @@ class _HiveExampleState extends State<HiveExample> {
         title: Text(
           todo.content,
           style: TextStyle(
-              fontStyle: todo.isDone ? FontStyle.italic : null,
-              color: todo.isDone ? Colors.grey : null,
-              decoration: todo.isDone ? TextDecoration.lineThrough : null,),
+            fontStyle: todo.isDone ? FontStyle.italic : null,
+            color: todo.isDone ? Colors.grey : null,
+            decoration: todo.isDone ? TextDecoration.lineThrough : null,
+          ),
         ),
         subtitle: Text('id=${todo.id}\ncreated at ${todo.createdAt}'),
         isThreeLine: true,
         leading: IconButton(
           icon: Icon(
-              todo.isDone ? Icons.check_box : Icons.check_box_outline_blank,),
+            todo.isDone ? Icons.check_box : Icons.check_box_outline_blank,
+          ),
           onPressed: () => _toggleTodoItem(todo),
         ),
         trailing: IconButton(
