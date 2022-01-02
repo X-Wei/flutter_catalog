@@ -60,7 +60,7 @@ class _FlLineChartExampleState extends State<FlLineChartExample> {
         touchTooltipData: LineTouchTooltipData(
           tooltipBgColor: Colors.blueGrey.withOpacity(0.8),
         ),
-        touchCallback: (LineTouchResponse touchResponse) {},
+        touchCallback: (_, __) {},
         handleBuiltInTouches: true,
       ),
       // ! Borders:
