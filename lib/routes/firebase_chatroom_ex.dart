@@ -5,7 +5,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 
-import './firebase_login_ex.dart' show kFirebaseAnalytics;
+import 'firebase_login_ex.dart' show kFirebaseAnalytics;
 
 // NOTE: to add firebase support, first go to firebase console, generate the
 // firebase json file, and add configuration lines in the gradle files.
@@ -30,7 +30,7 @@ class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
     super.initState();
     final now = DateTime.now().toUtc();
     this._firebaseMsgDbRef = FirebaseDatabase.instance
-        .reference()
+        .ref()
         .child('messages/${now.year}/${now.month}/${now.day}');
     this._user = firebase_auth.FirebaseAuth.instance.currentUser;
   }
@@ -47,9 +47,9 @@ class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
         ),
         title: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
-          child: Text(_user == null
-              ? 'Chatting'
-              : 'Chatting as "${_user!.displayName}"'),
+          child: Text(
+            _user == null ? 'Chatting' : 'Chatting as "${_user!.displayName}"',
+          ),
         ),
       ),
       body: Center(
@@ -69,11 +69,13 @@ class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
       context: context,
       builder: (ctx) => AlertDialog(
         title: const Text('Note'),
-        content: const Text('This chat room is only for demo purposes.\n\n'
-            'The chat messages are publicly available, and they '
-            'can be deleted at any time by the firebase admin.\n\n'
-            'To send messages, you must log in '
-            'in the "Firebase login" demo.'),
+        content: const Text(
+          'This chat room is only for demo purposes.\n\n'
+          'The chat messages are publicly available, and they '
+          'can be deleted at any time by the firebase admin.\n\n'
+          'To send messages, you must log in '
+          'in the "Firebase login" demo.',
+        ),
         actions: <Widget>[
           TextButton(
             onPressed: () => Navigator.of(ctx).pop(),
@@ -94,8 +96,12 @@ class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
           sort: (a, b) => b.key!.compareTo(a.key!),
           padding: const EdgeInsets.all(8.0),
           reverse: true,
-          itemBuilder: (BuildContext ctx, DataSnapshot snapshot,
-                  Animation<double> animation, int idx) =>
+          itemBuilder: (
+            BuildContext ctx,
+            DataSnapshot snapshot,
+            Animation<double> animation,
+            int idx,
+          ) =>
               _messageFromSnapshot(snapshot, animation),
         ),
       ),
@@ -104,12 +110,18 @@ class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
 
   // Returns the UI of one message from a data snapshot.
   Widget _messageFromSnapshot(
-      DataSnapshot snapshot, Animation<double> animation) {
-    final senderName =
-        snapshot.value['senderName'] as String? ?? '?? <unknown>';
-    final msgText = snapshot.value['text'] as String? ?? '??';
-    final sentTime = snapshot.value['timestamp'] as int? ?? 0;
-    final senderPhotoUrl = snapshot.value['senderPhotoUrl'] as String?;
+    DataSnapshot snapshot,
+    Animation<double> animation,
+  ) {
+    final val = snapshot.value;
+    if (val == null) {
+      return Container();
+    }
+    final json = val as Map<String, dynamic>;
+    final senderName = json['senderName'] as String? ?? '?? <unknown>';
+    final msgText = json['text'] as String? ?? '??';
+    final sentTime = json['timestamp'] as int? ?? 0;
+    final senderPhotoUrl = json['senderPhotoUrl'] as String?;
     final messageUI = Padding(
       padding: const EdgeInsets.symmetric(vertical: 10.0),
       child: Row(
