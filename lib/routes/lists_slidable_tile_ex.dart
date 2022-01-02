@@ -11,52 +11,62 @@ class SlidableTileExample extends StatefulWidget {
 }
 
 class _SlidableTileExampleState extends State<SlidableTileExample> {
-  static const _kActionpaneTypes = <String, Widget>{
-    'SlidableDrawerActionPane': SlidableDrawerActionPane(),
-    'SlidableBehindActionPane': SlidableBehindActionPane(),
-    'SlidableScrollActionPane': SlidableScrollActionPane(),
-    'SlidableStrechActionPane': SlidableStrechActionPane(),
+  static final _kActionpaneTypes = <String, Widget>{
+    'DrawerMotion': DrawerMotion(),
+    'BehindMotion': BehindMotion(),
+    'ScrollMotion': ScrollMotion(),
+    'StretchMotion': StretchMotion(),
   };
   late List<Slidable> _items;
   @override
   void initState() {
     super.initState();
     final mainActions = <Widget>[
-      IconSlideAction(
-        caption: 'Archive',
-        color: Colors.blue,
+      SlidableAction(
+        label: 'Archive',
+        foregroundColor: Colors.blue,
         icon: Icons.archive,
-        onTap: () => _showSnackBar('Archive'),
+        onPressed: (_) => _showSnackBar('Archive'),
       ),
-      IconSlideAction(
-        caption: 'Share',
-        color: Colors.indigo,
+      SlidableAction(
+        label: 'Share',
+        foregroundColor: Colors.indigo,
         icon: Icons.share,
-        onTap: () => _showSnackBar('Share'),
-        // Don't
-        closeOnTap: false,
+        onPressed: (_) => _showSnackBar('Share'),
+        // Don't automatically close.
+        autoClose: false,
       ),
     ];
     final secondaryActions = <Widget>[
-      IconSlideAction(
-        caption: 'More',
-        color: Colors.black45,
+      SlidableAction(
+        label: 'More',
+        foregroundColor: Colors.black45,
         icon: Icons.more_horiz,
-        onTap: () => _showSnackBar('More'),
+        onPressed: (_) => _showSnackBar('More'),
       ),
-      IconSlideAction(
-        caption: 'Delete',
-        color: Colors.red,
+      SlidableAction(
+        label: 'Delete',
+        foregroundColor: Colors.red,
         icon: Icons.delete,
-        onTap: () => _showSnackBar('Delete'),
+        onPressed: (_) => _showSnackBar('Delete'),
       ),
     ];
     _items = [
       for (final entry in _kActionpaneTypes.entries)
         Slidable(
-          actionPane: entry.value,
-          actions: mainActions, // swipe right
-          secondaryActions: secondaryActions, //swipe left
+          key: ValueKey(entry.key),
+          // swipe right
+          startActionPane: ActionPane(
+            motion: entry.value,
+            extentRatio: 0.2,
+            children: mainActions,
+          ),
+          //swipe left
+          endActionPane: ActionPane(
+            motion: entry.value,
+            extentRatio: 0.2,
+            children: secondaryActions,
+          ),
           child: ListTile(
             leading: const Icon(Icons.swipe),
             title: Text('ListTile with ${entry.key}'),
@@ -66,21 +76,18 @@ class _SlidableTileExampleState extends State<SlidableTileExample> {
     ];
     // Dismissible tile example:
     // First create a dismissal obj
-    final dismissal = SlidableDismissal(
-      onDismissed: (actionType) {
-        _showSnackBar(actionType == SlideActionType.primary
-            ? 'Dismiss Archive'
-            : 'Dimiss Delete');
+    final dismissal = DismissiblePane(
+      onDismissed: () {
+        _showSnackBar('Dismiss Archive');
         setState(() => this._items.removeAt(_items.length - 1));
       },
       // Confirm on dismissal:
-      onWillDismiss: (actionType) {
-        return showDialog<bool>(
+      confirmDismiss: () async {
+        final bool? ret = await showDialog<bool>(
           context: context,
           builder: (context) {
             return AlertDialog(
-              title: Text(
-                  actionType == SlideActionType.primary ? 'Archive' : 'Delete'),
+              title: Text('Archive'),
               content: const Text('Confirm action?'),
               actions: <Widget>[
                 TextButton(
@@ -94,18 +101,23 @@ class _SlidableTileExampleState extends State<SlidableTileExample> {
               ],
             );
           },
-        ) as FutureOr<bool>;
+        );
+        return ret ?? false;
       },
-      child: const SlidableDrawerDismissal(),
     );
-    // Set the `dismissal` argument to Slidable.
+    // Set the `dismissal` argument to ActionPane.
     _items.add(
       Slidable(
-        dismissal: dismissal,
         key: const Key('dimissibleTile'),
-        actionPane: const SlidableDrawerActionPane(),
-        actions: [mainActions[0]], // 'Archive' action
-        secondaryActions: [secondaryActions[1]], // 'Delete' action
+        startActionPane: ActionPane(
+          motion: DrawerMotion(),
+          dismissible: dismissal,
+          children: [mainActions[0]], // 'Archive' action
+        ),
+        endActionPane: ActionPane(
+          motion: DrawerMotion(),
+          children: [secondaryActions[1]], // 'Delete' action
+        ),
         child: const ListTile(
           leading: Icon(Icons.swap_horiz),
           title: Text('Dismissible tile'),
