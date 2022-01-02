@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -14,15 +13,18 @@ class BlocLibExample extends StatelessWidget {
   }
 }
 
-// ###1. Define an Event class that represents an event in our app. The widgets
+// ###1. Define an Event classes that represent an event in our app. The widgets
 // pass _MyEvent objects as inputs to MyBloc.
 class _MyEvent {
-  final bool isIncrement;
   final DateTime timestamp;
 
-  _MyEvent({required this.isIncrement, DateTime? timestamp})
+  _MyEvent({DateTime? timestamp})
       : this.timestamp = timestamp ?? DateTime.now();
 }
+
+class _IncrementEvt extends _MyEvent {}
+
+class _DecrementEvt extends _MyEvent {}
 
 // ###2. Define a State class that represents our app's state. MyBloc's output
 // would be such a state. Note the state must be IMMUTABLE in flutter_bloc from
@@ -37,26 +39,14 @@ class _MyState {
 // flutter_bloc package. With this package, we don't need to manage the stream
 // controllers.
 class MyBloc extends Bloc<_MyEvent, _MyState> {
-  MyBloc(_MyState initialState) : super(initialState);
-
-  // The business logic is in this mapEventToState function.
-  // Note: in flutter_bloc from v0.6.0 on, states are enforced IMMUTABLE,
-  // mutating state and yielding the it won't update on UI.
-  // C.f. https://github.com/felangel/bloc/issues/103.
-  @override
-  Stream<_MyState> mapEventToState(_MyEvent event) async* {
-    _MyState newState;
-    if (event.isIncrement) {
-      newState = _MyState(state.counter + 1);
-    } else {
-      newState = _MyState(state.counter - 1);
-    }
-    yield newState;
+  MyBloc(_MyState initialState) : super(initialState) {
+    on<_IncrementEvt>((_, emit) => emit(_MyState(state.counter + 1)));
+    on<_DecrementEvt>((_, emit) => emit(_MyState(state.counter - 1)));
   }
 
   // Instead of doing bloc.sink.add(), we do bloc.add().
-  void increment() => this.add(_MyEvent(isIncrement: true));
-  void decrement() => this.add(_MyEvent(isIncrement: false));
+  void increment() => this.add(_IncrementEvt());
+  void decrement() => this.add(_DecrementEvt());
 }
 
 class _MyDemoApp extends StatefulWidget {
@@ -72,12 +62,13 @@ class _MyDemoAppState extends State<_MyDemoApp> {
     return ListView(
       children: <Widget>[
         const Text(
-            "BLoC pattern is great for accessing/mutating app's state and "
-            "updating UI without rebuilding the whole widget tree. But the vanilla "
-            "BLoC implementation has too much boilerplate code. \n\n"
-            "With the flutter_bloc package, we don't need to manage Streams "
-            "or implement our own BlocProvider/InheritedWidget. We only need to "
-            "implement the core business logic in the `mapEventToState` function.\n",),
+          "BLoC pattern is great for accessing/mutating app's state and "
+          "updating UI without rebuilding the whole widget tree. But the vanilla "
+          "BLoC implementation has too much boilerplate code. \n\n"
+          "With the flutter_bloc package, we don't need to manage Streams "
+          "or implement our own BlocProvider/InheritedWidget. We only need to "
+          "implement the core business logic in the `mapEventToState` function.\n",
+        ),
         // ###4. Use the BlocProvider from flutter_bloc package, we don't need
         // to write our own InheritedWidget.
         BlocProvider<MyBloc>(
