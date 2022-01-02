@@ -37,12 +37,7 @@ class _GraphViewExState extends State<GraphViewEx> {
     final Graph graph = Graph();
     // ! Create nodes
     final nodes = <Node>[
-      for (int i = 0; i < 8; ++i)
-        // The node can be any widget.
-        Node(Chip(
-          label: Text('node$i'),
-          backgroundColor: Colors.primaries[i * 2][100],
-        )),
+      for (int i = 0; i < 8; ++i) Node.Id(i),
     ];
     graph.addNodes(nodes);
     // ! Add edges to the graph
@@ -74,6 +69,14 @@ class _GraphViewExState extends State<GraphViewEx> {
         boundaryMargin: const EdgeInsets.all(100),
         child: GraphView(
           graph: graph,
+          builder: (node) {
+            // Render the node as any widget
+            final idx = node.key!.value as int;
+            return Chip(
+              label: Text('node$idx'),
+              backgroundColor: Colors.primaries[idx * 2][100],
+            );
+          },
           // ! There are other algorithms for other graphs:
           // * [SugiyamaAlgorithm] for layered graph
           // * [BuchheimWalkerAlgorithm] for tree graph
