@@ -5,7 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-final kFirebaseAnalytics = FirebaseAnalytics();
+final kFirebaseAnalytics = FirebaseAnalytics.instance;
 
 // NOTE: to add firebase support, first go to firebase console, generate the
 // firebase json file, and add configuration lines in the gradle files.
@@ -38,9 +38,11 @@ class _FirebaseLoginExampleState extends State<FirebaseLoginExample> {
   Widget build(BuildContext context) {
     final statusText = Padding(
       padding: const EdgeInsets.symmetric(vertical: 10.0),
-      child: Text(_user == null
-          ? 'You are not logged in.'
-          : 'You are logged in as "${_user!.displayName}".'),
+      child: Text(
+        _user == null
+            ? 'You are not logged in.'
+            : 'You are logged in as "${_user!.displayName}".',
+      ),
     );
     final googleLoginBtn = MaterialButton(
       color: Colors.blueAccent,
@@ -130,9 +132,11 @@ class _FirebaseLoginExampleState extends State<FirebaseLoginExample> {
     final user = _auth.currentUser;
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text(user == null
-            ? 'No user logged in.'
-            : '"${user.displayName}" logged out.'),
+        content: Text(
+          user == null
+              ? 'No user logged in.'
+              : '"${user.displayName}" logged out.',
+        ),
       ),
     );
     _auth.signOut();
