@@ -23,9 +23,11 @@ if (flutterVersionName == null) {
 
 apply plugin: 'com.android.application'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 30
     // Cf. https://github.com/flutter/flutter/issues/53657#issuecomment-642236438
     ndkVersion '21.3.6528147'
 
@@ -40,7 +42,7 @@ android {
     defaultConfig {
         applicationId "io.github.x_wei.flutter_catalog"
         minSdkVersion 21
-        targetSdkVersion 29
+        targetSdkVersion 30
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"

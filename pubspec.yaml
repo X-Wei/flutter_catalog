@@ -22,7 +22,7 @@ dependencies:
   cloud_firestore_web: ^2.3.0
   convex_bottom_bar: ^3.0.0
   day_night_switcher: ^0.2.0+1
-  edge_detection: ^1.0.6
+  edge_detection: ^1.0.7
   english_words: ^4.0.0
   extended_image: ^6.0.1
   feature_discovery: ^0.14.0

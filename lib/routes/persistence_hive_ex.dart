@@ -76,7 +76,7 @@ class _HiveExampleState extends State<HiveExample> {
 
   @override
   void dispose() {
-    Hive.box(kHiveBoxName).compact();
+    // Hive.box(kHiveBoxName).compact();
     Hive.close();
     super.dispose();
   }
