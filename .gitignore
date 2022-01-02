@@ -4,7 +4,6 @@ local.properties
 
 # Miscellaneous
 *.class
-*.lock
 *.log
 *.pyc
 *.swp
