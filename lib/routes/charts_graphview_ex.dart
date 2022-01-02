@@ -15,7 +15,7 @@ class GraphViewExample extends StatelessWidget {
         onPressed: () => Navigator.of(context)
             .push(MaterialPageRoute(builder: (BuildContext context) {
           return const GraphViewEx();
-        })),
+        },),),
       ),
     );
   }

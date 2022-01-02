@@ -59,7 +59,7 @@ class _RowColExampleState extends State<RowColExample> {
                     groupValue: this._isRow,
                     onChanged: (bool? value) {
                       if (value != null) setState(() => this._isRow = value);
-                    }),
+                    },),
                 const Text('Row'),
               ],
             ),
@@ -70,7 +70,7 @@ class _RowColExampleState extends State<RowColExample> {
                     groupValue: this._isRow,
                     onChanged: (bool? value) {
                       if (value != null) setState(() => this._isRow = value);
-                    }),
+                    },),
                 const Text('Column'),
               ],
             ),
@@ -89,8 +89,8 @@ class _RowColExampleState extends State<RowColExample> {
                 .map((MainAxisSize val) => DropdownMenuItem(
                       value: val,
                       child: Text(
-                          val.toString().substring('MainAxisSize.'.length)),
-                    ))
+                          val.toString().substring('MainAxisSize.'.length),),
+                    ),)
                 .toList(),
           ),
         ),
@@ -108,8 +108,8 @@ class _RowColExampleState extends State<RowColExample> {
                       value: val,
                       child: Text(val
                           .toString()
-                          .substring('MainAxisAlignment.'.length)),
-                    ))
+                          .substring('MainAxisAlignment.'.length),),
+                    ),)
                 .toList(),
           ),
         ),
@@ -127,12 +127,12 @@ class _RowColExampleState extends State<RowColExample> {
                       value: val,
                       child: Text(val
                           .toString()
-                          .substring('CrossAxisAlignment.'.length)),
-                    ))
+                          .substring('CrossAxisAlignment.'.length),),
+                    ),)
                 .toList(),
           ),
         ),
-      ]),
+      ],),
     );
   }
 }

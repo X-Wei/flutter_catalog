@@ -69,7 +69,7 @@ class _SqliteExampleState extends State<SqliteExample> {
           isDone BIT NOT NULL,
           content TEXT,
           createdAt INT)
-        ''');
+        ''',);
       },
     );
   }
@@ -96,7 +96,7 @@ class _SqliteExampleState extends State<SqliteExample> {
               "${todo.content}",
               ${todo.isDone ? 1 : 0}, 
               ${todo.createdAt.millisecondsSinceEpoch}
-            )''');
+            )''',);
         print('Inserted todo item with id=$id.');
       },
     );
@@ -119,7 +119,7 @@ class _SqliteExampleState extends State<SqliteExample> {
     final count = await this._db.rawDelete('''
         DELETE FROM $kDbTableName
         WHERE id = ${todo.id}
-      ''');
+      ''',);
     print('Updated $count records in db.');
   }
 
@@ -164,13 +164,13 @@ class _SqliteExampleState extends State<SqliteExample> {
           style: TextStyle(
               fontStyle: todo.isDone ? FontStyle.italic : null,
               color: todo.isDone ? Colors.grey : null,
-              decoration: todo.isDone ? TextDecoration.lineThrough : null),
+              decoration: todo.isDone ? TextDecoration.lineThrough : null,),
         ),
         subtitle: Text('id=${todo.id}\ncreated at ${todo.createdAt}'),
         isThreeLine: true,
         leading: IconButton(
           icon: Icon(
-              todo.isDone ? Icons.check_box : Icons.check_box_outline_blank),
+              todo.isDone ? Icons.check_box : Icons.check_box_outline_blank,),
           onPressed: () async {
             await _toggleTodoItem(todo);
             _updateUI();
@@ -181,7 +181,7 @@ class _SqliteExampleState extends State<SqliteExample> {
             onPressed: () async {
               await _deleteTodoItem(todo);
               _updateUI();
-            }),
+            },),
       );
 
   FloatingActionButton _buildFloatingActionButton() {

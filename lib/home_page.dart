@@ -1,6 +1,6 @@
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_catalog/my_app_routes.dart';
+import 'my_app_routes.dart';
 import 'package:provider/provider.dart';
 
 import './my_app_routes.dart'

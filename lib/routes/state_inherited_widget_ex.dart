@@ -65,7 +65,7 @@ class _MyDemoAppState extends State<_MyDemoApp> {
             "Clicking on child widget's button would update the root "
             "widget's counter.\n\n"
             "*Note*: Recommend using ScopedModel or BLoC for CHANGING parent's "
-            "state from child widget.\n"),
+            "state from child widget.\n",),
         // ###3. Put the inherited widget at the root of the widget tree, so that
         // all children widgets can access the state.
         MyInheritedWidget(

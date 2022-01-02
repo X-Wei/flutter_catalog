@@ -59,7 +59,7 @@ class _MyDemoApp extends StatelessWidget {
             "and the counter value(ChangeNotifierProvider).\n\n"
             "There's a text widget showing the seconds elapsed, and two card "
             "widgets showing the counter value. Clicking on child widget's "
-            "button would update the _MyCounterState of the app.\n"),
+            "button would update the _MyCounterState of the app.\n",),
         _AppRootWidget(),
       ],
     );

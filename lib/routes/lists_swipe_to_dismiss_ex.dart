@@ -30,7 +30,7 @@ class _ListSwipeToDismissExampleState extends State<ListSwipeToDismissExample> {
               SnackBar(
                 content: Text(dir == DismissDirection.startToEnd
                     ? '$item removed.'
-                    : '$item liked.'),
+                    : '$item liked.',),
                 action: SnackBarAction(
                   label: 'UNDO',
                   onPressed: () {

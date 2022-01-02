@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class BlocLibExample extends StatelessWidget {
@@ -78,7 +77,7 @@ class _MyDemoAppState extends State<_MyDemoApp> {
             "BLoC implementation has too much boilerplate code. \n\n"
             "With the flutter_bloc package, we don't need to manage Streams "
             "or implement our own BlocProvider/InheritedWidget. We only need to "
-            "implement the core business logic in the `mapEventToState` function.\n"),
+            "implement the core business logic in the `mapEventToState` function.\n",),
         // ###4. Use the BlocProvider from flutter_bloc package, we don't need
         // to write our own InheritedWidget.
         BlocProvider<MyBloc>(

@@ -78,5 +78,5 @@ class ShimmerExample extends StatelessWidget {
             ],
           ),
         )
-      ]);
+      ],);
 }

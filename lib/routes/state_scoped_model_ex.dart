@@ -44,7 +44,7 @@ class _MyDemoApp extends StatelessWidget {
             "so it's state is shared to the two 'CounterAndButtons' children"
             " widgets below. \n\n"
             "Clicking on child widget's button would update the MyStateModel "
-            "of root widget.\n"),
+            "of root widget.\n",),
         // ###2. Put the ScopedModel at the root of the widget tree, so that all
         // children widget can access the state.
         ScopedModel<_MyState>(

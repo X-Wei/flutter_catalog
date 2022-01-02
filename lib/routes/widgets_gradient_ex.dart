@@ -28,7 +28,7 @@ class GradientExample extends StatelessWidget {
                   begin: Alignment.topRight,
                   end: Alignment.bottomLeft,
                   stops: [0.1, 0.6, 0.9],
-                  colors: [Colors.yellow, Colors.indigo, Colors.teal]),
+                  colors: [Colors.yellow, Colors.indigo, Colors.teal],),
             ),
             child: Text('LinearGradient', style: txtStyle),
           ),
@@ -38,7 +38,7 @@ class GradientExample extends StatelessWidget {
             decoration: const BoxDecoration(
               shape: BoxShape.circle,
               gradient: RadialGradient(
-                  radius: 0.7, colors: [Colors.blue, Colors.red]),
+                  radius: 0.7, colors: [Colors.blue, Colors.red],),
             ),
             child: Text('RadialGradient', style: txtStyle),
           ),

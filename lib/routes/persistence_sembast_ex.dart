@@ -75,7 +75,7 @@ class _SembastExampleState extends State<SembastExample> {
         .map((snapshot) => TodoItem.fromJsonMap({
               ...snapshot.value,
               'id': snapshot.key,
-            }))
+            }),)
         .toList();
   }
 
@@ -138,13 +138,13 @@ class _SembastExampleState extends State<SembastExample> {
           style: TextStyle(
               fontStyle: todo.isDone ? FontStyle.italic : null,
               color: todo.isDone ? Colors.grey : null,
-              decoration: todo.isDone ? TextDecoration.lineThrough : null),
+              decoration: todo.isDone ? TextDecoration.lineThrough : null,),
         ),
         subtitle: Text('id=${todo.id}\ncreated at ${todo.createdAt}'),
         isThreeLine: true,
         leading: IconButton(
           icon: Icon(
-              todo.isDone ? Icons.check_box : Icons.check_box_outline_blank),
+              todo.isDone ? Icons.check_box : Icons.check_box_outline_blank,),
           onPressed: () async {
             await _toggleTodoItem(todo);
             _updateUI();
@@ -155,7 +155,7 @@ class _SembastExampleState extends State<SembastExample> {
             onPressed: () async {
               await _deleteTodoItem(todo);
               _updateUI();
-            }),
+            },),
       );
 
   FloatingActionButton _buildFloatingActionButton() {

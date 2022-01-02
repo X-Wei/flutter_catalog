@@ -144,7 +144,7 @@ class MyRoute extends StatelessWidget {
               onStateChanged: (bool value) => settings.setDarkMode(value),
             ),
           );
-        }),
+        },),
       ],
     );
   }

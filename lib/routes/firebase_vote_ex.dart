@@ -119,7 +119,7 @@ class _FirebaseVoteExampleState extends State<FirebaseVoteExample> {
             final freshRecord =
                 _LangaugeVotingRecord.fromSnapshot(freshSnapshot);
             transaction.update(record.firestoreDocReference,
-                {'votes': freshRecord.votes + deltaVotes});
+                {'votes': freshRecord.votes + deltaVotes},);
           } catch (e) {
             print(e);
             rethrow;
@@ -155,7 +155,7 @@ class _LangaugeVotingRecord {
 
   _LangaugeVotingRecord.fromSnapshot(DocumentSnapshot<JsonMap> snapshot)
       : this.fromMap(snapshot.data()!,
-            firestoreDocReference: snapshot.reference);
+            firestoreDocReference: snapshot.reference,);
 
   @override
   String toString() => "Record<$language:$votes>";

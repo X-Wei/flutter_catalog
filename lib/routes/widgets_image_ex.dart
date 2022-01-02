@@ -54,7 +54,7 @@ class ImageExample extends StatelessWidget {
         const ListTile(
           title: Text('ExtendedImage:'),
           subtitle: Text(
-              'provides more functionalities like image caching and shape and borderRadius'),
+              'provides more functionalities like image caching and shape and borderRadius',),
         ),
         // Extended image
         ExtendedImage.network(

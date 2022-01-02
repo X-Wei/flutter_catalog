@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart' as url_launcher;
 
-import 'package:flutter_catalog/constants.dart';
+import '../constants.dart';
 
 // Inspired by the about page in Eajy's flutter demo:
 // https://github.com/Eajy/flutter_demo/blob/master/lib/route/about.dart
@@ -50,7 +50,7 @@ class MyAboutRoute extends StatelessWidget {
               applicationName: APP_NAME,
               applicationVersion: APP_VERSION,
               applicationIcon: kAppIcon,
-              children: <Widget>[const Text(APP_DESCRIPTION)]);
+              children: <Widget>[const Text(APP_DESCRIPTION)],);
         },
       ),
     );

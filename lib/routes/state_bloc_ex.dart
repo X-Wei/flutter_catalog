@@ -108,7 +108,7 @@ class _MyDemoAppState extends State<_MyDemoApp> {
             "so MyBlocProvider.myBloc is accessed by the two 'CounterAndButtons' children"
             " widgets below. \n\n"
             "Clicking on one child widget's button would update the app's "
-            "state of root widget.\n"),
+            "state of root widget.\n",),
         // ###5. Put MyBlocProvider as the app's root widget, so children widget can
         // access the bloc.
         MyBlocProvider(

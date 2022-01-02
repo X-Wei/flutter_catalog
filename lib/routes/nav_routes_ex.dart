@@ -75,7 +75,7 @@ class _PageTwo extends MaterialPageRoute<void> {
               ),
             ),
           );
-        });
+        },);
 }
 
 // MaterialPageRoute<String> returns a Future<String>.
@@ -129,5 +129,5 @@ class _PageThree extends MaterialPageRoute<String> {
               ),
             ),
           );
-        });
+        },);
 }

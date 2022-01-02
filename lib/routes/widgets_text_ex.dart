@@ -13,7 +13,7 @@ class TextExample extends StatelessWidget {
           color: Colors.blue,
           fontSize: 32.0,
           fontStyle: FontStyle.italic,
-          decoration: TextDecoration.underline),
+          decoration: TextDecoration.underline,),
       // Or:
       // style: Theme.of(context).textTheme.xxx
     );

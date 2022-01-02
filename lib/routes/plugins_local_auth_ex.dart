@@ -27,7 +27,7 @@ class _LocalAuthExampleState extends State<LocalAuthExample> {
         const SnackBar(
           content: Text('Your device is NOT capable of checking biometrics.\n'
               'This demo will not work on your device!\n'
-              'You must have android 6.0+ and have fingerprint sensor.'),
+              'You must have android 6.0+ and have fingerprint sensor.',),
         ),
       );
       return false;

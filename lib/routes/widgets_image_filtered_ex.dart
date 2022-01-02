@@ -27,7 +27,7 @@ class _ImageFilteredExampleState extends State<ImageFilteredExample> {
             children: [
               const Text(
                   'Not only can images be "filtered", in fact any widget '
-                  'can be placed under ImageFiltered!'),
+                  'can be placed under ImageFiltered!',),
               Image.asset('res/images/dart-side.png'),
             ],
           ),

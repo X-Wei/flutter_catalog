@@ -16,13 +16,13 @@ class _VideoPlayerExampleState extends State<VideoPlayerExample> {
   void initState() {
     super.initState();
     _videoController = VideoPlayerController.network(
-        'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4')
+        'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4',)
       // **When the controllers change, call setState() to rebuild widget.**
       ..addListener(() => setState(() {}))
       ..setLooping(true)
       ..initialize();
     _audioController = VideoPlayerController.network(
-        'https://file-examples.com/wp-content/uploads/2017/11/file_example_MP3_700KB.mp3')
+        'https://file-examples.com/wp-content/uploads/2017/11/file_example_MP3_700KB.mp3',)
       ..addListener(() => setState(() {}))
       ..setLooping(true)
       ..initialize();
@@ -50,7 +50,7 @@ class _VideoPlayerExampleState extends State<VideoPlayerExample> {
         const ListTile(
             title: Text('(Also possible to play media from local file or '
                 'from assets, or display subtitles. '
-                'Cf. the plugin documentation.)')),
+                'Cf. the plugin documentation.)',),),
       ],
     );
   }
@@ -64,7 +64,7 @@ class _VideoPlayerExampleState extends State<VideoPlayerExample> {
           child: VideoPlayer(_videoController),
         ),
         Text(
-            '${_videoController.value.position} / ${_videoController.value.duration}'),
+            '${_videoController.value.position} / ${_videoController.value.duration}',),
         VideoProgressIndicator(_videoController, allowScrubbing: true),
         ElevatedButton.icon(
           onPressed: () => _videoController.value.isPlaying
@@ -72,7 +72,7 @@ class _VideoPlayerExampleState extends State<VideoPlayerExample> {
               : _videoController.play(),
           icon: Icon(_videoController.value.isPlaying
               ? Icons.pause
-              : Icons.play_arrow),
+              : Icons.play_arrow,),
           label: Text(_videoController.value.isPlaying ? 'Pause' : 'Play'),
         ),
       ],
@@ -85,14 +85,14 @@ class _VideoPlayerExampleState extends State<VideoPlayerExample> {
       children: <Widget>[
         VideoProgressIndicator(_audioController, allowScrubbing: true),
         Text(
-            '${_audioController.value.position} / ${_audioController.value.duration}'),
+            '${_audioController.value.position} / ${_audioController.value.duration}',),
         ElevatedButton.icon(
           onPressed: () => _audioController.value.isPlaying
               ? _audioController.pause()
               : _audioController.play(),
           icon: Icon(_audioController.value.isPlaying
               ? Icons.pause
-              : Icons.play_arrow),
+              : Icons.play_arrow,),
           label: Text(_audioController.value.isPlaying ? 'Pause' : 'Play'),
         ),
       ],

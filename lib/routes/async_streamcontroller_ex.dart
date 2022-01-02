@@ -55,7 +55,7 @@ class _StreamControllerExampleState extends State<StreamControllerExample> {
             "and put a function between the input controller and output controller.\n\n"
             "In this demo, the card renders the widget from _outputStreamController.stream "
             "and you can send a new random word to the "
-            "_inputStreamController.sink by clicking the 'send' button.\n"),
+            "_inputStreamController.sink by clicking the 'send' button.\n",),
         Card(
           elevation: 4.0,
           child: StreamBuilder<Widget>(

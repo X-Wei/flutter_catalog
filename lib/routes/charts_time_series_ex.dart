@@ -84,7 +84,7 @@ class _TimeseriesChartExampleState extends State<TimeseriesChartExample> {
             behaviors: [
               // Add title.
               charts.ChartTitle('Dummy sales time series',
-                  behaviorPosition: _titlePosition),
+                  behaviorPosition: _titlePosition,),
               // Add legend.
               charts.SeriesLegend(position: _legendPosition),
               // Highlight X and Y value of selected point.

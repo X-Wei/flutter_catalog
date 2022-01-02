@@ -132,7 +132,7 @@ class DessertDataSource extends DataTableSource {
           DataCell(Text('${dessert.sodium}')),
           DataCell(Text('${dessert.calcium}%')),
           DataCell(Text('${dessert.iron}%')),
-        ]);
+        ],);
   }
 
   @override

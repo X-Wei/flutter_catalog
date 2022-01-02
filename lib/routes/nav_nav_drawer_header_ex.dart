@@ -50,7 +50,7 @@ class NavDrawerExample extends StatelessWidget {
         ),
         drawer: Drawer(
           child: drawerItems,
-        ));
+        ),);
   }
 }
 
@@ -67,5 +67,5 @@ class _NewPage extends MaterialPageRoute<void> {
               child: Text('Page $id'),
             ),
           );
-        });
+        },);
 }

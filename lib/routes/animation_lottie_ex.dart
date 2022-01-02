@@ -92,7 +92,7 @@ class __LottieCustomState extends State<_LottieCustom>
               icon: const Icon(Icons.arrow_right),
               onPressed: () {
                 _controller.forward(
-                    from: _controller.value == 1 ? 0 : _controller.value);
+                    from: _controller.value == 1 ? 0 : _controller.value,);
               },
             ),
           ],

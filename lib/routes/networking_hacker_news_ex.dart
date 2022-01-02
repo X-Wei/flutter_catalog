@@ -27,7 +27,7 @@ class _RestApiHackerNewsExampleState extends State<RestApiHackerNewsExample> {
               'cf. https://github.com/HackerNews/API.\n'
               'We use a two-hop way to get articles: '
               'first we fetch the list of latest article Ids at https://hacker-news.firebaseio.com/v0/newstories.json, '
-              'then for each id we get its content at https://hacker-news.firebaseio.com/v0/item/\$id.json'),
+              'then for each id we get its content at https://hacker-news.firebaseio.com/v0/item/\$id.json',),
           const Divider(),
           Expanded(
             child: RefreshIndicator(
@@ -53,7 +53,7 @@ class _RestApiHackerNewsExampleState extends State<RestApiHackerNewsExample> {
                             }
                             final hnArticle = MyHackerNewsArticle.fromJson(
                                 json.decode(snapshot.data!)
-                                    as Map<String, dynamic>);
+                                    as Map<String, dynamic>,);
                             return this._articleListTile(hnArticle);
                           },
                         ),
@@ -78,7 +78,7 @@ class _RestApiHackerNewsExampleState extends State<RestApiHackerNewsExample> {
     } else {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Text('Error fetching article Ids: $response'),
-      ));
+      ),);
     }
   }
 
@@ -98,7 +98,7 @@ class _RestApiHackerNewsExampleState extends State<RestApiHackerNewsExample> {
     return ListTile(
       title: Text(article.title!),
       subtitle: Text('${article.by} - '
-          '${formatter.format(createdAt)}'),
+          '${formatter.format(createdAt)}',),
       trailing: IconButton(
         icon: const Icon(Icons.open_in_new),
         onPressed: () async {

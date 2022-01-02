@@ -112,7 +112,7 @@ class _TextFormFieldExampleState extends State<TextFormFieldExample> {
                 labelText: 'Salary',
                 prefixText: '\$',
                 suffixText: 'USD',
-                suffixStyle: TextStyle(color: Colors.green)),
+                suffixStyle: TextStyle(color: Colors.green),),
           ),
           const SizedBox(height: 24.0),
           // "Password" form.

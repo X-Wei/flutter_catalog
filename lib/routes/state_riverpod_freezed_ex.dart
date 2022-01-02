@@ -2,7 +2,6 @@ import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:state_notifier/state_notifier.dart';
 import 'package:widget_with_codeview/source_code_view.dart';
 
 import 'data/my_api_state.dart';
@@ -94,7 +93,7 @@ class __DemoPageState extends State<_DemoPage> {
                       appBar:
                           AppBar(title: const Text('data/my_api_state.dart')),
                       body: const SourceCodeView(
-                          filePath: 'lib/routes/data/my_api_state.dart'),
+                          filePath: 'lib/routes/data/my_api_state.dart',),
                     ),
                   ),
                 ),

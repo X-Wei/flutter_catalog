@@ -25,7 +25,7 @@ class _ListWheelViewExampleState extends State<ListWheelViewExample> {
           title: Text("Title $index"),
           subtitle: Text('Description here'),
         );
-      }),
+      },),
     );
   }
 }

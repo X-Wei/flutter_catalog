@@ -2,7 +2,7 @@
 // "structure" of the group of example routes, in a const List<Tuple2> object.
 // ignore_for_file: sort_child_properties_last
 import 'package:flutter/material.dart';
-import 'package:flutter_catalog/routes/animation_animated_radial_menu_ex.dart';
+import 'routes/animation_animated_radial_menu_ex.dart';
 
 import 'constants.dart';
 import 'home_page.dart';
@@ -984,7 +984,7 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
           title: 'Radar Chart',
           links: {'pub.dev': 'https://pub.dev/packages/flutter_radar_chart'},
         ),
-      ]),
+      ],),
   MyRouteGroup(
       groupName: 'Networking',
       icon: Icon(Icons.http),
@@ -1020,7 +1020,7 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
           description: 'Another REST example using the Google books seach API.',
           links: {'Hacker News API': 'https://github.com/HackerNews/API'},
         ),
-      ]),
+      ],),
   MyRouteGroup(
     groupName: 'Firebase',
     icon: Icon(Icons.cloud),

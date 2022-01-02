@@ -22,7 +22,7 @@ class WrapExample extends StatelessWidget {
           .map((String name) => Chip(
                 avatar: CircleAvatar(child: Text(name.substring(0, 1))),
                 label: Text(name),
-              ))
+              ),)
           .toList(),
     );
   }

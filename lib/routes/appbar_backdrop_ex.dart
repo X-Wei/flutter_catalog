@@ -16,7 +16,7 @@ class BackdropExample extends StatelessWidget {
           child: Text(
               '(front layer) \n Click top-right button to show back layer.\n\n'
               "There's no flutter official backdrop widget, this demo uses the "
-              "'backdrop' package.")),
+              "'backdrop' package.",),),
       backLayer: const Center(child: Text('(back layer)')),
     );
   }

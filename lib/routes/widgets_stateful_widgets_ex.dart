@@ -65,7 +65,7 @@ class _StatefulWidgetsExampleState extends State<StatefulWidgetsExample> {
             label: '${_slider2Val.round()}',
             onChanged: (double value) {
               setState(() => _slider2Val = value);
-            }),
+            },),
         const Divider(),
         const Text('LinearProgressIndicator'),
         // **When value=null, progress indicators become stateless.**
@@ -85,7 +85,7 @@ class _StatefulWidgetsExampleState extends State<StatefulWidgetsExample> {
                         setState(() => this._radioVal = value);
                       }
                     },
-                  ))
+                  ),)
               .toList(),
         ),
         const Divider(),
