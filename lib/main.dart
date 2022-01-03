@@ -1,8 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import './constants.dart';
+import './my_app_settings.dart';
 import './my_main_app.dart';
 
 Future<void> main() async {
@@ -10,6 +10,6 @@ Future<void> main() async {
   if (kIsOnMobile) {
     await Firebase.initializeApp();
   }
-  final sharedPref = await SharedPreferences.getInstance();
-  runApp(MyMainApp(sharedPref));
+  final settings = await MyAppSettings.create();
+  runApp(MyMainApp(settings));
 }

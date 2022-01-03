@@ -12,15 +12,26 @@ class MyAppSettings extends ChangeNotifier {
     for (MyRoute route in kAllRoutes) route.routeName: route
   };
 
+  static Future<MyAppSettings> create() async {
+    final sharedPref = await SharedPreferences.getInstance();
+    final s = MyAppSettings._(sharedPref);
+    await s._init();
+    return s;
+  }
+
   final SharedPreferences _pref;
 
-  MyAppSettings(this._pref) {
+  MyAppSettings._(this._pref);
+
+  Future<void> _init() async {
     // When first time opening the app: mark all routes as known -- we only
     // display a red dot for *new* routes.
-    if (_pref.getStringList(_kKnownRoutesKey) == null) {
+    final knownRoutes = _pref.getStringList(kKnownRoutesKey);
+    // Check if user opens the app for the FIRST time.
+    if (knownRoutes == null || knownRoutes.length < 50) {
       final allrouteNames = _kRoutenameToRouteMap.keys.toList()
         ..add(kAboutRoute.routeName);
-      _pref.setStringList(_kKnownRoutesKey, allrouteNames);
+      await _pref.setStringList(kKnownRoutesKey, allrouteNames);
     }
   }
 
@@ -83,14 +94,14 @@ class MyAppSettings extends ChangeNotifier {
 
   // Used to decide if an example route is newly added. We will show a red dot
   // for newly added routes.
-  static const _kKnownRoutesKey = 'KNOWN_ROUTES';
+  static const kKnownRoutesKey = 'KNOWN_ROUTENAMES';
   bool isNewRoute(String routeName) =>
-      !(_pref.getStringList(_kKnownRoutesKey)?.contains(routeName) ?? false);
+      !(_pref.getStringList(kKnownRoutesKey)?.contains(routeName) ?? false);
 
   void markRouteKnown(String routeName) {
     if (isNewRoute(routeName)) {
-      final knowRoutes = _pref.getStringList(_kKnownRoutesKey)?..add(routeName);
-      _pref.setStringList(_kKnownRoutesKey, knowRoutes ?? []);
+      final knowRoutes = _pref.getStringList(kKnownRoutesKey)?..add(routeName);
+      _pref.setStringList(kKnownRoutesKey, knowRoutes ?? []);
       notifyListeners();
     }
   }
