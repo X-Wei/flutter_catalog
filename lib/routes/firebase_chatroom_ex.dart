@@ -117,7 +117,7 @@ class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
     if (val == null) {
       return Container();
     }
-    final json = val as Map<String, dynamic>;
+    final json = val as Map;
     final senderName = json['senderName'] as String? ?? '?? <unknown>';
     final msgText = json['text'] as String? ?? '??';
     final sentTime = json['timestamp'] as int? ?? 0;
