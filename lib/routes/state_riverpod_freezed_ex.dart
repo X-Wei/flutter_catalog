@@ -2,7 +2,7 @@ import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:widget_with_codeview/source_code_view.dart';
+import 'package:widget_with_codeview/widget_with_codeview.dart';
 
 import 'data/my_api_state.dart';
 
