@@ -28,8 +28,6 @@ apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 30
-    // Cf. https://github.com/flutter/flutter/issues/53657#issuecomment-642236438
-    ndkVersion '21.3.6528147'
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
