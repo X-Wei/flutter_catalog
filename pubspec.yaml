@@ -36,7 +36,7 @@ dependencies:
   firebase_database: ^9.0.4
   firebase_storage: ^10.0.1
   firebase_storage_web: ^3.0.0
-  fl_chart: ^0.40.6
+  fl_chart: ^0.41.0
   flutter:
     sdk: flutter
   flutter_bloc: ^8.0.1
