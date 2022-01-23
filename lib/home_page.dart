@@ -35,6 +35,19 @@ class _MyHomePageState extends State<MyHomePage> {
   ];
 
   int _currentTabIndex = 0;
+  // !Adding scroll controllers to avoid erros like:
+  // !"The provided ScrollController is currently attached to more than one ScrollPosition."
+  final ScrollController _scrollController1 = ScrollController();
+  final ScrollController _scrollController2 = ScrollController();
+  final ScrollController _scrollController3 = ScrollController();
+
+  @override
+  void dispose() {
+    _scrollController1.dispose();
+    _scrollController2.dispose();
+    _scrollController3.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,9 +69,10 @@ class _MyHomePageState extends State<MyHomePage> {
       body: IndexedStack(
         index: _currentTabIndex,
         children: <Widget>[
-          ListView(children: basicDemos),
-          ListView(children: advancedDemos),
-          ListView(children: bookmarkAndAboutDemos),
+          ListView(controller: _scrollController1, children: basicDemos),
+          ListView(controller: _scrollController2, children: advancedDemos),
+          ListView(
+              controller: _scrollController3, children: bookmarkAndAboutDemos),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -104,6 +118,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget _myRouteGroupToExpansionTile(MyRouteGroup myRouteGroup) {
     final nNew = context.watch<MyAppSettings>().numNewRoutes(myRouteGroup);
     return Card(
+      key: ValueKey(myRouteGroup.groupName),
       child: ExpansionTile(
         leading: nNew > 0
             ? Badge(badgeContent: Text('$nNew'), child: myRouteGroup.icon)
