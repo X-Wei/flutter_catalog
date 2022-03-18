@@ -41,7 +41,7 @@ And note there are some [limitations](https://github.com/X-Wei/flutter_catalog/i
 
 This app is written with reference to many resources, including:
 
-* Offical gallery app: https://github.com/flutter/flutter/tree/master/examples/flutter_gallery
+* Offical gallery app: https://github.com/flutter/gallery
 * Andrea Bizzotto's YouTube channel: https://www.youtube.com/channel/UCrTnsT4OYZ53l0QGKqLeD5Q
 * Tensor Programming's YouTube channel: https://www.youtube.com/watch?v=WwhyaqNtNQY&list=PLJbE2Yu2zumDqr_-hqpAN0nIr6m14TAsd
 * Eajy's flutter demo: https://github.com/Eajy/flutter_demo
