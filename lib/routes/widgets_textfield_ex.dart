@@ -23,8 +23,7 @@ class _TextFieldExampleState extends State<TextFieldExample> {
           borderRadius: BorderRadius.all(Radius.circular(10.0)),
         ),
       ),
-      onSubmitted: (val) =>
-          Fluttertoast.showToast(msg: 'You entered: ${int.parse(val)}'),
+      onSubmitted: (val) => Fluttertoast.showToast(msg: 'You entered: ${int.parse(val)}'),
       onChanged: (String val) {
         final v = int.tryParse(val);
         debugPrint('parsed value = $v');
@@ -45,13 +44,23 @@ class _TextFieldExampleState extends State<TextFieldExample> {
       maxLines: 10,
       textCapitalization: TextCapitalization.sentences,
       decoration: InputDecoration(
-        counterText: '${this._controller.text.split(' ').length} words',
+        counterText: '${_countWords(text: this._controller.text)} words',
         labelText: 'Enter multiline text:',
+        alignLabelWithHint: true,
         hintText: 'type something...',
         border: const OutlineInputBorder(),
       ),
       onChanged: (text) => setState(() {}),
     );
+  }
+
+  int _countWords({required String text}) {
+    final trimmedText = text.trim();
+    if (trimmedText.isEmpty) {
+      return 0;
+    } else {
+      return trimmedText.split(RegExp("\\s+")).length;
+    }
   }
 
   bool _showPassword = false;
