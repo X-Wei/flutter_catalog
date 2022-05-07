@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_quill/flutter_quill.dart'
-    show Document, QuillController, QuillEditor, QuillToolbar;
+    show QuillController, QuillEditor, QuillToolbar;
 
 class QuillExample extends StatefulWidget {
   const QuillExample({Key? key}) : super(key: key);

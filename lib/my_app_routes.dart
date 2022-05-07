@@ -79,9 +79,9 @@ import 'routes/persistence_sembast_ex.dart';
 import 'routes/persistence_sqlite_ex.dart';
 import 'routes/plugins_feature_discovery_ex.dart';
 import 'routes/plugins_local_auth_ex.dart';
-import 'routes/plugins_markdown_ex.dart';
 import 'routes/plugins_shimmer_ex.dart';
 import 'routes/plugins_webview_ex.dart';
+import 'routes/richtext_markdown_ex.dart';
 import 'routes/richtext_quill_ex.dart';
 import 'routes/state_bloc_ex.dart';
 import 'routes/state_bloc_lib_ex.dart';
@@ -893,11 +893,6 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
         description: 'Open web page inside Flutter app.',
       ),
       MyRoute(
-        child: MarkdownExample(),
-        sourceFilePath: 'lib/routes/plugins_markdown_ex.dart',
-        title: 'Markdown rendering',
-      ),
-      MyRoute(
         child: LocalAuthExample(),
         sourceFilePath: 'lib/routes/plugins_local_auth_ex.dart',
         title: 'Local auth',
@@ -922,6 +917,11 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
     groupName: 'Rich Text',
     icon: Icon(Icons.history_edu),
     routes: <MyRoute>[
+      MyRoute(
+        child: MarkdownExample(),
+        sourceFilePath: 'lib/routes/richtext_markdown_ex.dart',
+        title: 'Markdown rendering',
+      ),
       MyRoute(
         child: QuillExample(),
         sourceFilePath: 'lib/routes/richtext_quill_ex.dart',
