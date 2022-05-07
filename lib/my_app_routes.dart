@@ -82,6 +82,7 @@ import 'routes/plugins_local_auth_ex.dart';
 import 'routes/plugins_markdown_ex.dart';
 import 'routes/plugins_shimmer_ex.dart';
 import 'routes/plugins_webview_ex.dart';
+import 'routes/richtext_quill_ex.dart';
 import 'routes/state_bloc_ex.dart';
 import 'routes/state_bloc_lib_ex.dart';
 import 'routes/state_inherited_widget_ex.dart';
@@ -914,6 +915,19 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
         sourceFilePath: 'lib/routes/plugins_shimmer_ex.dart',
         title: 'Shimmer effect',
         links: {'pub.dev': 'https://pub.dev/packages/shimmer'},
+      ),
+    ],
+  ),
+  MyRouteGroup(
+    groupName: 'Rich Text',
+    icon: Icon(Icons.history_edu),
+    routes: <MyRoute>[
+      MyRoute(
+        child: QuillExample(),
+        sourceFilePath: 'lib/routes/richtext_quill_ex.dart',
+        title: 'Quill',
+        description: 'Rich text editor',
+        links: {'pub.dev': 'https://pub.dev/packages/flutter_quill'},
       ),
     ],
   ),

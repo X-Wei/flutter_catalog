@@ -42,6 +42,7 @@ dependencies:
   flutter_bloc: ^8.0.1
   flutter_gallery_assets: ^1.0.2
   flutter_markdown: ^0.6.9
+  flutter_quill: ^4.1.8
   flutter_radar_chart: ^0.2.0
   flutter_riverpod: ^1.0.3
   flutter_slidable: ^1.2.0
