@@ -81,6 +81,7 @@ import 'routes/plugins_feature_discovery_ex.dart';
 import 'routes/plugins_local_auth_ex.dart';
 import 'routes/plugins_shimmer_ex.dart';
 import 'routes/plugins_webview_ex.dart';
+import 'routes/richtext_code_highlight_ex.dart';
 import 'routes/richtext_markdown_ex.dart';
 import 'routes/richtext_quill_ex.dart';
 import 'routes/state_bloc_ex.dart';
@@ -915,7 +916,7 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
   ),
   MyRouteGroup(
     groupName: 'Rich Text',
-    icon: Icon(Icons.history_edu),
+    icon: Icon(Icons.wysiwyg),
     routes: <MyRoute>[
       MyRoute(
         child: MarkdownExample(),
@@ -928,6 +929,13 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
         title: 'Quill',
         description: 'Rich text editor',
         links: {'pub.dev': 'https://pub.dev/packages/flutter_quill'},
+      ),
+      MyRoute(
+        child: CodeHighlightExample(),
+        sourceFilePath: 'lib/routes/richtext_code_highlight_ex.dart',
+        title: 'Code highlight',
+        description: 'Syntax highlighting for different programming languages',
+        links: {'pub.dev': 'https://pub.dev/packages/flutter_highlight'},
       ),
     ],
   ),
