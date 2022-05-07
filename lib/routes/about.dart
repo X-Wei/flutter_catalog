@@ -17,22 +17,22 @@ class MyAboutRoute extends StatelessWidget {
     ListTile(
       leading: const Icon(Icons.shop),
       title: const Text('Rate on Google Play'),
-      onTap: () => url_launcher.launch(GOOGLEPLAY_URL),
+      onTap: () => url_launcher.launchUrl(Uri.parse(GOOGLEPLAY_URL)),
     ),
     ListTile(
       leading: const Icon(Icons.code),
       title: const Text('Source code on GitHub'),
-      onTap: () => url_launcher.launch(GITHUB_URL),
+      onTap: () => url_launcher.launchUrl(Uri.parse(GITHUB_URL)),
     ),
     ListTile(
       leading: const Icon(Icons.bug_report),
       title: const Text('Report issue on GitHub'),
-      onTap: () => url_launcher.launch('$GITHUB_URL/issues'),
+      onTap: () => url_launcher.launchUrl(Uri.parse('$GITHUB_URL/issues')),
     ),
     ListTile(
       leading: const Icon(Icons.open_in_new),
       title: const Text('Visit my website'),
-      onTap: () => url_launcher.launch(AUTHOR_SITE),
+      onTap: () => url_launcher.launchUrl(Uri.parse(AUTHOR_SITE)),
     ),
   ];
 

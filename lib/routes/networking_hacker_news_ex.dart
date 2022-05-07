@@ -109,7 +109,7 @@ class _RestApiHackerNewsExampleState extends State<RestApiHackerNewsExample> {
       trailing: IconButton(
         icon: const Icon(Icons.open_in_new),
         onPressed: () async {
-          if (await url_launcher.canLaunch(article.url!)) {
+          if (await url_launcher.canLaunchUrl(Uri.parse(article.url!))) {
             Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (ctx) => WebviewScaffold(

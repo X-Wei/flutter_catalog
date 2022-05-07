@@ -116,9 +116,11 @@ class MyRoute extends StatelessWidget {
                     trailing: IconButton(
                       icon: const Icon(Icons.open_in_new),
                       tooltip: titleAndLink.value,
-                      onPressed: () => url_launcher.launch(titleAndLink.value),
+                      onPressed: () =>
+                          url_launcher.launchUrl(Uri.parse(titleAndLink.value)),
                     ),
-                    onTap: () => url_launcher.launch(titleAndLink.value),
+                    onTap: () =>
+                        url_launcher.launchUrl(Uri.parse(titleAndLink.value)),
                   ),
                 )
             ];

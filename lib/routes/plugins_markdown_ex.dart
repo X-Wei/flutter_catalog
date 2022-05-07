@@ -59,8 +59,9 @@ class MarkdownExample extends StatelessWidget {
   Widget build(BuildContext context) {
     Future<void> _onTapLink(String text, String? href, String title) async {
       if (href == null) return;
-      if (await canLaunch(href)) {
-        launch(href);
+      final _url = Uri.parse(href);
+      if (await canLaunchUrl(_url)) {
+        launchUrl(_url);
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(

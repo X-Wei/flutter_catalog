@@ -18,8 +18,9 @@ class AnimationsPackageExample extends StatelessWidget {
           trailing: IconButton(
             tooltip: 'Documentation',
             icon: const Icon(Icons.open_in_new),
-            onPressed: () => launch(
-              'https://pub.dev/documentation/animations/latest/animations/OpenContainer-class.html',
+            onPressed: () => launchUrl(
+              Uri.parse(
+                  'https://pub.dev/documentation/animations/latest/animations/OpenContainer-class.html'),
             ),
           ),
         ),
@@ -44,8 +45,9 @@ class AnimationsPackageExample extends StatelessWidget {
           trailing: IconButton(
             tooltip: 'Documentation',
             icon: const Icon(Icons.open_in_new),
-            onPressed: () => launch(
-              'https://pub.dev/documentation/animations/latest/animations/PageTransitionSwitcher-class.html',
+            onPressed: () => launchUrl(
+              Uri.parse(
+                  'https://pub.dev/documentation/animations/latest/animations/PageTransitionSwitcher-class.html'),
             ),
           ),
         ),
@@ -62,8 +64,9 @@ class AnimationsPackageExample extends StatelessWidget {
           trailing: IconButton(
             tooltip: 'Documentation',
             icon: const Icon(Icons.open_in_new),
-            onPressed: () => launch(
-              'https://pub.dev/documentation/animations/latest/animations/SharedAxisTransition-class.html',
+            onPressed: () => launchUrl(
+              Uri.parse(
+                  'https://pub.dev/documentation/animations/latest/animations/SharedAxisTransition-class.html'),
             ),
           ),
         ),
@@ -78,8 +81,9 @@ class AnimationsPackageExample extends StatelessWidget {
           trailing: IconButton(
             tooltip: 'Documentation',
             icon: const Icon(Icons.open_in_new),
-            onPressed: () => launch(
-              'https://pub.dev/documentation/animations/latest/animations/showModal.html',
+            onPressed: () => launchUrl(
+              Uri.parse(
+                  'https://pub.dev/documentation/animations/latest/animations/showModal.html'),
             ),
           ),
         ),
