@@ -25,8 +25,8 @@ class _FlBarChartExampleState extends State<FlBarChartExample> {
         BarChartGroupData(
           x: entry.key.toInt(),
           barRods: [
-            BarChartRodData(y: entry.value, colors: [Colors.blue]),
-            BarChartRodData(y: _data2[entry.key]!, colors: [Colors.red]),
+            BarChartRodData(toY: entry.value, color: Colors.blue),
+            BarChartRodData(toY: _data2[entry.key]!, color: Colors.red),
           ],
         ),
     ];
@@ -46,30 +46,30 @@ class _FlBarChartExampleState extends State<FlBarChartExample> {
       borderData: FlBorderData(show: _showBorder),
       // ! Grid behavior:
       gridData: FlGridData(show: _showGrid),
-      // ! Axis title
-      axisTitleData: FlAxisTitleData(
-        show: true,
-        bottomTitle: AxisTitle(titleText: 'Month', showTitle: true),
-        leftTitle: AxisTitle(titleText: 'Sales', showTitle: true),
-      ),
-      // ! Ticks in the axis
+      // ! Title and ticks in the axis
       titlesData: FlTitlesData(
         show: true,
-        bottomTitles: SideTitles(
-          showTitles: true, // this is false by-default.
-          // ! Decides how to show bottom titles,
-          // here we convert double to month names
-          getTitles: (double val) =>
-              DateFormat.MMM().format(DateTime(2020, val.toInt())),
+        bottomTitles: AxisTitles(
+          axisNameWidget: Text('Month'),
+          sideTitles: SideTitles(
+            showTitles: true,
+            // ! Decides how to show bottom titles,
+            // here we convert double to month names
+            getTitlesWidget: (double val, _) =>
+                Text(DateFormat.MMM().format(DateTime(2020, val.toInt()))),
+          ),
         ),
-        leftTitles: SideTitles(
-          showTitles: true,
-          // ! Decides how to show left titles,
-          // here we skip some values by returning ''.
-          getTitles: (double val) {
-            if (val.toInt() % 5 != 0) return '';
-            return '${val.toInt()}';
-          },
+        leftTitles: AxisTitles(
+          axisNameWidget: Text('Sales'),
+          sideTitles: SideTitles(
+            showTitles: true,
+            // ! Decides how to show left titles,
+            // here we skip some values by returning ''.
+            getTitlesWidget: (double val, _) {
+              if (val.toInt() % 5 != 0) return Text('');
+              return Text('${val.toInt()}');
+            },
+          ),
         ),
       ),
     );

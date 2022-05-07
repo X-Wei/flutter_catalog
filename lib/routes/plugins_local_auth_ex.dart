@@ -38,8 +38,8 @@ class _LocalAuthExampleState extends State<LocalAuthExample> {
     // FlutterFragmentActivity, cf. https://stackoverflow.com/a/56605771.
     try {
       final authSuccess = await this._localAuth.authenticate(
-            biometricOnly: true,
             localizedReason: 'Auth in to see hidden image',
+            options: const AuthenticationOptions(biometricOnly: true),
           );
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(

@@ -38,21 +38,21 @@ class _FlLineChartExampleState extends State<FlLineChartExample> {
         // ! Here we can style each data line.
         LineChartBarData(
           spots: spots1,
-          colors: [Colors.blue],
+          color: Colors.blue,
           barWidth: 8,
           isCurved: _isCurved,
           dotData: FlDotData(show: _showDot),
           belowBarData:
-              BarAreaData(show: _showBelowArea, colors: [Colors.blue[200]!]),
+              BarAreaData(show: _showBelowArea, color: Colors.blue[200]),
         ),
         LineChartBarData(
           spots: spots2,
-          colors: [Colors.red],
+          color: Colors.red,
           barWidth: 4,
           isCurved: _isCurved,
           dotData: FlDotData(show: _showDot),
           belowBarData:
-              BarAreaData(show: _showBelowArea, colors: [Colors.red[200]!]),
+              BarAreaData(show: _showBelowArea, color: Colors.red[200]),
         ),
       ],
       // ! Behavior when touching the chart:
@@ -75,30 +75,30 @@ class _FlLineChartExampleState extends State<FlLineChartExample> {
       ),
       // ! Grid behavior:
       gridData: FlGridData(show: _showGrid),
-      // ! Axis title
-      axisTitleData: FlAxisTitleData(
-        show: true,
-        bottomTitle: AxisTitle(titleText: 'Month', showTitle: true),
-        leftTitle: AxisTitle(titleText: 'Value', showTitle: true),
-      ),
-      // ! Ticks in the axis
+      // ! Title and ticks in the axis
       titlesData: FlTitlesData(
         show: true,
-        bottomTitles: SideTitles(
-          showTitles: true, // this is false by-default.
-          // ! Decides how to show bottom titles,
-          // here we convert double to month names
-          getTitles: (double val) =>
-              DateFormat.MMM().format(DateTime(2020, val.toInt())),
+        bottomTitles: AxisTitles(
+          axisNameWidget: Text('Month'),
+          sideTitles: SideTitles(
+            showTitles: true, // this is false by-default.
+            // ! Decides how to show bottom titles,
+            // here we convert double to month names
+            getTitlesWidget: (double val, _) =>
+                Text(DateFormat.MMM().format(DateTime(2020, val.toInt()))),
+          ),
         ),
-        leftTitles: SideTitles(
-          showTitles: true,
-          // ! Decides how to show left titles,
-          // here we skip some values by returning ''.
-          getTitles: (double val) {
-            if (val.toInt() % 5 != 0) return '';
-            return '${val.toInt()}';
-          },
+        leftTitles: AxisTitles(
+          axisNameWidget: Text('Value'),
+          sideTitles: SideTitles(
+            showTitles: true,
+            // ! Decides how to show left titles,
+            // here we skip some values by returning ''.
+            getTitlesWidget: (double val, _) {
+              if (val.toInt() % 5 != 0) return Text('');
+              return Text('${val.toInt()}');
+            },
+          ),
         ),
       ),
     );

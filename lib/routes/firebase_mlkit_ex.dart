@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:math';
 
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_ml_kit/google_ml_kit.dart';
@@ -95,15 +96,15 @@ class _GoogleMLKitExampleState extends State<GoogleMLKitExample> {
     }
     String result = '';
     final InputImage inputImage = InputImage.fromFile(this._imageFile!);
-    final TextDetector textDetector = GoogleMlKit.vision.textDetector();
-    final RecognisedText recognizedText =
+    final TextRecognizer textDetector = GoogleMlKit.vision.textRecognizer();
+    final RecognizedText recognizedText =
         await textDetector.processImage(inputImage);
     final String text = recognizedText.text;
     debugPrint('Recognized text: "$text"');
     result += 'Detected ${recognizedText.blocks.length} text blocks.\n';
     for (final TextBlock block in recognizedText.blocks) {
-      final Rect boundingBox = block.rect;
-      final List<Offset> cornerPoints = block.cornerPoints;
+      final Rect boundingBox = block.boundingBox;
+      final List<Point<int>> cornerPoints = block.cornerPoints;
       final String text = block.text;
       final List<String> languages = block.recognizedLanguages;
       result += '\n# Text block:\n '
@@ -135,8 +136,8 @@ class _GoogleMLKitExampleState extends State<GoogleMLKitExample> {
         await barcodeScanner.processImage(inputImage);
     result += 'Detected ${barcodes.length} barcodes.\n';
     for (final Barcode barcode in barcodes) {
-      final Rect boundingBox = barcode.value.boundingBox!;
-      final String rawValue = barcode.value.rawValue!;
+      final Rect boundingBox = barcode.boundingBox!;
+      final String rawValue = barcode.rawValue!;
       final valueType = barcode.type;
       result += '\n# Barcode:\n '
           'bbox=$boundingBox\n '
@@ -155,7 +156,7 @@ class _GoogleMLKitExampleState extends State<GoogleMLKitExample> {
     }
     String result = '';
     final InputImage inputImage = InputImage.fromFile(this._imageFile!);
-    const options = FaceDetectorOptions(
+    final options = FaceDetectorOptions(
       enableLandmarks: true,
       enableClassification: true,
       enableTracking: true,
@@ -175,9 +176,9 @@ class _GoogleMLKitExampleState extends State<GoogleMLKitExample> {
           'rotZ=$rotZ\n ';
       // If landmark detection was enabled with FaceDetectorOptions (mouth, ears,
       // eyes, cheeks, and nose available):
-      final FaceLandmark? leftEar = face.getLandmark(FaceLandmarkType.leftEar);
+      final FaceLandmark? leftEar = face.landmarks[FaceLandmarkType.leftEar];
       if (leftEar != null) {
-        final Offset leftEarPos = leftEar.position;
+        final Point<int> leftEarPos = leftEar.position;
         result += 'leftEarPos=$leftEarPos\n ';
       }
       // If classification was enabled with FaceDetectorOptions:
