@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 const APP_VERSION = 'v3.1.2';
 const APP_NAME = 'Flutter Catalog';
 final kAppIcon =
-    Image.asset('res/images/launcher_icon.png', height: 64.0, width: 64.0);
+    Image.asset('res/images/app_icon.png', height: 64.0, width: 64.0);
 const APP_DESCRIPTION = 'An app showcasing Flutter components, with '
     'side-by-side source code view.'
     '\n\nDeveloped by X.Wei.';
