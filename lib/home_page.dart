@@ -95,7 +95,7 @@ class _MyHomePageState extends State<MyHomePage> {
         .copyWith(fontWeight: FontWeight.bold);
     final leadingWidget =
         leading ?? mySettings.starStatusOfRoute(myRoute.routeName);
-    final isNew = mySettings.isNewRoute(myRoute.routeName);
+    final isNew = mySettings.isNewRoute(myRoute);
     return ListTile(
       leading: isNew
           ? Badge(
@@ -108,7 +108,7 @@ class _MyHomePageState extends State<MyHomePage> {
       subtitle: myRoute.description.isEmpty ? null : Text(myRoute.description),
       onTap: () {
         if (isNew) {
-          mySettings.markRouteKnown(myRoute.routeName);
+          mySettings.markRouteKnown(myRoute);
         }
         Navigator.of(context).pushNamed(myRoute.routeName);
       },

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import './my_app_routes.dart' show MyRouteGroup, kAboutRoute, kAllRoutes;
@@ -13,6 +14,7 @@ class MyAppSettings extends ChangeNotifier {
   };
 
   static Future<MyAppSettings> create() async {
+    debugPrint('app dir=${await getApplicationDocumentsDirectory()}');
     final sharedPref = await SharedPreferences.getInstance();
     final s = MyAppSettings._(sharedPref);
     await s._init();
@@ -27,11 +29,14 @@ class MyAppSettings extends ChangeNotifier {
     // When first time opening the app: mark all routes as known -- we only
     // display a red dot for *new* routes.
     final knownRoutes = _pref.getStringList(kKnownRoutesKey);
+    debugPrint('knownroute=$knownRoutes');
     // Check if user opens the app for the FIRST time.
     if (knownRoutes == null || knownRoutes.length < 50) {
+      debugPrint('Adding all routes to known routes...');
       final allrouteNames = _kRoutenameToRouteMap.keys.toList()
         ..add(kAboutRoute.routeName);
       await _pref.setStringList(kKnownRoutesKey, allrouteNames);
+      debugPrint('knownroute=${_pref.getStringList(kKnownRoutesKey)}');
     }
   }
 
@@ -92,15 +97,17 @@ class MyAppSettings extends ChangeNotifier {
     notifyListeners();
   }
 
-  // Used to decide if an example route is newly added. We will show a red dot
-  // for newly added routes.
-  static const kKnownRoutesKey = 'KNOWN_ROUTENAMES';
-  bool isNewRoute(String routeName) =>
-      !(_pref.getStringList(kKnownRoutesKey)?.contains(routeName) ?? false);
+  // Used to decide if an example is newly added. We will show a red dot for
+  // newly added routes.
+  static const kKnownRoutesKey = 'KNOWN_ROUTE_NAMES';
+  bool isNewRoute(MyRoute route) =>
+      !(_pref.getStringList(kKnownRoutesKey)?.contains(route.routeName) ??
+          false);
 
-  void markRouteKnown(String routeName) {
-    if (isNewRoute(routeName)) {
-      final knowRoutes = _pref.getStringList(kKnownRoutesKey)?..add(routeName);
+  void markRouteKnown(MyRoute route) {
+    if (isNewRoute(route)) {
+      final knowRoutes = _pref.getStringList(kKnownRoutesKey)
+        ?..add(route.routeName);
       _pref.setStringList(kKnownRoutesKey, knowRoutes ?? []);
       notifyListeners();
     }
@@ -108,6 +115,6 @@ class MyAppSettings extends ChangeNotifier {
 
   // Returns the number of new example routes in this group.
   int numNewRoutes(MyRouteGroup group) {
-    return group.routes.where((route) => isNewRoute(route.routeName)).length;
+    return group.routes.where(isNewRoute).length;
   }
 }

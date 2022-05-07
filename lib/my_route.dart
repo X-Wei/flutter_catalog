@@ -1,6 +1,7 @@
 import 'package:backdrop/backdrop.dart';
 import 'package:day_night_switcher/day_night_switcher.dart';
 import 'package:flutter/material.dart';
+import 'package:path/path.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart' as url_launcher;
 import 'package:widget_with_codeview/widget_with_codeview.dart';
@@ -50,7 +51,9 @@ class MyRoute extends StatelessWidget {
         super(key: key);
 
   String get routeName =>
-      this._routeName ?? '/${this.child.runtimeType.toString()}';
+      this._routeName ?? '/${basenameWithoutExtension(sourceFilePath)}';
+  // ! Previously we use runtimeType, but it's not stable.
+  // this._routeName ?? '/${this.child.runtimeType.toString()}';
 
   String get title => _title ?? this.routeName;
 
