@@ -2,7 +2,6 @@
 // "structure" of the group of example routes, in a const List<Tuple2> object.
 // ignore_for_file: sort_child_properties_last
 import 'package:flutter/material.dart';
-import 'routes/animation_animated_radial_menu_ex.dart';
 
 import 'constants.dart';
 import 'home_page.dart';
@@ -11,6 +10,7 @@ import 'routes/about.dart';
 import 'routes/animation_animated_builder_ex.dart';
 import 'routes/animation_animated_container_ex.dart';
 import 'routes/animation_animated_icons_ex.dart';
+import 'routes/animation_animated_radial_menu_ex.dart';
 import 'routes/animation_animated_text_kit_ex.dart';
 import 'routes/animation_animated_widget_ex.dart';
 import 'routes/animation_animations_pkg_ex.dart';
@@ -22,6 +22,7 @@ import 'routes/appbar_backdrop_ex.dart';
 import 'routes/appbar_basic_appbar_ex.dart';
 import 'routes/appbar_bottom_appbar_ex.dart';
 import 'routes/appbar_convex_appbar_ex.dart';
+import 'routes/appbar_hidable_ex.dart';
 import 'routes/appbar_search_ex.dart';
 import 'routes/appbar_sliver_appbar_ex.dart';
 import 'routes/async_futurebuilder_ex.dart';
@@ -454,6 +455,15 @@ const kMyAppRoutesBasic = <MyRouteGroup>[
         title: 'Convex Appbar',
         description: 'Nicer-looking appbar (Flutter Favorite package).',
         links: {'Pub.dev': 'https://pub.dev/packages/convex_bottom_bar'},
+      ),
+      MyRoute(
+        child: HidableBtmbarExample(),
+        sourceFilePath: 'lib/routes/appbar_hidable_ex.dart',
+        title: 'Hidable bottom bar',
+        description: 'Bottom bar that auto hides when scroll down',
+        links: {
+          'pub.dev': 'https://pub.dev/packages/hidable',
+        },
       ),
     ],
   ),

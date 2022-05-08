@@ -881,6 +881,13 @@ packages:
       url: "https://github.com/CouldI/flutter_heatmap_calendar.git"
     source: git
     version: "1.2.8"
+  hidable:
+    dependency: "direct main"
+    description:
+      name: hidable
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.2"
   highlight:
     dependency: transitive
     description:

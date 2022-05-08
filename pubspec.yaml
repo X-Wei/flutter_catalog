@@ -58,6 +58,7 @@ dependencies:
   heatmap_calendar:
     git:
       url: https://github.com/CouldI/flutter_heatmap_calendar.git
+  hidable: ^1.0.2
   hive: ^2.0.4
   hive_flutter: ^1.1.0
   http: ^0.13.3
