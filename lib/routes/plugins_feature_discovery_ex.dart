@@ -43,7 +43,7 @@ class _DemoPageState extends State<_DemoPage> {
     this._strsToShow = _getRandomStrings();
     // !Show feature discovery right after the page is ready.
     SchedulerBinding.instance
-        ?.addPostFrameCallback((Duration duration) => _showDiscovery());
+        .addPostFrameCallback((Duration duration) => _showDiscovery());
   }
 
   @override
@@ -84,7 +84,7 @@ class _DemoPageState extends State<_DemoPage> {
       ),
       backgroundColor: Theme.of(context).primaryColor,
       onOpen: () async {
-        WidgetsBinding.instance?.addPostFrameCallback((Duration duration) {
+        WidgetsBinding.instance.addPostFrameCallback((Duration duration) {
           _ensureVisibleGlobalKey.currentState?.ensureVisible(
             preciseAlignment: 0.5,
             duration: const Duration(milliseconds: 400),
