@@ -44,7 +44,8 @@ class MyRouteSearchDelegate extends SearchDelegate<String> {
     // List<String> suggestions = _history;
     Iterable<MyRoute> suggestions = [
       for (final routeName in Provider.of<MyAppSettings>(context).searchHistory)
-        kRouteNameToRoute[routeName]!
+        if (kRouteNameToRoute.containsKey(routeName))
+          kRouteNameToRoute[routeName]!
     ];
     if (this.query.isNotEmpty) {
       suggestions = kAllRoutes
