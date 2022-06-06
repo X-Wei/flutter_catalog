@@ -18,19 +18,18 @@ class _ImageFilteredExampleState extends State<ImageFilteredExample> {
       padding: const EdgeInsets.all(4),
       children: [
         ImageFiltered(
-          imageFilter: ImageFilter.compose(
-            outer: ImageFilter.matrix(Matrix4.rotationZ(_rotZ).storage),
-            inner: ImageFilter.blur(sigmaX: _sigmaX, sigmaY: _sigmaY),
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const Text(
-                'Not only can images be "filtered", in fact any widget '
-                'can be placed under ImageFiltered!',
-              ),
-              Image.asset('res/images/dart-side.png'),
-            ],
+          // Compose two image filters: result = outer(inner(source)).
+          // ImageFilter.compose(...)
+          // ! -- ImageFilter.compose Doesn't work??
+          // ! https://dartpad.dev/?id=a39eeefa873b62f63e4f3516c2d04b09
+          imageFilter: ImageFilter.blur(sigmaX: _sigmaX, sigmaY: _sigmaY),
+          child: Image.asset('res/images/dart-side.png'),
+        ),
+        ImageFiltered(
+          imageFilter: ImageFilter.matrix(Matrix4.rotationZ(_rotZ).storage),
+          child: const Text(
+            'Not only can images be "filtered", in fact any widget '
+            'can be placed under ImageFiltered!',
           ),
         ),
         const Divider(),
