@@ -80,7 +80,7 @@ android {
             }
             shrinkResources true
             minifyEnabled true
-            useProguard true
+            // useProguard true // https://stackoverflow.com/a/71760565/12421326
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
