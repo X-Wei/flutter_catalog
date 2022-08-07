@@ -20,9 +20,9 @@ class MyAboutRoute extends StatelessWidget {
       onTap: () => url_launcher.launchUrl(Uri.parse(GOOGLEPLAY_URL)),
     ),
     ListTile(
-      leading: const Icon(Icons.shop),
+      leading: const Icon(Icons.apple),
       title: const Text('Rate on App Store'),
-      onTap: () => url_launcher.launchUrl(Uri.parse()),
+      onTap: () => url_launcher.launchUrl(Uri.parse(APPSTORE_URL)),
     ),
     ListTile(
       leading: const Icon(Icons.code),
