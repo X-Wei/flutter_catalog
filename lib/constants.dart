@@ -17,6 +17,7 @@ const GOOGLEPLAY_URL =
     'https://play.google.com/store/apps/details?id=io.github.x_wei.flutter_catalog';
 const GITHUB_URL = 'https://github.com/X-Wei/flutter_catalog';
 const AUTHOR_SITE = 'http://x-wei.github.io';
+const APPSTORE_URL = ''
 
 final kPlatformType = getCurrentPlatformType();
 // Whether the app is running on mobile phones (Android/iOS)
