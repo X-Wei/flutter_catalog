@@ -83,6 +83,7 @@ dependencies:
   sqflite: ^2.0.0+3
   state_notifier: ^0.7.0
   substring_highlight: ^1.0.33
+  super_editor: ^0.2.2
   transparent_image: ^2.0.0
   tuple: ^2.0.0
   url_launcher: ^6.0.9
