@@ -30,7 +30,7 @@ dependencies:
   firebase_analytics: ^9.0.4
   firebase_analytics_web: ^0.4.0+4
   firebase_auth: ^3.0.1
-  firebase_auth_web: ^3.0.0
+  firebase_auth_web: ^4.6.0
   firebase_core: ^1.4.0
   firebase_core_web: ^1.1.0
   firebase_database: ^9.0.4
@@ -43,12 +43,13 @@ dependencies:
   flutter_gallery_assets: ^1.0.2
   flutter_highlight: ^0.7.0
   flutter_markdown: ^0.6.9
-  flutter_quill: ^5.0.2
+  flutter_quill: ^6.0.6+1
   flutter_radar_chart: ^0.2.0
-  flutter_riverpod: ^1.0.3
+  flutter_riverpod: ^2.0.0
   flutter_slidable: ^2.0.0
   flutter_state_notifier: ^0.7.0
   flutter_webview_plugin: ^0.4.0
+  flutterfire_ui: ^0.4.3+11
   fluttertoast: ^8.0.7
   freezed_annotation: ^2.0.3
   google_fonts: ^2.1.0
@@ -67,7 +68,7 @@ dependencies:
   intl: ^0.17.0
   local_auth: ^2.0.0
   lottie: ^1.1.0
-  markdown: ^5.0.0
+  markdown: ^6.0.1
   new_gradient_app_bar:
     git:
       url: https://github.com/GUIKAR741/NewGradientAppBar.git

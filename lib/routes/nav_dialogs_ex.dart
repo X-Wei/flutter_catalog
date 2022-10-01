@@ -13,7 +13,7 @@ class DialogsExample extends StatelessWidget {
       children: <Widget>[
         ////// Alert dialog.
         ElevatedButton(
-          style: ElevatedButton.styleFrom(primary: Colors.red),
+          style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
           onPressed: () {
             // The function showDialog<T> returns Future<T>.
             // Use Navigator.pop() to return value (of type T).
@@ -50,7 +50,7 @@ class DialogsExample extends StatelessWidget {
         ),
         ////// Simple Dialog.
         ElevatedButton(
-          style: ElevatedButton.styleFrom(primary: Colors.yellow),
+          style: ElevatedButton.styleFrom(backgroundColor: Colors.yellow),
           onPressed: () {
             showDialog<String>(
               context: context,
@@ -89,7 +89,7 @@ class DialogsExample extends StatelessWidget {
         ),
         ////// Time Picker Dialog.
         ElevatedButton(
-          style: ElevatedButton.styleFrom(primary: Colors.green),
+          style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
           onPressed: () {
             final DateTime now = DateTime.now();
             showTimePicker(
@@ -110,7 +110,7 @@ class DialogsExample extends StatelessWidget {
         ),
         ////// Date Picker Dialog.
         ElevatedButton(
-          style: ElevatedButton.styleFrom(primary: Colors.blue),
+          style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
           onPressed: () {
             showDatePicker(
               context: context,
@@ -132,7 +132,7 @@ class DialogsExample extends StatelessWidget {
         ),
         ////// DateRange Picker Dialog.
         ElevatedButton(
-          style: ElevatedButton.styleFrom(primary: Colors.purple),
+          style: ElevatedButton.styleFrom(backgroundColor: Colors.purple),
           onPressed: () {
             showDateRangePicker(
               context: context,
@@ -155,7 +155,7 @@ class DialogsExample extends StatelessWidget {
         ),
         ////// Bottom Sheet Dialog.
         ElevatedButton(
-          style: ElevatedButton.styleFrom(primary: Colors.orange),
+          style: ElevatedButton.styleFrom(backgroundColor: Colors.orange),
           onPressed: () {
             // Or: showModalBottomSheet(), with model bottom sheet, clicking
             // anywhere will dismiss the bottom sheet.
