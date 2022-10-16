@@ -37,6 +37,7 @@ import 'routes/charts_pie_chart_ex.dart';
 import 'routes/charts_radar_chart_ex.dart';
 import 'routes/charts_time_series_ex.dart';
 import 'routes/firebase_chatroom_ex.dart';
+import 'routes/firebase_flutterfire_loginui_ex.dart';
 import 'routes/firebase_login_ex.dart';
 import 'routes/firebase_mlkit_ex.dart';
 import 'routes/firebase_vote_ex.dart';
@@ -1071,6 +1072,16 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
         description: 'Google/Anonymous sign in.',
         links: {
           'Youtube video': 'https://www.youtube.com/watch?v=JYCNvWKF7vw',
+        },
+      ),
+      MyRoute(
+        child: FlutterFireLoginUiExample(),
+        sourceFilePath: 'lib/routes/firebase_flutterfire_loginui_ex.dart',
+        title: 'FlutterFire login UI',
+        description: 'Login/profile UI from FlutterFire, recommended.',
+        links: {
+          'Documentation':
+              'https://github.com/firebase/flutterfire/blob/master/packages/flutterfire_ui/doc/auth.md',
         },
       ),
       MyRoute(

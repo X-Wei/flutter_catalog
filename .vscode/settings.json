@@ -2,5 +2,6 @@
   "dart.flutterSdkPaths": [
     ".fvm/flutter_sdk"
   ],
-  "dart.flutterSdkPath": ".fvm/flutter_sdk"
+  "dart.flutterSdkPath": ".fvm/flutter_sdk",
+  "java.configuration.updateBuildConfiguration": "interactive"
 }
