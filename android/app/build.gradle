@@ -90,6 +90,15 @@ flutter {
     source '../..'
 }
 
+// ! 🚧 temp solution for firestore bug.
+// see https://github.com/firebase/flutterfire/issues/8501#issuecomment-1107883048
+configurations.all {
+    resolutionStrategy {
+        force 'com.squareup.okhttp:okhttp:2.7.5'
+        force 'com.squareup.okio:okio:1.17.5'
+    }
+}
+
 dependencies {
     implementation 'androidx.multidex:multidex:2.0.1'
     testImplementation 'junit:junit:4.12'
@@ -102,3 +111,4 @@ dependencies {
 }
 
 apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'

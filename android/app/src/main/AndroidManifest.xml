@@ -28,6 +28,9 @@
             </intent-filter>
         </activity>
         <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-7906158617398863~7176992997" />
+        <meta-data
             android:name="com.google.mlkit.vision.DEPENDENCIES"
             android:value="ocr,ica,barcode,face" />
         <meta-data

@@ -1,8 +1,8 @@
 // This file declares routes of this app, in particular it declares the
 // "structure" of the group of example routes, in a const List<Tuple2> object.
 // ignore_for_file: sort_child_properties_last
+import 'package:community_material_icon/community_material_icon.dart';
 import 'package:flutter/material.dart';
-
 import 'constants.dart';
 import 'home_page.dart';
 import 'my_route.dart';
@@ -56,6 +56,11 @@ import 'routes/lists_reorderable_ex.dart';
 import 'routes/lists_slidable_tile_ex.dart';
 import 'routes/lists_swipe_to_dismiss_ex.dart';
 import 'routes/lists_wheel_scroll_view_ex.dart';
+import 'routes/monetization_adaptive_banner_ad_ex.dart';
+import 'routes/monetization_bottom_banner_ad_ex.dart';
+import 'routes/monetization_inline_banner_ad_ex.dart';
+import 'routes/monetization_interstitial_ad_ex.dart';
+import 'routes/monetization_rewarded_ad_ex.dart';
 import 'routes/multimedia_edge_detection_ex.dart';
 import 'routes/multimedia_extended_image_ex.dart';
 import 'routes/multimedia_image_picker_ex.dart';
@@ -86,6 +91,7 @@ import 'routes/plugins_webview_ex.dart';
 import 'routes/richtext_code_highlight_ex.dart';
 import 'routes/richtext_markdown_ex.dart';
 import 'routes/richtext_quill_ex.dart';
+import 'routes/richtext_selectable_ex.dart';
 import 'routes/richtext_supereditor_ex.dart';
 import 'routes/state_bloc_ex.dart';
 import 'routes/state_bloc_lib_ex.dart';
@@ -936,6 +942,14 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
         title: 'Markdown rendering',
       ),
       MyRoute(
+        child: SelectableExample(),
+        sourceFilePath: 'lib/routes/richtext_selectable_ex.dart',
+        title: 'Selectable package',
+        description:
+            "Make any widget's text selectable, and define custom selection menus.",
+        links: {'pub.dev': 'https://pub.dev/packages/selectable'},
+      ),
+      MyRoute(
         child: QuillExample(),
         sourceFilePath: 'lib/routes/richtext_quill_ex.dart',
         title: 'Quill',
@@ -1063,7 +1077,7 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
   ),
   MyRouteGroup(
     groupName: 'Firebase',
-    icon: Icon(Icons.cloud),
+    icon: Icon(CommunityMaterialIcons.firebase),
     routes: <MyRoute>[
       MyRoute(
         child: FirebaseLoginExample(),
@@ -1115,6 +1129,68 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
           'pub.dev': 'https://pub.dev/packages/google_ml_kit',
           'MLKit doc':
               'https://developers.google.com/ml-kit/vision/text-recognition',
+        },
+      ),
+    ],
+  ),
+  MyRouteGroup(
+    groupName: 'Monetization',
+    icon: Icon(Icons.attach_money),
+    routes: <MyRoute>[
+      MyRoute(
+        child: BottomBannerAdExample(),
+        sourceFilePath: 'lib/routes/monetization_banner_ad_ex.dart',
+        title: 'Bottom banner ads',
+        description: 'Display an ad at screen bottom',
+        links: {
+          'Resocoder tutorial':
+              'https://resocoder.com/2021/09/04/flutter-admob-monetization-banner-and-interstitial-ads',
+          'Documentation':
+              'https://developers.google.com/admob/flutter/banner/get-started',
+        },
+      ),
+      MyRoute(
+        child: AnchoredAdaptiveBannerAdExample(),
+        sourceFilePath: 'lib/routes/monetization_adaptive_banner_ad_ex.dart',
+        title: 'Anchored adaptive banner ads',
+        description: 'Banner that matches the screen size',
+        links: {
+          'Documentation':
+              'https://developers.google.com/admob/flutter/banner/anchored-adaptive',
+        },
+      ),
+      MyRoute(
+        child: InlineBannerAdExample(),
+        sourceFilePath: 'lib/routes/monetization_inline_banner_ad_ex.dart',
+        title: 'Inline banner ads',
+        description: 'Banner embedded inside a list of app contents',
+        links: {
+          'Documentation':
+              'https://developers.google.com/admob/flutter/banner/anchored-adaptive',
+        },
+      ),
+      MyRoute(
+        child: InterstitialAdExample(),
+        sourceFilePath: 'lib/routes/monetization_interstitial_ad_ex.dart',
+        title: 'Interstitial ads',
+        description: 'Full screen ads between screens',
+        links: {
+          'Resocoder tutorial':
+              'https://resocoder.com/2021/09/04/flutter-admob-monetization-banner-and-interstitial-ads/#t-1630277478510',
+          'Documentation':
+              'https://developers.google.com/admob/flutter/interstitial',
+        },
+      ),
+      MyRoute(
+        child: RewordedAdExample(),
+        sourceFilePath: 'lib/routes/monetization_rewarded_ad_ex.dart',
+        title: 'Reworded ads',
+        description: 'Ads for rewords',
+        links: {
+          'Documentation':
+              'https://developers.google.com/admob/flutter/rewarded',
+          'pub.dev example':
+              'https://pub.dev/packages/google_mobile_ads/example',
         },
       ),
     ],

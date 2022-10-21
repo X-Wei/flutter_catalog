@@ -1,3 +1,4 @@
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -79,7 +80,14 @@ class MyAppSettings extends ChangeNotifier {
         this.isStarred(routeName) ? Icons.star : Icons.star_border,
         color: this.isStarred(routeName) ? Colors.yellow : Colors.grey,
       ),
-      onPressed: () => this.toggleStarred(routeName),
+      onPressed: () {
+        this.toggleStarred(routeName);
+        FirebaseAnalytics.instance.logEvent(
+          name:
+              'evt_${this.isStarred(routeName) ? 'starRoute' : 'unstarRoute'}',
+          parameters: {'routeName': routeName},
+        );
+      },
     );
   }
 

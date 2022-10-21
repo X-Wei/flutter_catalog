@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 // ignore_for_file: constant_identifier_names
 
 // *Note*: when APP_VERSION is changed, remember to also update pubspec.yaml.
-const APP_VERSION = 'v3.1.5';
+const APP_VERSION = 'v3.2.0';
 const APP_NAME = 'Flutter Catalog';
 final kAppIcon =
     Image.asset('res/images/app_icon.png', height: 64.0, width: 64.0);

@@ -1,0 +1,124 @@
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
+
+class InlineBannerAdExample extends StatelessWidget {
+  const InlineBannerAdExample({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        const Text(
+          '''
+          Inline banners\n\n
+
+          Adaptive banners are the next generation of responsive ads, maximizing performance by optimizing ad size for each device. Improving on fixed-size banners, which only supported fixed heights, adaptive banners let developers specify the ad-width and use this to determine the optimal ad size.
+          ''',
+        ),
+        Expanded(
+          child: ListView.builder(
+            itemBuilder: (ctx, idx) {
+              final content =
+                  ListTile(title: Text('App content - item "${idx + 1}"'));
+              if ((idx + 1) % 5 == 0) {
+                return Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    content,
+                    _MyBannerAdWidget(),
+                  ],
+                );
+              }
+              return content;
+            },
+            itemCount: 100,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+/// !Create a statefulWidget to repr the inline banner.
+/// Otherwise we can't show the same ad twice in the UI.
+/// See https://stackoverflow.com/a/71899578/12421326.
+class _MyBannerAdWidget extends StatefulWidget {
+  const _MyBannerAdWidget({Key? key}) : super(key: key);
+
+  @override
+  State<_MyBannerAdWidget> createState() => _MyBannerAdWidgetState();
+}
+
+class _MyBannerAdWidgetState extends State<_MyBannerAdWidget> {
+  bool _adLoaded = false;
+  BannerAd? _bannerAd;
+
+  String get _kAdUnitId {
+    // ! Return test ad unit if we are in debug mode -- otherwise account might be banned!
+    if (Platform.isAndroid) {
+      return kDebugMode
+          // https://developers.google.com/admob/android/test-ads#sample_ad_units
+          ? 'ca-app-pub-3940256099942544/6300978111'
+          : 'ca-app-pub-7906158617398863/4414540775';
+    } else if (Platform.isIOS) {
+      return kDebugMode
+          // https://developers.google.com/admob/ios/test-ads#demo_ad_units
+          ? 'ca-app-pub-3940256099942544/2934735716'
+          : 'ca-app-pub-7906158617398863/5234412829';
+    }
+    return '';
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _loadAd();
+  }
+
+  Future<void> _loadAd() async {
+    //! Get an AnchoredAdaptiveBannerAdSize before loading the ad.
+    final AnchoredAdaptiveBannerAdSize? size =
+        await AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(
+            MediaQuery.of(context).size.width.truncate());
+
+    if (size == null) {
+      print('Unable to get height of anchored banner.');
+      return;
+    }
+    _bannerAd = BannerAd(
+      adUnitId: _kAdUnitId,
+      size: size,
+      request: AdRequest(),
+      listener: BannerAdListener(
+        onAdLoaded: (Ad ad) => setState(() {
+          _bannerAd = ad as BannerAd;
+          _adLoaded = true;
+        }),
+        onAdFailedToLoad: (ad, error) => ad.dispose(),
+      ),
+    );
+    return _bannerAd?.load();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _bannerAd?.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (_bannerAd != null && _adLoaded) {
+      return Container(
+        width: _bannerAd!.size.width.toDouble(),
+        height: _bannerAd!.size.height.toDouble(),
+        alignment: Alignment.center,
+        child: AdWidget(ad: _bannerAd!),
+      );
+    } else {
+      return Placeholder(fallbackHeight: 32);
+    }
+  }
+}

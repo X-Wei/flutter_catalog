@@ -33,7 +33,7 @@ class MyRoute extends StatelessWidget {
   // Returns a set of links {title:link} that are relative to the route. Can put
   // documention links or reference video/article links here.
   final Map<String, String> links;
-  // Route name of a page, if missing, use ${child.runtimeType}.
+  // Route name of a page, if missing, use sourceFilePath.
   final String? _routeName;
   final Iterable<PlatformType> supportedPlatforms;
 

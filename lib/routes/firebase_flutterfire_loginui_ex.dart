@@ -1,3 +1,4 @@
+import 'package:community_material_icon/community_material_icon.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -33,19 +34,21 @@ class FlutterFireLoginUiExample extends ConsumerWidget {
   }
 
   Widget _buildLoginScreen() {
+    /// This SignInScreen comes from FlutterFire UI package.
     return SignInScreen(
       providerConfigs: _kLoginProviderConfigs,
       headerBuilder: (_, __, ___) => Padding(
         padding: const EdgeInsets.all(8.0),
         child: kAppIcon,
       ),
+      // ! Currently there's no providerConfig for Anonymous sign in, so we
+      // add a btn ourselves.
       footerBuilder: (context, _) {
-        return const Padding(
-          padding: EdgeInsets.only(top: 16),
-          child: Text(
-            'By signing in, you agree to our terms and conditions.',
-            style: TextStyle(color: Colors.grey),
-          ),
+        return ElevatedButton.icon(
+          icon: Icon(CommunityMaterialIcons.incognito),
+          style: ElevatedButton.styleFrom(backgroundColor: Colors.deepOrange),
+          label: const Text('Log in anonymously'),
+          onPressed: FirebaseAuth.instance.signInAnonymously,
         );
       },
     );

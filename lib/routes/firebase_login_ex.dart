@@ -7,6 +7,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 final kFirebaseAnalytics = FirebaseAnalytics.instance;
 
+// !NOTE: prefer the flutterfire_ui package, see [FlutterFireLoginUiExample].
 // NOTE: to add firebase support, first go to firebase console, generate the
 // firebase json file, and add configuration lines in the gradle files.
 // C.f. this commit: https://github.com/X-Wei/flutter_catalog/commit/48792cbc0de62fc47e0e9ba2cd3718117f4d73d1.

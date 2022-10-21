@@ -1,4 +1,5 @@
 import 'package:badges/badges.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'my_app_routes.dart';
 import 'package:provider/provider.dart';
@@ -35,7 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
   ];
 
   int _currentTabIndex = 0;
-  // !Adding scroll controllers to avoid erros like:
+  // !Adding scroll controllers to avoid errors like:
   // !"The provided ScrollController is currently attached to more than one ScrollPosition."
   final ScrollController _scrollController1 = ScrollController();
   final ScrollController _scrollController2 = ScrollController();
@@ -110,6 +111,10 @@ class _MyHomePageState extends State<MyHomePage> {
         if (isNew) {
           mySettings.markRouteKnown(myRoute);
         }
+        FirebaseAnalytics.instance.logEvent(
+          name: 'evt_openRoute',
+          parameters: {'routeName': myRoute.routeName},
+        );
         Navigator.of(context).pushNamed(myRoute.routeName);
       },
     );

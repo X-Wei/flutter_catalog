@@ -36,6 +36,7 @@ class HeroExample extends StatelessWidget {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (ctx) => Scaffold(
+          appBar: AppBar(title: Text('second page')),
           body: Center(
             child: Hero(
               tag: 'my-hero-animation-tag',
