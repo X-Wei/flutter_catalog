@@ -17,8 +17,8 @@ dependencies:
   badges: ^2.0.1
   cached_network_image: ^3.1.0
   charts_flutter: ^0.12.0
-  cloud_firestore: ^4.0.2
-  cloud_firestore_web: ^3.0.2
+  cloud_firestore: ^3.1.5
+  cloud_firestore_web: ^2.3.0
   community_material_icon: ^5.9.55
   convex_bottom_bar: ^3.0.0
   day_night_switcher: ^0.2.0+1
@@ -27,16 +27,16 @@ dependencies:
   extended_image: ^6.0.1
   feature_discovery: ^0.14.0
   ffi: ^2.0.1
-  firebase_analytics: ^10.0.2
-  firebase_analytics_web: ^0.5.1+1
-  firebase_auth: ^4.0.2
-  firebase_auth_web: ^5.0.2
-  firebase_core: ^2.1.0
-  firebase_core_web: ^2.0.0
-  firebase_crashlytics: ^3.0.2
-  firebase_database: ^10.0.2
-  firebase_storage: ^11.0.2
-  firebase_storage_web: ^3.3.12
+  firebase_analytics: ^9.0.4
+  firebase_analytics_web: ^0.4.0+4
+  firebase_auth: ^3.11.2
+  firebase_auth_web: ^4.6.1
+  firebase_core: ^1.4.0
+  firebase_core_web: ^1.1.0
+  firebase_database: ^9.0.4
+  firebase_storage: ^10.0.1
+  firebase_crashlytics: ^2.9.0
+  firebase_storage_web: ^3.0.0
   fl_chart: ^0.55.1
   flutter:
     sdk: flutter
@@ -50,13 +50,13 @@ dependencies:
   flutter_slidable: ^2.0.0
   flutter_state_notifier: ^0.7.0
   flutter_webview_plugin: ^0.4.0
-  flutterfire_ui: ^0.4.3+17
+  flutterfire_ui: ^0.4.2+2
   fluttertoast: ^8.0.7
   freezed_annotation: ^2.0.3
   google_fonts: ^3.0.1
   google_ml_kit: ^0.12.0
   google_mobile_ads: ^2.1.0
-  google_sign_in: ^5.0.5
+  google_sign_in: ^5.4.2
   graphview: ^1.1.1
   heatmap_calendar:
     git:
