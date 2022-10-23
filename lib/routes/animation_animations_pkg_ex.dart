@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class AnimationsPackageExample extends StatelessWidget {
-  const AnimationsPackageExample({Key? key}) : super(key: key);
+  const AnimationsPackageExample({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -106,7 +106,7 @@ class AnimationsPackageExample extends StatelessWidget {
 }
 
 class _PageTransitionSwitcherEx extends StatefulWidget {
-  const _PageTransitionSwitcherEx({Key? key}) : super(key: key);
+  const _PageTransitionSwitcherEx();
 
   @override
   __PageTransitionSwitcherExState createState() =>
@@ -158,7 +158,7 @@ class __PageTransitionSwitcherExState extends State<_PageTransitionSwitcherEx> {
 }
 
 class _SharedAxisEx extends StatefulWidget {
-  const _SharedAxisEx({Key? key}) : super(key: key);
+  const _SharedAxisEx();
 
   @override
   __SharedAxisExState createState() => __SharedAxisExState();

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class InheritedWidgetExample extends StatelessWidget {
-  const InheritedWidgetExample({Key? key}) : super(key: key);
+  const InheritedWidgetExample({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +21,7 @@ class MyInheritedWidget extends InheritedWidget {
   final _MyDemoAppState myState;
 
   const MyInheritedWidget(
-      {Key? key, required Widget child, required this.myState})
-      : super(key: key, child: child);
+      {super.key, required super.child, required this.myState});
 
   @override
   // Returns when it's children widget should be notified for rebuild.

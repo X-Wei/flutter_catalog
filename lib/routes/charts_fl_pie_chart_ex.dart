@@ -11,7 +11,7 @@ final _data = <Tuple3<String, double, Color>>[
 ];
 
 class FlPieChartExample extends StatefulWidget {
-  const FlPieChartExample({Key? key}) : super(key: key);
+  const FlPieChartExample({super.key});
 
   @override
   _FlPieChartExampleState createState() => _FlPieChartExampleState();

@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 class BlocExample extends StatelessWidget {
-  const BlocExample({Key? key}) : super(key: key);
+  const BlocExample({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -73,8 +73,8 @@ class MyBlocProvider extends InheritedWidget {
   @override
   final Widget child; // ignore: overridden_fields
 
-  const MyBlocProvider({Key? key, required this.bloc, required this.child})
-      : super(key: key, child: child);
+  const MyBlocProvider({super.key, required this.bloc, required this.child})
+      : super(child: child);
 
   static MyBlocProvider? of(BuildContext context) {
     return context.dependOnInheritedWidgetOfExactType<MyBlocProvider>();

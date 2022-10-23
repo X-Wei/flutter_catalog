@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class TextFormFieldExample extends StatefulWidget {
-  const TextFormFieldExample({Key? key}) : super(key: key);
+  const TextFormFieldExample({super.key});
 
   @override
   State<StatefulWidget> createState() => _TextFormFieldExampleState();

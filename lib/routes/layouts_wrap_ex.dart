@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class WrapExample extends StatelessWidget {
-  const WrapExample({Key? key}) : super(key: key);
+  const WrapExample({super.key});
 
   @override
   Widget build(BuildContext context) {

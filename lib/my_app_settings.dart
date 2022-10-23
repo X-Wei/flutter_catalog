@@ -1,10 +1,10 @@
-import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import './my_app_routes.dart' show MyRouteGroup, kAboutRoute, kAllRoutes;
 import './my_route.dart';
+import 'constants.dart';
 
 class MyAppSettings extends ChangeNotifier {
   static const _kDarkModePreferenceKey = 'DARK_MODE';
@@ -82,7 +82,7 @@ class MyAppSettings extends ChangeNotifier {
       ),
       onPressed: () {
         this.toggleStarred(routeName);
-        FirebaseAnalytics.instance.logEvent(
+        kAnalytics?.logEvent(
           name:
               'evt_${this.isStarred(routeName) ? 'starRoute' : 'unstarRoute'}',
           parameters: {'routeName': routeName},

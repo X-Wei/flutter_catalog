@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class OpacityExample extends StatefulWidget {
-  const OpacityExample({Key? key}) : super(key: key);
+  const OpacityExample({super.key});
 
   @override
   State<StatefulWidget> createState() => _OpacityExampleState();

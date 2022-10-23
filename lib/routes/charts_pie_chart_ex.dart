@@ -10,7 +10,7 @@ class _CostsData {
 }
 
 class PieChartExample extends StatefulWidget {
-  const PieChartExample({Key? key}) : super(key: key);
+  const PieChartExample({super.key});
 
   @override
   _PieChartExampleState createState() => _PieChartExampleState();
@@ -42,7 +42,8 @@ class _PieChartExampleState extends State<PieChartExample> {
       children: <Widget>[
         SizedBox(
           height: 300,
-          child: charts.PieChart(
+          // MUST specify the type T, see https://github.com/google/charts/issues/668#issuecomment-943556524.
+          child: charts.PieChart<String>(
             // Pie chart can only render one series.
             /*seriesList=*/ [
               charts.Series<_CostsData, String>(

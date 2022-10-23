@@ -21,7 +21,7 @@ final _kLoginProviderConfigs = [
 ];
 
 class FlutterFireLoginUiExample extends ConsumerWidget {
-  const FlutterFireLoginUiExample({Key? key}) : super(key: key);
+  const FlutterFireLoginUiExample({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

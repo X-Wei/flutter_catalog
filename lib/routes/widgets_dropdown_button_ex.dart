@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 // Inspired by dropdown buttons demo in offical flutter gallery:
 // https://github.com/flutter/flutter/blob/master/examples/flutter_gallery/lib/demo/material/buttons_demo.dart
 class DropdownButtonExample extends StatefulWidget {
-  const DropdownButtonExample({Key? key}) : super(key: key);
+  const DropdownButtonExample({super.key});
 
   @override
   State<StatefulWidget> createState() => _DropdownButtonExampleState();

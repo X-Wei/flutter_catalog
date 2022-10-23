@@ -32,7 +32,7 @@ class MyApiModel extends StateNotifier<MyApiState> {
 }
 
 class StateNotifierFreezedExample extends StatelessWidget {
-  const StateNotifierFreezedExample({Key? key}) : super(key: key);
+  const StateNotifierFreezedExample({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -83,7 +83,7 @@ class __DemoPageState extends State<_DemoPage> {
                     builder: (ctx) => Scaffold(
                       appBar:
                           AppBar(title: const Text('data/my_api_state.dart')),
-                      body: const SourceCodeView(
+                      body: const WidgetWithCodeView(
                         filePath: 'lib/routes/data/my_api_state.dart',
                       ),
                     ),

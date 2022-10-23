@@ -16,14 +16,14 @@ linter:
     # `this` makes it easier for readers to understand which variables class
     # members and which ones are not.
     unnecessary_this: false
+    # Same as above, allow writing local variable types to improve readability
+    # without IDE.
+    # We sometimes have print statements just for demo purposes.
+    avoid_print: false
+    omit_local_variable_types: false
     use_colored_box: false
     use_decorated_box: false
     no_leading_underscores_for_local_identifiers: false
-    # Same as above, allow writing local variable types to improve readability
-    # without IDE.
-    omit_local_variable_types: false
-    # We sometimes have print statements just for demo purposes.
-    avoid_print: false
     use_string_buffers: false
     avoid_redundant_argument_values: false
     prefer_const_constructors: false

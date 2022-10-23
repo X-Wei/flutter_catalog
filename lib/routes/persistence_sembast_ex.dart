@@ -35,7 +35,7 @@ class TodoItem {
 }
 
 class SembastExample extends StatefulWidget {
-  const SembastExample({Key? key}) : super(key: key);
+  const SembastExample({super.key});
 
   @override
   _SembastExampleState createState() => _SembastExampleState();

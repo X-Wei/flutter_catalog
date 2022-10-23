@@ -5,7 +5,7 @@ import 'package:flutter_quill/flutter_quill.dart'
     show QuillController, QuillEditor, QuillToolbar;
 
 class QuillExample extends StatefulWidget {
-  const QuillExample({Key? key}) : super(key: key);
+  const QuillExample({super.key});
 
   @override
   State<QuillExample> createState() => _QuillExampleState();

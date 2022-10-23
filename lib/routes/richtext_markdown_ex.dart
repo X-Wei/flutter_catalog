@@ -37,7 +37,7 @@ Formatted Dart code looks really pretty too:
 void main() {
   runApp(new MaterialApp(
     home: new Scaffold(
-      body: new Markdown(data: markdownData)
+      body: new Markdown(data: markdownData)body: new Markdown(data: markdownData)body: new Markdown(data: markdownData)body: new Markdown(data: markdownData)
     )
   ));
 }
@@ -53,7 +53,7 @@ Enjoy!
 ''';
 
 class MarkdownExample extends StatelessWidget {
-  const MarkdownExample({Key? key}) : super(key: key);
+  const MarkdownExample({super.key});
 
   @override
   Widget build(BuildContext context) {

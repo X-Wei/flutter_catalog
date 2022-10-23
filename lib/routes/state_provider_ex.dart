@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class ProviderExample extends StatelessWidget {
-  const ProviderExample({Key? key}) : super(key: key);
+  const ProviderExample({super.key});
 
   @override
   Widget build(BuildContext context) {

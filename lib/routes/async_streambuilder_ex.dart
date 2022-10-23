@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 class StreamBuilderExample extends StatefulWidget {
-  const StreamBuilderExample({Key? key}) : super(key: key);
+  const StreamBuilderExample({super.key});
 
   @override
   StreamBuilderExampleState createState() => StreamBuilderExampleState();

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class AnchoredAdaptiveBannerAdExample extends StatefulWidget {
-  const AnchoredAdaptiveBannerAdExample({Key? key}) : super(key: key);
+  const AnchoredAdaptiveBannerAdExample({super.key});
 
   @override
   State<AnchoredAdaptiveBannerAdExample> createState() =>

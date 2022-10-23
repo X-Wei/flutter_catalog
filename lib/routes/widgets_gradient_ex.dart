@@ -6,7 +6,7 @@ import 'package:new_gradient_app_bar/new_gradient_app_bar.dart';
 // import 'package:flutter_gradients/flutter_gradients.dart';
 
 class GradientExample extends StatelessWidget {
-  const GradientExample({Key? key}) : super(key: key);
+  const GradientExample({super.key});
 
   @override
   Widget build(BuildContext context) {

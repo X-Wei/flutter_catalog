@@ -6,7 +6,7 @@ import '../constants.dart';
 // Inspired by the about page in Eajy's flutter demo:
 // https://github.com/Eajy/flutter_demo/blob/master/lib/route/about.dart
 class MyAboutRoute extends StatelessWidget {
-  const MyAboutRoute({Key? key}) : super(key: key);
+  const MyAboutRoute({super.key});
 
   // These tiles are also used as drawer nav items in home route.
   static final List<Widget> kAboutListTiles = <Widget>[
@@ -46,14 +46,14 @@ class MyAboutRoute extends StatelessWidget {
     final header = ListTile(
       leading: kAppIcon,
       title: const Text(APP_NAME),
-      subtitle: const Text(APP_VERSION),
+      subtitle: Text(kPackageInfo.version),
       trailing: IconButton(
         icon: const Icon(Icons.info),
         onPressed: () {
           showAboutDialog(
             context: context,
             applicationName: APP_NAME,
-            applicationVersion: APP_VERSION,
+            applicationVersion: kPackageInfo.version,
             applicationIcon: kAppIcon,
             children: <Widget>[const Text(APP_DESCRIPTION)],
           );

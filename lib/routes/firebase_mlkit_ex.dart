@@ -9,7 +9,7 @@ import 'package:transparent_image/transparent_image.dart'
 import 'package:flutter/material.dart';
 
 class GoogleMLKitExample extends StatefulWidget {
-  const GoogleMLKitExample({Key? key}) : super(key: key);
+  const GoogleMLKitExample({super.key});
 
   @override
   _GoogleMLKitExampleState createState() => _GoogleMLKitExampleState();
@@ -240,7 +240,7 @@ class _GoogleMLKitExampleState extends State<GoogleMLKitExample> {
           scrollDirection: Axis.horizontal,
           child: Text(
             this._mlResult,
-            style: GoogleFonts.droidSansMono(),
+            style: GoogleFonts.notoSansMono(),
           ),
         ),
       ],

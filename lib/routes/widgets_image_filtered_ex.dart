@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 class ImageFilteredExample extends StatefulWidget {
-  const ImageFilteredExample({Key? key}) : super(key: key);
+  const ImageFilteredExample({super.key});
 
   @override
   _ImageFilteredExampleState createState() => _ImageFilteredExampleState();

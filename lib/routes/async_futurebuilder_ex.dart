@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class FutureBuilderExample extends StatefulWidget {
-  const FutureBuilderExample({Key? key}) : super(key: key);
+  const FutureBuilderExample({super.key});
 
   @override
   FutureBuilderExampleState createState() => FutureBuilderExampleState();

@@ -13,7 +13,7 @@ typedef JsonMap = Map<String, dynamic>;
 // Adapted from the flutter firestore "babyname voter" codelab:
 // https://codelabs.developers.google.com/codelabs/flutter-firebase/#0
 class FirebaseVoteExample extends StatefulWidget {
-  const FirebaseVoteExample({Key? key}) : super(key: key);
+  const FirebaseVoteExample({super.key});
   @override
   _FirebaseVoteExampleState createState() => _FirebaseVoteExampleState();
 }

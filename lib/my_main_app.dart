@@ -7,7 +7,7 @@ import './themes.dart';
 
 class MyMainApp extends StatelessWidget {
   final MyAppSettings settings;
-  const MyMainApp(this.settings, {Key? key}) : super(key: key);
+  const MyMainApp(this.settings, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class MyMainApp extends StatelessWidget {
 }
 
 class _MyMaterialApp extends StatelessWidget {
-  const _MyMaterialApp({Key? key}) : super(key: key);
+  const _MyMaterialApp();
 
   @override
   Widget build(BuildContext context) {

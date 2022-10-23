@@ -3,7 +3,7 @@ import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:url_launcher/url_launcher.dart' as url_launcher;
 
 class WebViewExample extends StatefulWidget {
-  const WebViewExample({Key? key}) : super(key: key);
+  const WebViewExample({super.key});
 
   @override
   _WebViewExampleState createState() => _WebViewExampleState();

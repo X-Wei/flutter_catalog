@@ -9,10 +9,11 @@ import 'package:widget_with_codeview/widget_with_codeview.dart';
 import './constants.dart'
     show
         APP_NAME,
-        APP_VERSION,
         GITHUB_URL,
         PlatformType,
+        kAnalytics,
         kAppIcon,
+        kPackageInfo,
         kPlatformType;
 import './my_app_settings.dart';
 import './my_route_search_delegate.dart';
@@ -38,7 +39,7 @@ class MyRoute extends StatelessWidget {
   final Iterable<PlatformType> supportedPlatforms;
 
   const MyRoute({
-    Key? key,
+    super.key,
     required this.sourceFilePath,
     required this.child,
     String? title,
@@ -47,8 +48,7 @@ class MyRoute extends StatelessWidget {
     String? routeName,
     this.supportedPlatforms = PlatformType.values,
   })  : _title = title,
-        _routeName = routeName,
-        super(key: key);
+        _routeName = routeName;
 
   String get routeName =>
       this._routeName ?? '/${basenameWithoutExtension(sourceFilePath)}';
@@ -83,8 +83,14 @@ class MyRoute extends StatelessWidget {
             routeName == Navigator.defaultRouteName
                 ? this.child
                 : WidgetWithCodeView(
-                    sourceFilePath: this.sourceFilePath,
+                    filePath: this.sourceFilePath,
                     codeLinkPrefix: '$GITHUB_URL/blob/master',
+                    tabChangeListener: (TabController tabc) {
+                      if (!tabc.indexIsChanging) return;
+                      if (tabc.index == 1) {
+                        debugPrint('Changing to code view!');
+                      }
+                    },
                     child: this.child,
                   ),
       ),
@@ -100,6 +106,7 @@ class MyRoute extends StatelessWidget {
         IconButton(
           icon: const Icon(Icons.search),
           onPressed: () async {
+            kAnalytics?.logEvent(name: 'evt_Search');
             await showSearch<String>(
               context: context,
               delegate: MyRouteSearchDelegate(),
@@ -139,7 +146,7 @@ class MyRoute extends StatelessWidget {
         ListTile(
           leading: kAppIcon,
           title: const Text(APP_NAME),
-          subtitle: const Text(APP_VERSION),
+          subtitle: Text(kPackageInfo.version),
         ),
         ...MyAboutRoute.kAboutListTiles,
         Consumer<MyAppSettings>(

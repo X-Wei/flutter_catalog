@@ -7,7 +7,7 @@ import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart' as url_launcher;
 
 class RestApiHackerNewsExample extends StatefulWidget {
-  const RestApiHackerNewsExample({Key? key}) : super(key: key);
+  const RestApiHackerNewsExample({super.key});
 
   @override
   _RestApiHackerNewsExampleState createState() =>

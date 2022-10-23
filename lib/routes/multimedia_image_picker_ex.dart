@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ImagePickerExample extends StatefulWidget {
-  const ImagePickerExample({Key? key}) : super(key: key);
+  const ImagePickerExample({super.key});
 
   @override
   _ImagePickerExampleState createState() => _ImagePickerExampleState();

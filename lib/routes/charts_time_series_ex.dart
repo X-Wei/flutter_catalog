@@ -24,7 +24,7 @@ List<_SalesData> _genRandData() {
 }
 
 class TimeseriesChartExample extends StatefulWidget {
-  const TimeseriesChartExample({Key? key}) : super(key: key);
+  const TimeseriesChartExample({super.key});
 
   @override
   _TimeseriesChartExampleState createState() => _TimeseriesChartExampleState();

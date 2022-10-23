@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart' as english_words;
 
 class StreamControllerExample extends StatefulWidget {
-  const StreamControllerExample({Key? key}) : super(key: key);
+  const StreamControllerExample({super.key});
 
   @override
   _StreamControllerExampleState createState() =>

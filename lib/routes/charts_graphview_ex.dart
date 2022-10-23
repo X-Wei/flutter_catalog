@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:graphview/GraphView.dart';
 
 class GraphViewExample extends StatelessWidget {
-  const GraphViewExample({Key? key}) : super(key: key);
+  const GraphViewExample({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class GraphViewExample extends StatelessWidget {
 }
 
 class GraphViewEx extends StatefulWidget {
-  const GraphViewEx({Key? key}) : super(key: key);
+  const GraphViewEx({super.key});
 
   @override
   _GraphViewExState createState() => _GraphViewExState();

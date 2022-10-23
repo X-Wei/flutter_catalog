@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class InterstitialAdExample extends StatefulWidget {
-  const InterstitialAdExample({Key? key}) : super(key: key);
+  const InterstitialAdExample({super.key});
 
   @override
   State<InterstitialAdExample> createState() => _InterstitialAdExampleState();

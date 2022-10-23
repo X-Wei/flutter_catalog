@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ListSwipeToDismissExample extends StatefulWidget {
-  const ListSwipeToDismissExample({Key? key}) : super(key: key);
+  const ListSwipeToDismissExample({super.key});
 
   @override
   State<StatefulWidget> createState() {

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 class ScopedModelExample extends StatelessWidget {
-  const ScopedModelExample({Key? key}) : super(key: key);
+  const ScopedModelExample({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
 class VideoPlayerExample extends StatefulWidget {
-  const VideoPlayerExample({Key? key}) : super(key: key);
+  const VideoPlayerExample({super.key});
 
   @override
   _VideoPlayerExampleState createState() => _VideoPlayerExampleState();

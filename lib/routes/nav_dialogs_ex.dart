@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 // Adapted from Eajy's flutter demo app:
 // https://github.com/Eajy/flutter_demo/blob/master/lib/route/homeDialogs.dart.
 class DialogsExample extends StatelessWidget {
-  const DialogsExample({Key? key}) : super(key: key);
+  const DialogsExample({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -159,7 +159,7 @@ class DialogsExample extends StatelessWidget {
           onPressed: () {
             // Or: showModalBottomSheet(), with model bottom sheet, clicking
             // anywhere will dismiss the bottom sheet.
-            showBottomSheet<String>(
+            showBottomSheet<String?>(
               context: context,
               builder: (BuildContext context) => Container(
                 decoration: const BoxDecoration(

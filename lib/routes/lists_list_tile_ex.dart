@@ -2,7 +2,7 @@ import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 
 class ListTileExample extends StatelessWidget {
-  const ListTileExample({Key? key}) : super(key: key);
+  const ListTileExample({super.key});
 
   @override
   Widget build(BuildContext context) {

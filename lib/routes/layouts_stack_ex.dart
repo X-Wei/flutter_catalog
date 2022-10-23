@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 // Inspired by bizz84's layout demo:
 // https://github.com/bizz84/layout-demo-flutter
 class StackExample extends StatefulWidget {
-  const StackExample({Key? key}) : super(key: key);
+  const StackExample({super.key});
 
   @override
   _StackExampleState createState() => _StackExampleState();

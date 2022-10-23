@@ -2,7 +2,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 class AnimatedContainerExample extends StatefulWidget {
-  const AnimatedContainerExample({Key? key}) : super(key: key);
+  const AnimatedContainerExample({super.key});
 
   @override
   _AnimatedContainerExampleState createState() =>

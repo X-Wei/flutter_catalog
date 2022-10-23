@@ -1,18 +1,17 @@
 import 'dart:async';
 
-import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-final kFirebaseAnalytics = FirebaseAnalytics.instance;
+import '../constants.dart';
 
 // !NOTE: prefer the flutterfire_ui package, see [FlutterFireLoginUiExample].
 // NOTE: to add firebase support, first go to firebase console, generate the
 // firebase json file, and add configuration lines in the gradle files.
 // C.f. this commit: https://github.com/X-Wei/flutter_catalog/commit/48792cbc0de62fc47e0e9ba2cd3718117f4d73d1.
 class FirebaseLoginExample extends StatefulWidget {
-  const FirebaseLoginExample({Key? key}) : super(key: key);
+  const FirebaseLoginExample({super.key});
 
   @override
   _FirebaseLoginExampleState createState() => _FirebaseLoginExampleState();
@@ -83,6 +82,8 @@ class _FirebaseLoginExampleState extends State<FirebaseLoginExample> {
       child: ListView(
         padding: const EdgeInsets.symmetric(vertical: 100.0, horizontal: 50.0),
         children: <Widget>[
+          Text(
+              'NOTE: prefer the flutterfire_ui package, see `FlutterFireLoginUiExample`.'),
           statusText,
           googleLoginBtn,
           anonymousLoginBtn,
@@ -106,7 +107,7 @@ class _FirebaseLoginExampleState extends State<FirebaseLoginExample> {
     );
     // Note: user.providerData[0].photoUrl == googleUser.photoUrl.
     final user = (await _auth.signInWithCredential(credential)).user;
-    kFirebaseAnalytics.logLogin();
+    kAnalytics?.logLogin();
     setState(() => this._user = user);
     return user;
   }
@@ -124,7 +125,7 @@ class _FirebaseLoginExampleState extends State<FirebaseLoginExample> {
     // Have to re-call `currentUser()` to make `updateProfile` work.
     // Cf. https://stackoverflow.com/questions/50986191/flutter-firebase-auth-updateprofile-method-is-not-working.
     final user = _auth.currentUser;
-    kFirebaseAnalytics.logLogin();
+    kAnalytics?.logLogin();
     setState(() => this._user = user);
     return user;
   }

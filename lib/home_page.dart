@@ -1,6 +1,6 @@
 import 'package:badges/badges.dart';
-import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
+import 'constants.dart';
 import 'my_app_routes.dart';
 import 'package:provider/provider.dart';
 
@@ -10,7 +10,7 @@ import './my_app_settings.dart';
 import './my_route.dart';
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key}) : super(key: key);
+  const MyHomePage({super.key});
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -111,7 +111,7 @@ class _MyHomePageState extends State<MyHomePage> {
         if (isNew) {
           mySettings.markRouteKnown(myRoute);
         }
-        FirebaseAnalytics.instance.logEvent(
+        kAnalytics?.logEvent(
           name: 'evt_openRoute',
           parameters: {'routeName': myRoute.routeName},
         );

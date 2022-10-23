@@ -7,7 +7,7 @@ final _data1 = <double, double>{1: 9, 2: 12, 3: 10, 4: 20, 5: 14, 6: 18};
 final _data2 = <double, double>{1: 8, 2: 15, 3: 17, 4: 11, 5: 13, 6: 20};
 
 class FlBarChartExample extends StatefulWidget {
-  const FlBarChartExample({Key? key}) : super(key: key);
+  const FlBarChartExample({super.key});
 
   @override
   _FlBarChartExampleState createState() => _FlBarChartExampleState();

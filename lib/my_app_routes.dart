@@ -111,6 +111,7 @@ import 'routes/widgets_stateful_widgets_ex.dart';
 import 'routes/widgets_text_ex.dart';
 import 'routes/widgets_textfield_ex.dart';
 import 'routes/widgets_textformfield_ex.dart';
+import 'routes/widgets_typography_ex.dart';
 
 const kHomeRoute = MyRoute(
   sourceFilePath: 'lib/routes/home.dart',
@@ -164,6 +165,12 @@ const kMyAppRoutesBasic = <MyRouteGroup>[
         child: TextExample(),
         sourceFilePath: 'lib/routes/widgets_text_ex.dart',
         title: 'Text',
+      ),
+      MyRoute(
+        child: TypographyExample(),
+        sourceFilePath: 'lib/routes/widgets_typography_ex.dart',
+        title: 'Typography',
+        description: 'Peek all built-in text styles.',
       ),
       MyRoute(
         child: TextFieldExample(),
@@ -1139,7 +1146,7 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
     routes: <MyRoute>[
       MyRoute(
         child: BottomBannerAdExample(),
-        sourceFilePath: 'lib/routes/monetization_banner_ad_ex.dart',
+        sourceFilePath: 'lib/routes/monetization_bottom_banner_ad_ex.dart',
         title: 'Bottom banner ads',
         description: 'Display an ad at screen bottom',
         links: {

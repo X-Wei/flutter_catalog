@@ -745,7 +745,7 @@ packages:
       name: flutter_speed_dial
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.0.5"
+    version: "6.2.0"
   flutter_state_notifier:
     dependency: "direct main"
     description:
@@ -839,7 +839,7 @@ packages:
       name: google_fonts
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.3.3"
+    version: "3.0.1"
   google_ml_kit:
     dependency: "direct main"
     description:
@@ -1292,13 +1292,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.0"
-  package_info:
+  package_info_plus:
     dependency: "direct main"
     description:
-      name: package_info
+      name: package_info_plus
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.2"
+    version: "3.0.1"
+  package_info_plus_platform_interface:
+    dependency: transitive
+    description:
+      name: package_info_plus_platform_interface
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.1"
   pasteboard:
     dependency: transitive
     description:
@@ -1940,7 +1947,7 @@ packages:
       name: widget_with_codeview
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.1+2"
+    version: "3.0.1"
   win32:
     dependency: transitive
     description:

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hidable/hidable.dart';
 
 class HidableBtmbarExample extends StatefulWidget {
-  const HidableBtmbarExample({Key? key}) : super(key: key);
+  const HidableBtmbarExample({super.key});
 
   @override
   State<HidableBtmbarExample> createState() => _HidableBtmbarExampleState();

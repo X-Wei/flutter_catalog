@@ -5,13 +5,13 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 
-import 'firebase_login_ex.dart' show kFirebaseAnalytics;
+import '../constants.dart';
 
 // NOTE: to add firebase support, first go to firebase console, generate the
 // firebase json file, and add configuration lines in the gradle files.
 // C.f. this commit: https://github.com/X-Wei/flutter_catalog/commit/48792cbc0de62fc47e0e9ba2cd3718117f4d73d1.
 class FirebaseChatroomExample extends StatefulWidget {
-  const FirebaseChatroomExample({Key? key}) : super(key: key);
+  const FirebaseChatroomExample({super.key});
 
   @override
   _FirebaseChatroomExampleState createState() =>
@@ -235,6 +235,6 @@ class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
       'text': text,
       'timestamp': DateTime.now().millisecondsSinceEpoch,
     });
-    kFirebaseAnalytics.logEvent(name: 'send_message');
+    kAnalytics?.logEvent(name: 'send_message');
   }
 }

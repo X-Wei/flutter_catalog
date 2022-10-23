@@ -3,7 +3,7 @@ import 'package:heatmap_calendar/heatmap_calendar.dart';
 import 'package:heatmap_calendar/time_utils.dart';
 
 class HeatmapCalendarExample extends StatelessWidget {
-  const HeatmapCalendarExample({Key? key}) : super(key: key);
+  const HeatmapCalendarExample({super.key});
 
   @override
   Widget build(BuildContext context) {

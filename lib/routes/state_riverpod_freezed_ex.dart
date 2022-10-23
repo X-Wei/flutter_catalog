@@ -41,7 +41,7 @@ final kMyApiModelProvider = StateNotifierProvider<MyApiModel, MyApiState>(
 );
 
 class RiverpodFreezedExample extends StatelessWidget {
-  const RiverpodFreezedExample({Key? key}) : super(key: key);
+  const RiverpodFreezedExample({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -108,7 +108,7 @@ class __DemoPageState extends ConsumerState<_DemoPage> {
                     builder: (ctx) => Scaffold(
                       appBar:
                           AppBar(title: const Text('data/my_api_state.dart')),
-                      body: const SourceCodeView(
+                      body: const WidgetWithCodeView(
                         filePath: 'lib/routes/data/my_api_state.dart',
                       ),
                     ),

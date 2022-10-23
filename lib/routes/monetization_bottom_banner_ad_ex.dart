@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class BottomBannerAdExample extends StatefulWidget {
-  const BottomBannerAdExample({Key? key}) : super(key: key);
+  const BottomBannerAdExample({super.key});
 
   @override
   State<BottomBannerAdExample> createState() => _BottomBannerAdExampleState();

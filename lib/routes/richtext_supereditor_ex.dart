@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:super_editor/super_editor.dart';
 
 class SuperEditorExample extends StatefulWidget {
-  const SuperEditorExample({Key? key}) : super(key: key);
+  const SuperEditorExample({super.key});
 
   @override
   State<SuperEditorExample> createState() => _SuperEditorExampleState();

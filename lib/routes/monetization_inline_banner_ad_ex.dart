@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class InlineBannerAdExample extends StatelessWidget {
-  const InlineBannerAdExample({Key? key}) : super(key: key);
+  const InlineBannerAdExample({super.key});
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -45,7 +45,7 @@ class InlineBannerAdExample extends StatelessWidget {
 /// Otherwise we can't show the same ad twice in the UI.
 /// See https://stackoverflow.com/a/71899578/12421326.
 class _MyBannerAdWidget extends StatefulWidget {
-  const _MyBannerAdWidget({Key? key}) : super(key: key);
+  const _MyBannerAdWidget();
 
   @override
   State<_MyBannerAdWidget> createState() => _MyBannerAdWidgetState();

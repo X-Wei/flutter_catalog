@@ -4,7 +4,7 @@ import 'package:edge_detection/edge_detection.dart';
 import 'package:flutter/material.dart';
 
 class EdgeDetectionExample extends StatefulWidget {
-  const EdgeDetectionExample({Key? key}) : super(key: key);
+  const EdgeDetectionExample({super.key});
 
   @override
   _EdgeDetectionExampleState createState() => _EdgeDetectionExampleState();

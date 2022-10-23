@@ -1,11 +1,10 @@
 name: flutter_catalog
 description: An app showcasing Flutter components, with side-by-side source code view.
 
-# *Note*: when version change, remember to also update constants.dart.
-version: 3.2.0+86
+version: 3.3.0+87
 
 environment:
-  sdk: ">=2.13.0 <3.0.0"
+  sdk: ">=2.17.0 <3.0.0"
 
 publish_to: none
 
@@ -54,7 +53,7 @@ dependencies:
   flutterfire_ui: ^0.4.3+17
   fluttertoast: ^8.0.7
   freezed_annotation: ^2.0.3
-  google_fonts: #^3.0.1 TODO: upgrade packages in widget_with_codeview
+  google_fonts: ^3.0.1
   google_ml_kit: ^0.12.0
   google_mobile_ads: ^2.1.0
   google_sign_in: ^5.0.5
@@ -75,7 +74,7 @@ dependencies:
   new_gradient_app_bar:
     git:
       url: https://github.com/GUIKAR741/NewGradientAppBar.git
-  package_info: ^2.0.2
+  package_info_plus: ^3.0.1
   path: ^1.8.0
   path_provider: ^2.0.2
   photo_view: ^0.14.0
@@ -93,7 +92,7 @@ dependencies:
   tuple: ^2.0.0
   url_launcher: ^6.0.9
   video_player: ^2.1.12
-  widget_with_codeview: ^2.0.1+2
+  widget_with_codeview: ^3.0.1
 
 dev_dependencies:
   build_runner: ^2.0.6

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 // Inspired by bizz84's layout demo:
 // https://github.com/bizz84/layout-demo-flutter
 class RowColExample extends StatefulWidget {
-  const RowColExample({Key? key}) : super(key: key);
+  const RowColExample({super.key});
   @override
   _RowColExampleState createState() => _RowColExampleState();
 }

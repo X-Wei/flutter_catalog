@@ -1,12 +1,13 @@
 import 'dart:io' show Platform;
 
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 // ignore_for_file: constant_identifier_names
 
-// *Note*: when APP_VERSION is changed, remember to also update pubspec.yaml.
-const APP_VERSION = 'v3.2.0';
+late final PackageInfo kPackageInfo;
 const APP_NAME = 'Flutter Catalog';
 final kAppIcon =
     Image.asset('res/images/app_icon.png', height: 64.0, width: 64.0);
@@ -24,6 +25,12 @@ final kPlatformType = getCurrentPlatformType();
 // Whether the app is running on mobile phones (Android/iOS)
 final kIsOnMobile =
     {PlatformType.Android, PlatformType.iOS}.contains(kPlatformType);
+
+final kIsMobileOrWeb = kIsWeb ||
+    defaultTargetPlatform == TargetPlatform.iOS ||
+    defaultTargetPlatform == TargetPlatform.android;
+
+final kAnalytics = kIsMobileOrWeb ? FirebaseAnalytics.instance : null;
 
 /// ! Adapted from https://www.flutterclutter.dev/flutter/tutorials/how-to-detect-what-platform-a-flutter-app-is-running-on/2020/127/
 enum PlatformType { Web, iOS, Android, MacOS, Fuchsia, Linux, Windows, Unknown }

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_highlight/flutter_highlight.dart';
-import 'package:flutter_highlight/themes/github.dart';
+import 'package:flutter_highlight/theme_map.dart' show themeMap;
 
 class CodeHighlightExample extends StatefulWidget {
-  const CodeHighlightExample({Key? key}) : super(key: key);
+  const CodeHighlightExample({super.key});
 
   @override
   State<CodeHighlightExample> createState() => _CodeHighlightExampleState();
@@ -32,28 +32,54 @@ class HelloWorldApp {
 };
 
 class _CodeHighlightExampleState extends State<CodeHighlightExample> {
+  String _themeName = 'github';
+
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      padding: const EdgeInsets.all(8),
-      children: [
-        for (final entry in kLangToCodeSample.entries)
-          Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                'language=${entry.key}',
-                // strutStyle: Theme.of(context).textTheme.headline2,
-              ),
-              HighlightView(
-                entry.value,
-                language: entry.key,
-                theme: githubTheme,
-              ),
-              Divider(),
-            ],
-          ),
-      ],
+    return Scaffold(
+      body: ListView(
+        padding: const EdgeInsets.all(8),
+        children: [
+          for (final entry in kLangToCodeSample.entries)
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  'language=${entry.key}',
+                  // strutStyle: Theme.of(context).textTheme.headline2,
+                ),
+                HighlightView(
+                  entry.value,
+                  language: entry.key,
+                  //! The themeMap contains all built-in themes in the package.
+                  //`import 'package:flutter_highlight/theme_map.dart'`
+                  theme: themeMap[_themeName] ?? {},
+                ),
+                Divider(),
+              ],
+            ),
+        ],
+      ),
+      bottomNavigationBar: _buildThemeSelUI(),
+    );
+  }
+
+  Widget _buildThemeSelUI() {
+    return ListTile(
+      title: const Text('DropDownButton with default:'),
+      trailing: DropdownButton<String>(
+        value: _themeName,
+        onChanged: (String? newValue) {
+          if (newValue != null) {
+            setState(() => _themeName = newValue);
+          }
+        },
+        items: [
+          for (final name in themeMap.keys)
+            DropdownMenuItem<String>(value: name, child: Text(name))
+        ],
+      ),
     );
   }
 }

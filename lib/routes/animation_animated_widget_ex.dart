@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 // The AnimatedWidget base class allows you to separate out the core widget code
 // from the animation code.
 class _AnimatedLogo extends AnimatedWidget {
-  const _AnimatedLogo({Key? key, required Animation<double> animation})
-      : super(key: key, listenable: animation);
+  const _AnimatedLogo({required Animation<double> animation})
+      : super(listenable: animation);
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class _AnimatedLogo extends AnimatedWidget {
 }
 
 class AnimatedWidgetExample extends StatefulWidget {
-  const AnimatedWidgetExample({Key? key}) : super(key: key);
+  const AnimatedWidgetExample({super.key});
   @override
   _AnimatedWidgetExampleState createState() => _AnimatedWidgetExampleState();
 }

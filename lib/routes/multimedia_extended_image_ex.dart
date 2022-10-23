@@ -2,7 +2,7 @@ import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
 
 class ExtendedImageExample extends StatefulWidget {
-  const ExtendedImageExample({Key? key}) : super(key: key);
+  const ExtendedImageExample({super.key});
 
   @override
   _ExtendedImageExampleState createState() => _ExtendedImageExampleState();

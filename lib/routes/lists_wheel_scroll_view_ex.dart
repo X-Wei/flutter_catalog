@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ListWheelViewExample extends StatefulWidget {
-  const ListWheelViewExample({Key? key}) : super(key: key);
+  const ListWheelViewExample({super.key});
 
   @override
   _ListWheelViewExampleState createState() => _ListWheelViewExampleState();

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class BlocLibExample extends StatelessWidget {
-  const BlocLibExample({Key? key}) : super(key: key);
+  const BlocLibExample({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +39,7 @@ class _MyState {
 // flutter_bloc package. With this package, we don't need to manage the stream
 // controllers.
 class MyBloc extends Bloc<_MyEvent, _MyState> {
-  MyBloc(_MyState initialState) : super(initialState) {
+  MyBloc(super.initialState) {
     on<_IncrementEvt>((_, emit) => emit(_MyState(state.counter + 1)));
     on<_DecrementEvt>((_, emit) => emit(_MyState(state.counter - 1)));
   }

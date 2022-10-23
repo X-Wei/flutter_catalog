@@ -3,7 +3,7 @@ import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:selectable/selectable.dart';
 
 class SelectableExample extends StatelessWidget {
-  const SelectableExample({Key? key}) : super(key: key);
+  const SelectableExample({super.key});
 
   @override
   Widget build(BuildContext context) {
