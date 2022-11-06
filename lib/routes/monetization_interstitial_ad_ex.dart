@@ -15,6 +15,7 @@ class _InterstitialAdExampleState extends State<InterstitialAdExample> {
   InterstitialAd? _interstitialAd;
   static const _kMaxLoadAdRetries = 3;
   int _loadAdAttempts = 0;
+  bool _personalizeAds = true;
 
   String get _kAdUnitId {
     // ! Return test ad unit if we are in debug mode -- otherwise account might be banned!
@@ -41,7 +42,7 @@ class _InterstitialAdExampleState extends State<InterstitialAdExample> {
   void _loadInterstitialAd() {
     InterstitialAd.load(
       adUnitId: _kAdUnitId,
-      request: AdRequest(),
+      request: AdRequest(nonPersonalizedAds: !_personalizeAds),
       adLoadCallback: InterstitialAdLoadCallback(
         onAdLoaded: (InterstitialAd ad) {
           _interstitialAd = ad;
@@ -102,6 +103,16 @@ class _InterstitialAdExampleState extends State<InterstitialAdExample> {
           ''',
         ),
         SizedBox(height: 32),
+        SwitchListTile.adaptive(
+          title: Text('Personalized Ads'),
+          value: _personalizeAds,
+          onChanged: (p) => setState(() {
+            _personalizeAds = p;
+            _loadAdAttempts = 0;
+            _interstitialAd = null;
+            _loadInterstitialAd();
+          }),
+        ),
         ElevatedButton.icon(
           onPressed: _interstitialAd == null
               ? null

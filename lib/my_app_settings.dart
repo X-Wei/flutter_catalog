@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -6,10 +7,10 @@ import './my_app_routes.dart' show MyRouteGroup, kAboutRoute, kAllRoutes;
 import './my_route.dart';
 import 'constants.dart';
 
+final mySettingsProvider =
+    ChangeNotifierProvider<MyAppSettings>((ref) => throw UnimplementedError());
+
 class MyAppSettings extends ChangeNotifier {
-  static const _kDarkModePreferenceKey = 'DARK_MODE';
-  static const _kSearchHistoryPreferenceKey = 'SEARCH_HISTORY';
-  static const _kBookmarkedRoutesPreferenceKey = 'BOOKMARKED_ROUTES';
   static final _kRoutenameToRouteMap = {
     for (MyRoute route in kAllRoutes) route.routeName: route
   };
@@ -41,6 +42,7 @@ class MyAppSettings extends ChangeNotifier {
     }
   }
 
+  static const _kDarkModePreferenceKey = 'DARK_MODE';
   bool get isDarkMode => _pref.getBool(_kDarkModePreferenceKey) ?? false;
 
   // ignore:avoid_positional_boolean_parameters
@@ -50,6 +52,7 @@ class MyAppSettings extends ChangeNotifier {
   }
 
   /// The list of route names in search history.
+  static const _kSearchHistoryPreferenceKey = 'SEARCH_HISTORY';
   List<String> get searchHistory =>
       _pref.getStringList(_kSearchHistoryPreferenceKey) ?? [];
 
@@ -63,6 +66,8 @@ class MyAppSettings extends ChangeNotifier {
     _pref.setStringList(_kSearchHistoryPreferenceKey, history);
   }
 
+  // Bookmarks
+  static const _kBookmarkedRoutesPreferenceKey = 'BOOKMARKED_ROUTES';
   List<String> get starredRoutenames =>
       _pref.getStringList(_kBookmarkedRoutesPreferenceKey) ?? [];
 
@@ -125,4 +130,17 @@ class MyAppSettings extends ChangeNotifier {
   int numNewRoutes(MyRouteGroup group) {
     return group.routes.where(isNewRoute).length;
   }
+
+  // Number of coins rewarded.
+  static const _kCoinsKey = 'NUM_COINS';
+  int get rewardCoins => _pref.getInt(_kCoinsKey) ?? 0;
+  set rewardCoins(int c) {
+    _pref.setInt(_kCoinsKey, c);
+    notifyListeners();
+  }
+
+  // Whether the intro screen is shown.
+  static const _kIntroShownKey = 'INTRO_IS_SHOWN';
+  bool get introIsShown => _pref.getBool(_kIntroShownKey) ?? false;
+  set introIsShown(bool val) => _pref.setBool(_kIntroShownKey, val);
 }

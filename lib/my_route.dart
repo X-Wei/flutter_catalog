@@ -18,6 +18,7 @@ import './constants.dart'
 import './my_app_settings.dart';
 import './my_route_search_delegate.dart';
 import './routes/about.dart';
+import 'routes/monetization_inline_banner_ad_ex.dart';
 
 class MyRoute extends StatelessWidget {
   static const _kFrontLayerMinHeight = 128.0;
@@ -91,6 +92,8 @@ class MyRoute extends StatelessWidget {
                         debugPrint('Changing to code view!');
                       }
                     },
+                    headerWidget: const MyBannerAdWidget(),
+                    footerWidget: const MyBannerAdWidget(),
                     child: this.child,
                   ),
       ),

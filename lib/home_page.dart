@@ -1,22 +1,22 @@
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'constants.dart';
 import 'my_app_routes.dart';
-import 'package:provider/provider.dart';
 
-import './my_app_routes.dart'
-    show MyRouteGroup, kAboutRoute, kMyAppRoutesBasic, kMyAppRoutesAdvanced;
 import './my_app_settings.dart';
 import './my_route.dart';
+import 'routes/monetization_inline_banner_ad_ex.dart';
+import 'routes/onboarding_intro_screen_ex.dart';
 
-class MyHomePage extends StatefulWidget {
+class MyHomePage extends ConsumerStatefulWidget {
   const MyHomePage({super.key});
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends ConsumerState<MyHomePage> {
   static const _kBottmonNavBarItems = <BottomNavigationBarItem>[
     BottomNavigationBarItem(
       backgroundColor: Colors.blue,
@@ -27,6 +27,11 @@ class _MyHomePageState extends State<MyHomePage> {
       backgroundColor: Colors.blueAccent,
       icon: Icon(Icons.insert_chart),
       label: 'Advanced',
+    ),
+    BottomNavigationBarItem(
+      backgroundColor: Colors.blueAccent,
+      icon: Icon(Icons.rocket),
+      label: 'In Action',
     ),
     BottomNavigationBarItem(
       backgroundColor: Colors.indigo,
@@ -41,12 +46,30 @@ class _MyHomePageState extends State<MyHomePage> {
   final ScrollController _scrollController1 = ScrollController();
   final ScrollController _scrollController2 = ScrollController();
   final ScrollController _scrollController3 = ScrollController();
+  final ScrollController _scrollController4 = ScrollController();
+
+  @override
+  void initState() {
+    super.initState();
+    //! Show intro screen if it's never shown before.
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) {
+        final settings = ref.read(mySettingsProvider);
+        if (settings.introIsShown == false) {
+          Navigator.of(context)
+              .push(IntroductionScreenExample.route())
+              .then((_) => settings.introIsShown = true);
+        }
+      },
+    );
+  }
 
   @override
   void dispose() {
     _scrollController1.dispose();
     _scrollController2.dispose();
     _scrollController3.dispose();
+    _scrollController4.dispose();
     super.dispose();
   }
 
@@ -55,16 +78,23 @@ class _MyHomePageState extends State<MyHomePage> {
     final basicDemos = <Widget>[
       for (final MyRouteGroup group in kMyAppRoutesBasic)
         _myRouteGroupToExpansionTile(group),
+      const MyBannerAdWidget(),
     ];
     final advancedDemos = <Widget>[
       for (final MyRouteGroup group in kMyAppRoutesAdvanced)
         _myRouteGroupToExpansionTile(group),
+      const MyBannerAdWidget(),
+    ];
+    final inactionDemos = <Widget>[
+      for (final MyRouteGroup group in kMyAppRoutesInAction)
+        _myRouteGroupToExpansionTile(group),
+      const MyBannerAdWidget(),
     ];
     final bookmarkAndAboutDemos = <Widget>[
-      for (final MyRoute route
-          in Provider.of<MyAppSettings>(context).starredRoutes)
+      for (final MyRoute route in ref.watch(mySettingsProvider).starredRoutes)
         _myRouteToListTile(route, leading: const Icon(Icons.bookmark)),
       _myRouteToListTile(kAboutRoute, leading: const Icon(Icons.info)),
+      const MyBannerAdWidget(),
     ];
     return Scaffold(
       body: IndexedStack(
@@ -72,8 +102,9 @@ class _MyHomePageState extends State<MyHomePage> {
         children: <Widget>[
           ListView(controller: _scrollController1, children: basicDemos),
           ListView(controller: _scrollController2, children: advancedDemos),
+          ListView(controller: _scrollController3, children: inactionDemos),
           ListView(
-              controller: _scrollController3, children: bookmarkAndAboutDemos),
+              controller: _scrollController4, children: bookmarkAndAboutDemos),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -89,7 +120,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Widget _myRouteToListTile(MyRoute myRoute,
       {Widget? leading, IconData trialing = Icons.keyboard_arrow_right}) {
-    final mySettings = context.watch<MyAppSettings>();
+    final mySettings = ref.watch(mySettingsProvider);
     final routeTitleTextStyle = Theme.of(context)
         .textTheme
         .bodyText2!
@@ -121,7 +152,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Widget _myRouteGroupToExpansionTile(MyRouteGroup myRouteGroup) {
-    final nNew = context.watch<MyAppSettings>().numNewRoutes(myRouteGroup);
+    final nNew = ref.watch(mySettingsProvider).numNewRoutes(myRouteGroup);
     return Card(
       key: ValueKey(myRouteGroup.groupName),
       child: ExpansionTile(
