@@ -54,6 +54,20 @@
 		<key>GADApplicationIdentifier</key>
 		<string>ca-app-pub-7906158617398863~8613325600</string>
 		<key>CADisableMinimumFrameDurationOnPhone</key>
-	<true/>
+		<true/>
+		<!-- Google Sign-in Section -->
+		<key>CFBundleURLTypes</key>
+		<array>
+			<dict>
+				<key>CFBundleTypeRole</key>
+				<string>Editor</string>
+				<key>CFBundleURLSchemes</key>
+				<array>
+					<!-- Copied from GoogleService-Info.plist key REVERSED_CLIENT_ID -->
+					<string>com.googleusercontent.apps.785184947614-70ii5qm94fe28nmasjc9g864nh25l4m7</string>
+				</array>
+			</dict>
+		</array>
+		<!-- End of the Google Sign-in Section -->
 </dict>
 </plist>

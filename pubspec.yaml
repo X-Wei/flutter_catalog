@@ -52,7 +52,7 @@ dependencies:
   flutter_webview_plugin: ^0.4.0
   flutter_whatsnew:
     path: packages/flutter_whatsnew-master
-  flutterfire_ui: ^0.4.3+17
+  flutterfire_ui: ^0.4.2
   fluttertoast: ^8.0.7
   freezed_annotation: ^2.0.3
   google_fonts: ^3.0.1
