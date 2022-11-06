@@ -27,7 +27,8 @@ class InlineBannerAdExample extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     content,
-                    _MyBannerAdWidget(),
+                    MyBannerAdWidget(
+                        placeholder: Placeholder(fallbackHeight: 32)),
                   ],
                 );
               }
@@ -44,14 +45,15 @@ class InlineBannerAdExample extends StatelessWidget {
 /// !Create a statefulWidget to repr the inline banner.
 /// Otherwise we can't show the same ad twice in the UI.
 /// See https://stackoverflow.com/a/71899578/12421326.
-class _MyBannerAdWidget extends StatefulWidget {
-  const _MyBannerAdWidget();
+class MyBannerAdWidget extends StatefulWidget {
+  final Widget placeholder;
+  const MyBannerAdWidget({this.placeholder = const SizedBox()});
 
   @override
-  State<_MyBannerAdWidget> createState() => _MyBannerAdWidgetState();
+  State<MyBannerAdWidget> createState() => _MyBannerAdWidgetState();
 }
 
-class _MyBannerAdWidgetState extends State<_MyBannerAdWidget> {
+class _MyBannerAdWidgetState extends State<MyBannerAdWidget> {
   bool _adLoaded = false;
   BannerAd? _bannerAd;
 
@@ -118,7 +120,7 @@ class _MyBannerAdWidgetState extends State<_MyBannerAdWidget> {
         child: AdWidget(ad: _bannerAd!),
       );
     } else {
-      return Placeholder(fallbackHeight: 32);
+      return widget.placeholder;
     }
   }
 }

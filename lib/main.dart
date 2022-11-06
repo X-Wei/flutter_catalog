@@ -23,6 +23,11 @@ Future<void> main() async {
   final settings = await MyAppSettings.create();
   runApp(
     ProviderScope(
+      overrides: [
+        mySettingsProvider.overrideWithProvider(
+          ChangeNotifierProvider((ref) => settings),
+        ),
+      ],
       child: MyMainApp(settings),
     ),
   );

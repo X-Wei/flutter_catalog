@@ -2,19 +2,23 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
-class RewordedAdExample extends StatefulWidget {
+import '../my_app_settings.dart';
+
+class RewordedAdExample extends ConsumerStatefulWidget {
   const RewordedAdExample({super.key});
 
   @override
-  State<RewordedAdExample> createState() => _RewordedAdExampleState();
+  ConsumerState<RewordedAdExample> createState() => _RewordedAdExampleState();
 }
 
-class _RewordedAdExampleState extends State<RewordedAdExample> {
+class _RewordedAdExampleState extends ConsumerState<RewordedAdExample> {
   RewardedAd? _rewardedAd;
   static const _kMaxLoadAdRetries = 3;
   int _loadAdAttempts = 0;
+  bool _personalizeAds = true;
 
   String get _kAdUnitId {
     // ! Return test ad unit if we are in debug mode -- otherwise account might be banned!
@@ -41,7 +45,7 @@ class _RewordedAdExampleState extends State<RewordedAdExample> {
   void _loadRewardedAd() {
     RewardedAd.load(
       adUnitId: _kAdUnitId,
-      request: AdRequest(),
+      request: AdRequest(nonPersonalizedAds: !_personalizeAds),
       rewardedAdLoadCallback: RewardedAdLoadCallback(
         onAdLoaded: (RewardedAd ad) {
           _rewardedAd = ad;
@@ -79,6 +83,7 @@ class _RewordedAdExampleState extends State<RewordedAdExample> {
       await _rewardedAd!.show(
         onUserEarnedReward: (AdWithoutView ad, RewardItem reward) {
           if (mounted) {
+            ref.read(mySettingsProvider).rewardCoins += reward.amount.toInt();
             showDialog<String>(
               context: context,
               builder: (BuildContext context) => AlertDialog(
@@ -119,6 +124,16 @@ class _RewordedAdExampleState extends State<RewordedAdExample> {
           ''',
         ),
         SizedBox(height: 32),
+        SwitchListTile.adaptive(
+          title: Text('Personalized Ads'),
+          value: _personalizeAds,
+          onChanged: (p) => setState(() {
+            _personalizeAds = p;
+            _loadAdAttempts = 0;
+            _rewardedAd = null;
+            _loadRewardedAd();
+          }),
+        ),
         ElevatedButton.icon(
           onPressed: _rewardedAd == null
               ? null
@@ -135,6 +150,11 @@ class _RewordedAdExampleState extends State<RewordedAdExample> {
               ? CircularProgressIndicator()
               : Icon(Icons.emoji_events),
           label: Text('Click to show ad'),
+        ),
+        SizedBox(height: 32),
+        Text(
+          '💰 You currently have ${ref.watch(mySettingsProvider).rewardCoins} coins.',
+          style: Theme.of(context).textTheme.headline6,
         ),
       ],
     );

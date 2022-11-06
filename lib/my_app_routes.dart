@@ -41,6 +41,8 @@ import 'routes/firebase_flutterfire_loginui_ex.dart';
 import 'routes/firebase_login_ex.dart';
 import 'routes/firebase_mlkit_ex.dart';
 import 'routes/firebase_vote_ex.dart';
+import 'routes/growth_inapp_review_ex.dart';
+import 'routes/growth_my_other_apps.dart';
 import 'routes/layouts_container_padding_center_ex.dart';
 import 'routes/layouts_expanded_ex.dart';
 import 'routes/layouts_fractionally_sizedbox_ex.dart';
@@ -79,13 +81,16 @@ import 'routes/networking_googlebooks_ex.dart';
 import 'routes/networking_hacker_news_ex.dart';
 import 'routes/networking_rest_api_fetch_ex.dart';
 import 'routes/networking_rest_api_send_ex.dart';
+import 'routes/onboarding_intro_screen_ex.dart';
+import 'routes/onboarding_whats_new_ex.dart';
 import 'routes/persistence_file_rw_ex.dart';
 import 'routes/persistence_hive_ex.dart';
 import 'routes/persistence_preference_ex.dart';
 import 'routes/persistence_sembast_ex.dart';
 import 'routes/persistence_sqlite_ex.dart';
-import 'routes/plugins_feature_discovery_ex.dart';
+import 'routes/onboarding_feature_discovery_ex.dart';
 import 'routes/plugins_local_auth_ex.dart';
+import 'routes/plugins_share_plus_ex.dart';
 import 'routes/plugins_shimmer_ex.dart';
 import 'routes/plugins_webview_ex.dart';
 import 'routes/richtext_code_highlight_ex.dart';
@@ -925,17 +930,16 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
         description: 'Authenticate with biometrics(fingerprint).',
       ),
       MyRoute(
-        child: FeatureDiscoveryExample(),
-        sourceFilePath: 'lib/routes/plugins_feature_discovery_ex.dart',
-        title: 'Feature discovery',
-        description: 'Introduce UI elements and features to users',
-        links: {'pub.dev': 'https://pub.dev/packages/feature_discovery'},
-      ),
-      MyRoute(
         child: ShimmerExample(),
         sourceFilePath: 'lib/routes/plugins_shimmer_ex.dart',
         title: 'Shimmer effect',
         links: {'pub.dev': 'https://pub.dev/packages/shimmer'},
+      ),
+      MyRoute(
+        child: SharePlusExample(),
+        sourceFilePath: 'lib/routes/plugins_share_plus_ex.dart',
+        title: "Share Plus",
+        links: {'pub.dev': 'https://pub.dev/packages/share_plus'},
       ),
     ],
   ),
@@ -1140,6 +1144,60 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
       ),
     ],
   ),
+];
+
+const kMyAppRoutesInAction = <MyRouteGroup>[
+  MyRouteGroup(
+    groupName: 'User onboarding',
+    icon: Icon(Icons.emoji_people),
+    routes: <MyRoute>[
+      MyRoute(
+        child: FeatureDiscoveryExample(),
+        sourceFilePath: 'lib/routes/onboarding_feature_discovery_ex.dart',
+        title: 'Feature discovery',
+        description: 'Introduce UI elements and features to users',
+        links: {'pub.dev': 'https://pub.dev/packages/feature_discovery'},
+      ),
+      MyRoute(
+        child: IntroductionScreenExample(),
+        sourceFilePath: 'lib/routes/onboarding_intro_screen_ex.dart',
+        title: 'Introduction Screen',
+        description: 'Showcase feature on app first open',
+        links: {'pub.dev': 'https://pub.dev/packages/introduction_screen'},
+      ),
+      MyRoute(
+        child: WhatsNewExample(),
+        sourceFilePath: 'lib/routes/onboarding_whats_new_ex.dart',
+        title: "What's new",
+        description: 'Disply change log on app update',
+        links: {'pub.dev': 'https://pub.dev/packages/flutter_whatsnew'},
+      ),
+      // TODO: add license: https://api.flutter.dev/flutter/material/AboutDialog-class.html
+      // https://gist.github.com/ProjectInitiative/1051cf9b368d60f20a2b1062ec269579
+    ],
+  ),
+  MyRouteGroup(
+    groupName: 'App growth',
+    icon: Icon(Icons.insights),
+    routes: <MyRoute>[
+      MyRoute(
+        child: InAppReviewExample(),
+        sourceFilePath: 'lib/routes/growth_inapp_review_ex.dart',
+        title: "In-app Review",
+        description: 'Disply a review pop up',
+        links: {'pub.dev': 'https://pub.dev/packages/in_app_review'},
+      ),
+      MyRoute(
+        child: MyOtherAppsExample(),
+        sourceFilePath: 'lib/routes/growth_my_other_apps.dart',
+        title: "My Other Apps",
+        description: 'Checkout the other apps I built!',
+      ),
+      // TODO: check for update?
+      // TODO: i18n?
+      // TODO: routing?
+    ],
+  ),
   MyRouteGroup(
     groupName: 'Monetization',
     icon: Icon(Icons.attach_money),
@@ -1207,6 +1265,7 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
 final kAllRouteGroups = <MyRouteGroup>[
   ...kMyAppRoutesBasic,
   ...kMyAppRoutesAdvanced,
+  ...kMyAppRoutesInAction,
 ];
 
 final kAllRoutes = <MyRoute>[
