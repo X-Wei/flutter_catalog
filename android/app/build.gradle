@@ -40,7 +40,7 @@ android {
     defaultConfig {
         applicationId "io.github.x_wei.flutter_catalog"
         minSdkVersion 21
-        targetSdkVersion 30
+        targetSdkVersion 31
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -108,6 +108,9 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics:17.5.0'
     implementation 'com.google.firebase:firebase-auth:19.4.0'
     implementation 'com.google.firebase:firebase-firestore:21.6.0'
+    implementation 'com.google.android.gms:play-services-ads:21.3.0'
+    implementation 'com.google.ads.mediation:adcolony:4.8.0.0'
+    implementation 'com.google.ads.mediation:facebook:6.12.0.0'
 }
 
 apply plugin: 'com.google.gms.google-services'

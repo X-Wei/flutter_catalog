@@ -8,8 +8,15 @@ import '../constants.dart';
 
 /// ! We use riverpod to watch the login state change, and rebuild screen.
 /// ! For more details see the riverpod example.
-final currentUserProvider =
+final currentUserStreamProvider =
     StreamProvider<User?>((ref) => FirebaseAuth.instance.authStateChanges());
+
+final currentUserProvider = StateProvider<User?>((ref) {
+  return ref.watch(currentUserStreamProvider).maybeWhen(
+        data: (user) => user,
+        orElse: () => null,
+      );
+});
 
 final _kLoginProviderConfigs = [
   GoogleProviderConfiguration(
@@ -25,7 +32,7 @@ class FlutterFireLoginUiExample extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return ref.watch(currentUserProvider).when(
+    return ref.watch(currentUserStreamProvider).when(
           data: (user) =>
               user == null ? _buildLoginScreen() : _buildProfileScreen(),
           error: (e, _) => Text(e.toString()),
