@@ -37,6 +37,7 @@ import 'routes/charts_pie_chart_ex.dart';
 import 'routes/charts_radar_chart_ex.dart';
 import 'routes/charts_time_series_ex.dart';
 import 'routes/feature_device_preview.dart';
+import 'routes/feature_store_secrets.dart';
 import 'routes/firebase_chatroom_ex.dart';
 import 'routes/firebase_flutterfire_loginui_ex.dart';
 import 'routes/firebase_login_ex.dart';
@@ -1195,6 +1196,17 @@ const kMyAppRoutesInAction = <MyRouteGroup>[
           sourceFilePath: 'lib/routes/feature_device_preview.dart',
           title: "Device Preview",
           description: 'Preview the app with difference screen sizes',
+        ),
+        MyRoute(
+          child: StoreSecretsExample(),
+          sourceFilePath: 'lib/routes/feature_store_secrets.dart',
+          title: "Store secrets",
+          description: 'Safely store secrets with define_env.',
+          links: {
+            'pub.dev': 'https://pub.dev/packages/define_env',
+            "Andrea's tutorial":
+                'https://codewithandrea.com/articles/flutter-api-keys-dart-define-env-files',
+          },
         ),
         // TODO: i18n?
         // TODO: routing?

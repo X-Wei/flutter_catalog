@@ -55,26 +55,27 @@ Enjoy!
 class MarkdownExample extends StatelessWidget {
   const MarkdownExample({super.key});
 
+  static Future<void> onTapLink(
+      String text, String? href, String title, BuildContext context) async {
+    if (href == null) return;
+    final _url = Uri.parse(href);
+    if (await canLaunchUrl(_url)) {
+      launchUrl(_url);
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Wrong address: $href'),
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    Future<void> _onTapLink(String text, String? href, String title) async {
-      if (href == null) return;
-      final _url = Uri.parse(href);
-      if (await canLaunchUrl(_url)) {
-        launchUrl(_url);
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Wrong address: $href'),
-          ),
-        );
-      }
-    }
-
     return Scrollbar(
       child: Markdown(
         data: _markdownSrc,
-        onTapLink: _onTapLink,
+        onTapLink: (text, href, title) => onTapLink(text, href, title, context),
         selectable: true,
         // syntaxHighlighter: _MyDartSyntaxHighligher(),
         //// We use [GitHub flavored Markdown]: https://github.github.com/gfm/.

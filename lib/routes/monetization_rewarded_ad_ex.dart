@@ -1,10 +1,8 @@
-import 'dart:io';
-
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
+import 'feature_store_secrets.dart';
 import 'monetization_user_purchases_ex.dart';
 
 class RewordedAdExample extends ConsumerStatefulWidget {
@@ -20,22 +18,6 @@ class _RewordedAdExampleState extends ConsumerState<RewordedAdExample> {
   int _loadAdAttempts = 0;
   bool _personalizeAds = true;
 
-  String get _kAdUnitId {
-    // ! Return test ad unit if we are in debug mode -- otherwise account might be banned!
-    if (Platform.isAndroid) {
-      return kDebugMode
-          // https://developers.google.com/admob/android/test-ads#sample_ad_units
-          ? 'ca-app-pub-3940256099942544/5224354917'
-          : 'ca-app-pub-7906158617398863/7948862610';
-    } else if (Platform.isIOS) {
-      return kDebugMode
-          // https://developers.google.com/admob/ios/test-ads#demo_ad_units
-          ? 'ca-app-pub-3940256099942544/1712485313'
-          : 'ca-app-pub-7906158617398863/5990528080';
-    }
-    return '';
-  }
-
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
@@ -44,7 +26,7 @@ class _RewordedAdExampleState extends ConsumerState<RewordedAdExample> {
 
   void _loadRewardedAd() {
     RewardedAd.load(
-      adUnitId: _kAdUnitId,
+      adUnitId: MySecretsHelper.rewardedAdUnitId,
       request: AdRequest(nonPersonalizedAds: !_personalizeAds),
       rewardedAdLoadCallback: RewardedAdLoadCallback(
         onAdLoaded: (RewardedAd ad) {

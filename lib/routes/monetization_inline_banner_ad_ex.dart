@@ -1,10 +1,8 @@
-import 'dart:io';
-
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
+import 'feature_store_secrets.dart';
 import 'monetization_user_purchases_ex.dart';
 
 class InlineBannerAdExample extends StatelessWidget {
@@ -60,22 +58,6 @@ class _MyBannerAdWidgetState extends State<MyBannerAdWidget> {
   bool _adLoaded = false;
   BannerAd? _bannerAd;
 
-  String get _kAdUnitId {
-    // ! Return test ad unit if we are in debug mode -- otherwise account might be banned!
-    if (Platform.isAndroid) {
-      return kDebugMode
-          // https://developers.google.com/admob/android/test-ads#sample_ad_units
-          ? 'ca-app-pub-3940256099942544/6300978111'
-          : 'ca-app-pub-7906158617398863/4414540775';
-    } else if (Platform.isIOS) {
-      return kDebugMode
-          // https://developers.google.com/admob/ios/test-ads#demo_ad_units
-          ? 'ca-app-pub-3940256099942544/2934735716'
-          : 'ca-app-pub-7906158617398863/5234412829';
-    }
-    return '';
-  }
-
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
@@ -93,7 +75,7 @@ class _MyBannerAdWidgetState extends State<MyBannerAdWidget> {
       return;
     }
     _bannerAd = BannerAd(
-      adUnitId: _kAdUnitId,
+      adUnitId: MySecretsHelper.bannerAdUnitId,
       size: size,
       request: AdRequest(),
       listener: BannerAdListener(
