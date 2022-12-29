@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
-import '../my_app_settings.dart';
+import 'monetization_user_purchases_ex.dart';
 
 class RewordedAdExample extends ConsumerStatefulWidget {
   const RewordedAdExample({super.key});
@@ -83,7 +83,8 @@ class _RewordedAdExampleState extends ConsumerState<RewordedAdExample> {
       await _rewardedAd!.show(
         onUserEarnedReward: (AdWithoutView ad, RewardItem reward) {
           if (mounted) {
-            ref.read(mySettingsProvider).rewardCoins += reward.amount.toInt();
+            //! See monetization_user_purchases_ex.dart
+            addCoins(ref, reward.amount.toInt());
             showDialog<String>(
               context: context,
               builder: (BuildContext context) => AlertDialog(
@@ -153,9 +154,11 @@ class _RewordedAdExampleState extends ConsumerState<RewordedAdExample> {
         ),
         SizedBox(height: 32),
         Text(
-          '💰 You currently have ${ref.watch(mySettingsProvider).rewardCoins} coins.',
+          '💰 You currently have ${ref.watch(userCoinsProvider)} coins.',
           style: Theme.of(context).textTheme.headline6,
         ),
+        //! See monetization_user_purchases_ex.dart
+        buildUserBanner(context, ref),
       ],
     );
   }

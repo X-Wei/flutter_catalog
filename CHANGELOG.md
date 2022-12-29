@@ -1,5 +1,12 @@
 # Change Log
 
+## v3.5.1
+[2022-12-05]
+- add In-App-Purchase (IAP) example
+- manage user-Purchases with firstore/riverpod
+- add device_preview example
+- add Grey App example: R.I.P. for Elder.
+
 ## v3.4.0
 [2022-11-06]
 - Add new "In-Action" tab to home page.

@@ -78,23 +78,23 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
     final basicDemos = <Widget>[
       for (final MyRouteGroup group in kMyAppRoutesBasic)
         _myRouteGroupToExpansionTile(group),
-      const MyBannerAdWidget(),
+      const MyBannerAd(),
     ];
     final advancedDemos = <Widget>[
       for (final MyRouteGroup group in kMyAppRoutesAdvanced)
         _myRouteGroupToExpansionTile(group),
-      const MyBannerAdWidget(),
+      const MyBannerAd(),
     ];
     final inactionDemos = <Widget>[
       for (final MyRouteGroup group in kMyAppRoutesInAction)
         _myRouteGroupToExpansionTile(group),
-      const MyBannerAdWidget(),
+      const MyBannerAd(),
     ];
     final bookmarkAndAboutDemos = <Widget>[
       for (final MyRoute route in ref.watch(mySettingsProvider).starredRoutes)
         _myRouteToListTile(route, leading: const Icon(Icons.bookmark)),
       _myRouteToListTile(kAboutRoute, leading: const Icon(Icons.info)),
-      const MyBannerAdWidget(),
+      const MyBannerAd(),
     ];
     return Scaffold(
       body: IndexedStack(

@@ -92,8 +92,8 @@ class MyRoute extends StatelessWidget {
                         debugPrint('Changing to code view!');
                       }
                     },
-                    headerWidget: const MyBannerAdWidget(),
-                    footerWidget: const MyBannerAdWidget(),
+                    headerWidget: const MyBannerAd(),
+                    footerWidget: const MyBannerAd(),
                     child: this.child,
                   ),
       ),

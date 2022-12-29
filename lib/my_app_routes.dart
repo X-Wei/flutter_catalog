@@ -36,11 +36,13 @@ import 'routes/charts_heatmap_calendar_ex.dart';
 import 'routes/charts_pie_chart_ex.dart';
 import 'routes/charts_radar_chart_ex.dart';
 import 'routes/charts_time_series_ex.dart';
+import 'routes/feature_device_preview.dart';
 import 'routes/firebase_chatroom_ex.dart';
 import 'routes/firebase_flutterfire_loginui_ex.dart';
 import 'routes/firebase_login_ex.dart';
 import 'routes/firebase_mlkit_ex.dart';
 import 'routes/firebase_vote_ex.dart';
+import 'routes/feature_grey_app.dart';
 import 'routes/growth_inapp_review_ex.dart';
 import 'routes/growth_my_other_apps.dart';
 import 'routes/layouts_container_padding_center_ex.dart';
@@ -60,9 +62,11 @@ import 'routes/lists_swipe_to_dismiss_ex.dart';
 import 'routes/lists_wheel_scroll_view_ex.dart';
 import 'routes/monetization_adaptive_banner_ad_ex.dart';
 import 'routes/monetization_bottom_banner_ad_ex.dart';
+import 'routes/monetization_in_app_purchase_ex.dart';
 import 'routes/monetization_inline_banner_ad_ex.dart';
 import 'routes/monetization_interstitial_ad_ex.dart';
 import 'routes/monetization_rewarded_ad_ex.dart';
+import 'routes/monetization_user_purchases_ex.dart';
 import 'routes/multimedia_edge_detection_ex.dart';
 import 'routes/multimedia_extended_image_ex.dart';
 import 'routes/multimedia_image_picker_ex.dart';
@@ -1177,6 +1181,25 @@ const kMyAppRoutesInAction = <MyRouteGroup>[
     ],
   ),
   MyRouteGroup(
+      groupName: 'App features',
+      icon: Icon(Icons.featured_play_list),
+      routes: <MyRoute>[
+        MyRoute(
+          child: GreyAppExample(),
+          sourceFilePath: 'lib/routes/feature_grey_app.dart',
+          title: "Grey App 🕯",
+          description: 'Turn app into grey-scale via ColorFiltered',
+        ),
+        MyRoute(
+          child: DevicePreviewExample(),
+          sourceFilePath: 'lib/routes/feature_device_preview.dart',
+          title: "Device Preview",
+          description: 'Preview the app with difference screen sizes',
+        ),
+        // TODO: i18n?
+        // TODO: routing?
+      ]),
+  MyRouteGroup(
     groupName: 'App growth',
     icon: Icon(Icons.insights),
     routes: <MyRoute>[
@@ -1194,8 +1217,6 @@ const kMyAppRoutesInAction = <MyRouteGroup>[
         description: 'Checkout the other apps I built!',
       ),
       // TODO: check for update?
-      // TODO: i18n?
-      // TODO: routing?
     ],
   ),
   MyRouteGroup(
@@ -1257,6 +1278,22 @@ const kMyAppRoutesInAction = <MyRouteGroup>[
           'pub.dev example':
               'https://pub.dev/packages/google_mobile_ads/example',
         },
+      ),
+      MyRoute(
+        child: InAppPurchaseExample(),
+        sourceFilePath: 'lib/routes/monetization_in_app_purchase_ex.dart',
+        title: 'In App Purchase',
+        description: 'Buy digital in-app products',
+        links: {
+          'pub.dev': 'https://pub.dev/packages/in_app_purchase',
+        },
+      ),
+      MyRoute(
+        child: UserPurchasesExample(),
+        sourceFilePath: 'lib/routes/monetization_user_purchases_ex.dart',
+        title: 'User Purchases',
+        description:
+            'Show user-purchaesd digital products (with firebase and riverpod).',
       ),
     ],
   ),

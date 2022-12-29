@@ -2,7 +2,10 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+
+import 'monetization_user_purchases_ex.dart';
 
 class InlineBannerAdExample extends StatelessWidget {
   const InlineBannerAdExample({super.key});
@@ -122,5 +125,19 @@ class _MyBannerAdWidgetState extends State<MyBannerAdWidget> {
     } else {
       return widget.placeholder;
     }
+  }
+}
+
+/// ! Hides the banner ad if user purchased the "RemoveAd" item.
+class MyBannerAd extends ConsumerWidget {
+  const MyBannerAd({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final adRemoved = ref.watch(adIsRemovedProvider);
+    if (adRemoved) {
+      return Container();
+    }
+    return MyBannerAdWidget();
   }
 }
