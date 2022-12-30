@@ -1,6 +1,9 @@
 tmp/
 key.properties
 local.properties
+.env
+.vscode/launch.json
+build*.fish
 
 # Miscellaneous
 *.class

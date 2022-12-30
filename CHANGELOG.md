@@ -1,5 +1,10 @@
 # Change Log
 
+## v3.5.2
+[2022-12-11]
+- add StoreSecretsExample example on how to store secrets
+- store ad unit ids in (git-ignored) .env file
+
 ## v3.5.1
 [2022-12-05]
 - add In-App-Purchase (IAP) example

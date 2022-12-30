@@ -104,13 +104,20 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
-    // Cf. https://firebase.google.com/docs/android/setup#add-sdks.
-    implementation 'com.google.firebase:firebase-analytics:17.5.0'
-    implementation 'com.google.firebase:firebase-auth:19.4.0'
-    implementation 'com.google.firebase:firebase-firestore:21.6.0'
+    // Cf. https://developers.google.com/admob/android/quick-start.
     implementation 'com.google.android.gms:play-services-ads:21.3.0'
     implementation 'com.google.ads.mediation:adcolony:4.8.0.0'
     implementation 'com.google.ads.mediation:facebook:6.12.0.0'
+    // Cf. https://firebase.google.com/docs/android/setup#add-sdks.
+    // Import the BoM for the Firebase platform
+    implementation platform('com.google.firebase:firebase-bom:31.1.1')
+    // When using the BoM, you don't specify versions in Firebase library dependencies
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation('com.google.firebase:firebase-auth') {
+        // For safty net issue, cf. https://flutter-developer.medium.com/fixed-reported-critical-issues-with-version-17-0-0-google-play-warning-46c8fa9d5526
+        exclude module: "play-services-safetynet"
+    }
+    implementation 'com.google.firebase:firebase-firestore'
 }
 
 apply plugin: 'com.google.gms.google-services'

@@ -1,8 +1,7 @@
-import 'dart:io';
-
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+
+import 'feature_store_secrets.dart';
 
 class InterstitialAdExample extends StatefulWidget {
   const InterstitialAdExample({super.key});
@@ -17,22 +16,6 @@ class _InterstitialAdExampleState extends State<InterstitialAdExample> {
   int _loadAdAttempts = 0;
   bool _personalizeAds = true;
 
-  String get _kAdUnitId {
-    // ! Return test ad unit if we are in debug mode -- otherwise account might be banned!
-    if (Platform.isAndroid) {
-      return kDebugMode
-          // https://developers.google.com/admob/android/test-ads#sample_ad_units
-          ? 'ca-app-pub-3940256099942544/1033173712'
-          : 'ca-app-pub-7906158617398863/8463852022';
-    } else if (Platform.isIOS) {
-      return kDebugMode
-          // https://developers.google.com/admob/ios/test-ads#demo_ad_units
-          ? 'ca-app-pub-3940256099942544/4411468910'
-          : 'ca-app-pub-7906158617398863/5110112137';
-    }
-    return '';
-  }
-
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
@@ -41,7 +24,7 @@ class _InterstitialAdExampleState extends State<InterstitialAdExample> {
 
   void _loadInterstitialAd() {
     InterstitialAd.load(
-      adUnitId: _kAdUnitId,
+      adUnitId: MySecretsHelper.interstitialAdUnitId,
       request: AdRequest(nonPersonalizedAds: !_personalizeAds),
       adLoadCallback: InterstitialAdLoadCallback(
         onAdLoaded: (InterstitialAd ad) {
