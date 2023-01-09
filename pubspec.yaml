@@ -35,15 +35,16 @@ dependencies:
   firebase_auth_web: ^4.6.1
   firebase_core: ^1.4.0
   firebase_core_web: ^1.1.0
+  firebase_crashlytics: ^2.9.0
   firebase_database: ^9.0.4
   firebase_storage: ^10.0.1
-  firebase_crashlytics: ^2.9.0
   firebase_storage_web: ^3.0.0
   fl_chart: ^0.55.1
   flutter:
     sdk: flutter
   flutter_bloc: ^8.0.1
   flutter_gallery_assets: ^1.0.2
+  flutter_heatmap_calendar: ^1.0.5
   flutter_highlight: ^0.7.0
   flutter_markdown: ^0.6.12
   flutter_quill: ^6.0.10
@@ -75,6 +76,7 @@ dependencies:
   in_app_review: ^2.0.4
   intl: ^0.17.0
   introduction_screen: ^3.0.2
+  like_button: ^2.0.5
   local_auth: ^2.0.0
   lottie: ^1.1.0
   markdown: ^6.0.1

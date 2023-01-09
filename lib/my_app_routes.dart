@@ -33,6 +33,7 @@ import 'routes/charts_fl_line_chart_ex.dart';
 import 'routes/charts_fl_pie_chart_ex.dart';
 import 'routes/charts_graphview_ex.dart';
 import 'routes/charts_heatmap_calendar_ex.dart';
+import 'routes/charts_new_heatmap_calendar_ex.dart';
 import 'routes/charts_pie_chart_ex.dart';
 import 'routes/charts_radar_chart_ex.dart';
 import 'routes/charts_time_series_ex.dart';
@@ -117,6 +118,7 @@ import 'routes/widgets_gradient_ex.dart';
 import 'routes/widgets_icon_ex.dart';
 import 'routes/widgets_image_ex.dart';
 import 'routes/widgets_image_filtered_ex.dart';
+import 'routes/widgets_like_button_ex.dart';
 import 'routes/widgets_stateful_widgets_ex.dart';
 import 'routes/widgets_text_ex.dart';
 import 'routes/widgets_textfield_ex.dart';
@@ -242,6 +244,13 @@ const kMyAppRoutesBasic = <MyRouteGroup>[
           'Gallery button demo code':
               'https://github.com/flutter/flutter/blob/master/examples/flutter_gallery/lib/demo/material/buttons_demo.dart'
         },
+      ),
+      MyRoute(
+        child: LikeButtonExample(),
+        sourceFilePath: 'lib/routes/widgets_like_button_ex.dart',
+        title: 'Like Button',
+        description: "Button with animation effects similar to Twitter's heart",
+        links: {'Pub': 'https://pub.dev/packages/like_button'},
       ),
       MyRoute(
         child: DropdownButtonExample(),
@@ -853,9 +862,8 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
       MyRoute(
         child: ScopedModelExample(),
         sourceFilePath: 'lib/routes/state_scoped_model_ex.dart',
-        title: 'ScopedModel',
-        description:
-            'Another (simpler) way to access&mutate state of widgets up the tree.',
+        title: 'ScopedModel(deprecated)',
+        description: 'Access&mutate state of widgets up the tree.',
         links: {
           "I/O'18 talk": 'https://youtu.be/RS36gBEp8OI?t=680',
           'Youtube': 'https://www.youtube.com/watch?v=-MCeWP3rgI0',
@@ -1044,8 +1052,14 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
       MyRoute(
         child: HeatmapCalendarExample(),
         sourceFilePath: 'lib/routes/charts_heatmap_calendar_ex.dart',
-        title: 'Heatmap Calendar',
+        title: 'Heatmap Calendar (deprecated)',
         links: {'pub.dev': 'https://pub.dev/packages/heatmap_calendar'},
+      ),
+      MyRoute(
+        child: NewHeatmapCalendarExample(),
+        sourceFilePath: 'lib/routes/charts_new_heatmap_calendar_ex.dart',
+        title: 'Heatmap Calendar(new)',
+        links: {'pub.dev': 'https://pub.dev/packages/flutter_heatmap_calendar'},
       ),
       MyRoute(
         child: RadarChartExample(),
