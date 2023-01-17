@@ -1,5 +1,11 @@
 # Change Log
 
+## v3.5.3
+[2023-01-17]
+- Add new heatmap calendar example
+- Add like button example
+- Add youtube player example
+
 ## v3.5.2
 [2022-12-11]
 - add StoreSecretsExample example on how to store secrets

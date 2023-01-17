@@ -74,6 +74,7 @@ import 'routes/multimedia_extended_image_ex.dart';
 import 'routes/multimedia_image_picker_ex.dart';
 import 'routes/multimedia_image_plugin_ex.dart';
 import 'routes/multimedia_video_player_ex.dart';
+import 'routes/multimedia_youtube_player_ex.dart';
 import 'routes/nav_bottom_navbar_ex.dart';
 import 'routes/nav_bottom_sheet_ex.dart';
 import 'routes/nav_bottom_tabbar_ex.dart';
@@ -776,6 +777,12 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
         title: 'Video Player',
         description: 'Video/audio player plugin by the flutter team.',
         links: {'Pub': 'https://pub.dev/packages/video_player'},
+      ),
+      MyRoute(
+        child: YoutubePlayerExample(),
+        sourceFilePath: 'lib/routes/multimedia_youtube_player_ex.dart',
+        title: 'Youtube Player',
+        links: {'Pub': 'https://pub.dev/packages/youtube_player_iframe'},
       ),
       MyRoute(
         child: EdgeDetectionExample(),
