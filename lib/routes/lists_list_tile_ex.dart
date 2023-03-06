@@ -1,4 +1,4 @@
-import 'package:badges/badges.dart';
+import 'package:badges/badges.dart' as badge;
 import 'package:flutter/material.dart';
 
 class ListTileExample extends StatelessWidget {
@@ -36,7 +36,7 @@ class ListTileExample extends StatelessWidget {
       ListTile(
         title: const Text('Tile5: tile with badge'),
         subtitle: const Text('(This uses the badges package)'),
-        trailing: Badge(
+        trailing: badge.Badge(
           badgeContent: const Text('3'),
           child: const Icon(Icons.message),
         ),

@@ -39,7 +39,7 @@ class _EdgeDetectionExampleState extends State<EdgeDetectionExample> {
     /// !gallery or changing the saved image path.
     final imgPath = await EdgeDetection.detectEdge;
     if (imgPath != null) {
-      setState(() => _scannedImgPath = imgPath);
+      setState(() => _scannedImgPath = imgPath.toString());
     }
   }
 }

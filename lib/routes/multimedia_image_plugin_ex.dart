@@ -23,22 +23,22 @@ class ImagePluginExample extends StatelessWidget {
   }
 
   Uint8List manipulateImage(Uint8List pngData) {
-    final img = image_pkg.readPng(pngData)!;
+    final img = image_pkg.decodePng(pngData)!;
     image_pkg.drawString(
       img,
-      /*font=*/ image_pkg.arial_48,
-      /*x=*/ 200,
-      /*y=*/ 100,
+      /*font=*/ font: image_pkg.arial48,
+      /*x=*/ x: 200,
+      /*y=*/ y: 100,
       'Hello word!\nThis stirng is drawn using the image plugin.',
-      color: image_pkg.getColor(0, 0, 255),
+      color: image_pkg.ColorRgb8(0, 0, 255),
     );
     image_pkg.drawLine(
       img,
-      /*x1=*/ 0,
-      /*y1=*/ 0,
-      /*x2=*/ 320,
-      /*y2=*/ 240,
-      image_pkg.getColor(255, 0, 0),
+      /*x1=*/ x1: 0,
+      /*y1=*/ y1: 0,
+      /*x2=*/ x2: 320,
+      /*y2=*/ y2: 240,
+      color: image_pkg.ColorRgb8(255, 0, 0),
       thickness: 3,
     );
 
