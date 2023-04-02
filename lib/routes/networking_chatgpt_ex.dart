@@ -22,6 +22,7 @@ class _ChatGptExampleState extends ConsumerState<ChatGptExample> {
     isLog: true,
   );
   final _textController = TextEditingController();
+  final _scrollController = ScrollController();
   bool _pendingResponse = false;
   //! List of (message:string, isMe:bool) pairs to represent the conversation.
   final _messages = <Tuple2<String, bool>>[];
@@ -51,6 +52,7 @@ class _ChatGptExampleState extends ConsumerState<ChatGptExample> {
       children: [
         Flexible(
           child: Scrollbar(
+            controller: _scrollController,
             thumbVisibility: true,
             child: ListView.builder(
               padding: const EdgeInsets.all(8.0),
