@@ -1,5 +1,12 @@
 # Change Log
 
+## v3.6.0
+[2023-04-02]
+- Add ChatGPT example
+- Remember last-opened tab
+- Show new routes badge at tab level
+- Upgrade pacakges and built with Flutter 3.7.9
+
 ## v3.5.3
 [2023-01-17]
 - Add new heatmap calendar example
