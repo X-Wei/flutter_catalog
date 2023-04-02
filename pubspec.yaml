@@ -17,6 +17,7 @@ dependencies:
   badges: ^3.0.3
   cached_network_image: ^3.1.0
   charts_flutter: ^0.12.0
+  chat_gpt_sdk: ^2.0.6
   cloud_firestore: ^4.5.0
   cloud_firestore_web: ^3.4.0
   community_material_icon: ^5.9.55

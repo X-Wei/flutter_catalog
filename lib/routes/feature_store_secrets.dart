@@ -22,6 +22,13 @@ class _StoreSecretsExampleState extends State<StoreSecretsExample> {
       data: r'''
 # Storing secrets with dart-define and define_env
 
+## (UPD 2023.04) use --dart-define-from-file
+With Flutter 3.7 we can just put all secrets into a "secrets.json" file, and use 
+`--dart-define-from-file=secrets.json`.
+
+This is easier than using a ".env" file and `define_env` described below.
+
+
 ## "dart-define" to store and use secret keys
 We can define variables when building the app like so:
 

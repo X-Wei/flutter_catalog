@@ -139,6 +139,14 @@ class MyAppSettings extends ChangeNotifier {
     notifyListeners();
   }
 
+  // Number of chatGPT conversion turns allowed.
+  static const _kChatGptTurnsKey = 'CHATGPT_TURNS_ALLOWED';
+  int get chatGptTurns => _pref.getInt(_kChatGptTurnsKey) ?? 10;
+  set chatGptTurns(int c) {
+    _pref.setInt(_kChatGptTurnsKey, c);
+    notifyListeners();
+  }
+
   // Whether the intro screen is shown.
   static const _kIntroShownKey = 'INTRO_IS_SHOWN';
   bool get introIsShown => _pref.getBool(_kIntroShownKey) ?? false;

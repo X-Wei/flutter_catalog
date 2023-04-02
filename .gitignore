@@ -2,6 +2,7 @@ tmp/
 key.properties
 local.properties
 .env
+secrets.json
 .vscode/launch.json
 build*.fish
 

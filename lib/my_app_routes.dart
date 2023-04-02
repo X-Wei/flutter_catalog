@@ -84,6 +84,7 @@ import 'routes/nav_nav_drawer_header_ex.dart';
 import 'routes/nav_pageselector_ex.dart';
 import 'routes/nav_routes_ex.dart';
 import 'routes/nav_tabs_ex.dart';
+import 'routes/networking_chatgpt_ex.dart';
 import 'routes/networking_googlebooks_ex.dart';
 import 'routes/networking_hacker_news_ex.dart';
 import 'routes/networking_rest_api_fetch_ex.dart';
@@ -1109,6 +1110,13 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
         title: 'Google Books',
         description: 'Another REST example using the Google books seach API.',
         links: {'Hacker News API': 'https://github.com/HackerNews/API'},
+      ),
+      MyRoute(
+        child: ChatGptExample(),
+        sourceFilePath: 'lib/routes/networking_chatgpt_ex.dart',
+        title: "ChatGPT",
+        description: 'Interact with ChatGPT in Flutter',
+        links: {'pub.dev': 'https://pub.dev/packages/chat_gpt_sdk'},
       ),
     ],
   ),

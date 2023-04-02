@@ -157,11 +157,11 @@ final userCoinsStreamProvider = StreamProvider.autoDispose<int>((ref) async* {
         }
         final json = snapshot.data()!;
         final val = (json[kNumCoinsKey] as int?) ?? 0;
-        if (localCoins > 0) {
+        if (localCoins != 0) {
           ref
               .read(userFirestoreDocRefProvider)
               ?.update({kNumCoinsKey: val + localCoins});
-          ref.read(mySettingsProvider).rewardCoins -= localCoins;
+          ref.read(mySettingsProvider).rewardCoins = 0;
         }
         return val + localCoins;
       },

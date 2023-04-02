@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
+import '../my_app_settings.dart';
 import 'feature_store_secrets.dart';
 import 'monetization_user_purchases_ex.dart';
 
@@ -132,13 +133,46 @@ class _RewordedAdExampleState extends ConsumerState<RewordedAdExample> {
           icon: _rewardedAd == null
               ? CircularProgressIndicator()
               : Icon(Icons.emoji_events),
-          label: Text('Click to show ad'),
+          label: Text('Click to show ad for 10 coins'),
         ),
         SizedBox(height: 32),
         Text(
           '💰 You currently have ${ref.watch(userCoinsProvider)} coins.',
           style: Theme.of(context).textTheme.titleLarge,
         ),
+        Card(
+          color: Colors.lightGreen,
+          child: ListTile(
+            title: Text('Consume 1 coin for 5 chatGPT turns quota'),
+            trailing: Icon(Icons.shopping_cart_checkout),
+            subtitle: Text(
+                'You have ${ref.watch(mySettingsProvider).chatGptTurns} free chatGPT turns.'),
+            onTap: () async {
+              final coins = ref.read(userCoinsProvider);
+              if (coins <= 0) {
+                showDialog(
+                  context: context,
+                  builder: (ctx) => AlertDialog(
+                    title: const Text('No coins left'),
+                    content: const Text(
+                        'Please first obtain some coins by watching an ad'),
+                    actions: <Widget>[
+                      TextButton(
+                        onPressed: () => Navigator.of(ctx).pop(),
+                        child: const Text('OK'),
+                      )
+                    ],
+                  ),
+                );
+                return;
+              } else {
+                await addCoins(ref, -1);
+                ref.read(mySettingsProvider).chatGptTurns += 5;
+              }
+            },
+          ),
+        ),
+        Divider(),
         //! See monetization_user_purchases_ex.dart
         buildUserBanner(context, ref),
       ],
