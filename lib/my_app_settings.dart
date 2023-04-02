@@ -151,4 +151,12 @@ class MyAppSettings extends ChangeNotifier {
   static const _kIntroShownKey = 'INTRO_IS_SHOWN';
   bool get introIsShown => _pref.getBool(_kIntroShownKey) ?? false;
   set introIsShown(bool val) => _pref.setBool(_kIntroShownKey, val);
+
+  // Which tab the user was in the last time
+  static const _kCurrentTabIdxKey = 'CURRENT_TAB_INDEX';
+  int get currentTabIdx => _pref.getInt(_kCurrentTabIdxKey) ?? 0;
+  set currentTabIdx(int n) {
+    _pref.setInt(_kCurrentTabIdxKey, n);
+    notifyListeners();
+  }
 }

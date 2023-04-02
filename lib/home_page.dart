@@ -16,30 +16,43 @@ class MyHomePage extends ConsumerStatefulWidget {
 }
 
 class _MyHomePageState extends ConsumerState<MyHomePage> {
-  static const _kBottmonNavBarItems = <BottomNavigationBarItem>[
-    BottomNavigationBarItem(
-      backgroundColor: Colors.blue,
-      icon: Icon(Icons.library_books),
-      label: 'Basics',
-    ),
-    BottomNavigationBarItem(
-      backgroundColor: Colors.blueAccent,
-      icon: Icon(Icons.insert_chart),
-      label: 'Advanced',
-    ),
-    BottomNavigationBarItem(
-      backgroundColor: Colors.blueAccent,
-      icon: Icon(Icons.rocket),
-      label: 'In Action',
-    ),
-    BottomNavigationBarItem(
-      backgroundColor: Colors.indigo,
-      icon: Icon(Icons.star),
-      label: 'Bookmarks',
-    ),
-  ];
+  List<BottomNavigationBarItem> get _bottmonNavBarItems {
+    final newBasic = nNewRoutes(kMyAppRoutesBasic);
+    final newAdvanced = nNewRoutes(kMyAppRoutesAdvanced);
+    final newInaction = nNewRoutes(kMyAppRoutesInAction);
+    return <BottomNavigationBarItem>[
+      BottomNavigationBarItem(
+        backgroundColor: Colors.blue,
+        icon: Badge(
+            label: Text(newBasic.toString()),
+            isLabelVisible: newBasic > 0,
+            child: Icon(Icons.library_books)),
+        label: 'Basics',
+      ),
+      BottomNavigationBarItem(
+        backgroundColor: Colors.blueAccent,
+        icon: Badge(
+            label: Text(newAdvanced.toString()),
+            isLabelVisible: newAdvanced > 0,
+            child: Icon(Icons.insert_chart)),
+        label: 'Advanced',
+      ),
+      BottomNavigationBarItem(
+        backgroundColor: Colors.blueAccent,
+        icon: Badge(
+            label: Text(newInaction.toString()),
+            isLabelVisible: newInaction > 0,
+            child: Icon(Icons.rocket)),
+        label: 'In Action',
+      ),
+      BottomNavigationBarItem(
+        backgroundColor: Colors.indigo,
+        icon: Icon(Icons.star),
+        label: 'Bookmarks',
+      ),
+    ];
+  }
 
-  int _currentTabIndex = 0;
   // !Adding scroll controllers to avoid errors like:
   // !"The provided ScrollController is currently attached to more than one ScrollPosition."
   final ScrollController _scrollController1 = ScrollController();
@@ -97,7 +110,7 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
     ];
     return Scaffold(
       body: IndexedStack(
-        index: _currentTabIndex,
+        index: ref.watch(mySettingsProvider).currentTabIdx,
         children: <Widget>[
           ListView(controller: _scrollController1, children: basicDemos),
           ListView(controller: _scrollController2, children: advancedDemos),
@@ -107,11 +120,11 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
-        items: _kBottmonNavBarItems,
-        currentIndex: _currentTabIndex,
+        items: _bottmonNavBarItems,
+        currentIndex: ref.watch(mySettingsProvider).currentTabIdx,
         type: BottomNavigationBarType.shifting,
         onTap: (int index) {
-          setState(() => this._currentTabIndex = index);
+          ref.read(mySettingsProvider).currentTabIdx = index;
         },
       ),
     );
@@ -165,5 +178,13 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
         children: myRouteGroup.routes.map(_myRouteToListTile).toList(),
       ),
     );
+  }
+
+  int nNewRoutes(List<MyRouteGroup> routeGroups) {
+    int res = 0;
+    for (final group in routeGroups) {
+      res += ref.watch(mySettingsProvider).numNewRoutes(group);
+    }
+    return res;
   }
 }
