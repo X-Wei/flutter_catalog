@@ -10,7 +10,7 @@ class GradientExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final txtStyle = Theme.of(context).textTheme.headline4;
+    final txtStyle = Theme.of(context).textTheme.headlineMedium;
     return Scaffold(
       appBar: NewGradientAppBar(
         title: const Text('Gradient appbar'),

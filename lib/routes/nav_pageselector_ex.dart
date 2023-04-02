@@ -36,7 +36,7 @@ class PageSelectorExample extends StatelessWidget {
               ElevatedButton(
                 onPressed: () {
                   final TabController controller =
-                      DefaultTabController.of(context)!;
+                      DefaultTabController.of(context);
                   if (!controller.indexIsChanging) {
                     controller.animateTo(kIcons.length - 1);
                   }

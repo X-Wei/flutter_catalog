@@ -37,7 +37,7 @@ class _GreyAppExampleState extends State<GreyAppExample> {
           Center(
             child: Text(
               '1926.08.17 - 2022.11.30',
-              style: Theme.of(context).textTheme.headline5,
+              style: Theme.of(context).textTheme.headlineSmall,
             ),
           ),
           Divider(),

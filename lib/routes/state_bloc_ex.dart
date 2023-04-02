@@ -170,7 +170,7 @@ class _CounterAndButton extends StatelessWidget {
               final state = snapshot.data;
               return Text(
                 '${state!.counterValue}',
-                style: Theme.of(context).textTheme.headline4,
+                style: Theme.of(context).textTheme.headlineMedium,
               );
             },
           ),

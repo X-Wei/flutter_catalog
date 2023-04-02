@@ -54,7 +54,9 @@ class _WebViewExampleState extends State<WebViewExample> {
   }
 
   Future<void> _openInWebview(String url) async {
-    if (await url_launcher.canLaunchUrl(Uri.parse(url))) {
+    final canLaunch = await url_launcher.canLaunchUrl(Uri.parse(url));
+    if (!mounted) return;
+    if (canLaunch) {
       Navigator.of(context).push(
         MaterialPageRoute(
           // **Note**: if got "ERR_CLEARTEXT_NOT_PERMITTED", modify

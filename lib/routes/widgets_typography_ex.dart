@@ -7,19 +7,19 @@ class TypographyExample extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     final _styles = <String, TextStyle>{
-      'headline1': textTheme.headline1!,
-      'headline2': textTheme.headline2!,
-      'headline3': textTheme.headline3!,
-      'headline4': textTheme.headline4!,
-      'headline5': textTheme.headline5!,
-      'headline6': textTheme.headline6!,
-      'subtitle1': textTheme.subtitle1!,
-      'subtitle2': textTheme.subtitle2!,
-      'bodyText1': textTheme.bodyText1!,
-      'bodyText2': textTheme.bodyText2!,
-      'button': textTheme.button!,
-      'caption': textTheme.caption!,
-      'overline': textTheme.overline!,
+      'headline1': textTheme.displayLarge!,
+      'headline2': textTheme.displayMedium!,
+      'headline3': textTheme.displaySmall!,
+      'headline4': textTheme.headlineMedium!,
+      'headline5': textTheme.headlineSmall!,
+      'headline6': textTheme.titleLarge!,
+      'subtitle1': textTheme.titleMedium!,
+      'subtitle2': textTheme.titleSmall!,
+      'bodyText1': textTheme.bodyLarge!,
+      'bodyText2': textTheme.bodyMedium!,
+      'button': textTheme.labelLarge!,
+      'caption': textTheme.bodySmall!,
+      'overline': textTheme.labelSmall!,
     };
     return ListView(
       children: [

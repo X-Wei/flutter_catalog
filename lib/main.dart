@@ -29,9 +29,7 @@ Future<void> main() async {
   runApp(
     ProviderScope(
       overrides: [
-        mySettingsProvider.overrideWithProvider(
-          ChangeNotifierProvider((ref) => settings),
-        ),
+        mySettingsProvider.overrideWith((ref) => settings),
       ],
       child: DevicePreview(
         enabled: !kReleaseMode,

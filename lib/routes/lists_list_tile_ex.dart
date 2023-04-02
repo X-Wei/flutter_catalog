@@ -1,4 +1,3 @@
-import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 
 class ListTileExample extends StatelessWidget {
@@ -37,7 +36,7 @@ class ListTileExample extends StatelessWidget {
         title: const Text('Tile5: tile with badge'),
         subtitle: const Text('(This uses the badges package)'),
         trailing: Badge(
-          badgeContent: const Text('3'),
+          label: const Text('3'),
           child: const Icon(Icons.message),
         ),
       ),

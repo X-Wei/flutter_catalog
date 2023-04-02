@@ -84,7 +84,7 @@ class CardExample extends StatelessWidget {
                           'Card 4 (complex example)',
                           style: Theme.of(context)
                               .textTheme
-                              .headline5!
+                              .headlineSmall!
                               .copyWith(color: Colors.white),
                         ),
                       ),

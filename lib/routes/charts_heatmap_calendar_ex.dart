@@ -13,7 +13,7 @@ class HeatmapCalendarExample extends StatelessWidget {
       children: [
         Text(
           'Heatmap calendar',
-          style: Theme.of(context).textTheme.headline4,
+          style: Theme.of(context).textTheme.headlineMedium,
         ),
         HeatMapCalendar(
           // !! Prepare the data: mapping from dates and integers

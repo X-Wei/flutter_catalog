@@ -141,10 +141,10 @@ class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Text(senderName, style: Theme.of(context).textTheme.subtitle1),
+                Text(senderName, style: Theme.of(context).textTheme.titleMedium),
                 Text(
                   DateTime.fromMillisecondsSinceEpoch(sentTime).toString(),
-                  style: Theme.of(context).textTheme.caption,
+                  style: Theme.of(context).textTheme.bodySmall,
                 ),
                 Text(msgText),
               ],

@@ -23,15 +23,17 @@ class _LocalAuthExampleState extends State<LocalAuthExample> {
   Future<bool> _auth() async {
     setState(() => this._authSuccess = false);
     if (await this._localAuth.canCheckBiometrics == false) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text(
-            'Your device is NOT capable of checking biometrics.\n'
-            'This demo will not work on your device!\n'
-            'You must have android 6.0+ and have fingerprint sensor.',
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text(
+              'Your device is NOT capable of checking biometrics.\n'
+              'This demo will not work on your device!\n'
+              'You must have android 6.0+ and have fingerprint sensor.',
+            ),
           ),
-        ),
-      );
+        );
+      }
       return false;
     }
     // **NOTE**: for local auth to work, tha MainActivity needs to extend from
@@ -48,9 +50,11 @@ class _LocalAuthExampleState extends State<LocalAuthExample> {
       }
       return authSuccess;
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(e.toString())),
-      );
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(e.toString())),
+        );
+      }
       return false;
     }
   }

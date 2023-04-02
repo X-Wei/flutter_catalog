@@ -235,7 +235,7 @@ class _GoogleMLKitExampleState extends State<GoogleMLKitExample> {
           ),
         ),
         const Divider(),
-        Text('Result:', style: Theme.of(context).textTheme.subtitle2),
+        Text('Result:', style: Theme.of(context).textTheme.titleSmall),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Text(

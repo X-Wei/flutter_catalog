@@ -13,7 +13,7 @@ class AnimatedTextKitExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final titleTextStyle = Theme.of(context).textTheme.headline5;
+    final titleTextStyle = Theme.of(context).textTheme.headlineSmall;
     return ListView(
       padding: const EdgeInsets.all(8),
       children: [

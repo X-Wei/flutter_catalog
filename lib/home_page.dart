@@ -1,4 +1,3 @@
-import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'constants.dart';
@@ -123,7 +122,7 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
     final mySettings = ref.watch(mySettingsProvider);
     final routeTitleTextStyle = Theme.of(context)
         .textTheme
-        .bodyText2!
+        .bodyMedium!
         .copyWith(fontWeight: FontWeight.bold);
     final leadingWidget =
         leading ?? mySettings.starStatusOfRoute(myRoute.routeName);
@@ -131,7 +130,7 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
     return ListTile(
       leading: isNew
           ? Badge(
-              position: BadgePosition.topEnd(top: 2, end: 2),
+              alignment: AlignmentDirectional.topEnd,
               child: leadingWidget,
             )
           : leadingWidget,
@@ -157,11 +156,11 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
       key: ValueKey(myRouteGroup.groupName),
       child: ExpansionTile(
         leading: nNew > 0
-            ? Badge(badgeContent: Text('$nNew'), child: myRouteGroup.icon)
+            ? Badge(label: Text('$nNew'), child: myRouteGroup.icon)
             : myRouteGroup.icon,
         title: Text(
           myRouteGroup.groupName,
-          style: Theme.of(context).textTheme.headline6,
+          style: Theme.of(context).textTheme.titleLarge,
         ),
         children: myRouteGroup.routes.map(_myRouteToListTile).toList(),
       ),

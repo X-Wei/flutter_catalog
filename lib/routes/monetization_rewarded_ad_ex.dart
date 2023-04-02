@@ -137,7 +137,7 @@ class _RewordedAdExampleState extends ConsumerState<RewordedAdExample> {
         SizedBox(height: 32),
         Text(
           '💰 You currently have ${ref.watch(userCoinsProvider)} coins.',
-          style: Theme.of(context).textTheme.headline6,
+          style: Theme.of(context).textTheme.titleLarge,
         ),
         //! See monetization_user_purchases_ex.dart
         buildUserBanner(context, ref),

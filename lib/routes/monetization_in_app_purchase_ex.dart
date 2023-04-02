@@ -124,7 +124,7 @@ class _InAppPurchaseExampleState extends ConsumerState<InAppPurchaseExample> {
           // !Purchases
           if (_purchases.isNotEmpty) ...[
             Divider(),
-            Text('Purchases', style: Theme.of(context).textTheme.headline6),
+            Text('Purchases', style: Theme.of(context).textTheme.titleLarge),
             for (final p in _purchases)
               Card(
                 child: Text(

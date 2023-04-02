@@ -17,14 +17,16 @@ class InAppReviewExample extends StatelessWidget {
             if (await InAppReview.instance.isAvailable()) {
               InAppReview.instance.requestReview();
             } else {
-              showDialog(
-                context: context,
-                builder: (BuildContext context) => AlertDialog(
-                  title: const Text('Review unavailable'),
-                  content: const Text(
-                      'The device is unable to show a review dialog!'),
-                ),
-              );
+              if (context.mounted) {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) => AlertDialog(
+                    title: const Text('Review unavailable'),
+                    content: const Text(
+                        'The device is unable to show a review dialog!'),
+                  ),
+                );
+              }
             }
           },
           icon: Icon(Icons.thumbs_up_down),

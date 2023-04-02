@@ -12,7 +12,7 @@ class WhatsNewExample extends StatelessWidget {
       title: Center(
         child: Text(
           '${kPackageInfo.appName} - v${kPackageInfo.version}',
-          style: Theme.of(context).textTheme.headline5,
+          style: Theme.of(context).textTheme.headlineSmall,
         ),
       ),
       items: <ListTile>[
