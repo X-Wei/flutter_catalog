@@ -42,7 +42,7 @@ import 'routes/feature_store_secrets.dart';
 import 'routes/firebase_chatroom_ex.dart';
 import 'routes/firebase_flutterfire_loginui_ex.dart';
 import 'routes/firebase_login_ex.dart';
-import 'routes/firebase_mlkit_ex.dart';
+// import 'routes/firebase_mlkit_ex.dart';
 import 'routes/firebase_vote_ex.dart';
 import 'routes/feature_grey_app.dart';
 import 'routes/growth_inapp_review_ex.dart';
@@ -1165,17 +1165,17 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
           "Google I/O'17 video": 'https://www.youtube.com/watch?v=w2TcYP8qiRI',
         },
       ),
-      MyRoute(
-        child: GoogleMLKitExample(),
-        sourceFilePath: 'lib/routes/firebase_mlkit_ex.dart',
-        title: 'Google ML Kit',
-        description: 'Image labelling, text OCR, barcode scan, face detection.',
-        links: {
-          'pub.dev': 'https://pub.dev/packages/google_ml_kit',
-          'MLKit doc':
-              'https://developers.google.com/ml-kit/vision/text-recognition',
-        },
-      ),
+      // MyRoute(
+      //   child: GoogleMLKitExample(),
+      //   sourceFilePath: 'lib/routes/firebase_mlkit_ex.dart',
+      //   title: 'Google ML Kit',
+      //   description: 'Image labelling, text OCR, barcode scan, face detection.',
+      //   links: {
+      //     'pub.dev': 'https://pub.dev/packages/google_ml_kit',
+      //     'MLKit doc':
+      //         'https://developers.google.com/ml-kit/vision/text-recognition',
+      //   },
+      // ),
     ],
   ),
 ];

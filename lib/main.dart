@@ -1,6 +1,6 @@
 import 'package:device_preview_screenshot/device_preview_screenshot.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+// import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -19,7 +19,7 @@ Future<void> main() async {
     await Firebase.initializeApp(
         options: DefaultFirebaseOptions.currentPlatform);
     // Pass all uncaught errors from the framework to Crashlytics.
-    FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
+    // FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
     await MobileAds.instance.initialize();
   }
   kPackageInfo = await PackageInfo.fromPlatform();

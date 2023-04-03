@@ -36,7 +36,7 @@ dependencies:
   firebase_auth_web: ^5.3.0
   firebase_core: ^2.9.0
   firebase_core_web: ^2.3.0
-  firebase_crashlytics: ^3.1.0
+  # firebase_crashlytics: ^3.1.0
   firebase_database: ^10.1.0
   firebase_storage: ^11.1.0
   firebase_storage_web: ^3.0.0
@@ -60,7 +60,7 @@ dependencies:
   fluttertoast: ^8.0.7
   freezed_annotation: ^2.0.3
   google_fonts: ^3.0.1
-  google_ml_kit: ^0.13.0
+  # google_ml_kit: ^0.13.0
   google_mobile_ads: ^2.1.0
   google_sign_in: ^5.4.2
   graphview: ^1.1.1
