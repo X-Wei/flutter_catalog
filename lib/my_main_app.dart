@@ -31,7 +31,6 @@ class _MyMaterialApp extends StatelessWidget {
           : kLightTheme,
       routes: kAppRoutingTable,
       debugShowCheckedModeBanner: false,
-      useInheritedMediaQuery: true,
       locale: DevicePreview.locale(context),
       builder: DevicePreview.appBuilder,
     );

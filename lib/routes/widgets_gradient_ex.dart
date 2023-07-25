@@ -1,9 +1,6 @@
 import 'dart:math' show pi;
 
 import 'package:flutter/material.dart';
-import 'package:new_gradient_app_bar/new_gradient_app_bar.dart';
-// TODO: re-add flutter_gradients when it's migrated to null-safe (https://github.com/JonathanMonga/flutter_gradients/issues/9).
-// import 'package:flutter_gradients/flutter_gradients.dart';
 
 class GradientExample extends StatelessWidget {
   const GradientExample({super.key});
@@ -12,11 +9,14 @@ class GradientExample extends StatelessWidget {
   Widget build(BuildContext context) {
     final txtStyle = Theme.of(context).textTheme.headlineMedium;
     return Scaffold(
-      appBar: NewGradientAppBar(
+      appBar: AppBar(
         title: const Text('Gradient appbar'),
-        gradient: const LinearGradient(
-          colors: [Colors.indigo, Colors.cyan],
-        ),
+        flexibleSpace: Container(
+            decoration: BoxDecoration(
+          gradient: const LinearGradient(
+            colors: [Colors.indigo, Colors.cyan],
+          ),
+        )),
       ),
       body: ListView(
         children: [

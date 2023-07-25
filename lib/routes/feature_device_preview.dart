@@ -25,7 +25,6 @@ class _DevicePreviewExampleState extends State<DevicePreviewExample> {
   Widget _appUI() {
     return MaterialApp(
       // ! Must set following 3 items to make DevicePreview work
-      useInheritedMediaQuery: true,
       locale: DevicePreview.locale(context),
       builder: DevicePreview.appBuilder,
       home: Scaffold(

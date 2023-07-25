@@ -19,7 +19,7 @@ class _ChatGptExampleState extends ConsumerState<ChatGptExample> {
   late final OpenAI _openAiClient = OpenAI.instance.build(
     token: _apiKey,
     baseOption: HttpSetup(receiveTimeout: const Duration(seconds: 20)),
-    isLog: true,
+    enableLog: true,
   );
   final _textController = TextEditingController();
   final _scrollController = ScrollController();
@@ -29,10 +29,8 @@ class _ChatGptExampleState extends ConsumerState<ChatGptExample> {
 
   Future<String> _askChatGpt(String prompt) async {
     final request = ChatCompleteText(
-      messages: [
-        Map.of({"role": "user", "content": prompt})
-      ],
-      model: kChatGptTurboModel,
+      messages: [Messages(role: Role.user, content: prompt)],
+      model: GptTurboChatModel(),
       maxToken: 500,
     );
     try {
@@ -40,7 +38,7 @@ class _ChatGptExampleState extends ConsumerState<ChatGptExample> {
       if (response == null) {
         return 'Error: response is empty!';
       }
-      return response.choices[0].message.content;
+      return response.choices[0].message?.content ?? "<error>";
     } catch (e) {
       return e.toString();
     }
