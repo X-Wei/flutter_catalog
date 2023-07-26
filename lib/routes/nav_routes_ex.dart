@@ -8,11 +8,8 @@ class RoutesExample extends StatelessWidget {
   /// Route name is useful for navigating between routes.
   /// ! Note: in the Flutter Catalog each example's names are class names
   /// (cf. [routeName] in my_route.dart). That's why we know this page's route
-  /// name is "/RoutesExample".
-  /// But be careful not to use [--obfuscate] flag when building the apk,
-  /// otherwise [runtimeType.toString()] changes
-  /// (cf. https://flutter.dev/docs/deployment/obfuscate#caveat).
-  static const kRouteName = '/RoutesExample';
+  /// name is "/nav_routes_ex" ( '/${basenameWithoutExtension(sourceFilePath)}').
+  static const kRouteName = '/nav_routes_ex';
 
   @override
   Widget build(BuildContext context) {
