@@ -71,7 +71,7 @@ class _SuperEditorExampleState extends State<SuperEditorExample> {
               documentLayoutKey: _docLayoutKey,
               scrollController: _scrollController,
               focusNode: _editorFocusNode,
-              inputSource: DocumentInputSource.ime,
+              inputSource: TextInputSource.ime,
               keyboardActions: defaultImeKeyboardActions,
               androidToolbarBuilder: (_) => AndroidTextEditingFloatingToolbar(
                 onCutPressed: _cut,
@@ -83,6 +83,7 @@ class _SuperEditorExampleState extends State<SuperEditorExample> {
                 onCutPressed: _cut,
                 onCopyPressed: _copy,
                 onPastePressed: _paste,
+                focalPoint: Offset.zero,
               ),
             ),
           ),

@@ -2,7 +2,7 @@
 // ignore_for_file: lines_longer_than_80_chars, avoid_classes_with_only_static_members
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
-    show defaultTargetPlatform, kIsWeb, TargetPlatform;
+    show TargetPlatform, defaultTargetPlatform, kIsWeb;
 
 /// Default [FirebaseOptions] for use with your Firebase apps.
 ///
@@ -73,8 +73,10 @@ class DefaultFirebaseOptions {
     projectId: 'flutter-catalog',
     databaseURL: 'https://flutter-catalog.firebaseio.com',
     storageBucket: 'flutter-catalog.appspot.com',
-    androidClientId: '785184947614-jvcu7agpj6n6vvr5poal14otu8mjdl61.apps.googleusercontent.com',
-    iosClientId: '785184947614-70ii5qm94fe28nmasjc9g864nh25l4m7.apps.googleusercontent.com',
+    androidClientId:
+        '785184947614-jvcu7agpj6n6vvr5poal14otu8mjdl61.apps.googleusercontent.com',
+    iosClientId:
+        '785184947614-70ii5qm94fe28nmasjc9g864nh25l4m7.apps.googleusercontent.com',
     iosBundleId: 'io.github.x-wei.flutter-catalog',
   );
 }

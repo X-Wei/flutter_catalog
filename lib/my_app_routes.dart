@@ -105,7 +105,6 @@ import 'routes/richtext_code_highlight_ex.dart';
 import 'routes/richtext_markdown_ex.dart';
 import 'routes/richtext_quill_ex.dart';
 import 'routes/richtext_selectable_ex.dart';
-import 'routes/richtext_supereditor_ex.dart';
 import 'routes/state_bloc_ex.dart';
 import 'routes/state_bloc_lib_ex.dart';
 import 'routes/state_inherited_widget_ex.dart';
@@ -988,13 +987,13 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
         description: 'Rich text editor',
         links: {'pub.dev': 'https://pub.dev/packages/flutter_quill'},
       ),
-      MyRoute(
-        child: SuperEditorExample(),
-        sourceFilePath: 'lib/routes/richtext_supereditor_ex.dart',
-        title: 'SuperEditor',
-        description: 'Another rich text editor',
-        links: {'pub.dev': 'https://pub.dev/packages/super_editor'},
-      ),
+      // MyRoute(
+      //   child: SuperEditorExample(),
+      //   sourceFilePath: 'lib/routes/richtext_supereditor_ex.dart',
+      //   title: 'SuperEditor',
+      //   description: 'Another rich text editor',
+      //   links: {'pub.dev': 'https://pub.dev/packages/super_editor'},
+      // ),
       MyRoute(
         child: CodeHighlightExample(),
         sourceFilePath: 'lib/routes/richtext_code_highlight_ex.dart',

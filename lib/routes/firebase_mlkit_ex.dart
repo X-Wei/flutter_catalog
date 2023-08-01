@@ -136,7 +136,7 @@ class _GoogleMLKitExampleState extends State<GoogleMLKitExample> {
         await barcodeScanner.processImage(inputImage);
     result += 'Detected ${barcodes.length} barcodes.\n';
     for (final Barcode barcode in barcodes) {
-      final Rect boundingBox = barcode.boundingBox!;
+      final Rect boundingBox = barcode.boundingBox;
       final String rawValue = barcode.rawValue!;
       final valueType = barcode.type;
       result += '\n# Barcode:\n '
