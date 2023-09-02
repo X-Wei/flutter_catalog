@@ -49,7 +49,7 @@ class _GoogleMLKitExampleState extends State<GoogleMLKitExample> {
                 }
               } catch (e) {
                 print(e);
-                Navigator.pop(ctx, null);
+                if (mounted) Navigator.pop(ctx, null);
               }
             },
           ),

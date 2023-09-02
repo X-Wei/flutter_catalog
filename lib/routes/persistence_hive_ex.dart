@@ -133,7 +133,7 @@ class _HiveExampleState extends State<HiveExample> {
             valueListenable: Hive.box<TodoItem>(kHiveBoxName).listenable(),
             builder: (context, box, _) => ListView(
               children: <Widget>[
-                for (TodoItem item in box.values) _itemToListTile(item)
+                for (final TodoItem item in box.values) _itemToListTile(item)
               ],
             ),
           ),
