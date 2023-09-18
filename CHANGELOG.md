@@ -1,5 +1,10 @@
 # Change Log
 
+## v3.7.0
+[2023-09-18]
+- update app icon to resolve trademark issue(#144)
+- upgrade to latest package version and build with flutter 3.13.4
+
 ## v3.6.0
 [2023-04-02]
 - Add ChatGPT example
