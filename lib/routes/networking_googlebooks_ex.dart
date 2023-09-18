@@ -93,9 +93,11 @@ class _RestApiGoogleBooksExampleState extends State<RestApiGoogleBooksExample> {
         );
       }
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error: $e')),
-      );
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Error: $e')),
+        );
+      }
     }
     setState(() => this._pending = false);
   }

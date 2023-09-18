@@ -122,7 +122,7 @@ class MyRoute extends StatelessWidget {
         PopupMenuButton(
           itemBuilder: (context) {
             return <PopupMenuItem>[
-              for (MapEntry<String, String> titleAndLink in this.links.entries)
+              for (final MapEntry<String, String> titleAndLink in this.links.entries)
                 PopupMenuItem(
                   child: ListTile(
                     title: Text(titleAndLink.key),

@@ -72,7 +72,7 @@ class MyAppSettings extends ChangeNotifier {
       _pref.getStringList(_kBookmarkedRoutesPreferenceKey) ?? [];
 
   List<MyRoute> get starredRoutes => [
-        for (String routename in this.starredRoutenames)
+        for (final String routename in this.starredRoutenames)
           if (_kRoutenameToRouteMap[routename] != null)
             _kRoutenameToRouteMap[routename]!
       ];
