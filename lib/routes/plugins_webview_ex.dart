@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 import 'package:url_launcher/url_launcher.dart' as url_launcher;
 
 class WebViewExample extends StatefulWidget {
@@ -11,11 +11,34 @@ class WebViewExample extends StatefulWidget {
 
 class _WebViewExampleState extends State<WebViewExample> {
   late TextEditingController _controller;
+  late WebViewController _webviewController;
 
   @override
   void initState() {
     super.initState();
     this._controller = TextEditingController();
+    this._webviewController = WebViewController()
+      ..setJavaScriptMode(JavaScriptMode.unrestricted)
+      ..setBackgroundColor(const Color(0x00000000))
+      ..setNavigationDelegate(
+        NavigationDelegate(
+          onProgress: (int progress) {
+            debugPrint('WebView is loading (progress : $progress%)');
+          },
+          onPageStarted: (String url) {
+            debugPrint('Page started loading: $url');
+          },
+          onPageFinished: (String url) {
+            debugPrint('Page finished loading: $url');
+          },
+          onNavigationRequest: (NavigationRequest request) {
+            // if (request.url.startsWith('https://www.youtube.com/')) {
+            //   return NavigationDecision.prevent;
+            // }
+            return NavigationDecision.navigate;
+          },
+        ),
+      );
   }
 
   @override
@@ -62,10 +85,10 @@ class _WebViewExampleState extends State<WebViewExample> {
           // **Note**: if got "ERR_CLEARTEXT_NOT_PERMITTED", modify
           // AndroidManifest.xml.
           // Cf. https://github.com/flutter/flutter/issues/30368#issuecomment-480300618
-          builder: (ctx) => WebviewScaffold(
-            initialChild: const Center(child: CircularProgressIndicator()),
-            url: url,
+          builder: (ctx) => Scaffold(
             appBar: AppBar(title: Text(url)),
+            body: WebViewWidget(
+                controller: _webviewController..loadRequest(Uri.parse(url))),
           ),
         ),
       );

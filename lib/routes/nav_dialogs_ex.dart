@@ -159,7 +159,7 @@ class DialogsExample extends StatelessWidget {
           onPressed: () {
             // Or: showModalBottomSheet(), with model bottom sheet, clicking
             // anywhere will dismiss the bottom sheet.
-            showBottomSheet<String?>(
+            showBottomSheet(
               context: context,
               builder: (BuildContext context) => Container(
                 decoration: const BoxDecoration(

@@ -1,8 +1,8 @@
 import 'package:community_material_icon/community_material_icon.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutterfire_ui/auth.dart';
 
 import '../constants.dart';
 
@@ -17,15 +17,6 @@ final currentUserProvider = StateProvider<User?>((ref) {
         orElse: () => null,
       );
 });
-
-final _kLoginProviderConfigs = [
-  GoogleProviderConfiguration(
-    //! The clientId is copied from the app's Firebase console.
-    clientId:
-        '785184947614-k4q21aq3rmasodkrj5gjs9qtqtkp89tt.apps.googleusercontent.com',
-  ),
-  EmailProviderConfiguration(),
-];
 
 class FlutterFireLoginUiExample extends ConsumerWidget {
   const FlutterFireLoginUiExample({super.key});
@@ -43,7 +34,6 @@ class FlutterFireLoginUiExample extends ConsumerWidget {
   Widget _buildLoginScreen() {
     /// This SignInScreen comes from FlutterFire UI package.
     return SignInScreen(
-      providerConfigs: _kLoginProviderConfigs,
       headerBuilder: (_, __, ___) => Padding(
         padding: const EdgeInsets.all(8.0),
         child: kAppIcon,
@@ -63,7 +53,6 @@ class FlutterFireLoginUiExample extends ConsumerWidget {
 
   Widget _buildProfileScreen() {
     return ProfileScreen(
-      providerConfigs: _kLoginProviderConfigs,
       children: const [
         Text(
             '🚀We could add more content to the profile screen via the `children` param.')

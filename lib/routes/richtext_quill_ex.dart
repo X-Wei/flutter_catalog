@@ -2,7 +2,12 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_quill/flutter_quill.dart'
-    show QuillController, QuillEditor, QuillToolbar;
+    show
+        QuillController,
+        QuillEditor,
+        QuillEditorConfigurations,
+        QuillSimpleToolbarConfigurations,
+        QuillToolbar;
 
 class QuillExample extends StatefulWidget {
   const QuillExample({super.key});
@@ -28,12 +33,16 @@ class _QuillExampleState extends State<QuillExample> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: QuillToolbar.basic(controller: _controller),
+      bottomNavigationBar: QuillToolbar.simple(
+          configurations:
+              QuillSimpleToolbarConfigurations(controller: _controller)),
       body: Padding(
         padding: const EdgeInsets.all(4),
         child: QuillEditor.basic(
-          controller: _controller,
-          readOnly: false,
+          configurations: QuillEditorConfigurations(
+            controller: _controller,
+            readOnly: false,
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
