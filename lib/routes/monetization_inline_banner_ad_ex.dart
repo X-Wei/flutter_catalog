@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
+import '../constants.dart';
 import 'feature_store_secrets.dart';
 import 'monetization_user_purchases_ex.dart';
 
@@ -65,6 +66,7 @@ class _MyBannerAdWidgetState extends State<MyBannerAdWidget> {
   }
 
   Future<void> _loadAd() async {
+    if (kIsOnMobile) return;
     //! Get an AnchoredAdaptiveBannerAdSize before loading the ad.
     final AnchoredAdaptiveBannerAdSize? size =
         await AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(

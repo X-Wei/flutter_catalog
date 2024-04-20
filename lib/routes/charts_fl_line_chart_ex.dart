@@ -58,7 +58,7 @@ class _FlLineChartExampleState extends State<FlLineChartExample> {
       // ! Behavior when touching the chart:
       lineTouchData: LineTouchData(
         touchTooltipData: LineTouchTooltipData(
-          tooltipBgColor: Colors.blueGrey.withOpacity(0.8),
+          getTooltipColor: (_) => Colors.blueGrey.withOpacity(0.8),
         ),
         touchCallback: (_, __) {},
         handleBuiltInTouches: true,

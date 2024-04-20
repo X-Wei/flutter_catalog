@@ -39,7 +39,7 @@ class _FlBarChartExampleState extends State<FlBarChartExample> {
       barTouchData: BarTouchData(
         enabled: true,
         touchTooltipData: BarTouchTooltipData(
-          tooltipBgColor: Colors.blueGrey,
+          getTooltipColor: (_) => Colors.blueGrey,
         ),
       ),
       // ! Borders:
