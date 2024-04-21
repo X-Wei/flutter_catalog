@@ -1,5 +1,9 @@
 plugins {
     id "com.android.application"
+    // START: FlutterFire Configuration
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
+    // END: FlutterFire Configuration
     id "kotlin-android"
     id "dev.flutter.flutter-gradle-plugin"
 }
@@ -73,6 +77,15 @@ android {
 
 flutter {
     source '../..'
+}
+
+// ! 🚧 temp solution for firestore bug.
+// see https://github.com/firebase/flutterfire/issues/8501#issuecomment-1107883048
+configurations.all {
+    resolutionStrategy {
+        force 'com.squareup.okhttp:okhttp:2.7.5'
+        force 'com.squareup.okio:okio:1.17.5'
+    }
 }
 
 dependencies {}
