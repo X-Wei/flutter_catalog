@@ -13,6 +13,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           java-version: '19'
+          distribution: 'temurin'
           cache: 'gradle'
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
