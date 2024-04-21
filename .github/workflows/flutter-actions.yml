@@ -9,6 +9,11 @@ jobs:
     steps:
       - name: Clone repository
         uses: actions/checkout@v4
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: 21
+          distribution: 'temurin'
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
@@ -29,7 +34,7 @@ jobs:
           cache: true
       - name: Update Cocoapods repo
         run: pod repo update
+      - run: flutter pub get
       - name: Install pods
         run: cd ios && pod install && cd ..
-      - run: flutter pub get
       - run: flutter build ios --release --no-codesign
