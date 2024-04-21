@@ -1,8 +1,7 @@
-import 'dart:io';
-
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+
+import 'feature_store_secrets.dart';
 
 class AnchoredAdaptiveBannerAdExample extends StatefulWidget {
   const AnchoredAdaptiveBannerAdExample({super.key});
@@ -16,22 +15,6 @@ class _AnchoredAdaptiveBannerAdExampleState
     extends State<AnchoredAdaptiveBannerAdExample> {
   bool _adLoaded = false;
   BannerAd? _bannerAd;
-
-  String get _kAdUnitId {
-    // ! Return test ad unit if we are in debug mode -- otherwise account might be banned!
-    if (Platform.isAndroid) {
-      return kDebugMode
-          // https://developers.google.com/admob/android/test-ads#sample_ad_units
-          ? 'ca-app-pub-3940256099942544/6300978111'
-          : 'ca-app-pub-7906158617398863/4414540775';
-    } else if (Platform.isIOS) {
-      return kDebugMode
-          // https://developers.google.com/admob/ios/test-ads#demo_ad_units
-          ? 'ca-app-pub-3940256099942544/2934735716'
-          : 'ca-app-pub-7906158617398863/5234412829';
-    }
-    return '';
-  }
 
   @override
   void didChangeDependencies() {
@@ -50,7 +33,7 @@ class _AnchoredAdaptiveBannerAdExampleState
       return;
     }
     _bannerAd = BannerAd(
-      adUnitId: _kAdUnitId,
+      adUnitId: MySecretsHelper.bannerAdUnitId,
       size: size,
       request: AdRequest(),
       listener: BannerAdListener(
@@ -76,7 +59,7 @@ class _AnchoredAdaptiveBannerAdExampleState
       body: Container(
         alignment: Alignment.center,
         padding: const EdgeInsets.all(8),
-        child: const Text(
+        child: const SelectableText(
           '''
         Anchored adaptive banners\n\n
 

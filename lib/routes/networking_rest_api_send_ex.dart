@@ -32,7 +32,7 @@ class _RestApiSendExampleState extends State<RestApiSendExample> {
     return ListView(
       padding: const EdgeInsets.all(16.0),
       children: <Widget>[
-        const Text(
+        const SelectableText(
           '''
 In this example we will POST to the jsonplaceholder API.
 

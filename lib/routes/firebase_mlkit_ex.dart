@@ -32,7 +32,7 @@ class _GoogleMLKitExampleState extends State<GoogleMLKitExample> {
             onTap: () async {
               final XFile? pickedFile =
                   await _picker.pickImage(source: ImageSource.camera);
-              if (mounted && pickedFile != null) {
+              if (ctx.mounted && pickedFile != null) {
                 Navigator.pop(ctx, File(pickedFile.path));
               }
             },
@@ -44,12 +44,12 @@ class _GoogleMLKitExampleState extends State<GoogleMLKitExample> {
               try {
                 final XFile? pickedFile =
                     await _picker.pickImage(source: ImageSource.gallery);
-                if (mounted && pickedFile != null) {
+                if (ctx.mounted && pickedFile != null) {
                   Navigator.pop(ctx, File(pickedFile.path));
                 }
               } catch (e) {
                 print(e);
-                if (mounted) Navigator.pop(ctx, null);
+                if (ctx.mounted) Navigator.pop(ctx, null);
               }
             },
           ),

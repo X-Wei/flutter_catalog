@@ -77,7 +77,7 @@ class _InterstitialAdExampleState extends State<InterstitialAdExample> {
     return ListView(
       padding: const EdgeInsets.all(8),
       children: [
-        Text(
+        SelectableText(
           '''
           Interstitial ad.\n
           Interstitial ads are full-screen ads that cover the interface of their host app. They're typically displayed at natural transition points in the flow of an app, such as between activities or during the pause between levels in a game. When an app shows an interstitial ad, the user has the choice to either tap on the ad and continue to its destination or close it and return to the app.
@@ -101,7 +101,7 @@ class _InterstitialAdExampleState extends State<InterstitialAdExample> {
               ? null
               : () async {
                   final adShown = await _showInterstitialAd();
-                  if (!mounted) return;
+                  if (!context.mounted) return;
                   if (adShown) {
                     Navigator.push(
                       context,

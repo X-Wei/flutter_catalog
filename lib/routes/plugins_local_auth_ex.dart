@@ -23,7 +23,7 @@ class _LocalAuthExampleState extends State<LocalAuthExample> {
   Future<bool> _auth() async {
     setState(() => this._authSuccess = false);
     if (await this._localAuth.canCheckBiometrics == false) {
-      if (context.mounted) {
+      if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
             content: Text(
@@ -50,7 +50,7 @@ class _LocalAuthExampleState extends State<LocalAuthExample> {
       }
       return authSuccess;
     } catch (e) {
-      if (context.mounted) {
+      if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text(e.toString())),
         );

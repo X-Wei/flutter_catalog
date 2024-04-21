@@ -101,7 +101,7 @@ class _RewordedAdExampleState extends ConsumerState<RewordedAdExample> {
     return ListView(
       padding: const EdgeInsets.all(8),
       children: [
-        Text(
+        SelectableText(
           '''
           Rewarded ad.\n
           Rewarded ads are ads that users have the option of interacting with in exchange for in-app rewards.
@@ -123,7 +123,7 @@ class _RewordedAdExampleState extends ConsumerState<RewordedAdExample> {
               ? null
               : () async {
                   final adShown = await _showRewardedAd();
-                  if (!adShown && mounted) {
+                  if (!adShown && context.mounted) {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
                           content: Text('Ad not displayed, please retry!')),

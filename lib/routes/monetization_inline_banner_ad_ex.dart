@@ -12,7 +12,7 @@ class InlineBannerAdExample extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Text(
+        const SelectableText(
           '''
           Inline banners\n\n
 

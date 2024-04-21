@@ -48,7 +48,7 @@ class _BottomBannerAdExampleState extends State<BottomBannerAdExample> {
       body: Container(
         alignment: Alignment.center,
         padding: const EdgeInsets.all(8),
-        child: const Text(
+        child: const SelectableText(
           '''
         Botton banner ad.\n\n
         Banner ads occupy a spot within an app's layout, either at the top or bottom of the device screen. They stay on screen while users are interacting with the app, and can refresh automatically after a certain period of time.
