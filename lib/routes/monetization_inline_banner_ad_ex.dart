@@ -66,7 +66,7 @@ class _MyBannerAdWidgetState extends State<MyBannerAdWidget> {
   }
 
   Future<void> _loadAd() async {
-    if (kIsOnMobile) return;
+    if (!kIsOnMobile) return;
     //! Get an AnchoredAdaptiveBannerAdSize before loading the ad.
     final AnchoredAdaptiveBannerAdSize? size =
         await AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(

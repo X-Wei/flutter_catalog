@@ -30,7 +30,7 @@ class _ChatGptExampleState extends ConsumerState<ChatGptExample> {
   Future<String> _askChatGpt(String prompt) async {
     final request = ChatCompleteText(
       messages: [
-        Map.of({'role': Role.user, 'content': prompt})
+        Map.of({'role': 'user', 'content': prompt})
       ],
       model: GptTurboChatModel(),
       maxToken: 500,
