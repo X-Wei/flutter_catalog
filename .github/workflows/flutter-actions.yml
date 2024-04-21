@@ -4,7 +4,20 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  build-android:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v4
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+      - run: flutter pub get
+      - run: flutter build apk
+
+  build-ios:
     runs-on: macos-latest
     steps:
       - name: Clone repository
@@ -13,6 +26,10 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           channel: stable
+          cache: true
+      - name: Update Cocoapods repo
+        run: pod repo update
+      - name: Install pods
+        run: cd ios && pod install && cd ..
       - run: flutter pub get
       - run: flutter build ios --release --no-codesign
-      - run: flutter build apk
