@@ -37,5 +37,5 @@ jobs:
         run: pod repo update
       - run: flutter pub get
       - name: Install pods
-        run: cd ios && pod install && cd ..
+        run: cd ios && pod install --repo-update && cd ..
       - run: flutter build ios --release --no-codesign
