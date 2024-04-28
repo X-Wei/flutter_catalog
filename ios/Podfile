@@ -33,6 +33,14 @@ target 'Runner' do
   use_modular_headers!
   # https://pub.dev/packages/edge_detection
   pod 'WeScan', :path => '.symlinks/plugins/edge_detection/ios/WeScan-3.0.0'
+
+  # Copied from https://github.com/flutter-ml/google_ml_kit_flutter/blob/develop/packages/example/ios/Podfile
+  # Add language package you need to use
+  pod 'GoogleMLKit/TextRecognitionChinese', '~> 5.0.0'
+  pod 'GoogleMLKit/TextRecognitionDevanagari', '~> 5.0.0'
+  pod 'GoogleMLKit/TextRecognitionJapanese', '~> 5.0.0'
+  pod 'GoogleMLKit/TextRecognitionKorean', '~> 5.0.0'
+  
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
 end
 
