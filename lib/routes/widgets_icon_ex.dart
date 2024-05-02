@@ -5,7 +5,7 @@ class IconExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return Center(dog
       child: Icon(
         Icons.image,
         size: 64.0,
