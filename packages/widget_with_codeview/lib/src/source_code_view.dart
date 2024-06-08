@@ -30,7 +30,7 @@ class SourceCodeView extends StatefulWidget {
   final Map<String, TextStyle>? darkTheme;
 
   const SourceCodeView({
-    Key? key,
+    super.key,
     required this.filePath,
     this.codeContent,
     this.codeLinkPrefix,
@@ -43,7 +43,7 @@ class SourceCodeView extends StatefulWidget {
     this.footerWidget,
     this.lightTheme,
     this.darkTheme,
-  }) : super(key: key);
+  });
 
   String? get codeLink => this.codeLinkPrefix == null
       ? null
@@ -60,7 +60,7 @@ class SourceCodeViewState extends State<SourceCodeView> {
   ScrollController scrollController = ScrollController();
 
   Widget _getCodeView(String codeContent, BuildContext context) {
-    codeContent = codeContent.replaceAll('\r\n', '\n');
+    final code = codeContent.replaceAll('\r\n', '\n');
     return Container(
       constraints: BoxConstraints.expand(),
       child: Scrollbar(
@@ -68,6 +68,7 @@ class SourceCodeViewState extends State<SourceCodeView> {
         child: SingleChildScrollView(
           controller: scrollController,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               if (widget.headerWidget != null) ...[
                 widget.headerWidget!,
@@ -77,7 +78,7 @@ class SourceCodeViewState extends State<SourceCodeView> {
                 scrollDirection: Axis.horizontal,
                 child: Selectable(
                   child: HighlightView(
-                    codeContent,
+                    code,
                     language: 'dart',
                     theme: Theme.of(context).brightness == Brightness.light
                         ? widget.lightTheme ?? atomOneLightTheme

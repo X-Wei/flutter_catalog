@@ -2389,10 +2389,9 @@ packages:
   widget_with_codeview:
     dependency: "direct main"
     description:
-      name: widget_with_codeview
-      sha256: d485b1730a3c2360093b26d9fb34b2f4ffe44ebfa0c6b764a4e73e6405286b02
-      url: "https://pub.dev"
-    source: hosted
+      path: "packages/widget_with_codeview"
+      relative: true
+    source: path
     version: "3.1.0"
   win32:
     dependency: transitive

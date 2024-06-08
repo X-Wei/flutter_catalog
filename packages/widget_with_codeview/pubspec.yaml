@@ -12,9 +12,9 @@ dependencies:
   flutter_highlight: ^0.7.0
   flutter_speed_dial: ^7.0.0
   google_fonts: ^5.1.0
-  selectable: ^0.3.0
+  selectable: ^0.3.1
   string_scanner: ^1.2.0
-  url_launcher: ^6.1.7
+  url_launcher: ^6.3.0
 
 dev_dependencies:
   flutter_test:
