@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_highlight/flutter_highlight.dart';
 import 'package:flutter_highlight/theme_map.dart' show themeMap;
 
+import 'widgets_dropdown_button_ex.dart';
+
 class CodeHighlightExample extends StatefulWidget {
   const CodeHighlightExample({super.key});
 
@@ -66,20 +68,13 @@ class _CodeHighlightExampleState extends State<CodeHighlightExample> {
   }
 
   Widget _buildThemeSelUI() {
-    return ListTile(
-      title: const Text('DropDownButton with default:'),
-      trailing: DropdownButton<String>(
-        value: _themeName,
-        onChanged: (String? newValue) {
-          if (newValue != null) {
-            setState(() => _themeName = newValue);
-          }
-        },
-        items: [
-          for (final name in themeMap.keys)
-            DropdownMenuItem<String>(value: name, child: Text(name))
-        ],
-      ),
+    return MyValuePickerTile(
+      val: _themeName,
+      values: themeMap.keys,
+      title: 'theme: ',
+      onChanged: (newVal) {
+        setState(() => _themeName = newVal);
+      },
     );
   }
 }

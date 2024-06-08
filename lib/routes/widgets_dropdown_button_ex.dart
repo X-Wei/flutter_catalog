@@ -85,3 +85,40 @@ class _DropdownButtonExampleState extends State<DropdownButtonExample> {
     );
   }
 }
+
+///! A helper class to show the UI of selecting value from a dropdown menu.
+///! Used elsewhere in the flutter catalog app.(../../screenshots/value-picker-tile.png)
+class MyValuePickerTile<T> extends StatelessWidget {
+  final T val;
+  final Iterable<T> values;
+  final String title;
+  final String Function(T)? getname;
+  final Function(T) onChanged;
+
+  const MyValuePickerTile({
+    super.key,
+    required this.val,
+    required this.values,
+    required this.title,
+    required this.onChanged,
+    this.getname,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      title: Text(title),
+      trailing: DropdownButton<T>(
+        value: val,
+        onChanged: (T? newval) {
+          if (newval != null) onChanged(newval);
+        },
+        items: [
+          for (final v in values)
+            DropdownMenuItem<T>(
+                value: v, child: Text(getname?.call(v) ?? v.toString()))
+        ],
+      ),
+    );
+  }
+}

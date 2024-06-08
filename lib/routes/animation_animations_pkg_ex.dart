@@ -2,6 +2,8 @@ import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import 'widgets_dropdown_button_ex.dart';
+
 class AnimationsPackageExample extends StatelessWidget {
   const AnimationsPackageExample({super.key});
 
@@ -230,26 +232,13 @@ class __SharedAxisExState extends State<_SharedAxisEx> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          ListTile(
-            title: const Text('SharedAxisTransitionType'),
-            trailing: DropdownButton<SharedAxisTransitionType>(
-              value: _transitionType,
-              items: [
-                for (final val in SharedAxisTransitionType.values)
-                  DropdownMenuItem(
-                    value: val,
-                    child: Text(
-                      val
-                          .toString()
-                          .substring('SharedAxisTransitionType.'.length),
-                    ),
-                  )
-              ],
-              onChanged: (SharedAxisTransitionType? val) {
-                if (val != null) setState(() => this._transitionType = val);
-              },
-            ),
-          ),
+          MyValuePickerTile(
+              val: _transitionType,
+              values: SharedAxisTransitionType.values,
+              title: "SharedAxisTransitionType",
+              onChanged: (val) {
+                setState(() => this._transitionType = val);
+              }),
         ],
       ),
     );

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_heatmap_calendar/flutter_heatmap_calendar.dart';
 
+import 'widgets_dropdown_button_ex.dart';
+
 class NewHeatmapCalendarExample extends StatefulWidget {
   const NewHeatmapCalendarExample({super.key});
 
@@ -96,18 +98,13 @@ class _NewHeatmapCalendarExampleState extends State<NewHeatmapCalendarExample> {
               value: _size,
               onChanged: (v) => setState(() => this._size = v)),
         ),
-        ListTile(
-          title: const Text('colorMode:'),
-          trailing: DropdownButton<ColorMode>(
-            value: this._colorMode,
-            onChanged: (ColorMode? newVal) {
-              if (newVal != null) setState(() => this._colorMode = newVal);
-            },
-            items: [
-              for (final val in ColorMode.values)
-                DropdownMenuItem(value: val, child: Text('$val'))
-            ],
-          ),
+        MyValuePickerTile<ColorMode>(
+          val: _colorMode,
+          values: ColorMode.values,
+          title: 'colorMode:',
+          onChanged: (newVal) {
+            setState(() => _colorMode = newVal);
+          },
         ),
       ];
 }

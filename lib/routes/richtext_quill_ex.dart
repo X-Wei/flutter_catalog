@@ -41,7 +41,7 @@ class _QuillExampleState extends State<QuillExample> {
         child: QuillEditor.basic(
           configurations: QuillEditorConfigurations(
             controller: _controller,
-            readOnly: false,
+            // readOnly: false,
           ),
         ),
       ),

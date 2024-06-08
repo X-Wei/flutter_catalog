@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:community_charts_flutter/community_charts_flutter.dart'
     as charts;
 
+import 'widgets_dropdown_button_ex.dart';
+
 /// Data class to visualize.
 class _SalesData {
   final int year;
@@ -134,35 +136,19 @@ class _TimeseriesChartExampleState extends State<TimeseriesChartExample> {
           onChanged: (bool val) => setState(() => this._stacked = val),
           value: this._stacked,
         ),
-        ListTile(
-          title: const Text('titlePosition:'),
-          trailing: DropdownButton<charts.BehaviorPosition>(
-            value: this._titlePosition,
-            onChanged: (charts.BehaviorPosition? newVal) {
-              if (newVal != null) {
-                setState(() => this._titlePosition = newVal);
-              }
-            },
-            items: [
-              for (final val in charts.BehaviorPosition.values)
-                DropdownMenuItem(value: val, child: Text('$val'))
-            ],
-          ),
-        ),
-        ListTile(
-          title: const Text('legendPosition:'),
-          trailing: DropdownButton<charts.BehaviorPosition>(
-            value: this._legendPosition,
-            onChanged: (charts.BehaviorPosition? newVal) {
-              if (newVal != null) {
-                setState(() => this._legendPosition = newVal);
-              }
-            },
-            items: [
-              for (final val in charts.BehaviorPosition.values)
-                DropdownMenuItem(value: val, child: Text('$val'))
-            ],
-          ),
-        ),
+        MyValuePickerTile(
+            val: this._titlePosition,
+            values: charts.BehaviorPosition.values,
+            title: 'titlePosition: ',
+            onChanged: (newVal) {
+              setState(() => this._titlePosition = newVal);
+            }),
+        MyValuePickerTile(
+            val: this._legendPosition,
+            values: charts.BehaviorPosition.values,
+            title: 'legendPosition: ',
+            onChanged: (newVal) {
+              setState(() => this._legendPosition = newVal);
+            }),
       ];
 }

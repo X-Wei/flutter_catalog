@@ -29,6 +29,12 @@ ThemeData _buildLightTheme() {
       colorScheme: colorScheme,
       textTheme: ButtonTextTheme.primary,
     ),
+    pageTransitionsTheme: PageTransitionsTheme(
+      builders: {
+        for (final p in TargetPlatform.values)
+          p: CupertinoPageTransitionsBuilder()
+      },
+    ),
   );
 }
 

@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tuple/tuple.dart';
 
 import '../my_app_settings.dart';
+import 'aiml_groq_ex.dart';
 
 class ChatGptExample extends ConsumerStatefulWidget {
   const ChatGptExample({super.key});
@@ -22,7 +23,6 @@ class _ChatGptExampleState extends ConsumerState<ChatGptExample> {
     enableLog: true,
   );
   final _textController = TextEditingController();
-  final _scrollController = ScrollController();
   bool _pendingResponse = false;
   //! List of (message:string, isMe:bool) pairs to represent the conversation.
   final _messages = <Tuple2<String, bool>>[];
@@ -51,16 +51,13 @@ class _ChatGptExampleState extends ConsumerState<ChatGptExample> {
     return Column(
       children: [
         Flexible(
-          child: Scrollbar(
-            controller: _scrollController,
-            thumbVisibility: true,
-            child: ListView.builder(
-              padding: const EdgeInsets.all(8.0),
-              reverse: true,
-              itemBuilder: (_, i) =>
-                  _buildMessageTile(_messages[i].item1, _messages[i].item2),
-              itemCount: _messages.length,
-            ),
+          child: ListView.builder(
+            padding: const EdgeInsets.all(8.0),
+            reverse: true,
+            //! MyMessageBubbleTile is defined in aiml_groq_ex.dart.
+            itemBuilder: (_, i) => MyMessageBubbleTile(
+                message: _messages[i].item1, isMe: _messages[i].item2),
+            itemCount: _messages.length,
           ),
         ),
         if (_pendingResponse)
@@ -73,19 +70,7 @@ class _ChatGptExampleState extends ConsumerState<ChatGptExample> {
         Divider(height: 1.0),
         _buildTextComposer(),
         Divider(height: 1.0),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-                '${ref.watch(mySettingsProvider).chatGptTurns} free turns left'),
-            TextButton.icon(
-              label: Text('More quota'),
-              icon: Icon(Icons.emoji_events),
-              onPressed: () => Navigator.of(context)
-                  .pushNamed('/monetization_rewarded_ad_ex'),
-            ),
-          ],
-        )
+        MyAiChatQuotaBar(),
       ],
     );
   }
@@ -120,57 +105,6 @@ class _ChatGptExampleState extends ConsumerState<ChatGptExample> {
       _messages.insert(0, Tuple2(resp, false));
       ref.read(mySettingsProvider).chatGptTurns--;
     });
-  }
-
-  Widget _buildMessageTile(String message, bool isMe) {
-    final avatar = isMe
-        ? CircleAvatar(
-            backgroundColor: Colors.blueGrey,
-            child: Text('Me'),
-          )
-        : CircleAvatar(
-            backgroundColor: Colors.blue,
-            child: Icon(CommunityMaterialIcons.robot),
-          );
-
-    final msgBubble = Container(
-      margin: isMe
-          ? EdgeInsets.only(
-              top: 8.0,
-              bottom: 8.0,
-              left: 80.0,
-            )
-          : EdgeInsets.only(
-              top: 8.0,
-              bottom: 8.0,
-            ),
-      padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
-      decoration: BoxDecoration(
-        color: isMe ? Colors.grey[300] : Colors.blue[100],
-        borderRadius: isMe
-            ? BorderRadius.only(
-                topLeft: Radius.circular(15.0),
-                bottomLeft: Radius.circular(15.0),
-              )
-            : BorderRadius.only(
-                topRight: Radius.circular(15.0),
-                bottomRight: Radius.circular(15.0),
-              ),
-      ),
-      child: Text(
-        message,
-        style: TextStyle(
-          color: isMe ? Colors.black : Colors.black87,
-          fontSize: 16.0,
-        ),
-        textAlign: isMe ? TextAlign.right : TextAlign.left,
-      ),
-    );
-    return ListTile(
-      leading: isMe ? null : avatar,
-      trailing: isMe ? avatar : null,
-      title: msgBubble,
-    );
   }
 
   Widget _buildTextComposer() {

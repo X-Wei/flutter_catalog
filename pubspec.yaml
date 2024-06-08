@@ -1,7 +1,7 @@
 name: flutter_catalog
 description: An app showcasing Flutter components, with side-by-side source code view.
 
-version: 3.7.2+100
+version: 3.8.0+104
 
 environment:
   sdk: ">=3.3.3 <4.0.0"
@@ -9,8 +9,6 @@ environment:
 publish_to: none
 
 dependencies:
-  flutter:
-    sdk: flutter
   animated_radial_menu: ^0.0.1
   animated_text_kit: ^4.2.2
   animations: ^2.0.11
@@ -27,6 +25,7 @@ dependencies:
   day_night_switcher: ^0.2.0+1
   device_preview: ^1.1.0
   device_preview_screenshot: ^1.0.0
+  dio: ^5.4.3+1
   edge_detection: ^1.1.3
   english_words: ^4.0.0
   extended_image: ^8.2.0
@@ -43,7 +42,11 @@ dependencies:
   firebase_storage: ^11.7.2
   firebase_storage_web: ^3.9.2
   firebase_ui_auth: ^1.13.1
+  firebase_ui_oauth_apple: ^1.2.20
+  firebase_ui_oauth_google: ^1.3.2
   fl_chart: ^0.67.0
+  flutter:
+    sdk: flutter
   flutter_bloc: ^8.1.5
   flutter_gallery_assets: ^1.0.2
   flutter_heatmap_calendar: ^1.0.5
@@ -63,6 +66,7 @@ dependencies:
   google_mobile_ads: ^5.0.0
   google_sign_in: ^6.2.1
   graphview: ^1.2.0
+  groq: ^0.0.5
   heatmap_calendar:
     git:
       url: https://github.com/CouldI/flutter_heatmap_calendar.git
@@ -79,6 +83,7 @@ dependencies:
   like_button: ^2.0.5
   local_auth: ^2.2.0
   lottie: ^3.1.0
+  # markdown: ^7.2.2
   markdown: ^7.2.2
   package_info_plus: ^7.0.0
   path: ^1.9.0
@@ -94,7 +99,7 @@ dependencies:
   sqflite: ^2.3.3
   state_notifier: ^1.0.0
   substring_highlight: ^1.0.33
-  # super_editor: ^0.2.2 TODO: add back when it depends on http ^1.0.0
+  timelines_plus: ^1.0.2
   transparent_image: ^2.0.1
   tuple: ^2.0.2
   url_launcher: ^6.2.6

@@ -40,14 +40,14 @@ class _InAppPurchaseExampleState extends ConsumerState<InAppPurchaseExample> {
     _products = resp.productDetails;
     setState(() {});
     // subscribe to purchase stream.
-    _subscription = _iap.purchaseStream.listen((data) {
+    _subscription = _iap.purchaseStream.listen((purchaseDetailsLst) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('NEW PURCHASE: $data'),
+          content: Text('NEW PURCHASE: $purchaseDetailsLst'),
         ),
       );
       debugPrint('NEW PURCHASE');
-      for (final p in data) {
+      for (final p in purchaseDetailsLst) {
         debugPrint(p.toString());
         if (p.productID == _p10coins) {
           //! See monetization_user_purchases_ex.dart
@@ -56,8 +56,12 @@ class _InAppPurchaseExampleState extends ConsumerState<InAppPurchaseExample> {
           //! See monetization_user_purchases_ex.dart
           setRemoveAds(ref, true);
         }
+        //! don't forget to complete the purchase (auto-cancel in 3 days)!
+        if (p.pendingCompletePurchase) {
+          InAppPurchase.instance.completePurchase(p);
+        }
       }
-      _purchases.addAll(data);
+      _purchases.addAll(purchaseDetailsLst);
       setState(() {});
     });
   }
