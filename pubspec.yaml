@@ -134,6 +134,9 @@ flutter_launcher_icons:
   web:
     generate: true
     image_path: res/images/app_icon.png
+  macos:
+    generate: true
+    image_path: res/images/app_icon.png
 
 # $ dart run flutter_native_splash:create
 # Cf. https://pub.dev/packages/flutter_native_splash

@@ -73,10 +73,9 @@ class DefaultFirebaseOptions {
     projectId: 'flutter-catalog',
     databaseURL: 'https://flutter-catalog.firebaseio.com',
     storageBucket: 'flutter-catalog.appspot.com',
-    androidClientId:
-        '785184947614-jvcu7agpj6n6vvr5poal14otu8mjdl61.apps.googleusercontent.com',
-    iosClientId:
-        '785184947614-70ii5qm94fe28nmasjc9g864nh25l4m7.apps.googleusercontent.com',
+    androidClientId: '785184947614-jvcu7agpj6n6vvr5poal14otu8mjdl61.apps.googleusercontent.com',
+    iosClientId: '785184947614-70ii5qm94fe28nmasjc9g864nh25l4m7.apps.googleusercontent.com',
     iosBundleId: 'io.github.x-wei.flutter-catalog',
   );
+
 }

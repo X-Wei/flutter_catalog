@@ -81,7 +81,6 @@ ios/Flutter/flutter_export_environment.sh
 .fvm/flutter_sdk
 .firebase/*.cache
 macos/Flutter/ephemeral/**
-lib/generated_plugin_registrant.dart
 **/GeneratedPluginRegistrant.*
 
 # Copied from https://raw.githubusercontent.com/flutter/flutter/master/.gitignore
