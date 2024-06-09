@@ -20,9 +20,9 @@ jobs:
         with:
           channel: stable
           cache: true
-      # - name: Build and deploy to GH pages
-      #   uses: bluefireteam/flutter-gh-pages@v7
-      - run: flutter pub get
-      - run: flutter build web --release
-      - name: Deploy to GH pages
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Build and deploy to GH pages
+        uses: bluefireteam/flutter-gh-pages@v7
+      # - run: flutter pub get
+      # - run: flutter build web --release
+      # - name: Deploy to GH pages
+      #   uses: peaceiris/actions-gh-pages@v4
