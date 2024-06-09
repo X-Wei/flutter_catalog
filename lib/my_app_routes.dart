@@ -2,6 +2,7 @@
 // "structure" of the group of example routes, in a const List<Tuple2> object.
 // ignore_for_file: sort_child_properties_last
 import 'package:community_material_icon/community_material_icon.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'constants.dart';
 import 'home_page.dart';
@@ -1193,13 +1194,14 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
               'https://developers.google.com/ml-kit/vision/text-recognition',
         },
       ),
-      MyRoute(
-        child: ChatGptExample(),
-        sourceFilePath: 'lib/routes/aiml_chatgpt_ex.dart',
-        title: "ChatGPT",
-        description: 'Interact with ChatGPT in Flutter',
-        links: {'pub.dev': 'https://pub.dev/packages/chat_gpt_sdk'},
-      ),
+      if (kDebugMode) // TODO: re-enable until the 429 error is fixed
+        MyRoute(
+          child: ChatGptExample(),
+          sourceFilePath: 'lib/routes/aiml_chatgpt_ex.dart',
+          title: "ChatGPT",
+          description: 'Interact with ChatGPT in Flutter',
+          links: {'pub.dev': 'https://pub.dev/packages/chat_gpt_sdk'},
+        ),
       MyRoute(
         sourceFilePath: 'lib/routes/aiml_groq_ex.dart',
         child: GroqExample(),

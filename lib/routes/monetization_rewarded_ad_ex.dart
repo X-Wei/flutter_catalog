@@ -133,20 +133,20 @@ class _RewordedAdExampleState extends ConsumerState<RewordedAdExample> {
           icon: _rewardedAd == null
               ? CircularProgressIndicator()
               : Icon(Icons.emoji_events),
-          label: Text('Click to show ad for 10 coins'),
+          label: Text('Watch an ad to gain 10 coins'),
         ),
         SizedBox(height: 32),
         Text(
-          '💰 You currently have ${ref.watch(userCoinsProvider)} coins.',
+          '💰 You currently have ${ref.watch(userCoinsProvider)} coins and ${ref.watch(mySettingsProvider).chatGptTurns} AI chat turns.',
           style: Theme.of(context).textTheme.titleLarge,
         ),
         Card(
           color: Colors.lightGreen,
           child: ListTile(
-            title: Text('Consume 1 coin for 5 chatGPT turns quota'),
+            title: Text('Consume 1 coin for 10 AI chat turns quota'),
             trailing: Icon(Icons.shopping_cart_checkout),
             subtitle: Text(
-                'You have ${ref.watch(mySettingsProvider).chatGptTurns} free chatGPT turns.'),
+                'You have ${ref.watch(mySettingsProvider).chatGptTurns} AI chat turns.'),
             onTap: () async {
               final coins = ref.read(userCoinsProvider);
               if (coins <= 0) {
@@ -167,7 +167,7 @@ class _RewordedAdExampleState extends ConsumerState<RewordedAdExample> {
                 return;
               } else {
                 await addCoins(ref, -1);
-                ref.read(mySettingsProvider).chatGptTurns += 5;
+                ref.read(mySettingsProvider).chatGptTurns += 10;
               }
             },
           ),

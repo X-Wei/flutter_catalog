@@ -12,7 +12,7 @@ ThemeData _buildLightTheme() {
   final colorScheme = const ColorScheme.light().copyWith(
     primary: _primaryColor,
     secondary: _secondaryColor,
-    background: Colors.white,
+    surface: Colors.white,
     error: const Color(0xFFB00020),
   );
   return ThemeData(
@@ -42,7 +42,7 @@ ThemeData _buildDarkTheme() {
   final colorScheme = const ColorScheme.dark().copyWith(
     primary: _primaryColor,
     secondary: _secondaryColor,
-    background: const Color(0xFF202124),
+    surface: const Color(0xFF202124),
     error: const Color(0xFFB00020),
   );
   return ThemeData(

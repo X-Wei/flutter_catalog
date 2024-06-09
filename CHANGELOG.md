@@ -1,5 +1,15 @@
 # Change Log
 
+## v3.8.1
+[2024-06-09]
+- add new examples: AI chat w/ Groq, download file via dio, show timeline UI
+- fix bug in firebase chatroom and IAP example 
+- add reusable class/functions across examples
+- add widget_with_codeview as git subtree
+- build with latest flutter 3.22.2
+- upgrade packages & other fixes
+
+
 ## v3.7.0
 [2023-09-18]
 - update app icon to resolve trademark issue(#144)
