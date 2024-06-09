@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:path_provider/path_provider.dart';
@@ -18,7 +20,9 @@ class MyAppSettings extends ChangeNotifier {
   };
 
   static Future<MyAppSettings> create() async {
-    debugPrint('app dir=${await getApplicationDocumentsDirectory()}');
+    if (!kIsWeb) {
+      debugPrint('app dir=${await getApplicationDocumentsDirectory()}');
+    }
     final sharedPref = await SharedPreferences.getInstance();
     final s = MyAppSettings._(sharedPref);
     await s._init();
@@ -151,7 +155,7 @@ class MyAppSettings extends ChangeNotifier {
 
   // Whether the intro screen is shown.
   static const _kIntroShownKey = 'INTRO_IS_SHOWN';
-  bool get introIsShown => _pref.getBool(_kIntroShownKey) ?? false;
+  bool get introIsShown => _pref.getBool(_kIntroShownKey) ?? kIsWeb;
   set introIsShown(bool val) => _pref.setBool(_kIntroShownKey, val);
 
   // Which tab the user was in the last time

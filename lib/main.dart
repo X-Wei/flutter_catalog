@@ -30,11 +30,19 @@ Future<void> main() async {
     ]);
     // Pass all uncaught errors from the framework to Crashlytics.
     FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
-    await MobileAds.instance.initialize();
+    if (kIsOnMobile) {
+      await MobileAds.instance.initialize();
+    }
   }
   kPackageInfo = await PackageInfo.fromPlatform();
   final settings = await MyAppSettings.create();
-  // This dir will be "$USER/Documents" on Linux.
+  if (kIsWeb) {
+    runApp(ProviderScope(
+      overrides: [mySettingsProvider.overrideWith((ref) => settings)],
+      child: MyMainApp(settings),
+    ));
+    return;
+  }
   final appDir = await getApplicationDocumentsDirectory();
   runApp(
     ProviderScope(
