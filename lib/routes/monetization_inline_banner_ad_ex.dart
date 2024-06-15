@@ -99,6 +99,7 @@ class _MyBannerAdWidgetState extends State<MyBannerAdWidget> {
 
   @override
   Widget build(BuildContext context) {
+    if (!kIsOnMobile) return Placeholder(fallbackHeight: 32);
     if (_bannerAd != null && _adLoaded) {
       return Container(
         width: _bannerAd!.size.width.toDouble(),

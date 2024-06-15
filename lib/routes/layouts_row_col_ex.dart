@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'widgets_dropdown_button_ex.dart';
+
 // Inspired by bizz84's layout demo:
 // https://github.com/bizz84/layout-demo-flutter
 class RowColExample extends StatefulWidget {
@@ -64,10 +66,6 @@ class _RowColExampleState extends State<RowColExample> {
                     },
                   ),
                   const Text('Row'),
-                ],
-              ),
-              Row(
-                children: <Widget>[
                   Radio<bool>(
                     value: false,
                     groupValue: this._isRow,
@@ -80,68 +78,29 @@ class _RowColExampleState extends State<RowColExample> {
               ),
             ],
           ),
-          ListTile(
-            title: const Text('mainAxisSize:'),
-            trailing: DropdownButton<MainAxisSize>(
-              value: _mainAxisSize,
-              onChanged: (MainAxisSize? newVal) {
-                if (newVal != null) {
-                  setState(() => this._mainAxisSize = newVal);
-                }
-              },
-              items: MainAxisSize.values
-                  .map(
-                    (MainAxisSize val) => DropdownMenuItem(
-                      value: val,
-                      child: Text(
-                        val.toString().substring('MainAxisSize.'.length),
-                      ),
-                    ),
-                  )
-                  .toList(),
-            ),
+          MyValuePickerTile<MainAxisSize>(
+            val: this._mainAxisSize,
+            values: MainAxisSize.values,
+            title: 'mainAxisSize: ',
+            onChanged: (MainAxisSize newVal) {
+              setState(() => _mainAxisSize = newVal);
+            },
           ),
-          ListTile(
-            title: const Text('mainAxisAlignment:'),
-            trailing: DropdownButton<MainAxisAlignment>(
-              value: _mainAxisAlignment,
-              onChanged: (MainAxisAlignment? newVal) {
-                if (newVal != null) {
-                  setState(() => this._mainAxisAlignment = newVal);
-                }
-              },
-              items: MainAxisAlignment.values
-                  .map(
-                    (MainAxisAlignment val) => DropdownMenuItem(
-                      value: val,
-                      child: Text(
-                        val.toString().substring('MainAxisAlignment.'.length),
-                      ),
-                    ),
-                  )
-                  .toList(),
-            ),
+          MyValuePickerTile<MainAxisAlignment>(
+            val: this._mainAxisAlignment,
+            values: MainAxisAlignment.values,
+            title: 'mainAxisAlignment: ',
+            onChanged: (MainAxisAlignment newVal) {
+              setState(() => _mainAxisAlignment = newVal);
+            },
           ),
-          ListTile(
-            title: const Text('crossAxisAlignment:'),
-            trailing: DropdownButton<CrossAxisAlignment>(
-              value: _crossAxisAlignment,
-              onChanged: (CrossAxisAlignment? newVal) {
-                if (newVal != null) {
-                  setState(() => this._crossAxisAlignment = newVal);
-                }
-              },
-              items: CrossAxisAlignment.values
-                  .map(
-                    (CrossAxisAlignment val) => DropdownMenuItem(
-                      value: val,
-                      child: Text(
-                        val.toString().substring('CrossAxisAlignment.'.length),
-                      ),
-                    ),
-                  )
-                  .toList(),
-            ),
+          MyValuePickerTile<CrossAxisAlignment>(
+            val: this._crossAxisAlignment,
+            values: CrossAxisAlignment.values,
+            title: 'crossAxisAlignment: ',
+            onChanged: (CrossAxisAlignment newVal) {
+              setState(() => _crossAxisAlignment = newVal);
+            },
           ),
         ],
       ),

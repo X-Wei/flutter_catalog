@@ -1,6 +1,9 @@
 import 'package:device_preview_screenshot/device_preview_screenshot.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:firebase_ui_auth/firebase_ui_auth.dart';
+import 'package:firebase_ui_oauth_apple/firebase_ui_oauth_apple.dart';
+import 'package:firebase_ui_oauth_google/firebase_ui_oauth_google.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -18,13 +21,28 @@ Future<void> main() async {
   if (kIsMobileOrWeb) {
     await Firebase.initializeApp(
         options: DefaultFirebaseOptions.currentPlatform);
+    FirebaseUIAuth.configureProviders([
+      GoogleProvider(
+          clientId:
+              '785184947614-k4q21aq3rmasodkrj5gjs9qtqtkp89tt.apps.googleusercontent.com'),
+      EmailAuthProvider(),
+      AppleProvider(),
+    ]);
     // Pass all uncaught errors from the framework to Crashlytics.
     FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
-    await MobileAds.instance.initialize();
+    if (kIsOnMobile) {
+      await MobileAds.instance.initialize();
+    }
   }
   kPackageInfo = await PackageInfo.fromPlatform();
   final settings = await MyAppSettings.create();
-  // This dir will be "$USER/Documents" on Linux.
+  if (kIsWeb) {
+    runApp(ProviderScope(
+      overrides: [mySettingsProvider.overrideWith((ref) => settings)],
+      child: MyMainApp(settings),
+    ));
+    return;
+  }
   final appDir = await getApplicationDocumentsDirectory();
   runApp(
     ProviderScope(

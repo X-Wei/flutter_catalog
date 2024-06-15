@@ -1,16 +1,22 @@
 import 'dart:async';
 
-import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
+import 'package:firebase_auth/firebase_auth.dart' show FirebaseAuth, User;
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../constants.dart';
+
+/// ! We use riverpod to watch the current logged-in user.
+/// ! e.g. final user = ref.watch(_currentUserProvider).valueOrNull;
+final _currentUserProvider =
+    StreamProvider<User?>((ref) => FirebaseAuth.instance.authStateChanges());
 
 // NOTE: to add firebase support, first go to firebase console, generate the
 // firebase json file, and add configuration lines in the gradle files.
 // C.f. this commit: https://github.com/X-Wei/flutter_catalog/commit/48792cbc0de62fc47e0e9ba2cd3718117f4d73d1.
-class FirebaseChatroomExample extends StatefulWidget {
+class FirebaseChatroomExample extends ConsumerStatefulWidget {
   const FirebaseChatroomExample({super.key});
 
   @override
@@ -18,8 +24,8 @@ class FirebaseChatroomExample extends StatefulWidget {
       _FirebaseChatroomExampleState();
 }
 
-class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
-  firebase_auth.User? _user;
+class _FirebaseChatroomExampleState
+    extends ConsumerState<FirebaseChatroomExample> {
   late DatabaseReference _firebaseMsgDbRef;
 
   final TextEditingController _textController = TextEditingController();
@@ -29,14 +35,14 @@ class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
   void initState() {
     super.initState();
     final now = DateTime.now().toUtc();
-    this._firebaseMsgDbRef = FirebaseDatabase.instance
+    _firebaseMsgDbRef = FirebaseDatabase.instance
         .ref()
         .child('messages/${now.year}/${now.month}/${now.day}');
-    this._user = firebase_auth.FirebaseAuth.instance.currentUser;
   }
 
   @override
   Widget build(BuildContext context) {
+    final user = ref.watch(_currentUserProvider).unwrapPrevious().valueOrNull;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
@@ -48,7 +54,7 @@ class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
         title: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Text(
-            _user == null ? 'Chatting' : 'Chatting as "${_user!.displayName}"',
+            user == null ? 'Chatting' : 'Chatting as "${user.displayName}"',
           ),
         ),
       ),
@@ -134,14 +140,15 @@ class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
                     backgroundImage: NetworkImage(senderPhotoUrl),
                   )
                 : CircleAvatar(
-                    child: Text(senderName[0]),
+                    child: senderName.isEmpty ? null : Text(senderName[0]),
                   ),
           ),
           Flexible(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Text(senderName, style: Theme.of(context).textTheme.titleMedium),
+                Text(senderName,
+                    style: Theme.of(context).textTheme.titleMedium),
                 Text(
                   DateTime.fromMillisecondsSinceEpoch(sentTime).toString(),
                   style: Theme.of(context).textTheme.bodySmall,
@@ -198,11 +205,8 @@ class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
 
   // Triggered when text is submitted (send button pressed).
   Future<void> _onTextMsgSubmitted(String text) async {
-    // Make sure _user is not null.
-    if (this._user == null) {
-      this._user = firebase_auth.FirebaseAuth.instance.currentUser;
-    }
-    if (this._user == null) {
+    final user = ref.read(_currentUserProvider).unwrapPrevious().valueOrNull;
+    if (user == null) {
       showDialog(
         context: context,
         builder: (ctx) => AlertDialog(
@@ -229,9 +233,9 @@ class _FirebaseChatroomExampleState extends State<FirebaseChatroomExample> {
     });
     // Send message to firebase realtime database.
     _firebaseMsgDbRef.push().set({
-      'senderId': this._user!.uid,
-      'senderName': this._user!.displayName,
-      'senderPhotoUrl': this._user!.photoURL,
+      'senderId': user.uid,
+      'senderName': user.displayName,
+      'senderPhotoUrl': user.photoURL,
       'text': text,
       'timestamp': DateTime.now().millisecondsSinceEpoch,
     });

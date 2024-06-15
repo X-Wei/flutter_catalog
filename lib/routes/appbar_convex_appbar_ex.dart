@@ -1,6 +1,8 @@
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
 
+import 'widgets_dropdown_button_ex.dart';
+
 const _kPages = <String, IconData>{
   'home': Icons.home,
   'map': Icons.map,
@@ -27,7 +29,14 @@ class _ConvexAppExampleState extends State<ConvexAppExample> {
       child: Scaffold(
         body: Column(
           children: [
-            _buildStyleSelector(),
+            MyValuePickerTile<TabStyle>(
+              val: _tabStyle,
+              values: TabStyle.values,
+              title: 'appbar style:',
+              onChanged: (newStyle) {
+                setState(() => _tabStyle = newStyle);
+              },
+            ),
             const Divider(),
             Expanded(
               child: TabBarView(
@@ -50,28 +59,6 @@ class _ConvexAppExampleState extends State<ConvexAppExample> {
           onTap: (int i) => print('click index=$i'),
         ),
       ),
-    );
-  }
-
-  // Select style enum from dropdown menu:
-  Widget _buildStyleSelector() {
-    final dropdown = DropdownButton<TabStyle>(
-      value: _tabStyle,
-      onChanged: (newStyle) {
-        if (newStyle != null) setState(() => _tabStyle = newStyle);
-      },
-      items: [
-        for (final style in TabStyle.values)
-          DropdownMenuItem(
-            value: style,
-            child: Text(style.toString()),
-          )
-      ],
-    );
-    return ListTile(
-      contentPadding: const EdgeInsets.all(8),
-      title: const Text('appbar style:'),
-      trailing: dropdown,
     );
   }
 }

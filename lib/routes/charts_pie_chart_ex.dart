@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:community_charts_flutter/community_charts_flutter.dart'
     as charts;
 
+import 'widgets_dropdown_button_ex.dart';
+
 /// Data class to visualize.
 class _CostsData {
   final String category;
@@ -105,50 +107,29 @@ class _PieChartExampleState extends State<PieChartExample> {
           value: this._arcRatio,
           label: '${this._arcRatio}',
         ),
-        ListTile(
-          title: const Text('arcLabelPosition:'),
-          trailing: DropdownButton<charts.ArcLabelPosition>(
-            value: this._arcLabelPosition,
-            onChanged: (charts.ArcLabelPosition? newVal) {
-              if (newVal != null) {
-                setState(() => this._arcLabelPosition = newVal);
-              }
-            },
-            items: [
-              for (final val in charts.ArcLabelPosition.values)
-                DropdownMenuItem(value: val, child: Text('$val'))
-            ],
-          ),
+        MyValuePickerTile(
+          val: this._arcLabelPosition,
+          values: charts.ArcLabelPosition.values,
+          title: 'arcLabelPosition:',
+          onChanged: (charts.ArcLabelPosition newVal) {
+            setState(() => this._arcLabelPosition = newVal);
+          },
         ),
-        ListTile(
-          title: const Text('titlePosition:'),
-          trailing: DropdownButton<charts.BehaviorPosition>(
-            value: this._titlePosition,
-            onChanged: (charts.BehaviorPosition? newVal) {
-              if (newVal != null) {
-                setState(() => this._titlePosition = newVal);
-              }
-            },
-            items: [
-              for (final val in charts.BehaviorPosition.values)
-                DropdownMenuItem(value: val, child: Text('$val'))
-            ],
-          ),
+        MyValuePickerTile(
+          val: this._titlePosition,
+          values: charts.BehaviorPosition.values,
+          title: 'titlePosition:',
+          onChanged: (charts.BehaviorPosition newVal) {
+            setState(() => this._titlePosition = newVal);
+          },
         ),
-        ListTile(
-          title: const Text('legendPosition:'),
-          trailing: DropdownButton<charts.BehaviorPosition>(
-            value: this._legendPosition,
-            onChanged: (charts.BehaviorPosition? newVal) {
-              if (newVal != null) {
-                setState(() => this._legendPosition = newVal);
-              }
-            },
-            items: [
-              for (final val in charts.BehaviorPosition.values)
-                DropdownMenuItem(value: val, child: Text('$val'))
-            ],
-          ),
+        MyValuePickerTile(
+          val: this._legendPosition,
+          values: charts.BehaviorPosition.values,
+          title: 'legendPosition:',
+          onChanged: (charts.BehaviorPosition newVal) {
+            setState(() => this._legendPosition = newVal);
+          },
         ),
       ];
 }

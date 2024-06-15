@@ -2,11 +2,13 @@
 // "structure" of the group of example routes, in a const List<Tuple2> object.
 // ignore_for_file: sort_child_properties_last
 import 'package:community_material_icon/community_material_icon.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'constants.dart';
 import 'home_page.dart';
 import 'my_route.dart';
 import 'routes/about.dart';
+import 'routes/aiml_groq_ex.dart';
 import 'routes/animation_animated_builder_ex.dart';
 import 'routes/animation_animated_container_ex.dart';
 import 'routes/animation_animated_icons_ex.dart';
@@ -37,6 +39,7 @@ import 'routes/charts_new_heatmap_calendar_ex.dart';
 import 'routes/charts_pie_chart_ex.dart';
 import 'routes/charts_radar_chart_ex.dart';
 import 'routes/charts_time_series_ex.dart';
+import 'routes/charts_timelines_ex.dart';
 import 'routes/feature_device_preview.dart';
 import 'routes/feature_store_secrets.dart';
 import 'routes/firebase_chatroom_ex.dart';
@@ -84,7 +87,8 @@ import 'routes/nav_nav_drawer_header_ex.dart';
 import 'routes/nav_pageselector_ex.dart';
 import 'routes/nav_routes_ex.dart';
 import 'routes/nav_tabs_ex.dart';
-import 'routes/networking_chatgpt_ex.dart';
+import 'routes/aiml_chatgpt_ex.dart';
+import 'routes/networking_dio_download_ex.dart';
 import 'routes/networking_googlebooks_ex.dart';
 import 'routes/networking_hacker_news_ex.dart';
 import 'routes/networking_rest_api_fetch_ex.dart';
@@ -1074,6 +1078,16 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
         title: 'Radar Chart',
         links: {'pub.dev': 'https://pub.dev/packages/flutter_radar_chart'},
       ),
+      MyRoute(
+        child: TimeLinesExample(),
+        sourceFilePath: 'lib/routes/charts_timelines_ex.dart',
+        title: 'Timelines',
+        description: 'Easily build UI to represent event timelines.',
+        links: {
+          'pub.dev': 'https://github.com/sawin0/timelines_plus',
+          'demo': 'https://chulwoo.dev/timelines/#'
+        },
+      ),
     ],
   ),
   MyRouteGroup(
@@ -1111,12 +1125,11 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
         links: {'Hacker News API': 'https://github.com/HackerNews/API'},
       ),
       MyRoute(
-        child: ChatGptExample(),
-        sourceFilePath: 'lib/routes/networking_chatgpt_ex.dart',
-        title: "ChatGPT",
-        description: 'Interact with ChatGPT in Flutter',
-        links: {'pub.dev': 'https://pub.dev/packages/chat_gpt_sdk'},
-      ),
+        child: DioDownloadExample(),
+        sourceFilePath: 'lib/routes/networking_dio_download_ex.dart',
+        title: "Dio download file",
+        links: {'pub.dev': 'https://pub.dev/packages/dio'},
+      )
     ],
   ),
   MyRouteGroup(
@@ -1133,7 +1146,7 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
         },
       ),
       MyRoute(
-        child: FlutterFireLoginUiExample(),
+        child: FirebaseAuthUiExample(),
         sourceFilePath: 'lib/routes/firebase_flutterfire_loginui_ex.dart',
         title: 'FlutterFire login UI',
         description: 'Login/profile UI from FlutterFire, recommended.',
@@ -1164,6 +1177,12 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
           "Google I/O'17 video": 'https://www.youtube.com/watch?v=w2TcYP8qiRI',
         },
       ),
+    ],
+  ),
+  MyRouteGroup(
+    groupName: 'AI/ML',
+    icon: Icon(Icons.auto_awesome),
+    routes: <MyRoute>[
       MyRoute(
         child: GoogleMLKitExample(),
         sourceFilePath: 'lib/routes/firebase_mlkit_ex.dart',
@@ -1174,6 +1193,21 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
           'MLKit doc':
               'https://developers.google.com/ml-kit/vision/text-recognition',
         },
+      ),
+      if (kDebugMode) // TODO: re-enable until the 429 error is fixed
+        MyRoute(
+          child: ChatGptExample(),
+          sourceFilePath: 'lib/routes/aiml_chatgpt_ex.dart',
+          title: "ChatGPT",
+          description: 'Interact with ChatGPT in Flutter',
+          links: {'pub.dev': 'https://pub.dev/packages/chat_gpt_sdk'},
+        ),
+      MyRoute(
+        sourceFilePath: 'lib/routes/aiml_groq_ex.dart',
+        child: GroqExample(),
+        title: 'Groq Chat',
+        description: 'Chat with open-source models provided by Groq',
+        links: {'pub.dev': 'https://pub.dev/packages/groq'},
       ),
     ],
   ),

@@ -1,3 +1,7 @@
+import 'dart:convert';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:path_provider/path_provider.dart';
@@ -16,7 +20,9 @@ class MyAppSettings extends ChangeNotifier {
   };
 
   static Future<MyAppSettings> create() async {
-    debugPrint('app dir=${await getApplicationDocumentsDirectory()}');
+    if (!kIsWeb) {
+      debugPrint('app dir=${await getApplicationDocumentsDirectory()}');
+    }
     final sharedPref = await SharedPreferences.getInstance();
     final s = MyAppSettings._(sharedPref);
     await s._init();
@@ -149,7 +155,7 @@ class MyAppSettings extends ChangeNotifier {
 
   // Whether the intro screen is shown.
   static const _kIntroShownKey = 'INTRO_IS_SHOWN';
-  bool get introIsShown => _pref.getBool(_kIntroShownKey) ?? false;
+  bool get introIsShown => _pref.getBool(_kIntroShownKey) ?? kIsWeb;
   set introIsShown(bool val) => _pref.setBool(_kIntroShownKey, val);
 
   // Which tab the user was in the last time
@@ -158,5 +164,78 @@ class MyAppSettings extends ChangeNotifier {
   set currentTabIdx(int n) {
     _pref.setInt(_kCurrentTabIdxKey, n);
     notifyListeners();
+  }
+}
+
+/// Extend the sharedPreference to support maps.
+/// TODO: examine the logic.
+/// TODO: can we use StateProvider to watch changes? cf. https://riverpod.dev/docs/concepts/scopes#initialization-of-synchronous-provider-for-async-apis
+extension SharedPreferencesMapExtension on SharedPreferences {
+  /// Set a map in SharedPreferences
+  Future<void> setMap(String key, Map<String, dynamic> map) async {
+    final jsonString = jsonEncode(map);
+    await setString(key, jsonString);
+  }
+
+  /// Get a map from SharedPreferences
+  Map<String, dynamic>? getMap(String key) {
+    final jsonString = getString(key) ?? '{}';
+    try {
+      final obj = jsonDecode(jsonString);
+      if (obj is Map<String, dynamic>) return obj;
+      return null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  /// Add or update an entry in a map in SharedPreferences
+  Future<void> updateMapEntry(String key, String mapKey, dynamic value) async {
+    final map = getMap(key);
+    if (map != null) {
+      map[mapKey] = value;
+      await setMap(key, map);
+    }
+  }
+
+  /// Remove an entry from a map in SharedPreferences
+  Future<void> removeMapEntry(String key, String mapKey) async {
+    final map = getMap(key);
+    if (map != null) {
+      map.remove(mapKey);
+      await setMap(key, map);
+    }
+  }
+
+  /// Insert a set of key-value pairs into a map in SharedPreferences
+  Future<void> insertMapEntries(
+      String key, Map<String, dynamic> entries) async {
+    final map = getMap(key);
+    if (map != null) {
+      map.addAll(entries);
+      await setMap(key, map);
+    }
+  }
+
+  /// Remove a set of key-value pairs from a map in SharedPreferences
+  Future<void> removeMapEntries(String key, Iterable<String> keys) async {
+    final map = getMap(key);
+    if (map != null) {
+      for (final key in keys) {
+        map.remove(key);
+      }
+      await setMap(key, map);
+    }
+  }
+
+  /// Check if a key exists in a map in SharedPreferences
+  bool containsMapEntry(String key, String mapKey) {
+    final map = getMap(key);
+    return map != null && map.containsKey(mapKey);
+  }
+
+  /// Clear a map in SharedPreferences
+  Future<void> clearMap(String key) async {
+    await setString(key, '{}');
   }
 }
