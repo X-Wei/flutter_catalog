@@ -59,7 +59,7 @@ dependencies:
   fluttertoast: ^8.2.5
   freezed_annotation: ^2.4.1
   google_fonts: ^5.1.0
-  google_ml_kit: ^0.16.3
+  google_ml_kit: ^0.17.0
   google_mobile_ads: ^5.0.0
   google_sign_in: ^6.2.1
   graphview: ^1.2.0
