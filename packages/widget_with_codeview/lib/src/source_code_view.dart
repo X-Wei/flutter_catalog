@@ -77,14 +77,18 @@ class SourceCodeViewState extends State<SourceCodeView> {
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Selectable(
-                  child: HighlightView(
-                    code,
-                    language: 'dart',
-                    theme: Theme.of(context).brightness == Brightness.light
-                        ? widget.lightTheme ?? atomOneLightTheme
-                        : widget.darkTheme ?? atomOneDarkTheme,
-                    textStyle: GoogleFonts.notoSansMono(fontSize: 12)
-                        .apply(fontSizeFactor: this._textScaleFactor),
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                        minWidth: MediaQuery.of(context).size.width),
+                    child: HighlightView(
+                      code,
+                      language: 'dart',
+                      theme: Theme.of(context).brightness == Brightness.light
+                          ? widget.lightTheme ?? atomOneLightTheme
+                          : widget.darkTheme ?? atomOneDarkTheme,
+                      textStyle: GoogleFonts.notoSansMono(fontSize: 12)
+                          .apply(fontSizeFactor: this._textScaleFactor),
+                    ),
                   ),
                 ),
               ),
