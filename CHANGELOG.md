@@ -1,5 +1,13 @@
 # Change Log
 
+## v3.8.2
+[2024-07-14]
+1. re-enable chatGPT demo
+2. add reusabble UI: MyTextComposer 
+3. make MyValuePickerTile responsive
+4. fix local_auth issue (#153)
+5. add fabOffset for admob policy
+
 ## v3.8.1
 [2024-06-09]
 - add new examples: AI chat w/ Groq, download file via dio, show timeline UI

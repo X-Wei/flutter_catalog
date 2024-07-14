@@ -15,6 +15,7 @@ class ChatGptExample extends ConsumerStatefulWidget {
 }
 
 class _ChatGptExampleState extends ConsumerState<ChatGptExample> {
+  ///! NOTE: be sure to top-up credits, otherwise will get error 429...
   static const _apiKey =
       String.fromEnvironment('OPENAI_API_KEY', defaultValue: '');
   late final OpenAI _openAiClient = OpenAI.instance.build(
@@ -30,6 +31,11 @@ class _ChatGptExampleState extends ConsumerState<ChatGptExample> {
   Future<String> _askChatGpt(String prompt) async {
     final request = ChatCompleteText(
       messages: [
+        //! Add previous messages to the context.
+        ...[
+          for (final m in _messages)
+            Map.of({'role': m.item2 ? 'user' : 'assistant', 'content': m.item1})
+        ],
         Map.of({'role': 'user', 'content': prompt})
       ],
       model: GptTurboChatModel(),
@@ -68,9 +74,14 @@ class _ChatGptExampleState extends ConsumerState<ChatGptExample> {
             title: LinearProgressIndicator(),
           ),
         Divider(height: 1.0),
-        _buildTextComposer(),
+        //! TODO: add a MyValuePickerTile for different models.
+        //! MyTextComposer is defined in aiml_groq_ex.dart.
+        MyTextComposer(
+            handleSubmitted: _handleSubmitted,
+            pendingResponse: _pendingResponse),
         Divider(height: 1.0),
         MyAiChatQuotaBar(),
+        // TODO: add chatGPT model picker.
       ],
     );
   }
@@ -105,37 +116,5 @@ class _ChatGptExampleState extends ConsumerState<ChatGptExample> {
       _messages.insert(0, Tuple2(resp, false));
       ref.read(mySettingsProvider).chatGptTurns--;
     });
-  }
-
-  Widget _buildTextComposer() {
-    return IconTheme(
-      data: IconThemeData(color: Theme.of(context).colorScheme.secondary),
-      child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 8.0),
-        child: Row(
-          children: [
-            Flexible(
-              child: TextField(
-                enabled: !_pendingResponse,
-                controller: _textController,
-                maxLines: null,
-                maxLength: 200,
-                onSubmitted: _handleSubmitted,
-                decoration: InputDecoration.collapsed(
-                  hintText: 'Send a message',
-                ),
-              ),
-            ),
-            Container(
-              margin: const EdgeInsets.symmetric(horizontal: 4.0),
-              child: IconButton(
-                icon: Icon(Icons.send),
-                onPressed: () => _handleSubmitted(_textController.text),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
   }
 }

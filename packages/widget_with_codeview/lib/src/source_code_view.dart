@@ -25,6 +25,8 @@ class SourceCodeView extends StatefulWidget {
   // Widget to put before/after the code content.
   final Widget? headerWidget;
   final Widget? footerWidget;
+  // Offset of pixels to add below the FAB.
+  final double fabOffset;
   // Code highlighter theme for light/dark theme, defaults to "atomOne" themes.
   final Map<String, TextStyle>? lightTheme;
   final Map<String, TextStyle>? darkTheme;
@@ -41,6 +43,7 @@ class SourceCodeView extends StatefulWidget {
     this.labelTextStyle,
     this.headerWidget,
     this.footerWidget,
+    this.fabOffset = 0,
     this.lightTheme,
     this.darkTheme,
   });
@@ -179,20 +182,26 @@ class SourceCodeViewState extends State<SourceCodeView> {
               padding: EdgeInsets.all(4.0),
               child: _getCodeView(snapshot.data!, context),
             ),
-            floatingActionButton: SpeedDial(
-              closeManually: true,
-              children: _buildFloatingButtons(
-                labelTextStyle: widget.labelTextStyle,
-                iconBackgroundColor: widget.iconBackgroundColor,
-                iconForegroundColor: widget.iconForegroundColor,
-                labelBackgroundColor: widget.labelBackgroundColor,
-                showLabelText: widget.showLabelText,
-              ),
-              backgroundColor: Colors.blue,
-              foregroundColor: Colors.white,
-              activeBackgroundColor: Colors.red,
-              activeForegroundColor: Colors.white,
-              animatedIcon: AnimatedIcons.menu_close,
+            floatingActionButton: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                SpeedDial(
+                  closeManually: true,
+                  children: _buildFloatingButtons(
+                    labelTextStyle: widget.labelTextStyle,
+                    iconBackgroundColor: widget.iconBackgroundColor,
+                    iconForegroundColor: widget.iconForegroundColor,
+                    labelBackgroundColor: widget.labelBackgroundColor,
+                    showLabelText: widget.showLabelText,
+                  ),
+                  backgroundColor: Colors.blue,
+                  foregroundColor: Colors.white,
+                  activeBackgroundColor: Colors.red,
+                  activeForegroundColor: Colors.white,
+                  animatedIcon: AnimatedIcons.menu_close,
+                ),
+                SizedBox(height: widget.fabOffset)
+              ],
             ),
           );
         } else {

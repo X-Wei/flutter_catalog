@@ -1,6 +1,8 @@
 import 'package:backdrop/backdrop.dart';
 import 'package:day_night_switcher/day_night_switcher.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart'
+    show ConsumerWidget, WidgetRef;
 import 'package:path/path.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart' as url_launcher;
@@ -19,8 +21,9 @@ import './my_app_settings.dart';
 import './my_route_search_delegate.dart';
 import './routes/about.dart';
 import 'routes/monetization_inline_banner_ad_ex.dart';
+import 'routes/monetization_user_purchases_ex.dart';
 
-class MyRoute extends StatelessWidget {
+class MyRoute extends ConsumerWidget {
   static const _kFrontLayerMinHeight = 128.0;
   // Path of source file (relative to project root). The file's content will be
   // shown in the "Code" tab.
@@ -59,7 +62,7 @@ class MyRoute extends StatelessWidget {
   String get title => _title ?? this.routeName;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final appbarLeading = (kPlatformType == PlatformType.Android ||
             this.routeName == Navigator.defaultRouteName)
         ? null
@@ -94,6 +97,7 @@ class MyRoute extends StatelessWidget {
                     },
                     headerWidget: const MyBannerAd(),
                     footerWidget: const MyBannerAd(),
+                    fabOffset: ref.watch(adIsRemovedProvider) ? 0 : 64,
                     child: this.child,
                   ),
       ),

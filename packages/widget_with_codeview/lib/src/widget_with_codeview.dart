@@ -24,6 +24,7 @@ class WidgetWithCodeView extends SourceCodeView {
     super.labelTextStyle,
     super.headerWidget,
     super.footerWidget,
+    super.fabOffset,
     super.lightTheme,
     super.darkTheme,
   });

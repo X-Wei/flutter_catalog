@@ -78,7 +78,9 @@ class _ChatGptExampleState extends ConsumerState<GroqExample> {
             title: 'Select a model: ',
             onChanged: _changeModel),
         Divider(),
-        _buildTextComposer(),
+        MyTextComposer(
+            handleSubmitted: _handleSubmitted,
+            pendingResponse: _pendingResponse),
         Divider(height: 1.0),
         MyAiChatQuotaBar(),
       ],
@@ -116,29 +118,55 @@ class _ChatGptExampleState extends ConsumerState<GroqExample> {
       ref.read(mySettingsProvider).chatGptTurns--;
     });
   }
+}
 
-  Widget _buildTextComposer() {
+/// A simple chat text composer UI.
+/// ![](../../screenshots/my-chat-text-composer.png)
+class MyTextComposer extends StatefulWidget {
+  const MyTextComposer(
+      {super.key,
+      required this.handleSubmitted,
+      required this.pendingResponse});
+
+  @override
+  _MyTextComposerState createState() => _MyTextComposerState();
+  final Future<void> Function(String) handleSubmitted;
+  final bool pendingResponse;
+}
+
+class _MyTextComposerState extends State<MyTextComposer> {
+  final TextEditingController _controller = TextEditingController();
+
+  Future<void> _handleSubmitted(String text) async {
+    await widget.handleSubmitted(text);
+    _controller.clear();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 8.0),
       child: Row(
         children: [
           Flexible(
             child: TextField(
-              enabled: !_pendingResponse,
-              controller: _textController,
+              enabled: !widget.pendingResponse,
+              controller: _controller,
               maxLines: null,
               maxLength: 200,
-              onSubmitted: _handleSubmitted,
               decoration: InputDecoration.collapsed(
                 hintText: 'Send a message',
               ),
+              textInputAction: TextInputAction.send, //! Allows "enter" to send.
+              onSubmitted: _handleSubmitted,
             ),
           ),
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 4.0),
             child: IconButton(
+              color: Theme.of(context).colorScheme.secondary,
               icon: Icon(Icons.send),
-              onPressed: () => _handleSubmitted(_textController.text),
+              onPressed: () => _handleSubmitted(_controller.text),
             ),
           ),
         ],

@@ -106,19 +106,27 @@ class MyValuePickerTile<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      title: Text(title),
-      trailing: DropdownButton<T>(
-        value: val,
-        onChanged: (T? newval) {
-          if (newval != null) onChanged(newval);
-        },
-        items: [
-          for (final v in values)
-            DropdownMenuItem<T>(
-                value: v, child: Text(getname?.call(v) ?? v.toString()))
-        ],
-      ),
+    final dropDown = DropdownButton<T>(
+      value: val,
+      onChanged: (T? newval) {
+        if (newval != null) onChanged(newval);
+      },
+      items: [
+        for (final v in values)
+          DropdownMenuItem<T>(
+              value: v, child: Text(getname?.call(v) ?? v.toString()))
+      ],
     );
+    final isSmallScreen = MediaQuery.of(context).size.width < 600;
+    return isSmallScreen
+        ? ListTile(
+            title: Align(alignment: Alignment.centerRight, child: dropDown),
+            subtitle:
+                Align(alignment: Alignment.centerRight, child: Text(title)),
+          )
+        : ListTile(
+            title: Text('$title :'),
+            trailing: dropDown,
+          );
   }
 }
