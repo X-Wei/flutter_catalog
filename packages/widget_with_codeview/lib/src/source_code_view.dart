@@ -132,9 +132,11 @@ class SourceCodeViewState extends State<SourceCodeView> {
                     text: await DefaultAssetBundle.of(context)
                         .loadString(widget.filePath ?? '')));
               }
-              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                content: Text('Code copied to clipboard!'),
-              ));
+              if (mounted) {
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  content: Text('Code copied to clipboard!'),
+                ));
+              }
             },
           ),
         if (this.widget.codeLink != null)

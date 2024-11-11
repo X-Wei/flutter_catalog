@@ -36,7 +36,7 @@ class _FileReadWriteExampleState extends State<FileReadWriteExample> {
           controller: _textController,
           maxLines: null,
         ),
-        ButtonBar(
+        OverflowBar(
           children: <Widget>[
             MaterialButton(
               onPressed: () async {

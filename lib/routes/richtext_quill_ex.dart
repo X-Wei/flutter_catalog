@@ -34,15 +34,15 @@ class _QuillExampleState extends State<QuillExample> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: QuillToolbar.simple(
-          configurations:
-              QuillSimpleToolbarConfigurations(controller: _controller)),
+          controller: _controller,
+          configurations: QuillSimpleToolbarConfigurations()),
       body: Padding(
         padding: const EdgeInsets.all(4),
         child: QuillEditor.basic(
+          controller: _controller,
           configurations: QuillEditorConfigurations(
-            controller: _controller,
-            // readOnly: false,
-          ),
+              // readOnly: false,
+              ),
         ),
       ),
       floatingActionButton: FloatingActionButton(

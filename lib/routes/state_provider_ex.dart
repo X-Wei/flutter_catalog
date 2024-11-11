@@ -107,7 +107,7 @@ class _CounterAndButton extends StatelessWidget {
             '${state.counterValue}',
             style: Theme.of(context).textTheme.headlineMedium,
           ),
-          ButtonBar(
+          OverflowBar(
             children: <Widget>[
               IconButton(
                 icon: const Icon(Icons.add),

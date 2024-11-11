@@ -46,7 +46,7 @@ class _SliverAppBarExampleState extends State<SliverAppBarExample> {
 
   Widget _getBottomAppBar() {
     return BottomAppBar(
-      child: ButtonBar(
+      child: OverflowBar(
         alignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           Row(

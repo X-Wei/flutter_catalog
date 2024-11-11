@@ -41,11 +41,13 @@ class _InAppPurchaseExampleState extends ConsumerState<InAppPurchaseExample> {
     setState(() {});
     // subscribe to purchase stream.
     _subscription = _iap.purchaseStream.listen((purchaseDetailsLst) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('NEW PURCHASE: $purchaseDetailsLst'),
-        ),
-      );
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('NEW PURCHASE: $purchaseDetailsLst'),
+          ),
+        );
+      }
       debugPrint('NEW PURCHASE');
       for (final p in purchaseDetailsLst) {
         debugPrint(p.toString());

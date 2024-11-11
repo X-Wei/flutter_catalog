@@ -18,7 +18,7 @@ class _ImagePickerExampleState extends State<ImagePickerExample> {
   Widget build(BuildContext context) {
     return ListView(
       children: <Widget>[
-        ButtonBar(
+        OverflowBar(
           children: <Widget>[
             IconButton(
               icon: const Icon(Icons.photo_camera),

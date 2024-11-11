@@ -48,7 +48,7 @@ class _GreyAppExampleState extends State<GreyAppExample> {
             value: _greyOn,
             onChanged: (v) => setState(() => _greyOn = v),
           ),
-          ButtonBar(
+          OverflowBar(
             children: [
               ElevatedButton.icon(
                 onPressed: () => _snack('+1s'),

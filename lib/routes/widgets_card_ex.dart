@@ -92,7 +92,7 @@ class CardExample extends StatelessWidget {
                   ],
                 ),
               ),
-              ButtonBar(
+              OverflowBar(
                 alignment: MainAxisAlignment.end,
                 children: <Widget>[
                   TextButton(

@@ -5,6 +5,7 @@ version: 3.8.2+106
 
 environment:
   sdk: ">=3.3.3 <4.0.0"
+  flutter: '>=3.24.0'
 
 publish_to: none
 

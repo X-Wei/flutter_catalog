@@ -121,7 +121,7 @@ class _CounterAndButton extends StatelessWidget {
               );
             },
           ),
-          ButtonBar(
+          OverflowBar(
             children: <Widget>[
               IconButton(
                 icon: const Icon(Icons.add),

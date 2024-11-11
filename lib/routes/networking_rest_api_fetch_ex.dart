@@ -47,7 +47,7 @@ class _RestApiFetchExampleState extends State<RestApiFetchExample> {
             border: OutlineInputBorder(),
           ),
         ),
-        ButtonBar(
+        OverflowBar(
           children: <Widget>[
             ElevatedButton(
               onPressed: _pending

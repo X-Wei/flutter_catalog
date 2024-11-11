@@ -21,7 +21,6 @@ import './my_app_settings.dart';
 import './my_route_search_delegate.dart';
 import './routes/about.dart';
 import 'routes/monetization_inline_banner_ad_ex.dart';
-import 'routes/monetization_user_purchases_ex.dart';
 
 class MyRoute extends ConsumerWidget {
   static const _kFrontLayerMinHeight = 128.0;

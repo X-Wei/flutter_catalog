@@ -57,7 +57,7 @@ class _WebViewExampleState extends State<WebViewExample> {
             labelText: 'URL to open',
           ),
         ),
-        ButtonBar(
+        OverflowBar(
           children: <Widget>[
             TextButton.icon(
               icon: const Icon(Icons.open_in_new),

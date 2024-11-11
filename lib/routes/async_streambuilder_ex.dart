@@ -63,8 +63,7 @@ class StreamBuilderExampleState extends State<StreamBuilderExample> {
           '$_timerValue',
           style: Theme.of(context).textTheme.headlineMedium,
         ),
-        ButtonBar(
-          mainAxisSize: MainAxisSize.min,
+        OverflowBar(
           children: <Widget>[
             IconButton(
               icon: Icon(this._paused ? Icons.play_arrow : Icons.pause),

@@ -54,7 +54,7 @@ class _PageTwo extends MaterialPageRoute<void> {
                       // return value of the pushed route when it's popped.
                       Navigator.push<String>(context, _PageThree())
                           .then((returnVal) {
-                        if (returnVal != null) {
+                        if (returnVal != null && context.mounted) {
                           ScaffoldMessenger.of(context).removeCurrentSnackBar();
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(

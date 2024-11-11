@@ -2,7 +2,6 @@ import 'package:english_words/english_words.dart' as english_words;
 import 'package:flutter/material.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
-import 'package:sembast/sembast.dart';
 import 'package:sembast/sembast_io.dart';
 
 // Data class for the mini todo application.

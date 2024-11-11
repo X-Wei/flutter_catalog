@@ -36,7 +36,7 @@ class DialogsExample extends StatelessWidget {
                 ],
               ),
             ).then((returnVal) {
-              if (returnVal != null) {
+              if (returnVal != null && context.mounted) {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text('You clicked: $returnVal'),
@@ -75,7 +75,7 @@ class DialogsExample extends StatelessWidget {
                 ],
               ),
             ).then((returnVal) {
-              if (returnVal != null) {
+              if (returnVal != null && context.mounted) {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text('You clicked: $returnVal'),
@@ -96,7 +96,7 @@ class DialogsExample extends StatelessWidget {
               context: context,
               initialTime: TimeOfDay(hour: now.hour, minute: now.minute),
             ).then((TimeOfDay? value) {
-              if (value != null) {
+              if (value != null && context.mounted) {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text(value.format(context)),
@@ -122,9 +122,11 @@ class DialogsExample extends StatelessWidget {
                 DateTime _fromDate = DateTime.now();
                 _fromDate = value;
                 final String date = DateFormat.yMMMd().format(_fromDate);
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('Selected date: $date')),
-                );
+                if (context.mounted) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text('Selected date: $date')),
+                  );
+                }
               }
             });
           },
@@ -145,9 +147,11 @@ class DialogsExample extends StatelessWidget {
                 _fromRange = value;
                 final String range =
                     '${DateFormat.yMMMd().format(_fromRange.start)} - ${DateFormat.yMMMd().format(_fromRange.end)}';
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text(range)),
-                );
+                if (context.mounted) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text(range)),
+                  );
+                }
               }
             });
           },
@@ -177,7 +181,7 @@ class DialogsExample extends StatelessWidget {
                       dense: true,
                       title: Text('Click OK to dismiss'),
                     ),
-                    ButtonBar(
+                    OverflowBar(
                       children: <Widget>[
                         TextButton(
                           onPressed: () => Navigator.pop(context),

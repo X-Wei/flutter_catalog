@@ -213,7 +213,7 @@ class _GoogleMLKitExampleState extends State<GoogleMLKitExample> {
           ),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
-          child: ButtonBar(
+          child: OverflowBar(
             children: <Widget>[
               ElevatedButton(
                 onPressed: this._imageLabelling,

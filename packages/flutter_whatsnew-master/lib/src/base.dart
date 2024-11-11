@@ -35,14 +35,14 @@ class WhatsNewPage extends StatelessWidget {
     this.title = const Text(
       'Changelog',
       textAlign: TextAlign.center,
-      style: const TextStyle(
+      style: TextStyle(
         fontSize: 22.0,
         fontWeight: FontWeight.bold,
       ),
     ),
     this.buttonText = const Text(
       'Continue',
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: Colors.white),
     ),
     this.onButtonPressed,
     this.changes,
@@ -54,7 +54,7 @@ class WhatsNewPage extends StatelessWidget {
   })  : changelog = true,
         items = null;
 
-  static void showDetailPopUp(
+  static Future<void> showDetailPopUp(
     BuildContext context,
     String title,
     String detail,
@@ -70,7 +70,7 @@ class WhatsNewPage extends StatelessWidget {
       );
     }
 
-    return showDemoDialog<Null>(
+    return showDemoDialog<void>(
       context: context,
       child: AlertDialog(
         title: Text(title),
@@ -140,13 +140,11 @@ class WhatsNewPage extends StatelessWidget {
                 left: 10.0,
                 child: ListTile(
                   title: ElevatedButton(
-                    child: buttonText,
                     style: buttonStyle,
-                    onPressed: onButtonPressed != null
-                        ? onButtonPressed
-                        : () {
+                    onPressed: onButtonPressed ?? () {
                             Navigator.pop(context);
                           },
+                    child: buttonText,
                   ),
                 ),
               ),
@@ -194,11 +192,9 @@ class WhatsNewPage extends StatelessWidget {
                 left: 10.0,
                 child: ListTile(
                   title: ElevatedButton(
-                    child: buttonText,
                     style: buttonStyle,
-                    onPressed: onButtonPressed != null
-                        ? onButtonPressed
-                        : () => Navigator.pop(context),
+                    onPressed: onButtonPressed ?? () => Navigator.pop(context),
+                    child: buttonText,
                   ),
                 ),
               ),

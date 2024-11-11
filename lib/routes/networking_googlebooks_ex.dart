@@ -35,7 +35,7 @@ class _RestApiGoogleBooksExampleState extends State<RestApiGoogleBooksExample> {
           ),
         ),
         const SizedBox(height: 4),
-        ButtonBar(
+        OverflowBar(
           children: <Widget>[
             ElevatedButton(
               onPressed:

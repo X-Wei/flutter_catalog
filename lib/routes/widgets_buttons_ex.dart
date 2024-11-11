@@ -26,7 +26,7 @@ class ButtonsExample extends StatelessWidget {
               'Raised buttons add dimension to mostly flat layouts. They '
               'emphasize functions on busy or wide spaces.',
             ),
-            ButtonBar(
+            OverflowBar(
               alignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 ElevatedButton(
@@ -49,7 +49,7 @@ class ButtonsExample extends StatelessWidget {
               'but does not lift. Use flat buttons on toolbars, in dialogs '
               'and inline with padding',
             ),
-            ButtonBar(
+            OverflowBar(
               alignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 TextButton(
@@ -72,7 +72,7 @@ class ButtonsExample extends StatelessWidget {
               'are often paired with raised buttons to indicate an '
               'alternative, secondary action.',
             ),
-            ButtonBar(
+            OverflowBar(
               alignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 OutlinedButton(

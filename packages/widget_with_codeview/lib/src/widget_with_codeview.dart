@@ -109,7 +109,7 @@ class _WidgetWithCodeViewState extends SourceCodeViewState
 class _AlwaysAliveWidget extends StatefulWidget {
   final Widget child;
 
-  const _AlwaysAliveWidget({super.key, required this.child});
+  const _AlwaysAliveWidget({required this.child});
 
   @override
   _AlwaysAliveWidgetState createState() => _AlwaysAliveWidgetState();
@@ -132,7 +132,7 @@ class _ColoredTabBar extends Container implements PreferredSizeWidget {
   final Color color;
   final TabBar tabBar;
 
-  _ColoredTabBar({super.key, required this.color, required this.tabBar});
+  _ColoredTabBar({required this.color, required this.tabBar});
 
   @override
   Size get preferredSize => tabBar.preferredSize;

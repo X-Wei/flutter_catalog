@@ -5,12 +5,12 @@ import 'base.dart';
 
 class ScheduledWhatsNewPage extends StatefulWidget {
   const ScheduledWhatsNewPage({
-    Key? key,
+    super.key,
     required this.details,
     this.delay,
     this.appVersion,
     required this.child,
-  }) : super(key: key);
+  });
 
   final WhatsNewPage details;
   final Widget child;
@@ -37,9 +37,9 @@ class _ScheduledWhatsNewPageState extends State<ScheduledWhatsNewPage> {
     super.initState();
   }
 
-  void check() async {
+  Future<void> check() async {
     if (widget.appVersion != null) {
-      final settingsKey = 'last-app-version';
+      const settingsKey = 'last-app-version';
       final lastVersion = prefs.getString(settingsKey);
       if (lastVersion == widget.appVersion) {
         return;
@@ -49,7 +49,9 @@ class _ScheduledWhatsNewPageState extends State<ScheduledWhatsNewPage> {
     if (widget.delay != null) {
       await Future<void>.delayed(widget.delay!);
     }
-    show(context);
+    if (mounted) {
+      show(context);
+    }
   }
 
   void show(BuildContext context) {
