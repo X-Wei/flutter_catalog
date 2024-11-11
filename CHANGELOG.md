@@ -1,5 +1,10 @@
 # Change Log
 
+## v3.8.3
+[2024-11-11]
+- migrate to latest packages and build with flutter 3.24.4
+- fix content-obscure-ads policy issue
+
 ## v3.8.2
 [2024-07-14]
 1. re-enable chatGPT demo
