@@ -15,7 +15,7 @@ class SharePlusExample extends StatelessWidget {
       children: [
         ElevatedButton.icon(
           onPressed: () async {
-            final result = await Share.shareWithResult(
+            final result = await Share.share(
               'Check out this app: https://github.com/x-wei/flutter_catalog',
               subject: 'Flutter-learning app!',
             );

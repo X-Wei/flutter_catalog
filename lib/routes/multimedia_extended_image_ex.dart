@@ -29,7 +29,7 @@ class _ExtendedImageExampleState extends State<ExtendedImageExample> {
       ),
       bottomNavigationBar: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
-        child: ButtonBar(
+        child: OverflowBar(
           children: <Widget>[
             ElevatedButton.icon(
               label: const Text('Rotate right'),
@@ -39,7 +39,7 @@ class _ExtendedImageExampleState extends State<ExtendedImageExample> {
             ElevatedButton.icon(
               label: const Text('Rotate left'),
               icon: const Icon(Icons.rotate_left),
-              onPressed: () => _editorKey.currentState?.rotate(right: false),
+              onPressed: () => _editorKey.currentState?.rotate(degree: -90),
             ),
             ElevatedButton.icon(
               label: const Text('Reset'),

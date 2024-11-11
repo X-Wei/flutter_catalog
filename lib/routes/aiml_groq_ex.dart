@@ -18,8 +18,8 @@ class GroqExample extends ConsumerStatefulWidget {
 class _ChatGptExampleState extends ConsumerState<GroqExample> {
   static const _apiKey =
       String.fromEnvironment('GROQ_API_KEY', defaultValue: '');
-  final groq = Groq(_apiKey, model: GroqModel.llama38b8192);
-  var _groqModel = GroqModel.llama38b8192;
+  final groq = Groq(apiKey: _apiKey, model: GroqModel.llama3_8b_8192);
+  var _groqModel = GroqModel.llama3_8b_8192;
 
   final _textController = TextEditingController();
   final _scrollController = ScrollController();
