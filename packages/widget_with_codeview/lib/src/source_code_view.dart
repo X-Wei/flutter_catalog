@@ -25,6 +25,7 @@ class SourceCodeView extends StatefulWidget {
   // Widget to put before/after the code content.
   final Widget? headerWidget;
   final Widget? footerWidget;
+  final Widget? bottomWidget;
   // Offset of pixels to add below the FAB.
   final double fabOffset;
   // Code highlighter theme for light/dark theme, defaults to "atomOne" themes.
@@ -43,6 +44,7 @@ class SourceCodeView extends StatefulWidget {
     this.labelTextStyle,
     this.headerWidget,
     this.footerWidget,
+    this.bottomWidget,
     this.fabOffset = 0,
     this.lightTheme,
     this.darkTheme,
@@ -182,6 +184,7 @@ class SourceCodeViewState extends State<SourceCodeView> {
               padding: EdgeInsets.all(4.0),
               child: _getCodeView(snapshot.data!, context),
             ),
+            bottomNavigationBar: widget.bottomWidget,
             floatingActionButton: Column(
               mainAxisSize: MainAxisSize.min,
               children: [

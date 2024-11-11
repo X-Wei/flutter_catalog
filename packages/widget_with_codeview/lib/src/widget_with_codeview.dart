@@ -1,5 +1,3 @@
-library widget_with_codeview;
-
 import 'package:flutter/material.dart';
 
 import 'source_code_view.dart';
@@ -24,6 +22,7 @@ class WidgetWithCodeView extends SourceCodeView {
     super.labelTextStyle,
     super.headerWidget,
     super.footerWidget,
+    super.bottomWidget,
     super.fabOffset,
     super.lightTheme,
     super.darkTheme,
@@ -77,7 +76,7 @@ class _WidgetWithCodeViewState extends SourceCodeViewState
     super.dispose();
   }
 
-  String get routeName => '/${this.runtimeType.toString()}';
+  String get routeName => '/${this.runtimeType}';
 
   @override
   Widget build(BuildContext context) {
@@ -110,7 +109,7 @@ class _WidgetWithCodeViewState extends SourceCodeViewState
 class _AlwaysAliveWidget extends StatefulWidget {
   final Widget child;
 
-  const _AlwaysAliveWidget({Key? key, required this.child}) : super(key: key);
+  const _AlwaysAliveWidget({super.key, required this.child});
 
   @override
   _AlwaysAliveWidgetState createState() => _AlwaysAliveWidgetState();
@@ -129,11 +128,11 @@ class _AlwaysAliveWidgetState extends State<_AlwaysAliveWidget>
 }
 
 class _ColoredTabBar extends Container implements PreferredSizeWidget {
+  @override
   final Color color;
   final TabBar tabBar;
 
-  _ColoredTabBar({Key? key, required this.color, required this.tabBar})
-      : super(key: key);
+  _ColoredTabBar({super.key, required this.color, required this.tabBar});
 
   @override
   Size get preferredSize => tabBar.preferredSize;

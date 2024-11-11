@@ -96,8 +96,10 @@ class MyRoute extends ConsumerWidget {
                       }
                     },
                     headerWidget: const MyBannerAd(),
-                    footerWidget: const MyBannerAd(),
-                    fabOffset: ref.watch(adIsRemovedProvider) ? 0 : 64,
+                    // footerWidget: const MyBannerAd(),
+                    // fabOffset: ref.watch(adIsRemovedProvider) ? 0 : 64,
+                    // Put banner in bottom to not obscure ads (due to policy).
+                    bottomWidget: const MyBannerAd(),
                     child: this.child,
                   ),
       ),
