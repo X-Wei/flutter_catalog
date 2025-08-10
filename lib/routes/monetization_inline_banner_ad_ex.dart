@@ -49,7 +49,7 @@ class InlineBannerAdExample extends StatelessWidget {
 /// See https://stackoverflow.com/a/71899578/12421326.
 class MyBannerAdWidget extends StatefulWidget {
   final Widget placeholder;
-  const MyBannerAdWidget({this.placeholder = const SizedBox()});
+  const MyBannerAdWidget({super.key, this.placeholder = const SizedBox()});
 
   @override
   State<MyBannerAdWidget> createState() => _MyBannerAdWidgetState();
@@ -122,7 +122,7 @@ class MyBannerAd extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final adRemoved = ref.watch(adIsRemovedProvider);
     if (adRemoved) {
-      return Container();
+      return SizedBox.shrink();
     }
     return MyBannerAdWidget();
   }
