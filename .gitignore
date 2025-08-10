@@ -224,3 +224,4 @@ app.*.symbols
 
 # FVM Version Cache
 .fvm/
+android/.kotlin/sessions/kotlin-compiler-*.salive
