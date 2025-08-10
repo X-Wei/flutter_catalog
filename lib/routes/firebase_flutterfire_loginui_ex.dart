@@ -37,7 +37,7 @@ class FirebaseAuthUiExample extends ConsumerWidget {
   Widget _buildLoginScreen() {
     /// This SignInScreen comes from firebase_ui_auth package.
     return SignInScreen(
-      headerBuilder: (_, __, ___) =>
+      headerBuilder: (_, _, _) =>
           Padding(padding: const EdgeInsets.all(8.0), child: kAppIcon),
       // ! Currently there's no providerConfig for Anonymous sign in, so we
       // add a btn ourselves.

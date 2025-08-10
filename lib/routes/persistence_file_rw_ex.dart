@@ -39,7 +39,7 @@ class _FileReadWriteExampleState extends State<FileReadWriteExample> {
         OverflowBar(
           children: <Widget>[
             MaterialButton(
-              onPressed: () async {
+              onPressed: () {
                 this._loadTextFromLocalFile();
                 this._textController.text = this._localFileContent;
                 _showSnackBar('String successfully loaded from local file.');

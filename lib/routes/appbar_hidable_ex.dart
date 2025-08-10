@@ -21,7 +21,7 @@ class _HidableBtmbarExampleState extends State<HidableBtmbarExample> {
           height: 80,
           color: Colors.primaries[i % Colors.primaries.length],
         ),
-        separatorBuilder: (_, __) => const SizedBox(height: 10),
+        separatorBuilder: (_, _) => const SizedBox(height: 10),
         itemCount: 100,
       ),
       bottomNavigationBar: Hidable(
@@ -40,22 +40,22 @@ class _HidableBtmbarExampleState extends State<HidableBtmbarExample> {
       BottomNavigationBarItem(
         label: 'Home',
         icon: const Icon(Icons.home, color: Colors.white),
-        backgroundColor: Colors.amber.withOpacity(.9),
+        backgroundColor: Colors.amber.withValues(alpha: 0.9),
       ),
       BottomNavigationBarItem(
         label: 'Favorites',
         icon: const Icon(Icons.favorite, color: Colors.white),
-        backgroundColor: Colors.blue.withOpacity(.9),
+        backgroundColor: Colors.blue.withValues(alpha: 0.9),
       ),
       BottomNavigationBarItem(
         label: 'Profile',
         icon: const Icon(Icons.person, color: Colors.white),
-        backgroundColor: Colors.green.withOpacity(.9),
+        backgroundColor: Colors.green.withValues(alpha: 0.9),
       ),
       BottomNavigationBarItem(
         label: 'Settings',
         icon: const Icon(Icons.settings, color: Colors.white),
-        backgroundColor: Colors.purple.withOpacity(.9),
+        backgroundColor: Colors.purple.withValues(alpha: 0.9),
       ),
     ];
   }

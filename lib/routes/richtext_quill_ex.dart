@@ -5,9 +5,9 @@ import 'package:flutter_quill/flutter_quill.dart'
     show
         QuillController,
         QuillEditor,
-        QuillEditorConfigurations,
-        QuillSimpleToolbarConfigurations,
-        QuillToolbar;
+        QuillEditorConfig,
+        QuillSimpleToolbar,
+        QuillSimpleToolbarConfig;
 
 class QuillExample extends StatefulWidget {
   const QuillExample({super.key});
@@ -33,15 +33,15 @@ class _QuillExampleState extends State<QuillExample> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: QuillToolbar.simple(
+      bottomNavigationBar: QuillSimpleToolbar(
         controller: _controller,
-        configurations: QuillSimpleToolbarConfigurations(),
+        config: QuillSimpleToolbarConfig(),
       ),
       body: Padding(
         padding: const EdgeInsets.all(4),
         child: QuillEditor.basic(
           controller: _controller,
-          configurations: QuillEditorConfigurations(
+          config: QuillEditorConfig(
             // readOnly: false,
           ),
         ),

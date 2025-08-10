@@ -1,4 +1,4 @@
-include: package:lint/analysis_options.yaml
+include: package:flutter_lints/flutter.yaml
 
 analyzer:
   exclude: 
@@ -18,9 +18,9 @@ linter:
     unnecessary_this: false
     # Same as above, allow writing local variable types to improve readability
     # without IDE.
+    omit_local_variable_types: false
     # We sometimes have print statements just for demo purposes.
     avoid_print: false
-    omit_local_variable_types: false
     use_colored_box: false
     use_decorated_box: false
     no_leading_underscores_for_local_identifiers: false

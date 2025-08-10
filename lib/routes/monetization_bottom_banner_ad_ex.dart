@@ -20,7 +20,7 @@ class _BottomBannerAdExampleState extends State<BottomBannerAdExample> {
     _loadAd();
   }
 
-  Future<void> _loadAd() async {
+  Future<void> _loadAd() {
     _bannerAd = BannerAd(
       adUnitId: MySecretsHelper.bannerAdUnitId,
       size: AdSize.banner,

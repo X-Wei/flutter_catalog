@@ -27,11 +27,11 @@ class ShimmerExample extends StatelessWidget {
             shrinkWrap: true,
             physics: const ClampingScrollPhysics(),
             itemCount: 5,
-            itemBuilder: (_, __) => Padding(
+            itemBuilder: (_, _) => Padding(
               padding: const EdgeInsets.only(bottom: 4),
               child: placeHolderRow(),
             ),
-            separatorBuilder: (_, __) => const SizedBox(height: 2),
+            separatorBuilder: (_, _) => const SizedBox(height: 2),
           ),
         ),
       ],

@@ -33,7 +33,8 @@ ThemeData _buildLightTheme() {
         for (final p in TargetPlatform.values)
           p: CupertinoPageTransitionsBuilder(),
       },
-    ), tabBarTheme: TabBarThemeData(indicatorColor: Colors.white),
+    ),
+    tabBarTheme: TabBarThemeData(indicatorColor: Colors.white),
   );
 }
 
@@ -55,6 +56,7 @@ ThemeData _buildDarkTheme() {
     buttonTheme: ButtonThemeData(
       colorScheme: colorScheme,
       textTheme: ButtonTextTheme.primary,
-    ), tabBarTheme: TabBarThemeData(indicatorColor: Colors.white),
+    ),
+    tabBarTheme: TabBarThemeData(indicatorColor: Colors.white),
   );
 }

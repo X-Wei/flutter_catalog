@@ -71,7 +71,7 @@ import 'routes/monetization_inline_banner_ad_ex.dart';
 import 'routes/monetization_interstitial_ad_ex.dart';
 import 'routes/monetization_rewarded_ad_ex.dart';
 import 'routes/monetization_user_purchases_ex.dart';
-import 'routes/multimedia_edge_detection_ex.dart';
+// import 'routes/multimedia_edge_detection_ex.dart';
 import 'routes/multimedia_extended_image_ex.dart';
 import 'routes/multimedia_image_picker_ex.dart';
 import 'routes/multimedia_image_plugin_ex.dart';
@@ -782,13 +782,13 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
         title: 'Youtube Player',
         links: {'Pub': 'https://pub.dev/packages/youtube_player_iframe'},
       ),
-      MyRoute(
-        child: EdgeDetectionExample(),
-        sourceFilePath: 'lib/routes/multimedia_edge_detection_ex.dart',
-        title: 'Edge Detection',
-        description: 'Plugin to scan documents.',
-        links: {'Pub': 'https://pub.dev/packages/edge_detection'},
-      ),
+      // MyRoute( TODO: use https://pub.dev/packages/edge_detection_plus
+      //   child: EdgeDetectionExample(),
+      //   sourceFilePath: 'lib/routes/multimedia_edge_detection_ex.dart',
+      //   title: 'Edge Detection',
+      //   description: 'Plugin to scan documents.',
+      //   links: {'Pub': 'https://pub.dev/packages/edge_detection'},
+      // ),
     ],
   ),
   MyRouteGroup(

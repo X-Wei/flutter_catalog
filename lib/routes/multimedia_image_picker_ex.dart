@@ -22,12 +22,12 @@ class _ImagePickerExampleState extends State<ImagePickerExample> {
           children: <Widget>[
             IconButton(
               icon: const Icon(Icons.photo_camera),
-              onPressed: () async => _pickImageFromCamera(),
+              onPressed: _pickImageFromCamera,
               tooltip: 'Shoot picture',
             ),
             IconButton(
               icon: const Icon(Icons.photo),
-              onPressed: () async => _pickImageFromGallery(),
+              onPressed: _pickImageFromGallery,
               tooltip: 'Pick from gallery',
             ),
           ],

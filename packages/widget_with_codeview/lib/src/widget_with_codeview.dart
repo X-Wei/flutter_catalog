@@ -85,7 +85,7 @@ class _WidgetWithCodeViewState extends SourceCodeViewState
       appBar: (child == null)
           ? null
           : _ColoredTabBar(
-              color: Theme.of(context).primaryColor,
+              tabColor: Theme.of(context).primaryColor,
               tabBar: TabBar(
                 controller: _tabController,
                 tabs: WidgetWithCodeView._TABS,
@@ -128,11 +128,10 @@ class _AlwaysAliveWidgetState extends State<_AlwaysAliveWidget>
 }
 
 class _ColoredTabBar extends Container implements PreferredSizeWidget {
-  @override
-  final Color color;
+  final Color tabColor;
   final TabBar tabBar;
 
-  _ColoredTabBar({required this.color, required this.tabBar});
+  _ColoredTabBar({required this.tabColor, required this.tabBar});
 
   @override
   Size get preferredSize => tabBar.preferredSize;
@@ -140,7 +139,7 @@ class _ColoredTabBar extends Container implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) => Material(
         elevation: 4.0,
-        color: color,
+        color: tabColor,
         child: tabBar,
       );
 }

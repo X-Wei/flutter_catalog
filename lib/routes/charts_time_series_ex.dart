@@ -64,14 +64,14 @@ class _TimeseriesChartExampleState extends State<TimeseriesChartExample> {
             /*seriesList=*/ [
               charts.Series<_SalesData, DateTime>(
                 id: 'Sales-1',
-                colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
+                colorFn: (_, _) => charts.MaterialPalette.blue.shadeDefault,
                 domainFn: (_SalesData sales, _) => sales.date,
                 measureFn: (_SalesData sales, _) => sales.sales,
                 data: this._series1,
               ),
               charts.Series<_SalesData, DateTime>(
                 id: 'Sales-2',
-                colorFn: (_, __) => charts.MaterialPalette.red.shadeDefault,
+                colorFn: (_, _) => charts.MaterialPalette.red.shadeDefault,
                 domainFn: (_SalesData sales, _) => sales.date,
                 measureFn: (_SalesData sales, _) => sales.sales,
                 data: this._series2,
