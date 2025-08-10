@@ -20,7 +20,6 @@ ThemeData _buildLightTheme() {
     brightness: Brightness.light,
     colorScheme: colorScheme,
     primaryColor: _primaryColor,
-    indicatorColor: Colors.white,
     splashColor: Colors.white24,
     splashFactory: InkRipple.splashFactory,
     canvasColor: Colors.white,
@@ -32,9 +31,9 @@ ThemeData _buildLightTheme() {
     pageTransitionsTheme: PageTransitionsTheme(
       builders: {
         for (final p in TargetPlatform.values)
-          p: CupertinoPageTransitionsBuilder()
+          p: CupertinoPageTransitionsBuilder(),
       },
-    ),
+    ), tabBarTheme: TabBarThemeData(indicatorColor: Colors.white),
   );
 }
 
@@ -51,12 +50,11 @@ ThemeData _buildDarkTheme() {
     primaryColor: _primaryColor,
     primaryColorDark: const Color(0xFF0050a0),
     primaryColorLight: _secondaryColor,
-    indicatorColor: Colors.white,
     canvasColor: const Color(0xFF202124),
     scaffoldBackgroundColor: const Color(0xFF202124),
     buttonTheme: ButtonThemeData(
       colorScheme: colorScheme,
       textTheme: ButtonTextTheme.primary,
-    ),
+    ), tabBarTheme: TabBarThemeData(indicatorColor: Colors.white),
   );
 }

@@ -23,7 +23,8 @@ class _TextFieldExampleState extends State<TextFieldExample> {
           borderRadius: BorderRadius.all(Radius.circular(10.0)),
         ),
       ),
-      onSubmitted: (val) => Fluttertoast.showToast(msg: 'You entered: ${int.parse(val)}'),
+      onSubmitted: (val) =>
+          Fluttertoast.showToast(msg: 'You entered: ${int.parse(val)}'),
       onChanged: (String val) {
         final v = int.tryParse(val);
         debugPrint('parsed value = $v');

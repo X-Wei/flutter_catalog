@@ -67,7 +67,8 @@ class __DemoPageState extends State<_DemoPage> {
             title: const Text('Note'),
             children: [
               const MarkdownBody(
-                data: 'In this example we show how to use StateNotifier and '
+                data:
+                    'In this example we show how to use StateNotifier and '
                     'freezed state to build a simple app to genrate N random names '
                     '(returns error when N<0). \n\n'
                     'The data class `MyApiState` is generated using **freezed**.\n\n'
@@ -80,8 +81,9 @@ class __DemoPageState extends State<_DemoPage> {
                 onPressed: () => Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (ctx) => Scaffold(
-                      appBar:
-                          AppBar(title: const Text('data/my_api_state.dart')),
+                      appBar: AppBar(
+                        title: const Text('data/my_api_state.dart'),
+                      ),
                       body: const WidgetWithCodeView(
                         filePath: 'lib/routes/data/my_api_state.dart',
                       ),
@@ -114,17 +116,10 @@ class __DemoPageState extends State<_DemoPage> {
             success: (names) => ListView(
               shrinkWrap: true,
               physics: const ClampingScrollPhysics(),
-              children: [
-                for (final name in names)
-                  ListTile(
-                    title: Text(name),
-                  )
-              ],
+              children: [for (final name in names) ListTile(title: Text(name))],
             ),
-            error: (errorMsg) => Text(
-              errorMsg,
-              style: const TextStyle(color: Colors.red),
-            ),
+            error: (errorMsg) =>
+                Text(errorMsg, style: const TextStyle(color: Colors.red)),
             loading: () =>
                 const Center(child: CircularProgressIndicator.adaptive()),
           ),

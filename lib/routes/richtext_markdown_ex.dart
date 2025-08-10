@@ -56,18 +56,20 @@ class MarkdownExample extends StatelessWidget {
   const MarkdownExample({super.key});
 
   static Future<void> onTapLink(
-      String text, String? href, String title, BuildContext context) async {
+    String text,
+    String? href,
+    String title,
+    BuildContext context,
+  ) async {
     if (href == null) return;
     final _url = Uri.parse(href);
     if (await canLaunchUrl(_url)) {
       launchUrl(_url);
     } else {
       if (context.mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Wrong address: $href'),
-          ),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('Wrong address: $href')));
       }
     }
   }

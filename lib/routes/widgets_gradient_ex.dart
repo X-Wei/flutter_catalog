@@ -12,11 +12,12 @@ class GradientExample extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Gradient appbar'),
         flexibleSpace: Container(
-            decoration: BoxDecoration(
-          gradient: const LinearGradient(
-            colors: [Colors.indigo, Colors.cyan],
+          decoration: BoxDecoration(
+            gradient: const LinearGradient(
+              colors: [Colors.indigo, Colors.cyan],
+            ),
           ),
-        )),
+        ),
       ),
       body: ListView(
         children: [

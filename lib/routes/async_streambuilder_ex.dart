@@ -15,8 +15,10 @@ class StreamBuilderExampleState extends State<StreamBuilderExample> {
   // A stream that updates every second. The stream's value is the number of
   // seconds elapsed since the app is started. We simply print this stream value
   // out in command-line. The value shown on UI is this._timerValue.
-  final Stream<int> _periodicStream =
-      Stream.periodic(const Duration(milliseconds: 1000), (i) => i);
+  final Stream<int> _periodicStream = Stream.periodic(
+    const Duration(milliseconds: 1000),
+    (i) => i,
+  );
   // Record of the latest stream value that we saw. Because the StreamBuilder is
   // rebuilt when we call setState(), and in the re-build we shouldn't increment
   // this._timerValue if the latest snapshot's value hasn't changed.
@@ -59,10 +61,7 @@ class StreamBuilderExampleState extends State<StreamBuilderExample> {
   Widget _buildTimerUI() {
     return Column(
       children: <Widget>[
-        Text(
-          '$_timerValue',
-          style: Theme.of(context).textTheme.headlineMedium,
-        ),
+        Text('$_timerValue', style: Theme.of(context).textTheme.headlineMedium),
         OverflowBar(
           children: <Widget>[
             IconButton(
@@ -71,12 +70,10 @@ class StreamBuilderExampleState extends State<StreamBuilderExample> {
             ),
             IconButton(
               icon: const Icon(Icons.stop),
-              onPressed: () => setState(
-                () {
-                  this._timerValue = 0;
-                  this._paused = true;
-                },
-              ),
+              onPressed: () => setState(() {
+                this._timerValue = 0;
+                this._paused = true;
+              }),
             ),
           ],
         ),

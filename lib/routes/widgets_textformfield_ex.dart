@@ -73,7 +73,7 @@ class _TextFormFieldExampleState extends State<TextFormFieldExample> {
             },
             // TextInputFormatters are applied in sequence.
             inputFormatters: <TextInputFormatter>[
-              FilteringTextInputFormatter.digitsOnly
+              FilteringTextInputFormatter.digitsOnly,
             ],
           ),
           const SizedBox(height: 24.0),

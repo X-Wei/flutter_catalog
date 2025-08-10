@@ -78,8 +78,9 @@ class _RewordedAdExampleState extends ConsumerState<RewordedAdExample> {
                 ),
                 actions: <Widget>[
                   TextButton(
-                      onPressed: () => Navigator.pop(context),
-                      child: const Text('OK'))
+                    onPressed: () => Navigator.pop(context),
+                    child: const Text('OK'),
+                  ),
                 ],
               ),
             );
@@ -101,12 +102,10 @@ class _RewordedAdExampleState extends ConsumerState<RewordedAdExample> {
     return ListView(
       padding: const EdgeInsets.all(8),
       children: [
-        SelectableText(
-          '''
+        SelectableText('''
           Rewarded ad.\n
           Rewarded ads are ads that users have the option of interacting with in exchange for in-app rewards.
-          ''',
-        ),
+          '''),
         SizedBox(height: 32),
         SwitchListTile.adaptive(
           title: Text('Personalized Ads'),
@@ -126,7 +125,8 @@ class _RewordedAdExampleState extends ConsumerState<RewordedAdExample> {
                   if (!adShown && context.mounted) {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
-                          content: Text('Ad not displayed, please retry!')),
+                        content: Text('Ad not displayed, please retry!'),
+                      ),
                     );
                   }
                 },
@@ -146,7 +146,8 @@ class _RewordedAdExampleState extends ConsumerState<RewordedAdExample> {
             title: Text('Consume 1 coin for 10 AI chat turns quota'),
             trailing: Icon(Icons.shopping_cart_checkout),
             subtitle: Text(
-                'You have ${ref.watch(mySettingsProvider).chatGptTurns} AI chat turns.'),
+              'You have ${ref.watch(mySettingsProvider).chatGptTurns} AI chat turns.',
+            ),
             onTap: () async {
               final coins = ref.read(userCoinsProvider);
               if (coins <= 0) {
@@ -155,12 +156,13 @@ class _RewordedAdExampleState extends ConsumerState<RewordedAdExample> {
                   builder: (ctx) => AlertDialog(
                     title: const Text('No coins left'),
                     content: const Text(
-                        'Please first obtain some coins by watching an ad'),
+                      'Please first obtain some coins by watching an ad',
+                    ),
                     actions: <Widget>[
                       TextButton(
                         onPressed: () => Navigator.of(ctx).pop(),
                         child: const Text('OK'),
-                      )
+                      ),
                     ],
                   ),
                 );

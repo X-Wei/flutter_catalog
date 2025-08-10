@@ -11,7 +11,7 @@ class RadarChartExample extends StatelessWidget {
       ticks: <int>[7, 14, 21, 28, 35],
       data: <List<int>>[
         [10, 20, 28, 5, 16, 15, 17, 6],
-        [15, 1, 4, 14, 23, 10, 6, 19]
+        [15, 1, 4, 14, 23, 10, 6, 19],
       ],
     );
   }

@@ -23,8 +23,10 @@ class SelectableExample extends StatelessWidget {
                 builder: (builder) {
                   return AlertDialog(
                     title: const Text('Custom menu!'),
-                    content: Text('This is a custom action\n'
-                        'Selected text = `${controller!.getSelection()!.text!}`'),
+                    content: Text(
+                      'This is a custom action\n'
+                      'Selected text = `${controller!.getSelection()!.text!}`',
+                    ),
                   );
                 },
               );

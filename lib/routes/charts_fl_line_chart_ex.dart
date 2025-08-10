@@ -24,10 +24,10 @@ class _FlLineChartExampleState extends State<FlLineChartExample> {
   Widget build(BuildContext context) {
     /// !!Step2: convert data into a list of [FlSpot].
     final spots1 = <FlSpot>[
-      for (final entry in _data1.entries) FlSpot(entry.key, entry.value)
+      for (final entry in _data1.entries) FlSpot(entry.key, entry.value),
     ];
     final spots2 = <FlSpot>[
-      for (final entry in _data2.entries) FlSpot(entry.key, entry.value)
+      for (final entry in _data2.entries) FlSpot(entry.key, entry.value),
     ];
 
     /// !!Step3: prepare LineChartData
@@ -42,8 +42,10 @@ class _FlLineChartExampleState extends State<FlLineChartExample> {
           barWidth: 8,
           isCurved: _isCurved,
           dotData: FlDotData(show: _showDot),
-          belowBarData:
-              BarAreaData(show: _showBelowArea, color: Colors.blue[200]),
+          belowBarData: BarAreaData(
+            show: _showBelowArea,
+            color: Colors.blue[200],
+          ),
         ),
         LineChartBarData(
           spots: spots2,
@@ -51,8 +53,10 @@ class _FlLineChartExampleState extends State<FlLineChartExample> {
           barWidth: 4,
           isCurved: _isCurved,
           dotData: FlDotData(show: _showDot),
-          belowBarData:
-              BarAreaData(show: _showBelowArea, color: Colors.red[200]),
+          belowBarData: BarAreaData(
+            show: _showBelowArea,
+            color: Colors.red[200],
+          ),
         ),
       ],
       // ! Behavior when touching the chart:

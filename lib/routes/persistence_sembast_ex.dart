@@ -19,18 +19,17 @@ class TodoItem {
   });
 
   TodoItem.fromJsonMap(Map<String, dynamic> map)
-      : id = map['id'] as int,
-        content = map['content'] as String,
-        isDone = map['isDone'] as bool,
-        createdAt =
-            DateTime.fromMillisecondsSinceEpoch(map['createdAt'] as int);
+    : id = map['id'] as int,
+      content = map['content'] as String,
+      isDone = map['isDone'] as bool,
+      createdAt = DateTime.fromMillisecondsSinceEpoch(map['createdAt'] as int);
 
   Map<String, dynamic> toJsonMap() => {
-        'id': id,
-        'content': content,
-        'isDone': isDone,
-        'createdAt': createdAt.millisecondsSinceEpoch,
-      };
+    'id': id,
+    'content': content,
+    'isDone': isDone,
+    'createdAt': createdAt.millisecondsSinceEpoch,
+  };
 }
 
 class SembastExample extends StatefulWidget {
@@ -72,10 +71,8 @@ class _SembastExampleState extends State<SembastExample> {
     final recordSnapshots = await this._store.find(this._db, finder: finder);
     this._todos = recordSnapshots
         .map(
-          (snapshot) => TodoItem.fromJsonMap({
-            ...snapshot.value,
-            'id': snapshot.key,
-          }),
+          (snapshot) =>
+              TodoItem.fromJsonMap({...snapshot.value, 'id': snapshot.key}),
         )
         .toList();
   }
@@ -92,19 +89,19 @@ class _SembastExampleState extends State<SembastExample> {
   Future<void> _toggleTodoItem(TodoItem todo) async {
     todo.isDone = !todo.isDone;
     final int count = await this._store.update(
-          this._db,
-          todo.toJsonMap(),
-          finder: Finder(filter: Filter.byKey(todo.id)),
-        );
+      this._db,
+      todo.toJsonMap(),
+      finder: Finder(filter: Filter.byKey(todo.id)),
+    );
     print('Updated $count records in db.');
   }
 
   // Deletes records in the db table.
   Future<void> _deleteTodoItem(TodoItem todo) async {
     final int count = await this._store.delete(
-          this._db,
-          finder: Finder(filter: Filter.byKey(todo.id)),
-        );
+      this._db,
+      finder: Finder(filter: Filter.byKey(todo.id)),
+    );
     print('Updated $count records in db.');
   }
 
@@ -114,14 +111,10 @@ class _SembastExampleState extends State<SembastExample> {
       future: this._initDbFuture,
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
+          return const Center(child: CircularProgressIndicator());
         }
         return Scaffold(
-          body: ListView(
-            children: this._todos.map(_itemToListTile).toList(),
-          ),
+          body: ListView(children: this._todos.map(_itemToListTile).toList()),
           floatingActionButton: _buildFloatingActionButton(),
         );
       },
@@ -134,33 +127,31 @@ class _SembastExampleState extends State<SembastExample> {
   }
 
   ListTile _itemToListTile(TodoItem todo) => ListTile(
-        title: Text(
-          todo.content,
-          style: TextStyle(
-            fontStyle: todo.isDone ? FontStyle.italic : null,
-            color: todo.isDone ? Colors.grey : null,
-            decoration: todo.isDone ? TextDecoration.lineThrough : null,
-          ),
-        ),
-        subtitle: Text('id=${todo.id}\ncreated at ${todo.createdAt}'),
-        isThreeLine: true,
-        leading: IconButton(
-          icon: Icon(
-            todo.isDone ? Icons.check_box : Icons.check_box_outline_blank,
-          ),
-          onPressed: () async {
-            await _toggleTodoItem(todo);
-            _updateUI();
-          },
-        ),
-        trailing: IconButton(
-          icon: const Icon(Icons.delete),
-          onPressed: () async {
-            await _deleteTodoItem(todo);
-            _updateUI();
-          },
-        ),
-      );
+    title: Text(
+      todo.content,
+      style: TextStyle(
+        fontStyle: todo.isDone ? FontStyle.italic : null,
+        color: todo.isDone ? Colors.grey : null,
+        decoration: todo.isDone ? TextDecoration.lineThrough : null,
+      ),
+    ),
+    subtitle: Text('id=${todo.id}\ncreated at ${todo.createdAt}'),
+    isThreeLine: true,
+    leading: IconButton(
+      icon: Icon(todo.isDone ? Icons.check_box : Icons.check_box_outline_blank),
+      onPressed: () async {
+        await _toggleTodoItem(todo);
+        _updateUI();
+      },
+    ),
+    trailing: IconButton(
+      icon: const Icon(Icons.delete),
+      onPressed: () async {
+        await _deleteTodoItem(todo);
+        _updateUI();
+      },
+    ),
+  );
 
   FloatingActionButton _buildFloatingActionButton() {
     return FloatingActionButton(

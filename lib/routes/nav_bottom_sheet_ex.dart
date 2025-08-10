@@ -21,10 +21,9 @@ class _BottomSheetExampleState extends State<BottomSheetExample> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             ElevatedButton(
-              onPressed: () => this
-                  ._scaffoldKey
-                  .currentState
-                  ?.showBottomSheet((ctx) => _buildBottomSheet(ctx)),
+              onPressed: () => this._scaffoldKey.currentState?.showBottomSheet(
+                (ctx) => _buildBottomSheet(ctx),
+              ),
               child: const Text('show bottom sheet'),
             ),
             ElevatedButton(
@@ -71,7 +70,7 @@ class _BottomSheetExampleState extends State<BottomSheetExample> {
               label: const Text('Save and close'),
               onPressed: () => Navigator.pop(context),
             ),
-          )
+          ),
         ],
       ),
     );

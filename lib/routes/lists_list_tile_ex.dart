@@ -6,9 +6,7 @@ class ListTileExample extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final listTiles = <Widget>[
-      const ListTile(
-        title: Text('Tile 0: basic'),
-      ),
+      const ListTile(title: Text('Tile 0: basic')),
       const Divider(),
       const ListTile(
         leading: Icon(Icons.face),
@@ -27,10 +25,7 @@ class ListTileExample extends StatelessWidget {
         subtitle: Text('subtitle of tile 3'),
       ),
       const Divider(),
-      const ListTile(
-        title: Text('Tile 4: dense'),
-        dense: true,
-      ),
+      const ListTile(title: Text('Tile 4: dense'), dense: true),
       const Divider(),
       ListTile(
         title: const Text('Tile5: tile with badge'),

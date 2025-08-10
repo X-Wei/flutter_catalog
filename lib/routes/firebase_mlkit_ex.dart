@@ -30,8 +30,9 @@ class _GoogleMLKitExampleState extends State<GoogleMLKitExample> {
             leading: const Icon(Icons.camera_alt),
             title: const Text('Take picture'),
             onTap: () async {
-              final XFile? pickedFile =
-                  await _picker.pickImage(source: ImageSource.camera);
+              final XFile? pickedFile = await _picker.pickImage(
+                source: ImageSource.camera,
+              );
               if (ctx.mounted && pickedFile != null) {
                 Navigator.pop(ctx, File(pickedFile.path));
               }
@@ -42,8 +43,9 @@ class _GoogleMLKitExampleState extends State<GoogleMLKitExample> {
             title: const Text('Pick from gallery'),
             onTap: () async {
               try {
-                final XFile? pickedFile =
-                    await _picker.pickImage(source: ImageSource.gallery);
+                final XFile? pickedFile = await _picker.pickImage(
+                  source: ImageSource.gallery,
+                );
                 if (ctx.mounted && pickedFile != null) {
                   Navigator.pop(ctx, File(pickedFile.path));
                 }
@@ -97,8 +99,9 @@ class _GoogleMLKitExampleState extends State<GoogleMLKitExample> {
     String result = '';
     final InputImage inputImage = InputImage.fromFile(this._imageFile!);
     final TextRecognizer textDetector = GoogleMlKit.vision.textRecognizer();
-    final RecognizedText recognizedText =
-        await textDetector.processImage(inputImage);
+    final RecognizedText recognizedText = await textDetector.processImage(
+      inputImage,
+    );
     final String text = recognizedText.text;
     debugPrint('Recognized text: "$text"');
     result += 'Detected ${recognizedText.blocks.length} text blocks.\n';
@@ -107,7 +110,8 @@ class _GoogleMLKitExampleState extends State<GoogleMLKitExample> {
       final List<Point<int>> cornerPoints = block.cornerPoints;
       final String text = block.text;
       final List<String> languages = block.recognizedLanguages;
-      result += '\n# Text block:\n '
+      result +=
+          '\n# Text block:\n '
           'bbox=$boundingBox\n '
           'cornerPoints=$cornerPoints\n '
           'text=$text\n languages=$languages';
@@ -132,14 +136,16 @@ class _GoogleMLKitExampleState extends State<GoogleMLKitExample> {
     final InputImage inputImage = InputImage.fromFile(this._imageFile!);
     final BarcodeScanner barcodeScanner = GoogleMlKit.vision.barcodeScanner();
 
-    final List<Barcode> barcodes =
-        await barcodeScanner.processImage(inputImage);
+    final List<Barcode> barcodes = await barcodeScanner.processImage(
+      inputImage,
+    );
     result += 'Detected ${barcodes.length} barcodes.\n';
     for (final Barcode barcode in barcodes) {
       final Rect boundingBox = barcode.boundingBox;
       final String rawValue = barcode.rawValue!;
       final valueType = barcode.type;
-      result += '\n# Barcode:\n '
+      result +=
+          '\n# Barcode:\n '
           'bbox=$boundingBox\n '
           'rawValue=$rawValue\n '
           'type=$valueType';
@@ -170,7 +176,8 @@ class _GoogleMLKitExampleState extends State<GoogleMLKitExample> {
       final double rotY = face.headEulerAngleY!;
       // Head is tilted sideways rotZ degrees
       final double rotZ = face.headEulerAngleZ!;
-      result += '\n# Face:\n '
+      result +=
+          '\n# Face:\n '
           'bbox=$boundingBox\n '
           'rotY=$rotY\n '
           'rotZ=$rotZ\n ';
@@ -202,9 +209,7 @@ class _GoogleMLKitExampleState extends State<GoogleMLKitExample> {
     return ListView(
       children: <Widget>[
         if (this._imageFile == null)
-          const Placeholder(
-            fallbackHeight: 200.0,
-          )
+          const Placeholder(fallbackHeight: 200.0)
         else
           FadeInImage(
             placeholder: MemoryImage(kTransparentImage),
@@ -238,10 +243,7 @@ class _GoogleMLKitExampleState extends State<GoogleMLKitExample> {
         Text('Result:', style: Theme.of(context).textTheme.titleSmall),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
-          child: Text(
-            this._mlResult,
-            style: GoogleFonts.notoSansMono(),
-          ),
+          child: Text(this._mlResult, style: GoogleFonts.notoSansMono()),
         ),
       ],
     );

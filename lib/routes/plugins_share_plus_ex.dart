@@ -50,8 +50,10 @@ class SharePlusExample extends StatelessWidget {
   // ! Copies an asset to local file.
   Future<void> _copyAssetToFile(String assetPath, String filePath) async {
     final data = await rootBundle.load(assetPath);
-    final bytes =
-        data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
+    final bytes = data.buffer.asUint8List(
+      data.offsetInBytes,
+      data.lengthInBytes,
+    );
     await File(filePath).writeAsBytes(bytes);
   }
 }

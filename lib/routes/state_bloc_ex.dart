@@ -6,10 +6,7 @@ class BlocExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: _MyDemoApp(),
-    );
+    return Padding(padding: const EdgeInsets.all(8.0), child: _MyDemoApp());
   }
 }
 
@@ -20,7 +17,7 @@ class _MyEvent {
   final DateTime timestamp;
 
   _MyEvent({required this.isIncrement, DateTime? timestamp})
-      : this.timestamp = timestamp ?? DateTime.now();
+    : this.timestamp = timestamp ?? DateTime.now();
 }
 
 // ###2. Define a State class that represents our app's state. MyBloc's output
@@ -74,7 +71,7 @@ class MyBlocProvider extends InheritedWidget {
   final Widget child; // ignore: overridden_fields
 
   const MyBlocProvider({super.key, required this.bloc, required this.child})
-      : super(child: child);
+    : super(child: child);
 
   static MyBlocProvider? of(BuildContext context) {
     return context.dependOnInheritedWidgetOfExactType<MyBlocProvider>();
@@ -112,10 +109,7 @@ class _MyDemoAppState extends State<_MyDemoApp> {
         ),
         // ###5. Put MyBlocProvider as the app's root widget, so children widget can
         // access the bloc.
-        MyBlocProvider(
-          bloc: this._bloc,
-          child: _AppRootWidget(),
-        ),
+        MyBlocProvider(bloc: this._bloc, child: _AppRootWidget()),
       ],
     );
   }
@@ -137,10 +131,7 @@ class _AppRootWidget extends StatelessWidget {
           const Text('(root widget)'),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              _CounterAndButton(),
-              _CounterAndButton(),
-            ],
+            children: <Widget>[_CounterAndButton(), _CounterAndButton()],
           ),
         ],
       ),
@@ -188,7 +179,7 @@ class _CounterAndButton extends StatelessWidget {
                     bloc.inputSink.add(_MyEvent(isIncrement: false)),
               ),
             ],
-          )
+          ),
         ],
       ),
     );

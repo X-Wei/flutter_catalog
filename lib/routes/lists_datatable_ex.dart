@@ -32,46 +32,37 @@ class _DataTableExampleState extends State<DataTableExample> {
 
 ////// Columns in table.
 const kTableColumns = <DataColumn>[
-  DataColumn(
-    label: Text('Dessert (100g serving)'),
-  ),
+  DataColumn(label: Text('Dessert (100g serving)')),
   DataColumn(
     label: Text('Calories'),
     tooltip: 'The total amount of food energy in the given serving size.',
     numeric: true,
   ),
-  DataColumn(
-    label: Text('Fat (g)'),
-    numeric: true,
-  ),
-  DataColumn(
-    label: Text('Carbs (g)'),
-    numeric: true,
-  ),
-  DataColumn(
-    label: Text('Protein (g)'),
-    numeric: true,
-  ),
-  DataColumn(
-    label: Text('Sodium (mg)'),
-    numeric: true,
-  ),
+  DataColumn(label: Text('Fat (g)'), numeric: true),
+  DataColumn(label: Text('Carbs (g)'), numeric: true),
+  DataColumn(label: Text('Protein (g)'), numeric: true),
+  DataColumn(label: Text('Sodium (mg)'), numeric: true),
   DataColumn(
     label: Text('Calcium (%)'),
     tooltip:
         'The amount of calcium as a percentage of the recommended daily amount.',
     numeric: true,
   ),
-  DataColumn(
-    label: Text('Iron (%)'),
-    numeric: true,
-  ),
+  DataColumn(label: Text('Iron (%)'), numeric: true),
 ];
 
 ////// Data class.
 class Dessert {
-  Dessert(this.name, this.calories, this.fat, this.carbs, this.protein,
-      this.sodium, this.calcium, this.iron);
+  Dessert(
+    this.name,
+    this.calories,
+    this.fat,
+    this.carbs,
+    this.protein,
+    this.sodium,
+    this.calcium,
+    this.iron,
+  );
   final String name;
   final int calories;
   final double fat;

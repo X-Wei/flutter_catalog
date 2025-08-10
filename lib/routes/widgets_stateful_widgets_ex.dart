@@ -27,12 +27,7 @@ class _StatefulWidgetsExampleState extends State<StatefulWidgetsExample> {
           ),
         ),
         const Text('Disabled Switch'),
-        const Center(
-          child: Switch(
-            onChanged: null,
-            value: false,
-          ),
-        ),
+        const Center(child: Switch(onChanged: null, value: false)),
         const Divider(),
         const Text('Checkbox'),
         Checkbox(
@@ -44,11 +39,7 @@ class _StatefulWidgetsExampleState extends State<StatefulWidgetsExample> {
           value: this._checkBoxVal,
         ),
         const Text('Disabled Checkbox'),
-        const Checkbox(
-          tristate: true,
-          onChanged: null,
-          value: null,
-        ),
+        const Checkbox(tristate: true, onChanged: null, value: null),
         const Divider(),
         const Text('Slider'),
         Slider(

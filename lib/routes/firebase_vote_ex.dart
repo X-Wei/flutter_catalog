@@ -43,10 +43,14 @@ class _FirebaseVoteExampleState extends State<FirebaseVoteExample> {
           if (!snapshot.hasData) {
             return const LinearProgressIndicator();
           } else {
-            final List<_LangaugeVotingRecord> records = snapshot.data!.docs
-                .map((snapshot) => _LangaugeVotingRecord.fromSnapshot(snapshot))
-                .toList()
-              ..sort((record1, record2) => record2.votes - record1.votes);
+            final List<_LangaugeVotingRecord> records =
+                snapshot.data!.docs
+                    .map(
+                      (snapshot) =>
+                          _LangaugeVotingRecord.fromSnapshot(snapshot),
+                    )
+                    .toList()
+                  ..sort((record1, record2) => record2.votes - record1.votes);
             return ListView(
               children: records
                   .map((record) => _buildListItem(context, record))
@@ -110,33 +114,27 @@ class _FirebaseVoteExampleState extends State<FirebaseVoteExample> {
       final lang = record.language;
       final int deltaVotes = this._isVoted(lang) ? -1 : 1;
       // Update votes via transactions are atomic: no race condition.
-      await FirebaseFirestore.instance.runTransaction(
-        (transaction) async {
-          try {
-            final freshSnapshot =
-                await transaction.get<JsonMap>(record.firestoreDocReference);
-            // Get the most fresh record.
-            final freshRecord =
-                _LangaugeVotingRecord.fromSnapshot(freshSnapshot);
-            transaction.update(
-              record.firestoreDocReference,
-              {'votes': freshRecord.votes + deltaVotes},
-            );
-          } catch (e) {
-            print(e);
-            rethrow;
-          }
-        },
-        timeout: const Duration(seconds: 3),
-      );
+      await FirebaseFirestore.instance.runTransaction((transaction) async {
+        try {
+          final freshSnapshot = await transaction.get<JsonMap>(
+            record.firestoreDocReference,
+          );
+          // Get the most fresh record.
+          final freshRecord = _LangaugeVotingRecord.fromSnapshot(freshSnapshot);
+          transaction.update(record.firestoreDocReference, {
+            'votes': freshRecord.votes + deltaVotes,
+          });
+        } catch (e) {
+          print(e);
+          rethrow;
+        }
+      }, timeout: const Duration(seconds: 3));
       // Update local voted status only after transaction is successful.
       this._markVotedStatus(lang, !this._isVoted(lang));
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Error doing firebase transaction: $e'),
-          ),
+          SnackBar(content: Text('Error doing firebase transaction: $e')),
         );
       }
     }
@@ -150,18 +148,16 @@ class _LangaugeVotingRecord {
   // Reference to this record as a firestore document.
   final DocumentReference<JsonMap> firestoreDocReference;
 
-  _LangaugeVotingRecord.fromMap(JsonMap map,
-      {required this.firestoreDocReference})
-      : assert(map['language'] != null && map['language'] is String),
-        assert(map['votes'] != null && map['votes'] is int),
-        language = map['language'] as String,
-        votes = map['votes'] as int;
+  _LangaugeVotingRecord.fromMap(
+    JsonMap map, {
+    required this.firestoreDocReference,
+  }) : assert(map['language'] != null && map['language'] is String),
+       assert(map['votes'] != null && map['votes'] is int),
+       language = map['language'] as String,
+       votes = map['votes'] as int;
 
   _LangaugeVotingRecord.fromSnapshot(DocumentSnapshot<JsonMap> snapshot)
-      : this.fromMap(
-          snapshot.data()!,
-          firestoreDocReference: snapshot.reference,
-        );
+    : this.fromMap(snapshot.data()!, firestoreDocReference: snapshot.reference);
 
   @override
   String toString() => "Record<$language:$votes>";

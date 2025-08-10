@@ -140,7 +140,7 @@ const kAboutRoute = MyRoute(
   sourceFilePath: 'lib/routes/about.dart',
   title: 'About',
   links: {
-    'Doc': 'https://docs.flutter.io/flutter/material/showAboutDialog.html'
+    'Doc': 'https://docs.flutter.io/flutter/material/showAboutDialog.html',
   },
   child: MyAboutRoute(),
 );
@@ -160,8 +160,11 @@ const kAboutRoute = MyRoute(
 //   ...
 // ]
 class MyRouteGroup {
-  const MyRouteGroup(
-      {required this.groupName, required this.icon, required this.routes});
+  const MyRouteGroup({
+    required this.groupName,
+    required this.icon,
+    required this.routes,
+  });
   final String groupName;
   final Widget icon;
   final List<MyRoute> routes;
@@ -194,7 +197,8 @@ const kMyAppRoutesBasic = <MyRouteGroup>[
         title: 'TextField',
         description: 'Text input.',
         links: {
-          'Doc': 'https://docs.flutter.io/flutter/material/TextField-class.html'
+          'Doc':
+              'https://docs.flutter.io/flutter/material/TextField-class.html',
         },
       ),
       MyRoute(
@@ -204,14 +208,14 @@ const kMyAppRoutesBasic = <MyRouteGroup>[
         description: 'Convenience widget wrapping a TextField in a FormField.',
         links: {
           'Doc':
-              'https://docs.flutter.io/flutter/material/TextFormField-class.html'
+              'https://docs.flutter.io/flutter/material/TextFormField-class.html',
         },
       ),
       MyRoute(
         sourceFilePath: 'lib/routes/widgets_image_ex.dart',
         title: 'Image',
         links: {
-          'Doc': 'https://docs.flutter.io/flutter/widgets/Image-class.html'
+          'Doc': 'https://docs.flutter.io/flutter/widgets/Image-class.html',
         },
         child: ImageExample(),
       ),
@@ -246,7 +250,7 @@ const kMyAppRoutesBasic = <MyRouteGroup>[
           'Doc':
               'https://docs.flutter.io/flutter/material/ButtonBar-class.html',
           'Gallery button demo code':
-              'https://github.com/flutter/flutter/blob/master/examples/flutter_gallery/lib/demo/material/buttons_demo.dart'
+              'https://github.com/flutter/flutter/blob/master/examples/flutter_gallery/lib/demo/material/buttons_demo.dart',
         },
       ),
       MyRoute(
@@ -262,7 +266,7 @@ const kMyAppRoutesBasic = <MyRouteGroup>[
         title: 'DropdownButton, MenuButton',
         links: {
           'Doc':
-              'https://docs.flutter.io/flutter/material/DropdownButton-class.html'
+              'https://docs.flutter.io/flutter/material/DropdownButton-class.html',
         },
       ),
       MyRoute(
@@ -371,9 +375,7 @@ const kMyAppRoutesBasic = <MyRouteGroup>[
         child: GridListExample(),
         sourceFilePath: 'lib/routes/lists_grid_list_ex.dart',
         title: 'GridList',
-        links: {
-          'Cookbook': 'https://flutter.io/cookbook/lists/grid-lists/',
-        },
+        links: {'Cookbook': 'https://flutter.io/cookbook/lists/grid-lists/'},
       ),
       MyRoute(
         child: ExpansionTileExample(),
@@ -388,9 +390,7 @@ const kMyAppRoutesBasic = <MyRouteGroup>[
         child: ListSwipeToDismissExample(),
         sourceFilePath: 'lib/routes/lists_swipe_to_dismiss_ex.dart',
         title: 'Swipe to dismiss',
-        links: {
-          'Cookbook': 'https://flutter.io/cookbook/gestures/dismissible',
-        },
+        links: {'Cookbook': 'https://flutter.io/cookbook/gestures/dismissible'},
       ),
       MyRoute(
         child: ReorderableListExample(),
@@ -410,7 +410,7 @@ const kMyAppRoutesBasic = <MyRouteGroup>[
         links: {
           'Doc':
               'https://api.flutter.dev/flutter/widgets/ListWheelScrollView-class.html',
-          'Youtube': 'https://youtu.be/dUhmWAz4C7Y'
+          'Youtube': 'https://youtu.be/dUhmWAz4C7Y',
         },
       ),
       MyRoute(
@@ -427,17 +427,14 @@ const kMyAppRoutesBasic = <MyRouteGroup>[
         description: 'Showing data in a table.',
         links: {
           'Docs':
-              'https://docs.flutter.io/flutter/material/PaginatedDataTable-class.html'
+              'https://docs.flutter.io/flutter/material/PaginatedDataTable-class.html',
         },
       ),
     ],
   ),
   MyRouteGroup(
     groupName: 'Appbar',
-    icon: RotatedBox(
-      child: Icon(Icons.video_label),
-      quarterTurns: 2,
-    ),
+    icon: RotatedBox(child: Icon(Icons.video_label), quarterTurns: 2),
     routes: <MyRoute>[
       MyRoute(
         child: BasicAppbarExample(),
@@ -453,7 +450,7 @@ const kMyAppRoutesBasic = <MyRouteGroup>[
         title: 'Bottom AppBar and Floating App Button (FAB)',
         links: {
           'Doc':
-              'https://docs.flutter.io/flutter/material/BottomNavigationBar-class.html'
+              'https://docs.flutter.io/flutter/material/BottomNavigationBar-class.html',
         },
       ),
       MyRoute(
@@ -474,7 +471,7 @@ const kMyAppRoutesBasic = <MyRouteGroup>[
         title: 'Search',
         links: {
           'Doc':
-              'https://docs.flutter.io/flutter/material/SearchDelegate-class.html'
+              'https://docs.flutter.io/flutter/material/SearchDelegate-class.html',
         },
       ),
       MyRoute(
@@ -484,7 +481,7 @@ const kMyAppRoutesBasic = <MyRouteGroup>[
         description: 'Switching between front and back layer.',
         links: {
           'Medium article':
-              'https://medium.com/flutter/decomposing-widgets-backdrop-b5c664fb9cf4'
+              'https://medium.com/flutter/decomposing-widgets-backdrop-b5c664fb9cf4',
         },
       ),
       MyRoute(
@@ -499,9 +496,7 @@ const kMyAppRoutesBasic = <MyRouteGroup>[
         sourceFilePath: 'lib/routes/appbar_hidable_ex.dart',
         title: 'Hidable bottom bar',
         description: 'Bottom bar that auto hides when scroll down',
-        links: {
-          'pub.dev': 'https://pub.dev/packages/hidable',
-        },
+        links: {'pub.dev': 'https://pub.dev/packages/hidable'},
       ),
     ],
   ),
@@ -514,7 +509,7 @@ const kMyAppRoutesBasic = <MyRouteGroup>[
         sourceFilePath: 'lib/routes/nav_tabs_ex.dart',
         title: 'Tabs',
         links: {
-          'Doc': 'https://docs.flutter.io/flutter/material/TabBar-class.html'
+          'Doc': 'https://docs.flutter.io/flutter/material/TabBar-class.html',
         },
       ),
       MyRoute(
@@ -570,7 +565,7 @@ const kMyAppRoutesBasic = <MyRouteGroup>[
         title: 'Page selector',
         links: {
           'Doc':
-              'https://docs.flutter.io/flutter/material/TabPageSelector-class.html'
+              'https://docs.flutter.io/flutter/material/TabPageSelector-class.html',
         },
       ),
       MyRoute(
@@ -742,7 +737,7 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
         description:
             'A flutter package with some cool and awesome text animations.',
         links: {
-          'Pub package': 'https://pub.flutter-io.cn/packages/animated_text_kit'
+          'Pub package': 'https://pub.flutter-io.cn/packages/animated_text_kit',
         },
       ),
     ],
@@ -825,9 +820,7 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
         title: 'SQLite',
         description:
             'A CRUD (Create-Read-Update-Delete) mini todo app using sqflite.',
-        links: {
-          'Pub package': 'https://pub.dev/packages/sqflite',
-        },
+        links: {'Pub package': 'https://pub.dev/packages/sqflite'},
       ),
       MyRoute(
         child: SembastExample(),
@@ -837,7 +830,7 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
         links: {
           'Pub package': 'https://pub.dev/packages/sembast',
           'ResoCoder blog':
-              'https://resocoder.com/2019/04/06/flutter-nosql-database-sembast-tutorial-w-bloc/'
+              'https://resocoder.com/2019/04/06/flutter-nosql-database-sembast-tutorial-w-bloc/',
         },
       ),
       MyRoute(
@@ -849,7 +842,7 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
         links: {
           'Documentation': 'https://docs.hivedb.dev',
           'ResoCoder blog':
-              'https://resocoder.com/2019/09/30/hive-flutter-tutorial-lightweight-fast-database'
+              'https://resocoder.com/2019/09/30/hive-flutter-tutorial-lightweight-fast-database',
         },
       ),
     ],
@@ -921,7 +914,7 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
         description: 'Better ChangeNotifier and better state data class.',
         links: {
           'Tutorial by Andrea Bizzotto':
-              'https://codewithandrea.com/videos/flutter-state-management-setstate-freezed-state-notifier-provider/'
+              'https://codewithandrea.com/videos/flutter-state-management-setstate-freezed-state-notifier-provider/',
         },
       ),
       MyRoute(
@@ -931,7 +924,7 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
         description: 'Better than Provider+ChangeNotifier.',
         links: {
           'Tutorial by Resocoder':
-              'https://resocoder.com/2020/12/11/flutter-statenotifier-riverpod-tutorial-immutable-state-management/'
+              'https://resocoder.com/2020/12/11/flutter-statenotifier-riverpod-tutorial-immutable-state-management/',
         },
       ),
     ],
@@ -1015,7 +1008,8 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
         sourceFilePath: 'lib/routes/charts_time_series_ex.dart',
         title: 'Time Series Chart',
         links: {
-          'Demo gallery': 'https://google.github.io/charts/flutter/gallery.html'
+          'Demo gallery':
+              'https://google.github.io/charts/flutter/gallery.html',
         },
       ),
       MyRoute(
@@ -1023,7 +1017,8 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
         sourceFilePath: 'lib/routes/charts_pie_chart_ex.dart',
         title: 'Pie Chart',
         links: {
-          'Demo gallery': 'https://google.github.io/charts/flutter/gallery.html'
+          'Demo gallery':
+              'https://google.github.io/charts/flutter/gallery.html',
         },
       ),
       MyRoute(
@@ -1032,7 +1027,7 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
         title: 'LineChart with fl_chart',
         links: {
           'doc':
-              'https://github.com/imaNNeoFighT/fl_chart/blob/master/repo_files/documentations/line_chart.md'
+              'https://github.com/imaNNeoFighT/fl_chart/blob/master/repo_files/documentations/line_chart.md',
         },
       ),
       MyRoute(
@@ -1041,7 +1036,7 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
         title: 'BarChart with fl_chart',
         links: {
           'doc':
-              'https://github.com/imaNNeoFighT/fl_chart/blob/master/repo_files/documentations/bar_chart.md'
+              'https://github.com/imaNNeoFighT/fl_chart/blob/master/repo_files/documentations/bar_chart.md',
         },
       ),
       MyRoute(
@@ -1050,7 +1045,7 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
         title: 'PieChart with fl_chart',
         links: {
           'doc':
-              'https://github.com/imaNNeoFighT/fl_chart/blob/master/repo_files/documentations/pie_chart.md'
+              'https://github.com/imaNNeoFighT/fl_chart/blob/master/repo_files/documentations/pie_chart.md',
         },
       ),
       MyRoute(
@@ -1084,7 +1079,7 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
         description: 'Easily build UI to represent event timelines.',
         links: {
           'pub.dev': 'https://github.com/sawin0/timelines_plus',
-          'demo': 'https://chulwoo.dev/timelines/#'
+          'demo': 'https://chulwoo.dev/timelines/#',
         },
       ),
     ],
@@ -1098,7 +1093,7 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
         sourceFilePath: 'lib/routes/networking_rest_api_fetch_ex.dart',
         title: 'Fetching data',
         links: {
-          'Cookbook': 'https://flutter.dev/docs/cookbook/networking/fetch-data'
+          'Cookbook': 'https://flutter.dev/docs/cookbook/networking/fetch-data',
         },
       ),
       MyRoute(
@@ -1106,7 +1101,7 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
         sourceFilePath: 'lib/routes/networking_rest_api_send_ex.dart',
         title: 'Sending data',
         links: {
-          'Cookbook': 'https://flutter.dev/docs/cookbook/networking/send-data'
+          'Cookbook': 'https://flutter.dev/docs/cookbook/networking/send-data',
         },
       ),
       MyRoute(
@@ -1128,7 +1123,7 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
         sourceFilePath: 'lib/routes/networking_dio_download_ex.dart',
         title: "Dio download file",
         links: {'pub.dev': 'https://pub.dev/packages/dio'},
-      )
+      ),
     ],
   ),
   MyRouteGroup(
@@ -1140,9 +1135,7 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
         sourceFilePath: 'lib/routes/firebase_login_ex.dart',
         title: 'Firebase login',
         description: 'Google/Anonymous sign in.',
-        links: {
-          'Youtube video': 'https://www.youtube.com/watch?v=JYCNvWKF7vw',
-        },
+        links: {'Youtube video': 'https://www.youtube.com/watch?v=JYCNvWKF7vw'},
       ),
       MyRoute(
         child: FirebaseAuthUiExample(),
@@ -1242,35 +1235,36 @@ const kMyAppRoutesInAction = <MyRouteGroup>[
     ],
   ),
   MyRouteGroup(
-      groupName: 'App features',
-      icon: Icon(Icons.featured_play_list),
-      routes: <MyRoute>[
-        MyRoute(
-          child: GreyAppExample(),
-          sourceFilePath: 'lib/routes/feature_grey_app.dart',
-          title: "Grey App 🕯",
-          description: 'Turn app into grey-scale via ColorFiltered',
-        ),
-        MyRoute(
-          child: DevicePreviewExample(),
-          sourceFilePath: 'lib/routes/feature_device_preview.dart',
-          title: "Device Preview",
-          description: 'Preview the app with difference screen sizes',
-        ),
-        MyRoute(
-          child: StoreSecretsExample(),
-          sourceFilePath: 'lib/routes/feature_store_secrets.dart',
-          title: "Store secrets",
-          description: 'Safely store secrets with define_env.',
-          links: {
-            'pub.dev': 'https://pub.dev/packages/define_env',
-            "Andrea's tutorial":
-                'https://codewithandrea.com/articles/flutter-api-keys-dart-define-env-files',
-          },
-        ),
-        // TODO: i18n?
-        // TODO: routing?
-      ]),
+    groupName: 'App features',
+    icon: Icon(Icons.featured_play_list),
+    routes: <MyRoute>[
+      MyRoute(
+        child: GreyAppExample(),
+        sourceFilePath: 'lib/routes/feature_grey_app.dart',
+        title: "Grey App 🕯",
+        description: 'Turn app into grey-scale via ColorFiltered',
+      ),
+      MyRoute(
+        child: DevicePreviewExample(),
+        sourceFilePath: 'lib/routes/feature_device_preview.dart',
+        title: "Device Preview",
+        description: 'Preview the app with difference screen sizes',
+      ),
+      MyRoute(
+        child: StoreSecretsExample(),
+        sourceFilePath: 'lib/routes/feature_store_secrets.dart',
+        title: "Store secrets",
+        description: 'Safely store secrets with define_env.',
+        links: {
+          'pub.dev': 'https://pub.dev/packages/define_env',
+          "Andrea's tutorial":
+              'https://codewithandrea.com/articles/flutter-api-keys-dart-define-env-files',
+        },
+      ),
+      // TODO: i18n?
+      // TODO: routing?
+    ],
+  ),
   MyRouteGroup(
     groupName: 'App growth',
     icon: Icon(Icons.insights),
@@ -1356,9 +1350,7 @@ const kMyAppRoutesInAction = <MyRouteGroup>[
         sourceFilePath: 'lib/routes/monetization_in_app_purchase_ex.dart',
         title: 'In App Purchase',
         description: 'Buy digital in-app products',
-        links: {
-          'pub.dev': 'https://pub.dev/packages/in_app_purchase',
-        },
+        links: {'pub.dev': 'https://pub.dev/packages/in_app_purchase'},
       ),
       MyRoute(
         child: UserPurchasesExample(),
@@ -1382,12 +1374,12 @@ final kAllRoutes = <MyRoute>[
 ];
 
 final kRouteNameToRoute = <String, MyRoute>{
-  for (final route in kAllRoutes) route.routeName: route
+  for (final route in kAllRoutes) route.routeName: route,
 };
 
 final kRouteNameToRouteGroup = <String, MyRouteGroup>{
   for (final group in kAllRouteGroups)
-    for (final route in group.routes) route.routeName: group
+    for (final route in group.routes) route.routeName: group,
 };
 
 // This app's root-level routing table.

@@ -25,28 +25,25 @@ class _RowColExampleState extends State<RowColExample> {
   @override
   Widget build(BuildContext context) {
     final _appbarButtons = _getBottomBar();
-    return Scaffold(
-      body: _buildBody(),
-      bottomNavigationBar: _appbarButtons,
-    );
+    return Scaffold(body: _buildBody(), bottomNavigationBar: _appbarButtons);
   }
 
   Widget _buildBody() => Container(
-        color: Colors.yellow,
-        child: _isRow
-            ? Row(
-                mainAxisAlignment: _mainAxisAlignment,
-                crossAxisAlignment: _crossAxisAlignment,
-                mainAxisSize: _mainAxisSize,
-                children: kElements,
-              )
-            : Column(
-                mainAxisAlignment: _mainAxisAlignment,
-                crossAxisAlignment: _crossAxisAlignment,
-                mainAxisSize: _mainAxisSize,
-                children: kElements,
-              ),
-      );
+    color: Colors.yellow,
+    child: _isRow
+        ? Row(
+            mainAxisAlignment: _mainAxisAlignment,
+            crossAxisAlignment: _crossAxisAlignment,
+            mainAxisSize: _mainAxisSize,
+            children: kElements,
+          )
+        : Column(
+            mainAxisAlignment: _mainAxisAlignment,
+            crossAxisAlignment: _crossAxisAlignment,
+            mainAxisSize: _mainAxisSize,
+            children: kElements,
+          ),
+  );
 
   Widget _getBottomBar() {
     return Material(

@@ -41,21 +41,19 @@ class _AnimatedContainerExampleState extends State<AnimatedContainerExample> {
         ElevatedButton.icon(
           icon: const Icon(Icons.update),
           label: const Text('Change random property'),
-          onPressed: () => setState(
-            () {
-              // Generate a random width and height.
-              _width = _rng.nextInt(100).toDouble() + 50;
-              _height = _rng.nextInt(100).toDouble() + 50;
-              _borderRadius = _rng.nextInt(50).toDouble();
-              // Generate a random color.
-              _color = Color.fromRGBO(
-                _rng.nextInt(256),
-                _rng.nextInt(256),
-                _rng.nextInt(256),
-                1,
-              );
-            },
-          ),
+          onPressed: () => setState(() {
+            // Generate a random width and height.
+            _width = _rng.nextInt(100).toDouble() + 50;
+            _height = _rng.nextInt(100).toDouble() + 50;
+            _borderRadius = _rng.nextInt(50).toDouble();
+            // Generate a random color.
+            _color = Color.fromRGBO(
+              _rng.nextInt(256),
+              _rng.nextInt(256),
+              _rng.nextInt(256),
+              1,
+            );
+          }),
         ),
       ],
     );

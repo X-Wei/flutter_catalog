@@ -18,10 +18,7 @@ class _ListWheelViewExampleState extends State<ListWheelViewExample> {
             return null;
           }
           return ListTile(
-            leading: Text(
-              "$index",
-              style: TextStyle(fontSize: 50),
-            ),
+            leading: Text("$index", style: TextStyle(fontSize: 50)),
             title: Text("Title $index"),
             subtitle: Text('Description here'),
           );

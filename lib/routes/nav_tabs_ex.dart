@@ -25,13 +25,9 @@ class TabsExample extends StatelessWidget {
           // DefaultTabController ancestor must be provided instead.
           // Another way is to use a self-defined controller, c.f. "Bottom tab
           // bar" example.
-          bottom: TabBar(
-            tabs: _kTabs,
-          ),
+          bottom: TabBar(tabs: _kTabs),
         ),
-        body: TabBarView(
-          children: _kTabPages,
-        ),
+        body: TabBarView(children: _kTabPages),
       ),
     );
   }

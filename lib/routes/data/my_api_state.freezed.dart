@@ -10,22 +10,19 @@ part of 'my_api_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods',
+);
 
 /// @nodoc
 class _$MyApiStateTearOff {
   const _$MyApiStateTearOff();
 
   SuccessState success(List<String> data) {
-    return SuccessState(
-      data,
-    );
+    return SuccessState(data);
   }
 
   ErrorState error(String errorMsg) {
-    return ErrorState(
-      errorMsg,
-    );
+    return ErrorState(errorMsg);
   }
 
   LoadingState loading() {
@@ -43,38 +40,35 @@ mixin _$MyApiState {
     required TResult Function(List<String> data) success,
     required TResult Function(String errorMsg) error,
     required TResult Function() loading,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(List<String> data)? success,
     TResult Function(String errorMsg)? error,
     TResult Function()? loading,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(SuccessState value) success,
     required TResult Function(ErrorState value) error,
     required TResult Function(LoadingState value) loading,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(SuccessState value)? success,
     TResult Function(ErrorState value)? error,
     TResult Function(LoadingState value)? loading,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $MyApiStateCopyWith<$Res> {
   factory $MyApiStateCopyWith(
-          MyApiState value, $Res Function(MyApiState) then) =
-      _$MyApiStateCopyWithImpl<$Res>;
+    MyApiState value,
+    $Res Function(MyApiState) then,
+  ) = _$MyApiStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -89,8 +83,9 @@ class _$MyApiStateCopyWithImpl<$Res> implements $MyApiStateCopyWith<$Res> {
 /// @nodoc
 abstract class $SuccessStateCopyWith<$Res> {
   factory $SuccessStateCopyWith(
-          SuccessState value, $Res Function(SuccessState) then) =
-      _$SuccessStateCopyWithImpl<$Res>;
+    SuccessState value,
+    $Res Function(SuccessState) then,
+  ) = _$SuccessStateCopyWithImpl<$Res>;
   $Res call({List<String> data});
 }
 
@@ -98,22 +93,23 @@ abstract class $SuccessStateCopyWith<$Res> {
 class _$SuccessStateCopyWithImpl<$Res> extends _$MyApiStateCopyWithImpl<$Res>
     implements $SuccessStateCopyWith<$Res> {
   _$SuccessStateCopyWithImpl(
-      SuccessState _value, $Res Function(SuccessState) _then)
-      : super(_value, (v) => _then(v as SuccessState));
+    SuccessState _value,
+    $Res Function(SuccessState) _then,
+  ) : super(_value, (v) => _then(v as SuccessState));
 
   @override
   SuccessState get _value => super._value as SuccessState;
 
   @override
-  $Res call({
-    Object? data = freezed,
-  }) {
-    return _then(SuccessState(
-      data == freezed
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-    ));
+  $Res call({Object? data = freezed}) {
+    return _then(
+      SuccessState(
+        data == freezed
+            ? _value.data
+            : data // ignore: cast_nullable_to_non_nullable
+                  as List<String>,
+      ),
+    );
   }
 }
 
@@ -208,8 +204,9 @@ abstract class SuccessState implements MyApiState {
 /// @nodoc
 abstract class $ErrorStateCopyWith<$Res> {
   factory $ErrorStateCopyWith(
-          ErrorState value, $Res Function(ErrorState) then) =
-      _$ErrorStateCopyWithImpl<$Res>;
+    ErrorState value,
+    $Res Function(ErrorState) then,
+  ) = _$ErrorStateCopyWithImpl<$Res>;
   $Res call({String errorMsg});
 }
 
@@ -217,21 +214,21 @@ abstract class $ErrorStateCopyWith<$Res> {
 class _$ErrorStateCopyWithImpl<$Res> extends _$MyApiStateCopyWithImpl<$Res>
     implements $ErrorStateCopyWith<$Res> {
   _$ErrorStateCopyWithImpl(ErrorState _value, $Res Function(ErrorState) _then)
-      : super(_value, (v) => _then(v as ErrorState));
+    : super(_value, (v) => _then(v as ErrorState));
 
   @override
   ErrorState get _value => super._value as ErrorState;
 
   @override
-  $Res call({
-    Object? errorMsg = freezed,
-  }) {
-    return _then(ErrorState(
-      errorMsg == freezed
-          ? _value.errorMsg
-          : errorMsg // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? errorMsg = freezed}) {
+    return _then(
+      ErrorState(
+        errorMsg == freezed
+            ? _value.errorMsg
+            : errorMsg // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
   }
 }
 
@@ -253,8 +250,10 @@ class _$ErrorState implements ErrorState {
     return identical(this, other) ||
         (other is ErrorState &&
             (identical(other.errorMsg, errorMsg) ||
-                const DeepCollectionEquality()
-                    .equals(other.errorMsg, errorMsg)));
+                const DeepCollectionEquality().equals(
+                  other.errorMsg,
+                  errorMsg,
+                )));
   }
 
   @override
@@ -327,16 +326,18 @@ abstract class ErrorState implements MyApiState {
 /// @nodoc
 abstract class $LoadingStateCopyWith<$Res> {
   factory $LoadingStateCopyWith(
-          LoadingState value, $Res Function(LoadingState) then) =
-      _$LoadingStateCopyWithImpl<$Res>;
+    LoadingState value,
+    $Res Function(LoadingState) then,
+  ) = _$LoadingStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class _$LoadingStateCopyWithImpl<$Res> extends _$MyApiStateCopyWithImpl<$Res>
     implements $LoadingStateCopyWith<$Res> {
   _$LoadingStateCopyWithImpl(
-      LoadingState _value, $Res Function(LoadingState) _then)
-      : super(_value, (v) => _then(v as LoadingState));
+    LoadingState _value,
+    $Res Function(LoadingState) _then,
+  ) : super(_value, (v) => _then(v as LoadingState));
 
   @override
   LoadingState get _value => super._value as LoadingState;

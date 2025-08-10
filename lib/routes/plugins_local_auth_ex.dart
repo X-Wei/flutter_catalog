@@ -40,20 +40,20 @@ class _LocalAuthExampleState extends State<LocalAuthExample> {
     // FlutterFragmentActivity, cf. https://stackoverflow.com/a/56605771.
     try {
       final authSuccess = await this._localAuth.authenticate(
-            localizedReason: 'Auth in to see hidden image',
-            options: const AuthenticationOptions(biometricOnly: true),
-          );
+        localizedReason: 'Auth in to see hidden image',
+        options: const AuthenticationOptions(biometricOnly: true),
+      );
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('authSuccess=$authSuccess')),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('authSuccess=$authSuccess')));
       }
       return authSuccess;
     } catch (e) {
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(e.toString())),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(e.toString())));
       }
       return false;
     }

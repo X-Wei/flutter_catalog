@@ -15,8 +15,10 @@ class _AnimatedBuilderExampleState extends State<AnimatedBuilderExample>
   @override
   void initState() {
     super.initState();
-    this._controller =
-        AnimationController(duration: const Duration(seconds: 1), vsync: this);
+    this._controller = AnimationController(
+      duration: const Duration(seconds: 1),
+      vsync: this,
+    );
   }
 
   @override
@@ -27,17 +29,16 @@ class _AnimatedBuilderExampleState extends State<AnimatedBuilderExample>
 
   @override
   Widget build(BuildContext context) {
-    final rotateAnimation =
-        Tween<double>(begin: 0, end: pi).animate(this._controller);
+    final rotateAnimation = Tween<double>(
+      begin: 0,
+      end: pi,
+    ).animate(this._controller);
     return Column(
       children: <Widget>[
         AnimatedBuilder(
           animation: rotateAnimation,
           builder: (context, child) {
-            return Transform.rotate(
-              angle: rotateAnimation.value,
-              child: child,
-            );
+            return Transform.rotate(angle: rotateAnimation.value, child: child);
           },
           child: const FlutterLogo(size: 72.0),
         ),

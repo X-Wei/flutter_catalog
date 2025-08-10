@@ -33,14 +33,19 @@ class _LowLevelAnimationExampleState extends State<LowLevelAnimationExample>
       // unnecessary resources, `this` has SingleTickerProviderStateMixin.
       vsync: this,
     );
-    this._curve =
-        CurvedAnimation(parent: this._controller, curve: Curves.easeIn);
+    this._curve = CurvedAnimation(
+      parent: this._controller,
+      curve: Curves.easeIn,
+    );
     // A Tween interpolates between the range of data.
-    this._sizeAnimation =
-        Tween<double>(begin: 50, end: 100).animate(this._curve);
-    this._colorAnimation =
-        ColorTween(begin: Colors.transparent, end: Colors.red)
-            .animate(this._curve);
+    this._sizeAnimation = Tween<double>(
+      begin: 50,
+      end: 100,
+    ).animate(this._curve);
+    this._colorAnimation = ColorTween(
+      begin: Colors.transparent,
+      end: Colors.red,
+    ).animate(this._curve);
     // With addListener(), a listener function is called whenever the value of
     // the animation changes, e.g. call setState() to cause a rebuild.
     this._controller.addListener(() => setState(() {}));
@@ -65,13 +70,15 @@ class _LowLevelAnimationExampleState extends State<LowLevelAnimationExample>
           child: const FlutterLogo(),
         ),
         ElevatedButton(
-          onPressed:
-              this._controller.isCompleted ? null : () => _controller.forward(),
+          onPressed: this._controller.isCompleted
+              ? null
+              : () => _controller.forward(),
           child: const Text('Forward animation'),
         ),
         ElevatedButton(
-          onPressed:
-              this._controller.isDismissed ? null : () => _controller.reverse(),
+          onPressed: this._controller.isDismissed
+              ? null
+              : () => _controller.reverse(),
           child: const Text('Reverse animation'),
         ),
         ElevatedButton(

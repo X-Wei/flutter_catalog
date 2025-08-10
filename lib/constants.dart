@@ -9,9 +9,13 @@ import 'package:package_info_plus/package_info_plus.dart';
 
 late final PackageInfo kPackageInfo;
 const APP_NAME = 'Flutter Catalog';
-final kAppIcon =
-    Image.asset('res/images/app_icon.png', height: 64.0, width: 64.0);
-const APP_DESCRIPTION = 'An app showcasing Flutter components, with '
+final kAppIcon = Image.asset(
+  'res/images/app_icon.png',
+  height: 64.0,
+  width: 64.0,
+);
+const APP_DESCRIPTION =
+    'An app showcasing Flutter components, with '
     'side-by-side source code view.'
     '\n\nDeveloped by X.Wei.';
 const GOOGLEPLAY_URL =
@@ -23,10 +27,13 @@ const APPSTORE_URL =
 
 final kPlatformType = getCurrentPlatformType();
 // Whether the app is running on mobile phones (Android/iOS)
-final kIsOnMobile =
-    {PlatformType.Android, PlatformType.iOS}.contains(kPlatformType);
+final kIsOnMobile = {
+  PlatformType.Android,
+  PlatformType.iOS,
+}.contains(kPlatformType);
 
-final kIsMobileOrWeb = kIsWeb ||
+final kIsMobileOrWeb =
+    kIsWeb ||
     defaultTargetPlatform == TargetPlatform.iOS ||
     defaultTargetPlatform == TargetPlatform.android;
 

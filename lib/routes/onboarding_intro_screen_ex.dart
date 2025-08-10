@@ -8,10 +8,9 @@ class IntroductionScreenExample extends StatelessWidget {
   const IntroductionScreenExample({super.key});
 
   static MaterialPageRoute route() => MaterialPageRoute(
-        builder: (_) => Scaffold(
-          body: SafeArea(child: IntroductionScreenExample()),
-        ),
-      );
+    builder: (_) =>
+        Scaffold(body: SafeArea(child: IntroductionScreenExample())),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -52,8 +51,10 @@ class IntroductionScreenExample extends StatelessWidget {
             title: 'Enjoy!',
             bodyWidget: Column(
               children: [
-                Text('Explore the demos and learn Flutter anywhere as you go!\n'
-                    'And you are more than welcome to contribute to this open-source app :)'),
+                Text(
+                  'Explore the demos and learn Flutter anywhere as you go!\n'
+                  'And you are more than welcome to contribute to this open-source app :)',
+                ),
                 Card(
                   child: ListTile(
                     leading: Icon(Icons.code),

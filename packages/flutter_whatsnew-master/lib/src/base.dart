@@ -141,9 +141,10 @@ class WhatsNewPage extends StatelessWidget {
                 child: ListTile(
                   title: ElevatedButton(
                     style: buttonStyle,
-                    onPressed: onButtonPressed ?? () {
-                            Navigator.pop(context);
-                          },
+                    onPressed: onButtonPressed ??
+                        () {
+                          Navigator.pop(context);
+                        },
                     child: buttonText,
                   ),
                 ),

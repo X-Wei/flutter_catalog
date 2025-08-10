@@ -66,8 +66,6 @@ class TargetScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text("Target Screen")),
-    );
+    return Scaffold(appBar: AppBar(title: Text("Target Screen")));
   }
 }

@@ -47,9 +47,7 @@ class RiverpodFreezedExample extends StatelessWidget {
   Widget build(BuildContext context) {
     ///! 3. to access the providers, wrap the UI that uses myApiModel by a
     ///! ProviderScope (normally we should wrap the whole MaterialApp).
-    return ProviderScope(
-      child: _DemoPage(),
-    );
+    return ProviderScope(child: _DemoPage());
   }
 }
 
@@ -69,11 +67,9 @@ class __DemoPageState extends ConsumerState<_DemoPage> {
     ///! Note even though this is in build(), it'll only run when state changes.
     ref.listen<MyApiState>(kMyApiModelProvider, (_, state) {
       if (state is ErrorState) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(state.errorMsg),
-          ),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(state.errorMsg)));
       }
     });
     return Scaffold(
@@ -106,8 +102,9 @@ class __DemoPageState extends ConsumerState<_DemoPage> {
                 onPressed: () => Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (ctx) => Scaffold(
-                      appBar:
-                          AppBar(title: const Text('data/my_api_state.dart')),
+                      appBar: AppBar(
+                        title: const Text('data/my_api_state.dart'),
+                      ),
                       body: const WidgetWithCodeView(
                         filePath: 'lib/routes/data/my_api_state.dart',
                       ),
@@ -146,13 +143,11 @@ class __DemoPageState extends ConsumerState<_DemoPage> {
                   shrinkWrap: true,
                   physics: const ClampingScrollPhysics(),
                   children: [
-                    for (final name in names) ListTile(title: Text(name))
+                    for (final name in names) ListTile(title: Text(name)),
                   ],
                 ),
-                error: (errorMsg) => Text(
-                  errorMsg,
-                  style: const TextStyle(color: Colors.red),
-                ),
+                error: (errorMsg) =>
+                    Text(errorMsg, style: const TextStyle(color: Colors.red)),
                 loading: () =>
                     const Center(child: CircularProgressIndicator.adaptive()),
               );

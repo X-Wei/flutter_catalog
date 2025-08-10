@@ -54,9 +54,7 @@ class _ListSwipeToDismissExampleState extends State<ListSwipeToDismissExample> {
             alignment: Alignment.centerRight,
             child: const Icon(Icons.thumb_up),
           ),
-          child: ListTile(
-            title: Center(child: Text(_items[index])),
-          ),
+          child: ListTile(title: Center(child: Text(_items[index]))),
         );
       },
     );

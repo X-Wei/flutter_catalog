@@ -14,9 +14,7 @@ class ImagePluginExample extends StatelessWidget {
           final newImgBytes = manipulateImage(snapshot.data!);
           return Center(child: Image.memory(newImgBytes));
         } else {
-          return const Center(
-            child: LinearProgressIndicator(),
-          );
+          return const Center(child: LinearProgressIndicator());
         }
       },
     );

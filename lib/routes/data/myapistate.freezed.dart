@@ -10,7 +10,8 @@ part of 'myapistate.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods',
+);
 
 MyApiState _$MyApiStateFromJson(Map<String, dynamic> json) {
   return _MyApiState.fromJson(json);
@@ -40,8 +41,9 @@ mixin _$MyApiState {
 /// @nodoc
 abstract class $MyApiStateCopyWith<$Res> {
   factory $MyApiStateCopyWith(
-          MyApiState value, $Res Function(MyApiState) then) =
-      _$MyApiStateCopyWithImpl<$Res>;
+    MyApiState value,
+    $Res Function(MyApiState) then,
+  ) = _$MyApiStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -56,16 +58,18 @@ class _$MyApiStateCopyWithImpl<$Res> implements $MyApiStateCopyWith<$Res> {
 /// @nodoc
 abstract class _$MyApiStateCopyWith<$Res> {
   factory _$MyApiStateCopyWith(
-          _MyApiState value, $Res Function(_MyApiState) then) =
-      __$MyApiStateCopyWithImpl<$Res>;
+    _MyApiState value,
+    $Res Function(_MyApiState) then,
+  ) = __$MyApiStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$MyApiStateCopyWithImpl<$Res> extends _$MyApiStateCopyWithImpl<$Res>
     implements _$MyApiStateCopyWith<$Res> {
   __$MyApiStateCopyWithImpl(
-      _MyApiState _value, $Res Function(_MyApiState) _then)
-      : super(_value, (v) => _then(v as _MyApiState));
+    _MyApiState _value,
+    $Res Function(_MyApiState) _then,
+  ) : super(_value, (v) => _then(v as _MyApiState));
 
   @override
   _MyApiState get _value => super._value as _MyApiState;

@@ -73,38 +73,39 @@ class _NewHeatmapCalendarExampleState extends State<NewHeatmapCalendarExample> {
 
   /// Widgets to configure the heatmap
   List<Widget> _controlWidgets() => <Widget>[
-        SwitchListTile(
-          title: const Text('showText:'),
-          onChanged: (bool val) => setState(() => this._showText = val),
-          value: this._showText,
-        ),
-        SwitchListTile(
-          title: const Text('scrollable:'),
-          onChanged: (bool val) => setState(() => this._scrollable = val),
-          value: this._scrollable,
-        ),
-        SwitchListTile(
-          title: const Text('showColorTip:'),
-          onChanged: (bool val) => setState(() => this._showColorTip = val),
-          value: this._showColorTip,
-        ),
-        ListTile(
-          title: Text('size (of each block): $_size'),
-          subtitle: Slider(
-              min: 10,
-              max: 50,
-              divisions: 8,
-              label: _size.toString(),
-              value: _size,
-              onChanged: (v) => setState(() => this._size = v)),
-        ),
-        MyValuePickerTile<ColorMode>(
-          val: _colorMode,
-          values: ColorMode.values,
-          title: 'colorMode:',
-          onChanged: (newVal) {
-            setState(() => _colorMode = newVal);
-          },
-        ),
-      ];
+    SwitchListTile(
+      title: const Text('showText:'),
+      onChanged: (bool val) => setState(() => this._showText = val),
+      value: this._showText,
+    ),
+    SwitchListTile(
+      title: const Text('scrollable:'),
+      onChanged: (bool val) => setState(() => this._scrollable = val),
+      value: this._scrollable,
+    ),
+    SwitchListTile(
+      title: const Text('showColorTip:'),
+      onChanged: (bool val) => setState(() => this._showColorTip = val),
+      value: this._showColorTip,
+    ),
+    ListTile(
+      title: Text('size (of each block): $_size'),
+      subtitle: Slider(
+        min: 10,
+        max: 50,
+        divisions: 8,
+        label: _size.toString(),
+        value: _size,
+        onChanged: (v) => setState(() => this._size = v),
+      ),
+    ),
+    MyValuePickerTile<ColorMode>(
+      val: _colorMode,
+      values: ColorMode.values,
+      title: 'colorMode:',
+      onChanged: (newVal) {
+        setState(() => _colorMode = newVal);
+      },
+    ),
+  ];
 }

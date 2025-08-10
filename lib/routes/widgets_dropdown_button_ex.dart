@@ -10,26 +10,17 @@ class DropdownButtonExample extends StatefulWidget {
 }
 
 class _DropdownButtonExampleState extends State<DropdownButtonExample> {
-  static const menuItems = <String>[
-    'One',
-    'Two',
-    'Three',
-    'Four',
-  ];
+  static const menuItems = <String>['One', 'Two', 'Three', 'Four'];
   final List<DropdownMenuItem<String>> _dropDownMenuItems = menuItems
       .map(
-        (String value) => DropdownMenuItem<String>(
-          value: value,
-          child: Text(value),
-        ),
+        (String value) =>
+            DropdownMenuItem<String>(value: value, child: Text(value)),
       )
       .toList();
   final List<PopupMenuItem<String>> _popUpMenuItems = menuItems
       .map(
-        (String value) => PopupMenuItem<String>(
-          value: value,
-          child: Text(value),
-        ),
+        (String value) =>
+            PopupMenuItem<String>(value: value, child: Text(value)),
       )
       .toList();
 
@@ -72,11 +63,9 @@ class _DropdownButtonExampleState extends State<DropdownButtonExample> {
           trailing: PopupMenuButton<String>(
             onSelected: (String newValue) {
               _btn3SelectedVal = newValue;
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(_btn3SelectedVal),
-                ),
-              );
+              ScaffoldMessenger.of(
+                context,
+              ).showSnackBar(SnackBar(content: Text(_btn3SelectedVal)));
             },
             itemBuilder: (BuildContext context) => _popUpMenuItems,
           ),
@@ -114,19 +103,20 @@ class MyValuePickerTile<T> extends StatelessWidget {
       items: [
         for (final v in values)
           DropdownMenuItem<T>(
-              value: v, child: Text(getname?.call(v) ?? v.toString()))
+            value: v,
+            child: Text(getname?.call(v) ?? v.toString()),
+          ),
       ],
     );
     final isSmallScreen = MediaQuery.of(context).size.width < 600;
     return isSmallScreen
         ? ListTile(
             title: Align(alignment: Alignment.centerRight, child: dropDown),
-            subtitle:
-                Align(alignment: Alignment.centerRight, child: Text(title)),
+            subtitle: Align(
+              alignment: Alignment.centerRight,
+              child: Text(title),
+            ),
           )
-        : ListTile(
-            title: Text('$title :'),
-            trailing: dropDown,
-          );
+        : ListTile(title: Text('$title :'), trailing: dropDown);
   }
 }

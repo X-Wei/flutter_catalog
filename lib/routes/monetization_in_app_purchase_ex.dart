@@ -43,9 +43,7 @@ class _InAppPurchaseExampleState extends ConsumerState<InAppPurchaseExample> {
     _subscription = _iap.purchaseStream.listen((purchaseDetailsLst) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('NEW PURCHASE: $purchaseDetailsLst'),
-          ),
+          SnackBar(content: Text('NEW PURCHASE: $purchaseDetailsLst')),
         );
       }
       debugPrint('NEW PURCHASE');
@@ -80,13 +78,15 @@ class _InAppPurchaseExampleState extends ConsumerState<InAppPurchaseExample> {
         context: context,
         builder: (ctx) => AlertDialog(
           title: const Text('Log in required'),
-          content: const Text('You must first log in to purchase items.\n'
-              'Tap the bottom card to go to log in page.'),
+          content: const Text(
+            'You must first log in to purchase items.\n'
+            'Tap the bottom card to go to log in page.',
+          ),
           actions: <Widget>[
             TextButton(
               onPressed: () => Navigator.of(ctx).pop(),
               child: const Text('OK'),
-            )
+            ),
           ],
         ),
       );
@@ -124,8 +124,9 @@ class _InAppPurchaseExampleState extends ConsumerState<InAppPurchaseExample> {
             title: Text('You can check your purchase status in the other page'),
             subtitle: Text('Tap here to go to the purchase-details page.'),
             trailing: Icon(Icons.keyboard_arrow_right),
-            onTap: () => Navigator.of(context)
-                .pushNamed('/monetization_user_purchases_ex'),
+            onTap: () => Navigator.of(
+              context,
+            ).pushNamed('/monetization_user_purchases_ex'),
           ),
           // !Purchases
           if (_purchases.isNotEmpty) ...[
@@ -139,8 +140,8 @@ class _InAppPurchaseExampleState extends ConsumerState<InAppPurchaseExample> {
                   'status=${p.status}\n'
                   'pendingCompletePurchase=${p.pendingCompletePurchase}\n',
                 ),
-              )
-          ]
+              ),
+          ],
         ],
       ),
       //! See monetization_user_purchases_ex.dart

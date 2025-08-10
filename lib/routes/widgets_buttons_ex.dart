@@ -7,16 +7,16 @@ class ButtonsExample extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     void _showToast() => Fluttertoast.showToast(
-          msg: 'Button tapped',
-          toastLength: Toast.LENGTH_SHORT,
-        );
+      msg: 'Button tapped',
+      toastLength: Toast.LENGTH_SHORT,
+    );
 
     void _showSnack() => ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Button tapped'),
-            duration: Duration(milliseconds: 500),
-          ),
-        );
+      const SnackBar(
+        content: Text('Button tapped'),
+        duration: Duration(milliseconds: 500),
+      ),
+    );
     return ListView(
       padding: const EdgeInsets.all(16.0),
       children: <Widget>[
@@ -82,7 +82,7 @@ class ButtonsExample extends StatelessWidget {
                 const OutlinedButton(
                   onPressed: null,
                   child: Text('OutlineButton'),
-                )
+                ),
               ],
             ),
           ],
@@ -103,7 +103,7 @@ class ButtonsExample extends StatelessWidget {
                 tooltip: 'Place a phone call',
                 onPressed: _showSnack,
               ),
-            )
+            ),
           ],
         ),
       ],

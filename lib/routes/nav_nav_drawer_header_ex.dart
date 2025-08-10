@@ -13,14 +13,8 @@ class NavDrawerExample extends StatelessWidget {
         child: FlutterLogo(size: 42.0),
       ),
       otherAccountsPictures: <Widget>[
-        CircleAvatar(
-          backgroundColor: Colors.yellow,
-          child: Text('A'),
-        ),
-        CircleAvatar(
-          backgroundColor: Colors.red,
-          child: Text('B'),
-        )
+        CircleAvatar(backgroundColor: Colors.yellow, child: Text('A')),
+        CircleAvatar(backgroundColor: Colors.red, child: Text('B')),
       ],
     );
     final drawerItems = ListView(
@@ -34,10 +28,7 @@ class NavDrawerExample extends StatelessWidget {
           title: const Text('To page 2'),
           onTap: () => Navigator.of(context).push(_NewPage(2)),
         ),
-        ListTile(
-          title: const Text('other drawer item'),
-          onTap: () {},
-        ),
+        ListTile(title: const Text('other drawer item'), onTap: () {}),
       ],
     );
     return Scaffold(
@@ -48,9 +39,7 @@ class NavDrawerExample extends StatelessWidget {
       body: const Center(
         child: Text('Swip or click upper-left icon to see drawer.'),
       ),
-      drawer: Drawer(
-        child: drawerItems,
-      ),
+      drawer: Drawer(child: drawerItems),
     );
   }
 }
@@ -58,17 +47,12 @@ class NavDrawerExample extends StatelessWidget {
 // <void> means this route returns nothing.
 class _NewPage extends MaterialPageRoute<void> {
   _NewPage(int id)
-      : super(
-          builder: (BuildContext context) {
-            return Scaffold(
-              appBar: AppBar(
-                title: Text('Page $id'),
-                elevation: 1.0,
-              ),
-              body: Center(
-                child: Text('Page $id'),
-              ),
-            );
-          },
-        );
+    : super(
+        builder: (BuildContext context) {
+          return Scaffold(
+            appBar: AppBar(title: Text('Page $id'), elevation: 1.0),
+            body: Center(child: Text('Page $id')),
+          );
+        },
+      );
 }

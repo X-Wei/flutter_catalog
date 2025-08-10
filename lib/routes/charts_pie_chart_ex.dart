@@ -38,8 +38,9 @@ class _PieChartExampleState extends State<PieChartExample> {
 
   @override
   Widget build(BuildContext context) {
-    final _colorPalettes =
-        charts.MaterialPalette.getOrderedPalettes(this._data.length);
+    final _colorPalettes = charts.MaterialPalette.getOrderedPalettes(
+      this._data.length,
+    );
     return ListView(
       padding: const EdgeInsets.all(8),
       children: <Widget>[
@@ -64,7 +65,7 @@ class _PieChartExampleState extends State<PieChartExample> {
             defaultRenderer: charts.ArcRendererConfig(
               arcRatio: this._arcRatio,
               arcRendererDecorators: [
-                charts.ArcLabelDecorator(labelPosition: this._arcLabelPosition)
+                charts.ArcLabelDecorator(labelPosition: this._arcLabelPosition),
               ],
             ),
             behaviors: [
@@ -89,47 +90,46 @@ class _PieChartExampleState extends State<PieChartExample> {
 
   /// Widgets to control the chart appearance and behavior.
   List<Widget> _controlWidgets() => <Widget>[
-        SwitchListTile(
-          title: const Text('animate'),
-          onChanged: (bool val) => setState(() => this._animate = val),
-          value: this._animate,
-        ),
-        SwitchListTile(
-          title: const Text('defaultInteractions'),
-          onChanged: (bool val) =>
-              setState(() => this._defaultInteractions = val),
-          value: this._defaultInteractions,
-        ),
-        const ListTile(title: Text('Arc width ratio w.r.t. radius:')),
-        Slider(
-          divisions: 10,
-          onChanged: (double val) => setState(() => this._arcRatio = val),
-          value: this._arcRatio,
-          label: '${this._arcRatio}',
-        ),
-        MyValuePickerTile(
-          val: this._arcLabelPosition,
-          values: charts.ArcLabelPosition.values,
-          title: 'arcLabelPosition:',
-          onChanged: (charts.ArcLabelPosition newVal) {
-            setState(() => this._arcLabelPosition = newVal);
-          },
-        ),
-        MyValuePickerTile(
-          val: this._titlePosition,
-          values: charts.BehaviorPosition.values,
-          title: 'titlePosition:',
-          onChanged: (charts.BehaviorPosition newVal) {
-            setState(() => this._titlePosition = newVal);
-          },
-        ),
-        MyValuePickerTile(
-          val: this._legendPosition,
-          values: charts.BehaviorPosition.values,
-          title: 'legendPosition:',
-          onChanged: (charts.BehaviorPosition newVal) {
-            setState(() => this._legendPosition = newVal);
-          },
-        ),
-      ];
+    SwitchListTile(
+      title: const Text('animate'),
+      onChanged: (bool val) => setState(() => this._animate = val),
+      value: this._animate,
+    ),
+    SwitchListTile(
+      title: const Text('defaultInteractions'),
+      onChanged: (bool val) => setState(() => this._defaultInteractions = val),
+      value: this._defaultInteractions,
+    ),
+    const ListTile(title: Text('Arc width ratio w.r.t. radius:')),
+    Slider(
+      divisions: 10,
+      onChanged: (double val) => setState(() => this._arcRatio = val),
+      value: this._arcRatio,
+      label: '${this._arcRatio}',
+    ),
+    MyValuePickerTile(
+      val: this._arcLabelPosition,
+      values: charts.ArcLabelPosition.values,
+      title: 'arcLabelPosition:',
+      onChanged: (charts.ArcLabelPosition newVal) {
+        setState(() => this._arcLabelPosition = newVal);
+      },
+    ),
+    MyValuePickerTile(
+      val: this._titlePosition,
+      values: charts.BehaviorPosition.values,
+      title: 'titlePosition:',
+      onChanged: (charts.BehaviorPosition newVal) {
+        setState(() => this._titlePosition = newVal);
+      },
+    ),
+    MyValuePickerTile(
+      val: this._legendPosition,
+      values: charts.BehaviorPosition.values,
+      title: 'legendPosition:',
+      onChanged: (charts.BehaviorPosition newVal) {
+        setState(() => this._legendPosition = newVal);
+      },
+    ),
+  ];
 }

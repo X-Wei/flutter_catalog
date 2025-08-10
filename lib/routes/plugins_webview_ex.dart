@@ -46,9 +46,7 @@ class _WebViewExampleState extends State<WebViewExample> {
     _controller.text = 'www.google.com';
     return Column(
       children: <Widget>[
-        const SizedBox(
-          height: 15,
-        ),
+        const SizedBox(height: 15),
         TextField(
           controller: this._controller,
           decoration: const InputDecoration(
@@ -88,16 +86,15 @@ class _WebViewExampleState extends State<WebViewExample> {
           builder: (ctx) => Scaffold(
             appBar: AppBar(title: Text(url)),
             body: WebViewWidget(
-                controller: _webviewController..loadRequest(Uri.parse(url))),
+              controller: _webviewController..loadRequest(Uri.parse(url)),
+            ),
           ),
         ),
       );
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('URL $url can not be launched.'),
-        ),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('URL $url can not be launched.')));
     }
   }
 }

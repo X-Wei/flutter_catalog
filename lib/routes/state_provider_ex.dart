@@ -18,10 +18,7 @@ class ProviderExample extends StatelessWidget {
           create: (_) => _MyCounterState(),
         ),
       ],
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: _MyDemoApp(),
-      ),
+      child: Padding(padding: const EdgeInsets.all(8.0), child: _MyDemoApp()),
     );
   }
 }
@@ -78,10 +75,7 @@ class _AppRootWidget extends StatelessWidget {
           Text('${Provider.of<int>(context)} seconds elapsed'),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              _CounterAndButton(),
-              _CounterAndButton(),
-            ],
+            children: <Widget>[_CounterAndButton(), _CounterAndButton()],
           ),
         ],
       ),
@@ -115,16 +109,20 @@ class _CounterAndButton extends StatelessWidget {
               ),
               // Way 2 to get state up the tree: wrap a Consumer widget.
               Consumer<_MyCounterState>(
-                builder: (BuildContext context, _MyCounterState value,
-                    Widget? child) {
-                  return IconButton(
-                    icon: const Icon(Icons.remove),
-                    onPressed: () => value.decrementCounter(),
-                  );
-                },
+                builder:
+                    (
+                      BuildContext context,
+                      _MyCounterState value,
+                      Widget? child,
+                    ) {
+                      return IconButton(
+                        icon: const Icon(Icons.remove),
+                        onPressed: () => value.decrementCounter(),
+                      );
+                    },
               ),
             ],
-          )
+          ),
         ],
       ),
     );

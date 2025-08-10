@@ -35,9 +35,7 @@ class _SliverAppBarExampleState extends State<SliverAppBarExample> {
             ),
           ),
           // If the main content is a list, use SliverList instead.
-          const SliverFillRemaining(
-            child: Center(child: Text("Hello")),
-          ),
+          const SliverFillRemaining(child: Center(child: Text("Hello"))),
         ],
       ),
       bottomNavigationBar: this._getBottomAppBar(),

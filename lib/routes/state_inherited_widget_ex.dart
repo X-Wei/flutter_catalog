@@ -5,10 +5,7 @@ class InheritedWidgetExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: _MyDemoApp(),
-    );
+    return Padding(padding: const EdgeInsets.all(8.0), child: _MyDemoApp());
   }
 }
 
@@ -20,8 +17,11 @@ class InheritedWidgetExample extends StatelessWidget {
 class MyInheritedWidget extends InheritedWidget {
   final _MyDemoAppState myState;
 
-  const MyInheritedWidget(
-      {super.key, required super.child, required this.myState});
+  const MyInheritedWidget({
+    super.key,
+    required super.child,
+    required this.myState,
+  });
 
   @override
   // Returns when it's children widget should be notified for rebuild.
@@ -68,10 +68,7 @@ class _MyDemoAppState extends State<_MyDemoApp> {
         ),
         // ###3. Put the inherited widget at the root of the widget tree, so that
         // all children widgets can access the state.
-        MyInheritedWidget(
-          myState: this,
-          child: _AppRootWidget(),
-        ),
+        MyInheritedWidget(myState: this, child: _AppRootWidget()),
       ],
     );
   }
@@ -92,10 +89,7 @@ class _AppRootWidget extends StatelessWidget {
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              _CounterAndButton(),
-              _CounterAndButton(),
-            ],
+            children: <Widget>[_CounterAndButton(), _CounterAndButton()],
           ),
         ],
       ),
@@ -129,7 +123,7 @@ class _CounterAndButton extends StatelessWidget {
                 onPressed: () => rootWidgetsState.decrementCounter(),
               ),
             ],
-          )
+          ),
         ],
       ),
     );

@@ -50,8 +50,8 @@ class MyRoute extends ConsumerWidget {
     this.links = const <String, String>{},
     String? routeName,
     this.supportedPlatforms = PlatformType.values,
-  })  : _title = title,
-        _routeName = routeName;
+  }) : _title = title,
+       _routeName = routeName;
 
   String get routeName =>
       this._routeName ?? '/${basenameWithoutExtension(sourceFilePath)}';
@@ -62,7 +62,8 @@ class MyRoute extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final appbarLeading = (kPlatformType == PlatformType.Android ||
+    final appbarLeading =
+        (kPlatformType == PlatformType.Android ||
             this.routeName == Navigator.defaultRouteName)
         ? null
         : IconButton(
@@ -84,23 +85,23 @@ class MyRoute extends ConsumerWidget {
       frontLayer: Builder(
         builder: (BuildContext context) =>
             routeName == Navigator.defaultRouteName
-                ? this.child
-                : WidgetWithCodeView(
-                    filePath: this.sourceFilePath,
-                    codeLinkPrefix: '$GITHUB_URL/blob/master',
-                    tabChangeListener: (TabController tabc) {
-                      if (!tabc.indexIsChanging) return;
-                      if (tabc.index == 1) {
-                        debugPrint('Changing to code view!');
-                      }
-                    },
-                    headerWidget: const MyBannerAd(),
-                    // footerWidget: const MyBannerAd(),
-                    // fabOffset: ref.watch(adIsRemovedProvider) ? 0 : 64,
-                    // Put banner in bottom to not obscure ads (due to policy).
-                    bottomWidget: const MyBannerAd(),
-                    child: this.child,
-                  ),
+            ? this.child
+            : WidgetWithCodeView(
+                filePath: this.sourceFilePath,
+                codeLinkPrefix: '$GITHUB_URL/blob/master',
+                tabChangeListener: (TabController tabc) {
+                  if (!tabc.indexIsChanging) return;
+                  if (tabc.index == 1) {
+                    debugPrint('Changing to code view!');
+                  }
+                },
+                headerWidget: const MyBannerAd(),
+                // footerWidget: const MyBannerAd(),
+                // fabOffset: ref.watch(adIsRemovedProvider) ? 0 : 64,
+                // Put banner in bottom to not obscure ads (due to policy).
+                bottomWidget: const MyBannerAd(),
+                child: this.child,
+              ),
       ),
       backLayer: _getBackdropListTiles(),
     );
@@ -141,7 +142,7 @@ class MyRoute extends ConsumerWidget {
                     onTap: () =>
                         url_launcher.launchUrl(Uri.parse(titleAndLink.value)),
                   ),
-                )
+                ),
             ];
           },
         ),

@@ -38,8 +38,9 @@ class _RestApiGoogleBooksExampleState extends State<RestApiGoogleBooksExample> {
         OverflowBar(
           children: <Widget>[
             ElevatedButton(
-              onPressed:
-                  _pending ? null : () => this._search(_queryController.text),
+              onPressed: _pending
+                  ? null
+                  : () => this._search(_queryController.text),
               child: const Text('Search'),
             ),
           ],
@@ -60,9 +61,9 @@ class _RestApiGoogleBooksExampleState extends State<RestApiGoogleBooksExample> {
       title: Text(book.title),
       subtitle: Text(book.authors),
       trailing: Hero(tag: book.id, child: book.thumbnail),
-      onTap: () => Navigator.of(context).push(
-        MaterialPageRoute(builder: (_) => _MyBookDetailsPage(book)),
-      ),
+      onTap: () => Navigator.of(
+        context,
+      ).push(MaterialPageRoute(builder: (_) => _MyBookDetailsPage(book))),
     );
   }
 
@@ -94,9 +95,9 @@ class _RestApiGoogleBooksExampleState extends State<RestApiGoogleBooksExample> {
       }
     } catch (e) {
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error: $e')),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('Error: $e')));
       }
     }
     setState(() => this._pending = false);
@@ -112,20 +113,26 @@ class _MyBook {
   final String? thumbnailUrl;
 
   _MyBook(
-      this.id, this.title, this.authors, this.description, this.thumbnailUrl);
+    this.id,
+    this.title,
+    this.authors,
+    this.description,
+    this.thumbnailUrl,
+  );
 
   Widget get thumbnail => this.thumbnailUrl != null
       ? Image.network(this.thumbnailUrl!)
       : CircleAvatar(child: Text(this.title[0]));
 
   _MyBook.fromJson(Map<String, dynamic> jsonMap)
-      : id = jsonMap['id'] as String,
-        title = jsonMap['volumeInfo']['title'] as String,
-        authors = (jsonMap['volumeInfo']['authors'] as List).join(', '),
-        description = jsonMap['volumeInfo']['description'] as String? ??
-            '<missing description>',
-        thumbnailUrl =
-            jsonMap['volumeInfo']['imageLinks']['smallThumbnail'] as String?;
+    : id = jsonMap['id'] as String,
+      title = jsonMap['volumeInfo']['title'] as String,
+      authors = (jsonMap['volumeInfo']['authors'] as List).join(', '),
+      description =
+          jsonMap['volumeInfo']['description'] as String? ??
+          '<missing description>',
+      thumbnailUrl =
+          jsonMap['volumeInfo']['imageLinks']['smallThumbnail'] as String?;
 
   static List<_MyBook> parseFromJsonStr(String jsonStr) {
     final json = jsonDecode(jsonStr);
@@ -133,7 +140,7 @@ class _MyBook {
     print('${jsonList.length} items in json');
     return [
       for (final jsonMap in jsonList)
-        _MyBook.fromJson(jsonMap as Map<String, dynamic>)
+        _MyBook.fromJson(jsonMap as Map<String, dynamic>),
     ];
   }
 }
@@ -146,22 +153,15 @@ class _MyBookDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(_book.title),
-      ),
+      appBar: AppBar(title: Text(_book.title)),
       body: Padding(
         padding: const EdgeInsets.all(4),
         child: Column(
           children: [
-            Hero(
-              tag: _book.id,
-              child: _book.thumbnail,
-            ),
+            Hero(tag: _book.id, child: _book.thumbnail),
             const Divider(),
             Expanded(
-              child: SingleChildScrollView(
-                child: Text(_book.description),
-              ),
+              child: SingleChildScrollView(child: Text(_book.description)),
             ),
           ],
         ),

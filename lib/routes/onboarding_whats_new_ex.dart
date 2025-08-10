@@ -21,9 +21,10 @@ class WhatsNewExample extends StatelessWidget {
           leading: Icon(Icons.rocket),
           isThreeLine: true,
           subtitle: Text(
-              'Add practical examples useful for building real-world applications, '
-              'like user onboarding, monetization, etc.\n'
-              'Will add more examples in future version.'),
+            'Add practical examples useful for building real-world applications, '
+            'like user onboarding, monetization, etc.\n'
+            'Will add more examples in future version.',
+          ),
         ),
         ListTile(
           title: Text('Update RewordedAdExample and InterstitialAdExample'),

@@ -10,8 +10,9 @@ import '../constants.dart';
 
 /// ! We use riverpod to watch the current logged-in user.
 /// ! e.g. final user = ref.watch(_currentUserProvider).valueOrNull;
-final _currentUserProvider =
-    StreamProvider<User?>((ref) => FirebaseAuth.instance.authStateChanges());
+final _currentUserProvider = StreamProvider<User?>(
+  (ref) => FirebaseAuth.instance.authStateChanges(),
+);
 
 // NOTE: to add firebase support, first go to firebase console, generate the
 // firebase json file, and add configuration lines in the gradle files.
@@ -35,9 +36,9 @@ class _FirebaseChatroomExampleState
   void initState() {
     super.initState();
     final now = DateTime.now().toUtc();
-    _firebaseMsgDbRef = FirebaseDatabase.instance
-        .ref()
-        .child('messages/${now.year}/${now.month}/${now.day}');
+    _firebaseMsgDbRef = FirebaseDatabase.instance.ref().child(
+      'messages/${now.year}/${now.month}/${now.day}',
+    );
   }
 
   @override
@@ -63,7 +64,7 @@ class _FirebaseChatroomExampleState
           children: <Widget>[
             _buildMessagesList(),
             const Divider(height: 2.0),
-            _buildComposeMsgRow()
+            _buildComposeMsgRow(),
           ],
         ),
       ),
@@ -86,7 +87,7 @@ class _FirebaseChatroomExampleState
           TextButton(
             onPressed: () => Navigator.of(ctx).pop(),
             child: const Text('OK'),
-          )
+          ),
         ],
       ),
     );
@@ -102,13 +103,13 @@ class _FirebaseChatroomExampleState
           sort: (a, b) => b.key!.compareTo(a.key!),
           padding: const EdgeInsets.all(8.0),
           reverse: true,
-          itemBuilder: (
-            BuildContext ctx,
-            DataSnapshot snapshot,
-            Animation<double> animation,
-            int idx,
-          ) =>
-              _messageFromSnapshot(snapshot, animation),
+          itemBuilder:
+              (
+                BuildContext ctx,
+                DataSnapshot snapshot,
+                Animation<double> animation,
+                int idx,
+              ) => _messageFromSnapshot(snapshot, animation),
         ),
       ),
     );
@@ -136,9 +137,7 @@ class _FirebaseChatroomExampleState
           Padding(
             padding: const EdgeInsets.only(right: 8.0),
             child: senderPhotoUrl != null
-                ? CircleAvatar(
-                    backgroundImage: NetworkImage(senderPhotoUrl),
-                  )
+                ? CircleAvatar(backgroundImage: NetworkImage(senderPhotoUrl))
                 : CircleAvatar(
                     child: senderName.isEmpty ? null : Text(senderName[0]),
                   ),
@@ -147,8 +146,10 @@ class _FirebaseChatroomExampleState
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Text(senderName,
-                    style: Theme.of(context).textTheme.titleMedium),
+                Text(
+                  senderName,
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
                 Text(
                   DateTime.fromMillisecondsSinceEpoch(sentTime).toString(),
                   style: Theme.of(context).textTheme.bodySmall,
@@ -161,10 +162,7 @@ class _FirebaseChatroomExampleState
       ),
     );
     return SizeTransition(
-      sizeFactor: CurvedAnimation(
-        parent: animation,
-        curve: Curves.easeOut,
-      ),
+      sizeFactor: CurvedAnimation(parent: animation, curve: Curves.easeOut),
       child: messageUI,
     );
   }
@@ -184,8 +182,9 @@ class _FirebaseChatroomExampleState
               // line is filled up.
               maxLines: null,
               maxLength: 200,
-              decoration:
-                  const InputDecoration.collapsed(hintText: "Send a message"),
+              decoration: const InputDecoration.collapsed(
+                hintText: "Send a message",
+              ),
               controller: _textController,
               onChanged: (String text) =>
                   setState(() => _isComposing = text.isNotEmpty),
@@ -220,7 +219,7 @@ class _FirebaseChatroomExampleState
             TextButton(
               onPressed: () => Navigator.of(ctx).pop(),
               child: const Text('OK'),
-            )
+            ),
           ],
         ),
       );

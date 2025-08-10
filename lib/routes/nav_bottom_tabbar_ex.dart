@@ -25,10 +25,7 @@ class _BottomTabbarExampleState extends State<BottomTabbarExample>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(
-      length: _kTabPages.length,
-      vsync: this,
-    );
+    _tabController = TabController(length: _kTabPages.length, vsync: this);
   }
 
   @override
@@ -40,16 +37,10 @@ class _BottomTabbarExampleState extends State<BottomTabbarExample>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: TabBarView(
-        controller: _tabController,
-        children: _kTabPages,
-      ),
+      body: TabBarView(controller: _tabController, children: _kTabPages),
       bottomNavigationBar: Material(
         color: Colors.blue,
-        child: TabBar(
-          tabs: _kTabs,
-          controller: _tabController,
-        ),
+        child: TabBar(tabs: _kTabs, controller: _tabController),
       ),
     );
   }

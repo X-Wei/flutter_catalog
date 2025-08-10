@@ -70,16 +70,13 @@ From https://jsonplaceholder.typicode.com/guide.html we see that the API expects
               onPressed: _pending
                   ? null
                   : () => this._httpPost(
-                        _titleController.text,
-                        _contentController.text,
-                        _userIdController.text,
-                      ),
+                      _titleController.text,
+                      _contentController.text,
+                      _userIdController.text,
+                    ),
               child: const Text('Post'),
             ),
-            ElevatedButton(
-              onPressed: this._reset,
-              child: const Text('Reset'),
-            ),
+            ElevatedButton(onPressed: this._reset, child: const Text('Reset')),
           ],
         ),
         Text('Response body=$_responseBody'),

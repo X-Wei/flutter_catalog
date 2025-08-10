@@ -21,27 +21,12 @@ class Entry {
 
 // Data to display.
 const List<Entry> data = <Entry>[
-  Entry(
-    'Chapter A',
-    <Entry>[
-      Entry(
-        'Section A0',
-        <Entry>[
-          Entry('Item A0.1'),
-          Entry('Item A0.2'),
-        ],
-      ),
-      Entry('Section A1'),
-      Entry('Section A2'),
-    ],
-  ),
-  Entry(
-    'Chapter B',
-    <Entry>[
-      Entry('Section B0'),
-      Entry('Section B1'),
-    ],
-  ),
+  Entry('Chapter A', <Entry>[
+    Entry('Section A0', <Entry>[Entry('Item A0.1'), Entry('Item A0.2')]),
+    Entry('Section A1'),
+    Entry('Section A2'),
+  ]),
+  Entry('Chapter B', <Entry>[Entry('Section B0'), Entry('Section B1')]),
 ];
 
 // Displays one Entry. If the entry has children then it's displayed

@@ -20,11 +20,13 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   if (kIsMobileOrWeb) {
     await Firebase.initializeApp(
-        options: DefaultFirebaseOptions.currentPlatform);
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
     FirebaseUIAuth.configureProviders([
       GoogleProvider(
-          clientId:
-              '785184947614-k4q21aq3rmasodkrj5gjs9qtqtkp89tt.apps.googleusercontent.com'),
+        clientId:
+            '785184947614-k4q21aq3rmasodkrj5gjs9qtqtkp89tt.apps.googleusercontent.com',
+      ),
       EmailAuthProvider(),
       AppleProvider(),
     ]);
@@ -37,26 +39,24 @@ Future<void> main() async {
   kPackageInfo = await PackageInfo.fromPlatform();
   final settings = await MyAppSettings.create();
   if (kIsWeb) {
-    runApp(ProviderScope(
-      overrides: [mySettingsProvider.overrideWith((ref) => settings)],
-      child: MyMainApp(settings),
-    ));
+    runApp(
+      ProviderScope(
+        overrides: [mySettingsProvider.overrideWith((ref) => settings)],
+        child: MyMainApp(settings),
+      ),
+    );
     return;
   }
   final appDir = await getApplicationDocumentsDirectory();
   runApp(
     ProviderScope(
-      overrides: [
-        mySettingsProvider.overrideWith((ref) => settings),
-      ],
+      overrides: [mySettingsProvider.overrideWith((ref) => settings)],
       child: DevicePreview(
         enabled: !kReleaseMode,
         builder: (_) => MyMainApp(settings),
         tools: [
           ...DevicePreview.defaultTools,
-          DevicePreviewScreenshot(
-            onScreenshot: screenshotAsFiles(appDir),
-          ),
+          DevicePreviewScreenshot(onScreenshot: screenshotAsFiles(appDir)),
         ],
       ),
     ),

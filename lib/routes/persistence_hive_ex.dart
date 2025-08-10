@@ -122,9 +122,7 @@ class _HiveExampleState extends State<HiveExample> {
       future: this._initDbFuture,
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
+          return const Center(child: CircularProgressIndicator());
         }
         return Scaffold(
           // WatchBoxBuilder by hive_flutter can save us from writing a
@@ -133,7 +131,7 @@ class _HiveExampleState extends State<HiveExample> {
             valueListenable: Hive.box<TodoItem>(kHiveBoxName).listenable(),
             builder: (context, box, _) => ListView(
               children: <Widget>[
-                for (final TodoItem item in box.values) _itemToListTile(item)
+                for (final TodoItem item in box.values) _itemToListTile(item),
               ],
             ),
           ),
@@ -144,27 +142,25 @@ class _HiveExampleState extends State<HiveExample> {
   }
 
   ListTile _itemToListTile(TodoItem todo) => ListTile(
-        title: Text(
-          todo.content,
-          style: TextStyle(
-            fontStyle: todo.isDone ? FontStyle.italic : null,
-            color: todo.isDone ? Colors.grey : null,
-            decoration: todo.isDone ? TextDecoration.lineThrough : null,
-          ),
-        ),
-        subtitle: Text('id=${todo.id}\ncreated at ${todo.createdAt}'),
-        isThreeLine: true,
-        leading: IconButton(
-          icon: Icon(
-            todo.isDone ? Icons.check_box : Icons.check_box_outline_blank,
-          ),
-          onPressed: () => _toggleTodoItem(todo),
-        ),
-        trailing: IconButton(
-          icon: const Icon(Icons.delete),
-          onPressed: () => _deleteTodoItem(todo),
-        ),
-      );
+    title: Text(
+      todo.content,
+      style: TextStyle(
+        fontStyle: todo.isDone ? FontStyle.italic : null,
+        color: todo.isDone ? Colors.grey : null,
+        decoration: todo.isDone ? TextDecoration.lineThrough : null,
+      ),
+    ),
+    subtitle: Text('id=${todo.id}\ncreated at ${todo.createdAt}'),
+    isThreeLine: true,
+    leading: IconButton(
+      icon: Icon(todo.isDone ? Icons.check_box : Icons.check_box_outline_blank),
+      onPressed: () => _toggleTodoItem(todo),
+    ),
+    trailing: IconButton(
+      icon: const Icon(Icons.delete),
+      onPressed: () => _deleteTodoItem(todo),
+    ),
+  );
 
   FloatingActionButton _buildFloatingActionButton() {
     return FloatingActionButton(

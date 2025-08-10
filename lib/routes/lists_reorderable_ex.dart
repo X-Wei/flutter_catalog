@@ -56,7 +56,7 @@ class _ReorderableListExampleState extends State<ReorderableListExample> {
               /// ! Must provide unique Keys for ReorderableListView's children.
               key: Key(item),
               title: Text('item $item'),
-            )
+            ),
         ],
       ),
     );

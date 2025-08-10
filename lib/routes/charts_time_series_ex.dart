@@ -110,45 +110,46 @@ class _TimeseriesChartExampleState extends State<TimeseriesChartExample> {
 
   /// Widgets to control the chart appearance and behavior.
   List<Widget> _controlWidgets() => <Widget>[
-        SwitchListTile(
-          title: const Text('animate'),
-          onChanged: (bool val) => setState(() => this._animate = val),
-          value: this._animate,
-        ),
-        SwitchListTile(
-          title: const Text('defaultInteractions'),
-          onChanged: (bool val) =>
-              setState(() => this._defaultInteractions = val),
-          value: this._defaultInteractions,
-        ),
-        SwitchListTile(
-          title: const Text('includePoints'),
-          onChanged: (bool val) => setState(() => this._includePoints = val),
-          value: this._includePoints,
-        ),
-        SwitchListTile(
-          title: const Text('includeArea'),
-          onChanged: (bool val) => setState(() => this._includeArea = val),
-          value: this._includeArea,
-        ),
-        SwitchListTile(
-          title: const Text('stacked'),
-          onChanged: (bool val) => setState(() => this._stacked = val),
-          value: this._stacked,
-        ),
-        MyValuePickerTile(
-            val: this._titlePosition,
-            values: charts.BehaviorPosition.values,
-            title: 'titlePosition: ',
-            onChanged: (newVal) {
-              setState(() => this._titlePosition = newVal);
-            }),
-        MyValuePickerTile(
-            val: this._legendPosition,
-            values: charts.BehaviorPosition.values,
-            title: 'legendPosition: ',
-            onChanged: (newVal) {
-              setState(() => this._legendPosition = newVal);
-            }),
-      ];
+    SwitchListTile(
+      title: const Text('animate'),
+      onChanged: (bool val) => setState(() => this._animate = val),
+      value: this._animate,
+    ),
+    SwitchListTile(
+      title: const Text('defaultInteractions'),
+      onChanged: (bool val) => setState(() => this._defaultInteractions = val),
+      value: this._defaultInteractions,
+    ),
+    SwitchListTile(
+      title: const Text('includePoints'),
+      onChanged: (bool val) => setState(() => this._includePoints = val),
+      value: this._includePoints,
+    ),
+    SwitchListTile(
+      title: const Text('includeArea'),
+      onChanged: (bool val) => setState(() => this._includeArea = val),
+      value: this._includeArea,
+    ),
+    SwitchListTile(
+      title: const Text('stacked'),
+      onChanged: (bool val) => setState(() => this._stacked = val),
+      value: this._stacked,
+    ),
+    MyValuePickerTile(
+      val: this._titlePosition,
+      values: charts.BehaviorPosition.values,
+      title: 'titlePosition: ',
+      onChanged: (newVal) {
+        setState(() => this._titlePosition = newVal);
+      },
+    ),
+    MyValuePickerTile(
+      val: this._legendPosition,
+      values: charts.BehaviorPosition.values,
+      title: 'legendPosition: ',
+      onChanged: (newVal) {
+        setState(() => this._legendPosition = newVal);
+      },
+    ),
+  ];
 }

@@ -27,9 +27,7 @@ class _EdgeDetectionExampleState extends State<EdgeDetectionExample> {
         ),
         if (_scannedImgPath != null) ...[
           Text(_scannedImgPath!),
-          Expanded(
-            child: Image.file(File(_scannedImgPath!)),
-          )
+          Expanded(child: Image.file(File(_scannedImgPath!))),
         ],
         if (_error != null) Text(_error!),
       ],
@@ -38,8 +36,10 @@ class _EdgeDetectionExampleState extends State<EdgeDetectionExample> {
 
   Future<void> _doScan() async {
     // Generate filepath for saving
-    final imgPath = join((await getApplicationSupportDirectory()).path,
-        "${(DateTime.now().millisecondsSinceEpoch / 1000).round()}.jpeg");
+    final imgPath = join(
+      (await getApplicationSupportDirectory()).path,
+      "${(DateTime.now().millisecondsSinceEpoch / 1000).round()}.jpeg",
+    );
     try {
       //Make sure to await the call to detectEdge.
       final success = await EdgeDetection.detectEdge(
@@ -50,7 +50,8 @@ class _EdgeDetectionExampleState extends State<EdgeDetectionExample> {
         setState(() => _scannedImgPath = imgPath);
       } else {
         setState(
-            () => _error = 'detectEdge() returned false, something went wrong');
+          () => _error = 'detectEdge() returned false, something went wrong',
+        );
       }
     } catch (e) {
       setState(() => _error = e.toString());

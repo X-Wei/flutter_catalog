@@ -52,14 +52,13 @@ class _RestApiFetchExampleState extends State<RestApiFetchExample> {
             ElevatedButton(
               onPressed: _pending
                   ? null
-                  : () => this
-                      ._httpGet(_urlController.text, _apiTokenController.text),
+                  : () => this._httpGet(
+                      _urlController.text,
+                      _apiTokenController.text,
+                    ),
               child: const Text('Get'),
             ),
-            ElevatedButton(
-              onPressed: this._reset,
-              child: const Text('Reset'),
-            ),
+            ElevatedButton(onPressed: this._reset, child: const Text('Reset')),
           ],
         ),
         Text('Response body=$_responseBody'),

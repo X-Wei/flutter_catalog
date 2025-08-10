@@ -24,25 +24,28 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
       BottomNavigationBarItem(
         backgroundColor: Colors.blue,
         icon: Badge(
-            label: Text(newBasic.toString()),
-            isLabelVisible: newBasic > 0,
-            child: Icon(Icons.library_books)),
+          label: Text(newBasic.toString()),
+          isLabelVisible: newBasic > 0,
+          child: Icon(Icons.library_books),
+        ),
         label: 'Basics',
       ),
       BottomNavigationBarItem(
         backgroundColor: Colors.blueAccent,
         icon: Badge(
-            label: Text(newAdvanced.toString()),
-            isLabelVisible: newAdvanced > 0,
-            child: Icon(Icons.insert_chart)),
+          label: Text(newAdvanced.toString()),
+          isLabelVisible: newAdvanced > 0,
+          child: Icon(Icons.insert_chart),
+        ),
         label: 'Advanced',
       ),
       BottomNavigationBarItem(
         backgroundColor: Colors.blueAccent,
         icon: Badge(
-            label: Text(newInaction.toString()),
-            isLabelVisible: newInaction > 0,
-            child: Icon(Icons.rocket)),
+          label: Text(newInaction.toString()),
+          isLabelVisible: newInaction > 0,
+          child: Icon(Icons.rocket),
+        ),
         label: 'In Action',
       ),
       BottomNavigationBarItem(
@@ -64,16 +67,14 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
   void initState() {
     super.initState();
     //! Show intro screen if it's never shown before.
-    WidgetsBinding.instance.addPostFrameCallback(
-      (_) {
-        final settings = ref.read(mySettingsProvider);
-        if (settings.introIsShown == false) {
-          Navigator.of(context)
-              .push(IntroductionScreenExample.route())
-              .then((_) => settings.introIsShown = true);
-        }
-      },
-    );
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final settings = ref.read(mySettingsProvider);
+      if (settings.introIsShown == false) {
+        Navigator.of(context)
+            .push(IntroductionScreenExample.route())
+            .then((_) => settings.introIsShown = true);
+      }
+    });
   }
 
   @override
@@ -116,7 +117,9 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
           ListView(controller: _scrollController2, children: advancedDemos),
           ListView(controller: _scrollController3, children: inactionDemos),
           ListView(
-              controller: _scrollController4, children: bookmarkAndAboutDemos),
+            controller: _scrollController4,
+            children: bookmarkAndAboutDemos,
+          ),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -130,22 +133,21 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
     );
   }
 
-  Widget _myRouteToListTile(MyRoute myRoute,
-      {Widget? leading, IconData trialing = Icons.keyboard_arrow_right}) {
+  Widget _myRouteToListTile(
+    MyRoute myRoute, {
+    Widget? leading,
+    IconData trialing = Icons.keyboard_arrow_right,
+  }) {
     final mySettings = ref.watch(mySettingsProvider);
-    final routeTitleTextStyle = Theme.of(context)
-        .textTheme
-        .bodyMedium!
-        .copyWith(fontWeight: FontWeight.bold);
+    final routeTitleTextStyle = Theme.of(
+      context,
+    ).textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.bold);
     final leadingWidget =
         leading ?? mySettings.starStatusOfRoute(myRoute.routeName);
     final isNew = mySettings.isNewRoute(myRoute);
     return ListTile(
       leading: isNew
-          ? Badge(
-              alignment: AlignmentDirectional.topEnd,
-              child: leadingWidget,
-            )
+          ? Badge(alignment: AlignmentDirectional.topEnd, child: leadingWidget)
           : leadingWidget,
       title: Text(myRoute.title, style: routeTitleTextStyle),
       trailing: Icon(trialing),

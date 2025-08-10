@@ -10,9 +10,7 @@ class MyAboutRoute extends StatelessWidget {
 
   // These tiles are also used as drawer nav items in home route.
   static final List<Widget> kAboutListTiles = <Widget>[
-    const ListTile(
-      title: Text(APP_DESCRIPTION),
-    ),
+    const ListTile(title: Text(APP_DESCRIPTION)),
     const Divider(),
     ListTile(
       leading: const Icon(Icons.code),

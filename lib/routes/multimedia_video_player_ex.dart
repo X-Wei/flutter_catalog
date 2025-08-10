@@ -15,21 +15,25 @@ class _VideoPlayerExampleState extends State<VideoPlayerExample> {
   @override
   void initState() {
     super.initState();
-    _videoController = VideoPlayerController.networkUrl(
-      Uri.parse(
-          'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4'),
-    )
-      // **When the controllers change, call setState() to rebuild widget.**
-      ..addListener(() => setState(() {}))
-      ..setLooping(true)
-      ..initialize();
-    _audioController = VideoPlayerController.networkUrl(
-      Uri.parse(
-          'https://file-examples.com/wp-content/uploads/2017/11/file_example_MP3_700KB.mp3'),
-    )
-      ..addListener(() => setState(() {}))
-      ..setLooping(true)
-      ..initialize();
+    _videoController =
+        VideoPlayerController.networkUrl(
+            Uri.parse(
+              'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4',
+            ),
+          )
+          // **When the controllers change, call setState() to rebuild widget.**
+          ..addListener(() => setState(() {}))
+          ..setLooping(true)
+          ..initialize();
+    _audioController =
+        VideoPlayerController.networkUrl(
+            Uri.parse(
+              'https://file-examples.com/wp-content/uploads/2017/11/file_example_MP3_700KB.mp3',
+            ),
+          )
+          ..addListener(() => setState(() {}))
+          ..setLooping(true)
+          ..initialize();
   }
 
   @override

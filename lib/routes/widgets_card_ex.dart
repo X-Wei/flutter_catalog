@@ -15,9 +15,7 @@ class CardExample extends StatelessWidget {
           child: SizedBox(
             height: 100.0,
             child: Row(
-              children: const <Widget>[
-                Expanded(child: Text('Card 1')),
-              ],
+              children: const <Widget>[Expanded(child: Text('Card 1'))],
             ),
           ),
         ),
@@ -32,9 +30,7 @@ class CardExample extends StatelessWidget {
               onTap: () {},
               child: Row(
                 children: const <Widget>[
-                  Expanded(
-                    child: Text('Card 2 (with Inkwell effect on tap)'),
-                  ),
+                  Expanded(child: Text('Card 2 (with Inkwell effect on tap)')),
                 ],
               ),
             ),
@@ -52,9 +48,7 @@ class CardExample extends StatelessWidget {
             height: 100.0,
             child: Row(
               children: const <Widget>[
-                Expanded(
-                  child: Text('Card 3 (with custom border radius)'),
-                ),
+                Expanded(child: Text('Card 3 (with custom border radius)')),
               ],
             ),
           ),
@@ -82,27 +76,19 @@ class CardExample extends StatelessWidget {
                         alignment: Alignment.centerLeft,
                         child: Text(
                           'Card 4 (complex example)',
-                          style: Theme.of(context)
-                              .textTheme
-                              .headlineSmall!
+                          style: Theme.of(context).textTheme.headlineSmall!
                               .copyWith(color: Colors.white),
                         ),
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),
               OverflowBar(
                 alignment: MainAxisAlignment.end,
                 children: <Widget>[
-                  TextButton(
-                    onPressed: () {},
-                    child: const Text('SHARE'),
-                  ),
-                  TextButton(
-                    onPressed: () {},
-                    child: const Text('EXPLORE'),
-                  ),
+                  TextButton(onPressed: () {}, child: const Text('SHARE')),
+                  TextButton(onPressed: () {}, child: const Text('EXPLORE')),
                 ],
               ),
             ],

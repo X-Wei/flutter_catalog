@@ -9,17 +9,16 @@ class HeroExample extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          const SizedBox(
-            height: 20.0,
-          ),
+          const SizedBox(height: 20.0),
           ListTile(
             leading: GestureDetector(
               onTap: () => _showSecondPage(context),
               child: const Hero(
                 tag: 'my-hero-animation-tag',
                 child: CircleAvatar(
-                  backgroundImage:
-                      AssetImage('res/images/material_design_3.png'),
+                  backgroundImage: AssetImage(
+                    'res/images/material_design_3.png',
+                  ),
                 ),
               ),
             ),

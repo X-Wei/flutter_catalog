@@ -5,10 +5,11 @@ import 'package:path/path.dart' as path;
 import 'package:path_provider/path_provider.dart';
 
 class DioDownloadExample extends StatefulWidget {
-  const DioDownloadExample(
-      {super.key,
-      this.downloadUrl =
-          'https://github.com/X-Wei/flutter_catalog/archive/refs/heads/master.zip'});
+  const DioDownloadExample({
+    super.key,
+    this.downloadUrl =
+        'https://github.com/X-Wei/flutter_catalog/archive/refs/heads/master.zip',
+  });
   final String downloadUrl;
   @override
   _DioDownloadExampleState createState() => _DioDownloadExampleState();
@@ -32,7 +33,9 @@ class _DioDownloadExampleState extends State<DioDownloadExample> {
 
   Future<void> _dioDownload() async {
     final filePath = path.join(
-        (await getApplicationDocumentsDirectory()).path, _localFilename);
+      (await getApplicationDocumentsDirectory()).path,
+      _localFilename,
+    );
     setState(() => _isDownloading = true);
     Fluttertoast.showToast(msg: 'Download started');
     try {

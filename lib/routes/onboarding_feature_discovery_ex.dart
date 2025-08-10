@@ -8,9 +8,7 @@ class FeatureDiscoveryExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FeatureDiscovery(
-      child: const _DemoPage(),
-    );
+    return FeatureDiscovery(child: const _DemoPage());
   }
 }
 
@@ -32,7 +30,7 @@ class _DemoPageState extends State<_DemoPage> {
   List<String> _getRandomStrings() {
     return <String>[
       for (final wordPair in english_words.generateWordPairs().take(20))
-        wordPair.asPascalCase
+        wordPair.asPascalCase,
     ];
   }
 
@@ -42,8 +40,9 @@ class _DemoPageState extends State<_DemoPage> {
     this._ensureVisibleGlobalKey = GlobalKey<EnsureVisibleState>();
     this._strsToShow = _getRandomStrings();
     // !Show feature discovery right after the page is ready.
-    SchedulerBinding.instance
-        .addPostFrameCallback((Duration duration) => _showDiscovery());
+    SchedulerBinding.instance.addPostFrameCallback(
+      (Duration duration) => _showDiscovery(),
+    );
   }
 
   @override
@@ -121,16 +120,17 @@ class _DemoPageState extends State<_DemoPage> {
           tapTarget: const Icon(Icons.plus_one),
           contentLocation: ContentLocation.above,
           title: const Text('Plus one'),
-          description:
-              const Text('Tap the plus icon to add an item to your list.'),
+          description: const Text(
+            'Tap the plus icon to add an item to your list.',
+          ),
           backgroundColor: Theme.of(context).primaryColor,
           child: FloatingActionButton(
             onPressed: () {
               setState(
                 () => this._strsToShow.insert(
-                      0,
-                      english_words.generateWordPairs().first.asCamelCase,
-                    ),
+                  0,
+                  english_words.generateWordPairs().first.asCamelCase,
+                ),
               );
             },
             heroTag: 'plus_one',
@@ -142,8 +142,9 @@ class _DemoPageState extends State<_DemoPage> {
           featureId: _kFeatureId2Sub,
           tapTarget: const Icon(Icons.exposure_minus_1),
           title: const Text('Minus one'),
-          description:
-              const Text('Tap the minus icon to remove an item to your list.'),
+          description: const Text(
+            'Tap the minus icon to remove an item to your list.',
+          ),
           backgroundColor: Theme.of(context).primaryColor,
           child: FloatingActionButton(
             onPressed: () {
@@ -160,10 +161,11 @@ class _DemoPageState extends State<_DemoPage> {
   Future<void> _showDiscovery() async {
     // !Clear the "feature discovered" data, otherwise it'll show up only for
     // !the first time.
-    await FeatureDiscovery.clearPreferences(
-      context,
-      <String>{_kFeatureId1Add, _kFeatureId2Sub, _kFeatureId3Refresh},
-    );
+    await FeatureDiscovery.clearPreferences(context, <String>{
+      _kFeatureId1Add,
+      _kFeatureId2Sub,
+      _kFeatureId3Refresh,
+    });
     if (!mounted) return;
     // ! Start feature discovery
     FeatureDiscovery.discoverFeatures(

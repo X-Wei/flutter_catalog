@@ -16,10 +16,12 @@ class MyOtherAppsExample extends StatelessWidget {
           child: Column(
             children: [
               ListTile(
-                  leading: Image.asset('res/images/xydocs-flutter-icon.png'),
-                  title: Text('Flutter Cookbook'),
-                  subtitle:
-                      Text('Official Flutter cookbooks, for offline reading.')),
+                leading: Image.asset('res/images/xydocs-flutter-icon.png'),
+                title: Text('Flutter Cookbook'),
+                subtitle: Text(
+                  'Official Flutter cookbooks, for offline reading.',
+                ),
+              ),
               ListTile(
                 title: Text('Watch Youtube video'),
                 leading: Icon(CommunityMaterialIcons.youtube),
@@ -33,9 +35,11 @@ class MyOtherAppsExample extends StatelessWidget {
                 title: Text('View in store'),
                 trailing: Icon(Icons.open_in_new),
                 onTap: () => launchUrl(
-                  Uri.parse(Platform.isIOS
-                      ? 'https://apps.apple.com/app/id1605475549'
-                      : 'https://play.google.com/store/apps/details?id=io.github.xydocs.flutter_offline_doc'),
+                  Uri.parse(
+                    Platform.isIOS
+                        ? 'https://apps.apple.com/app/id1605475549'
+                        : 'https://play.google.com/store/apps/details?id=io.github.xydocs.flutter_offline_doc',
+                  ),
                 ),
               ),
             ],
@@ -63,9 +67,11 @@ class MyOtherAppsExample extends StatelessWidget {
                 title: Text('View in store'),
                 trailing: Icon(Icons.open_in_new),
                 onTap: () => launchUrl(
-                  Uri.parse(Platform.isIOS
-                      ? 'https://apps.apple.com/us/app/c-tip-of-the-week/id1617459992'
-                      : 'https://play.google.com/store/apps/details?id=io.github.xydocs.cpp_offline_doc'),
+                  Uri.parse(
+                    Platform.isIOS
+                        ? 'https://apps.apple.com/us/app/c-tip-of-the-week/id1617459992'
+                        : 'https://play.google.com/store/apps/details?id=io.github.xydocs.cpp_offline_doc',
+                  ),
                 ),
               ),
             ],
@@ -85,9 +91,11 @@ class MyOtherAppsExample extends StatelessWidget {
                 title: Text('View in store'),
                 trailing: Icon(Icons.open_in_new),
                 onTap: () => launchUrl(
-                  Uri.parse(Platform.isIOS
-                      ? 'https://apps.apple.com/us/developer/xing-wei/id1582381134'
-                      : 'https://play.google.com/store/apps/details?id=io.github.x_wei.xymemo'),
+                  Uri.parse(
+                    Platform.isIOS
+                        ? 'https://apps.apple.com/us/developer/xing-wei/id1582381134'
+                        : 'https://play.google.com/store/apps/details?id=io.github.x_wei.xymemo',
+                  ),
                 ),
               ),
             ],

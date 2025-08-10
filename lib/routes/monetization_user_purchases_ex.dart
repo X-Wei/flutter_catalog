@@ -16,16 +16,19 @@ Widget buildUserBanner(BuildContext context, WidgetRef ref) {
           title: Text('You are logged in as "${user.displayName ?? user.uid}"'),
           subtitle: Text('Tap here to log in other accounts.'),
           trailing: Icon(Icons.keyboard_arrow_right),
-          onTap: () => Navigator.of(context)
-              .pushNamed('/firebase_flutterfire_loginui_ex'),
+          onTap: () => Navigator.of(
+            context,
+          ).pushNamed('/firebase_flutterfire_loginui_ex'),
         )
       : ListTile(
           title: Text('Go to login page'),
-          subtitle:
-              Text('Log in to sync your purchase/reward items across devices'),
+          subtitle: Text(
+            'Log in to sync your purchase/reward items across devices',
+          ),
           trailing: Icon(Icons.keyboard_arrow_right),
-          onTap: () => Navigator.of(context)
-              .pushNamed('/firebase_flutterfire_loginui_ex'),
+          onTap: () => Navigator.of(
+            context,
+          ).pushNamed('/firebase_flutterfire_loginui_ex'),
         );
   return Card(color: Colors.blue, child: content);
 }
@@ -48,16 +51,21 @@ class UserPurchasesExample extends ConsumerWidget {
           ListTile(title: Text('user id=${user.uid}')),
           ListTile(title: Text('💰 coins = ${ref.watch(userCoinsProvider)}')),
           ListTile(
-              title: Text('ad_removed = ${ref.watch(adIsRemovedProvider)}')),
+            title: Text('ad_removed = ${ref.watch(adIsRemovedProvider)}'),
+          ),
           if (kDebugMode) ...[
             ElevatedButton(
-                onPressed: () => addCoins(ref, 1), child: Text('buy 1 coin')),
+              onPressed: () => addCoins(ref, 1),
+              child: Text('buy 1 coin'),
+            ),
             ElevatedButton(
-                onPressed: () => setRemoveAds(ref, true),
-                child: Text('remove ads')),
+              onPressed: () => setRemoveAds(ref, true),
+              child: Text('remove ads'),
+            ),
             ElevatedButton(
-                onPressed: () => setRemoveAds(ref, false),
-                child: Text('unremove ads')),
+              onPressed: () => setRemoveAds(ref, false),
+              child: Text('unremove ads'),
+            ),
           ],
         ],
       ],
@@ -104,43 +112,42 @@ const kNumCoinsKey = 'coins';
 /// ! Privde the Firestore doc (json) located in "/users/$uid".
 final userFirestoreDocRefProvider =
     Provider.autoDispose<DocumentReference<Map<String, dynamic>>?>((ref) {
-  final auth = ref.watch(currentUserStreamProvider);
-  if (auth.asData?.value?.uid == null) {
-    return null;
-  }
-  final user = auth.asData!.value!;
-  final docRef = FirebaseFirestore.instance.collection('users').doc(user.uid);
-  return docRef;
-});
+      final auth = ref.watch(currentUserStreamProvider);
+      if (auth.asData?.value?.uid == null) {
+        return null;
+      }
+      final user = auth.asData!.value!;
+      final docRef = FirebaseFirestore.instance
+          .collection('users')
+          .doc(user.uid);
+      return docRef;
+    });
 
 /// !Get current user's RemoveAd state.
 /// Value "true" means user has purchased the "RemoveAd" item.
-final removeAdStateStreamProvider = StreamProvider.autoDispose<bool>(
-  (ref) async* {
-    final userDocRef = ref.watch(userFirestoreDocRefProvider);
-    if (userDocRef == null) {
-      yield false;
-    } else {
-      // Listen to user firestore doc's latest value.
-      yield* userDocRef.snapshots().map(
-        (snapshot) {
-          if (!snapshot.exists || snapshot.data() == null) {
-            return false;
-          }
-          final json = snapshot.data()!;
-          final val = json[kUserAdRemovedKey] as bool?;
-          return val ?? false;
-        },
-      );
-    }
-  },
-);
+final removeAdStateStreamProvider = StreamProvider.autoDispose<bool>((
+  ref,
+) async* {
+  final userDocRef = ref.watch(userFirestoreDocRefProvider);
+  if (userDocRef == null) {
+    yield false;
+  } else {
+    // Listen to user firestore doc's latest value.
+    yield* userDocRef.snapshots().map((snapshot) {
+      if (!snapshot.exists || snapshot.data() == null) {
+        return false;
+      }
+      final json = snapshot.data()!;
+      final val = json[kUserAdRemovedKey] as bool?;
+      return val ?? false;
+    });
+  }
+});
 
 final adIsRemovedProvider = StateProvider.autoDispose<bool>((ref) {
-  return ref.watch(removeAdStateStreamProvider).maybeWhen(
-        data: (val) => val,
-        orElse: () => false,
-      );
+  return ref
+      .watch(removeAdStateStreamProvider)
+      .maybeWhen(data: (val) => val, orElse: () => false);
 });
 
 /// !Get current user's coins.
@@ -150,28 +157,28 @@ final userCoinsStreamProvider = StreamProvider.autoDispose<int>((ref) async* {
   if (userDocRef == null) {
     yield localCoins;
   } else {
-    yield* userDocRef.snapshots().map(
-      (snapshot) {
-        if (!snapshot.exists || snapshot.data() == null) {
-          return localCoins;
-        }
-        final json = snapshot.data()!;
-        final val = (json[kNumCoinsKey] as int?) ?? 0;
-        if (localCoins != 0) {
-          ref
-              .read(userFirestoreDocRefProvider)
-              ?.update({kNumCoinsKey: val + localCoins});
-          ref.read(mySettingsProvider).rewardCoins = 0;
-        }
-        return val + localCoins;
-      },
-    );
+    yield* userDocRef.snapshots().map((snapshot) {
+      if (!snapshot.exists || snapshot.data() == null) {
+        return localCoins;
+      }
+      final json = snapshot.data()!;
+      final val = (json[kNumCoinsKey] as int?) ?? 0;
+      if (localCoins != 0) {
+        ref.read(userFirestoreDocRefProvider)?.update({
+          kNumCoinsKey: val + localCoins,
+        });
+        ref.read(mySettingsProvider).rewardCoins = 0;
+      }
+      return val + localCoins;
+    });
   }
 });
 
 /// ! Use riverpod to get/set current user's number of coins.
 final userCoinsProvider = StateProvider.autoDispose<int>((ref) {
-  return ref.watch(userCoinsStreamProvider).maybeWhen(
+  return ref
+      .watch(userCoinsStreamProvider)
+      .maybeWhen(
         data: (val) => val,
         orElse: () => ref.watch(mySettingsProvider).rewardCoins,
       );

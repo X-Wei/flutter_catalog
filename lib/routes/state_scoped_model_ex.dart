@@ -6,10 +6,7 @@ class ScopedModelExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: _MyDemoApp(),
-    );
+    return Padding(padding: const EdgeInsets.all(8.0), child: _MyDemoApp());
   }
 }
 
@@ -48,10 +45,7 @@ class _MyDemoApp extends StatelessWidget {
         ),
         // ###2. Put the ScopedModel at the root of the widget tree, so that all
         // children widget can access the state.
-        ScopedModel<_MyState>(
-          model: _MyState(),
-          child: _AppRootWidget(),
-        ),
+        ScopedModel<_MyState>(model: _MyState(), child: _AppRootWidget()),
       ],
     );
   }
@@ -67,10 +61,7 @@ class _AppRootWidget extends StatelessWidget {
           const Text('(root widget)'),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              _CounterAndButton(),
-              _CounterAndButton(),
-            ],
+            children: <Widget>[_CounterAndButton(), _CounterAndButton()],
           ),
         ],
       ),
@@ -108,7 +99,7 @@ class _CounterAndButton extends StatelessWidget {
                   onPressed: () => model.decrementCounter(),
                 ),
               ],
-            )
+            ),
           ],
         ),
       ),

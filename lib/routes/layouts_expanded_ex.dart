@@ -17,9 +17,7 @@ class ExpandedExample extends StatelessWidget {
             child: const Text('Item1: flex=1'),
           ),
         ),
-        const SizedBox(
-          height: 20.0,
-        ),
+        const SizedBox(height: 20.0),
         Expanded(
           flex: 2,
           child: Container(
@@ -27,9 +25,7 @@ class ExpandedExample extends StatelessWidget {
             child: const Text('Item2: flex=2'),
           ),
         ),
-        const SizedBox(
-          height: 20.0,
-        ),
+        const SizedBox(height: 20.0),
         Expanded(
           flex: 3,
           child: Container(

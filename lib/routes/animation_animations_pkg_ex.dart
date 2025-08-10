@@ -22,7 +22,8 @@ class AnimationsPackageExample extends StatelessWidget {
             icon: const Icon(Icons.open_in_new),
             onPressed: () => launchUrl(
               Uri.parse(
-                  'https://pub.dev/documentation/animations/latest/animations/OpenContainer-class.html'),
+                'https://pub.dev/documentation/animations/latest/animations/OpenContainer-class.html',
+              ),
             ),
           ),
         ),
@@ -32,11 +33,8 @@ class AnimationsPackageExample extends StatelessWidget {
             title: Text('click me'),
             trailing: Icon(Icons.keyboard_arrow_right),
           ),
-          openBuilder: (ctx, action) => const Scaffold(
-            body: Center(
-              child: Text('new page'),
-            ),
-          ),
+          openBuilder: (ctx, action) =>
+              const Scaffold(body: Center(child: Text('new page'))),
         ),
         const Divider(thickness: 2, color: Colors.black),
         ListTile(
@@ -49,14 +47,12 @@ class AnimationsPackageExample extends StatelessWidget {
             icon: const Icon(Icons.open_in_new),
             onPressed: () => launchUrl(
               Uri.parse(
-                  'https://pub.dev/documentation/animations/latest/animations/PageTransitionSwitcher-class.html'),
+                'https://pub.dev/documentation/animations/latest/animations/PageTransitionSwitcher-class.html',
+              ),
             ),
           ),
         ),
-        const SizedBox(
-          height: 200,
-          child: _PageTransitionSwitcherEx(),
-        ),
+        const SizedBox(height: 200, child: _PageTransitionSwitcherEx()),
         const Divider(thickness: 2, color: Colors.black),
         ListTile(
           title: const Text('3. SharedAxisTransition'),
@@ -68,14 +64,12 @@ class AnimationsPackageExample extends StatelessWidget {
             icon: const Icon(Icons.open_in_new),
             onPressed: () => launchUrl(
               Uri.parse(
-                  'https://pub.dev/documentation/animations/latest/animations/SharedAxisTransition-class.html'),
+                'https://pub.dev/documentation/animations/latest/animations/SharedAxisTransition-class.html',
+              ),
             ),
           ),
         ),
-        const SizedBox(
-          height: 300,
-          child: _SharedAxisEx(),
-        ),
+        const SizedBox(height: 300, child: _SharedAxisEx()),
         const Divider(thickness: 2, color: Colors.black),
         ListTile(
           title: const Text('4. showModal()'),
@@ -85,7 +79,8 @@ class AnimationsPackageExample extends StatelessWidget {
             icon: const Icon(Icons.open_in_new),
             onPressed: () => launchUrl(
               Uri.parse(
-                  'https://pub.dev/documentation/animations/latest/animations/showModal.html'),
+                'https://pub.dev/documentation/animations/latest/animations/showModal.html',
+              ),
             ),
           ),
         ),
@@ -123,14 +118,8 @@ class __PageTransitionSwitcherExState extends State<_PageTransitionSwitcherEx> {
     Icon(Icons.looks_two, size: 48, key: ValueKey(2)),
   ];
   static const _btmNavbarItems = <BottomNavigationBarItem>[
-    BottomNavigationBarItem(
-      icon: Icon(Icons.home),
-      label: 'Tab1',
-    ),
-    BottomNavigationBarItem(
-      icon: Icon(Icons.business),
-      label: 'Tab2',
-    ),
+    BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Tab1'),
+    BottomNavigationBarItem(icon: Icon(Icons.business), label: 'Tab2'),
   ];
 
   int _currentTabIdx = 0;
@@ -143,10 +132,10 @@ class __PageTransitionSwitcherExState extends State<_PageTransitionSwitcherEx> {
           duration: const Duration(seconds: 1),
           transitionBuilder: (child, primaryAnimation, secondaryAnimation) =>
               FadeThroughTransition(
-            animation: primaryAnimation,
-            secondaryAnimation: secondaryAnimation,
-            child: child,
-          ),
+                animation: primaryAnimation,
+                secondaryAnimation: secondaryAnimation,
+                child: child,
+              ),
           child: _tabs[_currentTabIdx],
         ),
       ),
@@ -191,11 +180,11 @@ class __SharedAxisExState extends State<_SharedAxisEx> {
                 transitionBuilder:
                     (child, primaryAnimation, secondaryAnimation) =>
                         SharedAxisTransition(
-                  animation: primaryAnimation,
-                  secondaryAnimation: secondaryAnimation,
-                  transitionType: this._transitionType,
-                  child: child,
-                ),
+                          animation: primaryAnimation,
+                          secondaryAnimation: secondaryAnimation,
+                          transitionType: this._transitionType,
+                          child: child,
+                        ),
                 child: _pages[_currentPageIdx],
               ),
             ),
@@ -233,12 +222,13 @@ class __SharedAxisExState extends State<_SharedAxisEx> {
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           MyValuePickerTile(
-              val: _transitionType,
-              values: SharedAxisTransitionType.values,
-              title: "SharedAxisTransitionType",
-              onChanged: (val) {
-                setState(() => this._transitionType = val);
-              }),
+            val: _transitionType,
+            values: SharedAxisTransitionType.values,
+            title: "SharedAxisTransitionType",
+            onChanged: (val) {
+              setState(() => this._transitionType = val);
+            },
+          ),
         ],
       ),
     );

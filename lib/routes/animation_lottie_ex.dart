@@ -8,10 +8,7 @@ class LottieExample extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        Lottie.asset(
-          'res/lottie/thumbs-up.json',
-          height: 100,
-        ),
+        Lottie.asset('res/lottie/thumbs-up.json', height: 100),
         const Divider(),
         Lottie.network(
           'https://assets7.lottiefiles.com/datafiles/40aX5db74VvGPWw/data.json',

@@ -9,14 +9,14 @@ import '../constants.dart';
 
 /// ! We use riverpod to watch the login state change, and rebuild screen.
 /// ! For more details see the riverpod example.
-final currentUserStreamProvider =
-    StreamProvider<User?>((ref) => FirebaseAuth.instance.authStateChanges());
+final currentUserStreamProvider = StreamProvider<User?>(
+  (ref) => FirebaseAuth.instance.authStateChanges(),
+);
 
 final currentUserProvider = StateProvider<User?>((ref) {
-  return ref.watch(currentUserStreamProvider).maybeWhen(
-        data: (user) => user,
-        orElse: () => null,
-      );
+  return ref
+      .watch(currentUserStreamProvider)
+      .maybeWhen(data: (user) => user, orElse: () => null);
 });
 
 class FirebaseAuthUiExample extends ConsumerWidget {
@@ -24,7 +24,9 @@ class FirebaseAuthUiExample extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return ref.watch(currentUserStreamProvider).when(
+    return ref
+        .watch(currentUserStreamProvider)
+        .when(
           data: (user) =>
               user == null ? _buildLoginScreen() : _buildProfileScreen(),
           error: (e, _) => Text(e.toString()),
@@ -35,10 +37,8 @@ class FirebaseAuthUiExample extends ConsumerWidget {
   Widget _buildLoginScreen() {
     /// This SignInScreen comes from firebase_ui_auth package.
     return SignInScreen(
-      headerBuilder: (_, __, ___) => Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: kAppIcon,
-      ),
+      headerBuilder: (_, __, ___) =>
+          Padding(padding: const EdgeInsets.all(8.0), child: kAppIcon),
       // ! Currently there's no providerConfig for Anonymous sign in, so we
       // add a btn ourselves.
       footerBuilder: (context, _) {
@@ -56,7 +56,8 @@ class FirebaseAuthUiExample extends ConsumerWidget {
     return ProfileScreen(
       children: const [
         Text(
-            '🚀We could add more content to the profile screen via the `children` param.')
+          '🚀We could add more content to the profile screen via the `children` param.',
+        ),
       ],
     );
   }

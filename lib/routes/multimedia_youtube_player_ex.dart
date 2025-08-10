@@ -13,7 +13,10 @@ class _YoutubePlayerExampleState extends State<YoutubePlayerExample> {
   //! Use `YoutubePlayerController.fromVideoId` if just play a single video.
   final _ytController = YoutubePlayerController(
     params: const YoutubePlayerParams(
-        showFullscreenButton: true, mute: false, showControls: true),
+      showFullscreenButton: true,
+      mute: false,
+      showControls: true,
+    ),
   );
 
   @override
@@ -25,10 +28,12 @@ class _YoutubePlayerExampleState extends State<YoutubePlayerExample> {
   String? _getVideoId() {
     if (_txtController.text.startsWith('https://youtu.be/')) {
       return _txtController.text.substring('https://youtu.be/'.length);
-    } else if (_txtController.text
-        .startsWith('https://www.youtube.com/watch?v=')) {
-      return _txtController.text
-          .substring('https://www.youtube.com/watch?v='.length);
+    } else if (_txtController.text.startsWith(
+      'https://www.youtube.com/watch?v=',
+    )) {
+      return _txtController.text.substring(
+        'https://www.youtube.com/watch?v='.length,
+      );
     }
     return null;
   }
@@ -41,8 +46,9 @@ class _YoutubePlayerExampleState extends State<YoutubePlayerExample> {
         ..showSnackBar(
           SnackBar(
             content: Text(
-                'Failed to extract video Id from "${_txtController.text}"!\n'
-                'Please make sure it is in either "https://youtu.be/\$id" or "https://www.youtube.com/watch?v=\$id" format!'),
+              'Failed to extract video Id from "${_txtController.text}"!\n'
+              'Please make sure it is in either "https://youtu.be/\$id" or "https://www.youtube.com/watch?v=\$id" format!',
+            ),
           ),
         );
       return;

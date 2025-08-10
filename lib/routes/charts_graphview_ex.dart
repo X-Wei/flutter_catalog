@@ -39,9 +39,7 @@ class _GraphViewExState extends State<GraphViewEx> {
     // !! Step1: build the graph to render
     final Graph graph = Graph();
     // ! Create nodes
-    final nodes = <Node>[
-      for (int i = 0; i < 8; ++i) Node.Id(i),
-    ];
+    final nodes = <Node>[for (int i = 0; i < 8; ++i) Node.Id(i)];
     graph.addNodes(nodes);
     // ! Add edges to the graph
     graph.addEdge(nodes[0], nodes[1]);
@@ -60,8 +58,9 @@ class _GraphViewExState extends State<GraphViewEx> {
     );
 
     final algo = FruchtermanReingoldAlgorithm(iterations: this._iterations)
-          ..rand = Random(/*seed=*/ 0) // For deterministic rendering
-        ;
+      ..rand =
+          Random(/*seed=*/ 0) // For deterministic rendering
+          ;
 
     return Scaffold(
       body: InteractiveViewer(

@@ -22,8 +22,10 @@ class AnimatedTextKitExample extends StatelessWidget {
           text: 'LIQUIDY',
           waveColor: Colors.blueAccent,
           boxBackgroundColor: Colors.red[100]!,
-          textStyle:
-              const TextStyle(fontSize: 80.0, fontWeight: FontWeight.bold),
+          textStyle: const TextStyle(
+            fontSize: 80.0,
+            fontWeight: FontWeight.bold,
+          ),
           boxHeight: 300.0,
         ),
         Divider(),
@@ -53,7 +55,7 @@ class AnimatedTextKitExample extends StatelessWidget {
                 txt,
                 textStyle: _kTextStyle,
                 textAlign: TextAlign.start,
-              )
+              ),
           ],
         ),
         Divider(),
@@ -64,10 +66,7 @@ class AnimatedTextKitExample extends StatelessWidget {
             onTap: () => print("Tap Event"),
             animatedTexts: [
               for (final txt in _kTexts)
-                FadeAnimatedText(
-                  txt,
-                  textStyle: _kTextStyle,
-                )
+                FadeAnimatedText(txt, textStyle: _kTextStyle),
             ],
             repeatForever: true,
           ),
@@ -82,7 +81,7 @@ class AnimatedTextKitExample extends StatelessWidget {
                 txt,
                 textStyle: _kTextStyle,
                 textAlign: TextAlign.start,
-              )
+              ),
           ],
         ),
         Divider(),
@@ -96,7 +95,7 @@ class AnimatedTextKitExample extends StatelessWidget {
                   txt,
                   textStyle: _kTextStyle,
                   textAlign: TextAlign.center,
-                )
+                ),
             ],
             isRepeatingAnimation: true,
           ),
@@ -113,7 +112,7 @@ class AnimatedTextKitExample extends StatelessWidget {
                   txt,
                   textStyle: _kTextStyle,
                   textAlign: TextAlign.center,
-                )
+                ),
             ],
             isRepeatingAnimation: true,
           ),

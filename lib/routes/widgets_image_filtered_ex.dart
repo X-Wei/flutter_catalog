@@ -86,7 +86,7 @@ class _ImageFilteredExampleState extends State<ImageFilteredExample> {
           ),
           Text(_rotZ.toStringAsFixed(1)),
         ],
-      )
+      ),
     ];
   }
 }

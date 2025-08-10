@@ -77,14 +77,12 @@ class _InterstitialAdExampleState extends State<InterstitialAdExample> {
     return ListView(
       padding: const EdgeInsets.all(8),
       children: [
-        SelectableText(
-          '''
+        SelectableText('''
           Interstitial ad.\n
           Interstitial ads are full-screen ads that cover the interface of their host app. They're typically displayed at natural transition points in the flow of an app, such as between activities or during the pause between levels in a game. When an app shows an interstitial ad, the user has the choice to either tap on the ad and continue to its destination or close it and return to the app.
 
           (Click below button to show the interstitial ad before showing the second page.)
-          ''',
-        ),
+          '''),
         SizedBox(height: 32),
         SwitchListTile.adaptive(
           title: Text('Personalized Ads'),
@@ -110,7 +108,8 @@ class _InterstitialAdExampleState extends State<InterstitialAdExample> {
                   } else {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
-                          content: Text('Ad not displayed, please retry!')),
+                        content: Text('Ad not displayed, please retry!'),
+                      ),
                     );
                   }
                 },
@@ -126,9 +125,7 @@ class _InterstitialAdExampleState extends State<InterstitialAdExample> {
   Scaffold _buildSecondPage() {
     return Scaffold(
       appBar: AppBar(title: Text('Second page')),
-      body: Center(
-        child: Image.asset('res/images/animated_flutter_lgtm.gif'),
-      ),
+      body: Center(child: Image.asset('res/images/animated_flutter_lgtm.gif')),
     );
   }
 }

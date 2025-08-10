@@ -15,11 +15,9 @@ class _AppBarSearchExampleState extends State<AppBarSearchExample> {
   late _MySearchDelegate _delegate;
 
   _AppBarSearchExampleState()
-      : kEnglishWords = List.from(Set.from(english_words.all))
-          ..sort(
-            (w1, w2) => w1.toLowerCase().compareTo(w2.toLowerCase()),
-          ),
-        super();
+    : kEnglishWords = List.from(Set.from(english_words.all))
+        ..sort((w1, w2) => w1.toLowerCase().compareTo(w2.toLowerCase())),
+      super();
 
   @override
   void initState() {
@@ -56,9 +54,8 @@ class _AppBarSearchExampleState extends State<AppBarSearchExample> {
       body: Scrollbar(
         child: ListView.builder(
           itemCount: kEnglishWords.length,
-          itemBuilder: (context, idx) => ListTile(
-            title: Text(kEnglishWords[idx]),
-          ),
+          itemBuilder: (context, idx) =>
+              ListTile(title: Text(kEnglishWords[idx])),
         ),
       ),
     );
@@ -72,9 +69,9 @@ class _MySearchDelegate extends SearchDelegate<String> {
   final List<String> _history;
 
   _MySearchDelegate(List<String> words)
-      : _words = words,
-        _history = <String>['apple', 'hello', 'world', 'flutter'],
-        super();
+    : _words = words,
+      _history = <String>['apple', 'hello', 'world', 'flutter'],
+      super();
 
   // Leading icon in search bar.
   @override
@@ -110,10 +107,9 @@ class _MySearchDelegate extends SearchDelegate<String> {
               },
               child: Text(
                 this.query,
-                style: Theme.of(context)
-                    .textTheme
-                    .headlineMedium!
-                    .copyWith(fontWeight: FontWeight.bold),
+                style: Theme.of(context).textTheme.headlineMedium!.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
           ],
@@ -160,17 +156,18 @@ class _MySearchDelegate extends SearchDelegate<String> {
             query = '';
             showSuggestions(context);
           },
-        )
+        ),
     ];
   }
 }
 
 // Suggestions list widget displayed in the search page.
 class _SuggestionList extends StatelessWidget {
-  const _SuggestionList(
-      {required this.suggestions,
-      required this.query,
-      required this.onSelected});
+  const _SuggestionList({
+    required this.suggestions,
+    required this.query,
+    required this.onSelected,
+  });
 
   final List<String> suggestions;
   final String query;

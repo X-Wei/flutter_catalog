@@ -52,7 +52,8 @@ class _LikeButtonExampleState extends State<LikeButtonExample> {
         ListTile(
           title: Text('use global key to mutate like state elsewhere'),
           subtitle: Text(
-              "click button below to toggle the first like button's state"),
+            "click button below to toggle the first like button's state",
+          ),
         ),
         ElevatedButton(
           onPressed: () => _key.currentState?.onTap(),

@@ -10,12 +10,13 @@ import './my_app_routes.dart' show MyRouteGroup, kAboutRoute, kAllRoutes;
 import './my_route.dart';
 import 'constants.dart';
 
-final mySettingsProvider =
-    ChangeNotifierProvider<MyAppSettings>((ref) => throw UnimplementedError());
+final mySettingsProvider = ChangeNotifierProvider<MyAppSettings>(
+  (ref) => throw UnimplementedError(),
+);
 
 class MyAppSettings extends ChangeNotifier {
   static final _kRoutenameToRouteMap = {
-    for (MyRoute route in kAllRoutes) route.routeName: route
+    for (MyRoute route in kAllRoutes) route.routeName: route,
   };
 
   static Future<MyAppSettings> create() async {
@@ -77,10 +78,10 @@ class MyAppSettings extends ChangeNotifier {
       _pref.getStringList(_kBookmarkedRoutesPreferenceKey) ?? [];
 
   List<MyRoute> get starredRoutes => [
-        for (final String routename in this.starredRoutenames)
-          if (_kRoutenameToRouteMap[routename] != null)
-            _kRoutenameToRouteMap[routename]!
-      ];
+    for (final String routename in this.starredRoutenames)
+      if (_kRoutenameToRouteMap[routename] != null)
+        _kRoutenameToRouteMap[routename]!,
+  ];
 
   // Returns a widget showing the star status of one demo route.
   Widget starStatusOfRoute(String routeName) {
@@ -208,7 +209,9 @@ extension SharedPreferencesMapExtension on SharedPreferences {
 
   /// Insert a set of key-value pairs into a map in SharedPreferences
   Future<void> insertMapEntries(
-      String key, Map<String, dynamic> entries) async {
+    String key,
+    Map<String, dynamic> entries,
+  ) async {
     final map = getMap(key);
     if (map != null) {
       map.addAll(entries);

@@ -77,12 +77,12 @@ class _StreamControllerExampleState extends State<StreamControllerExample> {
           icon: const Icon(Icons.send),
           label: const Text('Send random word to input stream'),
           onPressed: () => this._inputStreamController.sink.add(
-                _Data(
-                  message: english_words.WordPair.random().asPascalCase,
-                  timestamp: DateTime.now(),
-                ),
-              ),
-        )
+            _Data(
+              message: english_words.WordPair.random().asPascalCase,
+              timestamp: DateTime.now(),
+            ),
+          ),
+        ),
       ],
     );
   }

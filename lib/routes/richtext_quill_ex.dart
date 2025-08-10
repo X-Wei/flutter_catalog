@@ -34,15 +34,16 @@ class _QuillExampleState extends State<QuillExample> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: QuillToolbar.simple(
-          controller: _controller,
-          configurations: QuillSimpleToolbarConfigurations()),
+        controller: _controller,
+        configurations: QuillSimpleToolbarConfigurations(),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(4),
         child: QuillEditor.basic(
           controller: _controller,
           configurations: QuillEditorConfigurations(
-              // readOnly: false,
-              ),
+            // readOnly: false,
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
@@ -50,7 +51,8 @@ class _QuillExampleState extends State<QuillExample> {
           final jsonStr = jsonEncode(_controller.document.toDelta().toJson());
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-                content: Text('Serialized content json:\n```\n$jsonStr\n```')),
+              content: Text('Serialized content json:\n```\n$jsonStr\n```'),
+            ),
           );
         },
         child: Icon(Icons.save),

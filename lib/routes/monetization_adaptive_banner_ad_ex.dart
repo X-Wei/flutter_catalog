@@ -26,7 +26,8 @@ class _AnchoredAdaptiveBannerAdExampleState
     //! Get an AnchoredAdaptiveBannerAdSize before loading the ad.
     final AnchoredAdaptiveBannerAdSize? size =
         await AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(
-            MediaQuery.of(context).size.width.truncate());
+          MediaQuery.of(context).size.width.truncate(),
+        );
 
     if (size == null) {
       print('Unable to get height of anchored banner.');
@@ -59,8 +60,7 @@ class _AnchoredAdaptiveBannerAdExampleState
       body: Container(
         alignment: Alignment.center,
         padding: const EdgeInsets.all(8),
-        child: const SelectableText(
-          '''
+        child: const SelectableText('''
         Anchored adaptive banners\n\n
 
         Adaptive banners are the next generation of responsive ads, maximizing performance by optimizing ad size for each device. Improving on smart banners, which supported only fixed heights, adaptive banners let you specify the ad width and use this to determine the optimal ad size.
@@ -68,8 +68,7 @@ class _AnchoredAdaptiveBannerAdExampleState
         To choose the best ad size, adaptive banners use fixed aspect ratios instead of fixed heights. This results in banner ads that occupy a more consistent portion of the screen across devices and provides opportunities for improved performance.
 
         Banner ads occupy a spot within an app's layout, either at the top or bottom of the device screen. They stay on screen while users are interacting with the app, and can refresh automatically after a certain period of time.
-        ''',
-        ),
+        '''),
       ),
       bottomNavigationBar: Container(
         alignment: Alignment.center,

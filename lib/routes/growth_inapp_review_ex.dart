@@ -9,9 +9,11 @@ class InAppReviewExample extends StatelessWidget {
     return ListView(
       padding: const EdgeInsets.all(8),
       children: [
-        Text('The following triggers the In-App Review prompt.\n'
-            'This should NOT be used frequently as the underlying APIs '
-            'enforce strict quotas on this feature to provide a great user experience.'),
+        Text(
+          'The following triggers the In-App Review prompt.\n'
+          'This should NOT be used frequently as the underlying APIs '
+          'enforce strict quotas on this feature to provide a great user experience.',
+        ),
         ElevatedButton.icon(
           onPressed: () async {
             if (await InAppReview.instance.isAvailable()) {
@@ -23,7 +25,8 @@ class InAppReviewExample extends StatelessWidget {
                   builder: (BuildContext context) => AlertDialog(
                     title: const Text('Review unavailable'),
                     content: const Text(
-                        'The device is unable to show a review dialog!'),
+                      'The device is unable to show a review dialog!',
+                    ),
                   ),
                 );
               }
@@ -33,11 +36,13 @@ class InAppReviewExample extends StatelessWidget {
           label: Text('Open ratings dialog'),
         ),
         Divider(),
-        Text('The following opens the Google Play Store on Android, '
-            'the App Store with a review screen on IOS & MacOS '
-            'and the Microsoft Store on Windows.\n'
-            'Use this if you want to permanently provide a button or other call-to-action '
-            'to let users leave a review as it is NOT RESTRICED by a quota.'),
+        Text(
+          'The following opens the Google Play Store on Android, '
+          'the App Store with a review screen on IOS & MacOS '
+          'and the Microsoft Store on Windows.\n'
+          'Use this if you want to permanently provide a button or other call-to-action '
+          'to let users leave a review as it is NOT RESTRICED by a quota.',
+        ),
         ElevatedButton.icon(
           onPressed: () {
             InAppReview.instance.openStoreListing(

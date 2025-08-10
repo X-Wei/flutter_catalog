@@ -13,9 +13,7 @@ class ImageExample extends StatelessWidget {
       padding: const EdgeInsets.all(8),
       children: <Widget>[
         const ListTile(title: Text('Image from asset:')),
-        Card(
-          child: Image.asset('res/images/dart-side.png'),
-        ),
+        Card(child: Image.asset('res/images/dart-side.png')),
         const Divider(),
         const ListTile(title: Text('Image from url:')),
         Card(

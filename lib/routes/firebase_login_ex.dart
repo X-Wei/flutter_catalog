@@ -83,7 +83,8 @@ class _FirebaseLoginExampleState extends State<FirebaseLoginExample> {
         padding: const EdgeInsets.symmetric(vertical: 100.0, horizontal: 50.0),
         children: <Widget>[
           Text(
-              'NOTE: prefer the flutterfire_ui package, see `FlutterFireLoginUiExample`.'),
+            'NOTE: prefer the flutterfire_ui package, see `FlutterFireLoginUiExample`.',
+          ),
           statusText,
           googleLoginBtn,
           anonymousLoginBtn,
@@ -119,8 +120,9 @@ class _FirebaseLoginExampleState extends State<FirebaseLoginExample> {
       return curUser;
     }
     final anonyUser = (await _auth.signInAnonymously()).user;
-    await anonyUser!
-        .updateDisplayName('${anonyUser.uid.substring(0, 5)}_Guest');
+    await anonyUser!.updateDisplayName(
+      '${anonyUser.uid.substring(0, 5)}_Guest',
+    );
     await anonyUser.reload();
     // Have to re-call `currentUser()` to make `updateProfile` work.
     // Cf. https://stackoverflow.com/questions/50986191/flutter-firebase-auth-updateprofile-method-is-not-working.
@@ -150,9 +152,7 @@ class _FirebaseLoginExampleState extends State<FirebaseLoginExample> {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (ctx) => Scaffold(
-          appBar: AppBar(
-            title: const Text('user profile'),
-          ),
+          appBar: AppBar(title: const Text('user profile')),
           body: ListView(
             children: <Widget>[
               ListTile(title: Text('User: $user')),
@@ -166,9 +166,7 @@ class _FirebaseLoginExampleState extends State<FirebaseLoginExample> {
                     ? CircleAvatar(
                         backgroundImage: NetworkImage(user.photoURL!),
                       )
-                    : CircleAvatar(
-                        child: Text(user.displayName![0]),
-                      ),
+                    : CircleAvatar(child: Text(user.displayName![0])),
               ),
               ListTile(
                 title: Text('Last sign in: ${user.metadata.lastSignInTime}'),

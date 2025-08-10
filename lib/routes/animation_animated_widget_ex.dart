@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 // from the animation code.
 class _AnimatedLogo extends AnimatedWidget {
   const _AnimatedLogo({required Animation<double> animation})
-      : super(listenable: animation);
+    : super(listenable: animation);
 
   @override
   Widget build(BuildContext context) {
@@ -34,10 +34,14 @@ class _AnimatedWidgetExampleState extends State<AnimatedWidgetExample>
   @override
   void initState() {
     super.initState();
-    this._controller =
-        AnimationController(duration: const Duration(seconds: 1), vsync: this);
-    this._sizeAnimation =
-        Tween<double>(begin: 50, end: 100).animate(this._controller);
+    this._controller = AnimationController(
+      duration: const Duration(seconds: 1),
+      vsync: this,
+    );
+    this._sizeAnimation = Tween<double>(
+      begin: 50,
+      end: 100,
+    ).animate(this._controller);
   }
 
   @override
@@ -50,9 +54,7 @@ class _AnimatedWidgetExampleState extends State<AnimatedWidgetExample>
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        _AnimatedLogo(
-          animation: this._sizeAnimation,
-        ),
+        _AnimatedLogo(animation: this._sizeAnimation),
         ElevatedButton(
           onPressed: () => _controller.forward(),
           child: const Text('Forward animation'),

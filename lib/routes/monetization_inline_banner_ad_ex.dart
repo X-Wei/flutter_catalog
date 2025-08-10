@@ -12,25 +12,25 @@ class InlineBannerAdExample extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SelectableText(
-          '''
+        const SelectableText('''
           Inline banners\n\n
 
           Adaptive banners are the next generation of responsive ads, maximizing performance by optimizing ad size for each device. Improving on fixed-size banners, which only supported fixed heights, adaptive banners let developers specify the ad-width and use this to determine the optimal ad size.
-          ''',
-        ),
+          '''),
         Expanded(
           child: ListView.builder(
             itemBuilder: (ctx, idx) {
-              final content =
-                  ListTile(title: Text('App content - item "${idx + 1}"'));
+              final content = ListTile(
+                title: Text('App content - item "${idx + 1}"'),
+              );
               if ((idx + 1) % 5 == 0) {
                 return Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     content,
                     MyBannerAdWidget(
-                        placeholder: Placeholder(fallbackHeight: 32)),
+                      placeholder: Placeholder(fallbackHeight: 32),
+                    ),
                   ],
                 );
               }
@@ -70,7 +70,8 @@ class _MyBannerAdWidgetState extends State<MyBannerAdWidget> {
     //! Get an AnchoredAdaptiveBannerAdSize before loading the ad.
     final AnchoredAdaptiveBannerAdSize? size =
         await AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(
-            MediaQuery.of(context).size.width.truncate());
+          MediaQuery.of(context).size.width.truncate(),
+        );
 
     if (size == null) {
       print('Unable to get height of anchored banner.');

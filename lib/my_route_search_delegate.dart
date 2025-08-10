@@ -20,7 +20,7 @@ class MyRouteSearchDelegate extends SearchDelegate<String> {
           tooltip: 'Clear',
           icon: const Icon(Icons.clear),
           onPressed: () => this.query = '',
-        )
+        ),
     ];
   }
 
@@ -45,7 +45,7 @@ class MyRouteSearchDelegate extends SearchDelegate<String> {
     Iterable<MyRoute> suggestions = [
       for (final routeName in Provider.of<MyAppSettings>(context).searchHistory)
         if (kRouteNameToRoute.containsKey(routeName))
-          kRouteNameToRoute[routeName]!
+          kRouteNameToRoute[routeName]!,
     ];
     if (this.query.isNotEmpty) {
       suggestions = kAllRoutes
@@ -70,10 +70,9 @@ class MyRouteSearchDelegate extends SearchDelegate<String> {
           title: SubstringHighlight(
             text: '${routeGroup.groupName}/${route.title}',
             term: query,
-            textStyle: Theme.of(context)
-                .textTheme
-                .bodyMedium!
-                .copyWith(fontWeight: FontWeight.bold),
+            textStyle: Theme.of(
+              context,
+            ).textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.bold),
           ),
           subtitle: route.description.isEmpty
               ? null
@@ -83,8 +82,10 @@ class MyRouteSearchDelegate extends SearchDelegate<String> {
                   textStyle: Theme.of(context).textTheme.bodyMedium!,
                 ),
           onTap: () {
-            Provider.of<MyAppSettings>(context, listen: false)
-                .addSearchHistory(route.routeName);
+            Provider.of<MyAppSettings>(
+              context,
+              listen: false,
+            ).addSearchHistory(route.routeName);
             Navigator.of(context).popAndPushNamed(route.routeName);
           },
           trailing: const Icon(Icons.keyboard_arrow_right),

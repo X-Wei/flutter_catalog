@@ -94,13 +94,17 @@ class MySecretsHelper {
     if (Platform.isAndroid) {
       return kDebugMode
           ? kAndroidDebugAdId
-          : const String.fromEnvironment('AD_ID_ANDROID_BANNER',
-              defaultValue: kAndroidDebugAdId);
+          : const String.fromEnvironment(
+              'AD_ID_ANDROID_BANNER',
+              defaultValue: kAndroidDebugAdId,
+            );
     } else if (Platform.isIOS) {
       return kDebugMode
           ? kIosDebugAdId
-          : const String.fromEnvironment('AD_ID_IOS_BANNER',
-              defaultValue: kIosDebugAdId);
+          : const String.fromEnvironment(
+              'AD_ID_IOS_BANNER',
+              defaultValue: kIosDebugAdId,
+            );
     }
     return '';
   }
@@ -113,13 +117,17 @@ class MySecretsHelper {
     if (Platform.isAndroid) {
       return kDebugMode
           ? kAndroidDebugAdId
-          : const String.fromEnvironment('AD_ID_ANDROID_INTERSTITIAL',
-              defaultValue: kAndroidDebugAdId);
+          : const String.fromEnvironment(
+              'AD_ID_ANDROID_INTERSTITIAL',
+              defaultValue: kAndroidDebugAdId,
+            );
     } else if (Platform.isIOS) {
       return kDebugMode
           ? kIosDebugAdId
-          : const String.fromEnvironment('AD_ID_IOS_INTERSTITIAL',
-              defaultValue: kIosDebugAdId);
+          : const String.fromEnvironment(
+              'AD_ID_IOS_INTERSTITIAL',
+              defaultValue: kIosDebugAdId,
+            );
     }
     return '';
   }
@@ -132,13 +140,17 @@ class MySecretsHelper {
     if (Platform.isAndroid) {
       return kDebugMode
           ? kAndroidDebugAdId
-          : const String.fromEnvironment('AD_ID_ANDROID_REWARDED',
-              defaultValue: kAndroidDebugAdId);
+          : const String.fromEnvironment(
+              'AD_ID_ANDROID_REWARDED',
+              defaultValue: kAndroidDebugAdId,
+            );
     } else if (Platform.isIOS) {
       return kDebugMode
           ? kIosDebugAdId
-          : const String.fromEnvironment('AD_ID_IOS_REWARDED',
-              defaultValue: kIosDebugAdId);
+          : const String.fromEnvironment(
+              'AD_ID_IOS_REWARDED',
+              defaultValue: kIosDebugAdId,
+            );
     }
     return '';
   }

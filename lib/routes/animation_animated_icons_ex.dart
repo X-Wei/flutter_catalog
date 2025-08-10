@@ -34,7 +34,7 @@ class AnimatedIconsExample extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(8),
                 child: _AnimIconDemoBox(name: kv.key, iconData: kv.value),
-              )
+              ),
           ],
         ),
       ],

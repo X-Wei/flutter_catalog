@@ -11,11 +11,7 @@ class _OpacityExampleState extends State<OpacityExample> {
   double _opacity1 = 1.0, _opacity2 = 1.0, _opacity3 = 1.0;
 
   Widget _coloredSquare(Color color) {
-    return Container(
-      height: 100.0,
-      width: 100.0,
-      color: color,
-    );
+    return Container(height: 100.0, width: 100.0, color: color);
   }
 
   @override

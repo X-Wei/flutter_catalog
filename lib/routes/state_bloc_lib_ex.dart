@@ -6,10 +6,7 @@ class BlocLibExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: _MyDemoApp(),
-    );
+    return Padding(padding: const EdgeInsets.all(8.0), child: _MyDemoApp());
   }
 }
 
@@ -19,7 +16,7 @@ class _MyEvent {
   final DateTime timestamp;
 
   _MyEvent({DateTime? timestamp})
-      : this.timestamp = timestamp ?? DateTime.now();
+    : this.timestamp = timestamp ?? DateTime.now();
 }
 
 class _IncrementEvt extends _MyEvent {}
@@ -90,10 +87,7 @@ class _AppRootWidget extends StatelessWidget {
           const Text('(root widget)'),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              _CounterAndButton(),
-              _CounterAndButton(),
-            ],
+            children: <Widget>[_CounterAndButton(), _CounterAndButton()],
           ),
         ],
       ),
@@ -134,7 +128,7 @@ class _CounterAndButton extends StatelessWidget {
                 onPressed: () => BlocProvider.of<MyBloc>(context).decrement(),
               ),
             ],
-          )
+          ),
         ],
       ),
     );
