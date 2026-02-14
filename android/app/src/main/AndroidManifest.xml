@@ -8,6 +8,10 @@
         android:label="Flutter Catalog"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
+        <!-- Support for 16KB page size -->
+        <!-- See: https://developer.android.com/guide/practices/page-sizes -->
+        <property android:name="android.os.supports16KbPageSize" android:value="true"/>
+
         <activity
             android:name=".MainActivity"
             android:exported="true"

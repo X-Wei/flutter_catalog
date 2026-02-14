@@ -62,7 +62,7 @@ dependencies:
     path: packages/flutter_whatsnew-master
   fluttertoast: ^8.2.5
   freezed_annotation: ^2.4.1
-  google_fonts: ^6.2.1
+  google_fonts: ^8.0.1
   google_ml_kit: ^0.19.0
   google_mobile_ads: ^5.0.0
   google_sign_in: ^6.2.1
@@ -115,8 +115,14 @@ dev_dependencies:
   flutter_launcher_icons: ^0.14.1
   flutter_lints: ^5.0.0
   flutter_native_splash: ^2.4.0
+  flutter_test:
+    sdk: flutter
+  flutter_driver:
+    sdk: flutter
   freezed: ^2.5.2
   hive_generator: ^2.0.1
+  integration_test:
+    sdk: flutter
   json_serializable: ^6.7.1
   lint: ^2.3.0
 
