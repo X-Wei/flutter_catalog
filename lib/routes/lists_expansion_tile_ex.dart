@@ -32,7 +32,7 @@ const List<Entry> data = <Entry>[
 // Displays one Entry. If the entry has children then it's displayed
 // with an ExpansionTile.
 class EntryItem extends StatelessWidget {
-  const EntryItem(this.entry);
+  const EntryItem(this.entry, {super.key});
 
   final Entry entry;
 

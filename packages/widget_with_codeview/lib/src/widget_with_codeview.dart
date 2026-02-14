@@ -28,6 +28,7 @@ class WidgetWithCodeView extends SourceCodeView {
     super.darkTheme,
   });
 
+  // ignore: constant_identifier_names
   static const _TABS = <Widget>[
     Tab(
       child: ListTile(

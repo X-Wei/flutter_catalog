@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 
 class ChangeLogView extends StatefulWidget {
-  const ChangeLogView({
+  const ChangeLogView({super.key, 
     this.onTapLink,
     this.path,
     this.changes,

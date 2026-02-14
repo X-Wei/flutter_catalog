@@ -18,7 +18,7 @@ class WhatsNewPage extends StatelessWidget {
   final MarkdownTapLinkCallback? onTapLink;
   final bool adaptive;
 
-  const WhatsNewPage({
+  const WhatsNewPage({super.key, 
     required this.items,
     required this.title,
     required this.buttonText,
@@ -31,7 +31,7 @@ class WhatsNewPage extends StatelessWidget {
         changes = null,
         path = null;
 
-  const WhatsNewPage.changelog({
+  const WhatsNewPage.changelog({super.key, 
     this.title = const Text(
       'Changelog',
       textAlign: TextAlign.center,
