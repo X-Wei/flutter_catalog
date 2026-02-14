@@ -1,5 +1,11 @@
 # Change Log
 
+## v3.9.0
+[2026-02-14]
+- migrate to latest packages and build with flutter 3.41.1
+- migrate google mlkit packages
+- add back edge_detection example
+
 ## v3.8.3
 [2024-11-11]
 - migrate to latest packages and build with flutter 3.24.4
