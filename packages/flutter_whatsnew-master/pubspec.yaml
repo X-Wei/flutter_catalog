@@ -6,13 +6,13 @@ homepage: https://github.com/fluttercommunity/flutter_whatsnew
 maintainer: Rody Davis (@rodydavis)
 
 environment:
-  sdk: ">=2.17.0 <3.0.0"
+  sdk: ">=3.11.0 <4.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  flutter_markdown: ^0.6.12
-  shared_preferences: ^2.0.15
+  flutter_markdown: ^0.7.7+1
+  shared_preferences: ^2.5.4
 
 dev_dependencies:
   flutter_test:
