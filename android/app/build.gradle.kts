@@ -32,10 +32,6 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
 
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
-
     sourceSets {
         getByName("main") {
             java.srcDir("src/main/kotlin")
@@ -46,7 +42,7 @@ android {
         applicationId = "io.github.x_wei.flutter_catalog"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
-        minSdk = flutter.minSdkVersion
+        minSdk = 26
         targetSdk = 35
         versionCode = flutterVersionCode.toInt()
         versionName = flutterVersionName
@@ -101,3 +97,9 @@ configurations.all {
 }
 
 dependencies {}
+
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+    compilerOptions {
+        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_1_8)
+    }
+}
