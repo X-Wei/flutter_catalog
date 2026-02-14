@@ -3,10 +3,14 @@
 // ignore_for_file: sort_child_properties_last
 import 'package:community_material_icon/community_material_icon.dart';
 import 'package:flutter/material.dart';
+
 import 'constants.dart';
 import 'home_page.dart';
 import 'my_route.dart';
 import 'routes/about.dart';
+import 'routes/aiml_chatgpt_ex.dart';
+import 'routes/aiml_edge_detection_ex.dart';
+import 'routes/aiml_google_mlkit_ex.dart';
 import 'routes/aiml_groq_ex.dart';
 import 'routes/animation_animated_builder_ex.dart';
 import 'routes/animation_animated_container_ex.dart';
@@ -40,13 +44,12 @@ import 'routes/charts_radar_chart_ex.dart';
 import 'routes/charts_time_series_ex.dart';
 import 'routes/charts_timelines_ex.dart';
 import 'routes/feature_device_preview.dart';
+import 'routes/feature_grey_app.dart';
 import 'routes/feature_store_secrets.dart';
 import 'routes/firebase_chatroom_ex.dart';
 import 'routes/firebase_flutterfire_loginui_ex.dart';
 import 'routes/firebase_login_ex.dart';
-import 'routes/firebase_mlkit_ex.dart';
 import 'routes/firebase_vote_ex.dart';
-import 'routes/feature_grey_app.dart';
 import 'routes/growth_inapp_review_ex.dart';
 import 'routes/growth_my_other_apps.dart';
 import 'routes/layouts_container_padding_center_ex.dart';
@@ -71,7 +74,6 @@ import 'routes/monetization_inline_banner_ad_ex.dart';
 import 'routes/monetization_interstitial_ad_ex.dart';
 import 'routes/monetization_rewarded_ad_ex.dart';
 import 'routes/monetization_user_purchases_ex.dart';
-// import 'routes/multimedia_edge_detection_ex.dart';
 import 'routes/multimedia_extended_image_ex.dart';
 import 'routes/multimedia_image_picker_ex.dart';
 import 'routes/multimedia_image_plugin_ex.dart';
@@ -86,12 +88,12 @@ import 'routes/nav_nav_drawer_header_ex.dart';
 import 'routes/nav_pageselector_ex.dart';
 import 'routes/nav_routes_ex.dart';
 import 'routes/nav_tabs_ex.dart';
-import 'routes/aiml_chatgpt_ex.dart';
 import 'routes/networking_dio_download_ex.dart';
 import 'routes/networking_googlebooks_ex.dart';
 import 'routes/networking_hacker_news_ex.dart';
 import 'routes/networking_rest_api_fetch_ex.dart';
 import 'routes/networking_rest_api_send_ex.dart';
+import 'routes/onboarding_feature_discovery_ex.dart';
 import 'routes/onboarding_intro_screen_ex.dart';
 import 'routes/onboarding_whats_new_ex.dart';
 import 'routes/persistence_file_rw_ex.dart';
@@ -99,7 +101,6 @@ import 'routes/persistence_hive_ex.dart';
 import 'routes/persistence_preference_ex.dart';
 import 'routes/persistence_sembast_ex.dart';
 import 'routes/persistence_sqlite_ex.dart';
-import 'routes/onboarding_feature_discovery_ex.dart';
 import 'routes/plugins_local_auth_ex.dart';
 import 'routes/plugins_share_plus_ex.dart';
 import 'routes/plugins_shimmer_ex.dart';
@@ -782,13 +783,6 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
         title: 'Youtube Player',
         links: {'Pub': 'https://pub.dev/packages/youtube_player_iframe'},
       ),
-      // MyRoute( TODO: use https://pub.dev/packages/edge_detection_plus
-      //   child: EdgeDetectionExample(),
-      //   sourceFilePath: 'lib/routes/multimedia_edge_detection_ex.dart',
-      //   title: 'Edge Detection',
-      //   description: 'Plugin to scan documents.',
-      //   links: {'Pub': 'https://pub.dev/packages/edge_detection'},
-      // ),
     ],
   ),
   MyRouteGroup(
@@ -1177,7 +1171,7 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
     routes: <MyRoute>[
       MyRoute(
         child: GoogleMLKitExample(),
-        sourceFilePath: 'lib/routes/firebase_mlkit_ex.dart',
+        sourceFilePath: 'lib/routes/aiml_google_mlkit_ex.dart',
         title: 'Google ML Kit',
         description: 'Image labelling, text OCR, barcode scan, face detection.',
         links: {
@@ -1185,6 +1179,13 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
           'MLKit doc':
               'https://developers.google.com/ml-kit/vision/text-recognition',
         },
+      ),
+      MyRoute(
+        child: EdgeDetectionExample(),
+        sourceFilePath: 'lib/routes/aiml_edge_detection_ex.dart',
+        title: 'Edge Detection',
+        description: 'Plugin to scan documents.',
+        links: {'Pub': 'https://pub.dev/packages/edge_detection'},
       ),
       MyRoute(
         child: ChatGptExample(),

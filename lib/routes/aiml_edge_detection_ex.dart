@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:edge_detection/edge_detection.dart';
+import 'package:edge_detection_plus/edge_detection_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
@@ -42,7 +42,7 @@ class _EdgeDetectionExampleState extends State<EdgeDetectionExample> {
     );
     try {
       //Make sure to await the call to detectEdge.
-      final success = await EdgeDetection.detectEdge(
+      final success = await EdgeDetectionPlus.detectEdge(
         /*saveTo=*/ imgPath,
         canUseGallery: true,
       );

@@ -79,8 +79,9 @@ class _GoogleMLKitExampleState extends State<GoogleMLKitExample> {
     }
     String result = '';
     final InputImage inputImage = InputImage.fromFile(this._imageFile!);
-    final ImageLabeler imageLabeler =
-        ImageLabeler(options: ImageLabelerOptions());
+    final ImageLabeler imageLabeler = ImageLabeler(
+      options: ImageLabelerOptions(),
+    );
     final List<ImageLabel> labels = await imageLabeler.processImage(inputImage);
     result += 'Detected ${labels.length} labels.\n';
     for (final ImageLabel label in labels) {
@@ -103,8 +104,9 @@ class _GoogleMLKitExampleState extends State<GoogleMLKitExample> {
     }
     String result = '';
     final InputImage inputImage = InputImage.fromFile(this._imageFile!);
-    final TextRecognizer textDetector =
-        TextRecognizer(script: TextRecognitionScript.latin);
+    final TextRecognizer textDetector = TextRecognizer(
+      script: TextRecognitionScript.latin,
+    );
     final RecognizedText recognizedText = await textDetector.processImage(
       inputImage,
     );
@@ -228,6 +230,7 @@ class _GoogleMLKitExampleState extends State<GoogleMLKitExample> {
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: OverflowBar(
+            spacing: 8,
             children: <Widget>[
               ElevatedButton(
                 onPressed: this._imageLabelling,
