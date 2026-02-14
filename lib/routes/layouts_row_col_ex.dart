@@ -53,25 +53,19 @@ class _RowColExampleState extends State<RowColExample> {
         children: <Widget>[
           Row(
             children: <Widget>[
-              Row(
-                children: <Widget>[
-                  Radio<bool>(
-                    value: true,
-                    groupValue: this._isRow,
-                    onChanged: (bool? value) {
-                      if (value != null) setState(() => this._isRow = value);
-                    },
-                  ),
-                  const Text('Row'),
-                  Radio<bool>(
-                    value: false,
-                    groupValue: this._isRow,
-                    onChanged: (bool? value) {
-                      if (value != null) setState(() => this._isRow = value);
-                    },
-                  ),
-                  const Text('Column'),
-                ],
+              RadioGroup<bool>(
+                groupValue: this._isRow,
+                onChanged: (bool? value) {
+                  if (value != null) setState(() => this._isRow = value);
+                },
+                child: Row(
+                  children: <Widget>[
+                    Radio<bool>(value: true),
+                    const Text('Row'),
+                    Radio<bool>(value: false),
+                    const Text('Column'),
+                  ],
+                ),
               ),
             ],
           ),

@@ -57,10 +57,13 @@ class _GraphViewExState extends State<GraphViewEx> {
         ..strokeWidth = 4,
     );
 
-    final algo = FruchtermanReingoldAlgorithm(iterations: this._iterations)
-      ..rand =
-          Random(/*seed=*/ 0) // For deterministic rendering
-          ;
+    final algo =
+        FruchtermanReingoldAlgorithm(
+            FruchtermanReingoldConfiguration(iterations: this._iterations),
+          )
+          ..rand =
+              Random(/*seed=*/ 0) // For deterministic rendering
+              ;
 
     return Scaffold(
       body: InteractiveViewer(

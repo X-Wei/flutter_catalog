@@ -67,20 +67,21 @@ class _StatefulWidgetsExampleState extends State<StatefulWidgetsExample> {
         const Center(child: CircularProgressIndicator()),
         const Divider(),
         const Text('Radio'),
-        Row(
-          children: [0, 1, 2, 3]
-              .map(
-                (int index) => Radio<int>(
-                  value: index,
-                  groupValue: this._radioVal,
-                  onChanged: (int? value) {
-                    if (value != null) {
-                      setState(() => this._radioVal = value);
-                    }
-                  },
-                ),
-              )
-              .toList(),
+        RadioGroup<int>(
+          groupValue: this._radioVal,
+          onChanged: (int? value) {
+            if (value != null) {
+              setState(() => this._radioVal = value);
+            }
+          },
+          child: Row(
+            children: [
+              0,
+              1,
+              2,
+              3,
+            ].map((int index) => Radio<int>(value: index)).toList(),
+          ),
         ),
         const Divider(),
       ],

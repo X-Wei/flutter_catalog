@@ -57,10 +57,12 @@ class _ScheduledWhatsNewPageState extends State<ScheduledWhatsNewPage> {
   void show(BuildContext context) {
     if (!mounted) return;
     final nav = Navigator.of(context, rootNavigator: true);
-    nav.push(MaterialPageRoute(
-      builder: (context) => widget.details,
-      fullscreenDialog: true,
-    ));
+    nav.push(
+      MaterialPageRoute(
+        builder: (context) => widget.details,
+        fullscreenDialog: true,
+      ),
+    );
   }
 
   @override

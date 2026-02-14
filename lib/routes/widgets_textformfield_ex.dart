@@ -147,6 +147,7 @@ class _TextFormFieldExampleState extends State<TextFormFieldExample> {
 
 class PasswordField extends StatefulWidget {
   const PasswordField({
+    super.key,
     this.fieldKey,
     this.hintText,
     this.labelText,

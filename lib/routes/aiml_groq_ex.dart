@@ -17,15 +17,21 @@ class GroqExample extends ConsumerStatefulWidget {
 
 class _ChatGptExampleState extends ConsumerState<GroqExample> {
   static const _apiKey = String.fromEnvironment(
-    'GROQ_API_KEY',
-    defaultValue: '',
+    'groqApiKey',
+    defaultValue: String.fromEnvironment('GROQ_API_KEY', defaultValue: ''),
   );
-  final groq = Groq(apiKey: _apiKey, model: GroqModel.llama3_8b_8192);
-  var _groqModel = GroqModel.llama3_8b_8192;
+
+  late final groq = Groq(
+    apiKey: _apiKey,
+    configuration: Configuration(model: _groqModel),
+  );
+
+  var _groqModel = 'qwen/qwen3-32b';
 
   final _textController = TextEditingController();
   final _scrollController = ScrollController();
   bool _pendingResponse = false;
+
   //! List of (message:string, isMe:bool) pairs to represent the conversation.
   final _messages = <Tuple2<String, bool>>[];
 
@@ -35,9 +41,10 @@ class _ChatGptExampleState extends ConsumerState<GroqExample> {
     groq.startChat();
   }
 
-  void _changeModel(GroqModel m) {
+  void _changeModel(String m) {
     _groqModel = m;
     _messages.clear();
+    groq.configuration = Configuration(model: m);
     groq.clearChat();
     groq.startChat();
     setState(() {});
@@ -47,6 +54,8 @@ class _ChatGptExampleState extends ConsumerState<GroqExample> {
     try {
       final response = await groq.sendMessage(prompt);
       return response.choices.firstOrNull?.message.content ?? "<error>";
+    } on GroqException catch (e) {
+      return e.message;
     } catch (e) {
       return e.toString();
     }
@@ -77,9 +86,14 @@ class _ChatGptExampleState extends ConsumerState<GroqExample> {
             title: LinearProgressIndicator(),
           ),
         Divider(height: 1.0),
-        MyValuePickerTile<GroqModel>(
+        MyValuePickerTile<String>(
           val: _groqModel,
-          values: GroqModel.values,
+          values: const [
+            'llama3-8b-8192',
+            'llama3-70b-8192',
+            'mixtral-8x7b-32768',
+            'gemma-7b-it',
+          ],
           title: 'Select a model: ',
           onChanged: _changeModel,
         ),

@@ -18,7 +18,8 @@ class WhatsNewPage extends StatelessWidget {
   final MarkdownTapLinkCallback? onTapLink;
   final bool adaptive;
 
-  const WhatsNewPage({super.key, 
+  const WhatsNewPage({
+    super.key,
     required this.items,
     required this.title,
     required this.buttonText,
@@ -27,18 +28,16 @@ class WhatsNewPage extends StatelessWidget {
     this.buttonColor,
     this.onTapLink,
     this.adaptive = true,
-  })  : changelog = false,
-        changes = null,
-        path = null;
+  }) : changelog = false,
+       changes = null,
+       path = null;
 
-  const WhatsNewPage.changelog({super.key, 
+  const WhatsNewPage.changelog({
+    super.key,
     this.title = const Text(
       'Changelog',
       textAlign: TextAlign.center,
-      style: TextStyle(
-        fontSize: 22.0,
-        fontWeight: FontWeight.bold,
-      ),
+      style: TextStyle(fontSize: 22.0, fontWeight: FontWeight.bold),
     ),
     this.buttonText = const Text(
       'Continue',
@@ -51,8 +50,8 @@ class WhatsNewPage extends StatelessWidget {
     this.path,
     this.onTapLink,
     this.adaptive = true,
-  })  : changelog = true,
-        items = null;
+  }) : changelog = true,
+       items = null;
 
   static Future<void> showDetailPopUp(
     BuildContext context,
@@ -104,8 +103,8 @@ class WhatsNewPage extends StatelessWidget {
       backgroundColor: buttonColor ?? Theme.of(context).colorScheme.primary,
       foregroundColor: buttonColor != null
           ? (buttonColor!.computeLuminance() > 0.5
-              ? Colors.black
-              : Colors.white)
+                ? Colors.black
+                : Colors.white)
           : Theme.of(context).colorScheme.onPrimary,
     );
     if (changelog) {
@@ -116,12 +115,7 @@ class WhatsNewPage extends StatelessWidget {
           child: Stack(
             fit: StackFit.loose,
             children: <Widget>[
-              Positioned(
-                top: 10.0,
-                left: 0.0,
-                right: 0.0,
-                child: title,
-              ),
+              Positioned(top: 10.0, left: 0.0, right: 0.0, child: title),
               Positioned(
                 left: 0.0,
                 right: 0.0,
@@ -141,7 +135,8 @@ class WhatsNewPage extends StatelessWidget {
                 child: ListTile(
                   title: ElevatedButton(
                     style: buttonStyle,
-                    onPressed: onButtonPressed ??
+                    onPressed:
+                        onButtonPressed ??
                         () {
                           Navigator.pop(context);
                         },
@@ -161,12 +156,7 @@ class WhatsNewPage extends StatelessWidget {
           child: Stack(
             fit: StackFit.loose,
             children: <Widget>[
-              Positioned(
-                top: 10.0,
-                left: 0.0,
-                right: 0.0,
-                child: title,
-              ),
+              Positioned(top: 10.0, left: 0.0, right: 0.0, child: title),
               Positioned(
                 left: 0.0,
                 right: 0.0,
@@ -217,19 +207,11 @@ class WhatsNewPage extends StatelessWidget {
         adaptive: adaptive,
       );
     } else if (items != null) {
-      child = Material(
-        child: ListView(
-          children: items!,
-        ),
-      );
+      child = Material(child: ListView(children: items!));
     }
     return CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(
-        middle: title,
-      ),
-      child: SafeArea(
-        child: child ?? Container(),
-      ),
+      navigationBar: CupertinoNavigationBar(middle: title),
+      child: SafeArea(child: child ?? Container()),
     );
   }
 }

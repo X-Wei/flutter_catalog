@@ -41,7 +41,7 @@ class _LocalAuthExampleState extends State<LocalAuthExample> {
     try {
       final authSuccess = await this._localAuth.authenticate(
         localizedReason: 'Auth in to see hidden image',
-        options: const AuthenticationOptions(biometricOnly: true),
+        // options: const AuthenticationOptions(biometricOnly: true),
       );
       if (mounted) {
         ScaffoldMessenger.of(

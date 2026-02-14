@@ -45,8 +45,11 @@ class WidgetWithCodeView extends SourceCodeView {
   ];
 
   @override
+  // ignore: no_logic_in_create_state
   _WidgetWithCodeViewState createState() => _WidgetWithCodeViewState(
-      tabChangeListener: tabChangeListener, child: child);
+    tabChangeListener: tabChangeListener,
+    child: child,
+  );
 }
 
 //? Need to override SourceCodeViewState rather than State<WidgetWithCodeView>.
@@ -65,9 +68,7 @@ class _WidgetWithCodeViewState extends SourceCodeViewState
     super.initState();
     _tabController = TabController(length: 2, vsync: this);
     if (tabChangeListener != null) {
-      _tabController.addListener(
-        () => tabChangeListener!(_tabController),
-      );
+      _tabController.addListener(() => tabChangeListener!(_tabController));
     }
   }
 
@@ -138,9 +139,6 @@ class _ColoredTabBar extends Container implements PreferredSizeWidget {
   Size get preferredSize => tabBar.preferredSize;
 
   @override
-  Widget build(BuildContext context) => Material(
-        elevation: 4.0,
-        color: tabColor,
-        child: tabBar,
-      );
+  Widget build(BuildContext context) =>
+      Material(elevation: 4.0, color: tabColor, child: tabBar);
 }
