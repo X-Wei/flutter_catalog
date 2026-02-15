@@ -56,7 +56,9 @@ class MyRouteSearchDelegate extends SearchDelegate<String> {
               .where(
                 (route) =>
                     route.title.toLowerCase().contains(query.toLowerCase()) ||
-                    route.description.toLowerCase().contains(query.toLowerCase()),
+                    route.description.toLowerCase().contains(
+                      query.toLowerCase(),
+                    ),
               )
               .toList();
         }
