@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:substring_highlight/substring_highlight.dart';
 
 import 'my_app_routes.dart'
@@ -41,25 +41,31 @@ class MyRouteSearchDelegate extends SearchDelegate<String> {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    // List<String> suggestions = _history;
-    Iterable<MyRoute> suggestions = [
-      for (final routeName in Provider.of<MyAppSettings>(context).searchHistory)
-        if (kRouteNameToRoute.containsKey(routeName))
-          kRouteNameToRoute[routeName]!,
-    ];
-    if (this.query.isNotEmpty) {
-      suggestions = kAllRoutes
-          .where(
-            (route) =>
-                route.title.toLowerCase().contains(query.toLowerCase()) ||
-                route.description.toLowerCase().contains(query.toLowerCase()),
-          )
-          .toList();
-    }
-    return _buildSuggestionsList(suggestions);
+    return Consumer(
+      builder: (context, ref, child) {
+        final settings = ref.watch(mySettingsProvider);
+
+        // List<String> suggestions = _history;
+        Iterable<MyRoute> suggestions = [
+          for (final routeName in settings.searchHistory)
+            if (kRouteNameToRoute.containsKey(routeName))
+              kRouteNameToRoute[routeName]!,
+        ];
+        if (this.query.isNotEmpty) {
+          suggestions = kAllRoutes
+              .where(
+                (route) =>
+                    route.title.toLowerCase().contains(query.toLowerCase()) ||
+                    route.description.toLowerCase().contains(query.toLowerCase()),
+              )
+              .toList();
+        }
+        return _buildSuggestionsList(suggestions, ref);
+      },
+    );
   }
 
-  Widget _buildSuggestionsList(Iterable<MyRoute> suggestions) {
+  Widget _buildSuggestionsList(Iterable<MyRoute> suggestions, WidgetRef ref) {
     return ListView.builder(
       itemCount: suggestions.length,
       itemBuilder: (BuildContext context, int i) {
@@ -82,10 +88,7 @@ class MyRouteSearchDelegate extends SearchDelegate<String> {
                   textStyle: Theme.of(context).textTheme.bodyMedium!,
                 ),
           onTap: () {
-            Provider.of<MyAppSettings>(
-              context,
-              listen: false,
-            ).addSearchHistory(route.routeName);
+            ref.read(mySettingsProvider).addSearchHistory(route.routeName);
             Navigator.of(context).popAndPushNamed(route.routeName);
           },
           trailing: const Icon(Icons.keyboard_arrow_right),

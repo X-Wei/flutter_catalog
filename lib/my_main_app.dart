@@ -1,6 +1,8 @@
-import 'package:device_preview/device_preview.dart';
+import 'package:device_preview_screenshot/device_preview_screenshot.dart';
+import 'package:flutter/foundation.dart' show kIsWeb, kReleaseMode;
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:path_provider/path_provider.dart'
+    show getApplicationDocumentsDirectory;
 
 import 'my_app_routes.dart' show kAppRoutingTable;
 import 'my_app_settings.dart';
@@ -12,27 +14,27 @@ class MyMainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<MyAppSettings>.value(
-      value: settings,
-      child: const _MyMaterialApp(),
-    );
-  }
-}
-
-class _MyMaterialApp extends StatelessWidget {
-  const _MyMaterialApp();
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Catalog',
-      theme: Provider.of<MyAppSettings>(context).isDarkMode
-          ? kDarkTheme
-          : kLightTheme,
-      routes: kAppRoutingTable,
-      debugShowCheckedModeBanner: false,
-      locale: DevicePreview.locale(context),
-      builder: DevicePreview.appBuilder,
+    return DevicePreview(
+      enabled: !kReleaseMode, // devicePreview disabled for release mode
+      builder: (_) => MaterialApp(
+        title: 'Flutter Catalog',
+        useInheritedMediaQuery: true,
+        theme: settings.isDarkMode ? kDarkTheme : kLightTheme,
+        routes: kAppRoutingTable,
+        debugShowCheckedModeBanner: false,
+        locale: DevicePreview.locale(context),
+        builder: DevicePreview.appBuilder,
+      ),
+      tools: [
+        ...DevicePreview.defaultTools,
+        if (!kIsWeb) // store screenshot to documents folder if not on web
+          DevicePreviewScreenshot(
+            onScreenshot: (ctx, scrn) async {
+              final appDir = await getApplicationDocumentsDirectory();
+              if (ctx.mounted) screenshotAsFiles(appDir)(ctx, scrn);
+            },
+          ),
+      ],
     );
   }
 }
