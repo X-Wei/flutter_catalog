@@ -49,7 +49,6 @@ void main() {
     late MyAppSettings settings;
     setUp(() async {
       settings = await MyAppSettings.create();
-      settings.isTestMode = true; // Enable test mode to avoid Firebase calls
     });
     testWidgets('HomePage has 4 bottom tabs', (WidgetTester tester) async {
       await tester.pumpWidget(

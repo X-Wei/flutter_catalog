@@ -18,6 +18,7 @@ class MyMainApp extends StatelessWidget {
       enabled: !kReleaseMode, // devicePreview disabled for release mode
       builder: (_) => MaterialApp(
         title: 'Flutter Catalog',
+        // ignore: deprecated_member_use
         useInheritedMediaQuery: true,
         theme: settings.isDarkMode ? kDarkTheme : kLightTheme,
         routes: kAppRoutingTable,

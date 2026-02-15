@@ -77,13 +77,10 @@ extension MyRouteExtension on MyRoute {
         if (isNew) {
           mySettings.markRouteKnown(this);
         }
-        // Avoid Firebase calls in test mode
-        if (!mySettings.isTestMode) {
-          kAnalytics?.logEvent(
-            name: 'evt_openRoute',
-            parameters: {'routeName': this.routeName},
-          );
-        }
+        kAnalytics?.logEvent(
+          name: 'evt_openRoute',
+          parameters: {'routeName': this.routeName},
+        );
         Navigator.of(context).pushNamed(this.routeName);
       },
     );

@@ -16,7 +16,6 @@ final mySettingsProvider = ChangeNotifierProvider<MyAppSettings>(
 );
 
 class MyAppSettings extends ChangeNotifier {
-  bool isTestMode = false; // Flag to indicate test mode
   static final _kRoutenameToRouteMap = {
     for (MyRoute route in kAllRoutes) route.routeName: route,
   };
@@ -27,7 +26,9 @@ class MyAppSettings extends ChangeNotifier {
   /// Get the singleton instance of MyAppSettings
   static MyAppSettings get instance {
     if (_instance == null) {
-      throw StateError('MyAppSettings not initialized. Call MyAppSettings.create() first.');
+      throw StateError(
+        'MyAppSettings not initialized. Call MyAppSettings.create() first.',
+      );
     }
     return _instance!;
   }

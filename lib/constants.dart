@@ -37,7 +37,9 @@ final kIsMobileOrWeb =
     defaultTargetPlatform == TargetPlatform.iOS ||
     defaultTargetPlatform == TargetPlatform.android;
 
-final kAnalytics = kIsMobileOrWeb ? FirebaseAnalytics.instance : null;
+final kAnalytics = kIsMobileOrWeb && kReleaseMode
+    ? FirebaseAnalytics.instance
+    : null;
 
 /// ! Adapted from https://www.flutterclutter.dev/flutter/tutorials/how-to-detect-what-platform-a-flutter-app-is-running-on/2020/127/
 enum PlatformType { Web, iOS, Android, MacOS, Fuchsia, Linux, Windows, Unknown }
