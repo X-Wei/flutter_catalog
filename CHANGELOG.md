@@ -3,6 +3,8 @@
 ## v3.9.0
 [2026-02-14]
 - migrate to latest packages and build with flutter 3.41.1
+- add unit and widget tests and github CI actions
+- refactor and simplify code
 - migrate google mlkit packages
 - add back edge_detection example
 
