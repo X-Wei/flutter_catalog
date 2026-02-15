@@ -12,7 +12,10 @@ import 'constants.dart';
 import 'my_route_group.dart' show MyRouteGroup;
 
 final mySettingsProvider = ChangeNotifierProvider<MyAppSettings>(
-  (ref) => throw UnimplementedError(),
+  (ref) => MyAppSettings.instance,
+  //! we can return MyAppSettings.instance, thus no longer need to throw
+  //! UnimplementedError to force override in ProviderScope.
+  // (ref) => throw UnimplementedError(),
 );
 
 class MyAppSettings extends ChangeNotifier {
@@ -23,7 +26,7 @@ class MyAppSettings extends ChangeNotifier {
   // Singleton instance
   static MyAppSettings? _instance;
 
-  /// Get the singleton instance of MyAppSettings
+  /// Get the SINGLETON instance of MyAppSettings
   static MyAppSettings get instance {
     if (_instance == null) {
       throw StateError(
@@ -31,6 +34,19 @@ class MyAppSettings extends ChangeNotifier {
       );
     }
     return _instance!;
+  }
+
+  @override
+  // ignore: must_call_super
+  void dispose() {
+    //! Singleton should NOT be disposed() -- call reset() if cleanup needed.
+    // super.dispose();
+  }
+
+  //! Reset singleton (only useful in tests)
+  static void reset() {
+    _instance?.dispose();
+    _instance = null;
   }
 
   static Future<MyAppSettings> create() async {

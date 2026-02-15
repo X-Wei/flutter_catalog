@@ -37,7 +37,9 @@ Future<void> main() async {
   final settings = await MyAppSettings.create();
   runApp(
     ProviderScope(
-      overrides: [mySettingsProvider.overrideWith((ref) => settings)],
+      overrides: [
+        // mySettingsProvider.overrideWith((ref) => settings)
+      ],
       child: MyMainApp(settings),
     ),
   );
