@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart'
     show ConsumerWidget, WidgetRef;
 import 'package:path/path.dart';
-import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart' as url_launcher;
 import 'package:widget_with_codeview/widget_with_codeview.dart';
 
@@ -76,7 +75,7 @@ class MyRoute extends ConsumerWidget {
           scrollDirection: Axis.horizontal,
           child: Text(this.title),
         ),
-        actions: _getAppbarActions(context),
+        actions: _getAppbarActions(context, ref),
         automaticallyImplyLeading: false,
         leading: appbarLeading,
       ),
@@ -103,12 +102,12 @@ class MyRoute extends ConsumerWidget {
                 child: this.child,
               ),
       ),
-      backLayer: _getBackdropListTiles(),
+      backLayer: _getBackdropListTiles(ref),
     );
   }
 
-  List<Widget> _getAppbarActions(BuildContext context) {
-    final settings = Provider.of<MyAppSettings>(context);
+  List<Widget> _getAppbarActions(BuildContext context, WidgetRef ref) {
+    final settings = ref.watch(mySettingsProvider);
     return <Widget>[
       const BackdropToggleButton(),
       if (this.routeName == Navigator.defaultRouteName)
@@ -149,7 +148,7 @@ class MyRoute extends ConsumerWidget {
     ];
   }
 
-  ListView _getBackdropListTiles() {
+  ListView _getBackdropListTiles(WidgetRef ref) {
     return ListView(
       padding: const EdgeInsets.only(bottom: _kFrontLayerMinHeight),
       children: <Widget>[
@@ -159,22 +158,21 @@ class MyRoute extends ConsumerWidget {
           subtitle: Text(kPackageInfo.version),
         ),
         ...MyAboutRoute.kAboutListTiles,
-        Consumer<MyAppSettings>(
-          builder: (context, MyAppSettings settings, _) {
-            return ListTile(
-              onTap: () {},
-              leading: DayNightSwitcherIcon(
-                isDarkModeEnabled: settings.isDarkMode,
-                onStateChanged: (_) {},
-              ),
-              title: Text('Dark mode: ${settings.isDarkMode ? 'on' : 'off'}'),
-              trailing: DayNightSwitcher(
-                isDarkModeEnabled: settings.isDarkMode,
-                onStateChanged: (bool value) => settings.setDarkMode(value),
-              ),
-            );
-          },
-        ),
+        () {
+          final settings = ref.watch(mySettingsProvider);
+          return ListTile(
+            onTap: () {},
+            leading: DayNightSwitcherIcon(
+              isDarkModeEnabled: settings.isDarkMode,
+              onStateChanged: (_) {},
+            ),
+            title: Text('Dark mode: ${settings.isDarkMode ? 'on' : 'off'}'),
+            trailing: DayNightSwitcher(
+              isDarkModeEnabled: settings.isDarkMode,
+              onStateChanged: (bool value) => settings.setDarkMode(value),
+            ),
+          );
+        }(),
       ],
     );
   }

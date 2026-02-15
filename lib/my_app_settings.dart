@@ -15,6 +15,7 @@ final mySettingsProvider = ChangeNotifierProvider<MyAppSettings>(
 );
 
 class MyAppSettings extends ChangeNotifier {
+  bool isTestMode = false; // Flag to indicate test mode
   static final _kRoutenameToRouteMap = {
     for (MyRoute route in kAllRoutes) route.routeName: route,
   };

@@ -156,10 +156,13 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
         if (isNew) {
           mySettings.markRouteKnown(myRoute);
         }
-        kAnalytics?.logEvent(
-          name: 'evt_openRoute',
-          parameters: {'routeName': myRoute.routeName},
-        );
+        // Avoid Firebase calls in test mode
+        if (!mySettings.isTestMode) {
+          kAnalytics?.logEvent(
+            name: 'evt_openRoute',
+            parameters: {'routeName': myRoute.routeName},
+          );
+        }
         Navigator.of(context).pushNamed(myRoute.routeName);
       },
     );
