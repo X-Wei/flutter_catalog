@@ -29,17 +29,20 @@ class MyRouteGroup {
   final Widget icon;
   final List<MyRoute> routes;
 
+  Key get xpanTileKey => ValueKey('routeGroupXpanTile-${this.groupName}');
+  Key get xpanTitleKey => ValueKey('routeGroupXpanTileTitle-${this.groupName}');
+
   /// The expansion tile shown in the app home page.
   Widget homepageExpansionTile(WidgetRef ref, BuildContext context) {
     final nNew = ref.watch(mySettingsProvider).numNewRoutes(this);
-
     return Card(
-      key: ValueKey(this.groupName),
       child: ExpansionTile(
+        key: this.xpanTileKey,
         leading: nNew > 0
             ? Badge(label: Text('$nNew'), child: this.icon)
             : this.icon,
         title: Text(
+          key: this.xpanTitleKey,
           this.groupName,
           style: Theme.of(context).textTheme.titleLarge,
         ),

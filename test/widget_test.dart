@@ -80,10 +80,10 @@ void main() {
 
       // Check expansion tiles for route groups on this tab
       for (final group in routeGroupsInTab) {
-        await tester.scrollUntilVisible(find.text(group.groupName), 500);
+        await tester.scrollUntilVisible(find.byKey(group.xpanTitleKey), 500);
 
         // Find expansion tile with the group name
-        final expansionTileFinder = find.text(group.groupName);
+        final expansionTileFinder = find.byKey(group.xpanTitleKey);
         expect(
           expansionTileFinder,
           findsOneWidget,
@@ -107,20 +107,20 @@ void main() {
         }
 
         // Scroll back to the group title and collapse it
-        await tester.scrollUntilVisible(find.text(group.groupName), -500);
+        await tester.scrollUntilVisible(find.byKey(group.xpanTitleKey), -500);
         await tester.tap(expansionTileFinder);
         await tester.pumpAndSettle();
       }
     }
 
     testWidgets('Basics Tab', (WidgetTester tester) async {
-      _testHomeTab(tester, 'Basics', kMyAppRoutesBasic);
+      await _testHomeTab(tester, 'Basics', kMyAppRoutesBasic);
     });
     testWidgets('Advanced Tab', (WidgetTester tester) async {
-      _testHomeTab(tester, 'Advanced', kMyAppRoutesAdvanced);
+      await _testHomeTab(tester, 'Advanced', kMyAppRoutesAdvanced);
     });
     testWidgets('In Action Tab', (WidgetTester tester) async {
-      _testHomeTab(tester, 'In Action', kMyAppRoutesInAction);
+      await _testHomeTab(tester, 'In Action', kMyAppRoutesInAction);
     });
   });
 }
