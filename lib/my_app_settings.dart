@@ -6,9 +6,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import './my_app_routes.dart' show MyRouteGroup, kAboutRoute, kAllRoutes;
-import './my_route.dart';
+import 'my_app_routes.dart' show kAboutRoute, kAllRoutes;
+import 'my_route.dart';
 import 'constants.dart';
+import 'my_route_group.dart' show MyRouteGroup;
 
 final mySettingsProvider = ChangeNotifierProvider<MyAppSettings>(
   (ref) => throw UnimplementedError(),

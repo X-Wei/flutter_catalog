@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:substring_highlight/substring_highlight.dart';
 
-import './my_app_routes.dart'
+import 'my_app_routes.dart'
     show kAllRoutes, kRouteNameToRoute, kRouteNameToRouteGroup;
-import './my_app_settings.dart';
-import './my_route.dart';
+import 'my_app_settings.dart';
+import 'my_route.dart';
 
 /// Delegate class to search pages in the list of
 class MyRouteSearchDelegate extends SearchDelegate<String> {

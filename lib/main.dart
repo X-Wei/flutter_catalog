@@ -11,10 +11,10 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:path_provider/path_provider.dart';
 
-import './constants.dart';
-import './firebase_options.dart';
-import './my_app_settings.dart';
-import './my_main_app.dart';
+import 'constants.dart';
+import 'firebase_options.dart';
+import 'my_app_settings.dart';
+import 'my_main_app.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

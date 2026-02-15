@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'constants.dart';
-import 'my_app_routes.dart';
 
-import './my_app_settings.dart';
-import './my_route.dart';
+import 'my_app_routes.dart';
+import 'my_app_settings.dart';
+import 'my_route.dart';
+import 'my_route_group.dart';
 import 'routes/monetization_inline_banner_ad_ex.dart';
 import 'routes/onboarding_intro_screen_ex.dart';
 
@@ -90,23 +90,31 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
   Widget build(BuildContext context) {
     final basicDemos = <Widget>[
       for (final MyRouteGroup group in kMyAppRoutesBasic)
-        _myRouteGroupToExpansionTile(group),
+        group.homepageExpansionTile(ref, context),
       const MyBannerAd(),
     ];
     final advancedDemos = <Widget>[
       for (final MyRouteGroup group in kMyAppRoutesAdvanced)
-        _myRouteGroupToExpansionTile(group),
+        group.homepageExpansionTile(ref, context),
       const MyBannerAd(),
     ];
     final inactionDemos = <Widget>[
       for (final MyRouteGroup group in kMyAppRoutesInAction)
-        _myRouteGroupToExpansionTile(group),
+        group.homepageExpansionTile(ref, context),
       const MyBannerAd(),
     ];
     final bookmarkAndAboutDemos = <Widget>[
       for (final MyRoute route in ref.watch(mySettingsProvider).starredRoutes)
-        _myRouteToListTile(route, leading: const Icon(Icons.bookmark)),
-      _myRouteToListTile(kAboutRoute, leading: const Icon(Icons.info)),
+        route.homepageListTile(
+          ref,
+          context,
+          leading: const Icon(Icons.bookmark),
+        ),
+      kAboutRoute.homepageListTile(
+        ref,
+        context,
+        leading: const Icon(Icons.info),
+      ),
       const MyBannerAd(),
     ];
     return Scaffold(
@@ -133,58 +141,7 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
     );
   }
 
-  Widget _myRouteToListTile(
-    MyRoute myRoute, {
-    Widget? leading,
-    IconData trialing = Icons.keyboard_arrow_right,
-  }) {
-    final mySettings = ref.watch(mySettingsProvider);
-    final routeTitleTextStyle = Theme.of(
-      context,
-    ).textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.bold);
-    final leadingWidget =
-        leading ?? mySettings.starStatusOfRoute(myRoute.routeName);
-    final isNew = mySettings.isNewRoute(myRoute);
-    return ListTile(
-      leading: isNew
-          ? Badge(alignment: AlignmentDirectional.topEnd, child: leadingWidget)
-          : leadingWidget,
-      title: Text(myRoute.title, style: routeTitleTextStyle),
-      trailing: Icon(trialing),
-      subtitle: myRoute.description.isEmpty ? null : Text(myRoute.description),
-      onTap: () {
-        if (isNew) {
-          mySettings.markRouteKnown(myRoute);
-        }
-        // Avoid Firebase calls in test mode
-        if (!mySettings.isTestMode) {
-          kAnalytics?.logEvent(
-            name: 'evt_openRoute',
-            parameters: {'routeName': myRoute.routeName},
-          );
-        }
-        Navigator.of(context).pushNamed(myRoute.routeName);
-      },
-    );
-  }
-
-  Widget _myRouteGroupToExpansionTile(MyRouteGroup myRouteGroup) {
-    final nNew = ref.watch(mySettingsProvider).numNewRoutes(myRouteGroup);
-    return Card(
-      key: ValueKey(myRouteGroup.groupName),
-      child: ExpansionTile(
-        leading: nNew > 0
-            ? Badge(label: Text('$nNew'), child: myRouteGroup.icon)
-            : myRouteGroup.icon,
-        title: Text(
-          myRouteGroup.groupName,
-          style: Theme.of(context).textTheme.titleLarge,
-        ),
-        children: myRouteGroup.routes.map(_myRouteToListTile).toList(),
-      ),
-    );
-  }
-
+  /// Number of newly added routes (for the routeGroups in a tab)
   int nNewRoutes(List<MyRouteGroup> routeGroups) {
     int res = 0;
     for (final group in routeGroups) {

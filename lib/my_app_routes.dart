@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'constants.dart';
 import 'home_page.dart';
 import 'my_route.dart';
+import 'my_route_group.dart' show MyRouteGroup;
 import 'routes/about.dart';
 import 'routes/aiml_chatgpt_ex.dart';
 import 'routes/aiml_edge_detection_ex.dart';
@@ -145,31 +146,6 @@ const kAboutRoute = MyRoute(
   },
   child: MyAboutRoute(),
 );
-
-// The structure of app's navigation drawer items is a 2-level menu, its schema
-// is the following:
-// [ MyRouteGroup{
-//        groupName: group1_name,
-//        icon: group1_icon,
-//        routes: [route1, route2, ...]
-//   },
-//   MyRouteGroup{
-//        groupName: group2_name,
-//        icon: group2_icon,
-//        routes: [route1, route2, ...]
-//   },
-//   ...
-// ]
-class MyRouteGroup {
-  const MyRouteGroup({
-    required this.groupName,
-    required this.icon,
-    required this.routes,
-  });
-  final String groupName;
-  final Widget icon;
-  final List<MyRoute> routes;
-}
 
 const kMyAppRoutesBasic = <MyRouteGroup>[
   MyRouteGroup(

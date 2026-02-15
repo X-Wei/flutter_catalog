@@ -7,7 +7,7 @@ import 'package:path/path.dart';
 import 'package:url_launcher/url_launcher.dart' as url_launcher;
 import 'package:widget_with_codeview/widget_with_codeview.dart';
 
-import './constants.dart'
+import 'constants.dart'
     show
         APP_NAME,
         GITHUB_URL,
@@ -16,9 +16,9 @@ import './constants.dart'
         kAppIcon,
         kPackageInfo,
         kPlatformType;
-import './my_app_settings.dart';
-import './my_route_search_delegate.dart';
-import './routes/about.dart';
+import 'my_app_settings.dart';
+import 'my_route_search_delegate.dart';
+import 'routes/about.dart';
 import 'routes/monetization_inline_banner_ad_ex.dart';
 
 class MyRoute extends ConsumerWidget {
