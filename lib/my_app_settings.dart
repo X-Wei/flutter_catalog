@@ -21,13 +21,29 @@ class MyAppSettings extends ChangeNotifier {
     for (MyRoute route in kAllRoutes) route.routeName: route,
   };
 
+  // Singleton instance
+  static MyAppSettings? _instance;
+
+  /// Get the singleton instance of MyAppSettings
+  static MyAppSettings get instance {
+    if (_instance == null) {
+      throw StateError('MyAppSettings not initialized. Call MyAppSettings.create() first.');
+    }
+    return _instance!;
+  }
+
   static Future<MyAppSettings> create() async {
+    if (_instance != null) {
+      return _instance!;
+    }
+
     if (!kIsWeb) {
       debugPrint('app dir=${await getApplicationDocumentsDirectory()}');
     }
     final sharedPref = await SharedPreferences.getInstance();
     final s = MyAppSettings._(sharedPref);
     await s._init();
+    _instance = s;
     return s;
   }
 
