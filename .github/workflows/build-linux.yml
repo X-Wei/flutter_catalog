@@ -35,6 +35,7 @@ jobs:
             liblzma-dev \
             build-essential \
             libwebkitgtk-6.0-dev \
+            libwebkit2gtk-4.1-dev \
             libgstreamer1.0-dev \
             libgstreamer-plugins-base1.0-dev \
             libgstreamer-plugins-good1.0-dev \
