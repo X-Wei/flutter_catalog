@@ -25,12 +25,15 @@ class SourceCodeView extends StatefulWidget {
   // Widget to put before/after the code content.
   final Widget? headerWidget;
   final Widget? footerWidget;
+  final Widget? bottomWidget;
+  // Offset of pixels to add below the FAB.
+  final double fabOffset;
   // Code highlighter theme for light/dark theme, defaults to "atomOne" themes.
   final Map<String, TextStyle>? lightTheme;
   final Map<String, TextStyle>? darkTheme;
 
   const SourceCodeView({
-    Key? key,
+    super.key,
     required this.filePath,
     this.codeContent,
     this.codeLinkPrefix,
@@ -41,9 +44,11 @@ class SourceCodeView extends StatefulWidget {
     this.labelTextStyle,
     this.headerWidget,
     this.footerWidget,
+    this.bottomWidget,
+    this.fabOffset = 0,
     this.lightTheme,
     this.darkTheme,
-  }) : super(key: key);
+  });
 
   String? get codeLink => this.codeLinkPrefix == null
       ? null
@@ -60,7 +65,7 @@ class SourceCodeViewState extends State<SourceCodeView> {
   ScrollController scrollController = ScrollController();
 
   Widget _getCodeView(String codeContent, BuildContext context) {
-    codeContent = codeContent.replaceAll('\r\n', '\n');
+    final code = codeContent.replaceAll('\r\n', '\n');
     return Container(
       constraints: BoxConstraints.expand(),
       child: Scrollbar(
@@ -68,6 +73,7 @@ class SourceCodeViewState extends State<SourceCodeView> {
         child: SingleChildScrollView(
           controller: scrollController,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               if (widget.headerWidget != null) ...[
                 widget.headerWidget!,
@@ -76,14 +82,20 @@ class SourceCodeViewState extends State<SourceCodeView> {
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Selectable(
-                  child: HighlightView(
-                    codeContent,
-                    language: 'dart',
-                    theme: Theme.of(context).brightness == Brightness.light
-                        ? widget.lightTheme ?? atomOneLightTheme
-                        : widget.darkTheme ?? atomOneDarkTheme,
-                    textStyle: GoogleFonts.notoSansMono(fontSize: 12)
-                        .apply(fontSizeFactor: this._textScaleFactor),
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      minWidth: MediaQuery.of(context).size.width,
+                    ),
+                    child: HighlightView(
+                      code,
+                      language: 'dart',
+                      theme: Theme.of(context).brightness == Brightness.light
+                          ? widget.lightTheme ?? atomOneLightTheme
+                          : widget.darkTheme ?? atomOneDarkTheme,
+                      textStyle: GoogleFonts.notoSansMono(
+                        fontSize: 12,
+                      ).apply(fontSizeFactor: this._textScaleFactor),
+                    ),
                   ),
                 ),
               ),
@@ -104,62 +116,67 @@ class SourceCodeViewState extends State<SourceCodeView> {
     Color? iconForegroundColor,
     Color? labelBackgroundColor,
     required bool showLabelText,
-  }) =>
-      [
-        if (this.widget.codeLink != null)
-          SpeedDialChild(
-            child: Icon(Icons.content_copy),
-            label: showLabelText ? 'Copy code to clipboard' : null,
-            backgroundColor: iconBackgroundColor,
-            foregroundColor: iconForegroundColor,
-            labelBackgroundColor: labelBackgroundColor,
-            labelStyle: labelTextStyle,
-            onTap: () async {
-              if (widget.codeContent != null) {
-                Clipboard.setData(ClipboardData(text: widget.codeContent!));
-              } else if (widget.filePath?.isNotEmpty ?? false) {
-                Clipboard.setData(ClipboardData(
-                    text: await DefaultAssetBundle.of(context)
-                        .loadString(widget.filePath ?? '')));
-              }
-              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                content: Text('Code copied to clipboard!'),
-              ));
-            },
-          ),
-        if (this.widget.codeLink != null)
-          SpeedDialChild(
-            child: Icon(Icons.open_in_new),
-            label: showLabelText ? 'View code in browser' : null,
-            backgroundColor: iconBackgroundColor,
-            foregroundColor: iconForegroundColor,
-            labelBackgroundColor: labelBackgroundColor,
-            labelStyle: labelTextStyle,
-            onTap: () => url_launcher.launchUrl(Uri.parse(widget.codeLink!)),
-          ),
-        SpeedDialChild(
-          child: Icon(Icons.zoom_out),
-          label: showLabelText ? 'Zoom out' : null,
-          backgroundColor: iconBackgroundColor,
-          foregroundColor: iconForegroundColor,
-          labelBackgroundColor: labelBackgroundColor,
-          labelStyle: labelTextStyle,
-          onTap: () => setState(() {
-            this._textScaleFactor = max(0.8, this._textScaleFactor - 0.1);
-          }),
-        ),
-        SpeedDialChild(
-          child: Icon(Icons.zoom_in),
-          label: showLabelText ? 'Zoom in' : null,
-          backgroundColor: iconBackgroundColor,
-          foregroundColor: iconForegroundColor,
-          labelBackgroundColor: labelBackgroundColor,
-          labelStyle: labelTextStyle,
-          onTap: () => setState(() {
-            this._textScaleFactor += 0.1;
-          }),
-        ),
-      ];
+  }) => [
+    if (this.widget.codeLink != null)
+      SpeedDialChild(
+        child: Icon(Icons.content_copy),
+        label: showLabelText ? 'Copy code to clipboard' : null,
+        backgroundColor: iconBackgroundColor,
+        foregroundColor: iconForegroundColor,
+        labelBackgroundColor: labelBackgroundColor,
+        labelStyle: labelTextStyle,
+        onTap: () async {
+          if (widget.codeContent != null) {
+            Clipboard.setData(ClipboardData(text: widget.codeContent!));
+          } else if (widget.filePath?.isNotEmpty ?? false) {
+            Clipboard.setData(
+              ClipboardData(
+                text: await DefaultAssetBundle.of(
+                  context,
+                ).loadString(widget.filePath ?? ''),
+              ),
+            );
+          }
+          if (mounted) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text('Code copied to clipboard!')),
+            );
+          }
+        },
+      ),
+    if (this.widget.codeLink != null)
+      SpeedDialChild(
+        child: Icon(Icons.open_in_new),
+        label: showLabelText ? 'View code in browser' : null,
+        backgroundColor: iconBackgroundColor,
+        foregroundColor: iconForegroundColor,
+        labelBackgroundColor: labelBackgroundColor,
+        labelStyle: labelTextStyle,
+        onTap: () => url_launcher.launchUrl(Uri.parse(widget.codeLink!)),
+      ),
+    SpeedDialChild(
+      child: Icon(Icons.zoom_out),
+      label: showLabelText ? 'Zoom out' : null,
+      backgroundColor: iconBackgroundColor,
+      foregroundColor: iconForegroundColor,
+      labelBackgroundColor: labelBackgroundColor,
+      labelStyle: labelTextStyle,
+      onTap: () => setState(() {
+        this._textScaleFactor = max(0.8, this._textScaleFactor - 0.1);
+      }),
+    ),
+    SpeedDialChild(
+      child: Icon(Icons.zoom_in),
+      label: showLabelText ? 'Zoom in' : null,
+      backgroundColor: iconBackgroundColor,
+      foregroundColor: iconForegroundColor,
+      labelBackgroundColor: labelBackgroundColor,
+      labelStyle: labelTextStyle,
+      onTap: () => setState(() {
+        this._textScaleFactor += 0.1;
+      }),
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -174,20 +191,27 @@ class SourceCodeViewState extends State<SourceCodeView> {
               padding: EdgeInsets.all(4.0),
               child: _getCodeView(snapshot.data!, context),
             ),
-            floatingActionButton: SpeedDial(
-              closeManually: true,
-              children: _buildFloatingButtons(
-                labelTextStyle: widget.labelTextStyle,
-                iconBackgroundColor: widget.iconBackgroundColor,
-                iconForegroundColor: widget.iconForegroundColor,
-                labelBackgroundColor: widget.labelBackgroundColor,
-                showLabelText: widget.showLabelText,
-              ),
-              backgroundColor: Colors.blue,
-              foregroundColor: Colors.white,
-              activeBackgroundColor: Colors.red,
-              activeForegroundColor: Colors.white,
-              animatedIcon: AnimatedIcons.menu_close,
+            bottomNavigationBar: widget.bottomWidget,
+            floatingActionButton: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                SpeedDial(
+                  closeManually: true,
+                  children: _buildFloatingButtons(
+                    labelTextStyle: widget.labelTextStyle,
+                    iconBackgroundColor: widget.iconBackgroundColor,
+                    iconForegroundColor: widget.iconForegroundColor,
+                    labelBackgroundColor: widget.labelBackgroundColor,
+                    showLabelText: widget.showLabelText,
+                  ),
+                  backgroundColor: Colors.blue,
+                  foregroundColor: Colors.white,
+                  activeBackgroundColor: Colors.red,
+                  activeForegroundColor: Colors.white,
+                  animatedIcon: AnimatedIcons.menu_close,
+                ),
+                SizedBox(height: widget.fabOffset),
+              ],
             ),
           );
         } else {
