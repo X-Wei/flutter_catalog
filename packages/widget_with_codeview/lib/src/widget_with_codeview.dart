@@ -1,5 +1,3 @@
-library widget_with_codeview;
-
 import 'package:flutter/material.dart';
 
 import 'source_code_view.dart';
@@ -24,10 +22,13 @@ class WidgetWithCodeView extends SourceCodeView {
     super.labelTextStyle,
     super.headerWidget,
     super.footerWidget,
+    super.bottomWidget,
+    super.fabOffset,
     super.lightTheme,
     super.darkTheme,
   });
 
+  // ignore: constant_identifier_names
   static const _TABS = <Widget>[
     Tab(
       child: ListTile(
@@ -44,8 +45,11 @@ class WidgetWithCodeView extends SourceCodeView {
   ];
 
   @override
+  // ignore: no_logic_in_create_state
   _WidgetWithCodeViewState createState() => _WidgetWithCodeViewState(
-      tabChangeListener: tabChangeListener, child: child);
+    tabChangeListener: tabChangeListener,
+    child: child,
+  );
 }
 
 //? Need to override SourceCodeViewState rather than State<WidgetWithCodeView>.
@@ -64,9 +68,7 @@ class _WidgetWithCodeViewState extends SourceCodeViewState
     super.initState();
     _tabController = TabController(length: 2, vsync: this);
     if (tabChangeListener != null) {
-      _tabController.addListener(
-        () => tabChangeListener!(_tabController),
-      );
+      _tabController.addListener(() => tabChangeListener!(_tabController));
     }
   }
 
@@ -76,7 +78,7 @@ class _WidgetWithCodeViewState extends SourceCodeViewState
     super.dispose();
   }
 
-  String get routeName => '/${this.runtimeType.toString()}';
+  String get routeName => '/${this.runtimeType}';
 
   @override
   Widget build(BuildContext context) {
@@ -85,7 +87,7 @@ class _WidgetWithCodeViewState extends SourceCodeViewState
       appBar: (child == null)
           ? null
           : _ColoredTabBar(
-              color: Theme.of(context).primaryColor,
+              tabColor: Theme.of(context).primaryColor,
               tabBar: TabBar(
                 controller: _tabController,
                 tabs: WidgetWithCodeView._TABS,
@@ -109,7 +111,7 @@ class _WidgetWithCodeViewState extends SourceCodeViewState
 class _AlwaysAliveWidget extends StatefulWidget {
   final Widget child;
 
-  const _AlwaysAliveWidget({Key? key, required this.child}) : super(key: key);
+  const _AlwaysAliveWidget({required this.child});
 
   @override
   _AlwaysAliveWidgetState createState() => _AlwaysAliveWidgetState();
@@ -128,19 +130,15 @@ class _AlwaysAliveWidgetState extends State<_AlwaysAliveWidget>
 }
 
 class _ColoredTabBar extends Container implements PreferredSizeWidget {
-  final Color color;
+  final Color tabColor;
   final TabBar tabBar;
 
-  _ColoredTabBar({Key? key, required this.color, required this.tabBar})
-      : super(key: key);
+  _ColoredTabBar({required this.tabColor, required this.tabBar});
 
   @override
   Size get preferredSize => tabBar.preferredSize;
 
   @override
-  Widget build(BuildContext context) => Material(
-        elevation: 4.0,
-        color: color,
-        child: tabBar,
-      );
+  Widget build(BuildContext context) =>
+      Material(elevation: 4.0, color: tabColor, child: tabBar);
 }

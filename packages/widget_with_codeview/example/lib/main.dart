@@ -44,7 +44,7 @@ class SomeWidget extends StatelessWidget {
               angle: Random().nextDouble(),
               child: Text(
                 'Example',
-                textScaleFactor: 2,
+                textScaler: TextScaler.linear(2),
               ),
             ),
           ),

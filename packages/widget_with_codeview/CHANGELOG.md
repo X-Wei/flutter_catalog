@@ -1,5 +1,8 @@
 # Changelogs
 
+## [3.2.0] - 2026-02-14
+- upgrade to latest package and SDK(flutter 3.41.1, dart 3.11.0)
+
 ## [3.1.0] - 2023-07-25
 - upgrade packages
 
