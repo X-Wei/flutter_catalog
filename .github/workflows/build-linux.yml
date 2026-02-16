@@ -1,0 +1,178 @@
+name: build-linux
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - 'v*'  # Trigger on version tags
+
+jobs:
+  build-linux-appimage:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v4
+
+      - name: Cache Flutter
+        uses: actions/cache@v4
+        id: flutter-cache
+        with:
+          key: flutter-${{ runner.os }}-${{ hashFiles('**/pubspec.lock') }}
+          restore-keys: |
+            flutter-${{ runner.os }}-
+          path: ~/.flutter
+
+      - name: Install Linux dependencies
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y \
+            clang \
+            cmake \
+            ninja-build \
+            pkg-config \
+            libgtk-3-dev \
+            libgtk-3-0 \
+            liblzma-dev \
+            libstdc++-12-dev \
+            imagemagick \
+            libblkid-dev \
+            libsecret-1-dev \
+            libjsoncpp-dev \
+            xvfb \
+            libglu1-mesa \
+            curl \
+            unzip \
+            file \
+            libepoxy-dev \
+            libgit2-dev
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      - name: Set up build environment
+        run: |
+          # Set up environment variables for Linux desktop build
+          echo "DISPLAY=:99" >> $GITHUB_ENV
+
+      - name: Start virtual display
+        run: |
+          # Start Xvfb for headless GUI testing if needed
+          Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
+
+      - name: Enable Linux platform
+        run: flutter config --enable-linux-desktop
+
+      - name: Get dependencies
+        run: flutter pub get
+
+      - name: Build Linux release
+        run: |
+          flutter build linux --release
+
+      - name: Install AppImageTool
+        run: |
+          wget https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-x86_64.AppImage
+          chmod +x appimagetool-x86_64.AppImage
+          sudo mv appimagetool-x86_64.AppImage /usr/local/bin/appimagetool
+
+      - name: Create AppImage
+        run: |
+          # Create AppDir structure
+          mkdir -p AppDir/usr/bin
+          mkdir -p AppDir/usr/share/applications
+          mkdir -p AppDir/usr/share/icons/hicolor/256x256/apps
+
+          # Copy the Flutter app
+          cp -r build/linux/x64/release/bundle/* AppDir/usr/bin/
+
+          # Create desktop file
+          cat > AppDir/flutter_catalog.desktop << 'EOF'
+          [Desktop Entry]
+          Type=Application
+          Name=Flutter Catalog
+          Comment=A Flutter showcase application
+          Exec=flutter_catalog
+          Icon=flutter_catalog
+          Categories=Development;
+          EOF
+
+          # Copy desktop file to required location
+          cp AppDir/flutter_catalog.desktop AppDir/usr/share/applications/
+
+          # Create AppRun script
+          cat > AppDir/AppRun << 'EOF'
+          #!/bin/bash
+          HERE="$(dirname "$(readlink -f "${0}")")"
+          exec "${HERE}/usr/bin/flutter_catalog" "$@"
+          EOF
+          chmod +x AppDir/AppRun
+
+          # Use app icon if exists, otherwise create a simple one
+          if [ -f "linux/flutter_catalog.png" ]; then
+            cp linux/flutter_catalog.png AppDir/usr/share/icons/hicolor/256x256/apps/flutter_catalog.png
+            cp linux/flutter_catalog.png AppDir/flutter_catalog.png
+          else
+            # Create a simple icon placeholder
+            convert -size 256x256 xc:blue -pointsize 24 -fill white -gravity center -annotate +0+0 "Flutter\nCatalog" AppDir/flutter_catalog.png
+            cp AppDir/flutter_catalog.png AppDir/usr/share/icons/hicolor/256x256/apps/flutter_catalog.png
+          fi
+
+          # Create the AppImage
+          appimagetool AppDir flutter_catalog-linux-x86_64.AppImage
+
+      - name: List built AppImage
+        run: |
+          echo "Built AppImage file:"
+          ls -la *.AppImage
+
+      - name: Upload AppImage as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: linux-appimage
+          path: flutter_catalog-linux-x86_64.AppImage
+          retention-days: 30
+
+      - name: Create Release
+        if: startsWith(github.ref, 'refs/tags/')
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref_name }}
+          release_name: Release ${{ github.ref_name }}
+          body: |
+            ## 🐧 Linux AppImage
+
+            This release contains a Linux AppImage file:
+            - **Universal AppImage**: Compatible with most Linux distributions (x86_64)
+
+            ### Installation
+            1. Download the AppImage file
+            2. Make it executable: `chmod +x flutter_catalog-linux-x86_64.AppImage`
+            3. Run it: `./flutter_catalog-linux-x86_64.AppImage`
+
+            ### System Requirements
+            - Linux x86_64 (64-bit)
+            - GTK+ 3.0 or higher
+            - Recent glibc version
+
+            ### What's Changed
+            - Auto-generated from tag ${{ github.ref_name }}
+          draft: false
+          prerelease: false
+
+      - name: Upload AppImage to Release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: flutter_catalog-linux-x86_64.AppImage
+          asset_name: flutter-catalog-${{ github.ref_name }}-linux-x86_64.AppImage
+          asset_content_type: application/octet-stream

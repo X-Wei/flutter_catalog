@@ -1,4 +1,4 @@
-name: gh-pages
+name: build-web
 # Build Flutter web & publish to Github Pages
 
 on:

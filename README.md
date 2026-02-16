@@ -1,5 +1,10 @@
 # Flutter Catalog 
 
+[![Run Tests](https://github.com/X-Wei/flutter_catalog/actions/workflows/run-tests.yml/badge.svg)](https://github.com/X-Wei/flutter_catalog/actions/workflows/run-tests.yml)
+[![Build Web](https://github.com/X-Wei/flutter_catalog/actions/workflows/build-web.yml/badge.svg)](https://github.com/X-Wei/flutter_catalog/actions/workflows/build-web.yml)
+[![Build Android](https://github.com/X-Wei/flutter_catalog/actions/workflows/build-android.yml/badge.svg)](https://github.com/X-Wei/flutter_catalog/actions/workflows/build-android.yml)
+[![Build Linux](https://github.com/X-Wei/flutter_catalog/actions/workflows/build-linux.yml/badge.svg)](https://github.com/X-Wei/flutter_catalog/actions/workflows/build-linux.yml)
+
 <a href='https://play.google.com/store/apps/details?id=io.github.x_wei.flutter_catalog'>
   <img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' width='200'/>
 </a>
@@ -11,10 +16,6 @@
 <a href="https://github.com/Solido/awesome-flutter#components">
    <img alt="Awesome Flutter" src="https://img.shields.io/badge/Awesome-Flutter-blue.svg?longCache=true&style=flat-square" />
 </a>
-
-[![Run Tests](https://github.com/X-Wei/flutter_catalog/actions/workflows/run-tests.yml/badge.svg)](https://github.com/X-Wei/flutter_catalog/actions/workflows/run-tests.yml)
-[![Build Web](https://github.com/X-Wei/flutter_catalog/actions/workflows/build-web.yml/badge.svg)](https://github.com/X-Wei/flutter_catalog/actions/workflows/build-web.yml)
-[![Build Android](https://github.com/X-Wei/flutter_catalog/actions/workflows/build-android.yml/badge.svg)](https://github.com/X-Wei/flutter_catalog/actions/workflows/build-android.yml)
 
 An app showcasing Flutter components, with side-by-side source code view.
 
