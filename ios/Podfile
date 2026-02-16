@@ -1,6 +1,6 @@
 # Uncomment this line to define a global platform for your project
-platform :ios, '13.0'
-$iOSVersion = '14.0'
+platform :ios, '15.5'
+$iOSVersion = '15.5'
 
 # CocoaPods analytics sends network stats synchronously affecting flutter build latency.
 ENV['COCOAPODS_DISABLE_STATS'] = 'true'
@@ -31,15 +31,15 @@ flutter_ios_podfile_setup
 target 'Runner' do
   use_frameworks!
   use_modular_headers!
-  # https://pub.dev/packages/edge_detection
-  pod 'WeScan', :path => '.symlinks/plugins/edge_detection/ios/WeScan-3.0.0'
+  # https://pub.dev/packages/edge_detection_plus
+  # WeScan dependency is handled by the edge_detection_plus plugin automatically
 
   # Copied from https://github.com/flutter-ml/google_ml_kit_flutter/blob/develop/packages/example/ios/Podfile
   # Add language package you need to use
-  pod 'GoogleMLKit/TextRecognitionChinese', '~> 5.0.0'
-  pod 'GoogleMLKit/TextRecognitionDevanagari', '~> 5.0.0'
-  pod 'GoogleMLKit/TextRecognitionJapanese', '~> 5.0.0'
-  pod 'GoogleMLKit/TextRecognitionKorean', '~> 5.0.0'
+  pod 'GoogleMLKit/TextRecognitionChinese', '~> 9.0.0'
+  pod 'GoogleMLKit/TextRecognitionDevanagari', '~> 9.0.0'
+  pod 'GoogleMLKit/TextRecognitionJapanese', '~> 9.0.0'
+  pod 'GoogleMLKit/TextRecognitionKorean', '~> 9.0.0'
   
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
 end

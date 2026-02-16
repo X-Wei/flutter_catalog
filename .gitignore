@@ -7,6 +7,7 @@ local.properties
 secrets.json
 .vscode/launch.json
 build*.fish
+packages/edge_detection_plus/**
 
 # Miscellaneous
 *.class

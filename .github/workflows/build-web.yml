@@ -2,29 +2,47 @@ name: Build web & publish to Github Pages
 
 on:
   workflow_dispatch:
+  push:
+    branches: [ master, main ]
 
 jobs:
   build-and-deploy-web:
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
     steps:
       - name: Clone repository
         uses: actions/checkout@v4
+
       - name: Cache Flutter
         uses: actions/cache@v3
         id: flutter-cache
         with:
-          key: $GITHUB_SHA-flutter
+          key: flutter-${{ runner.os }}-${{ hashFiles('**/pubspec.lock') }}
+          restore-keys: |
+            flutter-${{ runner.os }}-
           path: ~/.flutter
+
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
           channel: stable
           cache: true
-      - name: Build and deploy to GH pages
-        uses: bluefireteam/flutter-gh-pages@v7
+
+      - name: Get dependencies
+        run: flutter pub get
+
+      - name: Build Flutter web
+        run: flutter build web --release --base-href /flutter_catalog/
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          baseHref: /flutter_catalog/
-      # - run: flutter pub get
-      # - run: flutter build web --release
-      # - name: Deploy to GH pages
-      #   uses: peaceiris/actions-gh-pages@v4
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build/web
+          publish_branch: gh-pages
+          force_orphan: true
