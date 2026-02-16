@@ -9,6 +9,11 @@ jobs:
   build-and-deploy-web:
     runs-on: ubuntu-latest
 
+    # GitHub Pages environment for deployment
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
     permissions:
       contents: read
       pages: write
@@ -18,8 +23,11 @@ jobs:
       - name: Clone repository
         uses: actions/checkout@v4
 
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
       - name: Cache Flutter
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         id: flutter-cache
         with:
           key: flutter-${{ runner.os }}-${{ hashFiles('**/pubspec.lock') }}
@@ -39,10 +47,11 @@ jobs:
       - name: Build Flutter web
         run: flutter build web --release --base-href /flutter_catalog/
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build/web
-          publish_branch: gh-pages
-          force_orphan: true
+          path: ./build/web
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
