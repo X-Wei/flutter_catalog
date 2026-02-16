@@ -1,4 +1,5 @@
-name: Build web & publish to Github Pages
+name: gh-pages
+# Build Flutter web & publish to Github Pages
 
 on:
   workflow_dispatch:

@@ -1,4 +1,5 @@
-name: Run Tests
+name: run-tests
+# Run flutter tests on push, pull request, and manual trigger
 
 on:
   workflow_dispatch:

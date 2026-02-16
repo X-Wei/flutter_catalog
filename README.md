@@ -12,6 +12,10 @@
    <img alt="Awesome Flutter" src="https://img.shields.io/badge/Awesome-Flutter-blue.svg?longCache=true&style=flat-square" />
 </a>
 
+[![Run Tests](https://github.com/X-Wei/flutter_catalog/actions/workflows/run-tests.yml/badge.svg)](https://github.com/X-Wei/flutter_catalog/actions/workflows/run-tests.yml)
+[![Build Web](https://github.com/X-Wei/flutter_catalog/actions/workflows/build-web.yml/badge.svg)](https://github.com/X-Wei/flutter_catalog/actions/workflows/build-web.yml)
+[![Build Android](https://github.com/X-Wei/flutter_catalog/actions/workflows/build-android.yml/badge.svg)](https://github.com/X-Wei/flutter_catalog/actions/workflows/build-android.yml)
+
 An app showcasing Flutter components, with side-by-side source code view.
 
 **🚀🚀 New: Flutter Catalog is now available in the browser! Check it out [here](https://x-wei.github.io/flutter_catalog/).**

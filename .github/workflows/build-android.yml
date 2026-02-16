@@ -1,28 +1,38 @@
-name: Build for Android
+name: build-android
 
 on:
   workflow_dispatch:
+  push:
+    tags:
+      - 'v*'  # Trigger on version tags
 
 jobs:
   build-android-apk:
     runs-on: ubuntu-latest
+
     steps:
       - name: Clone repository
         uses: actions/checkout@v4
 
       - name: Cache Flutter
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         id: flutter-cache
         with:
-          key: $GITHUB_SHA-flutter
+          key: flutter-${{ runner.os }}-${{ hashFiles('**/pubspec.lock') }}
+          restore-keys: |
+            flutter-${{ runner.os }}-
           path: ~/.flutter
 
       - name: Cache Gradle
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         id: gradle-cache
         with:
-          key: $GITHUB_SHA-gradle
-          path: ~/.gradle
+          key: gradle-${{ runner.os }}-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            gradle-${{ runner.os }}-
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
 
       - name: Set up JDK 19
         uses: actions/setup-java@v4
@@ -37,6 +47,94 @@ jobs:
           channel: stable
           cache: true
 
-      - run: flutter pub get
+      - name: Get dependencies
+        run: flutter pub get
 
-      - run: flutter build apk
+      - name: Build APK (split by ABI)
+        run: |
+          flutter build apk --release --split-per-abi
+
+      - name: Build APK (universal)
+        run: |
+          flutter build apk --release
+
+      - name: List built APKs
+        run: |
+          echo "Built APK files:"
+          ls -la build/app/outputs/flutter-apk/
+
+      - name: Upload APKs as artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-apks
+          path: build/app/outputs/flutter-apk/*.apk
+          retention-days: 30
+
+      - name: Create Release
+        if: startsWith(github.ref, 'refs/tags/')
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref_name }}
+          release_name: Release ${{ github.ref_name }}
+          body: |
+            ## 📱 Android APKs
+
+            This release contains Android APK files:
+            - **Universal APK**: Compatible with all Android devices
+            - **Split APKs**: Optimized for specific CPU architectures (arm64-v8a, armeabi-v7a, x86_64)
+
+            ### Installation
+            - For most users: Download the universal APK
+            - For smaller app size: Download the APK matching your device's architecture
+
+            ### What's Changed
+            - Auto-generated from tag ${{ github.ref_name }}
+          draft: false
+          prerelease: false
+
+      - name: Upload Universal APK to Release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: build/app/outputs/flutter-apk/app-release.apk
+          asset_name: flutter-catalog-${{ github.ref_name }}-universal.apk
+          asset_content_type: application/vnd.android.package-archive
+
+      - name: Upload ARM64 APK to Release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: build/app/outputs/flutter-apk/app-arm64-v8a-release.apk
+          asset_name: flutter-catalog-${{ github.ref_name }}-arm64-v8a.apk
+          asset_content_type: application/vnd.android.package-archive
+
+      - name: Upload ARMv7 APK to Release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk
+          asset_name: flutter-catalog-${{ github.ref_name }}-armeabi-v7a.apk
+          asset_content_type: application/vnd.android.package-archive
+
+      - name: Upload x86_64 APK to Release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: build/app/outputs/flutter-apk/app-x86_64-release.apk
+          asset_name: flutter-catalog-${{ github.ref_name }}-x86_64.apk
+          asset_content_type: application/vnd.android.package-archive
