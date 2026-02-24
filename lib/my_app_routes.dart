@@ -10,8 +10,11 @@ import 'my_route.dart';
 import 'my_route_group.dart' show MyRouteGroup;
 import 'routes/about.dart';
 import 'routes/aiml_chatgpt_ex.dart';
-import 'routes/aiml_edge_detection_ex.dart';
-import 'routes/aiml_google_mlkit_ex.dart';
+import 'routes/aiml_mlkit_barcode_scanning_ex.dart';
+import 'routes/aiml_mlkit_doc_scanner_ex.dart';
+import 'routes/aiml_mlkit_face_detection_ex.dart';
+import 'routes/aiml_mlkit_image_labeling_ex.dart';
+import 'routes/aiml_mlkit_text_recognition_ex.dart';
 import 'routes/aiml_groq_ex.dart';
 import 'routes/animation_animated_builder_ex.dart';
 import 'routes/animation_animated_container_ex.dart';
@@ -1146,22 +1149,62 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
     icon: Icon(Icons.auto_awesome),
     routes: <MyRoute>[
       MyRoute(
-        child: GoogleMLKitExample(),
-        sourceFilePath: 'lib/routes/aiml_google_mlkit_ex.dart',
-        title: 'Google ML Kit',
-        description: 'Image labelling, text OCR, barcode scan, face detection.',
+        child: MlkitImageLabelingExample(),
+        sourceFilePath: 'lib/routes/aiml_mlkit_image_labeling_ex.dart',
+        title: 'ML Kit Image Labeling',
+        description:
+            'Identify objects, locations, activities, animal species, products, etc.',
         links: {
-          'pub.dev': 'https://pub.dev/packages/google_ml_kit',
-          'MLKit doc':
+          'Pub': 'https://pub.dev/packages/google_mlkit_image_labeling',
+          'ML Kit':
+              'https://developers.google.com/ml-kit/vision/image-labeling',
+        },
+      ),
+      MyRoute(
+        child: MlkitTextRecognitionExample(),
+        sourceFilePath: 'lib/routes/aiml_mlkit_text_recognition_ex.dart',
+        title: 'ML Kit Text Recognition',
+        description:
+            'Extract text from images with optical character recognition.',
+        links: {
+          'Pub': 'https://pub.dev/packages/google_mlkit_text_recognition',
+          'ML Kit':
               'https://developers.google.com/ml-kit/vision/text-recognition',
         },
       ),
       MyRoute(
-        child: EdgeDetectionExample(),
-        sourceFilePath: 'lib/routes/aiml_edge_detection_ex.dart',
-        title: 'Edge Detection',
-        description: 'Plugin to scan documents.',
-        links: {'Pub': 'https://pub.dev/packages/edge_detection'},
+        child: MlkitBarcodeScanningExample(),
+        sourceFilePath: 'lib/routes/aiml_mlkit_barcode_scanning_ex.dart',
+        title: 'ML Kit Barcode Scanning',
+        description: 'Scan and parse barcodes and QR codes.',
+        links: {
+          'Pub': 'https://pub.dev/packages/google_mlkit_barcode_scanning',
+          'ML Kit':
+              'https://developers.google.com/ml-kit/vision/barcode-scanning',
+        },
+      ),
+      MyRoute(
+        child: MlkitFaceDetectionExample(),
+        sourceFilePath: 'lib/routes/aiml_mlkit_face_detection_ex.dart',
+        title: 'ML Kit Face Detection',
+        description:
+            'Detect faces and analyze facial features and expressions.',
+        links: {
+          'Pub': 'https://pub.dev/packages/google_mlkit_face_detection',
+          'ML Kit':
+              'https://developers.google.com/ml-kit/vision/face-detection',
+        },
+      ),
+      MyRoute(
+        child: MlkitDocScannerExample(),
+        sourceFilePath: 'lib/routes/aiml_mlkit_doc_scanner_ex.dart',
+        title: 'ML Kit Doc Scanner',
+        description:
+            'Document scanner using ML Kit API. Supports 16KB page size.',
+        links: {
+          'Pub': 'https://pub.dev/packages/google_mlkit_document_scanner',
+          'ML Kit': 'https://developers.google.com/ml-kit/vision/doc-scanner',
+        },
       ),
       MyRoute(
         child: ChatGptExample(),

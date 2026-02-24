@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     tags:
-      - 'v*'  # Trigger on version tags
+      - "v*" # Trigger on version tags
 
 jobs:
   build-android-apk:
@@ -38,7 +38,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           java-version: "19"
-          distribution: 'temurin'
+          distribution: "temurin"
           cache: "gradle"
 
       - name: Set up Flutter
@@ -74,7 +74,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ github.ref_name }}
-          release_name: Release ${{ github.ref_name }}
+          release_name: ${{ github.ref_name }}
           body: |
             ## 📱 Android APK
 
