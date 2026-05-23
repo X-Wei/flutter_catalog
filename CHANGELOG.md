@@ -1,5 +1,11 @@
 # Change Log
 
+## v3.9.2
+[2026-05-23]
+- **iOS Build Fix**: Resolved iOS build by disabling Swift Package Manager (conflict between `google_mobile_ads` (CocoaPods) and `webview_flutter_wkwebview` (SPM))
+- Fixed missing `cupertino.dart` import in `lib/themes.dart` for `CupertinoPageTransitionsBuilder`
+- Updated iOS CI workflow to disable SPM before `pod install`
+
 ## v3.9.1
 [2026-02-21]
 - **Android 16KB Page Size Compatibility**: Migrated from `edge_detection_plus` to `google_mlkit_document_scanner` to support Android 16KB page size requirements

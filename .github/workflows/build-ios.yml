@@ -37,6 +37,10 @@ jobs:
           channel: stable
           cache: true
 
+      # Disable Swift Package Manager to avoid conflict between
+      # google_mobile_ads (CocoaPods) and webview_flutter_wkwebview (SPM).
+      - run: flutter config --no-enable-swift-package-manager
+
       - run: flutter pub get
 
       - name: Update Cocoapods repo
