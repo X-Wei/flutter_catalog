@@ -23,15 +23,23 @@ class _FirebaseLoginExampleState extends State<FirebaseLoginExample> {
   // If this._busy=true, the buttons are not clickable. This is to avoid
   // clicking buttons while a previous onTap function is not finished.
   bool _busy = false;
+  late final StreamSubscription<firebase_auth.User?> _authSub;
 
   @override
   void initState() {
     super.initState();
     this._user = _auth.currentUser;
-    _auth.authStateChanges().listen((firebase_auth.User? usr) {
-      this._user = usr;
-      debugPrint('user=$_user');
+    _authSub = _auth.authStateChanges().listen((firebase_auth.User? usr) {
+      debugPrint('user=$usr');
+      if (!mounted) return;
+      setState(() => this._user = usr);
     });
+  }
+
+  @override
+  void dispose() {
+    _authSub.cancel();
+    super.dispose();
   }
 
   @override
