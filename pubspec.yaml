@@ -9,7 +9,6 @@ environment:
 publish_to: none
 
 dependencies:
-  animated_radial_menu: ^0.0.1
   animated_text_kit: ^4.2.2
   animations: ^2.0.11
   async: ^2.11.0
@@ -54,7 +53,7 @@ dependencies:
   flutter_heatmap_calendar: ^1.0.5
   flutter_highlight: ^0.7.0
   flutter_markdown: ^0.7.7+1
-  flutter_quill: ^11.4.2
+  flutter_quill: ^11.5.1
   flutter_radar_chart: ^0.2.1
   flutter_riverpod: ^2.5.1
   flutter_slidable: ^4.0.3

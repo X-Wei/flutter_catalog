@@ -19,7 +19,6 @@ import 'routes/aiml_groq_ex.dart';
 import 'routes/animation_animated_builder_ex.dart';
 import 'routes/animation_animated_container_ex.dart';
 import 'routes/animation_animated_icons_ex.dart';
-import 'routes/animation_animated_radial_menu_ex.dart';
 import 'routes/animation_animated_text_kit_ex.dart';
 import 'routes/animation_animated_widget_ex.dart';
 import 'routes/animation_animations_pkg_ex.dart';
@@ -692,13 +691,6 @@ const kMyAppRoutesAdvanced = <MyRouteGroup>[
               'https://flutter.dev/docs/development/ui/animations/tutorial#refactoring-with-animatedbuilder',
           'Widget of the Week (YouTube)': 'https://youtu.be/N-RiyZlv8v8',
         },
-      ),
-      MyRoute(
-        child: RadialMenuExample(),
-        sourceFilePath: 'lib/routes/animation_animated_radial_menu_ex.dart',
-        title: 'Animated Radial Menu',
-        description: 'Easy add radial menu with high-quality animation',
-        links: {'Pub package': 'https://pub.dev/packages/animated_radial_menu'},
       ),
       MyRoute(
         child: LottieExample(),

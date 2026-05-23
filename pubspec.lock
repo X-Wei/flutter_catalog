@@ -25,14 +25,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.4.1"
-  animated_radial_menu:
-    dependency: "direct main"
-    description:
-      name: animated_radial_menu
-      sha256: "628732b5b6f879667ef1bc625298029ef9a909e96743d0acdb03204f3bb46dc0"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.0.1"
   animated_text_kit:
     dependency: "direct main"
     description:
@@ -964,10 +956,10 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_quill
-      sha256: b96bb8525afdeaaea52f5d02f525e05cc34acd176467ab6d6f35d434cf14fde2
+      sha256: "3ee7125b2dd3f3bce3ebdaac722a72f0c8aff3db9aa19053a9d777db12d71c98"
       url: "https://pub.dev"
     source: hosted
-    version: "11.5.0"
+    version: "11.5.1"
   flutter_quill_delta_from_html:
     dependency: transitive
     description:
@@ -1049,14 +1041,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "9.0.0"
-  font_awesome_flutter:
-    dependency: transitive
-    description:
-      name: font_awesome_flutter
-      sha256: "1f93e5799f0e6c882819e8393a05c6ca5226010f289190f2242ec19f3f0fdba5"
-      url: "https://pub.dev"
-    source: hosted
-    version: "9.2.0"
   freezed:
     dependency: "direct dev"
     description:
@@ -2553,5 +2537,5 @@ packages:
     source: hosted
     version: "3.1.2"
 sdks:
-  dart: ">=3.11.0 <4.0.0"
-  flutter: ">=3.38.4"
+  dart: ">=3.12.0 <4.0.0"
+  flutter: ">=3.44.0"
