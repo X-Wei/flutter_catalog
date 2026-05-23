@@ -9,7 +9,6 @@ environment:
 publish_to: none
 
 dependencies:
-  animated_radial_menu: ^0.0.1
   animated_text_kit: ^4.2.2
   animations: ^2.0.11
   async: ^2.11.0
@@ -26,7 +25,8 @@ dependencies:
   device_preview: ^1.2.0
   device_preview_screenshot: ^1.0.0
   dio: ^5.4.3+1
-  edge_detection_plus: ^1.0.2
+  # removed due to iOS build issues
+  # edge_detection_plus: ^1.0.2
   english_words: ^4.0.0
   extended_image: ^10.0.1
   feature_discovery: ^0.14.2
@@ -53,7 +53,7 @@ dependencies:
   flutter_heatmap_calendar: ^1.0.5
   flutter_highlight: ^0.7.0
   flutter_markdown: ^0.7.7+1
-  flutter_quill: ^11.4.2
+  flutter_quill: ^11.5.1
   flutter_radar_chart: ^0.2.1
   flutter_riverpod: ^2.5.1
   flutter_slidable: ^4.0.3
@@ -66,11 +66,11 @@ dependencies:
   google_mlkit_image_labeling: ^0.14.2
   google_mlkit_text_recognition: ^0.15.1
   google_mlkit_barcode_scanning: ^0.14.2
+  google_mlkit_document_scanner: ^0.4.1
   google_mlkit_face_detection: ^0.13.2
   google_mlkit_commons: ^0.11.1
   google_mobile_ads: ^7.0.0
   google_sign_in: ^6.2.1
-  # graphview: ^1.2.0
   graphview: ^1.5.1
   groq: ^1.1.1
   heatmap_calendar:

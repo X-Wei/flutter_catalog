@@ -31,9 +31,6 @@ flutter_ios_podfile_setup
 target 'Runner' do
   use_frameworks!
   use_modular_headers!
-  # https://pub.dev/packages/edge_detection_plus
-  # WeScan dependency is handled by the edge_detection_plus plugin automatically
-
   # Copied from https://github.com/flutter-ml/google_ml_kit_flutter/blob/develop/packages/example/ios/Podfile
   # Add language package you need to use
   pod 'GoogleMLKit/TextRecognitionChinese', '~> 9.0.0'

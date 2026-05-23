@@ -1,5 +1,28 @@
 # Change Log
 
+## v3.9.2
+[2026-05-23]
+- **iOS Build Fix**: Resolved iOS build by disabling Swift Package Manager (conflict between `google_mobile_ads` (CocoaPods) and `webview_flutter_wkwebview` (SPM))
+- Fixed missing `cupertino.dart` import in `lib/themes.dart` for `CupertinoPageTransitionsBuilder`
+- Updated iOS CI workflow to disable SPM before `pod install`
+- Upgraded `flutter_quill` to `^11.5.1` for Flutter 3.44+ compatibility (new `TextInputClient.onFocusReceived`)
+- Removed unmaintained `animated_radial_menu` example (package `0.0.1` incompatible with Flutter 3.44+ `final IconData` change)
+
+## v3.9.1
+[2026-02-21]
+- **Android 16KB Page Size Compatibility**: Migrated from `edge_detection_plus` to `google_mlkit_document_scanner` to support Android 16KB page size requirements
+- **ML Kit Examples Restructure**: Split the combined Google ML Kit example into 5 separate, focused examples:
+  - ML Kit Image Labeling (`aiml_mlkit_image_labeling_ex.dart`)
+  - ML Kit Text Recognition (`aiml_mlkit_text_recognition_ex.dart`)
+  - ML Kit Barcode Scanning (`aiml_mlkit_barcode_scanning_ex.dart`)
+  - ML Kit Face Detection (`aiml_mlkit_face_detection_ex.dart`)
+  - ML Kit Document Scanner (`aiml_mlkit_doc_scanner_ex.dart`)
+- **Code Quality**: Simplified and cleaned up all examples for better readability and educational value
+- **UI Improvements**: Removed AppBars from examples, improved layouts and user experience
+- Removed OpenCV dependencies that were incompatible with Google Play Store requirements
+- Enhanced Android build configuration for modern requirements
+- Removed legacy edge detection example that used incompatible OpenCV library
+
 ## v3.9.0
 [2026-02-14]
 - migrate to latest packages and build with flutter 3.41.1

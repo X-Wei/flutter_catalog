@@ -4,10 +4,11 @@ analyzer:
   errors:
     avoid_relative_lib_imports: ignore
     library_private_types_in_public_api: ignore
-  exclude: 
+  exclude:
     - build/**
     - "lib/**/*.g.dart"
     - "lib/**/*.freezed.dart"
+    - "packages/edge_detection_plus/**"
 
 linter:
   rules:
