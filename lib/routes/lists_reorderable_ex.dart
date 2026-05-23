@@ -15,13 +15,13 @@ class _ReorderableListExampleState extends State<ReorderableListExample> {
   bool _reverseSort = false;
   final List<String> _items = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').toList();
 
-  // Handler called by ReorderableListView onReorder after a list child is
-  // dropped into a new position.
+  // Handler called by ReorderableListView onReorderItem after a list child is
+  // dropped into a new position. Unlike the deprecated onReorder, newIndex is
+  // already adjusted for the removal of the item at oldIndex.
   void _onReorder(int oldIndex, int newIndex) {
     setState(() {
-      final newIdx = newIndex > oldIndex ? newIndex - 1 : newIndex;
       final item = _items.removeAt(oldIndex);
-      _items.insert(newIdx, item);
+      _items.insert(newIndex, item);
     });
   }
 
@@ -49,7 +49,7 @@ class _ReorderableListExampleState extends State<ReorderableListExample> {
     return Scaffold(
       appBar: _appbar,
       body: ReorderableListView(
-        onReorder: _onReorder,
+        onReorderItem: _onReorder,
         children: [
           for (final item in _items)
             ListTile(
