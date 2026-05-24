@@ -121,12 +121,26 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
       body: IndexedStack(
         index: ref.watch(mySettingsProvider).currentTabIdx,
         children: <Widget>[
-          ListView(controller: _scrollController1, children: basicDemos),
-          ListView(controller: _scrollController2, children: advancedDemos),
-          ListView(controller: _scrollController3, children: inactionDemos),
-          ListView(
-            controller: _scrollController4,
-            children: bookmarkAndAboutDemos,
+          RepaintBoundary(
+            child: ListView(controller: _scrollController1, children: basicDemos),
+          ),
+          RepaintBoundary(
+            child: ListView(
+              controller: _scrollController2,
+              children: advancedDemos,
+            ),
+          ),
+          RepaintBoundary(
+            child: ListView(
+              controller: _scrollController3,
+              children: inactionDemos,
+            ),
+          ),
+          RepaintBoundary(
+            child: ListView(
+              controller: _scrollController4,
+              children: bookmarkAndAboutDemos,
+            ),
           ),
         ],
       ),
