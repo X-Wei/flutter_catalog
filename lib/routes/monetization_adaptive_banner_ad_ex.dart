@@ -25,7 +25,7 @@ class _AnchoredAdaptiveBannerAdExampleState
   Future<void> _loadAd() async {
     //! Get an AnchoredAdaptiveBannerAdSize before loading the ad.
     final AnchoredAdaptiveBannerAdSize? size =
-        await AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(
+        await AdSize.getLargeAnchoredAdaptiveBannerAdSize(
           MediaQuery.of(context).size.width.truncate(),
         );
 

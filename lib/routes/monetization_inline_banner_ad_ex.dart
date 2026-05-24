@@ -69,7 +69,7 @@ class _MyBannerAdWidgetState extends State<MyBannerAdWidget> {
     if (!kIsOnMobile) return;
     //! Get an AnchoredAdaptiveBannerAdSize before loading the ad.
     final AnchoredAdaptiveBannerAdSize? size =
-        await AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(
+        await AdSize.getLargeAnchoredAdaptiveBannerAdSize(
           MediaQuery.of(context).size.width.truncate(),
         );
 

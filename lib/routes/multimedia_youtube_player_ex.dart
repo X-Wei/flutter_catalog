@@ -60,19 +60,18 @@ class _YoutubePlayerExampleState extends State<YoutubePlayerExample> {
 
   @override
   Widget build(BuildContext context) {
-    // We can add the player along with other widgets with the YoutubePlayerScaffold
-    return YoutubePlayerScaffold(
-      builder: (ctx, player) => SingleChildScrollView(
+    return YoutubePlayerControllerProvider(
+      controller: _ytController,
+      child: SingleChildScrollView(
         child: Column(
           children: [
             Text('YT player iframe'),
             TextField(controller: _txtController),
             ElevatedButton(onPressed: _play, child: Text('play')),
-            player,
+            YoutubePlayer(controller: _ytController),
           ],
         ),
       ),
-      controller: _ytController,
     );
   }
 }

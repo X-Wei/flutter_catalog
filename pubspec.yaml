@@ -69,7 +69,7 @@ dependencies:
   google_mlkit_document_scanner: ^0.4.1
   google_mlkit_face_detection: ^0.13.2
   google_mlkit_commons: ^0.11.1
-  google_mobile_ads: ^7.0.0
+  google_mobile_ads: ^8.0.0
   google_sign_in: ^6.2.1
   graphview: ^1.5.1
   groq: ^1.1.1
@@ -104,7 +104,7 @@ dependencies:
   sqflite: ^2.3.3
   state_notifier: ^1.0.0
   substring_highlight: ^1.0.33
-  timelines_plus: ^1.0.2
+  timelines_plus: ^2.0.0
   transparent_image: ^2.0.1
   tuple: ^2.0.2
   url_launcher: ^6.2.6
@@ -112,8 +112,8 @@ dependencies:
   webview_flutter: ^4.7.0
   widget_with_codeview:
     path: packages/widget_with_codeview
-  youtube_player_iframe: ^5.1.2
-  marionette_flutter: ^0.3.0
+  youtube_player_iframe: ^6.0.0
+  marionette_flutter: ^0.5.0
 
 
 dev_dependencies:
