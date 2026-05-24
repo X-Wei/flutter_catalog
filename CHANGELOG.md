@@ -1,11 +1,12 @@
 # Change Log
 
-## v3.9.2
-[2026-05-23]
+## v3.9.3
+[2026-05-24]
 - **iOS Build Fix**: Resolved iOS build by disabling Swift Package Manager (conflict between `google_mobile_ads` (CocoaPods) and `webview_flutter_wkwebview` (SPM))
 - Fixed missing `cupertino.dart` import in `lib/themes.dart` for `CupertinoPageTransitionsBuilder`
 - Updated iOS CI workflow to disable SPM before `pod install`
 - Upgraded `flutter_quill` to `^11.5.1` for Flutter 3.44+ compatibility (new `TextInputClient.onFocusReceived`)
+- Updated package dependencies for current Flutter compatibility
 - Removed unmaintained `animated_radial_menu` example (package `0.0.1` incompatible with Flutter 3.44+ `final IconData` change)
 
 ## v3.9.1

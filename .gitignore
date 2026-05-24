@@ -1,6 +1,7 @@
 tmp/
 .claude/
 CLAUDE.md
+AGENTS.md
 key.properties
 local.properties
 .env
