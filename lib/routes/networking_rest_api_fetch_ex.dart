@@ -15,9 +15,9 @@ class RestApiFetchExample extends StatefulWidget {
 class _RestApiFetchExampleState extends State<RestApiFetchExample> {
   late TextEditingController _urlController;
   late TextEditingController _apiTokenController;
-  String _responseBody = '<empty>';
-  String _error = '<none>';
-  bool _pending = false;
+  final _responseBody = ValueNotifier<String>('<empty>');
+  final _error = ValueNotifier<String>('<none>');
+  final _pending = ValueNotifier<bool>(false);
 
   @override
   void initState() {
@@ -25,6 +25,16 @@ class _RestApiFetchExampleState extends State<RestApiFetchExample> {
     this._apiTokenController = TextEditingController();
     this._urlController = TextEditingController()
       ..text = 'https://jsonplaceholder.typicode.com/posts/1';
+  }
+
+  @override
+  void dispose() {
+    _urlController.dispose();
+    _apiTokenController.dispose();
+    _responseBody.dispose();
+    _error.dispose();
+    _pending.dispose();
+    super.dispose();
   }
 
   @override
@@ -49,56 +59,70 @@ class _RestApiFetchExampleState extends State<RestApiFetchExample> {
         ),
         OverflowBar(
           children: <Widget>[
-            ElevatedButton(
-              onPressed: _pending
-                  ? null
-                  : () => this._httpGet(
-                      _urlController.text,
-                      _apiTokenController.text,
-                    ),
-              child: const Text('Get'),
+            ValueListenableBuilder<bool>(
+              valueListenable: _pending,
+              builder: (context, pending, _) => ElevatedButton(
+                onPressed: pending
+                    ? null
+                    : () => this._httpGet(
+                        _urlController.text,
+                        _apiTokenController.text,
+                      ),
+                child: const Text('Get'),
+              ),
             ),
             ElevatedButton(onPressed: this._reset, child: const Text('Reset')),
           ],
         ),
-        Text('Response body=$_responseBody'),
+        ValueListenableBuilder<String>(
+          valueListenable: _responseBody,
+          builder: (context, responseBody, _) => Text(
+            'Response body=$responseBody',
+          ),
+        ),
         const Divider(),
-        Text('Error=$_error'),
+        ValueListenableBuilder<String>(
+          valueListenable: _error,
+          builder: (context, error, _) => Text('Error=$error'),
+        ),
       ],
     );
   }
 
   void _reset({bool resetControllers = true}) {
-    setState(() {
-      if (resetControllers) {
-        this._urlController.text =
-            'https://jsonplaceholder.typicode.com/posts/1';
-      }
-      this._responseBody = '<empty>';
-      this._error = '<none>';
-      this._pending = false;
-    });
+    if (resetControllers) {
+      this._urlController.text = 'https://jsonplaceholder.typicode.com/posts/1';
+    }
+    _responseBody.value = '<empty>';
+    _error.value = '<none>';
+    _pending.value = false;
   }
 
   // Using the http package we can easily GET data from REST APIs.
   Future<void> _httpGet(String url, String apiToken) async {
     _reset();
-    setState(() => this._pending = true);
+    _pending.value = true;
     try {
       final http.Response response = await http.get(
         Uri.parse(url),
         headers: {HttpHeaders.authorizationHeader: apiToken},
       );
+      if (!mounted) return;
       // Usually we will add code to convert the response body into our data
       // class, e.g. using https://javiercbk.github.io/json_to_dart/.
       // **Tip**: use compute() function (from flutter/foundation.dart) to run
       // heavy json parsing work in a background isolate.
       final parsed = await compute(jsonDecode, response.body);
+      if (!mounted) return;
       print('parsed json object=$parsed');
-      setState(() => this._responseBody = response.body);
+      _responseBody.value = response.body;
     } catch (e) {
-      setState(() => this._error = e.toString());
+      if (!mounted) return;
+      _error.value = e.toString();
+    } finally {
+      if (mounted) {
+        _pending.value = false;
+      }
     }
-    setState(() => this._pending = false);
   }
 }

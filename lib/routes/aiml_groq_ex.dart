@@ -225,6 +225,39 @@ class MyMessageBubbleTile extends StatelessWidget {
     required this.isMe,
   });
 
+  static const _kMeMargin = EdgeInsets.only(
+    top: 8.0,
+    bottom: 8.0,
+    left: 80.0,
+  );
+  static const _kOtherMargin = EdgeInsets.only(
+    top: 8.0,
+    bottom: 8.0,
+    right: 80.0,
+  );
+  static const _kPadding = EdgeInsets.symmetric(
+    horizontal: 15.0,
+    vertical: 10.0,
+  );
+  static const _kMeRadius = BorderRadius.only(
+    topLeft: Radius.circular(15.0),
+    bottomLeft: Radius.circular(15.0),
+    bottomRight: Radius.circular(15.0),
+  );
+  static const _kOtherRadius = BorderRadius.only(
+    topRight: Radius.circular(15.0),
+    bottomLeft: Radius.circular(15.0),
+    bottomRight: Radius.circular(15.0),
+  );
+  static const _kMeDecoration = BoxDecoration(
+    color: Color(0xFFE0E0E0),
+    borderRadius: _kMeRadius,
+  );
+  static const _kOtherDecoration = BoxDecoration(
+    color: Color(0xFFBBDEFB),
+    borderRadius: _kOtherRadius,
+  );
+
   final String message;
   final bool isMe;
 
@@ -240,24 +273,9 @@ class MyMessageBubbleTile extends StatelessWidget {
     final msgBubble = Align(
       alignment: isMe ? Alignment.centerRight : Alignment.centerLeft,
       child: Container(
-        margin: isMe
-            ? EdgeInsets.only(top: 8.0, bottom: 8.0, left: 80.0)
-            : EdgeInsets.only(top: 8.0, bottom: 8.0, right: 80),
-        padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
-        decoration: BoxDecoration(
-          color: isMe ? Colors.grey[300] : Colors.blue[100],
-          borderRadius: isMe
-              ? BorderRadius.only(
-                  topLeft: Radius.circular(15.0),
-                  bottomLeft: Radius.circular(15.0),
-                  bottomRight: Radius.circular(15.0),
-                )
-              : BorderRadius.only(
-                  topRight: Radius.circular(15.0),
-                  bottomLeft: Radius.circular(15.0),
-                  bottomRight: Radius.circular(15.0),
-                ),
-        ),
+        margin: isMe ? _kMeMargin : _kOtherMargin,
+        padding: _kPadding,
+        decoration: isMe ? _kMeDecoration : _kOtherDecoration,
         child: MarkdownBody(data: message, selectable: true),
       ),
     );

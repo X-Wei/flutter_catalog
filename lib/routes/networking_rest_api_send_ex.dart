@@ -28,6 +28,14 @@ class _RestApiSendExampleState extends State<RestApiSendExample> {
   }
 
   @override
+  void dispose() {
+    _titleController.dispose();
+    _contentController.dispose();
+    _userIdController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return ListView(
       padding: const EdgeInsets.all(16.0),
